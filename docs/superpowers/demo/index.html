@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>掼蛋必胜 — 模拟原型</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'PingFang SC', sans-serif; background: #1a1a2e; color: #eee; height: 100vh; overflow: hidden; }
+
+/* Layout */
+.game-table {
+  width: 100%; height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-columns: 1fr;
+  position: relative;
+}
+
+/* Header */
+.header {
+  background: #16213e; padding: 8px 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid #0f3460;
+}
+.header h1 { font-size: 16px; color: #e94560; }
+.header .round-info { font-size: 13px; color: #aaa; }
+.header button { background: #e94560; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.header button:hover { background: #c73652; }
+
+/* Players */
+.players-area {
+  display: flex; justify-content: space-around; align-items: flex-start;
+  padding: 10px 10px 0;
+}
+.player {
+  text-align: center; min-width: 90px;
+}
+.player-name {
+  font-size: 13px; font-weight: 600; padding: 4px 10px;
+  border-radius: 12px; margin-bottom: 4px;
+}
+.player-name.active { box-shadow: 0 0 0 2px #e94560, 0 0 12px #e9456066; }
+.player.p-teammate .player-name { background: #1a5c2e; color: #8f8; }
+.player.p-opponent .player-name { background: #5c1a1a; color: #f88; }
+.player.p-me .player-name { background: #1a3a5c; color: #88f; }
+.player-cards-left { font-size: 11px; color: #888; }
+.player-play {
+  margin-top: 6px; min-height: 50px;
+  display: flex; gap: 2px; justify-content: center; flex-wrap: wrap;
+}
+.player-play .label {
+  font-size: 11px; color: #e94560; background: #2a1a2e;
+  padding: 2px 8px; border-radius: 8px; margin-top: 4px;
+}
+
+/* Center area */
+.center-area {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative;
+}
+.table-center {
+  background: #0f3460; border-radius: 16px;
+  padding: 12px 24px; min-width: 200px;
+  text-align: center;
+  border: 2px solid #1a4a7a;
+}
+.table-center .round-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+.table-center .play-info { font-size: 14px; color: #e94560; }
+.table-center .play-cards { display: flex; gap: 2px; justify-content: center; margin-top: 4px; }
+
+/* Cards */
+.card {
+  width: 28px; height: 38px; border-radius: 3px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  border: 1px solid #555;
+  background: #fff; color: #222;
+  line-height: 1;
+}
+.card.red { color: #d32f2f; }
+.card.joker-s { background: #222; color: #4caf50; border-color: #4caf50; }
+.card.joker-b { background: #222; color: #f44336; border-color: #f44336; }
+.card.selected { box-shadow: 0 0 0 2px #e94560; transform: translateY(-3px); }
+.card.played { background: #e8e8e8; color: #999; }
+
+/* My hand */
+.my-hand-area {
+  background: #16213e; border-top: 1px solid #0f3460;
+  padding: 6px 10px;
+}
+.my-hand-label { font-size: 11px; color: #888; margin-bottom: 4px; }
+.my-hand-cards {
+  display: flex; gap: 3px; flex-wrap: wrap; justify-content: center;
+}
+.my-hand-cards .card { cursor: pointer; transition: transform 0.1s; }
+.my-hand-cards .card:hover { transform: translateY(-4px); }
+
+/* AI Suggestion */
+.ai-suggestion {
+  background: linear-gradient(135deg, #1a2a1a, #16213e);
+  border: 1px solid #2a5a2a;
+  border-radius: 8px; padding: 8px 12px; margin: 4px 10px;
+}
+.ai-suggestion .ai-label { font-size: 11px; color: #4caf50; margin-bottom: 4px; }
+.ai-suggestion .ai-main { font-size: 15px; color: #fff; font-weight: 600; }
+.ai-suggestion .ai-reason { font-size: 11px; color: #aaa; margin-top: 2px; }
+.ai-suggestion .ai-alt { font-size: 11px; color: #888; margin-top: 4px; }
+
+/* Action bar */
+.action-bar {
+  background: #16213e; border-top: 1px solid #0f3460;
+  padding: 8px 12px; display: flex; gap: 8px; align-items: center; justify-content: center;
+}
+.action-bar select {
+  background: #0f3460; color: #eee; border: 1px solid #1a4a7a;
+  padding: 8px 12px; border-radius: 6px; font-size: 13px;
+}
+.action-bar button {
+  padding: 8px 18px; border: none; border-radius: 6px;
+  font-size: 13px; cursor: pointer; font-weight: 600;
+}
+.btn-confirm { background: #4caf50; color: white; }
+.btn-confirm:hover { background: #3d9140; }
+.btn-pass { background: #ff9800; color: white; }
+.btn-pass:hover { background: #e08600; }
+.btn-undo { background: #666; color: white; }
+.btn-undo:hover { background: #555; }
+.btn-adopt { background: #e94560; color: white; }
+.btn-adopt:hover { background: #c73652; }
+
+/* History log */
+.history-log {
+  position: absolute; right: 8px; top: 50px;
+  width: 180px; max-height: 50vh; overflow-y: auto;
+  background: #0a0a1aee; border-radius: 8px; padding: 8px;
+  font-size: 10px; color: #888; border: 1px solid #1a2a3a;
+}
+.history-log h3 { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+.history-log .entry { padding: 2px 0; border-bottom: 1px solid #1a1a2e; }
+.history-log .entry.me { color: #88f; }
+.history-log .entry.opp { color: #f88; }
+.history-log .entry.team { color: #8f8; }
+</style>
+</head>
+<body>
+
+<div class="game-table">
+  <!-- Header -->
+  <div class="header">
+    <h1>掼蛋必胜</h1>
+    <span class="round-info">第 <span id="roundNum">1</span> 轮 · 当前打7 · 比分 2:1</span>
+    <button onclick="resetGame()">新局</button>
+  </div>
+
+  <!-- Other players -->
+  <div class="players-area">
+    <div class="player p-opponent" id="p2">
+      <div class="player-name" id="name2">对手B(上家)</div>
+      <div class="player-cards-left" id="left2">剩 25 张</div>
+      <div class="player-play" id="play2"></div>
+    </div>
+    <div class="player p-teammate" id="p4">
+      <div class="player-name" id="name4">队友(对家)</div>
+      <div class="player-cards-left" id="left4">剩 27 张</div>
+      <div class="player-play" id="play4"></div>
+    </div>
+    <div class="player p-opponent" id="p3">
+      <div class="player-name" id="name3">对手D(下家)</div>
+      <div class="player-cards-left" id="left3">剩 26 张</div>
+      <div class="player-play" id="play3"></div>
+    </div>
+  </div>
+
+  <!-- Center -->
+  <div class="center-area">
+    <div class="table-center">
+      <div class="round-label" id="turnLabel">轮到: 对手B</div>
+      <div class="play-info" id="tableInfo">等待出牌...</div>
+      <div class="play-cards" id="tableCards"></div>
+    </div>
+  </div>
+
+  <!-- AI Suggestion -->
+  <div class="ai-suggestion" id="aiBox" style="display:none;">
+    <div class="ai-label">🤖 AI 建议</div>
+    <div class="ai-main" id="aiMain"></div>
+    <div class="ai-reason" id="aiReason"></div>
+    <div class="ai-alt" id="aiAlt"></div>
+  </div>
+
+  <!-- My hand -->
+  <div class="my-hand-area">
+    <div class="my-hand-label">你的手牌 (<span id="myCount">27</span>张)</div>
+    <div class="my-hand-cards" id="myHand"></div>
+  </div>
+
+  <!-- Actions -->
+  <div class="action-bar">
+    <button class="btn-adopt" id="btnAdopt" onclick="adoptSuggestion()" style="display:none;">采纳建议</button>
+    <button class="btn-confirm" onclick="confirmPlay()">确认出牌</button>
+    <button class="btn-pass" onclick="passPlay()">过</button>
+    <button class="btn-undo" onclick="undoAction()">撤回</button>
+    <button class="btn-pass" onclick="simulateRound()" style="background:#5c1a5c;">▶ 模拟</button>
+  </div>
+
+  <!-- History -->
+  <div class="history-log">
+    <h3>出牌记录</h3>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<script>
+// Game State
+const SUITS = ['♠','♥','♦','♣'];
+const RANKS = ['3','4','5','6','7','8','9','10','J','Q','K','A','2'];
+const RED_SUITS = ['♥','♦'];
+
+let myHand = [];
+let cardPool = [];
+let roundNum = 1;
+let turnOrder = [1, 2, 3, 4]; // 1=me, 2=oppB, 3=oppD, 4=teammateA
+let currentTurnIdx = 1; // starts with oppB
+let currentLead = null;
+let currentLeadPlayer = null;
+let passCount = 0;
+let selectedCards = [];
+let playerHands = { 1: 27, 2: 25, 3: 26, 4: 27 };
+let playerNames = { 1: '你', 2: '对手B', 3: '对手D', 4: '队友A' };
+let history = [];
+let aiSuggestion = null;
+
+function isRed(suit) { return RED_SUITS.includes(suit); }
+
+function createDeck() {
+  let deck = [];
+  let id = 0;
+  for (let d = 0; d < 2; d++) {
+    for (let s of SUITS) {
+      for (let r of RANKS) {
+        deck.push({ id: id++, rank: r, suit: s, red: isRed(s), played: false });
+      }
+    }
+    deck.push({ id: id++, rank: '小王', suit: '', red: false, played: false, joker: 'small' });
+    deck.push({ id: id++, rank: '大王', suit: '', red: true, played: false, joker: 'big' });
+  }
+  return deck;
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function dealCards() {
+  cardPool = createDeck();
+  shuffle(cardPool);
+  myHand = cardPool.slice(0, 27).sort((a, b) => {
+    let ri = RANKS.indexOf(a.rank) - RANKS.indexOf(b.rank);
+    if (a.joker || b.joker) {
+      if (a.joker === 'big') return 1;
+      if (b.joker === 'big') return -1;
+      if (a.joker === 'small') return (b.joker === 'big' ? -1 : 1);
+    }
+    if (ri !== 0) return ri;
+    return SUITS.indexOf(a.suit) - SUITS.indexOf(b.suit);
+  });
+  myHand.forEach(c => c.played = true); // mark as "mine"
+  playerHands = { 1: 27, 2: 27, 3: 27, 4: 27 };
+}
+
+function renderCard(c, small) {
+  if (c.joker) {
+    return `<span class="card ${c.joker === 'big' ? 'joker-b' : 'joker-s'}" data-id="${c.id}">${c.rank}</span>`;
+  }
+  return `<span class="card ${c.red ? 'red' : ''}" data-id="${c.id}">${c.suit}${c.rank}</span>`;
+}
+
+function renderMyHand() {
+  const el = document.getElementById('myHand');
+  el.innerHTML = myHand.map(c => {
+    let sel = selectedCards.includes(c.id) ? 'selected' : '';
+    return `<span class="card ${c.red ? 'red' : ''} ${sel}" data-id="${c.id}" onclick="toggleCard(${c.id})">${c.joker ? c.rank : c.suit + c.rank}</span>`;
+  }).join('');
+  document.getElementById('myCount').textContent = myHand.length;
+}
+
+function toggleCard(id) {
+  let idx = selectedCards.indexOf(id);
+  if (idx >= 0) selectedCards.splice(idx, 1);
+  else selectedCards.push(id);
+  renderMyHand();
+}
+
+function updatePlayers() {
+  for (let p = 2; p <= 4; p++) {
+    document.getElementById(`left${p}`).textContent = `剩 ${playerHands[p]} 张`;
+    document.getElementById(`name${p}`).classList.toggle('active', turnOrder[currentTurnIdx] === p);
+  }
+  document.getElementById('roundNum').textContent = roundNum;
+  let ct = turnOrder[currentTurnIdx];
+  document.getElementById('turnLabel').textContent = `轮到: ${playerNames[ct]}`;
+}
+
+function showPlay(player, cards, label) {
+  let el = document.getElementById(`play${player}`);
+  if (label === '过') {
+    el.innerHTML = '<span class="label">过</span>';
+  } else {
+    el.innerHTML = cards.map(c => renderCard(c)).join('');
+  }
+}
+
+function clearPlays() {
+  for (let p = 1; p <= 4; p++) {
+    document.getElementById(`play${p}`).innerHTML = '';
+  }
+}
+
+function addToHistory(text, type) {
+  history.push({ text, type });
+  let el = document.getElementById('historyList');
+  el.innerHTML += `<div class="entry ${type}">${text}</div>`;
+  el.scrollTop = el.scrollHeight;
+}
+
+function showAI(suggestion, reason, alt) {
+  document.getElementById('aiBox').style.display = 'block';
+  document.getElementById('aiMain').textContent = suggestion;
+  document.getElementById('aiReason').textContent = reason;
+  document.getElementById('aiAlt').textContent = alt || '';
+  document.getElementById('btnAdopt').style.display = 'inline-block';
+  aiSuggestion = suggestion;
+}
+
+function hideAI() {
+  document.getElementById('aiBox').style.display = 'none';
+  document.getElementById('btnAdopt').style.display = 'none';
+  aiSuggestion = null;
+}
+
+// Detect combination type
+function detectCombo(cards) {
+  let n = cards.length;
+  if (n === 0) return null;
+  if (n === 1) return '单牌';
+  let ranks = cards.map(c => RANKS.indexOf(c.rank));
+  let sameRank = cards.every(c => c.rank === cards[0].rank);
+  if (n === 2 && sameRank) return '对子';
+  if (n === 3 && sameRank) return '三条';
+  if (n === 4 && sameRank) return '炸弹';
+  if (n >= 5 && sameRank) return '炸弹(' + n + '张)';
+  // Straight check (simplified)
+  if (n >= 5) {
+    let sorted = [...ranks].sort((a,b) => a-b);
+    let isStraight = true;
+    for (let i = 1; i < sorted.length; i++) {
+      if (sorted[i] !== sorted[i-1] + 1) { isStraight = false; break; }
+    }
+    if (isStraight) return '顺子';
+  }
+  if (n === 5 && new Set(ranks).size === 2) return '三带二';
+  return '组合牌';
+}
+
+function confirmPlay() {
+  if (selectedCards.length === 0) return;
+  let cards = myHand.filter(c => selectedCards.includes(c.id));
+  let combo = detectCombo(cards);
+  let label = combo + ' ' + cards.map(c => c.joker ? c.rank : c.suit+c.rank).join(' ');
+
+  // Remove from hand
+  myHand = myHand.filter(c => !selectedCards.includes(c.id));
+  selectedCards = [];
+  playerHands[1] = myHand.length;
+
+  showPlay(1, cards, combo);
+  addToHistory(`你 → ${label}`, 'me');
+  currentLead = cards;
+  currentLeadPlayer = 1;
+  passCount = 0;
+
+  renderMyHand();
+  hideAI();
+  nextTurn();
+}
+
+function passPlay() {
+  let ct = turnOrder[currentTurnIdx];
+  addToHistory(`${playerNames[ct]} → 过`, ct === 1 ? 'me' : ct === 4 ? 'team' : 'opp');
+  showPlay(ct, [], '过');
+  passCount++;
+  hideAI();
+  if (passCount >= 3) {
+    // Winner leads next round
+    setTimeout(() => {
+      clearPlays();
+      roundNum++;
+      currentLead = null;
+      passCount = 0;
+      addToHistory(`--- 第${roundNum}轮 ---`, '');
+      updatePlayers();
+    }, 1200);
+  } else {
+    nextTurn();
+  }
+}
+
+function nextTurn() {
+  currentTurnIdx = (currentTurnIdx + 1) % 4;
+  let ct = turnOrder[currentTurnIdx];
+  updatePlayers();
+
+  if (ct === 1) {
+    // My turn - show AI suggestion
+    showAI(
+      '对子 9♠9♥',
+      '对手B剩5张需抢牌权，对9可以试探',
+      '备选: 顺子 3♠4♥5♠6♦7♥ (消耗散牌)'
+    );
+  }
+}
+
+// Simulate AI players
+function simulateRound() {
+  let ct = turnOrder[currentTurnIdx];
+
+  if (ct === 1) {
+    // My turn
+    showAI(
+      '对子 9♠9♥',
+      '对手B剩5张需抢牌权，对9试探对手',
+      '备选: 过 (保留牌力)'
+    );
+    return;
+  }
+
+  // Simulate other player
+  let possibleRanks = RANKS.slice(0, 8); // simplified
+  let action = Math.random() > 0.3 ? 'play' : 'pass';
+
+  if (action === 'pass') {
+    addToHistory(`${playerNames[ct]} → 过`, ct === 4 ? 'team' : 'opp');
+    showPlay(ct, [], '过');
+    passCount++;
+  } else {
+    // Generate random play
+    let rankIdx = Math.floor(Math.random() * possibleRanks.length);
+    let rank = possibleRanks[rankIdx];
+    let suit1 = SUITS[Math.floor(Math.random() * 4)];
+    let suit2 = SUITS[Math.floor(Math.random() * 4)];
+    let playType = Math.random() > 0.5 ? 'pair' : 'single';
+
+    let cards;
+    if (playType === 'pair') {
+      cards = [
+        { rank, suit: suit1, red: isRed(suit1) },
+        { rank, suit: suit2, red: isRed(suit2) }
+      ];
+      let combo = '对子';
+      showPlay(ct, cards, combo);
+      addToHistory(`${playerNames[ct]} → ${combo} ${suit1}${rank}${suit2}${rank}`, ct === 4 ? 'team' : 'opp');
+      playerHands[ct] -= 2;
+    } else {
+      cards = [{ rank, suit: suit1, red: isRed(suit1) }];
+      showPlay(ct, cards, '单牌');
+      addToHistory(`${playerNames[ct]} → 单牌 ${suit1}${rank}`, ct === 4 ? 'team' : 'opp');
+      playerHands[ct] -= 1;
+    }
+    currentLead = cards;
+    currentLeadPlayer = ct;
+    passCount = 0;
+  }
+
+  updatePlayers();
+
+  if (passCount >= 3) {
+    setTimeout(() => {
+      clearPlays();
+      roundNum++;
+      currentLead = null;
+      passCount = 0;
+      addToHistory(`--- 第${roundNum}轮 ---`, '');
+      updatePlayers();
+    }, 1200);
+  } else {
+    currentTurnIdx = (currentTurnIdx + 1) % 4;
+    updatePlayers();
+
+    // Auto continue simulation if not my turn
+    if (turnOrder[currentTurnIdx] !== 1) {
+      setTimeout(simulateRound, 800);
+    } else {
+      simulateRound();
+    }
+  }
+}
+
+function adoptSuggestion() {
+  if (!aiSuggestion) return;
+  // Simplified: select suggested cards
+  let cards = myHand.filter(c => c.rank === '9');
+  selectedCards = cards.slice(0, 2).map(c => c.id);
+  renderMyHand();
+  confirmPlay();
+}
+
+function undoAction() {
+  if (history.length === 0) return;
+  history.pop();
+  let el = document.getElementById('historyList');
+  el.removeChild(el.lastChild);
+}
+
+function resetGame() {
+  dealCards();
+  roundNum = 1;
+  currentTurnIdx = 1;
+  currentLead = null;
+  passCount = 0;
+  selectedCards = [];
+  history = [];
+  clearPlays();
+  hideAI();
+  document.getElementById('historyList').innerHTML = '';
+  addToHistory('--- 新局开始 ---', '');
+  addToHistory('--- 第1轮 ---', '');
+  renderMyHand();
+  updatePlayers();
+  document.getElementById('tableInfo').textContent = '对手B 领出';
+}
+
+// Init
+resetGame();
+</script>
+
+</body>
+</html>
