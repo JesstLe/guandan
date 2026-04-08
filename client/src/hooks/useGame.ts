@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { type WSMessage, type AISuggestion, type AnyCard, type Rank, type Suit } from '@guandan/shared'
+import { type WSMessage, type AISuggestion, type AnyCard, type Rank } from '@guandan/shared'
 
 export interface GameState {
   phase: string
@@ -33,16 +33,29 @@ export function useGame(): UseGameReturn {
   const [error, setError] = useState<string | null>(null)
   const wsRef = useRef<WebSocket | null>(null)
   const pendingRef = useRef<Map<string, { resolve: (msg: WSMessage) => void; reject: (err: Error) => void }>>(new Map())
+  const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => {
+  const connect = useCallback(() => {
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) return
+
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
     const wsUrl = `${protocol}//${window.location.host}/ws`
-    const ws = new WebSocket(wsUrl)
+    let ws: WebSocket
+    try {
+      ws = new WebSocket(wsUrl)
+    } catch {
+      return
+    }
     wsRef.current = ws
 
     ws.onopen = () => setConnected(true)
-    ws.onclose = () => setConnected(false)
-    ws.onerror = () => setError('WebSocket连接失败')
+    ws.onclose = () => {
+      setConnected(false)
+      reconnectTimerRef.current = setTimeout(() => connect(), 3000)
+    }
+    ws.onerror = () => {
+      setError('WebSocket连接失败，3秒后重试')
+    }
 
     ws.onmessage = (event) => {
       try {
@@ -52,18 +65,25 @@ export function useGame(): UseGameReturn {
         console.error('消息解析失败', e)
       }
     }
+  }, [])
 
+  useEffect(() => {
+    connect()
     return () => {
-      ws.close()
+      if (reconnectTimerRef.current) clearTimeout(reconnectTimerRef.current)
+      wsRef.current?.close()
       wsRef.current = null
     }
-  }, [])
+  }, [connect])
 
   const handleMessage = useCallback((msg: WSMessage) => {
     switch (msg.type) {
+      case 'system:connected':
+        break
       case 'game:state':
         setState(msg.payload as GameState)
         setLoading(false)
+        setError(null)
         break
       case 'game:suggest':
         if (msg.payload && typeof msg.payload === 'object' && 'primary' in (msg.payload as any)) {
@@ -74,8 +94,6 @@ export function useGame(): UseGameReturn {
       case 'game:error':
         setError((msg.payload as any).message || '未知错误')
         setLoading(false)
-        break
-      case 'game:validation':
         break
     }
 
@@ -116,7 +134,7 @@ export function useGame(): UseGameReturn {
       type: 'game:new',
       timestamp: Date.now(),
       payload: { mode, seats, handCards },
-    })
+    }).catch(e => setError(e.message))
   }, [send])
 
   const play = useCallback((player: number, cards: AnyCard[]) => {
@@ -127,7 +145,7 @@ export function useGame(): UseGameReturn {
       type: 'game:play',
       timestamp: Date.now(),
       payload: { player, cards },
-    })
+    }).catch(e => setError(e.message))
   }, [send])
 
   const pass = useCallback((player: number) => {
@@ -138,7 +156,7 @@ export function useGame(): UseGameReturn {
       type: 'game:pass',
       timestamp: Date.now(),
       payload: { player },
-    })
+    }).catch(e => setError(e.message))
   }, [send])
 
   const undo = useCallback(() => {
@@ -147,7 +165,7 @@ export function useGame(): UseGameReturn {
       type: 'game:undo',
       timestamp: Date.now(),
       payload: {},
-    })
+    }).catch(e => setError(e.message))
   }, [send])
 
   const requestSuggestion = useCallback(() => {
@@ -158,7 +176,7 @@ export function useGame(): UseGameReturn {
       type: 'game:suggest',
       timestamp: Date.now(),
       payload: {},
-    })
+    }).catch(e => setError(e.message))
   }, [send])
 
   return {

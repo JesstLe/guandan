@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react'
-import { type AnyCard, type Card, type Rank, type GameMode, type SeatConfig, isJoker } from '@guandan/shared'
+import { type AnyCard, type Rank, type GameMode, type SeatConfig } from '@guandan/shared'
 import { useGame } from '../hooks/useGame'
 import { CardSelector } from './CardSelector'
 import { HandDisplay } from './HandDisplay'
+import { HandPicker } from './HandPicker'
 import { SuggestionPanel } from './SuggestionPanel'
 import { PlayerBar } from './PlayerBar'
-import { TributePanel } from './TributePanel'
 
 export const GameBoard: React.FC = () => {
   const game = useGame()
@@ -14,7 +14,7 @@ export const GameBoard: React.FC = () => {
   const [activePlayer, setActivePlayer] = useState<number>(0)
   const [setupMode, setSetupMode] = useState(true)
   const [trumpRank, setTrumpRank] = useState<Rank>('7')
-  const [handInput, setHandInput] = useState<string>('')
+  const [handCards, setHandCards] = useState<AnyCard[]>([])
 
   const playerInfos = useMemo(() => {
     if (!game.state) return []
@@ -33,6 +33,7 @@ export const GameBoard: React.FC = () => {
   }, [game.state])
 
   const handleStartGame = () => {
+    if (handCards.length !== 27) return
     const mode: GameMode = {
       type: 'single',
       tributeEnabled: false,
@@ -40,7 +41,6 @@ export const GameBoard: React.FC = () => {
       initialTrumpRank: trumpRank,
     }
     const seats: SeatConfig = { me: 0, teammate: 2, opponentA: 1, opponentB: 3 }
-    const handCards = parseHandInput(handInput)
     game.startGame(mode, seats, handCards)
     setSetupMode(false)
   }
@@ -94,17 +94,23 @@ export const GameBoard: React.FC = () => {
             </select>
           </div>
           <div style={styles.formRow}>
-            <label style={styles.label}>我的手牌:</label>
-            <textarea
-              value={handInput}
-              onChange={e => setHandInput(e.target.value)}
-              placeholder="输入手牌，如: ♠3 ♥3 ♦4 ♣5 ♠6 ♥7 ..."
-              style={styles.textarea}
-              rows={4}
+            <label style={styles.label}>选择你的手牌（点选27张）:</label>
+            <HandPicker
+              trumpRank={trumpRank}
+              selectedCards={handCards}
+              onSelectionChange={setHandCards}
+              maxCards={27}
             />
           </div>
-          <button style={styles.startBtn} onClick={handleStartGame}>
-            开始游戏
+          <button
+            style={{
+              ...styles.startBtn,
+              ...(handCards.length !== 27 ? styles.startBtnDisabled : {}),
+            }}
+            onClick={handleStartGame}
+            disabled={handCards.length !== 27}
+          >
+            {handCards.length === 27 ? '开始游戏' : `还需选择 ${27 - handCards.length} 张牌`}
           </button>
         </div>
       </div>
@@ -202,29 +208,6 @@ export const GameBoard: React.FC = () => {
       )}
     </div>
   )
-}
-
-function parseHandInput(input: string): AnyCard[] {
-  const cards: AnyCard[] = []
-  const suitMap: Record<string, string> = { '♠': 'spade', '♥': 'heart', '♦': 'diamond', '♣': 'club' }
-  const parts = input.trim().split(/\s+/)
-
-  for (const part of parts) {
-    const match = part.match(/^([♠♥♦♣])(\d+|10|[JQKA2])$/)
-    if (match) {
-      const suit = suitMap[match[1]] as any
-      const rank = match[2] as Rank
-      cards.push({
-        rank,
-        suit,
-        copyIndex: (cards.filter(c => !isJoker(c) && c.rank === rank && c.suit === suit).length + 1) as 1 | 2,
-        isTrump: false,
-        isRedTrump: false,
-      })
-    }
-  }
-
-  return cards
 }
 
 const styles: Record<string, React.CSSProperties> = {
@@ -332,16 +315,16 @@ const styles: Record<string, React.CSSProperties> = {
     zIndex: 9999,
   },
   setupContainer: {
-    maxWidth: 480,
-    margin: '80px auto',
-    padding: 32,
+    maxWidth: 640,
+    margin: '40px auto',
+    padding: 24,
     background: '#fff',
     borderRadius: 12,
     boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
   },
   setupTitle: {
     textAlign: 'center',
-    marginBottom: 24,
+    marginBottom: 20,
     fontSize: 24,
   },
   setupForm: {
@@ -352,17 +335,10 @@ const styles: Record<string, React.CSSProperties> = {
   formRow: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 4,
-  },
-  textarea: {
-    padding: 8,
-    borderRadius: 4,
-    border: '1px solid #ced4da',
-    fontSize: 13,
-    resize: 'vertical',
+    gap: 8,
   },
   startBtn: {
-    padding: '10px 0',
+    padding: '12px 0',
     borderRadius: 6,
     border: 'none',
     background: '#339af0',
@@ -370,5 +346,10 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 15,
     fontWeight: 600,
     cursor: 'pointer',
+    transition: 'all 0.15s',
+  },
+  startBtnDisabled: {
+    background: '#adb5bd',
+    cursor: 'not-allowed',
   },
 }
