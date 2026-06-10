@@ -1,6 +1,6 @@
 import {
   type AnyCard, type Card, type JokerCard, type CardState, type CardPool,
-  type TrumpRank, type CardStatus, type Rank, type Suit,
+  type TrumpRank, type CardStatus, type Rank, type Suit, type SeatConfig,
   ALL_RANKS, ALL_SUITS, RANK_ORDER, SUIT_ORDER,
   isJoker, cardId,
 } from '@guandan/shared'
@@ -60,6 +60,17 @@ export function setMyHand(pool: CardPool, cards: AnyCard[]): void {
     }
   }
   pool.players[0].handCount = cards.length
+}
+
+export function setOtherPlayersHandCount(pool: CardPool, seats: SeatConfig): void {
+  const myCount = pool.players[0].handCount
+  const remaining = pool.total - myCount
+  const perPlayer = Math.floor(remaining / 3)
+  const leftover = remaining - perPlayer * 3
+
+  pool.players[seats.opponentA].handCount = perPlayer + (leftover > 0 ? 1 : 0)
+  pool.players[seats.opponentB].handCount = perPlayer + (leftover > 1 ? 1 : 0)
+  pool.players[seats.teammate].handCount = perPlayer
 }
 
 export function playCards(

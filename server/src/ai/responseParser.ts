@@ -65,9 +65,9 @@ function validateOption(opt: unknown): AISuggestionOption | null {
 
   const combinationType = obj.combinationType as CombinationType
   const validTypes: CombinationType[] = [
-    'single', 'pair', 'triple_with_pair', 'triple_with_single',
-    'triple_pair', 'airplane', 'airplane_with_wings',
-    'straight', 'pair_straight', 'bomb', 'same_suit_straight', 'joker_bomb',
+    'single', 'pair', 'triple', 'triple_with_pair',
+    'straight', 'pair_straight', 'airplane', 'bomb',
+    'same_suit_straight', 'joker_bomb',
   ]
   if (!validTypes.includes(combinationType)) return null
 
@@ -89,19 +89,59 @@ function validateOption(opt: unknown): AISuggestionOption | null {
   }
 }
 
+const VALID_RANKS: Set<string> = new Set(['3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A', '2'])
+const VALID_SUITS: Set<string> = new Set(['spade', 'heart', 'diamond', 'club'])
+
 function validateCards(cards: unknown): AISuggestionOption['cards'] | null {
   if (!Array.isArray(cards)) return null
 
-  return cards.map((c: Record<string, unknown>) => ({
-    rank: c.rank as Rank,
-    suit: c.suit as Suit,
-    copyIndex: c.copyIndex as 1 | 2,
-  }))
+  const result: AISuggestionOption['cards'] = []
+  for (const c of cards) {
+    if (!c || typeof c !== 'object') return null
+    const obj = c as Record<string, unknown>
+
+    const rank = String(obj.rank ?? '')
+    const suit = String(obj.suit ?? '')
+    const copyIndex = obj.copyIndex
+
+    if (rank === 'BJ' || rank === 'SJ') {
+      if (copyIndex !== 1 && copyIndex !== 2) return null
+      result.push({ rank, suit: 'joker', copyIndex: copyIndex as 1 | 2 })
+    } else if (VALID_RANKS.has(rank) && VALID_SUITS.has(suit)) {
+      if (copyIndex !== 1 && copyIndex !== 2) return null
+      result.push({ rank: rank as Rank, suit: suit as Suit, copyIndex: copyIndex as 1 | 2 })
+    } else {
+      return null
+    }
+  }
+
+  return result
 }
 
 function validateWildcards(wildcards: unknown): WildcardEntry[] {
   if (!Array.isArray(wildcards)) return []
-  return wildcards as WildcardEntry[]
+  const result: WildcardEntry[] = []
+  for (const w of wildcards) {
+    if (!w || typeof w !== 'object') continue
+    const obj = w as Record<string, unknown>
+    const card = obj.card
+    const substitute = obj.substitute
+    if (!card || typeof card !== 'object' || typeof substitute !== 'string') continue
+    const c = card as Record<string, unknown>
+    if (typeof c.rank !== 'string' || typeof c.suit !== 'string') continue
+    if (!VALID_RANKS.has(c.rank) || !VALID_SUITS.has(c.suit)) continue
+    if (c.copyIndex !== 1 && c.copyIndex !== 2) continue
+    if (!VALID_RANKS.has(substitute)) continue
+    const entry: WildcardEntry = {
+      card: { rank: c.rank as Rank, suit: c.suit as Suit, copyIndex: c.copyIndex as 1 | 2, isTrump: false, isRedTrump: false },
+      substitute: substitute as Rank,
+    }
+    if (typeof obj.substituteSuit === 'string' && VALID_SUITS.has(obj.substituteSuit)) {
+      entry.substituteSuit = obj.substituteSuit as Suit
+    }
+    result.push(entry)
+  }
+  return result
 }
 
 function validateDimensions(dimensions: unknown): AISuggestionOption['dimensions'] {

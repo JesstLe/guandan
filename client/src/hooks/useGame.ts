@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { type WSMessage, type AISuggestion, type AnyCard, type Rank } from '@guandan/shared'
 
+export interface CardTrackerEntry {
+  total: number
+  remaining: number
+  played: number
+}
+
 export interface GameState {
   phase: string
   trumpRank: Rank
@@ -8,8 +14,10 @@ export interface GameState {
   roundNumber: number
   finishedPlayers: number[]
   currentRound: any | null
+  rounds: any[]
   myHand: any[]
   players: { seat: number; handCount: number }[]
+  cardTracker: Record<string, CardTrackerEntry>
 }
 
 export interface UseGameReturn {
@@ -22,7 +30,7 @@ export interface UseGameReturn {
   play: (player: number, cards: AnyCard[]) => void
   pass: (player: number) => void
   undo: () => void
-  requestSuggestion: () => void
+  requestSuggestion: (player?: number) => void
 }
 
 export function useGame(): UseGameReturn {
@@ -168,14 +176,14 @@ export function useGame(): UseGameReturn {
     }).catch(e => setError(e.message))
   }, [send])
 
-  const requestSuggestion = useCallback(() => {
+  const requestSuggestion = useCallback((player?: number) => {
     setLoading(true)
     setSuggestion(null)
     send({
       id: crypto.randomUUID(),
       type: 'game:suggest',
       timestamp: Date.now(),
-      payload: {},
+      payload: player !== undefined ? { player } : {},
     }).catch(e => setError(e.message))
   }, [send])
 

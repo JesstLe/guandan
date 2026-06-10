@@ -1,10 +1,14 @@
+import { config } from 'dotenv'
+import { resolve } from 'path'
+config({ path: resolve(__dirname, '../../.env') })
+console.log('[dotenv] KIMI_API_KEY:', process.env.KIMI_API_KEY ? 'SET' : 'NOT SET')
 import express from 'express'
 import { createServer } from 'http'
 import { WebSocketServer } from 'ws'
 import { createAPIRouter } from './api/routes'
 import { createWSServer } from './api/ws'
 
-const PORT = parseInt(process.env.PORT || '3001', 10)
+const PORT = parseInt(process.env.PORT || '3667', 10)
 
 const app = express()
 app.use(express.json())

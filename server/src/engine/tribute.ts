@@ -22,15 +22,12 @@ export function isAntiTribute(
   playerCards: AnyCard[],
   trumpRank: TrumpRank,
 ): boolean {
-  const jokerCount = playerCards.filter(isJoker).length
-  if (jokerCount >= 2) return true
+  // 掼蛋规则：抗贡条件为单人抓到双大王（两张大王）
+  const bigJokerCount = playerCards.filter(
+    c => isJoker(c) && c.type === 'big'
+  ).length
 
-  const trumpCards = playerCards.filter(
-    c => !isJoker(c) && c.rank === trumpRank
-  )
-  if (trumpCards.length >= 2) return true
-
-  return false
+  return bigJokerCount >= 2
 }
 
 export function validateTributeCard(

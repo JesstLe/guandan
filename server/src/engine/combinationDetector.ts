@@ -132,67 +132,26 @@ function detectPairStraight(cards: AnyCard[], groups: Map<string, AnyCard[]>): C
   }
 }
 
-function detectTriplePair(cards: AnyCard[], groups: Map<string, AnyCard[]>): CardCombination | null {
-  if (cards.length < 6 || cards.length % 2 !== 0) return null
-  if (cards.some(isJoker)) return null
-  const pairs: Rank[] = []
-  for (const [key, group] of groups) {
-    if (group.length !== 2) return null
-    if (key === '2') return null
-    pairs.push(key as Rank)
-  }
-  pairs.sort((a, b) => rankValue(a) - rankValue(b))
-  if (pairs.length < 3) return null
-  if (!isConsecutive(pairs)) return null
-  return {
-    type: 'triple_pair',
-    cards,
-    mainRank: pairs[0],
-    isTrump: hasTrump(cards),
-    length: pairs.length,
-    wildcards: [],
-  }
-}
-
 function detectAirplane(cards: AnyCard[], groups: Map<string, AnyCard[]>): CardCombination | null {
+  // 掼蛋规则：钢板必须是纯连续三条，如333444，不支持带翅膀
   if (cards.some(isJoker)) return null
   const triples: Rank[] = []
-  const remaining: AnyCard[] = []
   for (const [, group] of groups) {
     if (group.length === 3) {
       if ((group[0] as Card).rank === '2') return null
       triples.push((group[0] as Card).rank)
     } else {
-      remaining.push(...group)
+      return null // 必须全部是三条组合，不能有剩余杂牌
     }
   }
   if (triples.length < 2) return null
   triples.sort((a, b) => rankValue(a) - rankValue(b))
   if (!isConsecutive(triples)) return null
-  if (remaining.length === 0) {
-    return {
-      type: 'airplane',
-      cards,
-      mainRank: triples[0],
-      isTrump: hasTrump(cards),
-      length: triples.length,
-      wildcards: [],
-    }
-  }
-  const wingGroups = groupByRank(remaining)
-  const wings: Rank[] = []
-  for (const [key, group] of wingGroups) {
-    if (group.length === 2) {
-      wings.push(key as Rank)
-    } else {
-      return null
-    }
-  }
-  if (wings.length !== triples.length) return null
   return {
-    type: 'airplane_with_wings',
+    type: 'airplane',
     cards,
-    mainRank: triples[0],
+    // 以最大的那组三条点数作为比较基准
+    mainRank: triples[triples.length - 1],
     isTrump: hasTrump(cards),
     length: triples.length,
     wildcards: [],
@@ -219,24 +178,22 @@ function detectTripleWithPair(cards: AnyCard[], groups: Map<string, AnyCard[]>):
   }
 }
 
-function detectTripleWithSingle(cards: AnyCard[], groups: Map<string, AnyCard[]>): CardCombination | null {
-  if (cards.length !== 4) return null
+function detectTriple(cards: AnyCard[], groups: Map<string, AnyCard[]>): CardCombination | null {
+  // 掼蛋规则：支持纯三张（三条，如333，不带牌）
+  if (cards.length !== 3) return null
   if (cards.some(isJoker)) return null
-  let tripleRank: Rank | null = null
-  let singleCount = 0
-  for (const [, group] of groups) {
-    if (group.length === 3) tripleRank = (group[0] as Card).rank
-    else if (group.length === 1) singleCount++
-    else return null
+  for (const [key, group] of groups) {
+    if (group.length === 3) {
+      return {
+        type: 'triple',
+        cards,
+        mainRank: key as Rank,
+        isTrump: hasTrump(cards),
+        wildcards: [],
+      }
+    }
   }
-  if (!tripleRank || singleCount !== 1) return null
-  return {
-    type: 'triple_with_single',
-    cards,
-    mainRank: tripleRank,
-    isTrump: hasTrump(cards),
-    wildcards: [],
-  }
+  return null
 }
 
 function detectPair(cards: AnyCard[], groups: Map<string, AnyCard[]>): CardCombination | null {
@@ -337,11 +294,10 @@ function detectWithWildcard(cards: AnyCard[]): CardCombination[] {
     }
     if (virtualCards.length >= 6) {
       tryAdd(detectPairStraight(virtualCards, virtualGroups))
-      tryAdd(detectTriplePair(virtualCards, virtualGroups))
     }
     tryAdd(detectAirplane(virtualCards, virtualGroups))
     tryAdd(detectTripleWithPair(virtualCards, virtualGroups))
-    tryAdd(detectTripleWithSingle(virtualCards, virtualGroups))
+    tryAdd(detectTriple(virtualCards, virtualGroups))
     tryAdd(detectPair(virtualCards, virtualGroups))
     tryAdd(detectSingle(virtualCards))
   }
@@ -372,17 +328,14 @@ export function detectCombination(cards: AnyCard[]): DetectionResult {
   const pairStraight = detectPairStraight(cards, groups)
   if (pairStraight) results.push(pairStraight)
 
-  const triplePair = detectTriplePair(cards, groups)
-  if (triplePair) results.push(triplePair)
-
   const airplane = detectAirplane(cards, groups)
   if (airplane) results.push(airplane)
 
   const tripleWithPair = detectTripleWithPair(cards, groups)
   if (tripleWithPair) results.push(tripleWithPair)
 
-  const tripleWithSingle = detectTripleWithSingle(cards, groups)
-  if (tripleWithSingle) results.push(tripleWithSingle)
+  const triple = detectTriple(cards, groups)
+  if (triple) results.push(triple)
 
   const pair = detectPair(cards, groups)
   if (pair) results.push(pair)
@@ -428,12 +381,10 @@ const TYPE_PRIORITY: Record<CombinationType, number> = {
   joker_bomb: 100,
   bomb: 90,
   same_suit_straight: 80,
-  airplane_with_wings: 70,
   airplane: 65,
-  triple_pair: 60,
   pair_straight: 55,
   triple_with_pair: 50,
-  triple_with_single: 45,
+  triple: 30, // 三条优先级定在顺子之下、对子之上
   straight: 40,
   pair: 20,
   single: 10,

@@ -1,13 +1,6 @@
 import React from 'react'
-import { type AnyCard, type Card, type Rank, type Suit, RANK_ORDER, isJoker } from '@guandan/shared'
-
-const SUIT_SYMBOL: Record<Suit, string> = {
-  spade: '♠', heart: '♥', diamond: '♦', club: '♣',
-}
-
-const SUIT_COLOR: Record<Suit, string> = {
-  spade: '#1a1a2e', heart: '#e63946', diamond: '#e63946', club: '#1a1a2e',
-}
+import { type AnyCard, type Rank, RANK_ORDER, isJoker } from '@guandan/shared'
+import { PlayingCard } from './PlayingCard'
 
 interface HandDisplayProps {
   cards: AnyCard[]
@@ -30,38 +23,19 @@ export const HandDisplay: React.FC<HandDisplayProps> = ({
 
   return (
     <div style={styles.container}>
-      <div style={styles.label}>我的手牌 ({cards.length}张)</div>
+      <div style={styles.label}>🃏 我的手牌 ({cards.length}张)</div>
       <div style={styles.hand}>
         {sorted.map(card => {
           const id = cardIdStr(card)
           const selected = selectedIds.has(id)
-          const isTrump = !isJoker(card) && card.isTrump
-          const isRedTrump = !isJoker(card) && card.isRedTrump
 
           return (
-            <div
+            <PlayingCard
               key={id}
-              style={{
-                ...styles.card,
-                ...(selected ? styles.cardSelected : {}),
-                ...(isTrump ? styles.cardTrump : {}),
-                ...(isRedTrump ? styles.cardRedTrump : {}),
-              }}
+              card={card}
+              selected={selected}
               onClick={() => onCardClick?.(card)}
-            >
-              {isJoker(card) ? (
-                <span style={{ color: card.type === 'big' ? '#e63946' : '#1a1a2e' }}>
-                  {card.type === 'big' ? '大' : '小'}王
-                </span>
-              ) : (
-                <>
-                  <span style={{ color: SUIT_COLOR[card.suit], fontSize: 10 }}>
-                    {SUIT_SYMBOL[card.suit]}
-                  </span>
-                  <span>{card.rank}</span>
-                </>
-              )}
-            </div>
+            />
           )
         })}
       </div>
@@ -84,46 +58,23 @@ function cardIdStr(card: AnyCard): string {
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    padding: 8,
+    padding: 12,
+    background: 'rgba(255,255,255,0.06)',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'rgba(255,255,255,0.1)',
+    borderRadius: 12,
+    backdropFilter: 'blur(8px)',
   },
   label: {
     fontSize: 12,
-    color: '#868e96',
-    marginBottom: 4,
+    color: 'rgba(255,255,255,0.5)',
+    marginBottom: 8,
+    fontWeight: 600,
   },
   hand: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: 4,
-  },
-  card: {
-    width: 36,
-    height: 48,
-    border: '1px solid #dee2e6',
-    borderRadius: 4,
-    background: '#fff',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-    fontSize: 13,
-    fontWeight: 600,
-    transition: 'all 0.15s',
-    userSelect: 'none',
-  },
-  cardSelected: {
-    background: '#d0ebff',
-    borderColor: '#339af0',
-    transform: 'translateY(-4px)',
-  },
-  cardTrump: {
-    borderColor: '#ff6b6b',
-    borderWidth: 2,
-  },
-  cardRedTrump: {
-    borderColor: '#e63946',
-    borderWidth: 2,
-    background: '#fff5f5',
+    gap: 5,
   },
 }

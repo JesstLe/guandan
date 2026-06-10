@@ -37,9 +37,9 @@ export function validateCardType(cards: AnyCard[]): ValidationResult {
 
 export function isValidCombinationType(type: CombinationType): boolean {
   const validTypes: CombinationType[] = [
-    'single', 'pair', 'triple_with_pair', 'triple_with_single',
-    'triple_pair', 'airplane', 'airplane_with_wings',
-    'straight', 'pair_straight', 'bomb', 'same_suit_straight', 'joker_bomb',
+    'single', 'pair', 'triple', 'triple_with_pair',
+    'straight', 'pair_straight', 'airplane', 'bomb',
+    'same_suit_straight', 'joker_bomb',
   ]
   return validTypes.includes(type)
 }
@@ -48,11 +48,9 @@ export function getCombinationRequirements(type: CombinationType): { minCards: n
   switch (type) {
     case 'single': return { minCards: 1, description: '任意1张牌' }
     case 'pair': return { minCards: 2, description: '2张相同点数的牌' }
+    case 'triple': return { minCards: 3, description: '3张相同点数的牌' }
     case 'triple_with_pair': return { minCards: 5, description: '3张相同点数+1对' }
-    case 'triple_with_single': return { minCards: 4, description: '3张相同点数+1张单牌' }
-    case 'triple_pair': return { minCards: 6, description: '3对连续点数(如445566)' }
     case 'airplane': return { minCards: 6, description: '2组连续三条(如444555)' }
-    case 'airplane_with_wings': return { minCards: 8, description: '飞机+同数量对子' }
     case 'straight': return { minCards: 5, description: '5张以上连续点数(不含2)' }
     case 'pair_straight': return { minCards: 6, description: '3对以上连续对子(不含2)' }
     case 'bomb': return { minCards: 4, description: '4张以上相同点数' }

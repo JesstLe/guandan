@@ -83,14 +83,21 @@ function buildGameStateSection(state: StructuredState): string {
 function buildMyHandSection(state: StructuredState): string {
   const cards = state.myHand.cards
     .sort((a, b) => {
-      const aVal = a.isTrump ? 100 + RANK_ORDER[a.rank] : RANK_ORDER[a.rank]
-      const bVal = b.isTrump ? 100 + RANK_ORDER[b.rank] : RANK_ORDER[b.rank]
+      const rankVal = (r: string) => {
+        if (r === 'BJ') return 200
+        if (r === 'SJ') return 199
+        return (RANK_ORDER as Record<string, number>)[r] ?? 0
+      }
+      const aVal = a.isTrump ? 100 + rankVal(a.rank) : rankVal(a.rank)
+      const bVal = b.isTrump ? 100 + rankVal(b.rank) : rankVal(b.rank)
       return bVal - aVal
     })
     .map(c => {
+      if (c.rank === 'BJ') return '大王'
+      if (c.rank === 'SJ') return '小王'
       const trump = c.isTrump ? '[主]' : ''
       const wildcard = c.isRedTrump ? '[逢人配]' : ''
-      return `${SUIT_SYMBOL[c.suit]}${c.rank}${trump}${wildcard}`
+      return `${SUIT_SYMBOL[c.suit as Suit]}${c.rank}${trump}${wildcard}`
     })
     .join(' ')
 
@@ -115,7 +122,7 @@ function buildOpponentsSection(state: StructuredState): string {
 
 function buildTableSection(state: StructuredState): string {
   if (!state.tableLead) {
-    return '## 台面\n当前无人出牌，你可以自由出牌'
+    return '## 台面\n当前无人出牌，你可以自由出牌（任意合法牌型）'
   }
 
   const lead = state.tableLead
@@ -125,11 +132,15 @@ function buildTableSection(state: StructuredState): string {
     return `${SUIT_SYMBOL[c.suit]}${c.rank}`
   }).join(' ')
 
-  return `## 台面
-- 出牌人: 玩家${lead.player}
-- 牌型: ${combo.type}${combo.mainRank ? '(' + combo.mainRank + ')' : ''}
-- 牌: ${cards}
-- 已过人数: ${lead.passCount}`
+  const constraintLines: string[] = []
+  constraintLines.push(`- 出牌人: 玩家${lead.player}`)
+  constraintLines.push(`- 牌型: ${combo.type}${combo.mainRank ? '(' + combo.mainRank + ')' : ''}`)
+  constraintLines.push(`- 牌: ${cards}`)
+  constraintLines.push(`- 已过人数: ${lead.passCount}`)
+  constraintLines.push('')
+  constraintLines.push('⚠️ 约束：你必须出同类型且更大的牌型，或者出炸弹/同花顺/天王炸来压制。如果无法压过，请选择过牌(pass)。')
+
+  return `## 台面\n${constraintLines.join('\n')}`
 }
 
 function buildHistorySection(history: CompressedHistory): string {

@@ -40,18 +40,22 @@ export const TributePanel: React.FC<TributePanelProps> = ({
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    background: '#fff3bf',
-    border: '1px solid #fcc419',
-    borderRadius: 8,
-    padding: 12,
+    background: 'rgba(245,159,0,0.12)',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'rgba(245,159,0,0.3)',
+    borderRadius: 12,
+    padding: 14,
+    backdropFilter: 'blur(8px)',
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: 700,
     fontSize: 14,
     marginBottom: 4,
+    color: '#f59f00',
   },
   hint: {
     fontSize: 12,
-    color: '#868e96',
+    color: 'rgba(255,255,255,0.5)',
   },
 }

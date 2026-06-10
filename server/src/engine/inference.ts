@@ -140,7 +140,7 @@ function countRemainingByRank(pool: CardPool, rank: Rank, excludePlayer: number)
     if (isJoker(s.card)) return false
     if (s.card.rank !== rank) return false
     if (s.status === 'in_play' || s.status === 'archived') return false
-    if (s.status === 'in_my_hand' && excludePlayer === 0) return false
+    if (s.currentHolder === excludePlayer) return false
     return true
   }).length
 }

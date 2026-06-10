@@ -44,18 +44,16 @@ export function cardId(card: AnyCard): string {
 }
 
 export type CombinationType =
-  | 'single'
-  | 'pair'
-  | 'triple_with_pair'
-  | 'triple_with_single'
-  | 'triple_pair'
-  | 'airplane'
-  | 'airplane_with_wings'
-  | 'straight'
-  | 'pair_straight'
-  | 'bomb'
-  | 'same_suit_straight'
-  | 'joker_bomb'
+  | 'single'             // 单张
+  | 'pair'               // 对子
+  | 'triple'             // 三张（如333，不带）
+  | 'triple_with_pair'   // 三带二（三打二，如33344）
+  | 'straight'           // 顺子（五张及以上单顺）
+  | 'pair_straight'      // 连对（三对及以上，如334455）
+  | 'airplane'           // 钢板（两组连续三条，如333444）
+  | 'bomb'               // 炸弹（四张及以上同点数）
+  | 'same_suit_straight' // 同花顺（同花色五张顺子）
+  | 'joker_bomb'         // 天王炸（双大王+双小王）
 
 export interface WildcardEntry {
   card: Card
@@ -259,7 +257,7 @@ export interface AISuggestion {
 
 export interface AISuggestionOption {
   action: 'play' | 'pass'
-  cards: { rank: Rank; suit: Suit; copyIndex: 1 | 2 }[]
+  cards: { rank: Rank | 'BJ' | 'SJ'; suit: Suit | 'joker'; copyIndex: 1 | 2 }[]
   combinationType: CombinationType
   wildcards?: WildcardEntry[]
   totalScore: number

@@ -8,14 +8,26 @@
     "client"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "npm run build -w shared && concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "npm run dev -w server",
     "dev:client": "npm run dev -w client",
     "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
-    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w client"
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w client",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:shared": "npm run test -w shared",
+    "test:server": "npm run test -w server",
+    "test:client": "npm run test -w client"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@vitest/coverage-v8": "^4.1.3",
     "concurrently": "^9.1.0",
-    "typescript": "^5.7.0"
+    "happy-dom": "^20.8.9",
+    "playwright": "^1.59.1",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.3"
   }
 }

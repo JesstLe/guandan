@@ -12,11 +12,17 @@ function bombPower(combo: CardCombination): number {
   if (combo.type === 'bomb') {
     const len = combo.cards.length
     const mainVal = combo.mainRank ? rankValue(combo.mainRank) : 0
-    return len * 100 + mainVal
+    // 4张炸弹的威力基础为400，加上牌点数值
+    if (len === 4) {
+      return 400 + mainVal
+    }
+    // 5张及以上炸弹的威力进行相应顺延提升，使其强于同花顺
+    return (len + 1) * 100 + mainVal
   }
   if (combo.type === 'same_suit_straight') {
     const mainVal = combo.mainRank ? rankValue(combo.mainRank) : 0
-    return 400 + mainVal
+    // 同花顺的威力基础定为500，介于4张炸弹与5张炸弹之间
+    return 500 + mainVal
   }
   return 0
 }
@@ -33,11 +39,9 @@ function compareSameType(a: CardCombination, b: CardCombination): CompareResult 
       return compareSingleCards(a.cards[0], b.cards[0])
     }
     case 'pair':
+    case 'triple':
     case 'triple_with_pair':
-    case 'triple_with_single':
-    case 'triple_pair':
-    case 'airplane':
-    case 'airplane_with_wings': {
+    case 'airplane': {
       if (!a.mainRank || !b.mainRank) return 'incomparable'
       const aVal = rankValue(a.mainRank)
       const bVal = rankValue(b.mainRank)

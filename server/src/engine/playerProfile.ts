@@ -66,7 +66,19 @@ export function analyzeStyle(profile: PlayerProfile): PlayerStyle {
   }).length
   const controlTendency = totalPlays > 0 ? Math.min(bigCardPlays / totalPlays * 3, 1) : 0.5
 
-  const cooperationScore = 0.5
+  const cooperationScore = (() => {
+    if (totalPlays === 0) return 0.5
+    const teammatePasses = profile.passedRounds.filter(p =>
+      p.againstType === 'pair' || p.againstType === 'triple_with_pair'
+    ).length
+    const smallCardPlays = profile.playedCards.filter(p => {
+      const rank = p.playedInCombo.mainRank
+      return rank && RANK_ORDER[rank] <= 6
+    }).length
+    const supportRate = totalPlays > 0 ? smallCardPlays / totalPlays : 0
+    const passRate = totalActions > 0 ? 1 - (teammatePasses / totalActions) : 0.5
+    return Math.min((supportRate + passRate) / 2, 1)
+  })()
 
   return { aggression, bombTendency, controlTendency, cooperationScore }
 }
@@ -92,6 +104,6 @@ function findHighRanksNotPlayed(profile: PlayerProfile, comboType: CombinationTy
       .map(p => p.playedInCombo.mainRank as Rank)
   )
 
-  const highRanks: Rank[] = ['A', '2']
+  const highRanks: Rank[] = ['K', 'A', '2']
   return highRanks.filter(r => !playedRanks.has(r))
 }

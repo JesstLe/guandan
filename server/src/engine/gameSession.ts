@@ -5,9 +5,10 @@ import {
   type Rank, type GameEvent,
   RANK_ORDER, isJoker, cardId,
 } from '@guandan/shared'
-import { createCardPool, setMyHand, playCards as poolPlayCards, verifyCardCount } from './cardPool'
+import { createCardPool, setMyHand, setOtherPlayersHandCount, playCards as poolPlayCards, verifyCardCount, createFullDeck } from './cardPool'
 import { detectCombination } from './combinationDetector'
 import { canBeat } from './combinationCompare'
+import { inferFromPass, inferFromPlay, inferFromHandCount, type InferenceContext } from './inference'
 import { Timeline } from './timeline'
 
 export type GamePhase =
@@ -18,6 +19,11 @@ export type GamePhase =
   | 'playing'
   | 'round_end'
   | 'game_over'
+
+export interface GameResult {
+  type: 'double_down' | 'single_down'
+  winner: 'us' | 'them'
+}
 
 export interface GameState {
   phase: GamePhase
@@ -32,11 +38,13 @@ export interface GameState {
   finishedPlayers: number[]
   tributeState: TributeState
   firstPlayerReason: FirstPlayerReason | null
+  gameResult: GameResult | null
 }
 
 export class GameSession {
   private state: GameState
   private timeline: Timeline
+  public simulatedHands?: Record<number, AnyCard[]>
 
   constructor() {
     this.timeline = new Timeline()
@@ -57,6 +65,7 @@ export class GameSession {
       finishedPlayers: [],
       tributeState: { required: false, tributeType: 'single', tributes: [], phase: 'disabled' },
       firstPlayerReason: null,
+      gameResult: null,
     }
   }
 
@@ -71,7 +80,44 @@ export class GameSession {
   startGame(mode: GameMode, seats: SeatConfig, handCards: AnyCard[]): GameEvent {
     const trumpRank = mode.initialTrumpRank
     const pool = createCardPool(trumpRank)
-    setMyHand(pool, handCards)
+
+    const fullDeck = createFullDeck()
+    let finalHandCards = [...handCards]
+
+    // 如果未指定手牌（或为空），则自动为 4 位玩家随机发满 27 张牌
+    if (!finalHandCards || finalHandCards.length === 0) {
+      const deck = [...fullDeck]
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]]
+      }
+      const h0 = deck.slice(0, 27)
+      const h1 = deck.slice(27, 54)
+      const h2 = deck.slice(54, 81)
+      const h3 = deck.slice(81, 108)
+      finalHandCards = h0
+      this.simulatedHands = { 0: [...h0], 1: [...h1], 2: [...h2], 3: [...h3] }
+    } else {
+      // 否则将玩家手牌提取，并在剩下的 81 张牌中随机分发给另外 3 个玩家
+      const remainingCards = [...fullDeck]
+      for (const myCard of finalHandCards) {
+        const idx = remainingCards.findIndex(c => cardId(c) === cardId(myCard))
+        if (idx !== -1) {
+          remainingCards.splice(idx, 1)
+        }
+      }
+      for (let i = remainingCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [remainingCards[i], remainingCards[j]] = [remainingCards[j], remainingCards[i]]
+      }
+      const h1 = remainingCards.slice(0, 27)
+      const h2 = remainingCards.slice(27, 54)
+      const h3 = remainingCards.slice(54, 81)
+      this.simulatedHands = { 0: [...finalHandCards], 1: h1, 2: h2, 3: h3 }
+    }
+
+    setMyHand(pool, finalHandCards)
+    setOtherPlayersHandCount(pool, seats)
 
     this.state = {
       ...this.state,
@@ -94,7 +140,7 @@ export class GameSession {
       trumpRank,
       gameMode: mode,
       seats,
-      handCards,
+      handCards: [...finalHandCards],
     })
 
     return event
@@ -115,18 +161,32 @@ export class GameSession {
 
     const combination = detection.preferred
 
-    if (this.state.currentRound && this.state.currentRound.leadCombination) {
-      if (combination.type !== this.state.currentRound.leadCombination.type) {
+    // 获取当前回合中最新的、最大的出牌组合，用于大小校验比对基准
+    const highestCombo = getHighestCombination(this.state.currentRound)
+
+    if (this.state.currentRound && highestCombo) {
+      if (combination.type !== highestCombo.type) {
         if (!isBombType(combination.type)) {
           return { error: '牌型与台面不一致，且非炸弹/同花顺' }
         }
       }
-      if (combination.type === this.state.currentRound.leadCombination.type && !canBeat(combination, this.state.currentRound.leadCombination)) {
+      if (combination.type === highestCombo.type && !canBeat(combination, highestCombo)) {
         return { error: '出牌无法压过台面' }
       }
     }
 
     poolPlayCards(this.state.pool, player, cards, this.state.roundNumber)
+
+    // 在模拟手牌中扣除已出掉的牌
+    if (this.simulatedHands && this.simulatedHands[player]) {
+      const hand = this.simulatedHands[player]
+      for (const card of cards) {
+        const idx = hand.findIndex(c => cardId(c) === cardId(card))
+        if (idx !== -1) {
+          hand.splice(idx, 1)
+        }
+      }
+    }
 
     if (this.state.currentRound) {
       const play: RoundPlay = { player, action: 'play', cards, combination }
@@ -137,6 +197,16 @@ export class GameSession {
         this.state.currentRound.leadPlayer = player
       }
     }
+
+    const ctx: InferenceContext = {
+      pool: this.state.pool,
+      roundNumber: this.state.roundNumber,
+      // 使用出牌前那一手最大的牌型作为推理上下文
+      leadCombination: highestCombo ?? null,
+      currentPlayer: this.state.currentPlayer,
+    }
+    const playInferences = inferFromPlay(ctx, player, combination)
+    this.state.pool.players[player].inferences.push(...playInferences)
 
     const handCount = this.state.pool.players[player].handCount
     if (handCount === 0) {
@@ -164,13 +234,25 @@ export class GameSession {
     if (player !== this.state.currentPlayer) {
       return { error: '不是你的回合' }
     }
-    if (this.state.currentRound && !this.state.currentRound.leadCombination) {
-      return { error: '首出不能过牌' }
-    }
-
     if (this.state.currentRound) {
+      // 首出不能过牌校验（以当前台面是否有牌为准）
+      const highestCombo = getHighestCombination(this.state.currentRound)
+      if (!highestCombo) {
+        return { error: '首出不能过牌' }
+      }
+
+      const againstType = highestCombo.type
       const play: RoundPlay = { player, action: 'pass' }
       this.state.currentRound.plays.push(play)
+
+      const ctx: InferenceContext = {
+        pool: this.state.pool,
+        roundNumber: this.state.roundNumber,
+        leadCombination: highestCombo,
+        currentPlayer: this.state.currentPlayer,
+      }
+      const passInferences = inferFromPass(ctx, player, againstType)
+      this.state.pool.players[player].inferences.push(...passInferences)
     }
 
     const event = this.timeline.push('pass', { player })
@@ -195,7 +277,7 @@ export class GameSession {
 
   private determineFirstPlayer(pool: CardPool, trumpRank: TrumpRank): number {
     for (const state of pool.allCardStates) {
-      if (!isJoker(state.card) && state.card.rank === trumpRank && state.card.suit === 'heart') {
+      if (!isJoker(state.card) && state.card.rank === trumpRank && state.card.suit === 'heart' && state.status === 'in_my_hand') {
         return 0
       }
     }
@@ -219,19 +301,7 @@ export class GameSession {
       return
     }
 
-    if (this.state.currentRound?.playerFinished !== undefined) {
-      const finishedPlayer = this.state.currentRound.playerFinished
-      const teammate = this.getTeammate(finishedPlayer)
-      this.state.currentRound.winner = finishedPlayer
-      this.state.currentRound.windReceiver = teammate
-      this.state.currentRound.isWindRound = true
-      this.state.rounds.push({ ...this.state.currentRound })
-      this.state.roundNumber++
-      this.startNewRound(teammate)
-      this.state.currentPlayer = teammate
-      return
-    }
-
+    // 牌出完时不立即进行接风结算，而是让当前回合继续比拼大小，直到大家都过牌
     this.advanceToNextPlayer()
   }
 
@@ -239,22 +309,38 @@ export class GameSession {
     if (!this.state.currentRound) return
 
     const activePlayers = this.getActivePlayers()
-    const passCount = this.state.currentRound.plays.filter(
-      p => p.action === 'pass'
-    ).length
+    const plays = this.state.currentRound.plays
+    const lastPlayIdx = plays.map((p, i) => p.action === 'play' ? i : -1).filter(i => i >= 0).pop()
+    const passesSinceLastPlay = lastPlayIdx !== undefined
+      ? plays.slice(lastPlayIdx + 1).filter(p => p.action === 'pass').length
+      : plays.filter(p => p.action === 'pass').length
 
-    const playCount = this.state.currentRound.plays.filter(
-      p => p.action === 'play'
-    ).length
-
-    if (playCount > 0 && passCount >= activePlayers.length - 1) {
-      const lastPlay = [...this.state.currentRound.plays].reverse().find(p => p.action === 'play')
+    // 如果除最后出牌者外的所有活跃玩家都选择过牌，则本轮牌局结束
+    if (passesSinceLastPlay >= activePlayers.length - 1) {
+      const lastPlay = [...plays].reverse().find(p => p.action === 'play')
       if (lastPlay) {
-        this.state.currentRound.winner = lastPlay.player
-        this.state.rounds.push({ ...this.state.currentRound })
-        this.state.roundNumber++
-        this.startNewRound(lastPlay.player)
-        this.state.currentPlayer = lastPlay.player
+        const winner = lastPlay.player
+        const isWinnerFinished = this.state.finishedPlayers.includes(winner)
+
+        this.state.currentRound.winner = winner
+
+        if (isWinnerFinished) {
+          // 接风：赢家已经出完所有牌，下一轮首出权交予其队友
+          const teammate = this.getTeammate(winner)
+          this.state.currentRound.windReceiver = teammate
+          this.state.currentRound.isWindRound = true
+
+          this.state.rounds.push({ ...this.state.currentRound })
+          this.state.roundNumber++
+          this.startNewRound(teammate)
+          this.state.currentPlayer = teammate
+        } else {
+          // 正常结算：赢家获得下一轮首出权
+          this.state.rounds.push({ ...this.state.currentRound })
+          this.state.roundNumber++
+          this.startNewRound(winner)
+          this.state.currentPlayer = winner
+        }
         return
       }
     }
@@ -291,8 +377,10 @@ export class GameSession {
 
     if (firstTeam === secondTeam) {
       this.state.phase = 'game_over'
+      this.state.gameResult = { type: 'double_down', winner: firstTeam }
     } else {
       this.state.phase = 'game_over'
+      this.state.gameResult = { type: 'single_down', winner: firstTeam }
     }
   }
 
@@ -320,28 +408,45 @@ export class GameSession {
         if (!trumpRank || !gameMode || !seats || !handCards) break
         const pool = createCardPool(trumpRank)
         setMyHand(pool, handCards)
+        setOtherPlayersHandCount(pool, seats)
         this.state.phase = gameMode.tributeEnabled ? 'tribute' : 'playing'
         this.state.mode = gameMode
         this.state.trumpRank = trumpRank
         this.state.seats = seats
         this.state.pool = pool
         this.state.roundNumber = 1
-        this.state.currentPlayer = 0
+        this.state.currentPlayer = this.determineFirstPlayer(pool, trumpRank)
         this.state.finishedPlayers = []
-        this.startNewRound(0)
+        this.state.gameResult = null
+        this.startNewRound(this.state.currentPlayer)
         break
       }
       case 'play': {
         const { player, cards, combination } = event.data
         if (player === undefined || !cards || !combination) break
         poolPlayCards(this.state.pool, player, cards, this.state.roundNumber)
-        if (this.state.currentRound) {
-          this.state.currentRound.plays.push({ player, action: 'play', cards, combination })
-          if (!this.state.currentRound.leadCombination) {
-            this.state.currentRound.leadCombination = combination
-            this.state.currentRound.leadPlayer = player
+        
+        const round = this.state.currentRound
+        if (round) {
+          round.plays.push({ player, action: 'play', cards, combination })
+          if (!round.leadCombination) {
+            round.leadCombination = combination
+            round.leadPlayer = player
           }
+          // 获取该出牌前（即刚刚推入的这手牌之前）桌面上最大的牌型作为推理基准
+          const playsBefore = round.plays.slice(0, -1)
+          const lastPlay = [...playsBefore].reverse().find(p => p.action === 'play')
+          const prevHighestCombo = lastPlay?.combination ?? null
+
+          const ctx: InferenceContext = {
+            pool: this.state.pool,
+            roundNumber: this.state.roundNumber,
+            leadCombination: prevHighestCombo,
+            currentPlayer: this.state.currentPlayer,
+          }
+          this.state.pool.players[player].inferences.push(...inferFromPlay(ctx, player, combination))
         }
+
         if (this.state.pool.players[player].handCount === 0) {
           this.state.finishedPlayers.push(player)
         }
@@ -350,8 +455,24 @@ export class GameSession {
       case 'pass': {
         const { player } = event.data
         if (player === undefined) break
-        if (this.state.currentRound) {
-          this.state.currentRound.plays.push({ player, action: 'pass' })
+        
+        const round = this.state.currentRound
+        if (round) {
+          // 在推入 pass 动作前，获取当前桌面上最大的牌型组合
+          const lastPlay = [...round.plays].reverse().find(p => p.action === 'play')
+          const prevHighestCombo = lastPlay?.combination ?? null
+          
+          round.plays.push({ player, action: 'pass' })
+          
+          if (prevHighestCombo) {
+            const ctx: InferenceContext = {
+              pool: this.state.pool,
+              roundNumber: this.state.roundNumber,
+              leadCombination: prevHighestCombo,
+              currentPlayer: this.state.currentPlayer,
+            }
+            this.state.pool.players[player].inferences.push(...inferFromPass(ctx, player, prevHighestCombo.type))
+          }
         }
         break
       }
@@ -366,6 +487,71 @@ export class GameSession {
   verifyState(): { valid: boolean; detail: string } {
     return verifyCardCount(this.state.pool)
   }
+
+  // 动态以指定玩家的视角构建结构化状态（用于 AI 决策）
+  getStructuredStateForPlayer(player: number): any {
+    const pool = this.state.pool
+    if (!this.simulatedHands) return null
+
+    // 1. 保存当前所有牌的真实状态与持有权
+    const originalStatuses = pool.allCardStates.map(s => ({
+      id: s.id,
+      status: s.status,
+      currentHolder: s.currentHolder,
+    }))
+
+    // 2. 根据该玩家的视角动态映射手牌状态
+    const mySeat = player
+    const teammateSeat = this.getTeammate(player)
+    const hands = this.simulatedHands
+
+    const activeHandIds = new Set(hands[mySeat].map(c => cardId(c)))
+    const teammateHandIds = new Set(hands[teammateSeat].map(c => cardId(c)))
+
+    for (const state of pool.allCardStates) {
+      if (state.status === 'in_play' || state.status === 'archived') {
+        continue
+      }
+      if (activeHandIds.has(state.id)) {
+        state.status = 'in_my_hand'
+        state.currentHolder = mySeat
+      } else if (teammateHandIds.has(state.id)) {
+        state.status = 'in_teammate_hand'
+        state.currentHolder = teammateSeat
+      } else {
+        state.status = 'in_opponent_hand'
+        state.currentHolder = (mySeat + 1) % 4
+      }
+    }
+
+    // 3. 构建临时状态
+    const { buildStructuredState } = require('../ai/stateBuilder')
+    const structuredState = buildStructuredState(
+      pool,
+      this.state.trumpRank,
+      mySeat,
+      teammateSeat,
+      this.state.currentRound,
+      this.state.rounds,
+      this.state.finishedPlayers,
+    )
+
+    // 4. 恢复原有状态机的数据，避免污染真实推断与记牌器
+    for (let i = 0; i < pool.allCardStates.length; i++) {
+      pool.allCardStates[i].status = originalStatuses[i].status
+      pool.allCardStates[i].currentHolder = originalStatuses[i].currentHolder
+    }
+
+    return structuredState
+  }
+}
+
+// 获取当前回合中最新的且最大的出牌组合（未被过牌清空）
+export function getHighestCombination(round: Round | null): CardCombination | null {
+  if (!round) return null
+  const plays = round.plays
+  const lastPlay = [...plays].reverse().find(p => p.action === 'play')
+  return lastPlay?.combination ?? null
 }
 
 function isBombType(type: CardCombination['type']): boolean {

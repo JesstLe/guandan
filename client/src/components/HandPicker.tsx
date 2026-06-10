@@ -1,13 +1,7 @@
 import React, { useMemo, useCallback } from 'react'
-import { type AnyCard, type Card, type JokerCard, type Rank, type Suit, ALL_RANKS, ALL_SUITS } from '@guandan/shared'
-
-const SUIT_SYMBOL: Record<Suit, string> = {
-  spade: '♠', heart: '♥', diamond: '♦', club: '♣',
-}
-
-const SUIT_COLOR: Record<Suit, string> = {
-  spade: '#1a1a2e', heart: '#e63946', diamond: '#e63946', club: '#1a1a2e',
-}
+import { type AnyCard, type Card, type JokerCard, type Rank, ALL_SUITS } from '@guandan/shared'
+import { motion } from 'motion/react'
+import { PlayingCard } from './PlayingCard'
 
 interface HandPickerProps {
   trumpRank: Rank
@@ -15,6 +9,8 @@ interface HandPickerProps {
   onSelectionChange: (cards: AnyCard[]) => void
   maxCards?: number
 }
+
+const ORDERED_RANKS: Rank[] = ['2', 'A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3']
 
 export const HandPicker: React.FC<HandPickerProps> = ({
   trumpRank,
@@ -35,103 +31,171 @@ export const HandPicker: React.FC<HandPickerProps> = ({
 
   const isFull = selectedCards.length >= maxCards
 
+  // Drag selection state refs
+  const isDraggingRef = React.useRef(false)
+  const dragActionRef = React.useRef<'select' | 'deselect' | null>(null)
+  const processedCardsRef = React.useRef<Set<string>>(new Set())
+
+  const startDrag = useCallback((card: AnyCard) => {
+    isDraggingRef.current = true
+    const id = cId(card)
+    const isAlreadySelected = selectedIds.has(id)
+    dragActionRef.current = isAlreadySelected ? 'deselect' : 'select'
+    processedCardsRef.current.clear()
+    processedCardsRef.current.add(id)
+    toggle(card)
+  }, [selectedIds, toggle])
+
+  const handleMouseEnterCard = useCallback((card: AnyCard) => {
+    if (!isDraggingRef.current || !dragActionRef.current) return
+    const id = cId(card)
+    if (processedCardsRef.current.has(id)) return
+    processedCardsRef.current.add(id)
+
+    const isAlreadySelected = selectedIds.has(id)
+    if (dragActionRef.current === 'select' && !isAlreadySelected) {
+      if (selectedCards.length < maxCards) {
+        // Calculate new selected cards list correctly by appending to current local copy
+        onSelectionChange([...selectedCards, card])
+      }
+    } else if (dragActionRef.current === 'deselect' && isAlreadySelected) {
+      onSelectionChange(selectedCards.filter(c => cId(c) !== id))
+    }
+  }, [selectedCards, selectedIds, onSelectionChange, maxCards])
+
+  const stopDrag = useCallback(() => {
+    isDraggingRef.current = false
+    dragActionRef.current = null
+    processedCardsRef.current.clear()
+  }, [])
+
+  const dragHandlers = (card: AnyCard) => ({
+    onMouseDown: (e: React.MouseEvent) => {
+      e.preventDefault()
+      startDrag(card)
+    },
+    onMouseEnter: () => {
+      handleMouseEnterCard(card)
+    }
+  })
+
   return (
-    <div style={styles.container}>
+    <div
+      style={styles.container}
+      onMouseUp={stopDrag}
+      onMouseLeave={stopDrag}
+    >
       <div style={styles.header}>
         <span style={styles.title}>选择手牌</span>
         <span style={{
           ...styles.counter,
-          color: selectedCards.length === maxCards ? '#2b8a3e' : '#495057',
+          color: selectedCards.length === maxCards ? '#2b8a3e' : '#4b5563',
+          background: selectedCards.length === maxCards ? 'rgba(81,207,102,0.15)' : '#f3f4f6',
         }}>
           {selectedCards.length} / {maxCards}
         </span>
       </div>
 
       <div style={styles.grid}>
-        {ALL_SUITS.map(suit => (
-          <div key={suit} style={styles.suitRow}>
-            <span style={{ ...styles.suitLabel, color: SUIT_COLOR[suit] }}>
-              {SUIT_SYMBOL[suit]}
-            </span>
-            {ALL_RANKS.map(rank => {
-              const isTrump = rank === trumpRank
-              const isRedTrump = rank === trumpRank && suit === 'heart'
-              return (
-                <div key={`${suit}-${rank}`} style={styles.rankCell}>
-                  {[1, 2].map(copyIndex => {
-                    const card: Card = {
-                      rank, suit, copyIndex: copyIndex as 1 | 2,
-                      isTrump, isRedTrump,
-                    }
-                    const id = cId(card)
-                    const selected = selectedIds.has(id)
-                    const disabled = !selected && isFull
-                    return (
-                      <button
-                        key={id}
-                        style={{
-                          ...styles.cardBtn,
-                          ...(selected ? styles.cardBtnSelected : {}),
-                          ...(disabled ? styles.cardBtnDisabled : {}),
-                          ...(isTrump ? styles.cardBtnTrump : {}),
-                          ...(isRedTrump ? styles.cardBtnRedTrump : {}),
-                        }}
-                        onClick={() => toggle(card)}
-                        disabled={disabled}
-                      >
-                        <span style={{ color: SUIT_COLOR[suit], fontSize: 9, lineHeight: 1 }}>
-                          {SUIT_SYMBOL[suit]}
-                        </span>
-                        <span style={{ fontSize: 11, lineHeight: 1 }}>{rank}</span>
-                      </button>
-                    )
-                  })}
-                </div>
-              )
-            })}
+        {/* Jokers Column */}
+        <div style={styles.rankColumn}>
+          <span style={styles.rankColumnLabel}>王牌</span>
+          <div style={styles.rankButtonsContainer}>
+            {/* Big Joker Row */}
+            <div style={styles.jokerRow}>
+              {[1, 2].map(copyIndex => {
+                const card: JokerCard = { type: 'big', copyIndex: copyIndex as 1 | 2 }
+                const id = cId(card)
+                const selected = selectedIds.has(id)
+                const disabled = !selected && isFull
+                return (
+                  <PlayingCard
+                    key={id}
+                    card={card}
+                    selected={selected}
+                    disabled={disabled}
+                    compact
+                    dragHandlers={dragHandlers(card)}
+                    onClick={() => toggle(card)}
+                  />
+                )
+              })}
+            </div>
+            {/* Small Joker Row */}
+            <div style={styles.jokerRow}>
+              {[1, 2].map(copyIndex => {
+                const card: JokerCard = { type: 'small', copyIndex: copyIndex as 1 | 2 }
+                const id = cId(card)
+                const selected = selectedIds.has(id)
+                const disabled = !selected && isFull
+                return (
+                  <PlayingCard
+                    key={id}
+                    card={card}
+                    selected={selected}
+                    disabled={disabled}
+                    compact
+                    dragHandlers={dragHandlers(card)}
+                    onClick={() => toggle(card)}
+                  />
+                )
+              })}
+            </div>
           </div>
-        ))}
-
-        <div style={styles.suitRow}>
-          <span style={styles.suitLabel}>🃏</span>
-          {(['small', 'big'] as const).flatMap(type =>
-            ([1, 2] as const).map(copyIndex => {
-              const card: JokerCard = { type, copyIndex }
-              const id = cId(card)
-              const selected = selectedIds.has(id)
-              const disabled = !selected && isFull
-              const isBig = type === 'big'
-              return (
-                <button
-                  key={id}
-                  style={{
-                    ...styles.cardBtn,
-                    ...styles.jokerBtn,
-                    ...(selected ? styles.cardBtnSelected : {}),
-                    ...(disabled ? styles.cardBtnDisabled : {}),
-                    ...(isBig ? styles.bigJoker : styles.smallJoker),
-                  }}
-                  onClick={() => toggle(card)}
-                  disabled={disabled}
-                >
-                  <span style={{ fontSize: 10, lineHeight: 1 }}>
-                    {isBig ? '大' : '小'}
-                  </span>
-                  <span style={{ fontSize: 9, lineHeight: 1 }}>王</span>
-                </button>
-              )
-            })
-          )}
         </div>
+
+        {/* Regular Ranks Columns */}
+        {ORDERED_RANKS.map(rank => {
+          const isTrump = rank === trumpRank
+          return (
+            <div key={rank} style={styles.rankColumn}>
+              <span style={{
+                ...styles.rankColumnLabel,
+                ...(isTrump ? styles.trumpRankLabel : {})
+              }}>
+                {rank}{isTrump ? '★' : ''}
+              </span>
+              <div style={styles.rankButtonsContainer}>
+                {ALL_SUITS.map(suit => {
+                  const isRedTrump = isTrump && suit === 'heart'
+                  return (
+                    <div key={suit} style={styles.suitButtonsRow}>
+                      {[1, 2].map(copyIndex => {
+                        const card: Card = {
+                          rank, suit, copyIndex: copyIndex as 1 | 2,
+                          isTrump, isRedTrump,
+                        }
+                        const id = cId(card)
+                        const selected = selectedIds.has(id)
+                        const disabled = !selected && isFull
+                        return (
+                          <PlayingCard
+                            key={id}
+                            card={card}
+                            selected={selected}
+                            disabled={disabled}
+                            compact
+                            dragHandlers={dragHandlers(card)}
+                            onClick={() => toggle(card)}
+                          />
+                        )
+                      })}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
       </div>
 
       {isFull && (
-        <div style={styles.fullHint}>✅ 已选满 {maxCards} 张牌</div>
+        <div style={styles.fullHint}>已选满 {maxCards} 张牌</div>
       )}
 
       <div style={styles.actions}>
         <button style={styles.clearBtn} onClick={() => onSelectionChange([])}>
-          清空
+          清空选择
         </button>
       </div>
     </div>
@@ -145,116 +209,100 @@ function cId(card: AnyCard): string {
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    background: '#fff',
-    border: '1px solid #dee2e6',
-    borderRadius: 8,
+    background: '#ffffff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
+    borderRadius: 12,
     padding: 16,
+    boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 14,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: 700,
     fontSize: 15,
-    color: '#343a40',
+    color: '#1f2937',
   },
   counter: {
     fontSize: 14,
     fontWeight: 700,
-    padding: '2px 10px',
-    background: '#f1f3f5',
-    borderRadius: 12,
+    padding: '4px 14px',
+    borderRadius: 20,
+    transition: 'all 0.2s ease',
   },
   grid: {
     display: 'flex',
-    flexDirection: 'column',
-    gap: 6,
+    flexDirection: 'row',
+    gap: 8,
+    overflowX: 'auto',
+    paddingBottom: 8,
   },
-  suitRow: {
+  rankColumn: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    gap: 3,
-  },
-  suitLabel: {
-    width: 22,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 16,
+    gap: 6,
+    background: '#f9fafb',
+    padding: '8px 6px',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
     flexShrink: 0,
   },
-  rankCell: {
-    display: 'flex',
-    gap: 2,
+  rankColumnLabel: {
+    fontSize: 12,
+    fontWeight: 700,
+    color: '#4b5563',
+    marginBottom: 4,
+    textAlign: 'center',
   },
-  cardBtn: {
-    width: 34,
-    height: 38,
-    border: '1px solid #dee2e6',
-    borderRadius: 4,
-    background: '#fff',
-    cursor: 'pointer',
+  trumpRankLabel: {
+    color: '#f59f00',
+    textShadow: '0 0 8px rgba(245,159,0,0.3)',
+  },
+  rankButtonsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 1,
-    transition: 'all 0.12s',
-    userSelect: 'none',
-    padding: 2,
+    gap: 4,
   },
-  cardBtnSelected: {
-    background: '#d0ebff',
-    borderColor: '#339af0',
-    borderWidth: 2,
-    transform: 'translateY(-3px)',
-    boxShadow: '0 2px 6px rgba(51,154,240,0.3)',
+  suitButtonsRow: {
+    display: 'flex',
+    gap: 4,
   },
-  cardBtnDisabled: {
-    opacity: 0.35,
-    cursor: 'not-allowed',
-  },
-  cardBtnTrump: {
-    borderColor: '#ff6b6b',
-    borderWidth: 2,
-  },
-  cardBtnRedTrump: {
-    borderColor: '#e63946',
-    borderWidth: 2,
-    background: '#fff5f5',
-  },
-  jokerBtn: {
-    width: 38,
-  },
-  bigJoker: {
-    background: '#fff5f5',
-    borderColor: '#e63946',
-  },
-  smallJoker: {
-    background: '#f8f0fc',
-    borderColor: '#845ef7',
+  jokerRow: {
+    display: 'flex',
+    gap: 4,
   },
   fullHint: {
     textAlign: 'center',
-    color: '#2b8a3e',
+    color: '#16a34a',
     fontSize: 13,
-    fontWeight: 600,
-    marginTop: 8,
+    fontWeight: 700,
+    marginTop: 10,
   },
   actions: {
     display: 'flex',
     justifyContent: 'flex-end',
-    marginTop: 8,
+    marginTop: 10,
   },
   clearBtn: {
-    padding: '4px 14px',
-    border: '1px solid #ced4da',
-    borderRadius: 4,
-    background: '#f1f3f5',
+    padding: '6px 18px',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    background: '#ffffff',
     cursor: 'pointer',
     fontSize: 12,
-    color: '#495057',
+    color: '#4b5563',
+    fontWeight: 600,
+    transition: 'all 0.15s ease',
+    boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
   },
 }

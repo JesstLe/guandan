@@ -6,9 +6,13 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:run": "vitest run"
   },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.3"
   }
 }

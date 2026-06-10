@@ -1,6 +1,10 @@
 import React from 'react'
 import { type AISuggestion, type AISuggestionOption, type Rank, type Suit } from '@guandan/shared'
+import { motion } from 'motion/react'
+import { BrainIcon, WarningIcon } from './Icons'
 
+// 用中文写注释，增加代码可读性
+// 花色符号映射
 const SUIT_SYMBOL: Record<Suit, string> = {
   spade: '♠', heart: '♥', diamond: '♦', club: '♣',
 }
@@ -19,9 +23,13 @@ export const SuggestionPanel: React.FC<SuggestionPanelProps> = ({
   if (loading) {
     return (
       <div style={styles.container}>
-        <div style={styles.header}>AI 建议</div>
+        <div style={styles.header}>
+          <BrainIcon size={16} color="#4f46e5" />
+          <span>AI 建议</span>
+        </div>
         <div style={styles.loading}>
-          <span style={styles.spinner}>⏳</span> AI 正在思考...
+          <div style={styles.spinner} />
+          <span>AI 正在思考...</span>
         </div>
       </div>
     )
@@ -30,8 +38,11 @@ export const SuggestionPanel: React.FC<SuggestionPanelProps> = ({
   if (!suggestion) {
     return (
       <div style={styles.container}>
-        <div style={styles.header}>AI 建议</div>
-        <div style={styles.empty}>点击"请求建议"获取AI出牌推荐</div>
+        <div style={styles.header}>
+          <BrainIcon size={16} color="#4f46e5" />
+          <span>AI 建议</span>
+        </div>
+        <div style={styles.empty}>点击「AI建议」获取出牌推荐</div>
       </div>
     )
   }
@@ -39,8 +50,16 @@ export const SuggestionPanel: React.FC<SuggestionPanelProps> = ({
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        AI 建议
-        {suggestion.isDilemma && <span style={styles.dilemma}>⚠️ 两难选择</span>}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <BrainIcon size={16} color="#4f46e5" />
+          <span>AI 建议</span>
+        </div>
+        {suggestion.isDilemma && (
+          <span style={styles.dilemma}>
+            <WarningIcon size={12} color="#d97706" style={{ marginRight: 4 }} />
+            两难选择
+          </span>
+        )}
       </div>
 
       <OptionCard
@@ -61,7 +80,10 @@ export const SuggestionPanel: React.FC<SuggestionPanelProps> = ({
       {suggestion.warnings && suggestion.warnings.length > 0 && (
         <div style={styles.warnings}>
           {suggestion.warnings.map((w, i) => (
-            <div key={i} style={styles.warning}>⚠️ {w}</div>
+            <div key={i} style={styles.warning}>
+              <WarningIcon size={12} color="#d97706" style={{ marginRight: 4 }} />
+              {w}
+            </div>
           ))}
         </div>
       )}
@@ -75,9 +97,10 @@ const OptionCard: React.FC<{
   onAdopt?: (option: AISuggestionOption) => void
   primary?: boolean
 }> = ({ label, option, onAdopt, primary }) => {
-  const cardText = option.cards.map(c =>
-    `${SUIT_SYMBOL[c.suit]}${c.rank}`
-  ).join(' ')
+  const cardText = option.cards.map(c => {
+    const suit = SUIT_SYMBOL[c.suit as Suit] ?? ''
+    return `${suit}${c.rank}`
+  }).join(' ')
 
   const dims = option.dimensions
   const dimBars = [
@@ -90,10 +113,19 @@ const OptionCard: React.FC<{
   ]
 
   return (
-    <div style={{ ...styles.optionCard, ...(primary ? styles.optionCardPrimary : {}) }}>
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.01, borderColor: primary ? '#4f46e5' : '#d1d5db' }}
+      style={{ ...styles.optionCard, ...(primary ? styles.optionCardPrimary : {}) }}
+    >
       <div style={styles.optionHeader}>
         <span style={styles.optionLabel}>{label}</span>
-        <span style={styles.optionAction}>
+        <span style={{
+          ...styles.optionAction,
+          ...(option.action === 'play' ? styles.actionPlay : styles.actionPass),
+        }}>
           {option.action === 'play' ? '出牌' : '过牌'}
         </span>
         <span style={styles.optionType}>{option.combinationType}</span>
@@ -117,7 +149,11 @@ const OptionCard: React.FC<{
               <div style={{
                 ...styles.dimBarFill,
                 width: `${Math.max(0, (d.value + 1) / 2 * 100)}%`,
-                background: d.value > 0 ? '#51cf66' : d.value < 0 ? '#ff6b6b' : '#adb5bd',
+                background: d.value > 0
+                  ? 'linear-gradient(90deg, #10b981, #059669)'
+                  : d.value < 0
+                    ? 'linear-gradient(90deg, #ef4444, #dc2626)'
+                    : '#e5e7eb',
               }} />
             </div>
           </div>
@@ -129,171 +165,218 @@ const OptionCard: React.FC<{
       )}
 
       {onAdopt && (
-        <button
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           style={{ ...styles.adoptBtn, ...(primary ? styles.adoptBtnPrimary : {}) }}
           onClick={() => onAdopt(option)}
         >
           采纳此方案
-        </button>
+        </motion.button>
       )}
-    </div>
+    </motion.div>
   )
 }
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    background: '#f8f9fa',
-    border: '1px solid #dee2e6',
-    borderRadius: 8,
-    padding: 12,
+    background: '#ffffff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
+    borderRadius: 12,
+    padding: 16,
+    boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
   },
   header: {
-    fontWeight: 'bold',
+    fontWeight: 700,
     fontSize: 14,
-    marginBottom: 8,
+    marginBottom: 12,
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
+    color: '#1f2937',
   },
   dilemma: {
     fontSize: 11,
-    color: '#e67700',
-    background: '#fff3bf',
-    padding: '2px 6px',
+    color: '#d97706',
+    background: '#fef3c7',
+    padding: '2px 8px',
     borderRadius: 4,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#fde68a',
+    display: 'flex',
+    alignItems: 'center',
   },
   loading: {
     textAlign: 'center',
-    padding: 20,
-    color: '#868e96',
+    padding: 24,
+    color: '#6b7280',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 10,
+    fontSize: 13,
   },
   spinner: {
-    fontSize: 20,
+    width: 28,
+    height: 28,
+    border: '3px solid #f3f4f6',
+    borderTopColor: '#4f46e5',
+    borderRadius: '50%',
+    animation: 'spin 0.8s linear infinite',
   },
   empty: {
     textAlign: 'center',
-    padding: 20,
-    color: '#adb5bd',
+    padding: 24,
+    color: '#9ca3af',
     fontSize: 13,
   },
   optionCard: {
-    background: '#fff',
-    border: '1px solid #dee2e6',
-    borderRadius: 6,
-    padding: 10,
-    marginBottom: 8,
+    background: '#ffffff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 10,
   },
   optionCardPrimary: {
-    borderColor: '#339af0',
+    borderColor: '#c7d2fe',
     borderWidth: 2,
+    background: '#f5f3ff',
   },
   optionHeader: {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
-    marginBottom: 6,
+    marginBottom: 8,
   },
   optionLabel: {
-    fontWeight: 600,
+    fontWeight: 700,
     fontSize: 13,
+    color: '#111827',
   },
   optionAction: {
     fontSize: 11,
-    padding: '2px 6px',
+    padding: '2px 8px',
     borderRadius: 4,
-    background: '#d0ebff',
-    color: '#1971c2',
+    fontWeight: 600,
+  },
+  actionPlay: {
+    background: '#ecfdf5',
+    color: '#059669',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#a7f3d0',
+  },
+  actionPass: {
+    background: '#f3f4f6',
+    color: '#4b5563',
   },
   optionType: {
     fontSize: 11,
-    padding: '2px 6px',
+    padding: '2px 8px',
     borderRadius: 4,
-    background: '#e9ecef',
-    color: '#495057',
+    background: '#f3f4f6',
+    color: '#4b5563',
   },
   optionCards: {
     fontSize: 16,
-    fontWeight: 600,
-    marginBottom: 6,
+    fontWeight: 700,
+    marginBottom: 8,
     letterSpacing: 1,
+    color: '#111827',
   },
   scoreRow: {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
-    marginBottom: 6,
+    marginBottom: 8,
   },
   scoreLabel: {
     fontSize: 11,
-    color: '#868e96',
+    color: '#6b7280',
   },
   scoreValue: {
-    fontSize: 14,
-    fontWeight: 700,
-    color: '#2b8a3e',
+    fontSize: 16,
+    fontWeight: 800,
+    color: '#059669',
   },
   confidence: {
     fontSize: 11,
-    color: '#868e96',
+    color: '#6b7280',
   },
   dimGrid: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: 3,
-    marginBottom: 6,
+    gap: 4,
+    marginBottom: 8,
   },
   dimRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: 4,
+    gap: 6,
   },
   dimName: {
     fontSize: 10,
-    color: '#868e96',
-    width: 24,
+    color: '#6b7280',
+    width: 28,
+    flexShrink: 0,
   },
   dimBarBg: {
     flex: 1,
-    height: 4,
-    background: '#e9ecef',
-    borderRadius: 2,
+    height: 5,
+    background: '#f3f4f6',
+    borderRadius: 3,
     overflow: 'hidden',
   },
   dimBarFill: {
     height: '100%',
-    borderRadius: 2,
-    transition: 'width 0.3s',
+    borderRadius: 3,
+    transition: 'width 0.3s ease',
   },
   reasoning: {
     fontSize: 12,
-    color: '#495057',
-    lineHeight: 1.4,
-    marginBottom: 6,
-    padding: '4px 8px',
-    background: '#f8f9fa',
-    borderRadius: 4,
+    color: '#4b5563',
+    lineHeight: 1.5,
+    marginBottom: 8,
+    padding: '8px 10px',
+    background: '#f9fafb',
+    borderRadius: 6,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
   },
   warnings: {
-    marginTop: 8,
+    marginTop: 10,
   },
   warning: {
     fontSize: 11,
-    color: '#e67700',
-    padding: '2px 0',
+    color: '#d97706',
+    padding: '3px 0',
+    display: 'flex',
+    alignItems: 'center',
   },
   adoptBtn: {
     width: '100%',
-    padding: '6px 0',
-    border: '1px solid #ced4da',
-    borderRadius: 4,
-    background: '#f1f3f5',
+    padding: '8px 0',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#e5e7eb',
+    borderRadius: 8,
+    background: '#ffffff',
+    color: '#4b5563',
     cursor: 'pointer',
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: 600,
+    transition: 'all 0.15s ease',
   },
   adoptBtnPrimary: {
-    background: '#339af0',
+    background: 'linear-gradient(135deg, #4f46e5, #4338ca)',
     color: '#fff',
-    borderColor: '#228be6',
+    borderColor: '#4f46e5',
+    boxShadow: '0 4px 12px rgba(79,70,229,0.15)',
   },
 }

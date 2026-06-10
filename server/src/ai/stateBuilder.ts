@@ -26,8 +26,8 @@ export interface HandSummary {
 }
 
 export interface CardSummary {
-  rank: Rank
-  suit: Suit
+  rank: Rank | 'BJ' | 'SJ'
+  suit: Suit | 'joker'
   isTrump: boolean
   isRedTrump: boolean
 }
@@ -115,15 +115,22 @@ function buildHandSummary(pool: CardPool, mySeat: number): HandSummary {
   const cards: CardSummary[] = myCards.map(s => {
     const c = s.card
     if (isJoker(c)) {
-      return { rank: c.type === 'big' ? '2' : '2', suit: 'spade', isTrump: true, isRedTrump: false }
+      return { rank: c.type === 'big' ? 'BJ' : 'SJ', suit: 'joker', isTrump: false, isRedTrump: false }
     }
     return { rank: c.rank, suit: c.suit, isTrump: c.isTrump, isRedTrump: c.isRedTrump }
   })
 
-  const hasBomb = myCards.some(s => {
-    if (isJoker(s.card)) return false
-    return (s.card as Card).rank !== undefined
-  })
+  const hasBomb = (() => {
+    const rankCounts: Record<string, number> = {}
+    let jokerCount = 0
+    for (const s of myCards) {
+      if (isJoker(s.card)) { jokerCount++; continue }
+      const r = (s.card as Card).rank
+      rankCounts[r] = (rankCounts[r] || 0) + 1
+    }
+    if (jokerCount >= 2) return true
+    return Object.values(rankCounts).some(count => count >= 4)
+  })()
 
   const hasWildcard = myCards.some(s => !isJoker(s.card) && (s.card as Card).isRedTrump)
 
@@ -184,11 +191,17 @@ function buildPlayedCardSummary(pool: CardPool, trumpRank: TrumpRank): PlayedCar
   const played = pool.allCardStates.filter(s => s.status === 'in_play' || s.status === 'archived')
   const trumpPlayed = played.filter(s => s.isTrump).length
   const totalTrump = pool.allCardStates.filter(s => s.isTrump).length
-  const bombsPlayed = played.filter(s => {
-    return s.playHistory.some(h =>
-      h.playedInCombo.type === 'bomb' || h.playedInCombo.type === 'joker_bomb'
-    )
-  }).length
+  const bombsPlayed = (() => {
+    const bombCombos = new Set<string>()
+    for (const s of played) {
+      for (const h of s.playHistory) {
+        if (h.playedInCombo.type === 'bomb' || h.playedInCombo.type === 'joker_bomb') {
+          bombCombos.add(`${h.playedBy}:${h.playedInCombo.type}:${h.playedInCombo.mainRank || 'joker'}`)
+        }
+      }
+    }
+    return bombCombos.size
+  })()
   const bigCardsPlayed = played.filter(s => {
     if (isJoker(s.card)) return true
     return RANK_ORDER[(s.card as Card).rank] >= 14
