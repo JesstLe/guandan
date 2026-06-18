@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guandan.local/research/reasoning-trace.schema.json",
+  "title": "LLMReasoningTrace",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "decisionId",
+    "agentId",
+    "selectedActionId",
+    "teamObjective",
+    "partnerBelief",
+    "opponentBelief",
+    "actionRationale",
+    "riskAssessment",
+    "confidence"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "decisionId": {
+      "type": "string"
+    },
+    "agentId": {
+      "type": "string"
+    },
+    "selectedActionId": {
+      "type": "string"
+    },
+    "teamObjective": {
+      "type": "object",
+      "required": ["type", "explanation"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "gain_lead",
+            "keep_lead",
+            "transfer_lead_to_partner",
+            "protect_partner",
+            "suppress_opponent",
+            "save_resources",
+            "finish_hand",
+            "minimize_loss"
+          ]
+        },
+        "explanation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "partnerBelief": {
+      "type": "object",
+      "required": ["summary", "confidence", "evidence"],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "opponentBelief": {
+      "type": "object",
+      "required": ["summary", "confidence", "evidence"],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "actionRationale": {
+      "type": "object",
+      "required": ["primaryReason", "whyNotAlternatives"],
+      "properties": {
+        "primaryReason": {
+          "type": "string"
+        },
+        "whyNotAlternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["actionId", "reason"],
+            "properties": {
+              "actionId": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "riskAssessment": {
+      "type": "object",
+      "required": ["risks", "mitigation"],
+      "properties": {
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mitigation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

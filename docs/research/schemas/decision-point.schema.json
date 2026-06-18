@@ -1,0 +1,361 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guandan.local/research/decision-point.schema.json",
+  "title": "GuandanDecisionPoint",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "gameId",
+    "decisionId",
+    "turnIndex",
+    "currentPlayer",
+    "teamId",
+    "phase",
+    "trumpRank",
+    "publicHistory",
+    "handCounts",
+    "playedCardSummary",
+    "legalActions",
+    "scenarioTags"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "gameId": {
+      "type": "string"
+    },
+    "decisionId": {
+      "type": "string"
+    },
+    "turnIndex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "roundNumber": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "currentPlayer": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "teamId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["lead", "follow", "tribute", "return_tribute", "endgame"]
+    },
+    "trumpRank": {
+      "type": "string",
+      "enum": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+    },
+    "privateHand": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cardRef"
+      }
+    },
+    "tableLead": {
+      "type": ["object", "null"],
+      "required": ["player", "combination"],
+      "properties": {
+        "player": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "combination": {
+          "$ref": "#/$defs/combinationRef"
+        },
+        "passCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "publicHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/publicEvent"
+      }
+    },
+    "handCounts": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 27
+      }
+    },
+    "playedCardSummary": {
+      "type": "object",
+      "required": ["playedCount", "trumpPlayed", "bombsPlayed", "bigCardsPlayed"],
+      "properties": {
+        "playedCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 108
+        },
+        "trumpPlayed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bombsPlayed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bigCardsPlayed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "inferences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/inference"
+      }
+    },
+    "legalActions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/legalAction"
+      }
+    },
+    "actualActionId": {
+      "type": ["string", "null"]
+    },
+    "outcome": {
+      "type": ["object", "null"],
+      "properties": {
+        "winnerTeam": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "finishOrder": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          }
+        },
+        "teamScoreDelta": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "scenarioTags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "lead_opening",
+          "follow_beat_or_pass",
+          "partner_near_finish",
+          "opponent_near_finish",
+          "bomb_decision",
+          "wildcard_decision",
+          "lead_transfer",
+          "sacrifice_for_partner",
+          "endgame_race",
+          "ambiguous_pass_dilemma"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "cardRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["rank", "suit", "copyIndex", "isTrump", "isRedTrump"],
+          "properties": {
+            "rank": {
+              "type": "string",
+              "enum": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+            },
+            "suit": {
+              "type": "string",
+              "enum": ["spade", "heart", "diamond", "club"]
+            },
+            "copyIndex": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2
+            },
+            "isTrump": {
+              "type": "boolean"
+            },
+            "isRedTrump": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["type", "copyIndex"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["small", "big"]
+            },
+            "copyIndex": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "combinationRef": {
+      "type": "object",
+      "required": ["type", "cards", "isTrump", "wildcards"],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "mainRank": {
+          "type": ["string", "null"]
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cardRef"
+          }
+        },
+        "isTrump": {
+          "type": "boolean"
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "wildcards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["card", "substitute"],
+            "properties": {
+              "card": {
+                "$ref": "#/$defs/cardRef"
+              },
+              "substitute": {
+                "type": "string"
+              },
+              "substituteSuit": {
+                "type": "string",
+                "enum": ["spade", "heart", "diamond", "club"]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "publicEvent": {
+      "type": "object",
+      "required": ["eventId", "type"],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["play", "pass", "tribute", "tribute_return", "new_game"]
+        },
+        "player": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "combination": {
+          "$ref": "#/$defs/combinationRef"
+        }
+      },
+      "additionalProperties": false
+    },
+    "inference": {
+      "type": "object",
+      "required": ["player", "description", "confidence", "type"],
+      "properties": {
+        "player": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "description": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "legalAction": {
+      "type": "object",
+      "required": ["actionId", "action", "cards", "combinationType"],
+      "properties": {
+        "actionId": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string",
+          "enum": ["play", "pass"]
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cardRef"
+          }
+        },
+        "combinationType": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "usesBomb": {
+              "type": "boolean"
+            },
+            "usesWildcard": {
+              "type": "boolean"
+            },
+            "breaksStructure": {
+              "type": "boolean"
+            },
+            "beatsTable": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

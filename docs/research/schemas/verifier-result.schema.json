@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://guandan.local/research/verifier-result.schema.json",
+  "title": "VerifierResult",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "decisionId",
+    "agentId",
+    "selectedActionId",
+    "labels",
+    "hardFailures",
+    "softWarnings",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "0.1.0"
+    },
+    "decisionId": {
+      "type": "string"
+    },
+    "agentId": {
+      "type": "string"
+    },
+    "selectedActionId": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "object",
+      "required": [
+        "legalAction",
+        "beatsTable",
+        "publicHistoryConsistent",
+        "hiddenInfoDisciplined",
+        "partnerConsistent",
+        "opponentConsistent",
+        "reasonActionConsistent",
+        "teamObjectiveValid"
+      ],
+      "properties": {
+        "legalAction": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "beatsTable": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "publicHistoryConsistent": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "hiddenInfoDisciplined": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "partnerConsistent": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "opponentConsistent": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "reasonActionConsistent": {
+          "$ref": "#/$defs/checkLabel"
+        },
+        "teamObjectiveValid": {
+          "$ref": "#/$defs/checkLabel"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hardFailures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/verifierIssue"
+      }
+    },
+    "softWarnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/verifierIssue"
+      }
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "checkLabel": {
+      "type": "object",
+      "required": ["status", "score", "evidence"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pass", "fail", "unknown", "not_applicable"]
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "verifierIssue": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

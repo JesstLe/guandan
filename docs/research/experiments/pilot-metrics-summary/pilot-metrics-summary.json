@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "0.1.0",
+  "rows": [
+    {
+      "agentId": "heuristic-legal-first",
+      "status": "metrics_available",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 50,
+      "parseFailures": 0,
+      "hardFailures": 0,
+      "legalAction": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 10 pass / 0 fail / 40 unknown; opponent 20 pass / 0 fail / 30 unknown",
+      "reasonActionConsistent": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "notes": "deterministic baseline; pipeline validation only"
+    },
+    {
+      "agentId": "strategic-heuristic",
+      "status": "metrics_available",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 50,
+      "parseFailures": 0,
+      "hardFailures": 0,
+      "legalAction": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 10 pass / 0 fail / 40 unknown; opponent 20 pass / 0 fail / 30 unknown",
+      "reasonActionConsistent": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "50 pass / 0 fail / 0 unknown / 0 n/a",
+      "notes": "deterministic strategic baseline"
+    },
+    {
+      "agentId": "plain-llm",
+      "status": "missing_raw_outputs",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 0,
+      "parseFailures": null,
+      "hardFailures": null,
+      "legalAction": "[NEED_EXPERIMENT]",
+      "publicHistoryConsistent": "[NEED_EXPERIMENT]",
+      "hiddenInfoDisciplined": "[NEED_EXPERIMENT]",
+      "partnerOpponentTagConsistency": "[NEED_EXPERIMENT]",
+      "reasonActionConsistent": "[NEED_EXPERIMENT]",
+      "teamObjectiveValid": "[NEED_EXPERIMENT]",
+      "notes": "waiting for real model raw outputs"
+    },
+    {
+      "agentId": "candidate-constrained-llm",
+      "status": "missing_raw_outputs",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 0,
+      "parseFailures": null,
+      "hardFailures": null,
+      "legalAction": "[NEED_EXPERIMENT]",
+      "publicHistoryConsistent": "[NEED_EXPERIMENT]",
+      "hiddenInfoDisciplined": "[NEED_EXPERIMENT]",
+      "partnerOpponentTagConsistency": "[NEED_EXPERIMENT]",
+      "reasonActionConsistent": "[NEED_EXPERIMENT]",
+      "teamObjectiveValid": "[NEED_EXPERIMENT]",
+      "notes": "waiting for real model raw outputs"
+    },
+    {
+      "agentId": "verifier-revision-llm",
+      "status": "missing_raw_outputs",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 0,
+      "parseFailures": null,
+      "hardFailures": null,
+      "legalAction": "[NEED_EXPERIMENT]",
+      "publicHistoryConsistent": "[NEED_EXPERIMENT]",
+      "hiddenInfoDisciplined": "[NEED_EXPERIMENT]",
+      "partnerOpponentTagConsistency": "[NEED_EXPERIMENT]",
+      "reasonActionConsistent": "[NEED_EXPERIMENT]",
+      "teamObjectiveValid": "[NEED_EXPERIMENT]",
+      "notes": "fixture revision prompts exported; waiting for real revision raw outputs"
+    }
+  ]
+}

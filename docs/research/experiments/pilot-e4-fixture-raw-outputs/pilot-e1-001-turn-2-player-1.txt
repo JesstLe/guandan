@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-001-turn-2-player-1",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Fixture trace for ingest pipeline validation only."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; use public hand counts only.",
+    "confidence": 0.4,
+    "evidence": [
+      "8c80d920-eab1-4e01-91e2-89bf361b9849"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent state is uncertain; no hidden cards are asserted as facts.",
+    "confidence": 0.4,
+    "evidence": [
+      "8c80d920-eab1-4e01-91e2-89bf361b9849"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Choose a legal candidate for fixture pipeline validation.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Alternative reserved for real model comparison."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Alternative reserved for real model comparison."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "This is not a model output."
+    ],
+    "mitigation": "Use only for ingest tests and delete from result claims."
+  },
+  "confidence": 0.5,
+  "notes": "fixture_only_not_llm_result"
+}

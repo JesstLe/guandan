@@ -291,3 +291,156 @@ export interface GameRecord {
     opponentPatterns: Record<number, string[]>
   }
 }
+
+export type ResearchDecisionPhase = 'lead' | 'follow' | 'tribute' | 'return_tribute' | 'endgame'
+
+export type ResearchScenarioTag =
+  | 'lead_opening'
+  | 'follow_beat_or_pass'
+  | 'partner_near_finish'
+  | 'opponent_near_finish'
+  | 'bomb_decision'
+  | 'wildcard_decision'
+  | 'lead_transfer'
+  | 'sacrifice_for_partner'
+  | 'endgame_race'
+  | 'ambiguous_pass_dilemma'
+
+export interface ResearchTableLead {
+  player: number
+  combination: CardCombination
+  passCount: number
+}
+
+export interface ResearchPublicEvent {
+  eventId: string
+  type: GameEvent['type']
+  player?: number
+  combination?: CardCombination
+}
+
+export interface ResearchPlayedCardSummary {
+  playedCount: number
+  trumpPlayed: number
+  bombsPlayed: number
+  bigCardsPlayed: number
+}
+
+export interface ResearchInference {
+  player: number
+  description: string
+  confidence: number
+  type: PlayerInference['type']
+}
+
+export interface ResearchLegalAction {
+  actionId: string
+  action: 'play' | 'pass'
+  cards: AnyCard[]
+  combinationType: CombinationType
+  metadata?: {
+    usesBomb?: boolean
+    usesWildcard?: boolean
+    breaksStructure?: boolean
+    beatsTable?: boolean
+  }
+}
+
+export interface GuandanDecisionPoint {
+  schemaVersion: '0.1.0'
+  gameId: string
+  decisionId: string
+  turnIndex: number
+  roundNumber?: number
+  currentPlayer: number
+  teamId: 0 | 1
+  phase: ResearchDecisionPhase
+  trumpRank: TrumpRank
+  privateHand?: AnyCard[]
+  tableLead: ResearchTableLead | null
+  publicHistory: ResearchPublicEvent[]
+  handCounts: [number, number, number, number]
+  playedCardSummary: ResearchPlayedCardSummary
+  inferences?: ResearchInference[]
+  legalActions: ResearchLegalAction[]
+  actualActionId?: string | null
+  outcome?: {
+    winnerTeam?: 0 | 1
+    finishOrder?: number[]
+    teamScoreDelta?: number
+  } | null
+  scenarioTags: ResearchScenarioTag[]
+}
+
+export interface LLMReasoningTrace {
+  schemaVersion: '0.1.0'
+  decisionId: string
+  agentId: string
+  selectedActionId: string
+  teamObjective: {
+    type:
+      | 'gain_lead'
+      | 'keep_lead'
+      | 'transfer_lead_to_partner'
+      | 'protect_partner'
+      | 'suppress_opponent'
+      | 'save_resources'
+      | 'finish_hand'
+      | 'minimize_loss'
+    explanation: string
+  }
+  partnerBelief: {
+    summary: string
+    confidence: number
+    evidence: string[]
+  }
+  opponentBelief: {
+    summary: string
+    confidence: number
+    evidence: string[]
+  }
+  actionRationale: {
+    primaryReason: string
+    whyNotAlternatives: { actionId: string; reason: string }[]
+  }
+  riskAssessment: {
+    risks: string[]
+    mitigation: string
+  }
+  confidence: number
+  notes?: string
+}
+
+export type VerifierLabelStatus = 'pass' | 'fail' | 'unknown' | 'not_applicable'
+
+export interface VerifierCheckLabel {
+  status: VerifierLabelStatus
+  score: number
+  evidence: string[]
+}
+
+export interface VerifierIssue {
+  code: string
+  message: string
+  path?: string
+}
+
+export interface VerifierResult {
+  schemaVersion: '0.1.0'
+  decisionId: string
+  agentId: string
+  selectedActionId: string
+  labels: {
+    legalAction: VerifierCheckLabel
+    beatsTable: VerifierCheckLabel
+    publicHistoryConsistent: VerifierCheckLabel
+    hiddenInfoDisciplined: VerifierCheckLabel
+    partnerConsistent: VerifierCheckLabel
+    opponentConsistent: VerifierCheckLabel
+    reasonActionConsistent: VerifierCheckLabel
+    teamObjectiveValid: VerifierCheckLabel
+  }
+  hardFailures: VerifierIssue[]
+  softWarnings: VerifierIssue[]
+  summary: string
+}

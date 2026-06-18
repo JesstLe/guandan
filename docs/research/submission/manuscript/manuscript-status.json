@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1.0",
+  "title": "Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games",
+  "sectionCount": 6,
+  "wordCount": 2825,
+  "markerCounts": {
+    "NEED_SOURCE": 0,
+    "UNCERTAIN": 0,
+    "NEED_EXPERIMENT": 8,
+    "DO_NOT_SUBMIT": 0,
+    "AUTHOR_DECISION": 0
+  },
+  "readyForSubmission": false,
+  "sectionSources": [
+    "docs/research/drafts/paper-as-code/06_abstract.md",
+    "docs/research/drafts/paper-as-code/01_introduction.md",
+    "docs/research/drafts/paper-as-code/02_related_work.md",
+    "docs/research/drafts/paper-as-code/03_method.md",
+    "docs/research/drafts/paper-as-code/04_experiments.md",
+    "docs/research/drafts/paper-as-code/05_discussion_limitations.md"
+  ],
+  "artifactSources": [
+    "docs/research/tables/table-0-related-work-positioning.md"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "missing_raw_outputs",
+  "firstPassAgentId": "candidate-constrained-llm",
+  "revisionAgentId": "verifier-revision-llm",
+  "totalDecisionPoints": 50,
+  "parsedBefore": 0,
+  "parsedAfter": 0,
+  "hardFailuresBefore": null,
+  "hardFailuresAfter": null,
+  "hardFailureDelta": null,
+  "rows": [
+    {
+      "label": "legalAction",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "beatsTable",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "publicHistoryConsistent",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "hiddenInfoDisciplined",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "partnerConsistent",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "opponentConsistent",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "reasonActionConsistent",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    },
+    {
+      "label": "teamObjectiveValid",
+      "beforePass": "[NEED_EXPERIMENT]",
+      "afterPass": "[NEED_EXPERIMENT]",
+      "beforeFailureBurden": "[NEED_EXPERIMENT]",
+      "afterFailureBurden": "[NEED_EXPERIMENT]",
+      "burdenDelta": "[NEED_EXPERIMENT]"
+    }
+  ],
+  "notes": "Raw outputs are missing; this file is a readiness artifact, not an experimental result."
+}

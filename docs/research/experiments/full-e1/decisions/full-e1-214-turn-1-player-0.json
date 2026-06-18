@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "full-e1-214",
+  "decisionId": "full-e1-214-turn-1-player-0",
+  "turnIndex": 1,
+  "roundNumber": 1,
+  "currentPlayer": 0,
+  "teamId": 0,
+  "phase": "lead",
+  "trumpRank": "7",
+  "privateHand": [
+    {
+      "rank": "A",
+      "suit": "spade",
+      "copyIndex": 2,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "2",
+      "suit": "spade",
+      "copyIndex": 2,
+      "isTrump": false,
+      "isRedTrump": false
+    }
+  ],
+  "tableLead": null,
+  "publicHistory": [
+    {
+      "eventId": "82c7f402-0946-44a1-bf41-e1982481de21",
+      "type": "new_game"
+    }
+  ],
+  "handCounts": [
+    2,
+    3,
+    3,
+    3
+  ],
+  "playedCardSummary": {
+    "playedCount": 0,
+    "trumpPlayed": 0,
+    "bombsPlayed": 0,
+    "bigCardsPlayed": 0
+  },
+  "inferences": [],
+  "legalActions": [
+    {
+      "actionId": "play-single-spade-A-copy2",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "A",
+          "suit": "spade",
+          "copyIndex": 2,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-spade-2-copy2",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "2",
+          "suit": "spade",
+          "copyIndex": 2,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    }
+  ],
+  "actualActionId": null,
+  "outcome": null,
+  "scenarioTags": [
+    "lead_opening",
+    "endgame_race"
+  ]
+}

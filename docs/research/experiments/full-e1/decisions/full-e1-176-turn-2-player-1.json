@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "full-e1-176",
+  "decisionId": "full-e1-176-turn-2-player-1",
+  "turnIndex": 2,
+  "roundNumber": 1,
+  "currentPlayer": 1,
+  "teamId": 1,
+  "phase": "follow",
+  "trumpRank": "7",
+  "privateHand": [
+    {
+      "rank": "4",
+      "suit": "heart",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "9",
+      "suit": "heart",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "10",
+      "suit": "heart",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    }
+  ],
+  "tableLead": {
+    "player": 0,
+    "combination": {
+      "type": "single",
+      "cards": [
+        {
+          "rank": "3",
+          "suit": "heart",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "mainRank": "3",
+      "isTrump": false,
+      "wildcards": []
+    },
+    "passCount": 0
+  },
+  "publicHistory": [
+    {
+      "eventId": "8b9940db-f47e-4d82-9328-29e3dc6e65c4",
+      "type": "play",
+      "player": 0,
+      "combination": {
+        "type": "single",
+        "cards": [
+          {
+            "rank": "3",
+            "suit": "heart",
+            "copyIndex": 1,
+            "isTrump": false,
+            "isRedTrump": false
+          }
+        ],
+        "mainRank": "3",
+        "isTrump": false,
+        "wildcards": []
+      }
+    }
+  ],
+  "handCounts": [
+    2,
+    3,
+    3,
+    3
+  ],
+  "playedCardSummary": {
+    "playedCount": 1,
+    "trumpPlayed": 0,
+    "bombsPlayed": 0,
+    "bigCardsPlayed": 0
+  },
+  "inferences": [],
+  "legalActions": [
+    {
+      "actionId": "pass",
+      "action": "pass",
+      "cards": [],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": false
+      }
+    },
+    {
+      "actionId": "play-single-heart-4-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "4",
+          "suit": "heart",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-heart-9-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "9",
+          "suit": "heart",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-heart-10-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "10",
+          "suit": "heart",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    }
+  ],
+  "actualActionId": null,
+  "outcome": null,
+  "scenarioTags": [
+    "follow_beat_or_pass",
+    "opponent_near_finish"
+  ]
+}

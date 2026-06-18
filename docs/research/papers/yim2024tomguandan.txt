@@ -1,0 +1,1480 @@
+
+
+===== PAGE 1 =====
+Preprint
+EVALUATING AND ENHANCING LLMS AGENT BASED
+ON THEORY OF MIND IN GUANDAN (掼蛋): A MULTI-
+PLAYER COOPERATIVE GAME UNDER IMPERFECT IN-
+FORMATION
+Yauwai Yim1∗
+Chunkit Chan1∗
+Tianyu Shi2
+Zheye Deng1
+Wei Fan1
+Tianshi Zheng1
+Yangqiu Song1
+1The Hong Kong University of Science and Technology
+2University of Toronto
+ywyimaa@connect.ust.hk,
+yqsong@cse.ust.hk
+ABSTRACT
+Large language models (LLMs) have shown success in handling simple games
+with imperfect information and enabling multi-agent coordination, but their ability
+to facilitate practical collaboration against other agents in complex, imperfect
+information environments, especially in a non-English environment, still needs
+to be explored. This study investigates the applicability of knowledge acquired
+by open-source and API-based LLMs to sophisticated text-based games requiring
+agent collaboration under imperfect information, comparing their performance to
+established baselines using other types of agents. We propose a Theory of Mind
+(ToM) planning technique that allows LLM agents to adapt their strategy against
+various adversaries using only game rules, current state, and historical context as
+input. An external tool was incorporated to mitigate the challenge of dynamic
+and extensive action spaces in this card game. Our results show that although a
+performance gap exists between current LLMs and state-of-the-art reinforcement
+learning (RL) models, LLMs demonstrate ToM capabilities in this game setting. It
+consistently improves their performance against opposing agents, suggesting their
+ability to understand the actions of allies and adversaries and establish collaboration
+with allies. To encourage further research and understanding, we have made our
+codebase openly accessible.
+1
+INTRODUCTION
+Recent progress in Large Language Models (LLMs) (Touvron et al., 2023; Chowdhery et al., 2023;
+Chan et al., 2024a), has demonstrated their potential in solving complex problems and the LLM-
+based agent harnesses the capability to complete tasks in some complicated environments (Wang
+et al., 2022; Raman et al., 2022; Wu et al., 2023). However, these methods have several significant
+limitations: (1) The assumption that the agent has access to all necessary information, which is
+often different in real-world situations. Games such as diplomacy (Bakhtin et al., 2022; Gray et al.,
+2021) and poker (Moravc´ık et al., 2017; Brown & Sandholm, 2018) underscore the difficulties posed
+by imperfect information. (2) Do not require cooperation among agents, which is uncommon in
+most scenarios, such as Overcooked (Carroll et al., 2019), agents must collaborate to complete their
+objectives. (3) All tests in an English language environment.
+Despite these limitations, some researchers have made progress in addressing them. For instance, (Li
+et al., 2023c; Agashe et al., 2023) have demonstrated the ability of LLM-based agents to cooperate
+and complete tasks in perfect information settings, while Guo et al. (2023) has shown that LLM agents
+can perform well in imperfect information games but without requiring cooperation. However, the
+capabilities of LLM agents in imperfect information games and scenarios necessitating cooperation
+∗The first two authors contributed equally.
+1
+arXiv:2408.02559v1  [cs.CL]  5 Aug 2024
+
+
+
+===== PAGE 2 =====
+Preprint
+Vanilla Planning
+First-Order ToM 
+Planning
+Second-Order ToM
+Planning
+I know my
+teammates' and
+opponents'
+behavior patterns...
+I know  they know
+ours plan, and I can
+adjust my action to
+win.
+Based on my
+knowledge of the
+rules and my hand, I
+want to perform
+{action1} to win the
+game.
+I know my teammates' and
+opponents' behavior patterns,
+allowing me to construct
+coordination strategies with
+my team. Based on my
+knowledge ...
+I know my
+teammates' and
+opponents'
+behavior patterns...
+LLM-
+Agent 1
+LLM-
+Agent 2
+Unknown
+Agent 1
+Unknown
+Agent 2
+LLM-
+Agent 1
+LLM-
+Agent 2
+Unknown
+Agent 1
+Unknown
+Agent 2
+LLM-
+Agent 1
+LLM-
+Agent 2
+Unknown
+Agent 1
+Unknown
+Agent 2
+Figure 1: Left Figure: LLM-Agents’ reasoning, using vanilla planning. Middle Figure: LLM-
+Agents’ reasoning, using first-order Theory of Mind(ToM) planning. Right Figure: LLM-Agents’
+reasoning, using second-order Theory of Mind(ToM) planning.
+are still under-explored. Furthermore, the research on LLM-based agents in non-English environments
+presents a pressing demand to catch up to that in English-language settings.
+To evaluate the performance of LLMs in imperfect information environments that require collabora-
+tion, we selected Guandan1, a popular Chinese card game. The game’s objective is for two players
+on the same team to cooperate and play out all the cards in their hands as quickly as possible to
+achieve a higher team score (see Appendix A for detailed rules). In alignment with recent work, we
+evaluated commercial and Chinese open-source models without fine-tuning in a zero-shot setting
+against various agents, including the state-of-the-art RL agent Danzero+ (Zhao et al., 2023), to assess
+their adaptability and performance in an imperfect information environment requiring collaboration.
+Our evaluation found that LLMs performed poorly in this environment compared to Danzero+. To
+address this gap, we first analyzed the models’ performance and discovered a significant need for
+LLM in handling variable and lengthy valid action lists. In Guandan, the valid actions for each
+agent’s turn are not fixed, sometimes exceeding 80 actions when a player has the right to play. LLMs
+struggle to thoroughly analyze all action elements, especially the elements near the end of lists. To
+mitigate this issue, we introduced an externally trained RL-based tool that LLM agents can invoke to
+reduce the number of valid actions that need to be analyzed.
+Inspired by LLMs having exhibited advanced reasoning capabilities and indications of Theory of
+Mind (Kosinski, 2023), being particularly adept at understanding others’ intent and making informed
+decisions in open-ended scenarios when given specific prompts. We then design a planning method
+that enables LLMs to develop a Theory of Mind (ToM) for playing Guandan. This approach empow-
+ers LLMs by understanding others’ beliefs and behavioral patterns without specialized training or
+examples, as illustrated in Figure 1. By employing a first-order ToM planning method, LLMs can
+adjust their strategies based on their understanding of teammates’ and opponents’ beliefs and behav-
+ioral patterns. The results demonstrate that the planning framework enhances the game performance
+of nearly all models. With the assistance of the action recommender and ToM ability, the GPT-4
+model achieves a level of play comparable to the state-of-the-art RL model. Our contributions are as
+follows:
+• We first conducted a detailed assessment of the performance of both open-source and closed-
+source LLM agents in a realistic and complex card game, Guandan, which is a Chinese
+environment that involves imperfect information and necessitates cooperation among agents.
+• We developed and trained an RL-based model that functions as an external tool, which
+can be seamlessly integrated into the decision-making process of LLM agents, effectively
+mitigating the challenge of dealing with dynamic and extensive action spaces in those card
+games.
+• We developed an agent framework that endows these models with different order of Theory
+of Mind (ToM) capabilities by experimenting with various Chinese and English prompt
+templates, enabling them to cooperate effectively in this imperfect information game without
+requiring fine-tuning. Our empirical findings demonstrate that nearly all models exhibited
+consistent performance improvements after incorporating this type of knowledge.
+1https://en.wikipedia.org/wiki/Guandan
+2
+
+
+
+===== PAGE 3 =====
+Preprint
+Observation Rule
+Game Rule
+'Player_index': 0
+'hand_card': 
+4 Spades, ...
+'main_card': 2 hearts
+'GetFirstPlay': yes,
+'raw_legal_action': 
+...
+Current state interpreter
+(LLM)
+Action recommender
+(RL Model)
+1. The cards I currently have
+are: 7 of Diamonds, K of
+Diamonds,..., a total of ... 
+2. My teammate (index is 2) has
+22 cards in his hand. 
+3. After I play the card, is
+opponent (index number is 1)...
+4. The number of cards in my
+opponent's hand ...
+5. I currently have play rights,
+which means I can play ...
+6. Since I have the right to play
+cards, this step can be ...
+Plan evaluator
+(LLM)
+Game history
+Top K
+action
+LLM-Agent 1
+Action
+LLM-Agent 2
+(Teammate)
+Game state
+Game state
+Collaboration
+ToM planner
+(LLM)
+ToM
+knowledge
+Unknown Opponent 1
+Action
+Unknown Opponent 2
+Action
+Team 2
+Team 1
+Collaboration
+Action
+Game Environment
+1
+1
+2
+2
+2
+3
+3
+1
+1
+3
+Figure 2: The figure illustrates the LLM-Agent’s operational process, with the green square repre-
+senting the model’s input, the orange square denoting the LLM model, the blue square signifying the
+LLM model’s output, and the purple square corresponding to the RL-based model, which serves as
+an external tool to augment the agent’s decision-making abilities.
+2
+RELATED WORK
+2.1
+LLM REASONING AND MULTI-AGENT COLLABORATION IN IMPERFECT INFORMATION
+GAMES
+Recent advancements in Large Language Models (LLMs) have showcased their impressive reasoning,
+planning, and problem-solving capabilities across various tasks (Chiang et al., 2023; OpenAI, 2023b;
+Ouyang et al., 2022; Wei et al., 2022; Yao et al., 2023). LLMs augmented with memory, belief, and
+tools have excelled in multi-step reasoning and outperformed state-of-the-art reinforcement learning
+methods in open-domain survival games and simple two-player imperfect information games (Park
+et al., 2023; Huang et al., 2022; Guo et al., 2023). Researchers have also explored multi-agent
+coordination using unreal benchmark environments (Carroll et al., 2019; Wang et al., 2022; Agashe
+et al., 2023; Li et al., 2023c) and studied human collaborative behaviors (Riedl et al., 2021). However,
+using LLMs to investigate collaborative behaviors in imperfect information games, especially in
+the Chinese environment, remains largely unexplored. Our research focuses on integrating theory-
+of-mind (ToM) capabilities into the planning process in Guandan, leveraging LLMs’ zero-shot
+capabilities and ability to facilitate natural language interactions, which is lacking in other studies.
+2.2
+THEORY OF MIND
+Theory of Mind (ToM), a crucial cognitive ability that enables individuals to understand and predict
+the mental states of themselves and others (Frith & Frith, 2005; Premack, 1978; Hurley, 2008;
+Chan et al., 2024b), has been used in games with incomplete information to anticipate opponents’
+actions and improve decision-making (de Weerd et al., 2013). Recent studies have investigated the
+ToM capabilities of large language models (LLMs) using text-based evaluations (Kosinski, 2023;
+Moghaddam & Honey, 2023). However, LLMs struggle with complex ToM inferences involving
+communication or second-order beliefs (Ullman, 2023). The current study examines ToM within
+an interactive team task, where agents’ mental states evolve dynamically, making the reasoning
+process more demanding. ToM has been applied to improve artificial agents’ performance in various
+settings, such as integrating Bayesian Theory of Mind with optimal-planning agents (Lim et al.,
+2020), using SymbolicToM for reading comprehension tasks (Sclar et al., 2023), and enhancing
+collaboration in multi-agent reinforcement learning (Oguntola et al., 2023; Yuan et al., 2021). Inspired
+by these studies, the present research aims to improve LLM-based agents’ collaborative behaviors by
+incorporating explicit belief representations.
+3
+LLM-BASED EMBODDIED AGENT FOR COLLABORATION
+This study proposes a modular approach that enables LLM-based embodied agents to collaborate
+and strategically interact with adversarial agents in imperfect information games, Guandan, without
+requiring specialized training in the Chinese textual environment. The task is decomposed into
+essential components (Figure 2), which include a State Interpreter, ToM Planner, and Plan Evaluator.
+3
+
+
+
+===== PAGE 4 =====
+Preprint
+The LLMs receive the game rules, observation rules (i.e., a prompt to guide LLM to convert low-
+level game state information to readable text), and game history as context. We provide a detailed
+description of the process of crafting prompts that guide LLMs to utilize their knowledge, reasoning
+abilities, and ToM to perform these modular functions and effectively navigate the complexities
+inherent in imperfect information games.
+3.1
+GAME RULE, OBSERVATION RULE, AND GAME HISTORY
+This part refers to step 1 in Figure 2. Inspired by Guo et al. (2023), we designed structured prompts
+to help LLMs understand the game rules and current state information, including card types, scoring
+rules, and win/loss conditions. The game rule template is shown as follows:
+• General Rules: A brief game introduction, team position rules, all single cards, and cards
+ranking.
+• Card Type that cannot beat other types: {Description of Card Type 1, Example of Card
+Type 1}, {Description of Card Type 2, Example of Card Type 2}, ...;
+• Card Type that can beat other types: {Description of Card Type 1, Example of Card Type
+1}, {Description of Card Type 2, Example of Card Type 2}, ...;
+• Single Win/Loss Rule: The scoring rules for four players in a single game, with different
+combinations of cards being played out in different order.
+• Whole Win/Loss Rule: The overall win/loss conditions.
+A sample template can be found in A.2.
+Several works (Zha et al., 2019; Guo et al., 2023) note that game states are represented using low-level
+numerical values in most imperfect information game environments. LLMs can convert these atomic
+game states into human-readable text (Wu et al., 2023; Wang et al., 2023; Guo et al., 2022; 2023),
+enhancing the model’s understanding. Therefore, we structure the observation rule and game history
+conversion rules similarly to game rules to help LLM convert low-level current state and history
+information to readable text. The template includes input explanations, element descriptions, and
+conversion tips is shown as follows:
+• Input Explanation: The input types, like dictionaries and lists, are clearly specified. A
+description of every component in the input is also provided.
+• Conversion Tips: Additional instructions guide converting the low-level game state repre-
+sentations into natural language descriptions.
+An example of converted results can be found in C.1 and C.2.
+We can effectively convert low-level game states and history records into human-readable
+text, denoted as Obsr and Hisr, respectively, by employing the game rule, observation con-
+version rule, and history conversion rule.
+The conditional distribution for each element
+Obsr[j] within the generated text can be modeled using the prompts Promptobs as: Obsr ∼
+QN
+j=1 LMθ(Obsr[j]|Promptobs, Rule, Ruleobs, Obsr[1, ..., j −1]), where LMθ represents the lan-
+guage model parameterized by θ, and N is the length of the generated text Obsr. This Current State
+Interpreter module facilitates more intuitive interaction with the model in games with incomplete
+information.
+3.2
+TOOL USE AND VANILLA PLANNING MODULE
+In Guandan, the number of valid actions per turn can vary significantly, making it challenging for
+the model to accurately evaluate each action’s merits. To address this, we incorporated an action
+recommender, a RL-based model. The model scores all valid actions available to the player in
+each round, allowing the LLM agent to focus on the top k highest score actions. We use the learned
+embedding from Danzero (Lu et al., 2023) to score every valid action.
+This part refers to step 3 in Figure 2. After transforming game states and history into a readable
+format and getting the top k actions selected by the action recommender, we design prompts to guide
+4
+
+
+
+===== PAGE 5 =====
+Preprint
+LLMs to find the best ways to play the game. We propose a vanilla planning approach that evaluates
+and predicts the consequences of executing each top k action and introduces a plan evaluator to
+make final decisions; a sample prompt template can be found in C.
+Planning
+Using the readable current observation, game history, game rules, and valid actions
+picked by the action recommender, we prompt LLMs to create text-based plans:
+Oplan ∼
+M
+Y
+i=1
+LMθ(Oplan[i]|Promptplan, Rule, Obsr, Hisr, Topkaction[i], Oplan[1, ..., i −1])
+(1)
+i.e., Oplan ∼F plans
+θ
+. The vanilla planning approach assumes a uniform marginal distribution for
+adversaries’ and allies’ actions, and it can be regarded as a zero-order ToM, denoted as F zero-plan
+θ
+.
+Evaluator
+To evaluate each plan’s potential success, the plan evaluator will predict win rates for
+each plan with readable context Obsr, Hisr, game rule and then recommend the best action:
+ab = F zero−eval(Obsr, Rule, Oplan, Hisr).
+(2)
+3.3
+PLANNING WITH THEORY OF MIND (TOM) AND COLLABORATION
+The part refers to the step 2 in Figure 2. Vanilla planning techniques often struggle with ambiguities
+in games with imperfect information, especially when playing against opponents skilled at exploiting
+others’ strategies. To address this, we developed a planning approach that employs the Theory
+of Mind (ToM) capabilities of LLMs (Frith & Frith, 2005; Kosinski, 2023; Guo et al., 2023). By
+understanding the actions of all opponents and teammates, this method enables the adaptation of
+strategies, enhancing success in complex, multi-agent game environments. We employ LLMs to
+analyze other agents’ behavior and predict their actions using different ToM orders.
+Planning with First Order ToM: In the first-order ToM modeling approach, LLM-Agent infers the
+card types that both opponents and teammates may possess based on their past actions and analyzes
+their strategies. This information is used to formulate confrontation or cooperative strategies. By
+inputting the game history Di = (h1, h2, . . . , h8), current observation Obsr, and game rules into
+LLMs, we prompt the model to examine the behavioral patterns exhibited by all agents:
+Belief ∼
+M
+Y
+i=1
+Lθ(Belief[i]|Promptpattern, Rule, Di, Obsr, Belief[1, . . . , i −1]).
+(3)
+A sample prompt template for first-order behavior pattern analysis can be found in B.1.
+The predictions from the previous step can be used to enhance the Planning and Evaluator modules
+by incorporating Belief as an additional input. To optimize costs, we merge the Planning and
+Evaluator modules. A sample prompt template for the new Planning and Evaluator modules can be
+found in B.2, and the sample outputs of this part can be found in C.
+Planning with Second Order ToM: Skilled card game players excel at dynamically adapting their
+tactics, potentially tricking opponents into making suboptimal plays. Relying solely on first-order
+theoretical models can lead to misjudgments and gaps in the agent’s cooperative approach. To address
+this, we introduce a planning method incorporating a second-order ToM. This enables the LLM agent
+to engage in more sophisticated reasoning by considering what the adversary believes about the LLM
+agents’ intentions. This allows the agent to analyze the situation more comprehensively, mirroring
+the thought processes of high-level players. We include a simple prompt shown in B.3. This method
+allows us to leverage Planning with a second-order Theory of Mind, enabling well-informed decisions
+and adaptive tactics based on the changing dynamics of the game. The sample outputs of this part we
+include in C.4.
+5
+
+
+
+===== PAGE 6 =====
+Preprint
+Figure 3: Left Figure: Distribution of agent’s valid action list length per round. Right Figure: The
+distribution of agent’s final selected action index. Results were obtained from about 2000 rounds.
+4
+EXPERIMENT AND RESULTS
+Environments
+To investigate the performance of LLM-based agents in a more realistic setting
+characterized by imperfect information, absence of communication, and collaborative dynamics,
+we selected Guandan as our experimental environment. We conducted tests on both open-source
+and close-source language models, including OpenAI’s commercial model GPT-4-Turbo and GPT-
+3.5-Turbo (OpenAI, 2023b), and Chinese-language open-source models like Baichuan2-7B-Chat,
+Baichuan2-13B-Chat, chatglm3-6b-32k, Qwen1.5-7B-Chat, and Qwen1.5-14B-Chat (Yang et al.,
+2023; Zeng et al., 2023; Bai et al., 2023). In the test, each type of LLM agent will team up to compete
+against enemy teams consisting of other agent types. All experiments were conducted in a Chinese
+environment. The detailed rules and mechanics of Guandan are elaborated upon in Appendix A.
+Competing Methods
+Danzero+ (Lu et al., 2023): it is a state-of-the-art model and serves as the
+upper bound compared with other LLMs. Danzero+ uses the distributed framework to train the
+reinforcement learning model with the deep Monte Carlo method. They demonstrated their ability to
+perform at a human level. Rule-based Agent: selecting optimal card combinations under two distinct
+strategies: ’bestP lowV’ and ’random’. The ’bestP lowV’ strategy selects the best combination
+based on non-value criteria and calculated priority, maximizing strategic advantage while minimizing
+potential loss. It chooses the combination with the highest strategic priority and the lowest value
+among those with the optimal pattern. The ’random’ strategy will execute a random action from the
+available options.
+Evaluation Methods
+We follow Guo et al. (2023) to design a dual-method evaluation framework
+to ensure a more robust assessment of the LLM-agent’s performance, addressing potential factors
+that may provide inherent advantages in this type of game. Variable random seeding: The method
+involves the investigated agents playing 40 games against different baselines, each utilizing a unique
+random seed to mitigate variability arising from random seed setting; results are shown in Table 1.
+Position swapping: This method focuses on the potential influence of a player’s position on the
+game’s outcome, as it often determines the situation in the Guandan game. The investigated agent
+was initially assigned positions 0 and 2 for the first 20 games. The positions of the investigated agent
+and the baseline model were then exchanged for a repeat of the 20 games. This approach allows for
+assessing the impact of position on the game’s winning rate, with the results shown in Table 2.
+Action distribution
+Since Guandan offers a dynamic length of valid actions list for each agent to
+choose from in every round. We analyzed 10 games, recording the number of valid actions available
+to LLM-Agent whenever it was their turn to play a card, along with the action index they ultimately
+selected (totaling approximately 1900 actions). Notably, although LLM-Agent often had more than
+20 possible actions to select from during their turn, their chosen actions were consistently restricted
+to a maximum of 7. Moreover, they strongly preferred the first five actions, as illustrated in Figure 3.
+We believe that when an LLM faces too many legal actions, it often has trouble effectively processing
+the extensive text input. This leads to a reduced understanding of each action, especially those
+action elements at the end of the valid action list. Moreover, when there are many valid actions,
+it becomes impractical for the model to generate and analyze a complete set of solutions for each
+6
+
+
+
+===== PAGE 7 =====
+Preprint
+Opponent Model
+Random
+Based-rule
+DanZero+
+Avg.
+GPT-3.5-turbo (Vanilla)
++3.04
++2.40
+-3.40
++0.68
+GPT-3.5-turbo (1st-ToM)
++3.20
++3.00
+-3.27
++0.98
+GPT-3.5-turbo (2nd-ToM)
++3.00
++2.90
+-3.00
++0.97
+GPT-4-turbo (Vanilla)
++3.78
++2.98
+-2.97
++1.26
+GPT-4-turbo (1st-ToM)
++4.00
++3.32
+-3.14
++1.39
+GPT-4-turbo (2nd-ToM)
++4.00
++3.40
+-0.88
++2.17
+Baichuan2-Chat (7B) (Vanilla)
++3.00
++1.90
+-4.00
++0.30
+Baichuan2-Chat (7B) (1st-ToM)
++3.30
++3.00
+-4.00
++0.76
+Baichuan2-Chat (7B) (2nd-ToM)
++3.80
++2.00
+-3.00
++0.93
+Baichuan2-Chat (13B) (Vanilla)
++3.67
++3.50
+-3.80
++1.12
+Baichuan2-Chat (13B) (1st-ToM)
++3.60
++2.25
+-3.30
++0.85
+Baichuan2-Chat (13B) (2nd-ToM)
++4.00
++2.00
+-3.18
++0.94
+Chatglm3-32k (6B) (Vanilla)
++0.60
+-0.80
+-4.00
+-1.40
+Chatglm3-32k (6B) (1st-ToM)
++1.80
+-0.40
+-3.40
+-0.67
+Chatglm3-32k (6B) (2nd-ToM)
++1.40
+-0.20
+-3.00
+-0.60
+Qwen1.5-Chat (7B) (Vanilla)
++3.10
++2.40
+-4.00
++0.5
+Qwen1.5-Chat (7B) (1st-ToM)
++3.60
++3.10
+-3.30
++1.13
+Qwen1.5-Chat (7B) (2nd-ToM)
++3.60
++3.00
+-2.80
++1.27
+Qwen1.5-Chat (14B) (Vanilla)
++3.15
++3.20
+-4.00
++0.78
+Qwen1.5-Chat (14B) (1st-ToM)
++3.20
++3.40
+-3.62
++0.99
+Qwen1.5-Chat (14B) (2nd-ToM)
++3.67
++3.40
+-2.98
++1.36
+Table 1: The average performance of various LLMs against random, rule-based, and Danzero+
+opponents in all game rounds. For the game scoring rule, if a team’s agents are the first and second
+to play out their cards, they score 4 points, while the other team loses 4 points, more details are in
+Appendix A.1. The first three columns show the LLM agent’s average score in 40 games against
+other agents. The last column is the LLM agent’s average performance against three agents.
+Opponent Model
+Random
+Random
+DanZero+
+DanZero+
+Ours
+Ours
+Avg.
+(Pos 0 & 2)
+(Pos 1 & 3)
+(Pos 0 & 2)
+(Pos 1 & 3)
+(Pos 0 & 2)
+(Pos 1 & 3)
+Random
+-
+-
+-4.00
+-4.00
+-3.36
+-2.78
+-3.53
+DanZero+
++4.00
++4.00
+-
+-
++2.50
++4.00
+3.63
+Ours (GPT-3.5)
++2.78
++3.36
+-4.00
+-2.50
+-
+-
+-0.12
+Table 2: The table compares GPT-3.5’s performance when playing with Random and Danzero+ in
+different positions in Guandan environments over 30 games, with 15 rounds played in each of the
+two positions.
+action. To overcome these limitations and improve the model’s performance, we introduced the
+action recommender tool as a crucial part of our approach.
+Results Analysis
+(1) ToM planning method outperforms Vanilla planning method: Table 1
+shows that injecting belief knowledge obtained through ToM planning consistently improves the
+performance of almost all models. This highlights the importance of ToM knowledge in playing card
+games. Moreover, it is clear that LLM-agent has a natural ability to analyze other players’ beliefs, and
+developing this skill dramatically contributes to its overall performance. (2) The gap between the
+GPT-4 and other models: Although ToM capability improves nearly all models, GPT-4 consistently
+outperforms other LLMs. This superiority is particularly evident when the agents are pitted against
+the three baselines. In these matchups, the agent based on GPT-4 achieves an impressive average
+score of +2.17, demonstrating its exceptional skills in the Guandan card game. In contrast, the
+best performance among the other LLMs reaches only +1.36, a notable difference of 0.81 points
+compared to GPT-4. This disparity in performance can be attributed to GPT-4’s advanced ability to
+leverage ToM knowledge better and make more strategic decisions in the complex environment of
+Guandan. (3) Danzero+ outperforms all LLM-based agents: The findings indicate that none of
+the LLM-based embodied agents, with the exception of the GPT-4 model, can outperform the current
+state-of-the-art model, danzero+, in this game. Nonetheless, the GPT-4 model exhibits an impressive
+capability to come close to danzero+’s performance, attaining a score of -0.88 with the second ToM
+planning method, which is remarkably near. This observation highlights the significant limitations of
+LLMs without fine-tuning when faced with cooperative tasks involving imperfect information, as
+most of these models struggle to address such challenges effectively. (4) Position impact: In this
+experimental segment, we employ GPT-3.5 as the evaluation model. The results shown in Table 2
+7
+
+
+
+===== PAGE 8 =====
+Preprint
+Opponent Model
+Random
+Based-rule
+DanZero+
+Avg.
+Ours (Vanilla) (English)
++1.00
+-3.00
+-4.00
+-2.00
+Ours (1st-ToM) (English)
++2.60
+-0.60
+-4.00
+-0.67
+Ours (2nd-ToM) (English)
++2.40
+-0.8
+-4.00
+-0.80
+Ours (Vanilla) (Chinese)
++3.04
++2.40
+-3.40
++0.68
+Ours (1st-ToM) (Chinese)
++3.20
++3.00
+-3.27
++0.98
+Ours (2nd-ToM) (Chinese)
++3.00
++2.90
+-3.00
++0.97
+Table 3: This table compares the LLM-Agent’s performance across variations of language environ-
+ments in 30 games using GPT-3.5 with TopK=5.
+indicate that when the GPT-3.5 model competes against the random and Danzero+ models, it achieves
+a significantly higher win rate when positioned at 0 and 2. Notably, when facing danzero+, the model
+secures -2.5 points in positions 0 and 2, whereas changing positions yields only -4 points. This
+observation aligns with our perspective, as being in the 0 & 2 positions grants the LLM-agent team
+the advantage of playing cards first. In card games, the right to initiate play often influences the
+game’s outcome, and GPT-3.5 demonstrates a superior ability to capitalize on this advantage.
+4.1
+ABLATION STUDY AND COMPONENT ANALYSIS
+Ablation Study on Different Languages:
+Guandan is widely popular in China. Due to its cultural
+specificity, many game-related terms take time to translate accurately into other languages. To
+investigate the impact of different language environments on the performance of LLM agents, we
+conducted GPT-3.5 as a testbed model. Table 3 presents the performance of GPT-3.5 with various
+ToM planning methods in both Chinese and English game environments. The results demonstrate
+that the LLM-Agent’s performance in the Chinese language environment significantly surpasses its
+performance in the English language environment. This phenomenon can be attributed to the fact that
+GPT-3.5 is pre-trained on an enormous amount of data, and most Guandan-related data is primarily
+available in Chinese. Consequently, we opted to use Chinese as the language environment for our
+experiments to leverage the language model’s inherent knowledge and maximize its performance in
+Guandan.
+Ablation Study on the Action Recommender:
+As illustrated in Figure 3, we observed that the
+actions selected by the LLM-Agent are primarily concentrated within the first five actions, even
+when presented with more than 50 options. To address this limitation, we introduced an action
+recommender component, an external tool, specifically an RL-based model, to assign scores to
+each available action and enable the LLM-Agent to invoke it. This tool returns the top 5 actions
+with the highest scores by default. In this section, we primarily investigate the impact of the action
+recommender component on the LLM-Agent’s performance. We compare three scenarios: (1) the
+absence of an action recommender, (2) the inclusion of an action recommender returning the top 5
+actions, and (3) the inclusion of an action recommender returning the top 3 actions. Furthermore, we
+conduct these comparisons using GPT-3.5 with various planning methods to assess the effectiveness
+of the action recommender across different configurations.
+The results shown in Table 4 allow for the following observation: (1) LLM capabilities can be
+improved with the help of external tools: The utilization of this external tool significantly improves
+the performance of the LLM-Agent in this game, which demonstrates that LLM-Agents struggle
+with long reasoning problems. Even when the game environment provides the agent with a relatively
+extensive list of valid actions, the agent cannot effectively process such lengthy text and consequently
+focuses only on the first few actions. The introduction of the action recommender, which only returns
+the top k operations, alleviates this problem and enhances the agent’s capabilities. (2) The gap
+between different numbers of top k action:
+The results demonstrate that setting K to 5 leads
+to superior model performance compared to K=3. This finding indicates that the RL-based tool
+may not always produce optimal results. When the LLM-Agent is restricted to choosing from only
+three actions, it may not be able to fully leverage its capabilities, especially when significantly more
+than three valid actions are available in a given scenario. In such cases, the model is constrained
+to analyzing and selecting from a limited subset of possibilities. Additionally, the improvement in
+8
+
+
+
+===== PAGE 9 =====
+Preprint
+Opponent Model
+Random
+Based-rule
+DanZero+
+Avg.
+Ours (w/o Tool) (Vanilla)
+-0.60
+-1.80
+-4.00
+-2.13
+Ours (w/o Tool) (1st-ToM)
++2.24
+-3.00
+-4.00
+-1.59
+Ours (w/o Tool) (2nd-ToM)
++1.80
+-2.57
+-4.00
+-1.59
+Ours (Top k = 3) (Vanilla)
++2.88
++1.62
+-3.21
++0.43
+Ours (Top k = 3) (1st-ToM)
++2.96
++1.50
+-3.42
++0.35
+Ours (Top k = 3) (2nd-ToM)
++2.82
++2.30
+-3.02
++0.70
+Ours (Top k = 5) (Vanilla)
++3.04
++2.40
+-3.40
++0.68
+Ours (Top k = 5) (1st-ToM)
++3.20
++3.00
+-3.27
++0.98
+Ours (Top k = 5) (2nd-ToM)
++3.00
++2.90
+-3.00
++0.97
+Table 4: The comparison results of including an action recommender or not, and the effect of different
+top-k actions on results, using GPT-3.5 tested on 30 games.
+the ToM planning method is less significant when K=3 compared to K =5. This observation further
+supports the idea that the model’s ToM capabilities cannot be fully utilized when K is too small.
+5
+CONCLUSION
+This study compares open-source and closed-source LLMs with SOTA-RL-based models in emu-
+lating opponent and teammate behavior in the complex card game Guandan. LLMs exhibit subpar
+performance compared to RL-based approaches in intricate and realistic scenarios. We propose a
+ToM planning method to optimize LLM-agent’s decision-making and collaboration in multi-agent
+gaming environments. We also develop an RL-based model to address LLMs’ challenges in adapting
+to dynamic changes and extensive legal action lists. This research deepens our understanding of
+LLMs’ potential in navigating complex social interactions and advances cognitive modeling in AI.
+ETHICS STATEMENT
+In this study, we conducted experiments and evaluations on large language models (LLMs) for
+their applicability and performance in the Guandan card game, imperfect information, and multi-
+agent collaboration tasks. We compared open-source and closed-source LLMs to ensure a fair and
+transparent evaluation, aiming to contribute to the broader understanding of LLMs and their potential
+to address complex tasks without bias. Our research adheres to the highest ethical standards, ensuring
+that the data used does not contain personally identifiable information and focuses solely on the
+performance of LLMs in the context of the Guandan card game. While employing the Theory
+of Mind (ToM) concept, we do not attribute human-like consciousness to these AI models. Our
+objective is to investigate the potential of LLMs in complex social interactions and strategic thinking,
+acknowledging the potential risks and emphasizing the importance of responsible AI development,
+deployment, and use.
+REPRODUCIBILITY STATEMENT
+To ensure the reproducibility of our research, we have taken several steps. We have comprehensively
+described our methods, including the planning approaches, the action recommender, and the ToM-
+aware LLMs. This detailed account of our methodology enables other researchers to replicate our
+experiments and build upon our findings. We have evaluated open-source and closed-source LLMs,
+ensuring that researchers with access to either model type can reproduce our results. Furthermore,
+to facilitate further research and promote transparency, we have committed to making all prompts
+and codes publicly available in our codebase. This will enable other researchers to reproduce our
+experiments and verify our results. By taking these steps, we aim to ensure that our research is
+transparent and reproducible and contributes to the broader understanding of LLMs and their potential
+in addressing complex, real-world tasks.
+9
+
+
+
+===== PAGE 10 =====
+Preprint
+REFERENCES
+Saaket Agashe, Yue Fan, and Xin Eric Wang. Evaluating multi-agent coordination abilities in
+large language models. CoRR, abs/2310.03903, 2023. doi: 10.48550/ARXIV.2310.03903. URL
+https://doi.org/10.48550/arXiv.2310.03903.
+Jinze Bai, Shuai Bai, Yunfei Chu, Zeyu Cui, Kai Dang, Xiaodong Deng, Yang Fan, Wenbin Ge,
+Yu Han, Fei Huang, Binyuan Hui, Luo Ji, Mei Li, Junyang Lin, Runji Lin, Dayiheng Liu, Gao Liu,
+Chengqiang Lu, Keming Lu, Jianxin Ma, Rui Men, Xingzhang Ren, Xuancheng Ren, Chuanqi Tan,
+Sinan Tan, Jianhong Tu, Peng Wang, Shijie Wang, Wei Wang, Shengguang Wu, Benfeng Xu, Jin
+Xu, An Yang, Hao Yang, Jian Yang, Shusheng Yang, Yang Yao, Bowen Yu, Hongyi Yuan, Zheng
+Yuan, Jianwei Zhang, Xingxuan Zhang, Yichang Zhang, Zhenru Zhang, Chang Zhou, Jingren Zhou,
+Xiaohuan Zhou, and Tianhang Zhu. Qwen technical report. CoRR, abs/2309.16609, 2023. doi: 10.
+48550/ARXIV.2309.16609. URL https://doi.org/10.48550/arXiv.2309.16609.
+Anton Bakhtin, Noam Brown, Emily Dinan, Gabriele Farina, Colin Flaherty, Daniel Fried, An-
+drew Goff, Jonathan Gray, Hengyuan Hu, Athul Paul Jacob, Mojtaba Komeili, Karthik Konath,
+Minae Kwon, Adam Lerer, Mike Lewis, Alexander H. Miller, Sandra Mitts, Adithya Renduch-
+intala, Stephen Roller, Dirk Rowe, Weiyan Shi, Joe Spisak, Alexander Wei, David J. Wu,
+Hugh Zhang, and Markus Zijlstra.
+Human-level play in the game of diplomacy by com-
+bining language models with strategic reasoning.
+Science, 378:1067 – 1074, 2022.
+URL
+https://api.semanticscholar.org/CorpusID:253759631.
+Noam Brown and Tuomas Sandholm. Superhuman ai for heads-up no-limit poker: Libratus beats
+top professionals. Science, 359:418 – 424, 2018. URL https://api.semanticscholar.
+org/CorpusID:5003977.
+S´ebastien Bubeck, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric Horvitz, Ece Kamar,
+Peter Lee, Yin Tat Lee, Yuanzhi Li, Scott M. Lundberg, Harsha Nori, Hamid Palangi, Marco T´ulio
+Ribeiro, and Yi Zhang. Sparks of artificial general intelligence: Early experiments with GPT-4.
+CoRR, abs/2303.12712, 2023.
+Micah Carroll, Rohin Shah, Mark K. Ho, Tom Griffiths, Sanjit A. Seshia, Pieter Abbeel, and
+Anca D. Dragan. On the utility of learning about humans for human-ai coordination. In Hanna M.
+Wallach, Hugo Larochelle, Alina Beygelzimer, Florence d’Alch´e-Buc, Emily B. Fox, and Roman
+Garnett (eds.), Advances in Neural Information Processing Systems 32: Annual Conference on
+Neural Information Processing Systems 2019, NeurIPS 2019, December 8-14, 2019, Vancouver,
+BC, Canada, pp. 5175–5186, 2019. URL https://proceedings.neurips.cc/paper/
+2019/hash/f5b1b89d98b7286673128a5fb112cb9a-Abstract.html.
+Chunkit Chan, Xin Liu, Tsz Ho Chan, Jiayang Cheng, Yangqiu Song, Ginny Y. Wong, and Simon See.
+Self-consistent narrative prompts on abductive natural language inference. CoRR, abs/2309.08303,
+2023a. doi: 10.48550/arXiv.2309.08303. URL https://doi.org/10.48550/arXiv.
+2309.08303.
+Chunkit Chan, Xin Liu, Jiayang Cheng, Zihan Li, Yangqiu Song, Ginny Y. Wong, and Simon See.
+Discoprompt: Path prediction prompt tuning for implicit discourse relation recognition. In Anna
+Rogers, Jordan L. Boyd-Graber, and Naoaki Okazaki (eds.), Findings of the Association for
+Computational Linguistics: ACL 2023, Toronto, Canada, July 9-14, 2023, pp. 35–57. Association
+for Computational Linguistics, 2023b. doi: 10.18653/v1/2023.findings-acl.4. URL https:
+//doi.org/10.18653/v1/2023.findings-acl.4.
+Chunkit Chan, Jiayang Cheng, Weiqi Wang, Yuxin Jiang, Tianqing Fang, Xin Liu, and Yangqiu Song.
+Exploring the potential of chatgpt on sentence level relations: A focus on temporal, causal, and
+discourse relations. In Yvette Graham and Matthew Purver (eds.), Findings of the Association
+for Computational Linguistics: EACL 2024, St. Julian’s, Malta, March 17-22, 2024, pp. 684–721.
+Association for Computational Linguistics, 2024a. URL https://aclanthology.org/
+2024.findings-eacl.47.
+Chunkit Chan, Cheng Jiayang, Yauwai Yim, Zheye Deng, Wei Fan, Haoran Li, Xin Liu, Hongming
+Zhang, Weiqi Wang, and Yangqiu Song. Negotiationtom: A benchmark for stress-testing machine
+theory of mind on negotiation surrounding. CoRR, abs/2404.13627, 2024b. doi: 10.48550/ARXIV.
+2404.13627. URL https://doi.org/10.48550/arXiv.2404.13627.
+10
+
+
+
+===== PAGE 11 =====
+Preprint
+Jiayang Cheng, Lin Qiu, Tsz Ho Chan, Tianqing Fang, Weiqi Wang, Chunkit Chan, Dongyu Ru,
+Qipeng Guo, Hongming Zhang, Yangqiu Song, Yue Zhang, and Zheng Zhang. Storyanalogy:
+Deriving story-level analogies from large language models to unlock analogical understand-
+ing. In Houda Bouamor, Juan Pino, and Kalika Bali (eds.), Proceedings of the 2023 Confer-
+ence on Empirical Methods in Natural Language Processing, EMNLP 2023, Singapore, De-
+cember 6-10, 2023, pp. 11518–11537. Association for Computational Linguistics, 2023. doi:
+10.18653/V1/2023.EMNLP-MAIN.706. URL https://doi.org/10.18653/v1/2023.
+emnlp-main.706.
+Wei-Lin Chiang, Zhuohan Li, Zi Lin, Ying Sheng, Zhanghao Wu, Hao Zhang, Lianmin Zheng,
+Siyuan Zhuang, Yonghao Zhuang, Joseph E. Gonzalez, Ion Stoica, and Eric P. Xing. Vicuna: An
+open-source chatbot impressing gpt-4 with 90%* chatgpt quality, March 2023. URL https:
+//lmsys.org/blog/2023-03-30-vicuna/.
+Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra, Adam
+Roberts, Paul Barham, Hyung Won Chung, Charles Sutton, Sebastian Gehrmann, Parker Schuh,
+Kensen Shi, Sasha Tsvyashchenko, Joshua Maynez, Abhishek Rao, Parker Barnes, Yi Tay, Noam
+Shazeer, Vinodkumar Prabhakaran, Emily Reif, Nan Du, Ben Hutchinson, Reiner Pope, James
+Bradbury, Jacob Austin, Michael Isard, Guy Gur-Ari, Pengcheng Yin, Toju Duke, Anselm Lev-
+skaya, Sanjay Ghemawat, Sunipa Dev, Henryk Michalewski, Xavier Garcia, Vedant Misra, Kevin
+Robinson, Liam Fedus, Denny Zhou, Daphne Ippolito, David Luan, Hyeontaek Lim, Barret Zoph,
+Alexander Spiridonov, Ryan Sepassi, David Dohan, Shivani Agrawal, Mark Omernick, Andrew M.
+Dai, Thanumalayan Sankaranarayana Pillai, Marie Pellat, Aitor Lewkowycz, Erica Moreira, Rewon
+Child, Oleksandr Polozov, Katherine Lee, Zongwei Zhou, Xuezhi Wang, Brennan Saeta, Mark
+Diaz, Orhan Firat, Michele Catasta, Jason Wei, Kathy Meier-Hellstern, Douglas Eck, Jeff Dean,
+Slav Petrov, and Noah Fiedel. Palm: Scaling language modeling with pathways. J. Mach. Learn.
+Res., 24:240:1–240:113, 2023. URL http://jmlr.org/papers/v24/22-1144.html.
+Harmen de Weerd, Rineke Verbrugge, and Bart Verheij. How much does it help to know what she
+knows you know? an agent-based simulation study. Artif. Intell., 199-200:67–92, 2013. doi:
+10.1016/J.ARTINT.2013.05.004. URL https://doi.org/10.1016/j.artint.2013.
+05.004.
+Zheye Deng, Chunkit Chan, Weiqi Wang, Yuxi Sun, Wei Fan, Tianshi Zheng, Yauwai Yim, and
+Yangqiu Song. Text-tuple-table: Towards information integration in text-to-table generation via
+global tuple extraction. CoRR, abs/2404.14215, 2024. doi: 10.48550/ARXIV.2404.14215. URL
+https://doi.org/10.48550/arXiv.2404.14215.
+Simon Frieder, Luca Pinchetti, Ryan-Rhys Griffiths, Tommaso Salvatori, Thomas Lukasiewicz,
+Philipp Christian Petersen, Alexis Chevalier, and Julius Berner. Mathematical capabilities of
+chatgpt. CoRR, abs/2301.13867, 2023.
+Chris Frith and Uta Frith. Theory of mind. Curr Biol, 15:R644–6, 01 2005.
+Jonathan Gray, Adam Lerer, Anton Bakhtin, and Noam Brown. Human-level performance in no-press
+diplomacy via equilibrium search. In 9th International Conference on Learning Representations,
+ICLR 2021, Virtual Event, Austria, May 3-7, 2021. OpenReview.net, 2021. URL https://
+openreview.net/forum?id=0-uUGPbIjD.
+Jiaxian Guo, Junnan Li, Dongxu Li, Anthony Meng Huat Tiong, Boyang Li, Dacheng Tao, and
+Steven C. H. Hoi. From images to textual prompts: Zero-shot VQA with frozen large language
+models.
+CoRR, abs/2212.10846, 2022.
+doi: 10.48550/ARXIV.2212.10846.
+URL https:
+//doi.org/10.48550/arXiv.2212.10846.
+Jiaxian Guo, Bo Yang, Paul Yoo, Bill Yuchen Lin, Yusuke Iwasawa, and Yutaka Matsuo. Suspicion-
+agent:
+Playing imperfect information games with theory of mind aware GPT-4.
+CoRR,
+abs/2309.17277, 2023. doi: 10.48550/ARXIV.2309.17277. URL https://doi.org/10.
+48550/arXiv.2309.17277.
+Wenlong Huang, Pieter Abbeel, Deepak Pathak, and Igor Mordatch. Language models as zero-
+shot planners: Extracting actionable knowledge for embodied agents. In Kamalika Chaudhuri,
+Stefanie Jegelka, Le Song, Csaba Szepesv´ari, Gang Niu, and Sivan Sabato (eds.), International
+11
+
+
+
+===== PAGE 12 =====
+Preprint
+Conference on Machine Learning, ICML 2022, 17-23 July 2022, Baltimore, Maryland, USA,
+volume 162 of Proceedings of Machine Learning Research, pp. 9118–9147. PMLR, 2022. URL
+https://proceedings.mlr.press/v162/huang22a.html.
+Susan Hurley. The shared circuits model (scm): how control, mirroring, and simulation can enable
+imitation, deliberation, and mindreading. The Behavioral and brain sciences, 31 1:1–22; discussion
+22–58, 2008. URL https://api.semanticscholar.org/CorpusID:16427883.
+Yuxin Jiang, Chunkit Chan, Mingyang Chen, and Wei Wang. Lion: Adversarial distillation of closed-
+source large language model. CoRR, abs/2305.12870, 2023. doi: 10.48550/ARXIV.2305.12870.
+URL https://doi.org/10.48550/arXiv.2305.12870.
+Cheng Jiayang, Lin Qiu, Chunkit Chan, Xin Liu, Yangqiu Song, and Zheng Zhang. Eventground:
+Narrative reasoning by grounding to eventuality-centric knowledge graphs, 2024.
+Michal Kosinski. Theory of mind may have spontaneously emerged in large language models. CoRR,
+abs/2302.02083, 2023. doi: 10.48550/ARXIV.2302.02083. URL https://doi.org/10.
+48550/arXiv.2302.02083.
+Haoran Li, Yulin Chen, Jinglong Luo, Yan Kang, Xiaojin Zhang, Qi Hu, Chunkit Chan, and
+Yangqiu Song. Privacy in large language models: Attacks, defenses and future directions. CoRR,
+abs/2310.10383, 2023a. doi: 10.48550/ARXIV.2310.10383. URL https://doi.org/10.
+48550/arXiv.2310.10383.
+Haoran Li, Dadi Guo, Donghao Li, Wei Fan, Qi Hu, Xin Liu, Chunkit Chan, Duanyi Yao, and
+Yangqiu Song. P-bench: A multi-level privacy evaluation benchmark for language models. CoRR,
+abs/2311.04044, 2023b. doi: 10.48550/ARXIV.2311.04044. URL https://doi.org/10.
+48550/arXiv.2311.04044.
+Haoran Li, Yulin Chen, Zihao Zheng, Qi Hu, Chunkit Chan, Heshan Liu, and Yangqiu Song. Backdoor
+removal for generative large language models. CoRR, abs/2405.07667, 2024. doi: 10.48550/
+ARXIV.2405.07667. URL https://doi.org/10.48550/arXiv.2405.07667.
+Huao Li, Yu Quan Chong, Simon Stepputtis, Joseph Campbell, Dana Hughes, Michael Lewis, and
+Katia Sycara. Theory of mind for multi-agent collaboration via large language models. arXiv
+preprint arXiv:2310.10701, 2023c.
+Terence X. Lim, Sidney Tio, and Desmond C. Ong. Improving multi-agent cooperation using
+theory of mind. In Stephanie Denison, Michael Mack, Yang Xu, and Blair C. Armstrong (eds.),
+Proceedings of the 42th Annual Meeting of the Cognitive Science Society - Developing a Mind:
+Learning in Humans, Animals, and Machines, CogSci 2020, virtual, July 29 - August 1, 2020.
+cognitivesciencesociety.org, 2020. URL https://cogsci.mindmodeling.org/2020/
+papers/0195/index.html.
+Yudong Lu, Youpeng Zhao, Wengang Zhou, Houqiang Li, et al. Danzero: Mastering guandan game
+with reinforcement learning. In 2023 IEEE Conference on Games (CoG), pp. 1–8. IEEE, 2023.
+Nils Lukas, Ahmed Salem, Robert Sim, Shruti Tople, Lukas Wutschitz, and Santiago Zanella
+B´eguelin. Analyzing leakage of personally identifiable information in language models. CoRR,
+abs/2302.00539, 2023.
+Shima Rahimi Moghaddam and Christopher J. Honey. Boosting theory-of-mind performance in large
+language models via prompting. CoRR, abs/2304.11490, 2023. doi: 10.48550/ARXIV.2304.11490.
+URL https://doi.org/10.48550/arXiv.2304.11490.
+Matej Moravc´ık, Martin Schmid, Neil Burch, V. Lis´y, Dustin Morrill, Nolan Bard, Trevor Davis,
+K. Waugh, Michael Bradley Johanson, and Michael H. Bowling. Deepstack: Expert-level artificial
+intelligence in heads-up no-limit poker. Science, 356:508 – 513, 2017. URL https://api.
+semanticscholar.org/CorpusID:1586260.
+Ini Oguntola, Joseph Campbell, Simon Stepputtis, and Katia P. Sycara. Theory of mind as intrinsic
+motivation for multi-agent reinforcement learning. CoRR, abs/2307.01158, 2023. doi: 10.48550/
+ARXIV.2307.01158. URL https://doi.org/10.48550/arXiv.2307.01158.
+12
+
+
+
+===== PAGE 13 =====
+Preprint
+OpenAI. GPT-4 technical report. CoRR, abs/2303.08774, 2023a. doi: 10.48550/ARXIV.2303.08774.
+URL https://doi.org/10.48550/arXiv.2303.08774.
+OpenAI. GPT-4 technical report. CoRR, abs/2303.08774, 2023b. doi: 10.48550/ARXIV.2303.08774.
+URL https://doi.org/10.48550/arXiv.2303.08774.
+TB OpenAI. Chatgpt: Optimizing language models for dialogue. OpenAI, 2022.
+Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin,
+Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser
+Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul F. Christiano, Jan
+Leike, and Ryan Lowe. Training language models to follow instructions with human feedback.
+In Sanmi Koyejo, S. Mohamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh (eds.),
+Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information
+Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December
+9, 2022, 2022. URL http://papers.nips.cc/paper_files/paper/2022/hash/
+b1efde53be364a73914f58805a001731-Abstract-Conference.html.
+Joon Sung Park, Joseph C. O’Brien, Carrie Jun Cai, Meredith Ringel Morris, Percy Liang, and
+Michael S. Bernstein. Generative agents: Interactive simulacra of human behavior. In Sean Follmer,
+Jeff Han, J¨urgen Steimle, and Nathalie Henry Riche (eds.), Proceedings of the 36th Annual ACM
+Symposium on User Interface Software and Technology, UIST 2023, San Francisco, CA, USA,
+29 October 2023- 1 November 2023, pp. 2:1–2:22. ACM, 2023. doi: 10.1145/3586183.3606763.
+URL https://doi.org/10.1145/3586183.3606763.
+David Premack. Does the chimpanzee have a theory of mind? Behavioral and Brain Sciences, 1:515
+– 526, 1978. URL https://api.semanticscholar.org/CorpusID:141321709.
+Shreyas Sundara Raman, Vanya Cohen, Eric Rosen, Ifrah Idrees, David Paulius, and Stefanie Tellex.
+Planning with large language models via corrective re-prompting. CoRR, abs/2211.09935, 2022.
+doi: 10.48550/ARXIV.2211.09935. URL https://doi.org/10.48550/arXiv.2211.
+09935.
+Christoph Riedl, Young Ji Kim, Pranav Gupta, Thomas W. Malone, and Anita Williams Woolley.
+Quantifying collective intelligence in human groups. Proceedings of the National Academy
+of Sciences, 118, 2021.
+URL https://api.semanticscholar.org/CorpusID:
+234769649.
+Melanie Sclar, Sachin Kumar, Peter West, Alane Suhr, Yejin Choi, and Yulia Tsvetkov. Minding
+language models’ (lack of) theory of mind: A plug-and-play multi-character belief tracker. In
+Anna Rogers, Jordan L. Boyd-Graber, and Naoaki Okazaki (eds.), Proceedings of the 61st Annual
+Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), ACL 2023,
+Toronto, Canada, July 9-14, 2023, pp. 13960–13980. Association for Computational Linguistics,
+2023. doi: 10.18653/V1/2023.ACL-LONG.780. URL https://doi.org/10.18653/v1/
+2023.acl-long.780.
+Teo Susnjak. Chatgpt: The end of online exam integrity? CoRR, abs/2212.09292, 2022.
+Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy
+Liang, and Tatsunori B. Hashimoto. Stanford alpaca: An instruction-following llama model.
+https://github.com/tatsu-lab/stanford_alpaca, 2023.
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay
+Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Dan Bikel, Lukas Blecher, Cristian
+Canton-Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin
+Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar
+Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel Kloumann,
+Artem Korenev, Punit Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana
+Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor
+Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan
+Schelten, Ruan Silva, Eric Michael Smith, Ranjan Subramanian, Xiaoqing Ellen Tan, Binh Tang,
+Ross Taylor, Adina Williams, Jian Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan Zarov, Yuchen
+13
+
+
+
+===== PAGE 14 =====
+Preprint
+Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aur´elien Rodriguez, Robert Stojnic,
+Sergey Edunov, and Thomas Scialom. Llama 2: Open foundation and fine-tuned chat models.
+CoRR, abs/2307.09288, 2023. doi: 10.48550/ARXIV.2307.09288. URL https://doi.org/
+10.48550/arXiv.2307.09288.
+Tomer Ullman. Large language models fail on trivial alterations to theory-of-mind tasks. arXiv
+preprint arXiv:2302.08399, 2023.
+Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan,
+and Anima Anandkumar. Voyager: An open-ended embodied agent with large language models.
+CoRR, abs/2305.16291, 2023. doi: 10.48550/ARXIV.2305.16291. URL https://doi.org/
+10.48550/arXiv.2305.16291.
+Rose E. Wang, Sarah A. Wu, James A. Evans, David C. Parkes, Joshua B. Tenenbaum, and Max
+Kleiman-Weiner. Too many cooks: Bayesian inference for coordinating multi-agent collaboration.
+In Stephen H. Muggleton and Nicholas Chater (eds.), Human-Like Machine Intelligence, pp.
+152–170. Oxford University Press, 2022. doi: 10.1093/OSO/9780198862536.003.0008. URL
+https://doi.org/10.1093/oso/9780198862536.003.0008.
+Weiqi Wang, Tianqing Fang, Chunyang Li, Haochen Shi, Wenxuan Ding, Baixuan Xu, Zhaowei
+Wang, Jiaxin Bai, Xin Liu, Jiayang Cheng, Chunkit Chan, and Yangqiu Song. CANDLE: iterative
+conceptualization and instantiation distillation from large language models for commonsense
+reasoning. CoRR, abs/2401.07286, 2024. doi: 10.48550/ARXIV.2401.07286. URL https:
+//doi.org/10.48550/arXiv.2401.07286.
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi,
+Quoc V. Le, and Denny Zhou. Chain-of-thought prompting elicits reasoning in large language
+models. In Sanmi Koyejo, S. Mohamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh (eds.),
+Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information
+Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December
+9, 2022, 2022. URL http://papers.nips.cc/paper_files/paper/2022/hash/
+9d5609613524ecf4f15af0f7b31abca4-Abstract-Conference.html.
+Yue Wu, Shrimai Prabhumoye, So Yeon Min, Yonatan Bisk, Ruslan Salakhutdinov, Amos Azaria,
+Tom M. Mitchell, and Yuanzhi Li. SPRING: GPT-4 out-performs RL algorithms by studying
+papers and reasoning. CoRR, abs/2305.15486, 2023. doi: 10.48550/ARXIV.2305.15486. URL
+https://doi.org/10.48550/arXiv.2305.15486.
+Aiyuan Yang, Bin Xiao, Bingning Wang, Borong Zhang, Ce Bian, Chao Yin, Chenxu Lv, Da Pan,
+Dian Wang, Dong Yan, Fan Yang, Fei Deng, Feng Wang, Feng Liu, Guangwei Ai, Guosheng
+Dong, Haizhou Zhao, Hang Xu, Haoze Sun, Hongda Zhang, Hui Liu, Jiaming Ji, Jian Xie, Juntao
+Dai, Kun Fang, Lei Su, Liang Song, Lifeng Liu, Liyun Ru, Luyao Ma, Mang Wang, Mickel Liu,
+MingAn Lin, Nuolan Nie, Peidong Guo, Ruiyang Sun, Tao Zhang, Tianpeng Li, Tianyu Li, Wei
+Cheng, Weipeng Chen, Xiangrong Zeng, Xiaochuan Wang, Xiaoxi Chen, Xin Men, Xin Yu, Xuehai
+Pan, Yanjun Shen, Yiding Wang, Yiyu Li, Youxin Jiang, Yuchen Gao, Yupeng Zhang, Zenan Zhou,
+and Zhiying Wu. Baichuan 2: Open large-scale language models. CoRR, abs/2309.10305, 2023.
+doi: 10.48550/ARXIV.2309.10305. URL https://doi.org/10.48550/arXiv.2309.
+10305.
+Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Tom Griffiths, Yuan Cao, and Karthik
+Narasimhan. Tree of thoughts: Deliberate problem solving with large language models. In
+Alice Oh, Tristan Naumann, Amir Globerson, Kate Saenko, Moritz Hardt, and Sergey Levine
+(eds.), Advances in Neural Information Processing Systems 36: Annual Conference on Neural
+Information Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 -
+16, 2023, 2023. URL http://papers.nips.cc/paper_files/paper/2023/hash/
+271db9922b8d1f4dd7aaef84ed5ac703-Abstract-Conference.html.
+Luyao Yuan, Zipeng Fu, Linqi Zhou, Kexin Yang, and Song-Chun Zhu. Emergence of theory
+of mind collaboration in multiagent systems. CoRR, abs/2110.00121, 2021. URL https:
+//arxiv.org/abs/2110.00121.
+14
+
+
+
+===== PAGE 15 =====
+Preprint
+Aohan Zeng, Xiao Liu, Zhengxiao Du, Zihan Wang, Hanyu Lai, Ming Ding, Zhuoyi Yang, Yifan Xu,
+Wendi Zheng, Xiao Xia, Weng Lam Tam, Zixuan Ma, Yufei Xue, Jidong Zhai, Wenguang Chen,
+Zhiyuan Liu, Peng Zhang, Yuxiao Dong, and Jie Tang. GLM-130B: an open bilingual pre-trained
+model. In The Eleventh International Conference on Learning Representations, ICLR 2023, Kigali,
+Rwanda, May 1-5, 2023. OpenReview.net, 2023. URL https://openreview.net/pdf?
+id=-Aw0rrrPUF.
+Daochen Zha, Kwei-Herng Lai, Yuanpu Cao, Songyi Huang, Ruzhe Wei, Junyu Guo, and Xia Hu.
+Rlcard: A toolkit for reinforcement learning in card games. CoRR, abs/1910.04376, 2019. URL
+http://arxiv.org/abs/1910.04376.
+Youpeng Zhao, Yudong Lu, Jian Zhao, Wengang Zhou, and Houqiang Li. Danzero+: Dominating the
+guandan game through reinforcement learning. arXiv preprint arXiv:2312.02561, 2023.
+A
+GUAN DAN RULES
+Guandan is a popular team-based, competitive card game in China. The gameplay is somewhat
+similar to Doudizhu:
+A.1
+ENGLISH VERSION:
+1. Game Setup:
+• Number of players: 4
+• Number of cards used: Two decks of 54 cards each, totaling 108 cards
+• Number of cards per player: 27
+• Team division: Players sitting opposite each other form a team, while neighboring players
+are on the opposing team
+2. Card rankings and suits:
+• Card ranks from low to high: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A, Black Joker, Red Joker
+• Suits: Hearts (♡), Spades (♠), Clubs (♣), Diamonds (♢)
+• Special card: The Hearts card of the current round’s rank can be used as any card point
+(except Jokers) to form combinations, known as “Feng Ren Pei” (Matching Card).
+3. Playing order:
+• In one round, the playing order is: Player 0 →Player 1 →Player 2 →Player 3 →Player 0
+...
+• Players must play a higher-ranking combination than the previous one, until all other players
+pass, which concludes the round
+4. Card Combinations: Divided into two categories:
+1. Category One:
+• Single: Any single card
+• Pair: Any two cards of the same rank, including a pair of Jokers or Big Jokers
+• Wood Board: Three pairs of adjacent ranks, such as 223344
+• Trips: Three cards of the same rank
+• Steel Board: Two sets of trips with the same rank, such as 333444
+• Trips with a Pair: Trips plus a pair, such as 55522
+• Straight: Five cards of consecutive ranks, such as 23456
+• Different combinations in this category cannot beat each other
+2. Category Two:
+15
+
+
+
+===== PAGE 16 =====
+Preprint
+• Bomb: Four or more cards of the same rank
+• Flush: A straight flush consisting of five cards of the same suit
+• Heavenly Bomb: Two Jokers and two Big Jokers
+Card type Rankings:
+• In the first category, the combination with higher card points wins. For Trips with a
+Pair, only the rank of the Trips is compared. Ace is the lowest card (1) in Three Pairs,
+Two Trips, Straight, and Flush.
+• Category Two can beat any combination in Category One. The ranking within Category
+Two is as follows:
+– A Bomb with more cards beats one with fewer. If the number of cards is the same,
+the one with higher ranks wins.
+– For Flushes, the one with higher card points wins. A Flush can beat a Bomb of five
+cards or less, but not a Bomb of six or more.
+– The Heavenly Bomb is the highest and can beat all other combinations.
+5. Game Terminology:
+• One Deal: The process from dealing cards to all players playing their hands
+• Finishing order terms: First Place (first to finish), Second Place, Third Place, Last Place
+(last to finish)
+• Double Last: When both players on a team finish in Third and Last places, which is
+disadvantageous for the next deal
+6. Scoring Rules (per deal):
+• Double First (one team’s players finish in First and Second places): That team +4 points, the
+other team -4 points
+• One team’s players finish in First and Third places: That team +2 points, the other team -2
+points
+• One team’s players finish in First and Last places: That team +1 point, the other team -1
+point
+• Note: Teammates always have the same score, reflecting the importance of teamwork
+7. Winning Condition: After several rounds, the team with the highest total score wins. Getting First
+Place is crucial for scoring and for winning the game.
+A.2
+CHINESE VERSION:
+16
+
+
+
+===== PAGE 17 =====
+Preprint
+Sample prompt to LLM:
+1. 游戏设置:
+• 游戏人数: 4人
+• 使用牌数: 两副54张牌,共108张
+• 每人手牌数: 27张
+• 队伍划分: 相对的两人为一方,上家和下家为对方
+2. 牌点大小和花色:
+• 牌点由小到大: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A, 小王, 大王
+• 花色: 红桃(♡), 黑桃(♠), 梅花(♣), 方块(♢)
+• 特殊牌: 红心级牌可作为任意牌点的花色牌(大小王除外) 搭配使用, 称为”逢
+人配”。每回合的逢人配由当局级牌的红心牌担任。
+3. 出牌顺序:
+• 一圈牌中, 出牌顺序为玩家索引0 →玩家索引1 →玩家索引2 →玩家索引3
+→玩家索引0 ...
+• 以更大的牌型压制前手牌, 直至其他玩家不出为止, 称为一圈牌
+4. 牌型: 分为两大类:
+• 第一类:
+– 单张:任意一张单牌
+– 对子:任意两张点数相同的牌,包括对大王或对小王
+– 木板:三对点数相邻的对子,如223344
+– 三同张:三张点数相同的牌
+– 钢板:两套点数相同的三同张,如333444
+– 三带二:三同张加一个对子,如55522
+– 顺子:五张点数相邻的牌,如23456
+– 以上不同牌型之间不能相互压制
+• 第二类:
+– 炸弹:四张或四张以上点数相同的牌
+– 同花顺:五张花色相同的顺子
+– 天王炸:大小王各两张
+– 牌型大小:
+– 第一类牌型中,以点数大者为大。三带二只比较三同张的大小。2在三连
+对、二连三、顺子、同花顺中视为1点,最小。
+– 炸弹张数多者为大，若张数相同，则点数大者为大
+– 同花顺以点数大者为大，可压制五张及以下的炸弹，但不能压制六张及
+以上的炸弹
+– 天王炸为最大，可压制所有牌型
+17
+
+
+
+===== PAGE 18 =====
+Preprint
+5. 游戏术语:
+• 一副牌:从开始发牌到所有玩家出完手中牌的过程
+• 出完牌顺序称谓:上游(第一个出完)、二游、三游、下游(最后一个出完)
+• 双下游:一方两人分别为三游和下游,对下一副牌的局势较为不利
+6. 计分规则(每副牌):
+• 双上(一方两人分别为上游和二游):该方+4分,另一方-4分
+• 一方两人分别为上游和三游:该方+2分,另一方-2分
+• 一方两人分别为上游和下游:该方+1分,另一方-1分
+• 注:同一方两人得分总是相同,体现团队合作精神
+7. 获胜条件: 经过若干局后,总分较高的一方获胜。由于上游得分至关重要,因此争取
+上游是取胜的关键。
+B
+PROMPT TEMPLATE SAMPLES
+B.1
+SAMPLE PROMPTS FOR FIRST-ORDER BEHAVIOUR PATTERN ANALYSIS (INCOMPLETE):
+Understand the rules of the game, the cards you have, your observations, and a summary of
+the current game history. Please infer the beliefs of all players on the field and the advantages
+and disadvantages of the cards they hold, for example, they may lack a card type.
+了解游戏规则、你拥有的牌、你的观察结果和总结当前游戏历史记录。请推断出场
+上所有玩家的信念以及他们所持有的手牌的优势和劣势，例如，他们可能缺乏卡的
+种类。
+B.2
+SAMPLE PROMPTS FOR PLANNING AND EVALUATOR (INCOMPLETE):
+Develop a rational strategy: Considering the available actions, formulate a plan for each
+action to progressively achieve victory. From the adversary’s viewpoint, deduce the categories
+of cards in their hand and their team’s collaborative tactics based on their behavioral
+patterns, predict their likely actions, and infer teammates’ beliefs and hand cards to construct
+a cooperative strategy.
+Estimate the expected gain for each plan: Estimate the final points your team may gain by
+choosing this plan.
+策略：考虑可采取的行动，为每项行动制定计划，逐步取得胜利。从对手的角度，
+推断出对手手中牌的类别以及他们团队的协作策略（基于他们以往的行为模式），
+预测他们可能的行动，并推断队友的信念和手牌以构建合作策略。
+估计每个计划的预期收益：估计您的团队选择这个计划可能获得的最终分数。
+B.3
+SAMPLE PROMPTS FOR SECOND-ORDER BEHAVIOUR PATTERN ANALYSIS
+(INCOMPLETE):
+From my perspective, please analyze the impact and belief of each plan on the subsequent
+trend of the game, taking into account the possible hand conditions of the two other opponents
+and allies. From the opponent’s point of view (being able to observe only my actions, not my
+cards), please analyze their potential beliefs about my hand and our cooperative strategy.
+从我的角度来看，请分析每个计划对后续比赛走势的影响和信念，同时考虑到另外
+一位盟友和两位对手可能的手牌情况。从对手的角度（只能观察我的行动，而不是
+我的牌），请分析他们对我的手牌和我们的合作策略的潜在信念。
+18
+
+
+
+===== PAGE 19 =====
+Preprint
+C
+OUTPUT SAMPLES
+C.1
+CONVERT GAME STATE TO READABLE TEXT
+Readable Current State Observation:
+1. My current hand cards are: [’Diamond 2’, ’Diamond 4’, ’Club 3’, ’Club 4’, ’Club A’, ’Club A’,
+’Heart K’, ’Heart A’, ’Spade 2’, ’Spade 3’, ’Spade 4’, ’Spade 8’, ’Spade J’], and the remaining
+number of hand cards is 13. The current Joker card is Heart J. The Joker is a special card type
+that can act as any point card of any suit, helping to form larger card combinations.
+2. My teammate (with index number 2) has a total of 8 hand cards.
+3. If I play a card, the opponent (with index number 0) who is ready to follow me has 2 hand
+cards remaining.
+4. My previous opponent (with index number 3) has 13 hand cards.
+5. I currently do not have the right to play a card.
+6. The last player to play a card was the opponent (player index 2), and the card type he played
+was a pair, specifically [’Diamond 9’, ’Heart 9’], and he has 2 hand cards remaining.
+1. 我目前拥有的手牌为：[’方片2’, ’方片4’, ’梅花3’, ’梅花4’, ’梅花A’, ’梅花A’, ’红心
+K’, ’红心A’, ’黑桃2’, ’黑桃3’, ’黑桃4’, ’黑桃8’, ’黑桃J’]，剩余手牌数量为13，当前逢
+人配为红心J。逢人配是一种特殊的牌型，可以充当任意牌点的花色牌，帮助组合出更
+大的牌型。
+2. 我的队友（索引号为2）所有的手牌数量为8。
+3. 如果我打出牌之后，准备要接我的对手（索引号为0），他所拥有的手牌数量为2。
+4. 我的上家对手（索引号为3）所拥有的手牌数量为13。
+5. 我当前没有出牌权。
+6. 上次出牌的玩家为对手（玩家索引2），他打出的牌型为对牌，具体牌为[’方片9’, ’红
+心9’]，他所剩余的手牌数量为2。
+C.2
+HISTORY RECORD TO READABLE TEXT
+Readable History record:
+1. Player 2 (teammate) played a single card with the value [’Joker’].
+2. Player 3 (previous opponent) passed.
+3. Player 1 (next opponent) passed.
+4. Player 2 (teammate) played a pair with the values [’Diamond 4’, ’Heart 4’].
+5. Player 3 (previous opponent) passed.
+6. Player 1 (next opponent) played a pair with the values [’Club 8’, ’Heart 8’].
+7. Player 2 (teammate) played a pair with the values [’Diamond 9’, ’Heart 9’].
+8. Player 3 (previous opponent) passed.
+1. 2号玩家(队友)打出了牌值为[’小王’] 的单牌。
+2. 3号玩家(上家对手)过牌。
+3. 1号玩家(下家对手)过牌。
+4. 2号玩家(队友)打出了牌值为[’方片4’, ’红心4’] 的对牌。
+5. 3号玩家(上家对手)过牌。
+6. 1号玩家(下家对手)打出了牌值为[’梅花8’, ’红心8’] 的对牌。
+7. 2号玩家(队友)打出了牌值为[’方片9’, ’红心9’] 的对牌。
+8. 3号玩家(上家对手)过牌。
+C.3
+PLANNING MODULE, FORMULATES PLANS FOR EACH VALID ACTION
+19
+
+
+
+===== PAGE 20 =====
+Preprint
+Planning:
+1. Convert the legal action list dictionary into readable text: Legal action index 0: The card
+combination type is a pair, and the hand cards forming the combination are Club A, Club A.
+Legal action index 1: The card combination type is pass, and there are no hand cards forming the
+combination.
+2. Based on my beliefs, develop a set of subsequent plans: Plan 0: If I play action index 0, it will
+suppress my teammate and cause them to lose the right to play. The core of my plan is to assist
+my teammate in achieving the first place.
+Plan 1: If I play action index 1, I can wait for better card combinations before playing, preserving
+more chips. The core of my plan is to assist my teammate and keep the pair of A’s to prevent my
+teammate from being unable to follow suit later.
+3. Analyze the impact of each plan on the subsequent game trends and beliefs: If I adopt Plan 0, it
+will suppress my teammate, lose stronger card combinations, cause my teammate to lose the right
+to play, and put our team at a disadvantage. After playing this set of cards, the cards I may have
+left could be Club 2, Club 3, Club 4, Heart K, Heart A, Spade 2, Spade 3, Spade 8, and Spade J,
+which may not be easy to play later. If I adopt Plan 1, it is a conservative approach to assist my
+teammates in finishing their hand, preserving the opportunity to suppress the opponents. After
+playing this set of cards, the number of cards I have left remains unchanged, and I will need to
+make further plans based on the situation.
+4. Estimate the expected gain for each plan: After adopting Plan 0, my teammate lost the right
+to play, and I also played the strong pair of A’s. I expect this will cause our team to be at a
+disadvantage and unable to achieve first place. The total points our team can obtain may be lower
+than 1 point.
+After adopting Plan 1, my ranking when I finish all my cards could be 2nd, 3rd, or 4th place, as
+the assistive approach may miss the opportunity for first place. My teammate’s expected ranking,
+when they finish their cards, could be first place, so we can obtain more points. The total points
+our team can obtain may be above 1 point.
+5. Plan selection: Based on the expected gain ranking, choose the plan with the highest expected
+benefit. According to the analysis, Plan 1 has the highest expected benefit because it can assist
+my teammate in passing, while preserving stronger card combinations, with the possibility of
+achieving first place. Therefore, Plan 1 is selected.
+1. 将合法操作列表字典转为可读文本：合法动作索引0：牌型为对牌，组成牌型的手牌
+为梅花A, 梅花A。合法动作索引1：牌型为过牌，组成牌型的手牌为无。
+2. 基于您的信念，制定一套后续方案：方案0：我打出动作索引0的话，将会压制队
+友，导致队友失去出牌权。我的方案核心是辅助队友取得头游。方案1：我打出动作索
+引1的话，可以等待更好的牌型再出牌，保留更多筹码。我的方案核心是辅助队友，保
+留对A防止后续队友接不住牌。
+3. 分析每套方案对比赛后续走势影响以及信念：如果我采用方案0，会压制队友，失去
+更强大的牌型，让队友失去出牌权，导致队伍陷入劣势。打完这套牌之后我所剩下的牌
+可能还有梅花2, 梅花3, 梅花4, 红心K, 红心A, 黑桃2, 黑桃3, 黑桃8, 黑桃J，这些牌后
+续不太好走掉。如果我采用方案1，保守打法，辅助队友打完手牌，保留压制对手的机
+会。打完这套牌之后我所剩下的牌数量不变，后续需要根据情况再做打算。
+4. 估算每套方案的预期增益：采用方案0后，队友失去出牌权，且我也打出了强大的
+对A。我预期这样会导致队伍陷入劣势，没办法成为头游。队伍可以获得的总分可能是
+低于1分。采用方案1后，我走完所有手牌的名次可能是2,3,4游，因为辅助打法可能错失
+头游的机会。我队友预期走完牌的名次可能是头游，因此我们可以取得更多分数。队伍
+可以获得的总分可能是1分以上。
+5. 方案选择：根据预期增益排名，选择预期获益最高的方案。根据分析，方案1的预期
+获益最高，因为可以辅助队友过牌，同时保留更强大的牌型，有可能取得头游，因此选
+择方案1。
+20
+
+
+
+===== PAGE 21 =====
+Preprint
+C.4
+ACQUIRE SECOND-ORDER TOM KNOWLEDGE
+Second-order ToM:
+Based on my current hand [’Diamond 2’, ’Diamond 4’, ’Club 3’, ’Club 4’, ’Club A’, ’Club A’,
+’Heart K’, ’Heart A’, ’Spade 2’, ’Spade 3’, ’Spade 4’, ’Spade 8’, ’Spade J’], I have a pair of Club
+A, a pair of 3, a pair of 4, pairs, a single card, and a wild card (Heart J). My hand lacks stronger
+card combinations such as straights, three-of-a-kind, full houses, bombs, etc., but the wild card
+can help me form larger card combinations.
+Belief about the hand of player index 2 (teammate): Based on the historical play records, my
+teammate played pairs and single cards in the previous rounds, with a hand size of 8. They may
+have some pairs and single cards, but the specific card types are difficult to determine. They
+may lack some stronger card combinations and need our cooperation to suppress the opponents,
+helping them be the first to play all their cards.
+Player index 2’s (teammate) potential belief of my current hand: My teammate may think that I
+have some pairs and single cards in my hand, but the specific card types are difficult to determine.
+In the previous rounds, after they played some smaller pairs, I did not follow their cards. They
+may understand that I lack decisive winning cards and are cooperating with them to let them
+become the first to finish.
+Belief about our team’s cooperation plan: I should currently assist my teammate in being the first
+player to finish all their cards, cooperating with each other and choosing a playing strategy based
+on the situation on the table and the opponents’ play, striving to achieve first or second place to
+obtain more points.
+Belief about the cards of player index 0 (enemy): Based on the historical play records, enemy 1
+did not follow my teammate’s pair of 4 in the previous rounds, with a hand size of 2. They may
+have fewer cards, and it can be determined that they do not have pairs in their hand. They have
+some stronger single cards, and I need to choose appropriate card combinations to suppress them
+when playing.
+Belief about the cards of player index 3 (enemy): Based on the historical play records, enemy 2
+passed in the previous rounds with a hand size of 13. They may have more cards, but the specific
+card types are difficult to determine. They may have some stronger card combinations and are
+trying their best to assist their teammate in becoming the first to finish. Therefore, they may play
+any strong cards in their hand to suppress us and then use single cards to help their teammate
+win.
+Player index 0 and 3’s (enemies) potential belief of my current hand: The enemies may think
+that I have some pairs and single cards in my hand, but the specific card types are difficult to
+determine. They may believe that I lack some stronger card combinations but may also be wary of
+the wild card in my hand, requiring me to choose carefully when playing.
+根据我当前手牌[’方片2’, ’方片4’, ’梅花3’, ’梅花4’, ’梅花A’, ’梅花A’, ’红心K’, ’红心
+A’, ’黑桃2’, ’黑桃3’, ’黑桃4’, ’黑桃8’, ’黑桃J’]，我拥有一对梅花A，一对3，一对4，
+对子，一张单牌，一张逢人配（红心J）。我的手牌中缺少顺子、三同张、钢板、炸弹
+等比较强大的牌型，但有逢人配可以帮助我组合出更大的牌型。
+对玩家索引2（队友）的手牌的信念：根据历史出牌记录，队友在前几轮中打出了对牌
+和单牌，手牌数量为8，可能拥有一些对子和单牌，但具体牌型难以确定。他可能缺少
+一些比较强大的牌型，需要我们合作来压制对手，配合他第一个打完所有手牌。
+玩家索引为2（队友）当前对我的手牌的潜在看法：队友可能认为我手牌中拥有一些对
+子和单牌，但具体牌型难以确定。前几回合在他打了一些比较小对子之后，我没有接他
+的牌，他可能理解到我缺乏决定性获胜的手牌，正在配合他，让他成为头游。
+对我们团队配合计划的信念：我目前应该辅助队友让他尽力成为第一个走完所有手牌的
+玩家，互相配合，根据场上局势和对手出牌情况来选择出牌策略，争取取得头游或者二
+游，以获取更多的分数。
+21
+
+
+
+===== PAGE 22 =====
+Preprint
+对玩家索引0（敌人）的牌的信念：根据历史出牌记录，敌人1在前几轮中没有接住队
+友打出的对4 ，手牌数量为2，可能手牌较少，可以确定他手牌中不存在对子。他拥有一
+些比较强大的单牌，需要我在出牌时选择合适的牌型来压制他。
+对玩家索引3（敌人）的牌的信念：根据历史出牌记录，敌人2在前几轮中过牌，手牌
+数量为13，可能手牌较多，但具体牌型难以确定。他可能拥有一些比较强大的牌型，正
+在尽力辅助他的队友成为头游，因此他可能会打出手中任何强大的牌来压制我们，然后
+用单牌辅助他队友获胜。
+玩家索引为0，3（敌人）当前对我的手牌的潜在看法：敌人可能认为我手牌中拥有一
+些对子和单牌，但具体牌型难以确定。他们可能认为我缺少一些比较强大的牌型，但也
+可能会警惕我手中的逢人配，需要我在出牌时谨慎选择。
+C.5
+RELATED WORKS
+C.5.1
+RELATED WORKS FOR LARGE LANGUAGE MODELS
+Recent research has conducted thorough and comprehensive assessments of the effectiveness of
+instruction following LLMs’ on various tasks OpenAI (2023a; 2022); Taori et al. (2023); Jiang
+et al. (2023); Yang et al. (2023); Zeng et al. (2023); Bai et al. (2023), demonstrating its exceptional
+capability in zero-shot scenarios compared to other models Bubeck et al. (2023); Cheng et al.
+(2023); Wang et al. (2024); Jiayang et al. (2024); Chan et al. (2023a). Nonetheless, there exist
+persistent challenges that remain unattended, such as the incapacity to engage in intricate mathematical
+reasoning Frieder et al. (2023), text-to-table generation Deng et al. (2024), implicit discourse relation
+recognition Chan et al. (2023b), address associated ethical concerns, and tackle privacy issues Li
+et al. (2023a); Susnjak (2022); Li et al. (2023b); Lukas et al. (2023); Li et al. (2024). Therefore, it is
+critical to discuss whether LLMs based agents possess the capacity of the theory of mind to enhance
+the performance on a multi-player cooperative game under an imperfect information environment.
+22

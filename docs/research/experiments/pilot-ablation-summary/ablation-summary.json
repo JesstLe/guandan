@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "missing_metrics",
+  "fullVerifierMetricsPath": "docs/research/experiments/pilot-e6-verifier-revision-results/metrics.json",
+  "rows": [
+    {
+      "variantId": "no-hidden-info-check",
+      "title": "No Hidden-Info Check",
+      "status": "missing_metrics",
+      "removedComponent": "hidden-information discipline",
+      "targetLabel": "hiddenInfoDisciplined",
+      "metricsPath": "docs/research/experiments/pilot-ablation-no-hidden-info/metrics.json",
+      "hardFailures": "[NEED_EXPERIMENT]",
+      "hardFailureDeltaVsFull": "[NEED_EXPERIMENT]",
+      "targetFailureBurden": "[NEED_EXPERIMENT]",
+      "targetBurdenDeltaVsFull": "[NEED_EXPERIMENT]",
+      "reasonActionFailureBurden": "[NEED_EXPERIMENT]",
+      "reasonActionBurdenDeltaVsFull": "[NEED_EXPERIMENT]"
+    },
+    {
+      "variantId": "no-partner-check",
+      "title": "No Partner Check",
+      "status": "missing_metrics",
+      "removedComponent": "partner consistency",
+      "targetLabel": "partnerConsistent",
+      "metricsPath": "docs/research/experiments/pilot-ablation-no-partner/metrics.json",
+      "hardFailures": "[NEED_EXPERIMENT]",
+      "hardFailureDeltaVsFull": "[NEED_EXPERIMENT]",
+      "targetFailureBurden": "[NEED_EXPERIMENT]",
+      "targetBurdenDeltaVsFull": "[NEED_EXPERIMENT]",
+      "reasonActionFailureBurden": "[NEED_EXPERIMENT]",
+      "reasonActionBurdenDeltaVsFull": "[NEED_EXPERIMENT]"
+    },
+    {
+      "variantId": "no-opponent-check",
+      "title": "No Opponent Check",
+      "status": "missing_metrics",
+      "removedComponent": "opponent consistency",
+      "targetLabel": "opponentConsistent",
+      "metricsPath": "docs/research/experiments/pilot-ablation-no-opponent/metrics.json",
+      "hardFailures": "[NEED_EXPERIMENT]",
+      "hardFailureDeltaVsFull": "[NEED_EXPERIMENT]",
+      "targetFailureBurden": "[NEED_EXPERIMENT]",
+      "targetBurdenDeltaVsFull": "[NEED_EXPERIMENT]",
+      "reasonActionFailureBurden": "[NEED_EXPERIMENT]",
+      "reasonActionBurdenDeltaVsFull": "[NEED_EXPERIMENT]"
+    },
+    {
+      "variantId": "no-reason-action-check",
+      "title": "No Reason-Action Check",
+      "status": "missing_metrics",
+      "removedComponent": "reason-action consistency",
+      "targetLabel": "reasonActionConsistent",
+      "metricsPath": "docs/research/experiments/pilot-ablation-no-reason-action/metrics.json",
+      "hardFailures": "[NEED_EXPERIMENT]",
+      "hardFailureDeltaVsFull": "[NEED_EXPERIMENT]",
+      "targetFailureBurden": "[NEED_EXPERIMENT]",
+      "targetBurdenDeltaVsFull": "[NEED_EXPERIMENT]",
+      "reasonActionFailureBurden": "[NEED_EXPERIMENT]",
+      "reasonActionBurdenDeltaVsFull": "[NEED_EXPERIMENT]"
+    },
+    {
+      "variantId": "no-legal-action-check",
+      "title": "No Legal-Action Check",
+      "status": "missing_metrics",
+      "removedComponent": "legal-action check",
+      "targetLabel": "legalAction",
+      "metricsPath": "docs/research/experiments/pilot-ablation-no-legal-action/metrics.json",
+      "hardFailures": "[NEED_EXPERIMENT]",
+      "hardFailureDeltaVsFull": "[NEED_EXPERIMENT]",
+      "targetFailureBurden": "[NEED_EXPERIMENT]",
+      "targetBurdenDeltaVsFull": "[NEED_EXPERIMENT]",
+      "reasonActionFailureBurden": "[NEED_EXPERIMENT]",
+      "reasonActionBurdenDeltaVsFull": "[NEED_EXPERIMENT]"
+    }
+  ],
+  "notes": "Ablation metrics are missing; this file is a readiness artifact, not an experimental result."
+}

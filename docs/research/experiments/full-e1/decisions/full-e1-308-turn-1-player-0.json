@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "full-e1-308",
+  "decisionId": "full-e1-308-turn-1-player-0",
+  "turnIndex": 1,
+  "roundNumber": 1,
+  "currentPlayer": 0,
+  "teamId": 0,
+  "phase": "lead",
+  "trumpRank": "7",
+  "privateHand": [
+    {
+      "rank": "3",
+      "suit": "club",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "4",
+      "suit": "club",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "5",
+      "suit": "club",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "6",
+      "suit": "club",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    }
+  ],
+  "tableLead": null,
+  "publicHistory": [
+    {
+      "eventId": "a1b95064-416b-40ad-9a5e-1f6484f5b0ed",
+      "type": "new_game"
+    }
+  ],
+  "handCounts": [
+    4,
+    2,
+    3,
+    3
+  ],
+  "playedCardSummary": {
+    "playedCount": 0,
+    "trumpPlayed": 0,
+    "bombsPlayed": 0,
+    "bigCardsPlayed": 0
+  },
+  "inferences": [],
+  "legalActions": [
+    {
+      "actionId": "play-single-club-3-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "3",
+          "suit": "club",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-club-4-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "4",
+          "suit": "club",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-club-5-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "5",
+          "suit": "club",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-club-6-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "6",
+          "suit": "club",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    }
+  ],
+  "actualActionId": null,
+  "outcome": null,
+  "scenarioTags": [
+    "lead_opening",
+    "opponent_near_finish"
+  ]
+}

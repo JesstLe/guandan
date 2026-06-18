@@ -1,0 +1,20 @@
+flowchart LR
+  A["Guandan trajectory"] --> B["Decision-point exporter"]
+  B --> C["Schema-valid decision point"]
+  C --> D["Prompt packet"]
+  D --> E["LLM reasoning trace"]
+  E --> F["Rule-grounded verifier"]
+  F --> G["Verifier labels and issues"]
+  G --> H["Revision prompt"]
+  H --> I["Revised reasoning trace"]
+  I --> J["Before/after verifier comparison"]
+  G --> K["Reasoning reliability table"]
+  J --> L["Submission gate"]
+  K --> L
+
+  classDef data fill:#eef6ff,stroke:#3b82f6,color:#111827;
+  classDef model fill:#fff7ed,stroke:#f97316,color:#111827;
+  classDef check fill:#f0fdf4,stroke:#22c55e,color:#111827;
+  class A,B,C,D data;
+  class E,H,I model;
+  class F,G,J,K,L check;

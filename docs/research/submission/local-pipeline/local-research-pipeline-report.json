@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T00:49:22.943Z",
+  "status": "completed",
+  "steps": [
+    {
+      "id": "pilot-metrics-summary",
+      "title": "Pilot Metrics Summary",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePilotMetricsSummaryCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-metrics-summary"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.md\",\n  \"rowCount\": 5\n}",
+      "stderr": ""
+    },
+    {
+      "id": "revision-comparison",
+      "title": "Revision Comparison",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeRevisionComparisonCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-revision-comparison"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.md\",\n  \"status\": \"missing_raw_outputs\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "ablation-summary",
+      "title": "Ablation Summary",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAblationSummaryCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-ablation-summary"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-ablation-summary/ablation-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-ablation-summary/ablation-summary.md\",\n  \"status\": \"missing_metrics\",\n  \"rowCount\": 5\n}",
+      "stderr": ""
+    },
+    {
+      "id": "paper-tables",
+      "title": "Paper Tables",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePaperTableArtifactsCli.ts",
+        "--out",
+        "docs/research/tables"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"tableZeroPath\": \"docs/research/tables/table-0-related-work-positioning.md\",\n  \"tableOnePath\": \"docs/research/tables/table-1-reasoning-reliability.md\",\n  \"tableTwoPath\": \"docs/research/tables/table-2-verifier-revision-effect.md\",\n  \"tableThreePath\": \"docs/research/tables/table-3-verifier-ablation.md\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "manuscript",
+      "title": "Manuscript Assembly",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/assembleManuscriptCli.ts"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 2825,\n  \"readyForSubmission\": false,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 8,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
+      "stderr": ""
+    },
+    {
+      "id": "marker-inventory",
+      "title": "Submission Marker Inventory",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeSubmissionMarkerInventoryCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/marker-inventory"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.json\",\n  \"markdownPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.md\",\n  \"markerScope\": \"submission_relevant_files\",\n  \"counts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 25,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  },\n  \"itemCount\": 25\n}",
+      "stderr": ""
+    },
+    {
+      "id": "experiment-resolution-ledger",
+      "title": "Experiment Resolution Ledger",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeExperimentResolutionLedgerCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/experiment-resolution-ledger"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.json\",\n  \"markdownPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.md\",\n  \"totalItems\": 8,\n  \"byStatus\": {\n    \"missing_evidence\": 8,\n    \"evidence_available_marker_still_present\": 0\n  },\n  \"byEvidenceFamily\": {\n    \"first_pass_llm\": 7,\n    \"verifier_revision\": 6,\n    \"full_dataset\": 0,\n    \"ablation\": 2,\n    \"case_study\": 2,\n    \"generalization\": 0\n  }\n}",
+      "stderr": ""
+    },
+    {
+      "id": "submission-gate",
+      "title": "Submission Gate",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeSubmissionGateReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/gate-report"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/gate-report/submission-gate-report.json\",\n  \"markdownPath\": \"docs/research/submission/gate-report/submission-gate-report.md\",\n  \"overallStatus\": \"not_ready\",\n  \"blockerCount\": 5\n}",
+      "stderr": ""
+    },
+    {
+      "id": "preflight",
+      "title": "Research Preflight",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeResearchPreflightReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/preflight"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"waiting_for_provider_results\",\n  \"externalBlockers\": 4,\n  \"localBlockers\": 1\n}",
+      "stderr": ""
+    },
+    {
+      "id": "provider-handoff-audit",
+      "title": "Provider Handoff Audit",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeProviderHandoffAuditCli.ts",
+        "--out",
+        "docs/research/submission/provider-handoff-audit"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 3,\n  \"issueCount\": 3\n}",
+      "stderr": ""
+    },
+    {
+      "id": "bibliography-integrity",
+      "title": "Bibliography Integrity",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeBibliographyIntegrityReportCli.ts",
+        "--bib",
+        "docs/research/submission/references.bib",
+        "--out",
+        "docs/research/submission/citation-integrity"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/citation-integrity/bibliography-integrity-report.json\",\n  \"markdownPath\": \"docs/research/submission/citation-integrity/bibliography-integrity-report.md\",\n  \"ready\": true,\n  \"entryCount\": 14,\n  \"issueCount\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "reproducibility-manifest",
+      "title": "Reproducibility Manifest",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeReproducibilityManifestCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 43,\n  \"missing\": 3\n}",
+      "stderr": ""
+    }
+  ]
+}

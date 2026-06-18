@@ -16,6 +16,7 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "research:local-pipeline": "tsx server/src/research/runLocalResearchPipelineCli.ts",
     "test:shared": "npm run test -w shared",
     "test:server": "npm run test -w server",
     "test:client": "npm run test -w client"

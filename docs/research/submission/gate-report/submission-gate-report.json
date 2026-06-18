@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "0.1.0",
+  "overallStatus": "not_ready",
+  "markerCounts": {
+    "NEED_SOURCE": 0,
+    "UNCERTAIN": 0,
+    "NEED_EXPERIMENT": 8,
+    "DO_NOT_SUBMIT": 0,
+    "AUTHOR_DECISION": 0
+  },
+  "gates": [
+    {
+      "id": "question_quality",
+      "title": "Gate 1: Question Quality",
+      "status": "pass",
+      "evidence": [
+        "PROJECT.md exists.",
+        "idea/research_plan.md exists.",
+        "drafts/paper-as-code/00_claims.md exists."
+      ],
+      "blockers": []
+    },
+    {
+      "id": "related_work_integrity",
+      "title": "Gate 2: Related Work Integrity",
+      "status": "pass",
+      "evidence": [
+        "Literature matrix has 14 entries.",
+        "Gap map exists."
+      ],
+      "blockers": []
+    },
+    {
+      "id": "experiment_sufficiency",
+      "title": "Gate 3: Experiment Sufficiency",
+      "status": "fail",
+      "evidence": [
+        "Pilot metrics summary has 5 rows.",
+        "Verifier-revision comparison status is missing_raw_outputs."
+      ],
+      "blockers": [
+        "LLM condition plain-llm has status missing_raw_outputs.",
+        "LLM condition candidate-constrained-llm has status missing_raw_outputs.",
+        "LLM condition verifier-revision-llm has status missing_raw_outputs.",
+        "Verifier-revision comparison status is missing_raw_outputs."
+      ]
+    },
+    {
+      "id": "writing_readiness",
+      "title": "Gate 4: Writing Readiness",
+      "status": "fail",
+      "evidence": [
+        "00_claims.md exists.",
+        "01_introduction.md exists.",
+        "02_related_work.md exists.",
+        "03_method.md exists.",
+        "04_experiments.md exists.",
+        "05_discussion_limitations.md exists.",
+        "06_abstract.md exists."
+      ],
+      "blockers": [
+        "Submission-relevant files still have 8 NEED_EXPERIMENT markers."
+      ]
+    },
+    {
+      "id": "submission_readiness",
+      "title": "Gate 5: Submission Readiness",
+      "status": "pass",
+      "evidence": [
+        "experiments/pilot-e4-plain-llm-batch/provenance.json pending because plain-llm status is missing_raw_outputs.",
+        "experiments/pilot-e5-candidate-constrained-batch/provenance.json pending because candidate-constrained-llm status is missing_raw_outputs.",
+        "AI-use disclosure draft exists."
+      ],
+      "blockers": []
+    }
+  ],
+  "immediateBlockers": [
+    "LLM condition plain-llm has status missing_raw_outputs.",
+    "LLM condition candidate-constrained-llm has status missing_raw_outputs.",
+    "LLM condition verifier-revision-llm has status missing_raw_outputs.",
+    "Verifier-revision comparison status is missing_raw_outputs.",
+    "Submission-relevant files still have 8 NEED_EXPERIMENT markers."
+  ]
+}

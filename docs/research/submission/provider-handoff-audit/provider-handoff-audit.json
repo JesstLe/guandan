@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T00:49:22.154Z",
+  "status": "ready",
+  "conditionCount": 3,
+  "conditions": [
+    {
+      "conditionId": "plain-llm",
+      "title": "Plain LLM first-pass run",
+      "status": "waiting_for_provider_results",
+      "mappingJsonlPath": "docs/research/experiments/pilot-e4-plain-llm-batch/batch-input.jsonl",
+      "uploadJsonlPath": "docs/research/experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl",
+      "expectedProviderResultPath": "docs/research/experiments/provider-results/plain-llm.jsonl",
+      "mappingExists": true,
+      "uploadExists": true,
+      "providerResultExists": false,
+      "mappingRequestCount": 50,
+      "uploadRequestCount": 50,
+      "customIdMismatchCount": 0,
+      "missingFromUpload": [],
+      "missingFromMapping": [],
+      "notes": [
+        "Provider result should be saved to docs/research/experiments/provider-results/plain-llm.jsonl after the external run completes."
+      ]
+    },
+    {
+      "conditionId": "candidate-constrained-llm",
+      "title": "Candidate-constrained LLM first-pass run",
+      "status": "waiting_for_provider_results",
+      "mappingJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-input.jsonl",
+      "uploadJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl",
+      "expectedProviderResultPath": "docs/research/experiments/provider-results/candidate-constrained-llm.jsonl",
+      "mappingExists": true,
+      "uploadExists": true,
+      "providerResultExists": false,
+      "mappingRequestCount": 50,
+      "uploadRequestCount": 50,
+      "customIdMismatchCount": 0,
+      "missingFromUpload": [],
+      "missingFromMapping": [],
+      "notes": [
+        "Provider result should be saved to docs/research/experiments/provider-results/candidate-constrained-llm.jsonl after the external run completes."
+      ]
+    },
+    {
+      "conditionId": "verifier-revision-llm",
+      "title": "Verifier-revision LLM run",
+      "status": "blocked_by_first_pass_results",
+      "mappingJsonlPath": "docs/research/experiments/pilot-e6-verifier-revision-batch/batch-input.jsonl",
+      "uploadJsonlPath": "docs/research/experiments/pilot-e6-verifier-revision-batch/openai/openai-batch-input.jsonl",
+      "expectedProviderResultPath": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
+      "mappingExists": false,
+      "uploadExists": false,
+      "providerResultExists": false,
+      "mappingRequestCount": 0,
+      "uploadRequestCount": 0,
+      "customIdMismatchCount": 0,
+      "missingFromUpload": [],
+      "missingFromMapping": [],
+      "notes": [
+        "Real verifier-revision package is expected to be generated only after first-pass LLM traces and verifier results exist.",
+        "Provider result should be saved to docs/research/experiments/provider-results/verifier-revision-llm.jsonl after the external run completes."
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "severity": "info",
+      "conditionId": "plain-llm",
+      "message": "Provider result not present yet: docs/research/experiments/provider-results/plain-llm.jsonl."
+    },
+    {
+      "severity": "info",
+      "conditionId": "candidate-constrained-llm",
+      "message": "Provider result not present yet: docs/research/experiments/provider-results/candidate-constrained-llm.jsonl."
+    },
+    {
+      "severity": "info",
+      "conditionId": "verifier-revision-llm",
+      "message": "Real verifier-revision package is intentionally blocked until first-pass LLM results exist."
+    }
+  ]
+}

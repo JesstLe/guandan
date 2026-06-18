@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "full-e1-357",
+  "decisionId": "full-e1-357-turn-1-player-0",
+  "turnIndex": 1,
+  "roundNumber": 1,
+  "currentPlayer": 0,
+  "teamId": 0,
+  "phase": "lead",
+  "trumpRank": "7",
+  "privateHand": [
+    {
+      "rank": "3",
+      "suit": "diamond",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "4",
+      "suit": "diamond",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "5",
+      "suit": "diamond",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    },
+    {
+      "rank": "6",
+      "suit": "diamond",
+      "copyIndex": 1,
+      "isTrump": false,
+      "isRedTrump": false
+    }
+  ],
+  "tableLead": null,
+  "publicHistory": [
+    {
+      "eventId": "cc8cba29-867a-45b6-90cd-897eb97bd41e",
+      "type": "new_game"
+    }
+  ],
+  "handCounts": [
+    4,
+    3,
+    2,
+    3
+  ],
+  "playedCardSummary": {
+    "playedCount": 0,
+    "trumpPlayed": 0,
+    "bombsPlayed": 0,
+    "bigCardsPlayed": 0
+  },
+  "inferences": [],
+  "legalActions": [
+    {
+      "actionId": "play-single-diamond-3-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "3",
+          "suit": "diamond",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-diamond-4-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "4",
+          "suit": "diamond",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-diamond-5-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "5",
+          "suit": "diamond",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    },
+    {
+      "actionId": "play-single-diamond-6-copy1",
+      "action": "play",
+      "cards": [
+        {
+          "rank": "6",
+          "suit": "diamond",
+          "copyIndex": 1,
+          "isTrump": false,
+          "isRedTrump": false
+        }
+      ],
+      "combinationType": "single",
+      "metadata": {
+        "beatsTable": true,
+        "usesBomb": false,
+        "usesWildcard": false
+      }
+    }
+  ],
+  "actualActionId": null,
+  "outcome": null,
+  "scenarioTags": [
+    "lead_opening",
+    "partner_near_finish"
+  ]
+}

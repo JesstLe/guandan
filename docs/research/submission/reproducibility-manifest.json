@@ -1,0 +1,400 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T00:50:07.843Z",
+  "rootDir": "docs/research",
+  "entries": [
+    {
+      "id": "project",
+      "title": "Project Record",
+      "path": "PROJECT.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 4064,
+      "sha256": "8961346e8dbe64acb8ff24cf1a2794a316953e7045ea2d9b43f0365694c757b3"
+    },
+    {
+      "id": "material-passport",
+      "title": "Material Passport",
+      "path": "material_passport.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 65493,
+      "sha256": "ed43a1593cbeebdf1602db93d3a703a351740d57a99917e587dbd7b0c9bb0c68"
+    },
+    {
+      "id": "literature-matrix",
+      "title": "Literature Matrix",
+      "path": "notes/literature_matrix.csv",
+      "kind": "file",
+      "status": "present",
+      "bytes": 9888,
+      "sha256": "1c856c86d71af878c259b7776e032f9d31954a57f79add1fe52e4cdd01a8acc6"
+    },
+    {
+      "id": "schemas",
+      "title": "Evaluation Schemas",
+      "path": "schemas",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 14490,
+      "fileCount": 3,
+      "treeSha256": "214a03e20180e8be3dcc7cd9ed6f6df46def24d6e9de66eb8b66302b74104fe6"
+    },
+    {
+      "id": "prompt-templates",
+      "title": "Prompt Templates",
+      "path": "prompts",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 3798,
+      "fileCount": 3,
+      "treeSha256": "2e92f558075bc6a445d758e9b9556e74f5593da2d73183eff610956816d4ab2e"
+    },
+    {
+      "id": "pilot-dataset-manifest",
+      "title": "Pilot Dataset Manifest",
+      "path": "experiments/pilot-e1/manifest.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3051,
+      "sha256": "a222ca259c2d800ab5c960b5b3d0b27dfcc64df3a377817cdd37e82e9d039ab4"
+    },
+    {
+      "id": "pilot-decision-points",
+      "title": "Pilot Decision Points",
+      "path": "experiments/pilot-e1/decisions",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 135870,
+      "fileCount": 50,
+      "treeSha256": "c008587e4156659db8c291f8807b8e1226df55963722a15f94c333eb2d35b71d"
+    },
+    {
+      "id": "full-dataset-manifest",
+      "title": "Full Evaluation Dataset Manifest",
+      "path": "experiments/full-e1/manifest.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 25502,
+      "sha256": "22951c6f9231826cafbfb0e90f8074a1519ce8f3c18a92b35038205b6767f909"
+    },
+    {
+      "id": "full-decision-points",
+      "title": "Full Evaluation Decision Points",
+      "path": "experiments/full-e1/decisions",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 1357700,
+      "fileCount": 500,
+      "treeSha256": "d88a8f61615bb77b48a86a314fd716412136cad0da076253ea810f644bec29d6"
+    },
+    {
+      "id": "legal-first-metrics",
+      "title": "Legal-First Baseline Metrics",
+      "path": "experiments/pilot-e2-heuristic-verifier/metrics.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 5973,
+      "sha256": "abe1e67c7183b04ee6f071410bfcbb6482ba58f5f5523d91e1dfd28e9dc37626"
+    },
+    {
+      "id": "strategic-heuristic-metrics",
+      "title": "Strategic Baseline Metrics",
+      "path": "experiments/pilot-e3-strategic-heuristic/metrics.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 5972,
+      "sha256": "350c2ed84a146d2d9e6ad0f5ada55d66f12792e014bed7fae6a3a86a1ce90271"
+    },
+    {
+      "id": "plain-prompt-packets",
+      "title": "Plain LLM Prompt Packets",
+      "path": "experiments/pilot-e4-plain-llm-prompts/packets",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 197230,
+      "fileCount": 50,
+      "treeSha256": "e6e3861dadb1087aaf689595668595a612e95bcd024f263db9599321bb98da22"
+    },
+    {
+      "id": "candidate-prompt-packets",
+      "title": "Candidate-Constrained Prompt Packets",
+      "path": "experiments/pilot-e5-candidate-constrained-prompts/packets",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 276130,
+      "fileCount": 50,
+      "treeSha256": "f2c18d5de7286ce31e214d3b4ff17d08d9bd9c306a952876e554cc365310e7de"
+    },
+    {
+      "id": "revision-fixture-packets",
+      "title": "Fixture Revision Prompt Packets",
+      "path": "experiments/pilot-e6-verifier-revision-fixture-prompts/packets",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 409850,
+      "fileCount": 50,
+      "treeSha256": "24c2f42791c5192c7a3d6daaab8a2901c4b89338c0a2bea0fc8a9c4f00f1804d"
+    },
+    {
+      "id": "plain-openai-batch",
+      "title": "Plain OpenAI Batch Input",
+      "path": "experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 188880,
+      "sha256": "15583ed3d45dbf1768238b3c334f0c344ea348d98c727044ef648c503b993775"
+    },
+    {
+      "id": "candidate-openai-batch",
+      "title": "Candidate OpenAI Batch Input",
+      "path": "experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 266180,
+      "sha256": "f81386553dcf8b64e71b26230c36c3cbcfcb8a565e9074a8d68a4ba3b972577f"
+    },
+    {
+      "id": "revision-fixture-openai-batch",
+      "title": "Fixture Revision OpenAI Batch Input",
+      "path": "experiments/pilot-e6-verifier-revision-fixture-batch/openai/openai-batch-input.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 399850,
+      "sha256": "ba76709a0f51220f6b5b86c3806f62f0b321c8caad98e800b29ce8a4b012236a"
+    },
+    {
+      "id": "provider-run-handoff",
+      "title": "Provider Run Handoff",
+      "path": "submission/provider-run-handoff.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 6078,
+      "sha256": "1d978083fb957321ef28f61bbea48bc3bedfe7a77f590496cac90c94cc891678"
+    },
+    {
+      "id": "provider-handoff-audit",
+      "title": "Provider Handoff Audit",
+      "path": "submission/provider-handoff-audit/provider-handoff-audit.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3623,
+      "sha256": "3008bc68665c687677dd1d4106c39b01d32f979d9d8bf645b22d20bc206c70cc"
+    },
+    {
+      "id": "plain-raw-audit",
+      "title": "Plain Raw Output Audit",
+      "path": "experiments/pilot-e4-plain-llm-batch/raw-output-audit.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2397,
+      "sha256": "9fe4a04e32c41fa67bb54adb02b23e1ffc46f9a603aeaafada79191c2a2d9cde"
+    },
+    {
+      "id": "candidate-raw-audit",
+      "title": "Candidate Raw Output Audit",
+      "path": "experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2421,
+      "sha256": "c52951771531742a1641e97fc391c81c69b30ca605c6094a3d12619c7b41c5f9"
+    },
+    {
+      "id": "revision-raw-audit",
+      "title": "Revision Raw Output Audit",
+      "path": "experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2879,
+      "sha256": "44e92c125a1d974ec8bc2aab3a136d98635bab128d65f0746b39b9ad8c75d40c"
+    },
+    {
+      "id": "plain-provider-results",
+      "title": "Plain Provider Results",
+      "path": "experiments/provider-results/plain-llm.jsonl",
+      "kind": "missing",
+      "status": "missing",
+      "bytes": 0
+    },
+    {
+      "id": "candidate-provider-results",
+      "title": "Candidate Provider Results",
+      "path": "experiments/provider-results/candidate-constrained-llm.jsonl",
+      "kind": "missing",
+      "status": "missing",
+      "bytes": 0
+    },
+    {
+      "id": "revision-provider-results",
+      "title": "Verifier Revision Provider Results",
+      "path": "experiments/provider-results/verifier-revision-llm.jsonl",
+      "kind": "missing",
+      "status": "missing",
+      "bytes": 0
+    },
+    {
+      "id": "metrics-summary",
+      "title": "Pilot Metrics Summary",
+      "path": "experiments/pilot-metrics-summary/pilot-metrics-summary.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3238,
+      "sha256": "86b836e8f66bc7db9a2bded2691bda5890b8281b40afd30d03d2e1fafab38640"
+    },
+    {
+      "id": "revision-comparison",
+      "title": "Revision Comparison",
+      "path": "experiments/pilot-revision-comparison/revision-comparison.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2602,
+      "sha256": "b790ce216268155d229155906de7b3a1089443efaca4a458ca72f3e4613719f4"
+    },
+    {
+      "id": "ablation-summary",
+      "title": "Verifier Ablation Summary",
+      "path": "experiments/pilot-ablation-summary/ablation-summary.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3444,
+      "sha256": "d601f51a62cb4ab6c8b9d610c651ecf4dac101fe8232df9a83f8438f34fb42ea"
+    },
+    {
+      "id": "paper-tables",
+      "title": "Paper Table Sources",
+      "path": "tables",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 4764,
+      "fileCount": 5,
+      "treeSha256": "99e84e653a08a75aa75cc9ee90ab9cfdddc86ab5ae53c470930699aa014c88d5"
+    },
+    {
+      "id": "figures",
+      "title": "Figure Sources",
+      "path": "figures",
+      "kind": "directory",
+      "status": "present",
+      "bytes": 1253,
+      "fileCount": 2,
+      "treeSha256": "ea476cdd21e94be0a6dd2aa830b402453c6542004a893f2ffe535ca02e5c2a3c"
+    },
+    {
+      "id": "references-bib",
+      "title": "Normalized Bibliography",
+      "path": "submission/references.bib",
+      "kind": "file",
+      "status": "present",
+      "bytes": 5918,
+      "sha256": "86f88c35847b07cb41386b5d5b19e63535f2dbb5a8f5b1d11f9a3ded174badf1"
+    },
+    {
+      "id": "bibliography-integrity",
+      "title": "Bibliography Integrity Report",
+      "path": "submission/citation-integrity/bibliography-integrity-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 255,
+      "sha256": "0fba8f813933e6926e179be97b70ed97e3a0e29513e61b98cbfd9ea6dddf9d2e"
+    },
+    {
+      "id": "manuscript",
+      "title": "Assembled Manuscript",
+      "path": "submission/manuscript/manuscript-draft.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 22291,
+      "sha256": "2c03ea61cf15f90cfef04d4436f6ece8fc99153017c681b522b7466657bc3119"
+    },
+    {
+      "id": "manuscript-status",
+      "title": "Manuscript Status",
+      "path": "submission/manuscript/manuscript-status.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 831,
+      "sha256": "abbb6e070407085f29a17250fe5bff3066f936d50c45be600ebc6d4aab9fc9fb"
+    },
+    {
+      "id": "submission-gate",
+      "title": "Submission Gate Report",
+      "path": "submission/gate-report/submission-gate-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2716,
+      "sha256": "436b93e83a4625a678a6cdd0a028bce9b57c8c44501481bd7d42008d1d6bdf9d"
+    },
+    {
+      "id": "submission-marker-inventory",
+      "title": "Submission Marker Inventory",
+      "path": "submission/marker-inventory/submission-marker-inventory.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 10204,
+      "sha256": "8ad706f47db6a6345fa7e75ed070472bfe0a12c073f54bc2674ddb16a56bc5b9"
+    },
+    {
+      "id": "experiment-resolution-ledger",
+      "title": "Experiment Resolution Ledger",
+      "path": "submission/experiment-resolution-ledger/experiment-resolution-ledger.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 39324,
+      "sha256": "a2bc4e818dad2be72e717e31fdf74c7fc6ecb8c175e0f0cfda1fc24a31609f2b"
+    },
+    {
+      "id": "preflight-report",
+      "title": "Research Preflight Report",
+      "path": "submission/preflight/research-preflight-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2009,
+      "sha256": "69288e0b7b62ada87193f9c7c3cb32f1df7b443aedd030c43384090d213afdb8"
+    },
+    {
+      "id": "local-pipeline-report",
+      "title": "Local Research Pipeline Report",
+      "path": "submission/local-pipeline/local-research-pipeline-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 8344,
+      "sha256": "fd502bd9fba34e81734eaf5cbc89a1789ba1f677a01265038ff85d4817989cf2"
+    },
+    {
+      "id": "submission-checklist",
+      "title": "Submission Checklist",
+      "path": "submission/submission_checklist.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 8025,
+      "sha256": "d7ee66a3a522a6bfc4e25c827ef644faea1d873f35898d63575a180200bc2aa1"
+    },
+    {
+      "id": "submission-profile",
+      "title": "Working Submission Profile",
+      "path": "submission/submission-profile.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 4191,
+      "sha256": "4830c603c5293d3c08afa112d014aa0779c4ff21d483ee221ba4c055b8f66a27"
+    },
+    {
+      "id": "author-decision-brief",
+      "title": "Author Decision Brief",
+      "path": "submission/author-decision-brief.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 5696,
+      "sha256": "7ec62cfb0801c72324e449605ac89fe389641456bed6d65719eab6be59939184"
+    },
+    {
+      "id": "ai-disclosure",
+      "title": "AI-Use Disclosure",
+      "path": "submission/ai-use-disclosure.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2270,
+      "sha256": "9037ef3f33c6389aa0926398df5d7aab8af148e22e0da26a829d1af62db8cf24"
+    }
+  ]
+}

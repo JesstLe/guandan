@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "0.1.0",
+  "providerFormat": "openai-batch-chat-completions-jsonl",
+  "sourceBatchJsonl": "docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-input.jsonl",
+  "endpoint": "/v1/chat/completions",
+  "model": "gpt-4.1-mini",
+  "temperature": 0,
+  "maxCompletionTokens": 1200,
+  "responseFormat": "json_object",
+  "requestCount": 50,
+  "openAIJsonlFile": "openai-batch-input.jsonl",
+  "note": "Prepared offline. Upload only after author approval and record provider provenance after completion."
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "0.1.0",
+  "modelProvider": "<provider>",
+  "modelName": "<model-name-and-version>",
+  "runId": "<run-id-or-batch-id>",
+  "runDate": "YYYY-MM-DD",
+  "temperature": 0,
+  "samplingParameters": {
+    "top_p": 1
+  },
+  "sourceBatchJsonl": "<path-to-batch-input.jsonl>",
+  "providerResultJsonl": "<path-to-downloaded-provider-results.jsonl>",
+  "rawOutputDir": "<path-to-raw-output-dir>",
+  "materializationReport": "<path-to-provider-materialization-report.json>",
+  "retryPolicy": "No silent retries. Record every retry with decision IDs and reason.",
+  "parseRepairPolicy": "No manual repair before raw-output audit. Preserve original provider output.",
+  "knownExclusions": [],
+  "notes": "Do not use this template as evidence; copy it into a run-specific provenance file."
+}
