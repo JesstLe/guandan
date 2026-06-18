@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-126-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 is an opponent with only two cards left, so the team priority is to seize the lead now by beating the low heart lead and deny the opponent a repeated initiative."
+  },
+  "partnerBelief": {
+    "summary": "My partner, player 3, has three unseen cards. They may be able to beat a low heart lead, but without any public signal of their strength I cannot rely on them to rescue the trick, so I should contest rather than pass.",
+    "confidence": 0.55,
+    "evidence": [
+      "fa1bff20-17f5-45ae-aa8f-a58bebce21ac"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is an opponent near finishing with only two cards. The low 3-heart lead likely sheds a weak card while preserving a stronger final card, and player 2 may try to overcut with a higher heart or a trump.",
+    "confidence": 0.65,
+    "evidence": [
+      "fa1bff20-17f5-45ae-aa8f-a58bebce21ac"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the cheapest card that beats the table, the heart 4. It contests the lead, minimizes resource expenditure, and keeps the 9 and 10 for my own future leads if I win the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 potentially retain the lead if my partner cannot beat the 3, which is risky because player 0 is near finishing."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 would beat the lead but spends a stronger card that I may need for a later lead if I win the trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 would also win but uses my highest non-trump card; since the 4 already beats the lead, playing the 10 wastes future leverage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Playing the 4 may be overcut by player 2 with a higher heart or any trump.",
+      "If I win the trick, my remaining leads are 9 and 10, which could still be beaten by opponents holding trumps or higher hearts."
+    ],
+    "mitigation": "By using the minimum winning card, I keep my stronger cards for subsequent leads while still challenging the opponent who is near finish."
+  },
+  "confidence": 0.72
+}

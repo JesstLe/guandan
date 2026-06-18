@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-022-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards (handCounts[2]=2) and is near finishing, so the priority is to lead a low non-trump single that partner can plausibly beat, transferring control and helping partner go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely holding their final two cards, which may include one or more cards strong enough to beat a low diamond single, but I cannot assert their exact ranks; their low card count is the only public signal of urgency.",
+    "confidence": 0.6,
+    "evidence": [
+      "7428244f-506f-47ba-8a1f-25281816f477"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards; they may have non-trump or trump cards that can beat a low diamond single, but at turn 1 no cards have been played so their distributions are unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "7428244f-506f-47ba-8a1f-25281816f477"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest non-trump single, making it easiest for partner to overtake with one of their two remaining cards while preserving the slightly higher diamonds for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is still weak but harder for partner to beat than a 3, with no compensating upside."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Leading the 5 consumes a middle card without improving winning chances; it is more likely to be beaten and less likely to be passed to partner."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest non-trump in hand; playing it first wastes the card most likely to win a trick later and is hardest for partner to overtake."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to beat the 3, and an opponent could win the trick.",
+      "If partner does take the lead, their remaining card might not let them finish immediately."
+    ],
+    "mitigation": "By playing the lowest card first, I keep the 4-5-6 sequence for future rounds and give partner the maximum chance to assume control."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with only low non-trump cards; no trumps or bombs available. Partner's low hand count is the decisive public cue favoring a low lead."
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-009-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while opponents and partner hold three, this is an endgame race. I should try to win the lead and play out my remaining cards before opponents can finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has three unknown cards and no public signals yet. They may hold higher cards or trumps that could help later, but I cannot assume any specific cards.",
+    "confidence": 0.3,
+    "evidence": [
+      "f34954a4-d110-442f-a906-3c550a5c2283"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three cards and will try to seize or keep the lead to block me from going out. They may have trump cards, red trumps, or jokers that can beat my A.",
+    "confidence": 0.4,
+    "evidence": [
+      "f34954a4-d110-442f-a906-3c550a5c2283"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A gives the best chance to win this trick, keep the lead, and then play the remaining 2 to exit. In a race, initiative is more valuable than holding back a high card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low 2 likely cedes the lead to opponents. Without initiative, my remaining A may never get a chance to win a trick, and opponents could finish before I do."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the A with a trump, red trump, joker, or other high card.",
+      "If the A loses, opponents gain control and my remaining 2 is unlikely to win back the lead.",
+      "Partner may not be able to cover the trick if opponents respond strongly."
+    ],
+    "mitigation": "A is the highest non-trump rank, so leading it now uses it offensively while I still control the trick. Retaining the lead lets me dispose of my final card next turn."
+  },
+  "confidence": 0.78
+}

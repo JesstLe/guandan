@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">ToM schema-repair flow</title>
+  <desc id="desc">A source-backed paper figure showing how 50 ToM-prompted provider outputs move through raw parsing, deterministic schema repair, verifier eligibility, and hard verifier failures.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155" />
+    </marker>
+    <style>
+      .title { font: 700 34px Arial, Helvetica, sans-serif; fill: #111827; }
+      .subtitle { font: 400 18px Arial, Helvetica, sans-serif; fill: #475569; }
+      .box-title { font: 700 21px Arial, Helvetica, sans-serif; fill: #111827; }
+      .count { font: 700 42px Arial, Helvetica, sans-serif; fill: #0f172a; }
+      .text { font: 400 17px Arial, Helvetica, sans-serif; fill: #334155; }
+      .small { font: 400 14px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .blue { fill: #eff6ff; stroke: #2563eb; }
+      .green { fill: #ecfdf5; stroke: #059669; }
+      .amber { fill: #fffbeb; stroke: #d97706; }
+      .red { fill: #fef2f2; stroke: #dc2626; }
+      .gray { fill: #f8fafc; stroke: #64748b; }
+      .line { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1400" height="520" fill="#ffffff" />
+  <text x="700" y="48" text-anchor="middle" class="title">ToM-Prompted Output Flow with Deterministic Schema Repair</text>
+  <text x="700" y="78" text-anchor="middle" class="subtitle">Repair changes schema eligibility, not the model-selected action or verifier labels</text>
+
+  <g transform="translate(60,135)">
+    <rect width="230" height="145" rx="16" class="blue" stroke-width="2.5" />
+    <text x="115" y="38" text-anchor="middle" class="box-title">Provider outputs</text>
+    <text x="115" y="92" text-anchor="middle" class="count">50</text>
+    <text x="115" y="122" text-anchor="middle" class="text">Kimi CLI ToM pilot</text>
+  </g>
+
+  <g transform="translate(360,95)">
+    <rect width="250" height="120" rx="16" class="green" stroke-width="2.5" />
+    <text x="125" y="34" text-anchor="middle" class="box-title">Raw schema-valid</text>
+    <text x="125" y="82" text-anchor="middle" class="count">36</text>
+    <text x="125" y="108" text-anchor="middle" class="small">pass through unchanged</text>
+  </g>
+
+  <g transform="translate(360,260)">
+    <rect width="250" height="120" rx="16" class="amber" stroke-width="2.5" />
+    <text x="125" y="34" text-anchor="middle" class="box-title">Raw schema failures</text>
+    <text x="125" y="82" text-anchor="middle" class="count">14</text>
+    <text x="125" y="108" text-anchor="middle" class="small">need failure taxonomy</text>
+  </g>
+
+  <g transform="translate(680,260)">
+    <rect width="250" height="120" rx="16" class="green" stroke-width="2.5" />
+    <text x="125" y="34" text-anchor="middle" class="box-title">Schema-repaired</text>
+    <text x="125" y="82" text-anchor="middle" class="count">13</text>
+    <text x="125" y="108" text-anchor="middle" class="small">selectedActionId preserved</text>
+  </g>
+
+  <g transform="translate(680,405)">
+    <rect width="250" height="72" rx="16" class="red" stroke-width="2.5" />
+    <text x="70" y="45" text-anchor="middle" class="count" font-size="28">1</text>
+    <text x="148" y="34" text-anchor="middle" class="box-title">not repairable</text>
+    <text x="148" y="56" text-anchor="middle" class="small">tool-call-like output</text>
+  </g>
+
+  <g transform="translate(1000,135)">
+    <rect width="250" height="145" rx="16" class="gray" stroke-width="2.5" />
+    <text x="125" y="38" text-anchor="middle" class="box-title">Verifier eligible</text>
+    <text x="125" y="92" text-anchor="middle" class="count">49</text>
+    <text x="125" y="122" text-anchor="middle" class="text">1 hard failure remains</text>
+  </g>
+
+  <path d="M290,207 C320,185 330,165 360,155" class="line" />
+  <path d="M290,207 C320,245 330,305 360,320" class="line" />
+  <path d="M610,155 C760,155 850,175 1000,200" class="line" />
+  <path d="M610,320 C640,320 650,320 680,320" class="line" />
+  <path d="M930,320 C965,290 980,245 1000,215" class="line" />
+  <path d="M610,320 C635,370 650,430 680,442" class="line" />
+
+  <text x="700" y="500" text-anchor="middle" class="small">Source: docs/research/experiments/pilot-e7-tom-prompted-results/metrics.json and docs/research/experiments/pilot-e8-tom-schema-repair-results/metrics.json</text>
+</svg>

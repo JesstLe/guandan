@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-095-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "My hand is very weak (only 3-6 spades, no trumps, no bombs), so I should shed my lowest card and let my partner try to win or regain the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds some higher non-trump cards or trumps, since I have none and only low spades, but this is highly uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "e87c43d0-f0d1-4c23-8324-47eebf4ef99d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents probably have higher cards and possibly trumps; without any public plays I cannot estimate their distribution confidently.",
+    "confidence": 0.4,
+    "evidence": [
+      "e87c43d0-f0d1-4c23-8324-47eebf4ef99d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single (3♠) is the standard opening for a weak hand. It discards a useless low card, forces opponents to spend a higher card if they want the trick, and gives partner the cheapest chance to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest non-trump card; playing it now wastes the only card that might beat a 3, 4, or 5 lead from opponents or partner later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Keeping the 5 preserves a slightly higher exit card; the 3 is lower and therefore a safer lead."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still higher than the 3 and offers no extra benefit as an opening lead, while the 3 is the least valuable card to retain."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may win the trick cheaply with a mid/high card or trump.",
+      "If partner cannot cover, I may lose the lead permanently."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the value I give up and keep my slightly stronger cards for future plays."
+  },
+  "confidence": 0.75,
+  "notes": "All legal actions are low spade singles; the 3 is the minimal-risk opening lead given the weak hand."
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-004-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and the lead, I should play the stronger single now to keep control and then play the weak 2, maximizing the chance to go out before opponents."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has made no public plays, so I have no reliable signal about their strength or distribution. They may be able to support later if I retain the lead.",
+    "confidence": 0.3,
+    "evidence": [
+      "cc472b14-42fe-4034-af01-9de22da59a52"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and could possess trump-rank 7s or jokers that beat my Ace. If I cede the lead, they may play a non-single combination that strands my remaining Ace.",
+    "confidence": 0.4,
+    "evidence": [
+      "cc472b14-42fe-4034-af01-9de22da59a52"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace single is the highest non-trump card in my hand. It has the best chance to win the trick, letting me lead again and play the 2 to finish my hand while controlling tempo.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 surrenders initiative. Opponents can beat it easily and then choose a pair or bomb lead, possibly preventing me from ever playing my Ace."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The Ace could be beaten by a trump 7 or a joker, losing the lead.",
+      "If I lose the lead, opponents may switch to a combination type I cannot match with my remaining Ace."
+    ],
+    "mitigation": "The Ace is still my strongest play and the only realistic way to win a trick from this position. Retaining the lead is more valuable than dumping the weakest card immediately."
+  },
+  "confidence": 0.8,
+  "notes": "No public plays beyond new_game, so partner/opponent beliefs remain uncertain and are grounded only in hand counts."
+}

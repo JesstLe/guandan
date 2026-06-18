@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-229-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Leading the Ace maximizes the chance of winning the first trick and following with the 2 to go out first. The 2 lead cedes initiative and makes my exit dependent on later mistakes by others."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards, team 0) has no public actions yet. With me at only 2 cards, partner's most valuable signal is implicit support for an endgame race: they will try to win tricks or pass control back so I can shed my remaining cards and go out first.",
+    "confidence": 0.6,
+    "evidence": [
+      "dfe83db7-4045-4fa9-97f9-d66be48f2039"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (3 cards each) know I am one trick away from emptying my hand. They will try to seize control, beat my leads, and force me to waste my high card; they may hold trump-rank 7s specifically to block my exit.",
+    "confidence": 0.6,
+    "evidence": [
+      "dfe83db7-4045-4fa9-97f9-d66be48f2039"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace maximizes the chance of winning the first trick and following with the 2 to go out first. The 2 lead cedes initiative and makes my exit dependent on later mistakes by others.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

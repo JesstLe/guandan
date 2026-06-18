@@ -1,22 +1,37 @@
 # Pilot LLM Batch Summary
 
-Date: 2026-06-17
+Date: 2026-06-18
 
 ## Scope
 
-This document summarizes the offline batch artifacts for the first LLM pilot and the verifier-revision fixture path. No external model API was called, and no real LLM result is recorded here.
+This document summarizes the batch artifacts for the first LLM pilot and the verifier-revision fixture path. Plain, candidate-constrained, and ToM-prompted provider result files are now present; remaining fixture-only notes are explicitly marked.
 
 ## Batch Artifacts
 
 | Condition | Prompt Packets | Batch JSONL | Raw Output Audit | Current Status |
 |---|---:|---|---|---|
-| `plain-llm` | 50 | `pilot-e4-plain-llm-batch/batch-input.jsonl` | `pilot-e4-plain-llm-batch/raw-output-audit.json` | waiting for 50 raw outputs |
-| `candidate-constrained-llm` | 50 | `pilot-e5-candidate-constrained-batch/batch-input.jsonl` | `pilot-e5-candidate-constrained-batch/raw-output-audit.json` | waiting for 50 raw outputs |
+| `plain-llm` | 50 | `pilot-e4-plain-llm-batch/batch-input.jsonl` | `pilot-e4-plain-llm-batch/raw-output-audit.json` | provider results present; 26 / 50 parsed traces |
+| `candidate-constrained-llm` | 50 | `pilot-e5-candidate-constrained-batch/batch-input.jsonl` | `pilot-e5-candidate-constrained-batch/raw-output-audit.json` | provider results present; 32 / 50 parsed traces |
+| `tom-prompted-llm` | 50 | `pilot-e7-tom-prompted-batch/batch-input.jsonl` | `pilot-e7-tom-prompted-results/raw-output-audit.json` | 50 / 50 raw outputs; 36 / 50 parsed traces |
 | `verifier-revision-llm` | 50 | `pilot-e6-verifier-revision-fixture-batch/batch-input.jsonl` | `pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json` | fixture-only prompts exported; waiting for 50 revision raw outputs |
 
 ## Audit Result
 
-All three current raw-output audits report:
+Current ToM-prompted audit and ingest status:
+
+- expected outputs: 50
+- present outputs: 50
+- missing outputs: 0
+- empty outputs: 0
+- unexpected outputs: 0
+- ready for ingest: true
+- parsed traces: 36 / 50
+- parse failures: 14 / 50
+- hard verifier failures: 1 among parsed traces
+
+The plain and candidate-constrained provider result files are present and their metrics are reported in `docs/research/experiments/pilot-metrics-summary`. The fixture-only verifier-revision batch still should not be treated as the final external-run package.
+
+Historical pre-provider audits reported:
 
 - expected outputs: 50
 - present outputs: 0
@@ -25,7 +40,9 @@ All three current raw-output audits report:
 - unexpected outputs: 0
 - ready for ingest: false
 
-This is expected before a real model run. These rows must not be used as LLM experiment results.
+Those historical audit rows must not be used as current ToM experiment results.
+
+The ToM-prompted row is a prompt baseline, not a reproduction of a specific ToM-Guandan planner or action recommender.
 
 The verifier-revision row is fixture-only: it uses deterministic strategic baseline traces to validate the revision-packet format. Final verifier-in-the-loop claims require revision packets built from real first-pass LLM traces and verifier results.
 
@@ -67,6 +84,25 @@ npx tsx server/src/research/ingestLLMRawOutputsCli.ts \
   --raw docs/research/experiments/pilot-e5-candidate-constrained-batch/raw \
   --out docs/research/experiments/pilot-e5-candidate-constrained-results \
   --condition candidate-constrained-llm
+```
+
+Audit ToM-prompted outputs:
+
+```bash
+npx tsx server/src/research/auditLLMRawOutputsCli.ts \
+  --packets docs/research/experiments/pilot-e7-tom-prompted-prompts/packets \
+  --raw docs/research/experiments/pilot-e7-tom-prompted-batch/raw \
+  --out docs/research/experiments/pilot-e7-tom-prompted-batch/raw-output-audit.json
+```
+
+Ingest ToM-prompted outputs:
+
+```bash
+npx tsx server/src/research/ingestLLMRawOutputsCli.ts \
+  --input docs/research/experiments/pilot-e1/decisions \
+  --raw docs/research/experiments/pilot-e7-tom-prompted-batch/raw \
+  --out docs/research/experiments/pilot-e7-tom-prompted-results \
+  --condition tom-prompted-llm
 ```
 
 After real first-pass traces and verifier results exist, export verifier-revision packets:

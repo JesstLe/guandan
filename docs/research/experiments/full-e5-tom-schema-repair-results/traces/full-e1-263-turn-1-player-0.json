@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-263-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. Partner likely wants to gain or preserve the lead to unload cards quickly, but with no visible cards their exact strength is uncertain. A low lead gives partner flexibility to either take the trick with a moderate card or let it pass without committing strong resources.",
+    "confidence": 0.6,
+    "evidence": [
+      "6b6f91c7-f062-47da-ab91-3a84adcd47db"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 2 and 3 cards. Player 1, with only 2 cards, is near finishing and will try to win tricks or play out low cards to exit. Player 3, with 3 cards, may hold higher cards to block our team. They will likely attack any low lead to deny us control.",
+    "confidence": 0.6,
+    "evidence": [
+      "6b6f91c7-f062-47da-ab91-3a84adcd47db"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "In an opening lead with a weak, sequential low hand and an opponent near finish, the best team play is to lead the 3. It follows standard low-to-high card economy, keeps the stronger clubs for blocking or winning later tricks, and avoids giving the near-finish opponent information or free advantage by overcommitting the 6 too early.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

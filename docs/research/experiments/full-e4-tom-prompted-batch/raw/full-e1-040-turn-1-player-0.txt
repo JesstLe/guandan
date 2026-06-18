@@ -1,0 +1,30 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-040-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoningTrace": {
+    "partnerIntent": {
+      "belief": "Partner (player 2) holds 3 unseen cards. With no prior plays, their hand is uniformly uncertain, but as teammate they likely want an early, cheap opportunity to win a trick or signal strength. Leading a low single gives partner the option to cover with any higher single without forcing them to spend a trump or a bomb.",
+      "evidence": [
+        "322e6701-148e-4ea3-9bf4-546644194da9"
+      ]
+    },
+    "opponentIntent": {
+      "belief": "Opponents (players 1 and 3) each hold 3 unseen cards. Because every legal lead I have is a low non-trump single (3–6 of spades), opponents can probably beat any of them with a higher card or trump. They will try to win the trick cheaply and gain lead. I should minimize the value I surrender by playing the very lowest card.",
+      "evidence": [
+        "322e6701-148e-4ea3-9bf4-546644194da9"
+      ]
+    },
+    "candidateComparisons": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "consideration": "The weakest card in hand. Sacrificing it on opening lead preserves 4♠, 5♠, 6♠ for later tricks and gives partner/opponents minimal information. If partner wins, we keep tempo with our remaining cards; if opponents win, we lose almost nothing."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "consideration": "The strongest of the four low spades, but still easily beaten by any non-trump 8–A, 2, or trump 7. Playing it now wastes our best non-trump card for no upside and makes subsequent tricks harder to contest."
+      }
+    ],
+    "selectedActionRationale": "Leading the 3♠ is the dominant opening action: it offloads the minimum-value card, respects the uncertainty about hidden hands, and best supports the team objective by letting partner potentially cover without committing high cards."
+  }
+}

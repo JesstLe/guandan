@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-147-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Because the partner is near finish and all my cards are weak non-trump diamonds, the team goal is best served by leading the lowest card to give partner the cheapest winning opportunity and to retain what little high-low structure my hand has."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has only 2 cards left, indicating they are near finishing. With no public plays yet, I cannot know their exact ranks or suits, but a partner in this position likely wants to win a trick cheaply and then play out their final card(s). A low single lead gives them the best chance to do so without forcing them to spend a high card or wild/bomb.",
+    "confidence": 0.8,
+    "evidence": [
+      "587c23f3-9a98-4834-a2ff-82c3d8931c92"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and have revealed nothing. They probably hold higher non-trump cards and possibly trumps or bombs. If I lead a high card they can still beat it; if I lead a low card they may also beat it, but a low lead minimizes the information/value I give away and preserves my own progression. They cannot exploit a suit I am not showing strongly because I only have low diamonds.",
+    "confidence": 0.8,
+    "evidence": [
+      "587c23f3-9a98-4834-a2ff-82c3d8931c92"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because the partner is near finish and all my cards are weak non-trump diamonds, the team goal is best served by leading the lowest card to give partner the cheapest winning opportunity and to retain what little high-low structure my hand has.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.8,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

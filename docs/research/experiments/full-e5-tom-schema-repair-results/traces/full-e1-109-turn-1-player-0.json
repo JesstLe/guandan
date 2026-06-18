@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-109-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left in an endgame race, the priority is to win a trick now and keep the lead so the remaining card can be played next."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not acted and holds 3 cards. I cannot infer their exact composition, but they are likely also racing to finish and may take the lead if I offer a cheap trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "d78f3db5-ee1a-4745-9362-bee1149240be"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unseen cards. Given no public plays, they may hold higher non-trump singles, trumps, or bombs, and will try to win any weak lead to race out.",
+    "confidence": 0.5,
+    "evidence": [
+      "d78f3db5-ee1a-4745-9362-bee1149240be"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade Ace is stronger than leading the 2. A non-trump Ace is a high single that is more likely to win the trick against random unseen hands, giving me initiative to lead the 2 next. Even if it is beaten, it forces a stronger card from someone.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 is the lowest rank and will almost certainly be beaten by an opponent or partner. Surrendering the lead now leaves me with only the Ace and no guaranteed future lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or higher single and beat the Ace, after which I may not regain the lead to play the 2.",
+      "Partner may be unable to help because their exact cards are hidden."
+    ],
+    "mitigation": "Leading the Ace maximizes the chance of winning this opening trick; if it is beaten, the strength of the response still reveals useful information for the endgame."
+  },
+  "confidence": 0.85
+}

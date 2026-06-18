@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-128-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Opening the first trick with the lowest available non-trump card minimizes committed strength while still contesting the lead, giving partner or my remaining cards the best chance to control subsequent play."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not acted yet, so I cannot assert their exact holdings. Their hand count of 3 is moderate; given no public play, I believe they are roughly equally likely to hold a range of ranks and suits, possibly including a trump or higher non-trump that could cover a low lead. I should not assume they can win the trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "eeda116a-2771-480f-ae98-33bc1b268dec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards, so their hands are unknown. Player 1 is close to finishing with only 2 cards, which raises the probability that those cards are relatively strong or include trumps; player 3 has a normal 3-card hand. They may try to win this trick and push their advantage, especially the short-handed opponent.",
+    "confidence": 0.6,
+    "evidence": [
+      "eeda116a-2771-480f-ae98-33bc1b268dec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "As the opening lead with only low non-trump cards, playing the 3♣ expends the minimum card value. It avoids giving away a higher card that could be more useful later, does not help opponents by leading a card they are more likely to need, and lets a potentially stronger partner card take the trick if available.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but still a weak non-trump; playing it now offers no extra trick-winning power and removes a card that could be needed in a future sequence or to beat an opponent's low lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Wastes more mid-strength without any guarantee of winning; with no trumps in my hand I cannot regain the lead easily, so preserving the 5 for later is better."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "My highest non-trump single is most valuable for later tricks or to cover an opponent's lead; throwing it away on an opening lead where it will likely be beaten is inefficient."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3♣ will almost certainly be beaten by any non-trump higher card or any trump from opponents or partner.",
+      "Opponent player 1, with only 2 cards, may have a strong card or trump and could win the trick and threaten to finish soon.",
+      "If partner cannot cover, my team loses the opening lead and may face pressure from opponents."
+    ],
+    "mitigation": "Leading the absolute minimum preserves my other three cards, minimizes information revealed, and gives the team the most flexibility to respond to whatever wins the trick."
+  },
+  "confidence": 0.7,
+  "notes": "No hidden cards are asserted as facts; all beliefs are probabilistic and grounded solely in the public new_game event and hand counts."
+}

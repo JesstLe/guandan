@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-011-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and led a low heart 3, signaling a possible attempt to shed a weak card and get closer to going out. By beating with the smallest legal heart, I try to take the lead away from the near-finish opponent while preserving stronger cards for later coverage."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards and may have heart or trump coverage, but there is no public information about their exact strength. They are likely to support the team if an opponent takes this trick, though I cannot assume any specific card.",
+    "confidence": 0.5,
+    "evidence": [
+      "478bc01d-28a3-4e98-ab61-eb93294ba532"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, with only 2 cards remaining, probably played their weakest card to reduce hand size. Player 2 may hold higher hearts or trumps to contest the trick, but the low lead suggests opponents are not yet pushing a strong attack.",
+    "confidence": 0.6,
+    "evidence": [
+      "478bc01d-28a3-4e98-ab61-eb93294ba532"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The heart 4 is the cheapest card that beats the led heart 3. It wins the trick whenever no opponent or partner plays a higher heart or trump, gives our team control, and keeps the 9 and 10 available for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent retain the lead and leaves the response entirely to partner, which is risky against a near-finish opponent when I have a cheap winner."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the same trick as the 4 in most cases but commits a higher card unnecessarily, leaving me with fewer high-card resources if the trick is contested."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 overcommits the strongest card in my hand on a low opponent lead, reducing flexibility for later tricks without a proportionally higher chance of winning this one."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may play a higher heart or trump and take the trick.",
+      "If I win, my next lead could be beaten by player 0's remaining hidden strength.",
+      "Using any heart may reduce my ability to follow future heart leads."
+    ],
+    "mitigation": "Playing the minimal winner limits resource exposure, keeps the 9 and 10 as reserve covers, and still contests the opponent's tempo."
+  },
+  "confidence": 0.75,
+  "notes": "Evidence is limited to the single public play event; hand counts are public and used only for qualitative belief updates, not as hidden facts."
+}

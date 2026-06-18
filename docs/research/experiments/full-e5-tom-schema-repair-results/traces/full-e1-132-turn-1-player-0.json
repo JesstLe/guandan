@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-132-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "The partner-near-finish scenario dominates. Leading the lowest card (3♦) best supports the team objective by giving partner the widest, cheapest window to take control and finish, while accepting that I cannot strongly contest the trick with my weak hand anyway."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds only 2 cards, so they are likely preserving one or two strong cards (trumps or high non-trumps) to finish. Because no cards have been played, partner may be waiting for a low, cheap lead they can beat to seize control and play out. I should lead the card that is easiest for them to win without forcing them to spend a premium card unnecessarily.",
+    "confidence": 0.6,
+    "evidence": [
+      "2689e8d2-a58c-4d32-9424-fe38bee59212"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, 3 cards each) want to prevent partner from going out. If I lead high, opponents can let it pass or win with moderate cards; if I lead low, they may win cheaply with any middling card and then attack partner. However, with only low cards myself, I cannot realistically control the trick, so the priority is feeding partner rather than trying to block opponents directly.",
+    "confidence": 0.6,
+    "evidence": [
+      "2689e8d2-a58c-4d32-9424-fe38bee59212"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The partner-near-finish scenario dominates. Leading the lowest card (3♦) best supports the team objective by giving partner the widest, cheapest window to take control and finish, while accepting that I cannot strongly contest the trick with my weak hand anyway.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

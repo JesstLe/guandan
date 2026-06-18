@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-205-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am leading the first trick, so the immediate objective is to choose a lead that preserves my ability to control subsequent tricks while giving my partner a chance to assist. Leading low keeps my stronger cards for later leads if I win, and minimizes loss if an opponent covers."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no plays observed, I cannot infer any specific distribution; partner could be strong or weak. I should assume partner may be able to cover a low lead if opponents play middling cards, but I cannot count on it.",
+    "confidence": 0.3,
+    "evidence": [
+      "92212d7f-af04-4cb4-9b65-e0fb99424667"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. No cards have been played, so their strength is uniformly uncertain. Either opponent may hold trumps, higher spades, or bombs, but these are only probabilistic possibilities, not known facts.",
+    "confidence": 0.3,
+    "evidence": [
+      "92212d7f-af04-4cb4-9b65-e0fb99424667"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♠ is the lowest single and preserves the consecutive 4♠-5♠-6♠ as a potential three-card straight for a future lead. It expends the weakest card first while keeping my highest non-trump cards and a coherent combination, which is the standard opening-lead heuristic when no opponent or partner signals are available.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the highest card first would spend my best non-trump and leave 3♠-4♠-5♠, a weaker three-card straight. If the trick is lost, I would have fewer high cards to regain control."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Leading the 5♠ splits the sequence and leaves 3♠-4♠-6♠, which cannot form a clean straight, reducing future combination options."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Leading the 4♠ also breaks the natural 3♠-4♠-5♠-6♠ progression, leaving disjoint low cards that are harder to play efficiently in later leads."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may cover the 3♠ with a higher card or trump and take control.",
+      "Partner may be unable to cover, giving the opponents the lead and initiative.",
+      "The preserved 4♠-5♠-6♠ straight may still be beaten by a higher straight or bomb later."
+    ],
+    "mitigation": "By leading the lowest card I minimize the value lost on this trick and retain my strongest cards and a playable straight for future leads. If an opponent covers, my partner has the first opportunity to respond, and I still hold cards that can compete for control."
+  },
+  "confidence": 0.65
+}

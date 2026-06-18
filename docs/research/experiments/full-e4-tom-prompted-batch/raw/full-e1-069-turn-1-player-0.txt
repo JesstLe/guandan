@@ -1,0 +1,12 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-069-turn-1-player-0",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "partnerIntent": "My partner (player 2, team 0) sees I am down to 2 cards while they and both opponents hold 3. In a cooperative-competitive endgame race, partner's plausible intent is to let me win the trick and maintain the lead so I can empty my hand first, or, if forced to play, to expend the minimum strength that does not help opponents. There is no prior play to signal specific holdings, so this belief is grounded only in the public hand counts and the team objective.",
+  "opponentIntent": "Opponents (players 1 and 3) want to block me from going out and seize control of the lead. Given the hand counts, they know I am close to finishing. They will play the cheapest card that beats my lead: a higher card in the led suit or any trump (rank 7). They are unlikely to commit a scarce high trump unless they must, because doing so weakens their own endgame position.",
+  "counterfactualAnalysis": "Comparing the two legal single-card leads: play-single-spade-A-copy2 loses to the 2 of spades and to any trump, so it gives opponents a wider range of cheap winning replies and risks surrendering the lead. play-single-spade-2-copy2 is the highest natural spade; it can only be beaten by a trump (rank 7 or joker), so it dominates the A lead by strictly shrinking the set of opponent replies that win. If the 2 wins, I keep the lead and can next play the A; if it loses to a trump, I still extract a valuable trump and retain the A for a later fight.",
+  "decisionRationale": "I choose to lead the 2 of spades because it maximizes the probability of winning the opening trick, preserves my initiative in the endgame race, and sets up the A as a follow-up lead. This respects hidden-information uncertainty by using only public knowledge (hand counts and the fresh-game state) while choosing the action that is robustly better against plausible opponent and partner responses.",
+  "evidence": [
+    "037a90fd-9359-46c5-8464-eb1242de1112"
+  ]
+}

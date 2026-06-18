@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-180-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "I am opening the first trick, so the primary goal is to lead a card that either wins or lets my partner win while preserving my limited strength for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "My partner has 3 unseen cards and, since no cards have been played, is likely to hold a mix of ranks and suits similar to a random hand. There is a reasonable chance they can cover a low spade lead with a higher non-trump or a trump, but I cannot assume any specific card.",
+    "confidence": 0.5,
+    "evidence": [
+      "32d1bf7a-7806-4a90-81b5-8afe2d2739ea"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unseen cards. Given my own hand contains only low non-trump spades, it is probable that at least one opponent holds higher non-trump cards or trumps (rank 7 and red jokers), so a low single lead is unlikely to win outright.",
+    "confidence": 0.7,
+    "evidence": [
+      "32d1bf7a-7806-4a90-81b5-8afe2d2739ea"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (spade 3) minimizes exposure: it is the cheapest possible lead, gives partner the best chance to overtake with a modest card, and keeps my slightly higher spades (4-6) available for later tricks if the opponents take the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest non-trump card; leading it now spends my best card and it still likely loses to any trump or higher non-trump, leaving me with even weaker cards for future tricks."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is stronger than the 3 but still a low non-trump; playing it sacrifices more strength without meaningfully improving the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is slightly better than the 3, but the 3 is the minimum-cost lead and preserves all higher cards, so the 3 is preferred."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher non-trump and immediately seize the lead.",
+      "My partner may be unable to cover the low spade, ceding control to the opposing team.",
+      "My remaining cards are all low, so regaining the lead later will be difficult."
+    ],
+    "mitigation": "By leading the 3 instead of a higher card, I keep my 4-6 for future opportunities and force opponents to spend a real card to take the trick."
+  },
+  "confidence": 0.7,
+  "notes": "No public cards have been played, so all partner and opponent beliefs remain probabilistic priors grounded only in the deal counts and my own hand."
+}

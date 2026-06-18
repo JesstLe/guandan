@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-122-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds only 2 cards and is tagged near_finish, suggesting they likely hold a finishing combination (high single, pair, or trump) and want to win a trick soon to go out.",
+    "confidence": 0.85,
+    "evidence": [
+      "89a98af5-1053-4a19-82bf-32095f329132"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards at game start; with limited hands they may try to block partner's finish by covering low leads or conserve trumps. Leading low forces them to spend value to seize control.",
+    "confidence": 0.85,
+    "evidence": [
+      "89a98af5-1053-4a19-82bf-32095f329132"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-diamond-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card of my diamond sequence wastes strength and breaks the 3-4-5-6 run, making it harder to leverage the remaining cards as a straight-flush bomb later."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Better than leading 6 but still weaker than leading 3; it reduces flexibility without giving partner any extra help."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.85,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

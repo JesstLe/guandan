@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-034-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left, player 0 should try to win this lead and play out the remaining 2 on the next turn to exit first, giving the team a strong endgame advantage."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards and has not acted. No public signals exist, so partner likely has a mixed hand and is not immediately ready to finish. Partner is expected to backstop if opponents seize the lead, but I cannot assume specific high cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "d18750db-b076-4540-b759-95386c620335"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards and will try to capture the lead to race out. They may hold trumps, jokers, or other high cards, but no trump-rank cards have been publicly played yet, so their exact strength is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "d18750db-b076-4540-b759-95386c620335"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A maximizes the chance of winning the trick and retaining the lead, which lets player 0 play the weaker spade 2 next turn and exit the hand. A is strictly higher than 2, so it dominates more opposing singles and reduces the risk of immediately losing control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Playing the 2 first is very likely to be beaten by any higher card from an opponent, ceding the lead when player 0 has only the A left. That would force a defensive position and likely let an opponent finish first."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the spade A with a trump, joker, or higher-rank card.",
+      "Even if the A wins, the final 2 lead could be beaten, stalling player 0's finish.",
+      "Partner has no public signal of strength, so rescue is uncertain."
+    ],
+    "mitigation": "Leading the stronger A now is the best mitigation: it wins against the broadest range of opposing singles and preserves a planned exit sequence."
+  },
+  "confidence": 0.8,
+  "notes": "Decision is made under hidden-information uncertainty; only the new_game event is public evidence."
+}

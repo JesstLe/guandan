@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-133-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 holds only 2 cards and is the immediate near-finish threat. By leading the strongest available single we maximize the chance of winning the trick outright or forcing that opponent to spend a higher card, slowing their path to going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 2) has 3 cards and no public plays have occurred, so partner's exact strength is unknown. Given the even hand distribution, partner likely holds some playable cards that can cover later if control passes around, but no strong inference about bombs or high trumps is warranted.",
+    "confidence": 0.5,
+    "evidence": [
+      "7b4319f4-6f66-4f9a-9b93-2abb8f3470be"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1 (2 cards) is near finishing and probably holds either a winning pair or two singles with at least one high card. Player 3 (3 cards) has more flexibility. The near-finish opponent is therefore likely to try to seize or keep the lead cheaply, so we should avoid presenting an easy low-card target.",
+    "confidence": 0.7,
+    "evidence": [
+      "7b4319f4-6f66-4f9a-9b93-2abb8f3470be"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6♣ is the strongest single in hand. Against a near-finish opponent it either wins the trick if opponents pass, retains initiative for the next lead, or forces the short-stacked opponent to use a better-than-6 card to take control, reducing the quality of their remaining holding.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The 3 is the weakest lead and is very likely to be beaten cheaply by the near-finish opponent or their partner, handing them the lead and a chance to play out their remaining cards."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally stronger than the 3; it still invites the opponent to take the lead with a modest card and does not materially improve our chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Intermediate, but since we already sacrifice the ability to win with higher cards later, the 6 offers a strictly better chance of winning the current trick or extracting a stronger card from the opponent."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent holding a single 7 or higher, or any trump, can beat the 6♣ and take the lead.",
+      "If Player 1 has a bomb or a pair, they cannot respond to a single with it, but their partner may still cover and return the lead to them."
+    ],
+    "mitigation": "Play the maximum-strength single available to us; this maximizes the probability that all opponents pass and minimizes the chance that the short-stacked opponent can win cheaply."
+  },
+  "confidence": 0.55,
+  "notes": "All inference remains probabilistic because only the new_game event has been observed and no cards have been played."
+}

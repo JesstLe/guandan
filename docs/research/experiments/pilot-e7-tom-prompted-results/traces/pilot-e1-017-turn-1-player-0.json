@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-017-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 2 (partner) has only 2 cards remaining and is tagged as near finish. By leading the lowest single, I create a chance for partner to respond after the first opponent and potentially seize the lead to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds a small number of cards (2) and probably has at least one relatively strong card or trump to try to finish; they are incentivized to win a single trick if the first opponent does not overplay.",
+    "confidence": 0.55,
+    "evidence": [
+      "0de07687-3df3-4e4e-9227-94fa0a1724bd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and no cards have been revealed. They likely possess higher singles or trumps and will try to beat any low lead to stop partner from finishing; their exact holdings remain uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "0de07687-3df3-4e4e-9227-94fa0a1724bd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the least committal play: it gives partner the first opportunity to take the trick after the immediate opponent responds, while preserving the slightly higher 4-6 diamonds for later in case partner needs support or the trick comes back around.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest card in hand, but it is still a low non-trump card that any 7/trump/A can beat. Playing it now wastes the best potential later stopper and does not materially increase the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Like the 6, the 5 is a low diamond; leading it now removes a card that could be more useful later without improving the likelihood of transferring the lead to partner."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is slightly higher than the 3 but still very weak. Keeping it for a later single exchange is preferable to committing it as the opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The immediate opponent (player 1) may beat the low lead with a higher single and retain or transfer the lead to the other opponent.",
+      "Partner may be unable to overplay an opponent's response, in which case our team loses the initiative.",
+      "Opponents may hold bombs or trumps that can win any low single regardless of which rank we lead."
+    ],
+    "mitigation": "Leading the lowest available single minimizes the value of the card we expose and keeps our stronger diamonds in reserve, giving us more options on future tricks if partner cannot finish immediately."
+  },
+  "confidence": 0.6
+}

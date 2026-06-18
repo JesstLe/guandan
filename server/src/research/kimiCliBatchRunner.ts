@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { spawn } from 'node:child_process'
 
@@ -17,6 +17,9 @@ export interface KimiCliBatchRunnerOptions {
   maxStepsPerTurn?: number
   concurrency?: number
   limit?: number
+  attemptLimit?: number
+  timeoutMs?: number
+  resume?: boolean
 }
 
 export interface KimiCliBatchRunReport {
@@ -24,6 +27,8 @@ export interface KimiCliBatchRunReport {
   inputJsonlPath: string
   outputJsonlPath: string
   expectedCount: number
+  attemptedCount: number
+  skippedCount: number
   writtenCount: number
   successCount: number
   errorCount: number
@@ -37,9 +42,25 @@ export async function runKimiCliBatchJsonl(
   const kimiBin = options.kimiBin ?? 'kimi'
   const maxStepsPerTurn = options.maxStepsPerTurn ?? 1
   const concurrency = Math.max(1, Math.min(options.concurrency ?? 1, 8))
+  const timeoutMs = options.timeoutMs ?? 120_000
   const allLines = readJsonl<KimiCliBatchLine>(options.inputJsonlPath)
-  const lines = options.limit === undefined ? allLines : allLines.slice(0, options.limit)
+  const selectedLines = options.limit === undefined ? allLines : allLines.slice(0, options.limit)
   mkdirSync(dirname(options.outputJsonlPath), { recursive: true })
+  const existingSuccessfulRows = options.resume
+    ? readExistingSuccessfulRows(options.outputJsonlPath)
+    : []
+  const existingSuccessfulIds = new Set(existingSuccessfulRows.map(row => row.custom_id))
+  const pendingLines = selectedLines.filter(line => !existingSuccessfulIds.has(line.custom_id))
+  const lines = options.attemptLimit === undefined
+    ? pendingLines
+    : pendingLines.slice(0, options.attemptLimit)
+  writeFileSync(
+    options.outputJsonlPath,
+    existingSuccessfulRows.length > 0
+      ? `${existingSuccessfulRows.map(row => JSON.stringify(row)).join('\n')}\n`
+      : '',
+    'utf8',
+  )
 
   const results = await mapWithConcurrency(lines, concurrency, async line => {
     try {
@@ -47,33 +68,34 @@ export async function runKimiCliBatchJsonl(
         kimiBin,
         model: options.model,
         maxStepsPerTurn,
+        timeoutMs,
         prompt: formatPrompt(line),
       })
-      return openAiCompatibleResult(line.custom_id, content)
+      const result = openAiCompatibleResult(line.custom_id, content)
+      appendFileSync(options.outputJsonlPath, `${JSON.stringify(result)}\n`, 'utf8')
+      return result
     } catch (error) {
-      return {
+      const result = {
         custom_id: line.custom_id,
         error: {
           message: error instanceof Error ? error.message : String(error),
         },
       }
+      appendFileSync(options.outputJsonlPath, `${JSON.stringify(result)}\n`, 'utf8')
+      return result
     }
   })
-
-  writeFileSync(
-    options.outputJsonlPath,
-    `${results.map(result => JSON.stringify(result)).join('\n')}\n`,
-    'utf8',
-  )
 
   const errorCount = results.filter(result => 'error' in result).length
   return {
     schemaVersion: '0.1.0',
     inputJsonlPath: options.inputJsonlPath,
     outputJsonlPath: options.outputJsonlPath,
-    expectedCount: lines.length,
-    writtenCount: results.length,
-    successCount: results.length - errorCount,
+    expectedCount: selectedLines.length,
+    attemptedCount: lines.length,
+    skippedCount: existingSuccessfulRows.length,
+    writtenCount: existingSuccessfulRows.length + results.length,
+    successCount: existingSuccessfulRows.length + results.length - errorCount,
     errorCount,
     kimiBin,
     model: options.model,
@@ -96,33 +118,44 @@ async function runKimiCli(options: {
   kimiBin: string
   model?: string
   maxStepsPerTurn: number
+  timeoutMs: number
   prompt: string
 }): Promise<string> {
   const args = [
-    '--print',
-    '--output-format',
-    'stream-json',
+    '--quiet',
     '--max-steps-per-turn',
     String(options.maxStepsPerTurn),
   ]
   if (options.model) args.push('--model', options.model)
   args.push('--prompt', options.prompt)
 
-  const { stdout, stderr, code } = await spawnAndCollect(options.kimiBin, args)
-  const text = extractAssistantText(stdout)
-  if (text) return extractFirstJsonObject(text) ?? text.trim()
+  const { stdout, stderr, code, timedOut } = await spawnAndCollect(options.kimiBin, args, options.timeoutMs)
+  if (timedOut) {
+    throw new Error(`kimi timed out after ${options.timeoutMs} ms`)
+  }
+  const text = stdout.trim()
+  if (text) {
+    const jsonObject = extractFirstJsonObject(text)
+    if (jsonObject) {
+      const providerError = parseProviderErrorMessage(jsonObject)
+      if (providerError) throw new Error(providerError)
+      return jsonObject
+    }
+    throw new Error(`kimi output did not contain a JSON object: ${text.slice(0, 200)}`)
+  }
 
   if (code !== 0) {
     throw new Error(stderr.trim() || `kimi exited with code ${code}`)
   }
 
-  throw new Error('kimi output did not contain an assistant text block')
+  throw new Error('kimi output did not contain assistant text')
 }
 
-function spawnAndCollect(command: string, args: string[]): Promise<{
+function spawnAndCollect(command: string, args: string[], timeoutMs: number): Promise<{
   stdout: string
   stderr: string
   code: number | null
+  timedOut: boolean
 }> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
@@ -130,6 +163,11 @@ function spawnAndCollect(command: string, args: string[]): Promise<{
     })
     let stdout = ''
     let stderr = ''
+    let timedOut = false
+    const timeout = setTimeout(() => {
+      timedOut = true
+      child.kill('SIGTERM')
+    }, timeoutMs)
     child.stdout.setEncoding('utf8')
     child.stderr.setEncoding('utf8')
     child.stdout.on('data', chunk => {
@@ -140,33 +178,10 @@ function spawnAndCollect(command: string, args: string[]): Promise<{
     })
     child.on('error', reject)
     child.on('close', code => {
-      resolve({ stdout, stderr, code })
+      clearTimeout(timeout)
+      resolve({ stdout, stderr, code, timedOut })
     })
   })
-}
-
-function extractAssistantText(stdout: string): string | null {
-  const texts: string[] = []
-  for (const rawLine of stdout.split(/\r?\n/)) {
-    const line = rawLine.trim()
-    if (!line.startsWith('{')) continue
-    try {
-      const event = JSON.parse(line) as Record<string, unknown>
-      if (event.role !== 'assistant') continue
-      const content = event.content
-      if (!Array.isArray(content)) continue
-      for (const part of content) {
-        if (!part || typeof part !== 'object') continue
-        const record = part as Record<string, unknown>
-        if (record.type === 'text' && typeof record.text === 'string') {
-          texts.push(record.text)
-        }
-      }
-    } catch {
-      continue
-    }
-  }
-  return texts.length === 0 ? null : texts.join('\n').trim()
 }
 
 function extractFirstJsonObject(value: string): string | null {
@@ -214,6 +229,25 @@ function openAiCompatibleResult(customId: string, content: string): Record<strin
   }
 }
 
+function parseProviderErrorMessage(content: string): string | null {
+  if (content.includes('usage limit') && content.includes('quota')) {
+    return content.slice(0, 300)
+  }
+  if (content.trimStart().startsWith("{'error':")) {
+    return content.slice(0, 300)
+  }
+  try {
+    const value = JSON.parse(content) as unknown
+    if (!value || typeof value !== 'object') return null
+    const error = (value as Record<string, unknown>).error
+    if (!error || typeof error !== 'object') return null
+    const message = (error as Record<string, unknown>).message
+    return typeof message === 'string' ? message : 'Provider returned an error object.'
+  } catch {
+    return null
+  }
+}
+
 async function mapWithConcurrency<T, R>(
   values: T[],
   concurrency: number,
@@ -239,4 +273,24 @@ function readJsonl<T>(path: string): T[] {
     .map(line => line.trim())
     .filter(Boolean)
     .map(line => JSON.parse(line) as T)
+}
+
+function readExistingSuccessfulRows(path: string): Array<Record<string, any> & { custom_id: string }> {
+  if (!existsSync(path)) return []
+  const seen = new Set<string>()
+  const rows: Array<Record<string, any> & { custom_id: string }> = []
+  for (const row of readJsonl<Record<string, any>>(path)) {
+    if (typeof row.custom_id !== 'string') continue
+    if ('error' in row) continue
+    if (rowContainsProviderErrorContent(row)) continue
+    if (seen.has(row.custom_id)) continue
+    seen.add(row.custom_id)
+    rows.push(row as Record<string, any> & { custom_id: string })
+  }
+  return rows
+}
+
+function rowContainsProviderErrorContent(row: Record<string, any>): boolean {
+  const content = row.response?.body?.choices?.[0]?.message?.content
+  return typeof content === 'string' && parseProviderErrorMessage(content) !== null
 }

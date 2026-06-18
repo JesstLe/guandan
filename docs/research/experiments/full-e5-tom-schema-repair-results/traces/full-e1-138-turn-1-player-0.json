@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-138-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only low clubs and is leading the very first trick. The main team goal is to get these cards out quickly while retaining a chance to keep the lead, since passing low cards to opponents risks giving control to an opponent who is close to finishing."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has not acted publicly, so their exact strength is unknown. They are likely to have a mix of ranks and suits from the unseen deck and may be able to cover a low lead if they hold a higher card or trump, but no specific inference is justified.",
+    "confidence": 0.3,
+    "evidence": [
+      "d7f8668c-a40a-476a-9344-6cd85d7361ed"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, suggesting they may be close to going out. Opponents players 1 and 3 (3 cards each) collectively hold most of the unseen high cards and trumps. They probably can beat any single club 3-6, but a higher lead may force them to spend a slightly better card.",
+    "confidence": 0.5,
+    "evidence": [
+      "d7f8668c-a40a-476a-9344-6cd85d7361ed"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs gives the best chance to win this first trick and earn another lead, which lets player 0 continue shedding the 5, 4, and 3 in quick succession. All four cards are weak non-trumps, so winning the opening trick is the only realistic path to controlling the tempo against opponents who likely hold higher cards or trumps.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Playing the lowest card surrenders the lead cheaply. With an opponent at 2 cards, ceding control risks letting that opponent win the trick and possibly finish before player 0 gets another lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still a very low single and is unlikely to win the trick; it gives the same tempo disadvantage as the 3 while using a card that could otherwise be played later under a partner-led trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is intermediate. It slightly raises the cost to opponents but is still almost certainly beaten, and it wastes a card that might otherwise be played in sequence after winning a trick with the 6."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent or partner with a card higher than 6 or any trump can win the trick and take control.",
+      "The opponent with only 2 cards may win and go out immediately.",
+      "Leading the 6 may consume player 0's best single, leaving only weaker cards if the lead is lost."
+    ],
+    "mitigation": "Since the entire hand is low non-trumps, keeping the 6 back does not create a future winner; using it now maximizes the chance of an immediate second lead. If an opponent wins, player 0 has still shed one card and can hope partner covers subsequent tricks."
+  },
+  "confidence": 0.6,
+  "notes": "Decision is dominated by tempo: with no trumps and a very weak hand, the highest available single is chosen to maximize the chance of consecutive leads."
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-039-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left. The fastest path to finishing is to lead the highest single, win the trick, and then lead the remaining A on the next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) also has three cards and no public actions have occurred, so I can only assume they are also trying to finish their hand quickly. I have no specific signal about their remaining strength.",
+    "confidence": 0.5,
+    "evidence": [
+      "5a43e30f-6bc7-4c35-97ef-9425e7e49058"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three cards and have shown nothing. In an endgame race they likely retain at least one high card or trump to block a leader, but I cannot assert which specific cards they hold.",
+    "confidence": 0.5,
+    "evidence": [
+      "5a43e30f-6bc7-4c35-97ef-9425e7e49058"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade 2 applies maximum immediate pressure because 2 outranks A in Guandan. If it wins the trick, I retain the lead and can play the A next, giving the most direct two-turn finish. Even if an opponent beats it, I still have the A as a follow-up high card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A first is weaker than leading the 2. If the A wins, I would still need to lead the 2 next; if the A loses, the 2 is less likely to regain control when an opponent leads."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump or a higher card such as a joker and immediately take control.",
+      "If the 2 is beaten, the remaining A may not be strong enough to recover the lead against an opponent's lead."
+    ],
+    "mitigation": "Leading the strongest available single maximizes the chance of winning this trick and keeps the initiative, which is the best available play given the hidden cards."
+  },
+  "confidence": 0.8
+}

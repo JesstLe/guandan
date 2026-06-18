@@ -1,0 +1,1 @@
+{"action": "search_files", "path": "/Users/lv/Workspace/guandan", "pattern": "reasoning-trace.schema.json"}

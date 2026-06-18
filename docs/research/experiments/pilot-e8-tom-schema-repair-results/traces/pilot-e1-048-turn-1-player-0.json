@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-048-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Because the game is at the opening lead and our hand is weak in non-trump clubs, leading the lowest card best supports the partner's likely goal of shedding cards while preserving our stronger cards for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. At this early stage they likely want a low, manageable lead that they can beat with a higher non-trump or trump, allowing them to shed a card and move toward going out.",
+    "confidence": 0.72,
+    "evidence": [
+      "c147ec39-bbe5-4614-a2c7-2d7129bfe233"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not acted publicly. Player 1 holds only 2 cards, placing them near finish, so they likely want to seize control or finish quickly; player 3 has 3 cards and may hold counters to stop our team.",
+    "confidence": 0.72,
+    "evidence": [
+      "c147ec39-bbe5-4614-a2c7-2d7129bfe233"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because the game is at the opening lead and our hand is weak in non-trump clubs, leading the lowest card best supports the partner's likely goal of shedding cards while preserving our stronger cards for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 uses our strongest non-trump. It might win the trick outright, but it spends our best card early and reduces the chance the partner can beat the lead to reduce their hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.72,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

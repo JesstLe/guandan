@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-031-turn-2-player-1",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent 0 is one card away from finishing and led a low heart 3. The priority is to deny them control of this trick so they cannot play their final card and go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has enough cards to follow or beat a low heart, but with opponent 0 near finish, partner probably prefers that I take the lead now rather than risk everyone passing and letting opponent 0 win the trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "b65a861c-599f-4610-8397-956b99147883"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent 0 led heart 3 with only two cards left, suggesting they are shedding a weak card so their final card can be played next. Opponent 3 has three cards and may hold a higher heart or trump to overcut a cheap beat.",
+    "confidence": 0.7,
+    "evidence": [
+      "b65a861c-599f-4610-8397-956b99147883"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the minimum card that beats the lead (heart 4) to win the trick cheaply, take control, and prevent opponent 0 from reaching their final card while preserving the stronger 9 and 10 for follow-up leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting opponent 0 win the trick uncontested and immediately play their final card, which could end the round against our team."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beating with the 9 would win the trick but wastes a higher card when the 4 is already sufficient to take control."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Beating with the 10 overcommits the strongest non-trump single unnecessarily and leaves fewer resources for subsequent tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 3 may overcut the heart 4 with a higher heart or a trump.",
+      "If opponent 0's final card is strong, taking the lead now may not prevent them from winning on the next trick."
+    ],
+    "mitigation": "Retaining the 9 and 10 gives me follow-up winning cards if the 4 is overcut, and partner still has three cards to help control the table."
+  },
+  "confidence": 0.75,
+  "notes": "The minimum beat balances taking immediate control against conserving higher cards in a late-round situation."
+}

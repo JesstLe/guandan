@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-038-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Our hand contains only low, non-trump clubs, so we are unlikely to control the trick ourselves. The best team play is to lead the cheapest possible card and give our partner the easiest chance to take the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public signals are available. With our very weak lead, partner is likely able to beat a 3 with a modest card or a trump, but this is uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "63a0dabd-acbb-4976-9437-a98895a02bf7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they are likely holding useful exit cards or higher cards. Opponent player 3 has 3 cards and may try to support player 1 or save resources.",
+    "confidence": 0.65,
+    "evidence": [
+      "63a0dabd-acbb-4976-9437-a98895a02bf7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the cheapest possible lead. It maximizes the chance that our partner can win the trick with a low or medium card, preserves our slightly higher clubs for later, and does not hand the opponents a stronger lead than necessary.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing our highest card raises the threshold for our partner to win and consumes our best remaining card for only a small increase in the chance of winning this trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still relatively high for our hand and makes it harder for partner to beat while leaving us with a weaker remaining hand."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Although slightly better than the 5 or 6, the 4 still uses a higher card than needed and gives partner less room to win cheaply compared with leading the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The opponent with only 2 cards may beat the low lead and go out.",
+      "Partner may not be able to beat a 3, allowing opponents to keep control.",
+      "All of our cards are low non-trump, so we have limited ability to recover the lead later."
+    ],
+    "mitigation": "Leading the 3 minimizes the resources opponents need to spend and gives partner the best chance to take control. If partner cannot win, we still retain our higher cards for a future opportunity."
+  },
+  "confidence": 0.65,
+  "notes": "No public history beyond the new-game event, so all beliefs are probabilistic based only on hand counts and the near-finish opponent state."
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-235-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am leading the first trick, so the immediate goal is to choose a lead that gives my team the best chance to control or later regain the lead. With only low spades, I want to lead the weakest card and keep my slightly stronger cards."
+  },
+  "partnerBelief": {
+    "summary": "My partner has not played any cards and has 3 cards left. I cannot infer a specific hand; they are equally likely to hold high cards or trumps that could win this trick, but I should not assume any particular rank.",
+    "confidence": 0.5,
+    "evidence": [
+      "8198649a-3319-4e0a-a4a7-4bc94090dc72"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponents have not played any cards and each has 3 cards. Given the deck, it is probable that at least one opponent holds a card higher than any of my spades or a trump, but the exact distribution is unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "8198649a-3319-4e0a-a4a7-4bc94090dc72"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the weakest lead available. It discards my lowest card first and preserves the 4, 5, and 6 for later tricks where they may be more useful.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and does not meaningfully increase the chance of winning the trick, while reducing my remaining high-card reserve."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Leading the 5 expends a middle card from a weak hand without a corresponding benefit, since opponents likely can still beat it."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 burns my strongest card immediately; if opponents take the trick, I am left with even weaker cards and less flexibility."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher non-trump or any trump to take the lead immediately.",
+      "If my partner cannot win the trick, the opposing team gains control of the next lead."
+    ],
+    "mitigation": "By leading the lowest card, I minimize immediate resource loss and keep my best remaining cards to respond to future leads or support my partner."
+  },
+  "confidence": 0.75
+}

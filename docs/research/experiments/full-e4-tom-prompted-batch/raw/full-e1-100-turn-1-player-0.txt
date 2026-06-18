@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-100-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand is weak and entirely non-trump; the opening lead should shed the lowest card so I keep my slightly higher cards for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public actions, so their exact composition is unknown. They may hold higher singles or trumps that could win a low lead, but this is only a possibility, not a known fact.",
+    "confidence": 0.3,
+    "evidence": [
+      "f8725678-5d01-4012-8909-dbfdbc721385"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards. Given random dealing, it is likely they hold higher non-trump singles or trumps that can beat any of my cards, so they will probably try to seize the lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "f8725678-5d01-4012-8909-dbfdbc721385"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the 3 of spades to discard the weakest card and preserve the 4-6 for future opportunities. Since all legal actions are low non-trump singles, minimizing the value I commit to the trick best limits my loss of card strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still likely beaten by opponents; it keeps the 3 in hand without clear benefit."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Sacrifices more of my limited high-card potential while remaining vulnerable to any higher single or trump."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Wastes my strongest card on a lead that opponents can almost certainly beat; keeping the 6 maximizes my chance to win or contribute later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or trump and win the lead.",
+      "The partner may be unable to assist because no public signals have been exchanged."
+    ],
+    "mitigation": "By committing the 3 first, I retain the 4-6 to respond more effectively in later tricks and avoid burning my best card for no gain."
+  },
+  "confidence": 0.65,
+  "notes": "No public information beyond the new_game event exists, so all beliefs about partner and opponent hands remain probabilistic."
+}

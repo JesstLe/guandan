@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-002-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Because the partner is near finish and we have no trump cards, the lowest non-trump lead best supports the team objective while preserving stronger cards for future tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds only 2 cards, the lowest count at the table, so they are near finishing. They likely want low-pressure leads or cards they can beat to shed a card and potentially go out.",
+    "confidence": 0.75,
+    "evidence": [
+      "6e87a342-9381-417b-ad4a-b135c5334933"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have made no public plays and hold 3 cards each. They likely want to win control, trap the short-handed partner, or force our team to spend high cards.",
+    "confidence": 0.75,
+    "evidence": [
+      "6e87a342-9381-417b-ad4a-b135c5334933"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because the partner is near finish and we have no trump cards, the lowest non-trump lead best supports the team objective while preserving stronger cards for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 uses our strongest non-trump. It is more likely to win the trick, but it wastes the only high card in a 4-card hand and prevents the near-finish partner from beating the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.75,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

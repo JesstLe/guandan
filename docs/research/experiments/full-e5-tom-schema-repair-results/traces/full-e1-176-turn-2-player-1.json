@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-176-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Seize the lead from the near-finishing opponent at the lowest possible cost to prevent them from controlling the next lead and to maximize my remaining card strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 unknown cards. They might be able to beat the 3, but since I can do so cheaply and player 0 is near finishing, I should not rely on partner having the right card. By taking the lead, I protect partner from being forced to spend a higher card or pass.",
+    "confidence": 0.6,
+    "evidence": [
+      "8b9940db-f47e-4d82-9328-29e3dc6e65c4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 with only 2 cards left, signaling they probably have one stronger remaining card and want to win back the lead quickly. Player 2 may also have cards that can beat a low 3, but as an opponent they would likely pass or play only what is needed. Acting now prevents player 0 from controlling the next lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "8b9940db-f47e-4d82-9328-29e3dc6e65c4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Seize the lead from the near-finishing opponent at the lowest possible cost to prevent them from controlling the next lead and to maximize my remaining card strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing keeps all my cards but lets player 0 potentially win the trick and lead again with only one card left, which is dangerous given their near-finish status. It also forces partner to cover if possible."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 definitely beats the 3, but it uses one of my strongest cards unnecessarily and leaves only the 9 and 4, reducing my ability to win later tricks."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is still more valuable than the 4. Since the goal is to take the lead cheaply, the 4 is preferable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

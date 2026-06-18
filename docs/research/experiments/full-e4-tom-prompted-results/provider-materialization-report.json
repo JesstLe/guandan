@@ -1,0 +1,401 @@
+{
+  "schemaVersion": "0.1.0",
+  "sourceBatchJsonl": "docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/full-e4-tom-prompted-batch/raw",
+  "expectedCount": 500,
+  "writtenCount": 268,
+  "missingResultCount": 182,
+  "failedResultCount": 50,
+  "unexpectedResultCount": 0,
+  "emptyContentCount": 0,
+  "readyForAudit": false,
+  "missingCustomIds": [
+    "full-e1-318-turn-1-player-0",
+    "full-e1-319-turn-1-player-0",
+    "full-e1-320-turn-1-player-0",
+    "full-e1-321-turn-2-player-1",
+    "full-e1-322-turn-1-player-0",
+    "full-e1-323-turn-1-player-0",
+    "full-e1-324-turn-1-player-0",
+    "full-e1-325-turn-1-player-0",
+    "full-e1-326-turn-2-player-1",
+    "full-e1-327-turn-1-player-0",
+    "full-e1-328-turn-1-player-0",
+    "full-e1-329-turn-1-player-0",
+    "full-e1-330-turn-1-player-0",
+    "full-e1-331-turn-2-player-1",
+    "full-e1-332-turn-1-player-0",
+    "full-e1-333-turn-1-player-0",
+    "full-e1-334-turn-1-player-0",
+    "full-e1-335-turn-1-player-0",
+    "full-e1-336-turn-2-player-1",
+    "full-e1-337-turn-1-player-0",
+    "full-e1-338-turn-1-player-0",
+    "full-e1-339-turn-1-player-0",
+    "full-e1-340-turn-1-player-0",
+    "full-e1-341-turn-2-player-1",
+    "full-e1-342-turn-1-player-0",
+    "full-e1-343-turn-1-player-0",
+    "full-e1-344-turn-1-player-0",
+    "full-e1-345-turn-1-player-0",
+    "full-e1-346-turn-2-player-1",
+    "full-e1-347-turn-1-player-0",
+    "full-e1-348-turn-1-player-0",
+    "full-e1-349-turn-1-player-0",
+    "full-e1-350-turn-1-player-0",
+    "full-e1-351-turn-2-player-1",
+    "full-e1-352-turn-1-player-0",
+    "full-e1-353-turn-1-player-0",
+    "full-e1-354-turn-1-player-0",
+    "full-e1-355-turn-1-player-0",
+    "full-e1-356-turn-2-player-1",
+    "full-e1-357-turn-1-player-0",
+    "full-e1-358-turn-1-player-0",
+    "full-e1-359-turn-1-player-0",
+    "full-e1-360-turn-1-player-0",
+    "full-e1-361-turn-2-player-1",
+    "full-e1-362-turn-1-player-0",
+    "full-e1-363-turn-1-player-0",
+    "full-e1-364-turn-1-player-0",
+    "full-e1-365-turn-1-player-0",
+    "full-e1-366-turn-2-player-1",
+    "full-e1-367-turn-1-player-0",
+    "full-e1-368-turn-1-player-0",
+    "full-e1-369-turn-1-player-0",
+    "full-e1-370-turn-1-player-0",
+    "full-e1-371-turn-2-player-1",
+    "full-e1-372-turn-1-player-0",
+    "full-e1-373-turn-1-player-0",
+    "full-e1-374-turn-1-player-0",
+    "full-e1-375-turn-1-player-0",
+    "full-e1-376-turn-2-player-1",
+    "full-e1-377-turn-1-player-0",
+    "full-e1-378-turn-1-player-0",
+    "full-e1-379-turn-1-player-0",
+    "full-e1-380-turn-1-player-0",
+    "full-e1-381-turn-2-player-1",
+    "full-e1-382-turn-1-player-0",
+    "full-e1-383-turn-1-player-0",
+    "full-e1-384-turn-1-player-0",
+    "full-e1-385-turn-1-player-0",
+    "full-e1-386-turn-2-player-1",
+    "full-e1-387-turn-1-player-0",
+    "full-e1-388-turn-1-player-0",
+    "full-e1-389-turn-1-player-0",
+    "full-e1-390-turn-1-player-0",
+    "full-e1-391-turn-2-player-1",
+    "full-e1-392-turn-1-player-0",
+    "full-e1-393-turn-1-player-0",
+    "full-e1-394-turn-1-player-0",
+    "full-e1-395-turn-1-player-0",
+    "full-e1-396-turn-2-player-1",
+    "full-e1-397-turn-1-player-0",
+    "full-e1-398-turn-1-player-0",
+    "full-e1-399-turn-1-player-0",
+    "full-e1-400-turn-1-player-0",
+    "full-e1-401-turn-2-player-1",
+    "full-e1-402-turn-1-player-0",
+    "full-e1-403-turn-1-player-0",
+    "full-e1-404-turn-1-player-0",
+    "full-e1-405-turn-1-player-0",
+    "full-e1-406-turn-2-player-1",
+    "full-e1-407-turn-1-player-0",
+    "full-e1-408-turn-1-player-0",
+    "full-e1-409-turn-1-player-0",
+    "full-e1-410-turn-1-player-0",
+    "full-e1-411-turn-2-player-1",
+    "full-e1-412-turn-1-player-0",
+    "full-e1-413-turn-1-player-0",
+    "full-e1-414-turn-1-player-0",
+    "full-e1-415-turn-1-player-0",
+    "full-e1-416-turn-2-player-1",
+    "full-e1-417-turn-1-player-0",
+    "full-e1-418-turn-1-player-0",
+    "full-e1-419-turn-1-player-0",
+    "full-e1-420-turn-1-player-0",
+    "full-e1-421-turn-2-player-1",
+    "full-e1-422-turn-1-player-0",
+    "full-e1-423-turn-1-player-0",
+    "full-e1-424-turn-1-player-0",
+    "full-e1-425-turn-1-player-0",
+    "full-e1-426-turn-2-player-1",
+    "full-e1-427-turn-1-player-0",
+    "full-e1-428-turn-1-player-0",
+    "full-e1-429-turn-1-player-0",
+    "full-e1-430-turn-1-player-0",
+    "full-e1-431-turn-2-player-1",
+    "full-e1-432-turn-1-player-0",
+    "full-e1-433-turn-1-player-0",
+    "full-e1-434-turn-1-player-0",
+    "full-e1-435-turn-1-player-0",
+    "full-e1-436-turn-2-player-1",
+    "full-e1-437-turn-1-player-0",
+    "full-e1-438-turn-1-player-0",
+    "full-e1-439-turn-1-player-0",
+    "full-e1-440-turn-1-player-0",
+    "full-e1-441-turn-2-player-1",
+    "full-e1-442-turn-1-player-0",
+    "full-e1-443-turn-1-player-0",
+    "full-e1-444-turn-1-player-0",
+    "full-e1-445-turn-1-player-0",
+    "full-e1-446-turn-2-player-1",
+    "full-e1-447-turn-1-player-0",
+    "full-e1-448-turn-1-player-0",
+    "full-e1-449-turn-1-player-0",
+    "full-e1-450-turn-1-player-0",
+    "full-e1-451-turn-2-player-1",
+    "full-e1-452-turn-1-player-0",
+    "full-e1-453-turn-1-player-0",
+    "full-e1-454-turn-1-player-0",
+    "full-e1-455-turn-1-player-0",
+    "full-e1-456-turn-2-player-1",
+    "full-e1-457-turn-1-player-0",
+    "full-e1-458-turn-1-player-0",
+    "full-e1-459-turn-1-player-0",
+    "full-e1-460-turn-1-player-0",
+    "full-e1-461-turn-2-player-1",
+    "full-e1-462-turn-1-player-0",
+    "full-e1-463-turn-1-player-0",
+    "full-e1-464-turn-1-player-0",
+    "full-e1-465-turn-1-player-0",
+    "full-e1-466-turn-2-player-1",
+    "full-e1-467-turn-1-player-0",
+    "full-e1-468-turn-1-player-0",
+    "full-e1-469-turn-1-player-0",
+    "full-e1-470-turn-1-player-0",
+    "full-e1-471-turn-2-player-1",
+    "full-e1-472-turn-1-player-0",
+    "full-e1-473-turn-1-player-0",
+    "full-e1-474-turn-1-player-0",
+    "full-e1-475-turn-1-player-0",
+    "full-e1-476-turn-2-player-1",
+    "full-e1-477-turn-1-player-0",
+    "full-e1-478-turn-1-player-0",
+    "full-e1-479-turn-1-player-0",
+    "full-e1-480-turn-1-player-0",
+    "full-e1-481-turn-2-player-1",
+    "full-e1-482-turn-1-player-0",
+    "full-e1-483-turn-1-player-0",
+    "full-e1-484-turn-1-player-0",
+    "full-e1-485-turn-1-player-0",
+    "full-e1-486-turn-2-player-1",
+    "full-e1-487-turn-1-player-0",
+    "full-e1-488-turn-1-player-0",
+    "full-e1-489-turn-1-player-0",
+    "full-e1-490-turn-1-player-0",
+    "full-e1-491-turn-2-player-1",
+    "full-e1-492-turn-1-player-0",
+    "full-e1-493-turn-1-player-0",
+    "full-e1-494-turn-1-player-0",
+    "full-e1-495-turn-1-player-0",
+    "full-e1-496-turn-2-player-1",
+    "full-e1-497-turn-1-player-0",
+    "full-e1-498-turn-1-player-0",
+    "full-e1-499-turn-1-player-0"
+  ],
+  "unexpectedCustomIds": [],
+  "emptyCustomIds": [],
+  "failures": [
+    {
+      "customId": "full-e1-268-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-269-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-270-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-271-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-272-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-273-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-274-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-275-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-276-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-277-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-278-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-279-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-280-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-281-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-282-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-283-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-284-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-285-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-286-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-287-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-288-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-289-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-290-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-291-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-292-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-293-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-294-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-295-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-296-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-297-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-298-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-299-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-300-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-301-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-302-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-303-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-304-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-305-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-306-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-307-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-308-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-309-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-310-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-311-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-312-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-313-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-314-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-315-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-316-turn-2-player-1",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    },
+    {
+      "customId": "full-e1-317-turn-1-player-0",
+      "message": "{'error': {'message': \"You've reached your usage limit for thi\ns period. Your quota will be refreshed in the next period. Upgrade to get more: \nhttps://www.kimi.com/code/console?from=limit-upgrade\", 'type': 'rate_limit_reach\ned_error'}}"
+    }
+  ]
+}

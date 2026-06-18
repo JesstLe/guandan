@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-026-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 has only 2 cards and led a low heart; the top priority is to prevent that opponent from winning the trick and playing their final card. Beating with the cheapest legal card seizes control of the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 unknown cards and has not yet acted. They might be able to beat a 3 of hearts, but I cannot treat that as a fact. Since player 0 is near finishing, relying on partner to act later is risky.",
+    "confidence": 0.5,
+    "evidence": [
+      "985478fb-7d41-4d90-a038-461a35a76ffd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 of hearts with only 2 cards left, strongly suggesting an attempt to shed a weak card and then exit with the last card. Player 2 is an unknown opponent with 3 cards. Either opponent may hold trumps or higher hearts that could overtake my play.",
+    "confidence": 0.7,
+    "evidence": [
+      "985478fb-7d41-4d90-a038-461a35a76ffd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the minimal card that beats the table. It denies player 0 the trick, blocks their near-finish exit, and keeps the stronger 9 and 10 for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 win the trick uncontested and likely play their final card, handing the opposing team a strong position."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 already beats the 3, but it spends a materially stronger card when the 4 achieves the same immediate objective."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is my strongest heart; using it now wastes maximum strength without improving the chance of winning this trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning this trick leaves me leading with only non-trump heart cards, which opponents or partner may beat.",
+      "Player 2 or player 3 may hold a trump or higher heart and take control anyway.",
+      "If the lead changes, my remaining 9 and 10 may be vulnerable unless partner supports."
+    ],
+    "mitigation": "Use the lowest winner (4 of hearts) so that the 9 and 10 are preserved as high exit cards, and accept that taking the lead now is safer than letting player 0 finish."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-114-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only two cards (the smallest hand count), so the overriding team objective is to play out the remaining cards as quickly as possible before opponents can organize a block or bomb."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three cards and has not acted; no reliable signal exists. With no public plays, partner is likely to support any lead that lets our team retain initiative, but their exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "c28a8a59-b0d1-432c-87bd-991732eceb3e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three cards and has played nothing. They may hold trump cards (rank 7 or jokers) or other high cards that could beat a non-trump Ace, but their precise holdings are hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "c28a8a59-b0d1-432c-87bd-991732eceb3e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades is the stronger single and gives player 0 the best chance to win the trick immediately and retain the lead. If it wins, player 0 can lead the deuce next and exit the hand in two consecutive plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce is weak and likely to be beaten by any higher card or trump, surrendering the lead to opponents and forcing player 0 to wait for a future chance to play the Ace, which delays the finish and risks opponent interference."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the Ace with a trump (rank 7 or joker) or a higher-ranked card, causing player 0 to lose the lead.",
+      "If the Ace is beaten, player 0 is left with only the low deuce and may struggle to regain initiative."
+    ],
+    "mitigation": "The Ace is still the strongest card in our hand, so it maximizes the probability of winning this trick. Even if beaten, keeping the deuce for a later opportunity is no worse than the alternative of leading the deuce now and losing the lead for certain."
+  },
+  "confidence": 0.7,
+  "notes": "No public history beyond the new_game event, so all beliefs about partner and opponent hands remain probabilistic."
+}

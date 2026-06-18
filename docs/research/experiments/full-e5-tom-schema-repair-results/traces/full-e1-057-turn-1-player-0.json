@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-057-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards, so our best team goal is to let partner win the trick and lead the next one, giving them a chance to finish their hand. Our own hand is weak (3-6 of diamonds, no trumps), so we are unlikely to finish first."
+  },
+  "partnerBelief": {
+    "summary": "Partner is near finishing and likely holds at least one relatively strong card or trump saved for the end; they probably want a low lead they can beat to take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "f0cec5c1-9816-4c9e-91e2-58cabfa727d4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards, so they likely contain cards that can beat a low diamond single, but they may be unwilling to commit high cards on the opening lead. They will try to stop partner from finishing if they can.",
+    "confidence": 0.5,
+    "evidence": [
+      "f0cec5c1-9816-4c9e-91e2-58cabfa727d4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest single, making it easiest for partner to overtake with a higher card or trump, and preserving the 4, 5, and 6 for future tricks if we regain the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than the 3, so it reduces the chance partner can beat it and removes a stronger card from our hand."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still low, but harder for partner to win the trick and wastes a card that could be useful later."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Our highest non-trump card; an opponent or partner would need a stronger card to win, and we lose our best remaining card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not have a card that beats the 3, letting an opponent win the lead and pressure partner.",
+      "Opponents may hold trumps or bombs that dominate any low lead."
+    ],
+    "mitigation": "By keeping the 4, 5, and 6, we retain some flexibility for later tricks if we get the lead back, and the low lead maximizes the chance partner can take control."
+  },
+  "confidence": 0.7,
+  "notes": "Information is minimal because only the new_game event has occurred; all beliefs about partner and opponent cards are probabilistic and grounded only in hand counts and the partner-near-finish tag."
+}

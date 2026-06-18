@@ -1,0 +1,36 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-120-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": {
+    "situationSummary": "Opening lead in round 1 with a weak hand: spades 3-6, no trump. The team objective is to gain or preserve control while conserving what little high-card value I possess.",
+    "hiddenInformationBeliefs": {
+      "partner": "Partner holds 3 unknown cards. With no cards played, partner's strength is uniformly uncertain; they may have trumps, higher non-trumps, or matching suits, but no specific card can be asserted as fact.",
+      "opponents": "Each opponent holds 3 unknown cards. They may have trumps, higher non-trumps, or card combinations, but this is only probabilistic."
+    },
+    "partnerInference": {
+      "intent": "Partner likely wants to win the trick or indicate willingness to take control. Leading a very low card lets them potentially play a winning card without being blocked by my own lead.",
+      "evidence": ["73acd4b6-663c-43b9-8240-a5e58000f714"]
+    },
+    "opponentInference": {
+      "intent": "Opponents will try to capture the trick cheaply with a higher non-trump or any trump. A low spade lead signals weakness, which may induce opponents to spend only a middling card rather than a premium one.",
+      "evidence": ["73acd4b6-663c-43b9-8240-a5e58000f714"]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "assessment": "Lowest-cost lead. It preserves the 4, 5, and 6, invites partner to cover, and reveals minimal information. Even if partner cannot cover, opponents are likely to spend only a modest card to beat a 3.",
+        "partnerBeliefImpact": "Partner is more likely able to beat a 3 than a higher lead, so the chance of retaining team control increases.",
+        "opponentBeliefImpact": "Opponents see a very weak lead and are unlikely to commit a trump or bomb unless their hand is exceptional."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "assessment": "Strongest card in my hand, but still weak overall. It is more likely to lose to any higher non-trump or trump, and using it now reduces future flexibility.",
+        "partnerBeliefImpact": "Partner may be forced to play a card above 6 to take the trick, which is harder and may waste a valuable card.",
+        "opponentBeliefImpact": "A 6 lead signals slightly more strength and may prompt opponents to use a higher card or any trump."
+      }
+    ],
+    "decisionRationale": "Leading the 3 is strictly better than leading the 4 or 5 because it conveys the least strength and preserves higher cards, while the 6 is too valuable to waste on an opening lead. The 3 best supports the team objective given the high uncertainty about partner and opponent hands.",
+    "uncertaintyNote": "All statements about partner or opponent cards are probabilistic beliefs grounded in public events; only publicHistory event IDs are used as evidence."
+  }
+}

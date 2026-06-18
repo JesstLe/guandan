@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-137-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards and near finishing. With only low non-trump diamonds, my best chance is to lead a very low single that partner can potentially win cheaply or with a trump, giving them the lead to play out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds cards strong enough to win a low single, possibly including a trump or a card above 3, since they are close to going out. I do not know the exact ranks.",
+    "confidence": 0.6,
+    "evidence": [
+      "cd80bdd9-3056-43de-97bf-3252c5feec9c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and are likely to beat any low non-trump single with higher cards or trumps, but their exact holdings are unknown.",
+    "confidence": 0.65,
+    "evidence": [
+      "cd80bdd9-3056-43de-97bf-3252c5feec9c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds sets the lowest possible threshold, maximizing the chance that partner can win the trick with a modest card or a trump and gain the lead to finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 raises the bar for partner to win; if partner only has a card between 4 and 6 or a low trump, they could not beat it, reducing the chance of a successful lead transfer."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still relatively high for a weak hand and gives less margin than the 3 for partner to win with a small card."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is better than 5 or 6 but still slightly harder for partner to beat than the 3, with no compensating benefit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win the trick with a higher card or trump and retain pressure.",
+      "Partner may not have a card that can beat even a 3, causing us to lose initiative.",
+      "Even if partner wins, the next lead may still be difficult."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the strength an opponent needs to win and keep my remaining cards as unthreatening as possible, preserving flexibility for later tricks."
+  },
+  "confidence": 0.55
+}

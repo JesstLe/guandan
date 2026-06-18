@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-264-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "In an endgame race with only two cards, tempo and the chance to shed the weak card after winning a lead dominate. Leading the A♠ gives the best probability of immediate trick control and puts pressure on opponents to expend strength, so it is the preferred action."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and observes that I (player 0) am leading with only 2 cards in a round-1 endgame race. They likely infer I am trying to expend my remaining cards quickly, so they should preserve high cards to cover my weak exit if I win the lead, or take control if opponents overtake.",
+    "confidence": 0.6,
+    "evidence": [
+      "0c72d514-cd5e-4ece-b630-075bf4fa3885"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and know I am down to 2 cards. They will try to prevent me from winning this lead cheaply, likely using a trump (rank 7 or joker) or a higher non-trump if available, because letting me win now gives me tempo to shed my last card.",
+    "confidence": 0.6,
+    "evidence": [
+      "0c72d514-cd5e-4ece-b630-075bf4fa3885"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "In an endgame race with only two cards, tempo and the chance to shed the weak card after winning a lead dominate. Leading the A♠ gives the best probability of immediate trick control and puts pressure on opponents to expend strength, so it is the preferred action.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

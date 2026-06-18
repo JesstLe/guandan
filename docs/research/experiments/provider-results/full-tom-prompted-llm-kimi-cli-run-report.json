@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl",
+  "expectedCount": 500,
+  "attemptedCount": 1,
+  "skippedCount": 268,
+  "writtenCount": 269,
+  "successCount": 268,
+  "errorCount": 1,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-18T10:32:43.960Z",
+  "runner": "kimi-cli"
+}

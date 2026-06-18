@@ -1,0 +1,24 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-228-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "confidence": 0.75,
+  "evidence": [
+    "518fb1b0-d28f-4bd4-ae1c-bfbfbab6bd79"
+  ],
+  "reasoningTrace": {
+    "partnerIntentInference": "Player 2 is my partner with 3 cards and no public signals yet. With a fresh game and no lead history, the partner likely holds a mix of ranks/suits; I cannot assume they can win a low-club lead, but leading a plain-suit single is the most common cooperative opening that lets a partner with medium-high cards take control. A low lead also avoids using any potential high card from my own tiny hand.",
+    "opponentIntentInference": "Opponents (players 1 and 3) have 2 and 3 cards. Player 1 is the closest to finishing, so opponents will try to win tricks cheaply and retain winning/trump cards for a quick exit. Because I have no trumps and only low clubs, any lead I make is likely beatable if an opponent holds a higher non-trump or any trump. Opponents cannot exploit my specific hand from the opening lead, but they will welcome a low lead if it lets them win with a modest card.",
+    "counterfactualComparison": {
+      "candidateA": {
+        "actionId": "play-single-club-6-copy1",
+        "analysis": "Leading my highest club keeps the lower 3, 4, 5 for later, but 6 is still a very low card and unlikely to win against unseen hands. If it loses, I am stuck with three even weaker cards that may be hard to get rid of without partner help."
+      },
+      "candidateB": {
+        "actionId": "play-single-club-3-copy1",
+        "analysis": "Leading the lowest card is the standard weak-hand opening. It gives partner the widest range of cards to win, avoids committing any strength, and lets me retain 4, 5, 6 as slightly stronger replies if I regain the lead. The risk that an opponent wins is present for all four candidates, but the upside of a cooperative signal is highest with the smallest card."
+      }
+    },
+    "finalDecisionRationale": "All legal actions are low single clubs, but play-single-club-3-copy1 best supports the team by opening a cooperative line at the lowest possible cost. It maximizes the chance that partner can overtake, and it preserves marginally higher cards for later in the round. Given no public history beyond new_game, hidden-card beliefs remain uniformly uncertain, so I choose the conservative, partner-friendly lead."
+  }
+}

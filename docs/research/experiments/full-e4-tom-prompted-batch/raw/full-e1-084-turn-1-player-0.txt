@@ -1,0 +1,23 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-084-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoningTrace": {
+    "partnerBelief": "Partner (player 2) holds 3 unknown cards. No public signals exist yet, so partner likely has a mix of ranks. If I lead the strong A♠, partner should pass to let me win the trick and retain the lead, since passing control to a teammate with only 2 cards left advances our team's race to go out.",
+    "opponentBelief": "Opponents (players 1 and 3) each hold 3 cards and want to block me from finishing. With A being the highest non-trump rank, the only cards that can beat a single A♠ are trump-rank 7s (or wildcards/bombs). Since trump 7s are scarce and no trumps/bombs have been shown, opponents probably cannot stop a single A♠ lead.",
+    "counterfactualComparison": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "assessment": "Leading the weakest card gives opponents an easy chance to take control with almost any card. Even if partner covers, control passes away from me, and with only one card left I cannot guarantee a quick exit."
+      },
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "assessment": "Leading the strongest single maximizes the chance of winning the trick outright. If it wins, I lead again immediately and play the 2♠, likely going out in two consecutive leads. It can only be stopped by a scarce trump 7 or bomb."
+      }
+    ],
+    "conclusion": "Because I am down to 2 cards and leading, maximizing immediate control is the team-optimal play. The A♠ lead is likely to win the trick and set up a consecutive 2♠ exit, whereas the 2♠ lead surrenders initiative. I choose to lead the A♠."
+  },
+  "evidence": [
+    "7ab7696a-313d-41d8-bc42-8ab2da1a9c5b"
+  ]
+}

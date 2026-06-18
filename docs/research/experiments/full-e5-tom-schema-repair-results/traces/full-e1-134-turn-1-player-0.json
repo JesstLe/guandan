@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-134-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) has 3 hidden cards. Given the hand counts, my partner likely wants me to exit quickly and may hold a high card or trump to cover a future low lead, but I cannot assume this as fact.",
+    "confidence": 0.88,
+    "evidence": [
+      "0fe0cab8-4483-4661-bad8-2412de7041b0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 hidden cards and will try to seize the lead to stop me from going out. They are very likely to be able to beat a low 2 lead with an ordinary higher card or a trump 7/joker.",
+    "confidence": 0.88,
+    "evidence": [
+      "0fe0cab8-4483-4661-bad8-2412de7041b0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-A-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.88,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

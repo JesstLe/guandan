@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-070-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (3-6 of spades, no trumps), so my best chance to help the team is to lead the lowest single and let my partner, who is likely to hold higher cards or trumps, win the trick and take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays yet, I believe partner has a non-trivial chance of having a higher spade or a trump that can beat a low single lead, but I cannot assume any specific card.",
+    "confidence": 0.6,
+    "evidence": [
+      "0b588986-2aea-4e7d-8332-adc83fa22034"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Given the deck contains many ranks above 6 and trump cards, it is likely that at least one opponent can beat any single I lead, but I cannot identify which opponent has which strength.",
+    "confidence": 0.7,
+    "evidence": [
+      "0b588986-2aea-4e7d-8332-adc83fa22034"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♠ single is the weakest legal lead. It maximizes the range of partner cards that can beat it (any higher spade or any trump) and sheds my lowest card while preserving the slightly higher spades for future turns.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3; it reduces the chance that partner has a legal higher card and keeps the 3, which is harder to dispose of later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Still a low non-trump single. It gives partner less room to win and wastes a card that could be useful in a later follow spot."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The highest of my weak spades. An opponent with a higher spade or any trump will still win, and partner now needs an even higher card to take the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent likely holds a higher spade or a trump and will win the trick, gaining the lead.",
+      "Partner may be unable to beat the lead, leaving the opponents in control.",
+      "My remaining cards are all low non-trumps, so I have limited ability to regain the lead."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the strength I commit and leave the largest possible set of partner cards that can win the trick. I also keep my slightly higher spades for future follow opportunities."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no table information; all beliefs are probabilistic based on the random deal and public hand counts only."
+}

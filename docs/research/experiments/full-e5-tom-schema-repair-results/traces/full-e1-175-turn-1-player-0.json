@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-175-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a weak non-trump hand, I want to start cheaply so the team can contest or win the trick without committing high cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unseen cards and no public signal yet; they may hold a mid/high card or a trump to take this trick if opponents do not overtake it.",
+    "confidence": 0.4,
+    "evidence": [
+      "4827e362-26c4-49e9-9f4b-1773f07b4fe4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unseen cards. Given the tiny sample of public history, they likely possess some higher non-trump cards or trumps that could beat a low spade lead, but no specific card can be asserted.",
+    "confidence": 0.4,
+    "evidence": [
+      "4827e362-26c4-49e9-9f4b-1773f07b4fe4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades discards the weakest card, keeps the slightly stronger 4-6 for future tricks, and avoids revealing or wasting high-card strength. A low lead minimizes commitment while still allowing partner a chance to take the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher than the 3 in the same suit; playing it now wastes incremental strength without improving the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is even more valuable for later play in a low hand; a low lead achieves the same information/control goals."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest non-trump card in hand and the best hope for future control; leading it risks losing our strongest card to a routine trump or higher card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low lead is unlikely to win outright if any opponent has a higher non-trump or a trump.",
+      "Partner may be unable to capture the trick, ceding lead to an opponent.",
+      "Retaining 4-6 may not be enough to regain control later if opponents hold trumps."
+    ],
+    "mitigation": "Keep all remaining cards, especially the 6, and avoid playing trumps or bombs until the hand distribution becomes clearer."
+  },
+  "confidence": 0.7
+}

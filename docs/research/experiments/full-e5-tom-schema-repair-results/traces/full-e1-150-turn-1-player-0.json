@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-150-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader, I want to start a trick cheaply, avoid giving opponents a free high-card exchange, and retain mid-ranked cards for later control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards with no public signal beyond the initial deal; I cannot reliably infer shape or strength.",
+    "confidence": 0.3,
+    "evidence": [
+      "7046af79-401d-431a-9aa1-352b637a9cfc"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. Given a full deck, they likely possess higher singles and possibly trump 7s, so a high lead risks immediate loss of tempo.",
+    "confidence": 0.4,
+    "evidence": [
+      "7046af79-401d-431a-9aa1-352b637a9cfc"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest non-trump single (spade 3) is the standard opening principle: it commits little, denies opponents an easy high-card capture, and preserves the 4/5/6 for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the highest card wastes our best single and leaves us with only very low cards for the remaining tricks."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "An intermediate lead is stronger than necessary and still likely beaten, while retaining less overall coverage than leading the 3."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Better than 5/6, but leading the 3 is strictly more economical and keeps one more higher card in hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a higher non-trump single or a trump 7 can win this trick.",
+      "If partner cannot cover a trump response, we may lose immediate lead control."
+    ],
+    "mitigation": "Playing the lowest legal card minimizes information leakage and keeps 4/5/6 available to contest future singles."
+  },
+  "confidence": 0.7
+}

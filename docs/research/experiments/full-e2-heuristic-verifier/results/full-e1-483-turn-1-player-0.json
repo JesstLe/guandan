@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-483-turn-1-player-0",
+  "agentId": "heuristic-legal-first",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "All cited evidence ids are present in public history."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "suppress_opponent is grounded in opponent_near_finish tag."
+      ]
+    }
+  },
+  "hardFailures": [],
+  "softWarnings": [],
+  "summary": "Hard verifier checks passed."
+}

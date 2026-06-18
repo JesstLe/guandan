@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-214-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only a low deuce and a high ace. In this endgame race my first priority is to exit cards safely while keeping the ace as a flexible winner. Leading the deuce invites my partner to take control of the trick, after which the ace can cover a later single lead from either partner or an opponent."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and has not yet acted publicly. Given no prior plays, I believe partner likely holds at least one card that can beat a deuce single and will try to win the trick to advance our team's position, but this is only a probabilistic belief.",
+    "confidence": 0.55,
+    "evidence": [
+      "82c7f402-0946-44a1-bf41-e1982481de21"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to win the trick to stop me from finishing. Because the trump rank is 7 and no trumps have been seen, each opponent has some chance of holding a trump or bomb that could beat my ace if I led it. Against a deuce, opponents can beat with many ordinary cards and may not need to expose their strongest holdings.",
+    "confidence": 0.55,
+    "evidence": [
+      "82c7f402-0946-44a1-bf41-e1982481de21"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the deuce preserves the ace as a high single for a later trick. If partner wins the deuce, partner can lead something I may be able to assist with or simply continue applying pressure while I remain one card away from finishing. If an opponent wins instead, I still have the ace to potentially recapture the lead on a non-trump single.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the ace commits my only strong card immediately. An opponent holding a trump or bomb would take the trick and leave me with only a weak deuce, making my finish dependent entirely on partner. Even if the ace wins, my next and last card is the deuce, which will likely be beaten, so leading the ace first does not secure a lasting team advantage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the deuce and then lead a combination I cannot cover, forcing me to pass and delaying my finish.",
+      "Partner may be unable to beat the deuce, giving the opposing team control of the next lead.",
+      "Opponents may hold trumps or bombs that they can use to counter the ace later."
+    ],
+    "mitigation": "By keeping the ace, I retain a flexible high card that can win a single lead from a non-trump opponent and can help partner convert control. The deuce is the cheapest card to risk, and the ace gives me the best chance to finish on a later trick."
+  },
+  "confidence": 0.7,
+  "notes": "Endgame race with hand counts [2,3,3,3]; no cards have been played, so all beliefs about specific opponent/partner holdings remain probabilistic."
+}

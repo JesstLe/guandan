@@ -1,0 +1,37 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-187-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoningTrace": {
+    "partnerInference": {
+      "belief": "Partner (player 2) holds only 2 cards, so they are close to going out. With no public plays yet, their remaining cards are unknown but likely retained for high value or quick escape. They may be waiting for a low lead they can beat cleanly, or holding a trump/wildcard to control a trick.",
+      "signals": ["Partner's hand count dropped to 2 before any public trick, suggesting they played aggressively in a prior unseen phase or were dealt a very short hand.", "No cards have been played, so partner has not signaled strength or weakness through table actions."],
+      "evidence": ["3ac5884d-8161-4709-b280-78223022dd0b"]
+    },
+    "opponentInference": {
+      "belief": "Opponents (players 1 and 3) each hold 3 cards and have not yet acted. They are likely to conserve high cards for the partner's near-finish threat and may let a low diamond lead pass if it does not immediately endanger them.",
+      "threats": ["A low lead may be allowed to ride, but an opponent with a singleton high diamond or small trump could capture it to regain lead and pressure partner.", "Opponents may be holding bombs or wildcards to block partner's escape."],
+      "evidence": ["3ac5884d-8161-4709-b280-78223022dd0b"]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "analysis": "Lowest diamond lead. Minimizes value committed to the trick, maximizes chance an opponent lets it ride, and preserves 4-5-6 for future control or partner support. Best aligns with helping a near-finish partner by not over-committing strength opening the hand."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "analysis": "Highest diamond lead. Slightly more likely to win the trick outright against opponents' small diamonds, but consumes the player's best non-trump card early and leaves 3-4-5 as weaker follow-ups. Less flexible if partner needs a low lead to escape."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "analysis": "Middle-of-the-road lead. Better than 3 if expecting opponents to snap low cards, but still weaker than 6 and does not preserve the full low-to-high ordering as well as leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "analysis": "Another middle lead. Similar trade-off to 4, but sacrifices more mid-tier value without a strong informational advantage over leading the 3."
+      }
+    ],
+    "decisionSummary": "Leading the 3 of diamonds commits minimal strength, keeps the partnership's higher cards available, and gives the near-finish partner the widest latitude to either win cheaply or let opponents spend cards. The hidden-information uncertainty about partner/opponent holdings makes conservative value preservation the best team play."
+  },
+  "evidence": ["3ac5884d-8161-4709-b280-78223022dd0b"]
+}

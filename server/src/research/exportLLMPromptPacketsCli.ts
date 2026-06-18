@@ -31,7 +31,11 @@ function parseArgs(args: string[]): CliOptions {
 }
 
 function parseCondition(value: string): LLMConditionId {
-  if (value === 'plain-llm' || value === 'candidate-constrained-llm') return value
+  if (
+    value === 'plain-llm'
+    || value === 'candidate-constrained-llm'
+    || value === 'tom-prompted-llm'
+  ) return value
   throw new Error(`Unknown condition: ${value}`)
 }
 

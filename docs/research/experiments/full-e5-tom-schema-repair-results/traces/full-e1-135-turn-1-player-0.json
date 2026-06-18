@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-135-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am the opening leader with no table lead, so the immediate team objective is to start a controlled trick. Playing a low single lets us set the tempo without committing high cards, keeping future options open if partner can support the suit."
+  },
+  "partnerBelief": {
+    "summary": "Partner's exact cards are hidden. Because only the new_game event has occurred, partner could hold any mix of suits and ranks, and may be able to cover a spade lead or may be weak in spades. I treat this as an uncertain belief rather than a known fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "9da51094-597e-445c-8928-f9c00a69af58"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold cards higher than my low spades or some trump cards, since my hand is weak and no public cards have been played. Still, this is only a probabilistic belief; opponents may also be weak and unable to beat a low lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "9da51094-597e-445c-8928-f9c00a69af58"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "As the opening leader, I choose the lowest legal single, the 3 of spades, to open a cheap trick. It is the least valuable card, so if an opponent takes the trick we lose minimal strength, and it preserves the 4, 5, and 6 for later coverage or exit plays. The selected legal play initiates the trick in a way that aligns with keeping tempo without overcommitting resources.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Leading the 4 of spades gives up a slightly higher card for no clear gain; the 3 is strictly lower and safer as an opening lead."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is higher than necessary for an opening lead and would leave me with fewer mid-ranked spades to contest later tricks or cover partner."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 of spades risks losing the strongest card in my hand immediately and provides no better chance of keeping the lead than the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead immediately with a higher card or a trump, giving the opposing team tempo.",
+      "My hand contains no trumps, so regaining the lead later could be difficult if opponents control the trick.",
+      "Partner may be unable to cover the spade suit, leaving our team without immediate support."
+    ],
+    "mitigation": "By playing the lowest possible card, I minimize the value surrendered on this trick and keep my slightly higher spades available for future plays, partner support, or endgame exits."
+  },
+  "confidence": 0.75
+}

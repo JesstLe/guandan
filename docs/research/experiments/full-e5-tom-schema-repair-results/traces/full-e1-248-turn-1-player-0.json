@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-248-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low non-trump clubs (3-6) with no trumps, so I cannot reliably win tricks. The best team objective is to lead a low card that gives my partner the widest range of ways to take control, or at least lose the lead cheaply so I can preserve my slightly higher clubs for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. Since I hold clubs 3-6, the higher club ranks 8-A and all trumps are still possibly in partner's hand. Partner therefore has a reasonable chance to beat a low club lead with a higher club or a trump, but this is uncertain because no cards have been played yet.",
+    "confidence": 0.45,
+    "evidence": [
+      "306bcaad-7555-47d7-ad79-400bccca7429"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they likely retain at least one high card or trump to beat leads and exit. Opponent player 3 has 3 cards. Because I have no trumps, the unplayed trump cards are more likely to be held by opponents or partner, making it probable that at least one opponent can beat a low club if they choose to.",
+    "confidence": 0.55,
+    "evidence": [
+      "306bcaad-7555-47d7-ad79-400bccca7429"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the lowest legal play. It preserves the 4, 5, and 6 for future tricks and gives partner the maximum chance to win: partner can beat a club 3 with any higher club (8-A) or any trump. Because clubs 4, 5, and 6 are already in my hand, a single club 3 and a single club 6 are beaten by essentially the same external cards, so there is no advantage to leading the higher card first.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 and the 3 are beaten by the same higher clubs (8-A) and trumps, so leading 6 does not make the trick harder for opponents. If everyone passes on the 6, I keep the lead with an even weaker remaining hand. Leading low first is the standard resource-preserving play."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is intermediate; it offers no extra protection compared with the 3 and wastes a card that could be useful if I regain the lead later."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Similar to the 5, leading the 4 is higher than necessary. Since vulnerability to opponent trumps and higher clubs is the same across all four cards, the lowest lead best preserves future options."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1, with only 2 cards, may beat the 3 with a trump or higher club and gain the lead, potentially finishing their hand.",
+      "If partner cannot beat the lead, control passes to an opponent, and my remaining low clubs may not be able to stop them."
+    ],
+    "mitigation": "Leading the 3 is the cheapest probe of opponent strength and the play that most encourages partner to take control. If an opponent uses a trump or high card to win, that card would likely have beaten any of my other singles anyway, while I keep the 4-6 for later response."
+  },
+  "confidence": 0.72,
+  "notes": "Hand is a pure low non-trump straight fragment (3-6 of clubs). In the opening lead with an opponent near finish, the priority is cheap lead transfer rather than trying to win with cards that cannot beat any trump."
+}

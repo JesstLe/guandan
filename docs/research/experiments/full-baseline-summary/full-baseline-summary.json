@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "0.1.0",
+  "rows": [
+    {
+      "agentId": "heuristic-legal-first-full",
+      "status": "metrics_available",
+      "totalDecisionPoints": 500,
+      "parsedTraces": 500,
+      "parseFailures": 0,
+      "hardFailures": 0,
+      "legalAction": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 100 pass / 0 fail / 400 unknown; opponent 200 pass / 0 fail / 300 unknown",
+      "reasonActionConsistent": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "notes": "500-decision deterministic pipeline validation baseline"
+    },
+    {
+      "agentId": "strategic-heuristic-full",
+      "status": "metrics_available",
+      "totalDecisionPoints": 500,
+      "parsedTraces": 500,
+      "parseFailures": 0,
+      "hardFailures": 0,
+      "legalAction": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 100 pass / 0 fail / 400 unknown; opponent 200 pass / 0 fail / 300 unknown",
+      "reasonActionConsistent": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "500 pass / 0 fail / 0 unknown / 0 n/a",
+      "notes": "500-decision deterministic strategic baseline"
+    }
+  ]
+}

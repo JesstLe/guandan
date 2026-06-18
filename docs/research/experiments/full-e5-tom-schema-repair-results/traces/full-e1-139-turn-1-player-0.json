@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-139-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and the opening lead, the priority is to go out as soon as possible. Leading the stronger single maximizes the chance of winning this trick so I can lead the weak 2 next and finish my hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays, so I have no reliable signal about their strength or distribution. They may be able to support later, but I should not count on it.",
+    "confidence": 0.35,
+    "evidence": [
+      "110f3e27-8b04-4b30-9308-5517d10f6e49"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and no cards have been revealed. They may hold trump-rank 7s or jokers that can beat my Ace, and they have an incentive to stop me from finishing. Their exact holdings remain uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "110f3e27-8b04-4b30-9308-5517d10f6e49"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades is the strongest non-trump single in my hand. It has the best chance to win the opening trick, letting me retain the lead and play the deuce next to empty my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 surrenders initiative. Opponents can beat it easily, take control, and possibly lead a combination I cannot match with my remaining Ace, delaying or preventing me from going out."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The Ace could be beaten by a trump 7 or a joker, losing the lead.",
+      "If I lose the lead, opponents may switch to a pair, triple, or bomb lead that I cannot follow with my remaining single."
+    ],
+    "mitigation": "Play the Ace first to give myself the best chance to win two consecutive tricks and exit before opponents can reorganize the lead type."
+  },
+  "confidence": 0.75
+}

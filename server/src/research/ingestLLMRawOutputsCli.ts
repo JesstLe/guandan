@@ -39,6 +39,7 @@ function parseCondition(value: string): LLMConditionId {
   if (
     value === 'plain-llm'
     || value === 'candidate-constrained-llm'
+    || value === 'tom-prompted-llm'
     || value === 'verifier-revision-llm'
   ) return value
   throw new Error(`Unknown condition: ${value}`)

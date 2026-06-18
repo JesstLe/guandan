@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-040-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-6-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "As the lead on the first turn of round 1, I should try to play a card that either lets me win cheaply or lets my partner win the trick, while avoiding giving opponents an easy high-card capture."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.6,
+    "evidence": [
+      "7524ecdd-b5bd-471c-809e-6cf14b19da05"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent state is uncertain; no hidden cards are asserted as facts.",
+    "confidence": 0.6,
+    "evidence": [
+      "7524ecdd-b5bd-471c-809e-6cf14b19da05"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "As the lead on the first turn of round 1, I should try to play a card that either lets me win cheaply or lets my partner win the trick, while avoiding giving opponents an easy high-card capture.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

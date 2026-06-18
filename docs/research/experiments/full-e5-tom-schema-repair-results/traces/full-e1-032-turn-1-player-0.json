@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-032-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Help the nearly-finished partner exit while conserving my own high cards and avoiding unnecessary risk."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds only 2 cards and is tagged 'partner_near_finish', so they are likely trying to exit. A low lead maximizes the chance they can win or safely shed a card without being forced to spend a scarce high card or trump.",
+    "confidence": 0.6,
+    "evidence": [
+      "dc84119c-f5e1-4673-81c8-93b8b4700f3c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) have 3 cards each and know player 2 is short. They will try to capture the lead or block player 2's exit, but on a low single lead they are less pressured to commit trump or high cards immediately.",
+    "confidence": 0.6,
+    "evidence": [
+      "dc84119c-f5e1-4673-81c8-93b8b4700f3c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Help the nearly-finished partner exit while conserving my own high cards and avoiding unnecessary risk.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

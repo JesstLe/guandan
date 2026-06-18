@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-015-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Opening lead with only low non-trump spades. The priority is to shed the weakest card at the lowest cost, preserving the 4-6 for future tricks while opponents spend higher cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards, equal to both opponents, so no strong signal about strength. With no public plays, partner could be strong or weak; a low lead gives them the cheapest chance to beat it and take control.",
+    "confidence": 0.5,
+    "evidence": [
+      "86837f83-c9bc-403c-b57a-a8e427e426f4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have shown nothing. Given my hand is 3-6 of spades with no trumps, it is likely at least one opponent can beat any card I lead. They may try to win cheaply or force us to spend our slightly higher cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "86837f83-c9bc-403c-b57a-a8e427e426f4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the weakest card, so leading it sheds the least valuable card and keeps the 4-6 for later tricks. A low lead also costs opponents the most if they choose to win, and gives partner the widest range of cards that can beat it.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 expends the strongest card in a weak hand. If an opponent or partner takes the trick, I am left with only 3-5 and even less chance to win future tricks."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a middle card and does not shed as cheaply as the 3. It preserves less strength than the 3 lead while being just as beatable."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly better than the 6 or 5, but the 3 is strictly lower and therefore the superior shed card with no downside."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent likely beats the 3 of spades with a higher non-trump or any trump, so we will probably lose the lead.",
+      "If partner cannot beat the trick, we may face a strong return lead."
+    ],
+    "mitigation": "Because all four cards are low non-trumps, losing this trick is acceptable. By playing the 3 we minimize the information revealed and keep our best cards for later in the round."
+  },
+  "confidence": 0.8,
+  "notes": "Standard Guandan opening principle with a weak hand: lead the lowest card to shed cheaply."
+}

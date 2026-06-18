@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-090-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-6-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with no trump cards and only low spades, the immediate team goal is to win this trick and secure the lead so my team can shape the remaining play."
+  },
+  "partnerBelief": {
+    "summary": "My partner has not acted yet, so I have no direct signal about their hand. They likely hold 3 unknown cards and, as a teammate, would prefer to win a low spade lead if they can do so cheaply, but I cannot assume they have a winning card.",
+    "confidence": 0.5,
+    "evidence": [
+      "d9541f3b-4e92-4d6c-8ded-aae2b81b6032"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Both opponents hold 3 unknown cards each and will act after my partner. They are likely to contain higher non-trump cards or trumps that can beat a low spade lead, so a very weak lead is at high risk of being captured.",
+    "confidence": 0.6,
+    "evidence": [
+      "d9541f3b-4e92-4d6c-8ded-aae2b81b6032"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the single spade 6 gives the highest card in my hand the best chance to win the opening trick against unknown opponent hands, securing the lead for my team. Holding the lead lets me continue to lead my remaining low cards while the opponents must react.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "reason": "Leading the 3 is the weakest lead and very likely to be overtaken by an opponent or force my partner to spend a higher card; it surrenders the lead and lets opponents control the next trick."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still a low card with a small chance of winning the trick; it does not improve my team's control over the hand compared with the 6."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is stronger than the 3 or 4 but still less likely to win than the 6; since none of these cards form a bomb or sequence, there is no structural reason to preserve the 6."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or even my partner may have a higher card or trump and win the trick regardless of which spade I lead.",
+      "If I win, my remaining three low spades are still weak and may be vulnerable once the lead is lost."
+    ],
+    "mitigation": "By leading the strongest available low card, I maximize the chance of keeping the lead now and can then lead my next strongest card to keep pressure on opponents."
+  },
+  "confidence": 0.65,
+  "notes": "All hidden cards are treated as uncertain; reasoning is grounded only in the new_game public event and known hand counts."
+}

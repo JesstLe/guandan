@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-226-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent 0 has only 2 cards left and led a low heart 3. Winning this trick cheaply denies them the lead and slows their potential finish, while keeping higher cards for later control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has not acted. Since I can beat the lead with a minimal card, partner likely does not need to take this trick; partner may be saving strength for later or lacks a cheap winner. I should not assume partner's exact cards.",
+    "confidence": 0.7,
+    "evidence": [
+      "2d8abc13-98fd-4de8-9e10-810cd5fd6d4f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent 0 led the 3 of hearts with only 2 cards remaining, suggesting they may be trying to shed a weak card or escape with a small winner. Their remaining cards are hidden, so I treat them as possibly containing higher cards rather than a fact.",
+    "confidence": 0.75,
+    "evidence": [
+      "2d8abc13-98fd-4de8-9e10-810cd5fd6d4f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the cheapest card that beats the table's 3 of hearts. It wins the trick, removes the lead from the near-finishing opponent, and preserves the 9 and 10 for future needs.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets opponent 0 win the trick and retain the lead with just 2 cards, increasing their chance to finish quickly or play a strong remaining card."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins but expends a much higher card than necessary, weakening my ability to beat stronger future leads."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is an even bigger overplay; using it now costs my highest non-trump card for no additional benefit over the 4."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may still hold a higher heart or trump that beats my 4, causing me to lose this trick and the card.",
+      "Taking the lead commits me to choose the next lead with a short hand."
+    ],
+    "mitigation": "By using the minimal winning card, I limit downside if I lose the trick and keep 9 and 10 as backup winners. I will lead a card next that protects partner or forces opponents to spend strength."
+  },
+  "confidence": 0.85,
+  "notes": "No bombs or trump cards have been played, and opponent 0 is near finish, so minimizing their lead opportunities is the priority."
+}

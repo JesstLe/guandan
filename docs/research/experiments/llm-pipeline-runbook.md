@@ -25,12 +25,29 @@ npx tsx server/src/research/exportLLMPromptPacketsCli.ts \
   --condition candidate-constrained-llm
 ```
 
+ToM-prompted LLM:
+
+```bash
+npx tsx server/src/research/exportLLMPromptPacketsCli.ts \
+  --input docs/research/experiments/pilot-e1/decisions \
+  --out docs/research/experiments/pilot-e7-tom-prompted-prompts \
+  --condition tom-prompted-llm
+```
+
 Current artifacts:
 
 - `docs/research/experiments/pilot-e4-plain-llm-prompts/manifest.json`
 - `docs/research/experiments/pilot-e4-plain-llm-prompts/packets/*.json`
 - `docs/research/experiments/pilot-e5-candidate-constrained-prompts/manifest.json`
 - `docs/research/experiments/pilot-e5-candidate-constrained-prompts/packets/*.json`
+- `docs/research/experiments/pilot-e7-tom-prompted-prompts/manifest.json`
+- `docs/research/experiments/pilot-e7-tom-prompted-prompts/packets/*.json`
+- `docs/research/experiments/full-e2-plain-llm-prompts/manifest.json`
+- `docs/research/experiments/full-e2-plain-llm-prompts/packets/*.json`
+- `docs/research/experiments/full-e3-candidate-constrained-prompts/manifest.json`
+- `docs/research/experiments/full-e3-candidate-constrained-prompts/packets/*.json`
+- `docs/research/experiments/full-e4-tom-prompted-prompts/manifest.json`
+- `docs/research/experiments/full-e4-tom-prompted-prompts/packets/*.json`
 
 ## Step 2: Run a Model
 
@@ -52,6 +69,14 @@ npx tsx server/src/research/exportLLMBatchFilesCli.ts \
   --out docs/research/experiments/pilot-e5-candidate-constrained-batch
 ```
 
+ToM-prompted LLM:
+
+```bash
+npx tsx server/src/research/exportLLMBatchFilesCli.ts \
+  --packets docs/research/experiments/pilot-e7-tom-prompted-prompts/packets \
+  --out docs/research/experiments/pilot-e7-tom-prompted-batch
+```
+
 Current batch artifacts:
 
 - `docs/research/experiments/pilot-e4-plain-llm-batch/batch-input.jsonl`
@@ -60,6 +85,18 @@ Current batch artifacts:
 - `docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-input.jsonl`
 - `docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-manifest.json`
 - `docs/research/experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json`
+- `docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl`
+- `docs/research/experiments/pilot-e7-tom-prompted-batch/batch-manifest.json`
+- `docs/research/experiments/pilot-e7-tom-prompted-batch/raw-output-audit.json`
+- `docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl`
+- `docs/research/experiments/full-e2-plain-llm-batch/batch-manifest.json`
+- `docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json`
+- `docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl`
+- `docs/research/experiments/full-e3-candidate-constrained-batch/batch-manifest.json`
+- `docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json`
+- `docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl`
+- `docs/research/experiments/full-e4-tom-prompted-batch/batch-manifest.json`
+- `docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json`
 
 These files are provider-neutral. They do not call any external model API.
 
@@ -112,8 +149,15 @@ Current audit status:
 
 - Plain LLM: 0 / 50 present, 50 missing, not ready for ingest.
 - Candidate-constrained LLM: 0 / 50 present, 50 missing, not ready for ingest.
+- ToM-prompted LLM: 50 / 50 raw outputs present after Kimi CLI provider run; 36 / 50 parsed traces and 14 / 50 parse failures after ingest.
+- Full-split Plain LLM: 0 / 500 present, 500 missing, not ready for ingest.
+- Full-split Candidate-constrained LLM: 0 / 500 present, 500 missing, not ready for ingest.
+- Full-split ToM-prompted LLM: 268 / 500 raw outputs present after Kimi CLI resume-capable provider runs; the provider JSONL currently has 268 usable model outputs, 50 explicit Kimi usage/quota-limit errors from the latest bounded attempt, and 182 pending rows not present in the current provider-result file. The current full-split ToM artifacts are not ready for ingest until the remaining 232 raw outputs are resumed after quota refresh.
 
-This is expected until a real model run writes raw outputs.
+Rows marked as provider errors must not be counted as model outputs. Use
+`runKimiCliBatchJsonlCli.ts --resume --attempt-limit <N>` after quota refresh
+to preserve existing successful rows and retry a bounded number of failed or
+missing rows.
 
 ### 2.4 Materialize Downloaded Provider Results
 
@@ -172,6 +216,16 @@ npx tsx server/src/research/ingestLLMRawOutputsCli.ts \
   --raw docs/research/experiments/pilot-e5-candidate-constrained-batch/raw \
   --out docs/research/experiments/pilot-e5-candidate-constrained-results \
   --condition candidate-constrained-llm
+```
+
+ToM-prompted LLM:
+
+```bash
+npx tsx server/src/research/ingestLLMRawOutputsCli.ts \
+  --input docs/research/experiments/pilot-e1/decisions \
+  --raw docs/research/experiments/pilot-e7-tom-prompted-batch/raw \
+  --out docs/research/experiments/pilot-e7-tom-prompted-results \
+  --condition tom-prompted-llm
 ```
 
 The ingest command writes:

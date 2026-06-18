@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-067-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "The 3 of diamonds is the safest opening lead: it supports a potentially finishing partner, preserves stronger cards, and minimizes loss against opponents."
+  },
+  "partnerBelief": {
+    "summary": "Player 2 is my partner and holds only 2 cards, so they may be trying to exit soon. A low diamond lead gives them the widest range of winning replies—any higher diamond or any trump—without forcing them to waste a high card.",
+    "confidence": 0.78,
+    "evidence": [
+      "11334580-c05e-4da1-a6cb-d3a48d4b2d9e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and no public plays yet, so they likely hold higher non-trump cards or trumps. They will try to win the trick cheaply; leading a 3 minimizes the value I surrender if they take it.",
+    "confidence": 0.78,
+    "evidence": [
+      "11334580-c05e-4da1-a6cb-d3a48d4b2d9e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of diamonds is the safest opening lead: it supports a potentially finishing partner, preserves stronger cards, and minimizes loss against opponents.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.78,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

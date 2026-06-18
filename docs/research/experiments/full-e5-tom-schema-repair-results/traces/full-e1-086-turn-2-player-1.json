@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-086-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) has only 2 cards remaining and led a low heart 3, so the priority is to stop the near-finish opponent from retaining the lead and running out their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards and has not acted this trick. There is no public signal about partner's strength or suit distribution, so I cannot rely on them to block the opponent here.",
+    "confidence": 0.6,
+    "evidence": [
+      "5ccccb5b-b630-4ed8-ad9b-d995f7e3f166"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is near finishing with 2 cards left and likely led the low heart 3 to start a cheap trick; they may still hold a higher card or trump. Player 2 (opponent) has 3 cards and could overtake if I pass.",
+    "confidence": 0.75,
+    "evidence": [
+      "5ccccb5b-b630-4ed8-ad9b-d995f7e3f166"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the cheapest heart that beats the 3 (the 4) to seize the lead from the near-finish opponent. This denies player 0 continuation while preserving the 9 and 10 for future leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves player 0 in the lead with only 2 cards, allowing them to continue toward finishing and letting player 2 potentially overtake."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is unnecessary to beat a 3; using it now overcommits a stronger non-trump card that is more valuable on a future lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning with the 4 may be temporary if player 0 or player 2 has a higher heart or a trump.",
+      "If player 0 wins this trick, they keep the lead with only 2 cards and can push to finish."
+    ],
+    "mitigation": "Use the minimum-cost heart (the 4) so the 9 and 10 remain available to contest future leads or covers."
+  },
+  "confidence": 0.82
+}

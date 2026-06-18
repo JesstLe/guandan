@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "pilot-e1-033",
+  "decisionId": "pilot-e1-033-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoning": {
+    "partnerIntent": {
+      "belief": "Partner (player 2) holds 3 cards and has not yet acted. With no public plays, partner's exact hand is unknown, but they are likely to hold at least some cards higher than my club-3 or a small trump. A very low lead gives them the cheapest chance to take control of the trick if the first opponent does not overtake it, which aligns with our team objective.",
+      "evidence": ["df960385-8fb3-4b61-81f0-64b0c09bcdec"]
+    },
+    "opponentIntent": {
+      "belief": "Opponent player 1 has only 2 cards remaining and is tagged as near finish, so they are likely holding at least one relatively strong or trump card and want to win the trick cheaply to exit soon. Opponent player 3 has 3 cards and will generally try to seize the lead to stop our team. Because no cards have been played, I cannot assert specific hidden cards; I only know they may have higher cards or trumps.",
+      "evidence": ["df960385-8fb3-4b61-81f0-64b0c09bcdec"]
+    },
+    "counterfactuals": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "assessment": "Leading the 6 uses my highest non-trump card. It is still beaten by any trump-rank 7, red trump, or higher card, and it makes it harder for my partner to overtake. If an opponent wins the trick, I have lost my best remaining card for little gain.",
+        "evidence": ["df960385-8fb3-4b61-81f0-64b0c09bcdec"]
+      },
+      {
+        "actionId": "play-single-club-3-copy1",
+        "assessment": "Leading the 3 is the minimal commitment. It preserves the 4-5-6 for future tricks, gives partner the widest range of cards that can beat it, and forces opponents to spend a higher card if they want the lead. This best supports the team while respecting the uncertainty about hidden hands.",
+        "evidence": ["df960385-8fb3-4b61-81f0-64b0c09bcdec"]
+      }
+    ],
+    "conclusion": "Given a weak hand of low non-trump clubs and an opponent near finish, the lowest single lead (club-3) minimizes my own exposure, preserves stronger cards, and maximizes the chance that partner can take control. I therefore select play-single-club-3-copy1.",
+    "evidence": ["df960385-8fb3-4b61-81f0-64b0c09bcdec"]
+  },
+  "confidence": 0.75
+}

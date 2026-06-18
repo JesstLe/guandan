@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-021-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Taking control of the trick now is important because the leading opponent is near finish. The 4 of hearts is the cheapest winning card, so it best supports the team objective while conserving stronger cards for later uncertainty."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.6,
+    "evidence": [
+      "f8ff3124-9703-4804-9fb3-50f443141dbe"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "An opponent may be near finishing according to public hand-count context; exact hidden cards remain uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "f8ff3124-9703-4804-9fb3-50f443141dbe"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Taking control of the trick now is important because the leading opponent is near finish. The 4 of hearts is the cheapest winning card, so it best supports the team objective while conserving stronger cards for later uncertainty.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Alternative mentioned in raw ToM output."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

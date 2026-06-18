@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-032-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds only 2 cards, indicating they are near finishing. As the opening leader with a weak non-trump hand, the best team play is to lead the lowest card and create an opportunity for partner to seize the lead on the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has one or two relatively strong cards, possibly high non-trump or trumps, because they are close to going out with only 2 cards remaining. They will probably try to win the trick if they can.",
+    "confidence": 0.6,
+    "evidence": [
+      "5ad607ad-3a37-41e8-83e2-1daafe25bdfc"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have no public play history yet, so their exact holdings are unknown. With hand counts of 3, 2, and 3, they may contain mid-to-high cards or trumps that can beat a low diamond lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "5ad607ad-3a37-41e8-83e2-1daafe25bdfc"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 is the weakest legal lead, maximizing the chance that partner can overtake the trick while preserving the 4, 5, and 6 for later use if the lead comes back.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card might win the trick immediately, but with only low non-trump cards the chance is uncertain, and it leaves the 3 as a potential dead card if the lead is lost."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is stronger than the 3 but does not meaningfully improve the chance of winning the trick; keeping the 4 still leaves a slightly stronger card for later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is a middle card that does not help partner win the trick and unnecessarily spends a stronger card early."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a higher non-trump or any trump may win the trick and take control.",
+      "Partner may not be able to beat the low lead, wasting the opportunity to transfer the lead."
+    ],
+    "mitigation": "By leading the lowest card, the required strength for partner to win is minimized; if the lead is lost, the remaining cards are as strong as possible for future tricks."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with no public play history; hidden-information beliefs remain probabilistic."
+}

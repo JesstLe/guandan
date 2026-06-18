@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-142-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is near finishing with only two cards left. By leading a low single, I avoid burning my modest high cards and create a chance for partner to seize the lead or for opponents to waste a higher card, which helps partner escape."
+  },
+  "partnerBelief": {
+    "summary": "My partner likely wants to play out their remaining two cards quickly and may hold at least one card that can take control of a low diamond lead, but I cannot know their exact ranks or suits.",
+    "confidence": 0.6,
+    "evidence": [
+      "7e418412-da33-4d04-b2c4-12deae01b2c5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents probably have higher non-trump diamonds or trumps that can beat a low 3 lead, and they are likely to try to take the lead to stop my partner from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "7e418412-da33-4d04-b2c4-12deae01b2c5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the safest opening: it sheds my weakest card, keeps the 4, 5, and 6 as later options, and gives partner the best chance to win the trick without forcing me to commit a higher card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only slightly stronger than the 3; still likely beaten by opponents and wastes a card I might need later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Uses a middle card from my already weak hand, leaving me with fewer playable options in upcoming tricks."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Expends my highest card on a lead that opponents can probably still beat, leaving me with almost no leverage afterward."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may overtake the 3 lead immediately and control the table.",
+      "Partner may not be able to beat the lead and could be forced to pass or waste a card.",
+      "My remaining 4-6 diamonds are still low and may not win future tricks."
+    ],
+    "mitigation": "By playing the minimum now I preserve what little strength I have and avoid handing opponents information about my better cards."
+  },
+  "confidence": 0.7,
+  "notes": "All beliefs are probabilistic; the only public evidence is the new_game event."
+}

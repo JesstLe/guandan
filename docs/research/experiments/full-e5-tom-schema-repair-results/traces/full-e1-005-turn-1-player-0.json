@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-005-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-6-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am leading the first trick, so the immediate team objective is to win the opening lead and keep control. With only low spades and no trump, I should play the highest card available to maximize the chance that this single survives against opponents' low cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner may hold higher non-trump cards or trumps that could cover a low lead, but there is no public signal yet about partner's strength or distribution. Because hand counts are roughly equal, partner is as likely as any other player to have playable coverage.",
+    "confidence": 0.35,
+    "evidence": [
+      "c49d3321-368c-44fd-b5cb-7caec5586bea"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold some cards above rank 6 or trumps, so any single I lead could be beaten. However, they may also be holding low cards they are forced to play or pass on, giving my 6 a chance to take the trick early.",
+    "confidence": 0.45,
+    "evidence": [
+      "c49d3321-368c-44fd-b5cb-7caec5586bea"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I selected the 6♠ because it is the strongest card in my hand and gives the best chance to win the opening single. If it succeeds, I keep the lead and can continue to pressure opponents with my remaining low cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "reason": "Leading the 3♠ would make it easier for opponents or partner to beat with almost any higher card, giving away the lead immediately and leaving me with only marginally higher low cards that are still unlikely to win later."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4♠ is slightly stronger than the 3 but still very weak; it would likely be beaten and would not meaningfully improve my chance of keeping the lead compared with the 6."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5♠ is better than 3 or 4, but the 6 is strictly stronger and therefore the best chance to win the trick now without using any special resources."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may have a 7+ non-trump or any trump and take the lead.",
+      "Even if I win, my remaining cards (3♠,4♠,5♠) are very low, so sustained control is uncertain.",
+      "Partner may be unable to support, leaving opponents to dictate the next trick."
+    ],
+    "mitigation": "By leading the highest available single, I maximize immediate win probability. If I lose the lead, the remaining low cards can still be shed when safe, and I avoid committing any trump or high value cards I do not have."
+  },
+  "confidence": 0.55
+}

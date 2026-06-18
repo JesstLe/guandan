@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-069-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2, team 0) sees I am down to 2 cards while they and both opponents hold 3. In a cooperative-competitive endgame race, partner's plausible intent is to let me win the trick and maintain the lead so I can empty my hand first, or, if forced to play, to expend the minimum strength that does not help opponents. There is no prior play to signal specific holdings, so this belief is grounded only in the public hand counts and the team objective.",
+    "confidence": 0.6,
+    "evidence": [
+      "037a90fd-9359-46c5-8464-eb1242de1112"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) want to block me from going out and seize control of the lead. Given the hand counts, they know I am close to finishing. They will play the cheapest card that beats my lead: a higher card in the led suit or any trump (rank 7). They are unlikely to commit a scarce high trump unless they must, because doing so weakens their own endgame position.",
+    "confidence": 0.6,
+    "evidence": [
+      "037a90fd-9359-46c5-8464-eb1242de1112"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-2-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -11,6 +11,9 @@ interface Args {
   maxStepsPerTurn: number
   concurrency: number
   limit?: number
+  attemptLimit?: number
+  timeoutMs?: number
+  resume: boolean
 }
 
 main().catch(error => {
@@ -28,6 +31,9 @@ async function main(): Promise<void> {
     maxStepsPerTurn: args.maxStepsPerTurn,
     concurrency: args.concurrency,
     limit: args.limit,
+    attemptLimit: args.attemptLimit,
+    timeoutMs: args.timeoutMs,
+    resume: args.resume,
   })
 
   mkdirSync(dirname(args.report), { recursive: true })
@@ -52,10 +58,15 @@ function parseArgs(argv: string[]): Args {
   const parsed: Partial<Args> = {
     maxStepsPerTurn: 1,
     concurrency: 1,
+    resume: false,
   }
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
+    if (arg === '--resume') {
+      parsed.resume = true
+      continue
+    }
     const value = argv[i + 1]
     if (value === undefined) continue
 
@@ -83,6 +94,12 @@ function parseArgs(argv: string[]): Args {
     } else if (arg === '--limit') {
       parsed.limit = Number(value)
       i++
+    } else if (arg === '--attempt-limit') {
+      parsed.attemptLimit = Number(value)
+      i++
+    } else if (arg === '--timeout-ms') {
+      parsed.timeoutMs = Number(value)
+      i++
     }
   }
 
@@ -97,6 +114,12 @@ function parseArgs(argv: string[]): Args {
   }
   if (parsed.limit !== undefined && (!Number.isInteger(parsed.limit) || parsed.limit < 1)) {
     throw new Error('--limit must be a positive integer')
+  }
+  if (parsed.attemptLimit !== undefined && (!Number.isInteger(parsed.attemptLimit) || parsed.attemptLimit < 1)) {
+    throw new Error('--attempt-limit must be a positive integer')
+  }
+  if (parsed.timeoutMs !== undefined && (!Number.isInteger(parsed.timeoutMs) || parsed.timeoutMs < 1)) {
+    throw new Error('--timeout-ms must be a positive integer')
   }
 
   return parsed as Args

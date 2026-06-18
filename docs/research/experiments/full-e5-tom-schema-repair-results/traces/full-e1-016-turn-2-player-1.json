@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-016-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and led a low heart 3, signaling an attempt to shed a weak card and go out. Taking the trick with the cheapest winning heart prevents the near-finish opponent from winning cheaply and gives our team control of the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has not acted yet. They may be able to beat a low heart if I pass, but there is no public signal about their exact strength, so I cannot assume they have a winning heart or trump.",
+    "confidence": 0.6,
+    "evidence": [
+      "0489c279-eced-4bb1-99e1-4323b1c232d6"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Leading opponent (player 0) has only 2 cards and chose to lead the 3 of hearts, which strongly suggests they are trying to dump a low card to exit the round. They may still hold one higher card or a trump, but that cannot be asserted as fact.",
+    "confidence": 0.75,
+    "evidence": [
+      "0489c279-eced-4bb1-99e1-4323b1c232d6"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the heart 4 is the smallest legal winner. It beats the opponent's low lead, suppresses a near-finish opponent, seizes the lead, and preserves the 9 and 10 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the leading opponent potentially win the trick and lead again while down to 2 cards, increasing the risk they exit the round before my partner can intervene."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins but expends a materially stronger card when the 4 already beats the table, leaving fewer high-card options if the opponent retakes the lead."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest card in hand and is unnecessary here; using it now weakens our ability to control later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 may hold a higher heart or a trump and retake the lead.",
+      "By winning, I become the leader and must choose a follow-up lead with limited information."
+    ],
+    "mitigation": "Keeping the 9 and 10 in reserve provides two follow-up winners, and partner still has 3 cards to support if the opponent fights back."
+  },
+  "confidence": 0.78,
+  "notes": "All partner and opponent beliefs are kept probabilistic because only the single public lead and hand counts are known."
+}

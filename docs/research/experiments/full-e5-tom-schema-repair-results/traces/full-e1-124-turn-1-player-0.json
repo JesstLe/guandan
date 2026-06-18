@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-124-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two cards left while everyone else has three, so my best chance to help the team is to go out quickly by keeping the lead through a high card."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards and has not acted, so there is no strong signal about their hand; they could be holding anything from high winners to low cards, but they likely want me to finish if possible.",
+    "confidence": 0.3,
+    "evidence": [
+      "dfa370f9-fc9d-4c30-805f-fc67a477aaa8"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three unknown cards. They probably have some higher cards or trumps, but no public events reveal their exact strength; they will try to seize the lead and stop me from going out.",
+    "confidence": 0.4,
+    "evidence": [
+      "dfa370f9-fc9d-4c30-805f-fc67a477aaa8"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the ace of spades is my strongest non-trump single and gives me the best chance to win the trick, retain the lead, and then play the deuce to exit on the next turn.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The deuce is my weakest card and almost certainly loses the lead to an opponent or even my partner, leaving me at the mercy of whatever is led back to me."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or higher card that can beat the ace, after which they could lead something I cannot match and finish before me."
+    ],
+    "mitigation": "The ace is the highest non-trump card I hold, so it maximizes my probability of retaining control; if it is beaten, I still keep the deuce as a final card to play later."
+  },
+  "confidence": 0.8
+}

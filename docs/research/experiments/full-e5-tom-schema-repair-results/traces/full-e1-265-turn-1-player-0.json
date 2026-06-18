@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-265-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "minimize_loss",
+    "explanation": "My hand contains only low non-trump singles (3-6 of spades) and no trump cards. I cannot realistically expect to win or keep the lead, so the priority is to dump the weakest card and surrender the lead as cheaply as possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has taken no public action. Their strength is unknown: they could be strong enough to regain the lead or equally weak. Without any play history, I cannot infer a specific signaling intent.",
+    "confidence": 0.3,
+    "evidence": [
+      "25abec8d-217b-4c90-9b05-2b450af96882"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have shown nothing. Given my own hand is very weak, it is more likely than not that at least one opponent holds a higher single or a trump, but this remains a probabilistic belief, not a fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "25abec8d-217b-4c90-9b05-2b450af96882"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades dumps the lowest-value card and minimizes the value of the lead I am almost certain to lose, since all my cards are weak non-trump singles.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Keeps the lower 3 as deadwood; since I lack high cards, a higher lead still loses the initiative while leaving a weaker card stuck in hand."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Same drawback: the 5 is still a low non-trump single that will not win, and retaining the 3 provides no future advantage."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest card in my hand but still a non-trump low single; leading it wastes the card most likely to win a future trick and keeps the weaker cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any lead is likely to be taken by an opponent or possibly partner, so I lose the opening initiative.",
+      "If partner is weak, the opponents may control the next lead and pressure our team.",
+      "I have no trumps or bombs to regain control later, so my remaining cards are all deadwood."
+    ],
+    "mitigation": "Play the lowest card (3 of spades) so that the loss of initiative costs as little as possible and my remaining hand is marginally stronger."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no public history; all inferences about partner and opponents are probabilistic."
+}

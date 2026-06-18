@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-009-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only two cards, the fewest in the game, so the primary team objective is to go out first by winning or controlling the lead through both remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three cards and no public plays have occurred, so their exact composition is unknown. They likely hold a mix of ranks and suits and will try to either cover my lead if opponents challenge or pass the lead back to me if I play a strong card.",
+    "confidence": 0.35,
+    "evidence": [
+      "8c5bd466-37b6-4b42-9b98-b40477ff5358"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three cards and will try to seize control to stop player 0 from going out. Given the hand-count disadvantage for player 0, opponents likely possess some trumps or high natural cards, but the exact count is uncertain.",
+    "confidence": 0.35,
+    "evidence": [
+      "8c5bd466-37b6-4b42-9b98-b40477ff5358"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 of spades is the strongest natural single in hand. It maximizes the chance of winning the trick outright, which lets player 0 lead again and play the A of spades to finish. Even if an opponent beats it with a trump or joker, player 0 still retains the A as a secondary card and the opponent has spent a valuable trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A of spades is weaker than the 2 and can be beaten by any 2, trump, or joker. Leading it risks losing the initiative immediately, after which player 0 would be left with the 2 but without the lead, making it harder to guarantee going out first."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7 or a joker and beat the 2 of spades, taking control.",
+      "The partner may not be able to assist if opponents play strong cards after my lead."
+    ],
+    "mitigation": "Leading the highest natural card (2 of spades) minimizes the set of cards that can beat it and preserves the A as a follow-up. This maximizes the probability of retaining or regaining the lead."
+  },
+  "confidence": 0.72,
+  "notes": "No public cards have been played, so all beliefs about hidden hands remain probabilistic and grounded only in the initial new_game event and observed hand counts."
+}

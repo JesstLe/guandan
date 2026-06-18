@@ -1,0 +1,34 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "pilot-e1-036-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "overview": "Player 0 led a low heart 3 and has only 2 cards remaining, indicating they are near finish. As the immediate follower on team 1, I must decide whether to pass and rely on my partner or beat the lead to prevent the opponent from gaining cheap initiative.",
+    "partnerInference": "My partner (player 3) holds 3 unseen cards and has made no public play. They might have a higher heart or trump to beat the 3, but with no evidence I cannot assume so. If I pass and partner cannot beat, player 0 may win the trick and use their last card to finish.",
+    "opponentInference": "Player 0 led the weakest possible heart with only 2 cards left, likely trying to win or exit cheaply. Player 2 (opponent) also holds 3 unseen cards and may support player 0. Allowing the lead to stand risks handing opponents control at a critical moment.",
+    "candidateComparison": [
+      {
+        "actionId": "pass",
+        "assessment": "Conserves all cards but cedes initiative to opponents. Given player 0 is near finish and partner's ability to beat is uncertain, passing is too risky.",
+        "evidence": ["50aead2c-c74d-47a8-9333-271c60ac275a"]
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "assessment": "Beats the table with the minimal winning card, denying the near-finishing opponent a cheap win while preserving stronger cards for later.",
+        "evidence": ["50aead2c-c74d-47a8-9333-271c60ac275a"]
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "assessment": "Beats the table but expends a higher card unnecessarily when the 4 is already sufficient.",
+        "evidence": ["50aead2c-c74d-47a8-9333-271c60ac275a"]
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "assessment": "Also wins but wastes the highest card in hand; inferior to the minimal winning play.",
+        "evidence": ["50aead2c-c74d-47a8-9333-271c60ac275a"]
+      }
+    ],
+    "conclusion": "Playing the heart 4 best balances taking control from the near-finishing opponent and conserving higher cards for future tricks."
+  },
+  "evidence": ["50aead2c-c74d-47a8-9333-271c60ac275a"]
+}

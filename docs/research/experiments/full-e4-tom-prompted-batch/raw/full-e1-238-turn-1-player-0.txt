@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-238-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "As the opening leader with only low non-trump clubs, the best team use of this trick is to lead the smallest card so a partner with a stronger single can win the lead without me consuming a higher card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has no public signals yet, but with three cards they could easily hold a higher non-trump single or a trump to take this trick. Leading low lets them do so economically.",
+    "confidence": 0.5,
+    "evidence": [
+      "9edfe4c0-1612-45a3-82f4-6a879f415371"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The nearby-finishing opponent (player 1, 2 cards) may hold a high card or trump, but that is uncertain. If they do, they will win regardless of which low club I lead; if they do not, leading low keeps my stronger club for a later trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "9edfe4c0-1612-45a3-82f4-6a879f415371"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the cheapest way to open the trick: it gives partner the widest range of cards that can win the lead, preserves my 6 as the strongest exit card among my clubs, and does not materially increase the risk that an opponent with a winning card takes the trick, since any higher card or trump would beat a 6 anyway.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but still low; leading it uses up a card that could win a later trick against an opponent holding a 3."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Consumes a mid-strength club that is more valuable for later leads or for beating low opponent plays."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "My highest club and best non-trump asset; leading it now would gamble control on a card that is still likely beaten by any trump or higher rank, leaving me with even weaker follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading low may let the near-finishing opponent win the trick with a modest card and gain tempo.",
+      "Partner may not have a higher single, so the lead could still pass to an opponent."
+    ],
+    "mitigation": "Because any higher card or trump would also beat a 6, the tempo risk is largely unchanged by leading the 3 instead of the 6, while keeping the 6 improves my hand's future winning potential."
+  },
+  "confidence": 0.65,
+  "notes": "Hidden cards remain probabilistic; only the new_game event is public evidence, so beliefs are grounded in hand counts and the first-lead position."
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-149-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left and the lead. The best team outcome is to empty my hand quickly, so I should try to retain control and play my final card next."
+  },
+  "partnerBelief": {
+    "summary": "No partner signals have been revealed yet. My partner likely holds some cards and would prefer I keep the lead so I can finish, but I cannot infer specific holdings.",
+    "confidence": 0.4,
+    "evidence": [
+      "d76d30a4-1488-47f9-96c9-13ac515e5726"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent still holds three cards and will try to seize the lead to stop me from going out. They may hold trump cards, jokers, or the trump rank that can beat a plain spade A.",
+    "confidence": 0.5,
+    "evidence": [
+      "d76d30a4-1488-47f9-96c9-13ac515e5726"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A is the stronger single card and gives the highest chance of winning this trick and keeping the lead, after which I can play the 2 and finish my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 surrenders initiative. An opponent can likely beat it, take control, and leave my A stranded without another chance to lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may still have higher cards such as jokers, trump-rank cards, or trumps that beat the spade A.",
+      "My partner may not be able to assist if the lead is lost."
+    ],
+    "mitigation": "Playing my strongest card now maximizes the chance of winning the trick and controlling the tempo, which is the best available play given the uncertainty."
+  },
+  "confidence": 0.65,
+  "notes": "Hidden cards are treated probabilistically; the choice favors the line that most directly tries to finish the hand under uncertainty."
+}

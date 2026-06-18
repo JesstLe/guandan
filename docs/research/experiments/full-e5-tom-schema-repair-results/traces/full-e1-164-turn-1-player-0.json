@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-164-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two non-trump cards left, the priority is to play out the hand while keeping the lead. Leading the Ace gives the highest chance of winning this trick, allowing me to shed the 2 next and move closer to going out before opponents can attack."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has made no public plays, so I have no signal about strength or distribution. I treat partner's hand as a random unseen set of cards that may contain high cards or trumps but is not assumed to cover any specific rank.",
+    "confidence": 0.5,
+    "evidence": [
+      "114733b4-5e6e-4ff6-8d60-a24cc2d3cd86"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unseen cards and no cards have been played. They may hold higher non-trump cards or trump 7s/jokers that can beat my spade Ace, but I cannot assert any specific holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "114733b4-5e6e-4ff6-8d60-a24cc2d3cd86"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade Ace is the strongest available single and maximizes the chance of winning the opening trick. Retaining the lead lets me play the weak spade 2 next, reducing my hand while opponents still have uncertain counters.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 is the lowest rank and will almost certainly be beaten by any opponent with a higher card or trump, immediately surrendering the lead and letting opponents dictate the endgame against my remaining Ace."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump 7 or joker and beat the spade Ace, taking the lead.",
+      "Partner may not be able to cover if opponents counter-attack before I can play the 2."
+    ],
+    "mitigation": "The Ace is still the highest-probability winning lead available. There is no safer single in the legal actions, so accepting the risk is preferable to ceding the lead with the 2."
+  },
+  "confidence": 0.7,
+  "notes": "Endgame race with no public card information; choice is between retaining initiative with the Ace or likely losing control with the 2."
+}

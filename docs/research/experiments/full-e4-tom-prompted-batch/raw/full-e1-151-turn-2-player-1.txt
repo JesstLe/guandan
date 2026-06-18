@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-151-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards left and led a low heart, so the priority is to take the trick now and deny them the initiative that could let them finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 unknown cards with no public signal about their strength; they might be able to beat a low heart but are not guaranteed to do so, and may prefer to save strength for later.",
+    "confidence": 0.4,
+    "evidence": [
+      "0ec562a6-5fa0-4c14-883c-e612d68b7b76"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is near finishing with only 2 cards; leading the 3 of hearts suggests they are trying to shed a weak card and keep control. Their remaining card could be higher, a trump, or even part of a bomb.",
+    "confidence": 0.6,
+    "evidence": [
+      "0ec562a6-5fa0-4c14-883c-e612d68b7b76"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest winning card, the heart 4, to beat the opponent's lead, seize the trick, and stop the near-finish opponent from retaining control, while conserving the 9 and 10 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 keep the lead with only 2 cards remaining, giving them a direct path to potentially finish on the next trick."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Wins the trick but spends a higher card unnecessarily when the 4 already beats the lead, leaving fewer high-card resources for later."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Also wins but wastes the strongest card in hand, reducing ability to beat stronger future leads or support the partner."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 may still have a trump or bomb for the next trick after losing this one.",
+      "Partner might have preferred to win this trick themselves if they hold stronger cards."
+    ],
+    "mitigation": "Use the minimum winner now to keep stronger cards in reserve and maintain flexibility for the following tricks."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-035-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low, non-trump spades (3-6) and no trump. I cannot realistically dominate the table, so the best team play is to lead the weakest card and give my partner the widest range of cards with which to cover and take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not signaled anything yet. With a low single lead, partner is more likely to be able to beat it with a modest higher non-trump or a cheap trump if they have one, without needing to commit a bomb or high-value set.",
+    "confidence": 0.6,
+    "evidence": [
+      "3e135e63-1f98-4d7e-8100-d62338ca573e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher non-trump cards or trumps and will try to win the trick cheaply to seize the lead. They have no public history to reveal strength, so their exact holdings remain uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "3e135e63-1f98-4d7e-8100-d62338ca573e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades, my lowest card, sheds a loser, preserves the slightly higher spades, and maximizes the chance that partner can cover the lead on their turn.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the highest card in a weak hand risks winning the trick and leaving me to lead again with even weaker cards and no trump; if opponents beat it, I still lose tempo while exposing little benefit."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "An intermediate low card does not improve over the 3; it keeps a lower loser in hand and gives partner a narrower window to cover than the minimum lead."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Similar to the 5, this is still a weak non-trump card but retains the 3 as a later problem; there is no reason to keep the 3 when I can shed it now."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may cover the 3 with a higher non-trump or trump and keep the lead.",
+      "Partner may lack a playable higher card, letting opponents control the next lead.",
+      "Leading the absolute lowest card may allow opponents to win without revealing much strength."
+    ],
+    "mitigation": "Because my hand is already weak, the 3 lead minimizes my own loss and forces opponents to spend a real card to take the trick; it also creates the best conditions for partner to intervene on their turn."
+  },
+  "confidence": 0.75
+}

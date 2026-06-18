@@ -1,12 +1,12 @@
 # Research Preflight Report
 
 Status: `ready_for_submission`
-Generated at: `2026-06-18T02:48:48.576Z`
+Generated at: `2026-06-18T10:24:26.413Z`
 
 Submission gate: `ready`
 Local ready: `true`
 Manuscript ready: `true`
-Manuscript words: `2983`
+Manuscript words: `3724`
 
 ## Marker Counts
 

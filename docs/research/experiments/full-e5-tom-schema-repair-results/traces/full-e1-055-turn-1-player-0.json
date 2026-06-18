@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-055-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "With only 3-6 of spades and no trumps, this hand has very little trick-winning power. The best team use of this lead is to expend the weakest card and keep slightly higher cards for later, rather than trying to win now."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) is an unknown hand. At the very start they have signaled nothing, but as a teammate they likely want to win the trick if they can. I cannot assume they hold any particular spade or trump.",
+    "confidence": 0.2,
+    "evidence": [
+      "756d1a0f-72db-4d0c-a3c2-1595fc2740ff"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, 3 cards each) also have unknown hands. They will try to beat any lead to take control. Because I am leading low, even modest cards from opponents can win, so I should not expect to keep the lead.",
+    "confidence": 0.2,
+    "evidence": [
+      "756d1a0f-72db-4d0c-a3c2-1595fc2740ff"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the 3 of spades, the weakest legal card. This minimizes the value of the card I give away and preserves the 4-6 for future plays where they might actually matter.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest spade I hold. Leading it now wastes my best non-trump card for no benefit, since any opponent with a higher non-trump or any trump will still win."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a meaningful upgrade over the 3 in a hand with no power; playing it now does not increase the chance of winning the trick but weakens future options."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is better than the 3, but the same logic applies: when the whole hand is low, the smallest expenditure is preferred."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The lead is weak and will almost certainly be beaten by an opponent or partner, losing immediate control.",
+      "A teammate may misread the low lead as a desire to be passed to, but partner intent cannot be assumed."
+    ],
+    "mitigation": "Because every legal action is a single low spade, control cannot be retained regardless; choosing the 3 minimizes cost while still allowing the 4-6 to be played later in a possibly more useful position."
+  },
+  "confidence": 0.75
+}

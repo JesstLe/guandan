@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "metrics_available",
+  "beforeAgentId": "candidate-constrained-llm",
+  "afterAgentId": "verifier-revision-llm",
+  "pairedDecisionCount": 32,
+  "excludedParseFailureCount": 18,
+  "bootstrapIterations": 2000,
+  "bootstrapSeed": 1729,
+  "hardFailureAttribution": {
+    "beforeHardFailureCount": 35,
+    "afterHardFailureCount": 10,
+    "hardFailureDelta": -25,
+    "beforeDecisionsWithHardFailure": 29,
+    "afterDecisionsWithHardFailure": 9,
+    "decisionLevelDelta": -20,
+    "hardFailureDeltaBootstrap95Ci": [
+      -32,
+      -18
+    ],
+    "decisionLevelMcnemar": {
+      "beforeOnly": 20,
+      "afterOnly": 0,
+      "both": 9,
+      "neither": 3,
+      "exactPValue": 0.0000019073486328125
+    }
+  },
+  "labelRows": [
+    {
+      "label": "legalAction",
+      "beforePass": 32,
+      "afterPass": 32,
+      "beforeFail": 0,
+      "afterFail": 0,
+      "beforeUnknown": 0,
+      "afterUnknown": 0,
+      "beforeFailureBurden": 0,
+      "afterFailureBurden": 0,
+      "burdenDelta": 0,
+      "burdenDeltaBootstrap95Ci": [
+        0,
+        0
+      ],
+      "mcnemar": {
+        "beforeOnly": 0,
+        "afterOnly": 0,
+        "both": 0,
+        "neither": 32,
+        "exactPValue": null
+      }
+    },
+    {
+      "label": "beatsTable",
+      "beforePass": 7,
+      "afterPass": 7,
+      "beforeFail": 0,
+      "afterFail": 0,
+      "beforeUnknown": 0,
+      "afterUnknown": 0,
+      "beforeFailureBurden": 0,
+      "afterFailureBurden": 0,
+      "burdenDelta": 0,
+      "burdenDeltaBootstrap95Ci": [
+        0,
+        0
+      ],
+      "mcnemar": {
+        "beforeOnly": 0,
+        "afterOnly": 0,
+        "both": 0,
+        "neither": 32,
+        "exactPValue": null
+      }
+    },
+    {
+      "label": "publicHistoryConsistent",
+      "beforePass": 3,
+      "afterPass": 23,
+      "beforeFail": 29,
+      "afterFail": 9,
+      "beforeUnknown": 0,
+      "afterUnknown": 0,
+      "beforeFailureBurden": 29,
+      "afterFailureBurden": 9,
+      "burdenDelta": -20,
+      "burdenDeltaBootstrap95Ci": [
+        -25,
+        -15
+      ],
+      "mcnemar": {
+        "beforeOnly": 20,
+        "afterOnly": 0,
+        "both": 9,
+        "neither": 3,
+        "exactPValue": 0.0000019073486328125
+      }
+    },
+    {
+      "label": "hiddenInfoDisciplined",
+      "beforePass": 26,
+      "afterPass": 31,
+      "beforeFail": 6,
+      "afterFail": 1,
+      "beforeUnknown": 0,
+      "afterUnknown": 0,
+      "beforeFailureBurden": 6,
+      "afterFailureBurden": 1,
+      "burdenDelta": -5,
+      "burdenDeltaBootstrap95Ci": [
+        -9,
+        -1
+      ],
+      "mcnemar": {
+        "beforeOnly": 5,
+        "afterOnly": 0,
+        "both": 1,
+        "neither": 26,
+        "exactPValue": 0.0625
+      }
+    },
+    {
+      "label": "partnerConsistent",
+      "beforePass": 3,
+      "afterPass": 6,
+      "beforeFail": 4,
+      "afterFail": 1,
+      "beforeUnknown": 25,
+      "afterUnknown": 25,
+      "beforeFailureBurden": 29,
+      "afterFailureBurden": 26,
+      "burdenDelta": -3,
+      "burdenDeltaBootstrap95Ci": [
+        -7,
+        0
+      ],
+      "mcnemar": {
+        "beforeOnly": 3,
+        "afterOnly": 0,
+        "both": 26,
+        "neither": 3,
+        "exactPValue": 0.25
+      }
+    },
+    {
+      "label": "opponentConsistent",
+      "beforePass": 10,
+      "afterPass": 12,
+      "beforeFail": 4,
+      "afterFail": 2,
+      "beforeUnknown": 18,
+      "afterUnknown": 18,
+      "beforeFailureBurden": 22,
+      "afterFailureBurden": 20,
+      "burdenDelta": -2,
+      "burdenDeltaBootstrap95Ci": [
+        -7,
+        3
+      ],
+      "mcnemar": {
+        "beforeOnly": 4,
+        "afterOnly": 2,
+        "both": 18,
+        "neither": 8,
+        "exactPValue": 0.6875
+      }
+    },
+    {
+      "label": "reasonActionConsistent",
+      "beforePass": 31,
+      "afterPass": 32,
+      "beforeFail": 1,
+      "afterFail": 0,
+      "beforeUnknown": 0,
+      "afterUnknown": 0,
+      "beforeFailureBurden": 1,
+      "afterFailureBurden": 0,
+      "burdenDelta": -1,
+      "burdenDeltaBootstrap95Ci": [
+        -3,
+        0
+      ],
+      "mcnemar": {
+        "beforeOnly": 1,
+        "afterOnly": 0,
+        "both": 0,
+        "neither": 31,
+        "exactPValue": 1
+      }
+    },
+    {
+      "label": "teamObjectiveValid",
+      "beforePass": 13,
+      "afterPass": 14,
+      "beforeFail": 5,
+      "afterFail": 0,
+      "beforeUnknown": 14,
+      "afterUnknown": 18,
+      "beforeFailureBurden": 19,
+      "afterFailureBurden": 18,
+      "burdenDelta": -1,
+      "burdenDeltaBootstrap95Ci": [
+        -3,
+        0
+      ],
+      "mcnemar": {
+        "beforeOnly": 1,
+        "afterOnly": 0,
+        "both": 18,
+        "neither": 13,
+        "exactPValue": 1
+      }
+    }
+  ],
+  "hardComponentRows": [
+    {
+      "label": "legalAction",
+      "beforeFail": 0,
+      "afterFail": 0,
+      "failDelta": 0,
+      "shareOfHardFailureDrop": null
+    },
+    {
+      "label": "beatsTable",
+      "beforeFail": 0,
+      "afterFail": 0,
+      "failDelta": 0,
+      "shareOfHardFailureDrop": null
+    },
+    {
+      "label": "publicHistoryConsistent",
+      "beforeFail": 29,
+      "afterFail": 9,
+      "failDelta": -20,
+      "shareOfHardFailureDrop": 0.8
+    },
+    {
+      "label": "hiddenInfoDisciplined",
+      "beforeFail": 6,
+      "afterFail": 1,
+      "failDelta": -5,
+      "shareOfHardFailureDrop": 0.2
+    }
+  ],
+  "qualitativeCases": [
+    {
+      "caseType": "public_history_repaired",
+      "decisionId": "pilot-e1-002-turn-1-player-0",
+      "beforeSelectedActionId": "play-single-diamond-3-copy1",
+      "afterSelectedActionId": "play-single-diamond-3-copy1",
+      "actionChanged": false,
+      "primaryReasonChanged": false,
+      "labelStatuses": {
+        "legalAction": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "beatsTable": {
+          "before": "not_applicable",
+          "after": "not_applicable"
+        },
+        "publicHistoryConsistent": {
+          "before": "fail",
+          "after": "pass"
+        },
+        "hiddenInfoDisciplined": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "partnerConsistent": {
+          "before": "fail",
+          "after": "pass"
+        },
+        "opponentConsistent": {
+          "before": "unknown",
+          "after": "unknown"
+        },
+        "reasonActionConsistent": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "teamObjectiveValid": {
+          "before": "unknown",
+          "after": "unknown"
+        }
+      },
+      "beforeIssues": [
+        "UNKNOWN_PUBLIC_EVIDENCE",
+        "PARTNER_BELIEF_OMITS_PUBLIC_TAG"
+      ],
+      "afterIssues": [],
+      "beforeEvidence": [
+        "Selected action play-single-diamond-3-copy1 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "Unknown public evidence ids: Partner hand count is 2, tagged as near finish., A low single is the easiest card type for partner to surpass., No public history reveals partner's cards., Players 1 and 3 hold 3 cards each., Trumps and high cards have not been revealed.",
+        "Hidden information is hedged or not asserted.",
+        "Partner belief omits the public partner_near_finish scenario tag.",
+        "Opponent consistency needs a public scenario tag before this conservative check applies.",
+        "Trace rationale is compatible with the selected action type.",
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ],
+      "afterEvidence": [
+        "Selected action play-single-diamond-3-copy1 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "All cited evidence ids are present in public history.",
+        "Hidden information is hedged or not asserted.",
+        "Partner belief reflects the public partner_near_finish scenario tag.",
+        "Opponent consistency needs a public scenario tag before this conservative check applies.",
+        "Trace rationale is compatible with the selected action type.",
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    },
+    {
+      "caseType": "hidden_info_repaired",
+      "decisionId": "pilot-e1-013-turn-1-player-0",
+      "beforeSelectedActionId": "play-single-club-3-copy1",
+      "afterSelectedActionId": "play-single-club-3-copy1",
+      "actionChanged": false,
+      "primaryReasonChanged": true,
+      "labelStatuses": {
+        "legalAction": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "beatsTable": {
+          "before": "not_applicable",
+          "after": "not_applicable"
+        },
+        "publicHistoryConsistent": {
+          "before": "fail",
+          "after": "pass"
+        },
+        "hiddenInfoDisciplined": {
+          "before": "fail",
+          "after": "pass"
+        },
+        "partnerConsistent": {
+          "before": "unknown",
+          "after": "unknown"
+        },
+        "opponentConsistent": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "reasonActionConsistent": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "teamObjectiveValid": {
+          "before": "unknown",
+          "after": "unknown"
+        }
+      },
+      "beforeIssues": [
+        "UNKNOWN_PUBLIC_EVIDENCE",
+        "HIDDEN_INFO_ASSERTED_AS_FACT"
+      ],
+      "afterIssues": [],
+      "beforeEvidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "Unknown public evidence ids: Partner hand count is 3 (handCounts[2])., No cards have been played, so partner's distribution is unknown., A low single is the easiest combination for partner to overtake., Opponent player 1 hand count is 2 (handCounts[1]), flagged as near finish., No cards have been played, so specific opponent holdings are hidden., A low lead could be taken by any opponent with a higher card or trump.",
+        "Trace asserts hidden information without uncertainty markers: Opponents collectively hold 5 cards; opponent player 1 holds only 2 cards and is close to finishing, but I cannot assert the ranks or trump content of those cards.",
+        "Partner consistency needs a public scenario tag before this conservative check applies.",
+        "Opponent belief reflects the public opponent_near_finish scenario tag.",
+        "Trace rationale is compatible with the selected action type.",
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ],
+      "afterEvidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "All cited evidence ids are present in public history.",
+        "Hidden information is hedged or not asserted.",
+        "Partner consistency needs a public scenario tag before this conservative check applies.",
+        "Opponent belief reflects the public opponent_near_finish scenario tag.",
+        "Trace rationale is compatible with the selected action type.",
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    },
+    {
+      "caseType": "remaining_hard_failure",
+      "decisionId": "pilot-e1-004-turn-1-player-0",
+      "beforeSelectedActionId": "play-single-spade-A-copy2",
+      "afterSelectedActionId": "play-single-spade-A-copy2",
+      "actionChanged": false,
+      "primaryReasonChanged": false,
+      "labelStatuses": {
+        "legalAction": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "beatsTable": {
+          "before": "not_applicable",
+          "after": "not_applicable"
+        },
+        "publicHistoryConsistent": {
+          "before": "fail",
+          "after": "fail"
+        },
+        "hiddenInfoDisciplined": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "partnerConsistent": {
+          "before": "unknown",
+          "after": "unknown"
+        },
+        "opponentConsistent": {
+          "before": "unknown",
+          "after": "unknown"
+        },
+        "reasonActionConsistent": {
+          "before": "pass",
+          "after": "pass"
+        },
+        "teamObjectiveValid": {
+          "before": "pass",
+          "after": "pass"
+        }
+      },
+      "beforeIssues": [
+        "UNKNOWN_PUBLIC_EVIDENCE"
+      ],
+      "afterIssues": [
+        "UNKNOWN_PUBLIC_EVIDENCE"
+      ],
+      "beforeEvidence": [
+        "Selected action play-single-spade-A-copy2 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "Unknown public evidence ids: No public card plays by partner have occurred yet., No cards have been played, so no inference about opponent strength is available.",
+        "Hidden information is hedged or not asserted.",
+        "Partner consistency needs a public scenario tag before this conservative check applies.",
+        "Opponent consistency needs a public scenario tag before this conservative check applies.",
+        "Trace rationale is compatible with the selected action type.",
+        "finish_hand is compatible with playing from an endgame hand."
+      ],
+      "afterEvidence": [
+        "Selected action play-single-spade-A-copy2 is in legalActions.",
+        "Lead actions do not need to beat an existing table lead.",
+        "Unknown public evidence ids: Public history contains only new_game event 27a50f10-d0ca-4a52-af45-cf0a09317796, so no card plays by partner have been observed., Public history contains only new_game event 27a50f10-d0ca-4a52-af45-cf0a09317796, so no opponent card plays have been observed.",
+        "Hidden information is hedged or not asserted.",
+        "Partner consistency needs a public scenario tag before this conservative check applies.",
+        "Opponent consistency needs a public scenario tag before this conservative check applies.",
+        "Trace rationale is compatible with the selected action type.",
+        "finish_hand is compatible with playing from an endgame hand."
+      ]
+    },
+    {
+      "caseType": "parse_failure_outside_revision",
+      "decisionId": "pilot-e1-000-turn-1-player-0",
+      "beforeSelectedActionId": null,
+      "afterSelectedActionId": null,
+      "actionChanged": null,
+      "primaryReasonChanged": null,
+      "labelStatuses": {},
+      "beforeIssues": [],
+      "afterIssues": [],
+      "beforeEvidence": [],
+      "afterEvidence": [],
+      "parseFailureMessage": "Parsed JSON does not match the required reasoning trace shape.",
+      "rawOutputFile": "docs/research/experiments/pilot-e5-candidate-constrained-batch/raw/pilot-e1-000-turn-1-player-0.txt"
+    }
+  ],
+  "notes": "All deltas are after minus before on paired decision ids. Failure burden is fail + unknown. Bootstrap CIs resample paired decisions with replacement and are descriptive pilot uncertainty estimates."
+}

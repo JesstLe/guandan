@@ -1,4 +1,5 @@
 import {
+  existsSync,
   mkdirSync,
   readFileSync,
   writeFileSync,
@@ -56,6 +57,9 @@ export interface MetricsSummary {
 export interface WriteMetricsSummaryOptions {
   sources: MetricsSummarySource[]
   outputDir: string
+  basename?: string
+  title?: string
+  description?: string
 }
 
 export interface WriteMetricsSummaryResult {
@@ -74,20 +78,28 @@ export function summarizeExperimentMetrics(sources: MetricsSummarySource[]): Met
 export function writeMetricsSummary(options: WriteMetricsSummaryOptions): WriteMetricsSummaryResult {
   mkdirSync(options.outputDir, { recursive: true })
   const summary = summarizeExperimentMetrics(options.sources)
-  const jsonPath = join(options.outputDir, 'pilot-metrics-summary.json')
-  const markdownPath = join(options.outputDir, 'pilot-metrics-summary.md')
+  const basename = options.basename ?? 'pilot-metrics-summary'
+  const jsonPath = join(options.outputDir, `${basename}.json`)
+  const markdownPath = join(options.outputDir, `${basename}.md`)
 
   writeJson(jsonPath, summary)
-  writeFileSync(markdownPath, renderMetricsSummaryMarkdown(summary), 'utf8')
+  writeFileSync(markdownPath, renderMetricsSummaryMarkdown(summary, {
+    title: options.title,
+    description: options.description,
+  }), 'utf8')
 
   return { jsonPath, markdownPath, summary }
 }
 
-export function renderMetricsSummaryMarkdown(summary: MetricsSummary): string {
+export function renderMetricsSummaryMarkdown(
+  summary: MetricsSummary,
+  options: { title?: string; description?: string } = {},
+): string {
   const lines = [
-    '# Pilot Metrics Summary',
+    `# ${options.title ?? 'Pilot Metrics Summary'}`,
     '',
-    'This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results.',
+    options.description
+      ?? 'This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results.',
     '',
     '| Agent | Status | Parsed / Total | Parse Failures | Hard Failures | Legal | Public | Hidden Info | Partner/Opponent Tags | Reason-Action | Objective | Notes |',
     '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |',
@@ -112,7 +124,7 @@ export function renderMetricsSummaryMarkdown(summary: MetricsSummary): string {
 }
 
 function summarizeSource(source: MetricsSummarySource): MetricsSummaryRow {
-  if (source.metricsPath) {
+  if (source.metricsPath && existsSync(source.metricsPath)) {
     const metrics = readJson<MetricsFile>(source.metricsPath)
     const total = metrics.totalDecisionPoints ?? 0
     const parsed = metrics.totalParsedTraces ?? total
@@ -134,7 +146,7 @@ function summarizeSource(source: MetricsSummarySource): MetricsSummaryRow {
     }
   }
 
-  if (source.rawAuditPath) {
+  if (source.rawAuditPath && existsSync(source.rawAuditPath)) {
     const audit = readJson<RawAuditFile>(source.rawAuditPath)
     return {
       agentId: source.agentId,

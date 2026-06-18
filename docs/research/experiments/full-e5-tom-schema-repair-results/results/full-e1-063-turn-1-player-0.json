@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-063-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "All cited evidence ids are present in public history."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: Partner has 3 cards and no public plays yet; with my own hand weak, it is plausible partner holds at least one card above a club 3 or a trump to win the trick."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 1 failure(s)."
+}

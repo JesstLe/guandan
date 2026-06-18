@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-208-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (3-6 of clubs, no trumps). Leading the lowest card gives my partner the widest range of cards that can beat it and take control, rather than trying to win an unwinnable trick myself."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and is likely to have at least one card that can beat a low club single, but I cannot assume any specific ranks or suits. Their likely intent is to cover a weak lead if they can, so our team gains the lead and can dictate pace.",
+    "confidence": 0.55,
+    "evidence": [
+      "333d47ac-3d7e-471a-b81b-0ed3ef4a3809"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they are more likely than average to hold a strong exit card such as a trump or high rank. Opponent player 3 has 3 cards and may also try to contest the trick. Both will try to win with the minimum card needed, preserving resources for later.",
+    "confidence": 0.45,
+    "evidence": [
+      "333d47ac-3d7e-471a-b81b-0ed3ef4a3809"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the least demanding lead. It lets partner win with the broadest set of cards, forces opponents to reveal or expend strength if they want the trick, and keeps my slightly higher low cards for later positions.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is still a very low non-trump card and almost certainly loses to any trump, any 7, or any higher card. Playing it now would make it harder for partner to cover with an intermediate card and would waste my highest card in a hopeless lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3. It still loses to almost any playable card an opponent or partner might use, and it narrows the set of partner cards that could beneficially take the trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 shares the same weaknesses as the 4 and 6: it is not high enough to win the trick on its own, yet it is high enough to block partner from winning with a lower intermediate card. The 3 is therefore superior."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not have any card that can beat the opponents' responses, causing our team to lose the trick.",
+      "Player 1, being near finish, may use a trump or high card to win and potentially exit, shifting tempo to the opponents.",
+      "Because I have only low non-trump cards, I cannot recover the lead if opponents take control."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the cost of losing the trick and maximize the chance that partner can win cheaply. If opponents do spend a trump or high card, that information and resource expenditure still benefit my team compared to wasting my own cards."
+  },
+  "confidence": 0.6,
+  "notes": "Decision is made under high uncertainty; with no trumps and only low clubs, the safest proactive play is the lowest single."
+}

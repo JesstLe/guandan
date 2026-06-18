@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T02:48:49.668Z",
+  "generatedAt": "2026-06-18T10:24:28.082Z",
   "status": "completed",
   "steps": [
     {
@@ -15,7 +15,465 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.md\",\n  \"rowCount\": 5\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.md\",\n  \"rowCount\": 6\n}",
+      "stderr": ""
+    },
+    {
+      "id": "full-heuristic-verifier",
+      "title": "Full Split Heuristic Verifier",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runPilotVerifierCli.ts",
+        "--input",
+        "docs/research/experiments/full-e1/decisions",
+        "--out",
+        "docs/research/experiments/full-e2-heuristic-verifier",
+        "--agent",
+        "heuristic-legal-first"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/full-e2-heuristic-verifier/metrics.json\",\n  \"resultCount\": 500,\n  \"hardFailureCount\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "full-strategic-heuristic",
+      "title": "Full Split Strategic Heuristic",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runPilotVerifierCli.ts",
+        "--input",
+        "docs/research/experiments/full-e1/decisions",
+        "--out",
+        "docs/research/experiments/full-e3-strategic-heuristic",
+        "--agent",
+        "strategic-heuristic"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/full-e3-strategic-heuristic/metrics.json\",\n  \"resultCount\": 500,\n  \"hardFailureCount\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "full-baseline-summary",
+      "title": "Full Split Baseline Summary",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePilotMetricsSummaryCli.ts",
+        "--no-defaults",
+        "--out",
+        "docs/research/experiments/full-baseline-summary",
+        "--basename",
+        "full-baseline-summary",
+        "--title",
+        "Full Split Baseline Summary",
+        "--description",
+        "This table is generated from 500-decision full-split deterministic baseline artifacts. These rows validate the full split, trace schema, and verifier plumbing; they are not LLM model results.",
+        "--source",
+        "agentId=heuristic-legal-first-full,metricsPath=docs/research/experiments/full-e2-heuristic-verifier/metrics.json,notes=500-decision deterministic pipeline validation baseline",
+        "--source",
+        "agentId=strategic-heuristic-full,metricsPath=docs/research/experiments/full-e3-strategic-heuristic/metrics.json,notes=500-decision deterministic strategic baseline"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/full-baseline-summary/full-baseline-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/full-baseline-summary/full-baseline-summary.md\",\n  \"rowCount\": 2\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-pilot-prompts",
+      "title": "ToM Pilot Prompt Packets",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMPromptPacketsCli.ts",
+        "--input",
+        "docs/research/experiments/pilot-e1/decisions",
+        "--out",
+        "docs/research/experiments/pilot-e7-tom-prompted-prompts",
+        "--condition",
+        "tom-prompted-llm"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"manifestPath\": \"docs/research/experiments/pilot-e7-tom-prompted-prompts/manifest.json\",\n  \"packetCount\": 50,\n  \"conditionId\": \"tom-prompted-llm\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-pilot-batch",
+      "title": "ToM Pilot Batch Files",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMBatchFilesCli.ts",
+        "--packets",
+        "docs/research/experiments/pilot-e7-tom-prompted-prompts/packets",
+        "--out",
+        "docs/research/experiments/pilot-e7-tom-prompted-batch"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"batchJsonlPath\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/batch-manifest.json\",\n  \"rawOutputDir\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/raw\",\n  \"packetCount\": 50\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-pilot-openai-batch",
+      "title": "ToM Pilot OpenAI Batch",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportOpenAIBatchCli.ts",
+        "--source",
+        "docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl",
+        "--out",
+        "docs/research/experiments/pilot-e7-tom-prompted-batch/openai",
+        "--model",
+        "gpt-4.1-mini",
+        "--temperature",
+        "0",
+        "--max-completion-tokens",
+        "1200"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"openAIJsonlPath\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-manifest.json\",\n  \"requestCount\": 50\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-pilot-raw-audit",
+      "title": "ToM Pilot Raw Output Audit",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/auditLLMRawOutputsCli.ts",
+        "--packets",
+        "docs/research/experiments/pilot-e7-tom-prompted-prompts/packets",
+        "--raw",
+        "docs/research/experiments/pilot-e7-tom-prompted-batch/raw",
+        "--out",
+        "docs/research/experiments/pilot-e7-tom-prompted-batch/raw-output-audit.json"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/pilot-e7-tom-prompted-batch/raw-output-audit.json\",\n  \"expectedCount\": 50,\n  \"presentCount\": 50,\n  \"missingCount\": 0,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": true\n}",
+      "stderr": ""
+    },
+    {
+      "id": "plain-full-prompts",
+      "title": "Plain Full Prompt Packets",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMPromptPacketsCli.ts",
+        "--input",
+        "docs/research/experiments/full-e1/decisions",
+        "--out",
+        "docs/research/experiments/full-e2-plain-llm-prompts",
+        "--condition",
+        "plain-llm"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"manifestPath\": \"docs/research/experiments/full-e2-plain-llm-prompts/manifest.json\",\n  \"packetCount\": 500,\n  \"conditionId\": \"plain-llm\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "plain-full-batch",
+      "title": "Plain Full Batch Files",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMBatchFilesCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e2-plain-llm-prompts/packets",
+        "--out",
+        "docs/research/experiments/full-e2-plain-llm-batch"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"batchJsonlPath\": \"docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e2-plain-llm-batch/batch-manifest.json\",\n  \"rawOutputDir\": \"docs/research/experiments/full-e2-plain-llm-batch/raw\",\n  \"packetCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "plain-full-openai-batch",
+      "title": "Plain Full OpenAI Batch",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportOpenAIBatchCli.ts",
+        "--source",
+        "docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl",
+        "--out",
+        "docs/research/experiments/full-e2-plain-llm-batch/openai",
+        "--model",
+        "gpt-4.1-mini",
+        "--temperature",
+        "0",
+        "--max-completion-tokens",
+        "1200"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"openAIJsonlPath\": \"docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-manifest.json\",\n  \"requestCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "plain-full-raw-audit",
+      "title": "Plain Full Raw Output Audit",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/auditLLMRawOutputsCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e2-plain-llm-prompts/packets",
+        "--raw",
+        "docs/research/experiments/full-e2-plain-llm-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 0,\n  \"missingCount\": 500,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stderr": ""
+    },
+    {
+      "id": "candidate-full-prompts",
+      "title": "Candidate Full Prompt Packets",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMPromptPacketsCli.ts",
+        "--input",
+        "docs/research/experiments/full-e1/decisions",
+        "--out",
+        "docs/research/experiments/full-e3-candidate-constrained-prompts",
+        "--condition",
+        "candidate-constrained-llm"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"manifestPath\": \"docs/research/experiments/full-e3-candidate-constrained-prompts/manifest.json\",\n  \"packetCount\": 500,\n  \"conditionId\": \"candidate-constrained-llm\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "candidate-full-batch",
+      "title": "Candidate Full Batch Files",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMBatchFilesCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e3-candidate-constrained-prompts/packets",
+        "--out",
+        "docs/research/experiments/full-e3-candidate-constrained-batch"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"batchJsonlPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/batch-manifest.json\",\n  \"rawOutputDir\": \"docs/research/experiments/full-e3-candidate-constrained-batch/raw\",\n  \"packetCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "candidate-full-openai-batch",
+      "title": "Candidate Full OpenAI Batch",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportOpenAIBatchCli.ts",
+        "--source",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl",
+        "--out",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/openai",
+        "--model",
+        "gpt-4.1-mini",
+        "--temperature",
+        "0",
+        "--max-completion-tokens",
+        "1200"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"openAIJsonlPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-manifest.json\",\n  \"requestCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "candidate-full-raw-audit",
+      "title": "Candidate Full Raw Output Audit",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/auditLLMRawOutputsCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e3-candidate-constrained-prompts/packets",
+        "--raw",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 0,\n  \"missingCount\": 500,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-prompts",
+      "title": "ToM Full Prompt Packets",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMPromptPacketsCli.ts",
+        "--input",
+        "docs/research/experiments/full-e1/decisions",
+        "--out",
+        "docs/research/experiments/full-e4-tom-prompted-prompts",
+        "--condition",
+        "tom-prompted-llm"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"manifestPath\": \"docs/research/experiments/full-e4-tom-prompted-prompts/manifest.json\",\n  \"packetCount\": 500,\n  \"conditionId\": \"tom-prompted-llm\"\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-batch",
+      "title": "ToM Full Batch Files",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportLLMBatchFilesCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e4-tom-prompted-prompts/packets",
+        "--out",
+        "docs/research/experiments/full-e4-tom-prompted-batch"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"batchJsonlPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/batch-manifest.json\",\n  \"rawOutputDir\": \"docs/research/experiments/full-e4-tom-prompted-batch/raw\",\n  \"packetCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-openai-batch",
+      "title": "ToM Full OpenAI Batch",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/exportOpenAIBatchCli.ts",
+        "--source",
+        "docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl",
+        "--out",
+        "docs/research/experiments/full-e4-tom-prompted-batch/openai",
+        "--model",
+        "gpt-4.1-mini",
+        "--temperature",
+        "0",
+        "--max-completion-tokens",
+        "1200"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"openAIJsonlPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl\",\n  \"manifestPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-manifest.json\",\n  \"requestCount\": 500\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-raw-audit",
+      "title": "ToM Full Raw Output Audit",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/auditLLMRawOutputsCli.ts",
+        "--packets",
+        "docs/research/experiments/full-e4-tom-prompted-prompts/packets",
+        "--raw",
+        "docs/research/experiments/full-e4-tom-prompted-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 268,\n  \"missingCount\": 232,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-post-provider",
+      "title": "ToM Full Optional Post-Provider Ingest",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runOptionalPostProviderConditionCli.ts",
+        "--decisions",
+        "docs/research/experiments/full-e1/decisions",
+        "--packets",
+        "docs/research/experiments/full-e4-tom-prompted-prompts/packets",
+        "--batch-jsonl",
+        "docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl",
+        "--provider-results",
+        "docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl",
+        "--raw",
+        "docs/research/experiments/full-e4-tom-prompted-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e4-tom-prompted-results",
+        "--condition",
+        "tom-prompted-llm",
+        "--model-provider",
+        "kimi-cli",
+        "--model-name",
+        "kimi-code/kimi-for-coding",
+        "--temperature",
+        "0",
+        "--notes",
+        "500-decision full-split ToM run; optional step skips until provider JSONL exists."
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"not_ready_for_ingest\",\n  \"conditionId\": \"tom-prompted-llm\",\n  \"reportPath\": \"docs/research/experiments/full-e4-tom-prompted-results/post-provider-report.json\",\n  \"metricsPath\": null,\n  \"blockerCount\": 2,\n  \"blockers\": [\n    \"Provider-result materialization is not ready for audit.\",\n    \"Raw-output audit is not ready for ingest.\"\n  ]\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-full-schema-repair",
+      "title": "ToM Full Schema Repair",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runLLMSchemaRepairCli.ts",
+        "--decisions",
+        "docs/research/experiments/full-e1/decisions",
+        "--raw",
+        "docs/research/experiments/full-e4-tom-prompted-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e5-tom-schema-repair-results",
+        "--agent",
+        "tom-schema-repair-full"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json\",\n  \"repairReportPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.json\",\n  \"markdownPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.md\",\n  \"repaired\": 56,\n  \"passThrough\": 212,\n  \"notRepairable\": 232\n}",
+      "stderr": ""
+    },
+    {
+      "id": "full-llm-summary",
+      "title": "Full Split LLM Summary",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePilotMetricsSummaryCli.ts",
+        "--no-defaults",
+        "--out",
+        "docs/research/experiments/full-llm-summary",
+        "--basename",
+        "full-llm-summary",
+        "--title",
+        "Full Split LLM Summary",
+        "--description",
+        "This table is generated from 500-decision full-split LLM artifacts when provider results are present; otherwise it records raw-output readiness.",
+        "--source",
+        "agentId=tom-prompted-llm-full,metricsPath=docs/research/experiments/full-e4-tom-prompted-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI ToM-prompted full split",
+        "--source",
+        "agentId=tom-schema-repair-full,metricsPath=docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json,notes=deterministic schema repair over available full-split ToM raw outputs"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.md\",\n  \"rowCount\": 2\n}",
       "stderr": ""
     },
     {
@@ -34,6 +492,51 @@
       "stderr": ""
     },
     {
+      "id": "tom-failure-analysis",
+      "title": "ToM Failure Analysis",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeLLMFailureAnalysisCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-e7-tom-failure-analysis"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-e7-tom-failure-analysis/tom-failure-analysis.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-e7-tom-failure-analysis/tom-failure-analysis.md\",\n  \"conditionId\": \"tom-prompted-llm\",\n  \"parseFailures\": 14,\n  \"hardFailures\": 1\n}",
+      "stderr": ""
+    },
+    {
+      "id": "tom-schema-repair",
+      "title": "ToM Schema Repair",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runLLMSchemaRepairCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-e8-tom-schema-repair-results"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/pilot-e8-tom-schema-repair-results/metrics.json\",\n  \"repairReportPath\": \"docs/research/experiments/pilot-e8-tom-schema-repair-results/schema-repair-report.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-e8-tom-schema-repair-results/schema-repair-report.md\",\n  \"repaired\": 13,\n  \"passThrough\": 36,\n  \"notRepairable\": 1\n}",
+      "stderr": ""
+    },
+    {
+      "id": "verifier-attribution",
+      "title": "Paired Verifier Attribution",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePairedVerifierAttributionCli.ts",
+        "--out",
+        "docs/research/experiments/pilot-verifier-attribution"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-verifier-attribution/verifier-attribution.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-verifier-attribution/verifier-attribution.md\",\n  \"status\": \"metrics_available\",\n  \"pairedDecisionCount\": 32,\n  \"excludedParseFailureCount\": 18\n}",
+      "stderr": ""
+    },
+    {
       "id": "ablation-summary",
       "title": "Ablation Summary",
       "command": [
@@ -46,6 +549,21 @@
       "status": "passed",
       "exitCode": 0,
       "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-ablation-summary/ablation-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-ablation-summary/ablation-summary.md\",\n  \"status\": \"missing_metrics\",\n  \"rowCount\": 5\n}",
+      "stderr": ""
+    },
+    {
+      "id": "figure-artifacts",
+      "title": "Figure Artifacts",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeFigureArtifactsCli.ts",
+        "--out",
+        "docs/research/figures"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"svgPath\": \"docs/research/figures/figure-2-tom-schema-repair-flow.svg\",\n  \"markdownPath\": \"docs/research/figures/figure-2-tom-schema-repair-flow.md\",\n  \"totalOutputs\": 50,\n  \"rawParsed\": 36,\n  \"repaired\": 13,\n  \"finalParsed\": 49,\n  \"hardFailures\": 1\n}",
       "stderr": ""
     },
     {
@@ -73,7 +591,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 2983,\n  \"readyForSubmission\": true,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 0,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
+      "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 3724,\n  \"readyForSubmission\": true,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 0,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
       "stderr": ""
     },
     {
@@ -145,6 +663,23 @@
       "stderr": ""
     },
     {
+      "id": "aamas-readiness",
+      "title": "AAMAS Full-Paper Readiness",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAAMASReadinessReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/aamas-readiness"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.md\",\n  \"localSubmissionHygiene\": \"not_ready\",\n  \"aamasFullPaperReadiness\": \"not_ready\",\n  \"gates\": 7,\n  \"needsExperiment\": 2,\n  \"needsRevision\": 1\n}",
+      "stderr": ""
+    },
+    {
       "id": "provider-handoff-audit",
       "title": "Provider Handoff Audit",
       "command": [
@@ -156,7 +691,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 3,\n  \"issueCount\": 1\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 4,\n  \"issueCount\": 1\n}",
       "stderr": ""
     },
     {
@@ -190,7 +725,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 43,\n  \"missing\": 0\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 80,\n  \"missing\": 1\n}",
       "stderr": ""
     }
   ]

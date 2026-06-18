@@ -1,0 +1,47 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-209-turn-1-player-0",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "reasoningTrace": {
+    "summary": "Player 0 is in an early-turn lead with only two non-trump cards (A♠, 2♠). Opponents and partner each hold three unknown cards. No cards have been played, so all beliefs about opponent/partner strength are probabilistic.",
+    "partnerIntentInference": {
+      "belief": "Partner (player 2) likely prefers that player 0 exit cards safely rather than fight for the lead with a fragile high card. Leading low may let the partner win the trick and continue attacking, or at least avoid handing the initiative to opponents.",
+      "evidence": [
+        "70c083cc-2076-4db1-94e8-45d3d2b247e0"
+      ]
+    },
+    "opponentIntentInference": {
+      "belief": "Opponents each hold three unseen cards and may possess trump-ranked cards (7) or wildcards that can beat a bare A♠. If player 0 leads A♠ and an opponent can over-trump, player 0 loses its best defensive card for little gain.",
+      "evidence": [
+        "70c083cc-2076-4db1-94e8-45d3d2b247e0"
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "pros": [
+          "A high non-trump single may win the trick and keep the lead."
+        ],
+        "cons": [
+          "If an opponent has a trump or higher card, A♠ is wasted and player 0 is left with only the weak 2♠.",
+          "Winning the trick now forces player 0 to lead again from a weaker position."
+        ]
+      },
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "pros": [
+          "Preserves the A♠ as a defensive winner for a later opponent lead.",
+          "Minimizes risk in the opening trick; any opponent or partner can cover the low card.",
+          "Aligns with a shedding/endgame race strategy of expending low cards first."
+        ],
+        "cons": [
+          "May cede the lead to opponents, but A♠ remains to contest a future single."
+        ]
+      }
+    ],
+    "decisionRationale": "Because the hand is weak, non-trump, and near the endgame, leading the low card (2♠) is safer. It keeps the A♠ as cover and avoids the risk of an opponent trumping the A♠ immediately. The low lead also gives partner a chance to take control without committing player 0's only high card.",
+    "evidence": [
+      "70c083cc-2076-4db1-94e8-45d3d2b247e0"
+    ]
+  }
+}

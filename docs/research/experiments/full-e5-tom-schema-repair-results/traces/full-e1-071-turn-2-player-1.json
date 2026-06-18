@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-071-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "partner has 2 cards remaining and may be able to win a trick or escape with low cards; preserving their flexibility is valuable",
+    "confidence": 0.6,
+    "evidence": [
+      "8364864b-c9b1-4121-b450-190884b5be9d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "opponent 0 led a low single 3 of hearts, likely trying to shed a weak card and may be short on winning cards or close to finishing with a small hand opponent 2 has 3 cards and may hold a higher heart single to beat mine or may be weak; because no trumps or big cards have been played, risk of a high card remains moderate",
+    "confidence": 0.6,
+    "evidence": [
+      "8364864b-c9b1-4121-b450-190884b5be9d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-heart-4-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

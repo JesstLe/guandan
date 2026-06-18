@@ -1,0 +1,39 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-033-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoning": {
+    "partner": {
+      "belief": "Partner (player 2) holds 3 cards with no public plays observed, so their distribution is unknown but they may hold high cards or trumps. As the opening leader with a weak hand, I should present a low card that partner can reasonably beat without committing too much strength.",
+      "intent": "Partner likely wants to seize the lead, shed cards, or set up a finish; a low club lead gives them flexibility to overtake cheaply.",
+      "evidence": [
+        "4d3e4725-5338-4e89-b3ef-81479ce3acce"
+      ]
+    },
+    "opponents": {
+      "belief": "Opponent player 1 has only 2 cards (near finish) and opponent player 3 has 3 cards. The short-stacked opponent may be holding a finishing card or a high single, and will try to win or cheaply pass the lead. Because no cards have been played, hidden opponent holdings remain highly uncertain.",
+      "intent": "Opponents will try to prevent my team from controlling the trick and may capitalize on a high lead by conserving their own strength.",
+      "evidence": [
+        "4d3e4725-5338-4e89-b3ef-81479ce3acce"
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "pros": "Lowest card; conventional weak-hand opening lead; preserves 4-5-6 for later tricks; easiest for partner to beat; minimizes value lost if an opponent wins.",
+        "cons": "Any opponent with a higher single or trump can still win immediately."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "pros": "Slightly higher non-trump, marginally better against low opponent discards.",
+        "cons": "Wastes the best card in an already weak hand; leaves 3-4-5 which are even weaker if the lead returns; still loses to most trumps or high cards."
+      }
+    ],
+    "counterfactuals": [
+      "If I lead the 6 and lose, I retain 3-4-5, a worse residual than 4-5-6.",
+      "If I lead the 3 and partner can beat it, partner gains control while I still hold 4-5-6 as potential late-round throw-ins."
+    ],
+    "conclusion": "Lead the 3 of clubs to follow standard weak-hand opening strategy, preserve higher cards, and give partner the cheapest opportunity to take the lead."
+  },
+  "confidence": 0.7
+}

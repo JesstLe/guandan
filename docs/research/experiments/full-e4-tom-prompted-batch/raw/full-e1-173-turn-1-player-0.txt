@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-173-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 is down to 2 cards and is near finishing. On the opening lead, the best way to slow that opponent is to play the strongest single available, maximizing the chance of winning the trick outright and forcing the opponent to spend a higher card or a trump if they want to seize the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 hidden cards and has made no public play. They may be able to overtake a low lead if the first opponent passes or plays a marginal card, but I cannot assume any specific holding. Because an opponent is near finish, taking initiative now is more valuable than waiting for partner cover.",
+    "confidence": 0.55,
+    "evidence": [
+      "90217efb-94af-42b8-8612-cd2e6bd5f442"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining and is tagged as near finish, so they likely retain at least one card strong enough to win a trick and exit. Opponent player 3 has 3 cards and may support player 1 or save resources. No cards have been revealed, so exact ranks and suits remain uncertain.",
+    "confidence": 0.65,
+    "evidence": [
+      "90217efb-94af-42b8-8612-cd2e6bd5f442"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs is the highest non-trump single in hand. It gives the best chance to win the trick immediately, and if the near-finish opponent must beat it, they have to commit a higher card or a trump rather than winning cheaply with a low card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The 3 is the weakest lead and is easily beaten by almost any opponent card, giving the near-finish opponent a cheap path to take control and play their final card."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still loses to most opponent cards while wasting a slightly more useful card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is an intermediate card that does not materially increase the chance of winning the trick and leaves the hand weaker if the opponent takes control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The opponent near finish may hold a trump-rank 7, red trump, joker, or higher non-trump card and beat the 6, winning the lead.",
+      "If the 6 loses, I have spent my best remaining card and retain only 3-4-5, which cannot beat most later leads.",
+      "Partner may be unable to recover the lead if the opponents counter the 6."
+    ],
+    "mitigation": "The 6 is the strongest lead available; any lower lead was also likely to lose to the near-finish opponent. By leading the 6, I maximize the chance of winning the trick outright and force the opponent to spend real value if they want to continue."
+  },
+  "confidence": 0.65
+}

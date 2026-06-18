@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-217-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With partner holding only 2 cards and sitting one seat away, my best team contribution is to lead the weakest possible single so that partner has the widest margin to beat it, seize the lead, and finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) is near finishing with only 2 cards left. They may hold a card that can beat a low diamond lead, possibly a higher non-trump single or a trump, but I cannot know their exact ranks or suits.",
+    "confidence": 0.6,
+    "evidence": [
+      "018832c3-4dd2-4b33-b616-94098b737600"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unseen cards and have shown nothing yet. Given the opening lead, they likely possess higher non-trump cards and/or trumps that can capture a low diamond if my partner cannot. Their incentive is to win the trick and prevent my partner from going out.",
+    "confidence": 0.55,
+    "evidence": [
+      "018832c3-4dd2-4b33-b616-94098b737600"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the diamond 3, the lowest card in my hand and the lowest legal lead. Because all my cards are weak non-trumps, leading the weakest gives partner the greatest chance to play a higher single or trump and take control. It also keeps my slightly higher cards for later leads if the trick comes back to me.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 consumes my strongest low card and raises the bar for partner to win; it is more likely to be beaten outright without helping partner."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still a low card, but it demands a higher card from partner to win and wastes a card that could be useful on a future lead."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Although close to the 3, the 4 is still harder for partner to beat than the 3 and offers no compensating defensive value given my weak hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not have any card that can beat a diamond 3, allowing an opponent to win the trick and take the lead.",
+      "An opponent may play a trump or high non-trump even if partner could have won, seizing initiative and threatening partner's finish."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the strength required from partner and avoid committing any marginally better card; if partner does win, they are on lead with minimal cards remaining."
+  },
+  "confidence": 0.65,
+  "notes": "All hidden card beliefs are probabilistic; the play is driven by public hand counts and the partner_near_finish scenario tag."
+}

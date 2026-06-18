@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-119-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left. The best team outcome is to empty my hand before opponents, so I should lead in a way that lets me play both cards as quickly as possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards and has given no public signal about their composition. They may be able to cover opponent responses, but I cannot assume they hold any specific high cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "4c240f04-f9ac-4f2b-a671-b54aba1e3c78"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold six cards between them. They may have trump-7s, jokers, or other high singles that can beat my A, and they will try to seize lead and run combinations to finish first.",
+    "confidence": 0.6,
+    "evidence": [
+      "4c240f04-f9ac-4f2b-a671-b54aba1e3c78"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ gives me the best chance to win the opening trick. If it wins, I immediately lead the 2♠ next and clear my hand. Even if an opponent beats it with a trump or joker, my partner still has cards to respond and I keep a strong single stopper for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2♠ would likely be beaten immediately, ceding initiative to opponents and forcing me to wait for a single lead to use my A. That delays my exit and lets opponents potentially run combinations or finish before I can play my last card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the A♠ with a trump or joker and then lead a multi-card combination, preventing me from shedding the 2♠ right away.",
+      "If partner cannot cover the resulting pressure, opponents may finish their hands before I empty mine."
+    ],
+    "mitigation": "By leading the high single first I test whether opponents will spend a high card or trump early. If the A wins, I control tempo and shed the 2 on the next lead, minimizing the chance opponents can disrupt my finish."
+  },
+  "confidence": 0.75
+}

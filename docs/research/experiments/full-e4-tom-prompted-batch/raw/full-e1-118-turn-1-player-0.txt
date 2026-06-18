@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-118-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only low non-trump clubs. On the opening lead the best team outcome is to let partner (player 2) take the trick cheaply with a moderate card or a trump, giving our team control rather than trying to win with a card that any opponent can likely beat."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public signals have been revealed. I believe partner is likely to hold at least one card above 3 of clubs or a trump, giving them a reasonable chance to win a low-led trick. I cannot infer any specific composition, but with three unknown cards the probability of a playable winner is non-trivial.",
+    "confidence": 0.35,
+    "evidence": ["cbfb9bfb-5d38-439d-94eb-3e0ee6c0bb7e"]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is down to 2 cards (near finish), so they may hold strong finishing cards, but that is only a count constraint, not a revealed strength signal. Opponent player 3 has 3 cards. Both opponents could hold trumps or higher clubs; with no cards played I treat any specific high-card holdings as probabilistic rather than fact.",
+    "confidence": 0.35,
+    "evidence": ["cbfb9bfb-5d38-439d-94eb-3e0ee6c0bb7e"]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the lowest card in my hand and the lowest legal lead. It requires the smallest investment of strength from partner to win, preserves the 4/5/6 of clubs for later tricks, and gives opponents the least information about my remaining cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 of clubs is my strongest card but still a weak non-trump; opponents or partner with a 7+ or any trump will beat it just as easily, and I would have spent my best card for no material gain."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A middle card neither maximizes partner's chance to take the trick nor preserves the strongest remaining club; it is dominated by leading either lower (more efficient transfer) or higher (more chance to win outright)."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally better than the 5 but still higher than necessary for a transfer strategy; keeping both the 5 and 6 in reserve provides more future options."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not have a card that beats 3 of clubs, so an opponent could win the trick and establish control.",
+      "Player 1's small hand count means they could be close to going out if their two cards are high or include trumps."
+    ],
+    "mitigation": "By leading the absolute minimum, I force opponents to spend at least one card to beat it and keep my slightly higher clubs available to potentially regain or block later. I avoid overcommitting a scarce resource on a low-probability outright win."
+  },
+  "confidence": 0.55,
+  "notes": "Opening lead with no public card-play history means all beliefs are prior-based; the hand-count distribution is the only public constraint."
+}

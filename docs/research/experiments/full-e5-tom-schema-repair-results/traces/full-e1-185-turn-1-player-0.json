@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-185-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With a very weak hand of only 3-6 non-trump spades, I should lead the lowest card to minimize resource loss and give my partner the cheapest possible chance to take control of the trick."
+  },
+  "partnerBelief": {
+    "summary": "My partner has not acted, so I have no direct signal; they likely hold some higher non-trump cards or trumps that could beat a low spade lead, but this is probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "62320b57-afd7-41c1-a8d1-11b5129e0407"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold some trumps or higher cards since my hand is weak, but no public play has revealed their strength.",
+    "confidence": 0.4,
+    "evidence": [
+      "62320b57-afd7-41c1-a8d1-11b5129e0407"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades expends the minimum useful card, preserves the slightly higher spades for later, and invites my partner to win the trick cheaply without forcing me to commit a better card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "It spends my highest card immediately; if an opponent or partner beats it, I lose my best chance to influence a later trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Better than the 6 but still wastes a middling card when the 3 can probe the table for free."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally better than the 5 or 6; the 3 is still strictly cheaper and carries the same informational value."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher card and seize the lead.",
+      "My partner may be unable to beat whatever follows, leaving us without control."
+    ],
+    "mitigation": "By leading the very lowest card, I limit the value I sacrifice if the trick is lost and keep my slightly higher cards for future exchanges."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-194-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only 2 cards versus 3 cards for every other player. The top priority is to play both remaining cards and exit before opponents, securing a team advantage. Leading with the highest card maximizes the chance of winning the trick, retaining the lead, and guaranteeing the second card is played on the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards and has made no public plays. Since this is the opening lead, there is no reliable signal about partner's strength, but partner is equally interested in finishing quickly. Partner may be able to support if opponents seize the lead, though no specific card distribution can be inferred.",
+    "confidence": 0.5,
+    "evidence": [
+      "c1f16754-14d9-4168-b349-3bf0a01c1e81"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Because trump rank is 7 and no cards have been played, opponents could hold 7s, jokers, or other high cards that beat the Ace of spades. The probability is nonzero but not certain; if an opponent has such a trump, they may play it to take control and delay player 0's exit.",
+    "confidence": 0.5,
+    "evidence": [
+      "c1f16754-14d9-4168-b349-3bf0a01c1e81"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades is the strongest available single. It can only be beaten by trumps (rank 7) or jokers, so it has a good chance of winning the trick. If it wins, player 0 keeps the lead and can next lead the weak 2 of spades, guaranteeing both cards are played and player 0 exits. This directly serves the finish-hand objective.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 of spades almost certainly loses the trick, surrendering the lead and leaving player 0 with a single Ace. If subsequent leads are pairs, bombs, or other non-single combinations, player 0 cannot follow and would be stuck with the Ace, delaying or preventing exit. This is strictly worse than leading the Ace first when the goal is to finish the hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7 or joker and beat the Ace, preventing player 0 from retaining the lead.",
+      "If the Ace is beaten, player 0 is left with only the 2 of spades and no control over the next lead, similar to the risk of leading the 2 first.",
+      "Partner may be unable to regain the lead if opponents take control with a strong combination."
+    ],
+    "mitigation": "Leading the Ace still dominates leading the 2: when the Ace wins, player 0 guarantees exit; when it loses, the situation is no worse than leading the 2. No alternative play offers a better upside, so the Ace lead is the optimal risk-adjusted choice."
+  },
+  "confidence": 0.75,
+  "notes": "No inferences or prior plays exist, so all beliefs about hidden hands remain probabilistic and grounded solely in public hand counts and the new_game event."
+}

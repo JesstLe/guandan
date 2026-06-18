@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-204-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while opponents hold three each, the team priority is to get player 0 out quickly. Leading the weaker card first preserves the stronger 2 as a reliable exit card if initiative is lost."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unknown cards and has given no public signal. They may cover a low lead if they have a higher single or pass to conserve strength, but no specific holding can be assumed.",
+    "confidence": 0.5,
+    "evidence": [
+      "48936e76-7cd5-4241-adda-892be0375140"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) hold six unknown cards. They likely possess higher singles, trumps, or jokers that can beat an Ace lead and will try to seize the lead to delay player 0's exit.",
+    "confidence": 0.5,
+    "evidence": [
+      "48936e76-7cd5-4241-adda-892be0375140"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace is the lower of my two non-trump singles, while the 2 outranks it. Leading the Ace first disposes of the weaker card and keeps the 2 as a boss single for the final play. If the Ace wins, I retain the lead and can play the 2 next. If the Ace loses, I still have the strongest possible last card to reclaim the lead on a future single.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 first is stronger now but would leave the weaker Ace as my last card. That makes it easier for opponents to control the endgame with a higher single or trump and prevents me from winning back the lead to exit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The Ace may be beaten by an opponent's higher single, trump, or joker, costing initiative.",
+      "If the Ace wins, the follow-up 2 could still be beaten by a trump or joker.",
+      "Partner may be unable to cover if the Ace is passed around and an opponent takes control."
+    ],
+    "mitigation": "Keeping the 2 as the final card maximizes the chance of winning a later single and exiting. The risk of losing the Ace is acceptable because the alternative would leave an even weaker final card."
+  },
+  "confidence": 0.75
+}

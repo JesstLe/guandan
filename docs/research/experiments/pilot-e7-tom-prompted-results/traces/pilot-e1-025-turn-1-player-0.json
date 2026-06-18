@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-025-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is all low non-trump spades (3-6). I cannot realistically keep the lead with these cards, so I aim to play the cheapest possible card and let my partner win the trick if they can, transferring control cheaply."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unknown cards. With no public play yet, I believe they could have slightly higher non-trump cards or a trump that can win a low lead, but I cannot treat any specific card as a fact.",
+    "confidence": 0.55,
+    "evidence": [
+      "5d2e5314-cfe4-49f5-90f2-56564bfdd7b1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards. They likely hold cards higher than 3, including trumps, so they can probably beat any single I lead. I should minimize the value of the card I sacrifice.",
+    "confidence": 0.65,
+    "evidence": [
+      "5d2e5314-cfe4-49f5-90f2-56564bfdd7b1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 is the lowest-cost probe. It gives my partner the best chance to win with a modest card and preserves the 4, 5, and 6 for later coverage or as slightly stronger exit cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still low but commits a slightly more useful card; if an opponent beats it, I have lost a card that could have covered a future 3 lead."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is higher than necessary for a probe and is more likely to be wasted when an opponent plays a trump or higher non-trump."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my strongest card and is very unlikely to win the trick outright; playing it now sacrifices my best exit card and leaves me with only weaker follow-ups."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 and take control, then pressure my team.",
+      "My partner may be unable to win the trick, so control may still pass to opponents."
+    ],
+    "mitigation": "By sacrificing the lowest card, I limit information and card-value leakage. If partner wins, we gain tempo at low cost; if not, I retain marginally better cards for later tricks."
+  },
+  "confidence": 0.7,
+  "notes": "No cards have been played, so all inferences about partner/opponent holdings remain probabilistic."
+}

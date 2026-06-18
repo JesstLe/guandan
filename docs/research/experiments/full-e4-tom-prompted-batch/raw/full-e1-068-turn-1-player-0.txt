@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-068-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "As the opening leader with a weak, purely non-trump hand, I want to start a trick that either lets my partner take control or forces opponents to spend higher cards, while I keep my slightly stronger clubs for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 unknown cards. With no public actions, I believe partner likely holds at least one card that can beat a low single, but I cannot assume any specific strength.",
+    "confidence": 0.5,
+    "evidence": [
+      "0e56bcdb-cfb3-4dd7-9684-6847e300ee98"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 2 and 3 cards. The 2-card opponent is near finishing and likely possesses at least one high card or trump to stop a low lead; either opponent probably has the lead against a 3 of clubs.",
+    "confidence": 0.6,
+    "evidence": [
+      "0e56bcdb-cfb3-4dd7-9684-6847e300ee98"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs, the lowest legal single, conserves the 4, 5, and 6 for future tricks and avoids committing a stronger card when opponents are likely to beat any single I play.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still a weak non-trump card and almost certainly loses; playing it wastes a card that could beat a future 3 lead from an opponent."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is more likely to win against a 3 or 4, but without evidence partner/opponents hold such cards, it is still likely beaten and costs a middling card."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest club; leading it now gives up my best chance to win a future trick or cover a partner lead, and opponents with trumps or 7+ cards can still beat it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 2-card opponent may win cheaply and gain the lead, moving closer to finishing.",
+      "A low lead tells opponents little about my hand but also gives them tempo if no one beats it.",
+      "Partner may be unable to cover the lead if their 3 cards are also weak."
+    ],
+    "mitigation": "By committing only the 3 of clubs, I minimize resource loss and retain the 4-6 to respond if I regain the lead or to cover partner later."
+  },
+  "confidence": 0.65
+}

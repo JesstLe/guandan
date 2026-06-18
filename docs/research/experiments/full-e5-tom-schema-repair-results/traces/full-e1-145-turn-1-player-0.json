@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-145-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only low spade cards and the opening lead, the priority is to begin unloading the hand while preserving the slightly higher 6 for a later response."
+  },
+  "partnerBelief": {
+    "summary": "No partner signal exists at the first lead. The partner likely holds three unknown non-trump cards and might cover a low lead if strong, but no specific cards are known.",
+    "confidence": 0.3,
+    "evidence": [
+      "9c822e19-7c53-4eef-b0dd-8cd7ff910341"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three unknown cards and have not acted. Given my weak hand, at least one opponent probably can beat any single I lead, but bombs or wildcards remain unobserved and uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "9c822e19-7c53-4eef-b0dd-8cd7ff910341"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the safest opening: it starts the card flow from the lowest value, avoids wasting the 6 (the only slightly higher card), and reveals minimal information.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the 6 first risks losing the only card that might win a spade trick or control a low single later, while leaving only weaker cards for subsequent plays."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is not the lowest card, so it neither conserves strength like the 6 nor minimizes immediate loss as well as the 3."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is middle-ranked; leading it gives away more value than the 3 without the defensive benefit of keeping the 6."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any single led will likely be beaten because my cards are low.",
+      "If opponents have bombs or wildcards, they can seize control regardless of my lead.",
+      "A low lead gives the partner no explicit signal about my hand strength."
+    ],
+    "mitigation": "By choosing the minimum card, I minimize the value lost when opponents take the trick and keep the 6 as the best remaining response."
+  },
+  "confidence": 0.7,
+  "notes": "Only one public event exists; all beliefs are probabilistic and grounded in public hand counts and the absence of prior actions."
+}

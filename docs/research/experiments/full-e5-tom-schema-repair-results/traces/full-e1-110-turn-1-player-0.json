@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-110-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low spades, I want to lead the weakest card so my partner (player 2) can potentially win the trick with a higher non-trump or a trump, moving the lead to our team while conserving my slightly better cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and has made no public plays; they could hold higher non-trumps or trumps, but no specific ranks can be asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "79ddae26-564e-4568-9c53-997f1b3986e2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 unknown cards; given my low lead, any opponent with a higher non-trump or a trump may try to take the trick, though exact holdings remain uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "79ddae26-564e-4568-9c53-997f1b3986e2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades preserves the 4, 5, and 6 for later tricks and gives partner the easiest chance to win the trick with a higher card or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Expends my highest low card; it is still likely beaten by any trump or higher non-trump and leaves me weaker in subsequent tricks."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Costs a more valuable low card than the 3 without meaningfully increasing the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Slightly better than the 3 but offers only a marginal future advantage, so resource preservation favors the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may immediately overtake with a higher card or any trump.",
+      "Partner may be unable to cover the lead, ceding the trick to the opponents.",
+      "Leading too low may waste a chance to test partner's strength."
+    ],
+    "mitigation": "By choosing the minimum legal single, I keep my slightly stronger cards for later responses and maximize the chance that partner can take control."
+  },
+  "confidence": 0.75
+}

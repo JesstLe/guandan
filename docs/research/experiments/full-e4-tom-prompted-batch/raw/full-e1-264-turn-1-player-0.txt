@@ -1,0 +1,42 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-264-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoning": {
+    "partnerBelief": {
+      "summary": "Partner (player 2) has 3 cards and observes that I (player 0) am leading with only 2 cards in a round-1 endgame race. They likely infer I am trying to expend my remaining cards quickly, so they should preserve high cards to cover my weak exit if I win the lead, or take control if opponents overtake.",
+      "evidence": ["0c72d514-cd5e-4ece-b630-075bf4fa3885"]
+    },
+    "opponentBelief": {
+      "summary": "Opponents (players 1 and 3) each hold 3 cards and know I am down to 2 cards. They will try to prevent me from winning this lead cheaply, likely using a trump (rank 7 or joker) or a higher non-trump if available, because letting me win now gives me tempo to shed my last card.",
+      "evidence": ["0c72d514-cd5e-4ece-b630-075bf4fa3885"]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "pros": [
+          "Highest non-trump single; maximizes chance of winning the lead immediately.",
+          "Winning lets me lead again and play the weak 2♠, getting closer to going out.",
+          "Forces opponents to spend real strength (trump/high card) if they want to stop me."
+        ],
+        "cons": [
+          "If an opponent has a trump or bomb, the A♠ still loses, and I retain only 2♠.",
+          "Reveals that my remaining hand is weak after the ace."
+        ]
+      },
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "pros": [
+          "Conserves the A♠ as a potential future trick winner if partner or another player leads a lower card.",
+          "Does not waste a high card if an opponent can easily trump."
+        ],
+        "cons": [
+          "Almost certainly loses the lead immediately; opponents can win with any medium card or trump.",
+          "Gives up initiative in an endgame race where I have the smallest hand and most to gain from tempo.",
+          "If the 2♠ loses and the trick continues around, my A♠ may still be beaten by trumps or bombs."
+        ]
+      }
+    ],
+    "conclusion": "In an endgame race with only two cards, tempo and the chance to shed the weak card after winning a lead dominate. Leading the A♠ gives the best probability of immediate trick control and puts pressure on opponents to expend strength, so it is the preferred action."
+  }
+}

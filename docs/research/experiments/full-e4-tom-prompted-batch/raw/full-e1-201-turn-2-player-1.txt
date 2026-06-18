@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-201-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) is down to 2 cards and led a low 3 of hearts. Taking the lead now denies Player 0 the chance to control the next trick and possibly finish their hand, which supports our team objective of suppressing a near-finish opponent."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 3) has 3 cards and has not acted publicly. They could hold a higher heart or a trump that beats the lead, but there is no public signal about their exact strength, so I should not assume they can reliably take this trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "13c25985-f245-42d3-98d3-9aba49c4e08e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 (opponent) is near finish with 2 cards. Leading a low 3 of hearts suggests they may be trying to shed a weak card while keeping the right to lead again. Player 2 also has 3 unknown cards and may hold a higher heart or a trump. Denying Player 0 the lead is valuable because it removes their ability to choose a favorable follow-up lead.",
+    "confidence": 0.7,
+    "evidence": [
+      "13c25985-f245-42d3-98d3-9aba49c4e08e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 4 of hearts, the lowest card that beats the table's 3 of hearts. This seizes the lead from the near-finish opponent at minimal cost while preserving the stronger 9 and 10 of hearts for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the lead with Player 0, allowing a near-finish opponent to dictate the next lead and potentially exit, which is risky when we have a cheap winning card."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the 3 but uses a stronger card unnecessarily; if an opponent has a higher heart or a trump, the 9 does not materially improve our chance to win the trick compared with the 4."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts is our strongest non-trump card. Playing it here wastes a high card on a trick that can be won cheaply with the 4 or may still be taken by an unseen trump or higher card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 3 (partner) might have had a better card to win the trick, making our play redundant.",
+      "Player 2 (opponent) may still beat our 4 of hearts with a higher heart or a trump.",
+      "Winning the trick leaves us to lead from a weak hand, which may let an opponent regain control."
+    ],
+    "mitigation": "By using the minimum winning card (4 of hearts), we limit resource exposure. Even if an opponent later beats it, we have conserved our higher cards and only spent our weakest winner."
+  },
+  "confidence": 0.65
+}

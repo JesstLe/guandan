@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-019-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two cards left and the lead. The best chance for our team is to play both cards in succession and go out first, so I should maximize the probability of winning the current trick and retaining the lead."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three cards but no public actions have revealed anything about their composition. They are likely trying to help the team finish, but I cannot assume they hold any specific cover card.",
+    "confidence": 0.5,
+    "evidence": [
+      "d11c515a-c427-4088-8924-ed85122da341"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The two opponents hold six cards between them and will try to seize the lead to stop me from going out. They may hold trumps, jokers, or another 2, but those are probabilistic possibilities, not certainties.",
+    "confidence": 0.6,
+    "evidence": [
+      "d11c515a-c427-4088-8924-ed85122da341"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 (the highest natural rank) gives the best chance to win this trick outright. If it wins, I keep the lead and can then play the A on the next trick, attempting to finish my hand. If the 2 is beaten, the A would likely also have been beaten, so leading the stronger card first is weakly dominant.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A risks an opponent playing a 2 or a trump to take the lead. If that happens, I would be left with only the 2 and the opponents would control the tempo, making it harder for me or my partner to finish. Leading the 2 first avoids losing to a higher natural rank."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump or joker that beats the 2 and takes the lead.",
+      "Even if I win with the 2, my final A could be beaten by a remaining high card.",
+      "My partner may not be able to cover if the opponents regain the lead."
+    ],
+    "mitigation": "There is no safer legal play. Leading the strongest single minimizes the chance of losing the first trick and preserves my opportunity to play out both cards."
+  },
+  "confidence": 0.75,
+  "notes": "This is a pure endgame race with no prior public information; the choice is driven by rank ordering and lead retention rather than inferred opponent hands."
+}

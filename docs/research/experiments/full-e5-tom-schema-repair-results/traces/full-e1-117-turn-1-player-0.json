@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-117-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards left and is near finishing. As the opening leader with only low non-trump diamonds, the best team play is to lead the lowest single card to maximize the chance partner can win the trick and use their remaining cards to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner is close to finishing with only 2 cards, so they likely retain at least one card that can beat a low diamond lead, though the exact ranks and suits are hidden.",
+    "confidence": 0.6,
+    "evidence": [
+      "c1ff2978-aaef-4227-8c1b-048b6435714c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 6 cards and have had no public plays. They can likely beat a low non-trump diamond with a higher card or a trump, but their exact holdings are uncertain.",
+    "confidence": 0.7,
+    "evidence": [
+      "c1ff2978-aaef-4227-8c1b-048b6435714c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest legal single. It gives partner the widest range of cards to beat it if opponents pass, and if an opponent takes the trick, it costs us our weakest card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest diamond makes it harder for partner to win the trick if opponents pass, without meaningfully discouraging opponents from beating it."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly better than the 6, but still leaves fewer partner cards able to take the lead compared with the 3."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Intermediate option; the 3 is strictly better for transferring initiative to partner while minimizing loss."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead and control the table.",
+      "Partner may be unable to win the trick even if opponents pass.",
+      "We have no trump or high card to reclaim the lead later."
+    ],
+    "mitigation": "Playing the lowest card minimizes resource loss and maximizes partner's winning range; remaining cards are slightly higher and can be used in subsequent tricks."
+  },
+  "confidence": 0.65
+}

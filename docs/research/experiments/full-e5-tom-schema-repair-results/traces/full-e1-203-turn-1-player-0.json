@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-203-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 has only 2 cards, so the top priority is to make it costly for them to seize the lead and finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public actions have occurred, so they could hold trumps or high singles that can cover a single lead, but their exact strength is unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "56557fd5-e69d-40eb-b4d2-25cdb9b767a9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 with 2 cards is likely trying to finish soon and may hold a trump, a high single, or a pair; opponent player 3 with 3 cards may support them.",
+    "confidence": 0.5,
+    "evidence": [
+      "56557fd5-e69d-40eb-b4d2-25cdb9b767a9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the highest available single (club 6) raises the bar for the near-finish opponent to take control, forcing them to use a stronger card or trump if they want the lead, which may disrupt their endgame plan.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "A 3 is the easiest for the opponent to beat with a modest single, allowing them to save a stronger card for later and maintain tempo."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "A 4 is still low; it lets an opponent with limited cards win the trick cheaply and advance toward finishing."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A 5 is better than 3 or 4 but still lower than 6, giving the near-finish opponent more room to beat with a middle card without expending a trump or high card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The opponent may still beat the 6 with a trump or high single and take the lead.",
+      "Partner may not be able to cover the trick, leaving our team without control.",
+      "If the opponent has a pair, they may pass this single and later lead the pair to finish."
+    ],
+    "mitigation": "Play the highest single to maximize the cost of taking the lead; accept that hidden hands dominate the outcome."
+  },
+  "confidence": 0.55
+}

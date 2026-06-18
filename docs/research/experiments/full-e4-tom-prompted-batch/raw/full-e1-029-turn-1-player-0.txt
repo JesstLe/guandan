@@ -1,0 +1,23 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-029-turn-1-player-0",
+  "partnerIntent": {
+    "belief": "My partner (player 2) has 3 cards and shares team 0. In this endgame race, partner likely wants to facilitate my exit. With no public plays yet, I cannot know their exact strength, but they are likely to pass on a high single lead if they cannot comfortably beat it, preserving cards to cover later or block opponents.",
+    "evidence": ["b2f5f4d4-0754-4fbb-91ac-b5fcaf8c5fb0"]
+  },
+  "opponentIntent": {
+    "belief": "Opponents (players 1 and 3) each have 3 cards, more than my 2. They will try to prevent me from going out. A low lead gives them a cheap chance to take control; a high lead forces them to spend a trump or a high card, or let me keep the lead.",
+    "evidence": ["b2f5f4d4-0754-4fbb-91ac-b5fcaf8c5fb0"]
+  },
+  "counterfactuals": [
+    {
+      "actionId": "play-single-spade-2-copy2",
+      "assessment": "Leading the weak 2♠ almost certainly gets beaten by any opponent with a minimal higher card or trump. I lose initiative and remain stuck with A♠, depending on someone else leading a single I can win later. That is risky in a race where opponents have more cards."
+    },
+    {
+      "actionId": "play-single-spade-A-copy2",
+      "assessment": "Leading A♠ maximizes the chance I win this trick outright or force opponents to use real resources. If I win, I keep the lead and can play 2♠ next, giving me a direct path to exit. Even if an opponent covers with a trump, I have forced them to consume strength."
+    }
+  ],
+  "selectedActionId": "play-single-spade-A-copy2"
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-129-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and opponents holding three each, the priority is to empty my hand while keeping a winning card for the final trick. Leading low preserves the ace as a potential last-trick winner."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three unknown cards and no public signals have been sent. Partner likely wants our team to finish first, but their exact strength is unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "5f7bfb83-ba3c-433d-a34c-e86d5037f3b9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. Given the trump rank is 7, it is plausible they hold trumps or high cards that can beat a non-trump single. They will try to seize the lead to prevent our team from finishing.",
+    "confidence": 0.5,
+    "evidence": [
+      "5f7bfb83-ba3c-433d-a34c-e86d5037f3b9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 of spades is the safer tempo play. If opponents pass, I retain the lead and can play the ace next, likely securing the trick and going out. If an opponent beats the 2 with a trump or high card, I still hold the ace as a strong response or final card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the ace exposes our strongest card immediately. If an opponent beats it with a trump, we are left with only a low 2, which is harder to get rid of and cedes control of the endgame."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 2 with a trump and then lead a combination we cannot match, stalling our finish.",
+      "If the partner cannot assist, opponents could chain leads and force us to pass."
+    ],
+    "mitigation": "Keeping the ace gives us a high stopper to regain the lead or win the final trick, limiting how far opponents can press their advantage."
+  },
+  "confidence": 0.75,
+  "notes": "No public cards have been played, so all beliefs about partner and opponent holdings remain probabilistic."
+}

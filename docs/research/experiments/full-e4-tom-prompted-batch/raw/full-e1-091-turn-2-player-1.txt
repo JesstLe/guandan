@@ -1,0 +1,49 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-091-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "partnerBeliefs": {
+      "summary": "Partner has not yet acted in this trick, so their holdings are hidden. Given that player 0 (opponent) is down to 2 cards and led a very low heart, partner likely recognizes the opponent-is-near-finish pressure and may hold a higher heart or a trump to contest the trick if needed.",
+      "signals": [
+        "No direct signal yet from partner, but hand-count asymmetry (player 0 at 2 cards, all others at 3) makes it common knowledge that stopping player 0 is urgent."
+      ]
+    },
+    "opponentBeliefs": {
+      "summary": "Player 0 led a 3 of hearts despite having only 2 cards remaining. This is consistent with either dumping a losing low card to preserve a strong second card, or attempting to sneak a cheap trick toward going out first.",
+      "risks": [
+        "If player 0 wins this trick, they lead again with one card left, creating a high chance of an opponent finish.",
+        "Player 0 may hold a trump or high heart as their remaining card."
+      ]
+    },
+    "actionComparison": [
+      {
+        "actionId": "pass",
+        "assessment": "Lets player 0 win the trick uncontested. Because player 0 is only 2 cards from finishing, this maximizes opponent finishing risk and does not support the team objective.",
+        "verdict": "inferior"
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "assessment": "Takes control of the trick but expends the highest heart unnecessarily. There is no current indication that such a high card is needed to beat the table, and it weakens future follow capability.",
+        "verdict": "inferior"
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "assessment": "Beats the 3 of hearts, but still overcommits a relatively high card when a lower heart suffices.",
+        "verdict": "inferior"
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "assessment": "Minimum-cost card that beats the led 3 of hearts. It seizes control of the trick, blocks player 0 from an easy win, and preserves stronger cards (9 and 10 of hearts) for later follow situations.",
+        "verdict": "best"
+      }
+    ],
+    "finalDecision": {
+      "rationale": "With an opponent near finish and a low single heart led, the team-beneficial move is to contest the trick at the lowest possible cost. Playing the 4 of hearts beats the table, denies player 0 a free trick, and keeps stronger cards in reserve.",
+      "selectedActionId": "play-single-heart-4-copy1"
+    }
+  },
+  "evidence": [
+    "0ef90c64-9a56-41a6-bc58-30eebedc4580"
+  ]
+}

@@ -2,12 +2,17 @@ import { writeMetricsSummary, type MetricsSummarySource } from './experimentMetr
 
 interface CliOptions {
   outputDir: string
+  basename: string
+  title: string
+  description?: string
   sources: MetricsSummarySource[]
 }
 
 function parseArgs(args: string[]): CliOptions {
   const options: CliOptions = {
     outputDir: 'docs/research/experiments/pilot-metrics-summary',
+    basename: 'pilot-metrics-summary',
+    title: 'Pilot Metrics Summary',
     sources: defaultSources(),
   }
 
@@ -15,6 +20,12 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index]
     if (arg === '--out') {
       options.outputDir = readValue(args, ++index, '--out')
+    } else if (arg === '--basename') {
+      options.basename = readValue(args, ++index, '--basename')
+    } else if (arg === '--title') {
+      options.title = readValue(args, ++index, '--title')
+    } else if (arg === '--description') {
+      options.description = readValue(args, ++index, '--description')
     } else if (arg === '--source') {
       options.sources.push(parseSource(readValue(args, ++index, '--source')))
     } else if (arg === '--no-defaults') {
@@ -66,6 +77,11 @@ function defaultSources(): MetricsSummarySource[] {
       notes: 'Kimi Code CLI with verifier-provided legal candidates',
     },
     {
+      agentId: 'tom-prompted-llm',
+      metricsPath: 'docs/research/experiments/pilot-e7-tom-prompted-results/metrics.json',
+      notes: 'Kimi Code CLI with explicit theory-of-mind reasoning checklist',
+    },
+    {
       agentId: 'verifier-revision-llm',
       metricsPath: 'docs/research/experiments/pilot-e6-verifier-revision-results/metrics.json',
       notes: 'Kimi Code CLI revision on parsed candidate traces',
@@ -83,6 +99,9 @@ const options = parseArgs(process.argv.slice(2))
 const result = writeMetricsSummary({
   sources: options.sources,
   outputDir: options.outputDir,
+  basename: options.basename,
+  title: options.title,
+  description: options.description,
 })
 
 console.log(JSON.stringify({

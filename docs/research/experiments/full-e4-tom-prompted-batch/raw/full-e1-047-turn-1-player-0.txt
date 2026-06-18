@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-047-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is tagged as near finish and holds only 2 cards (public handCounts[2]=2). Leading a minimal single gives partner the best chance to win the trick cheaply or exit, rather than forcing partner to spend a stronger card."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely wants to finish the hand quickly and probably holds cards they hope to play without using high resources; a low lead is more likely to align with their likely plan than a high one.",
+    "confidence": 0.6,
+    "evidence": [
+      "e3ff53ae-9135-45e0-973b-5bfbad17f7d2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each (public handCounts[1]=3 and handCounts[3]=3) and no public plays have occurred, so they may hold higher cards or trumps, but no specific distribution can be asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "e3ff53ae-9135-45e0-973b-5bfbad17f7d2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The diamond 3 is the weakest card in hand. Leading it minimizes my own commitment and maximizes the chance that a near-finish partner can beat it with a low card, transferring lead or letting partner finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 would spend the strongest diamond and make it harder for a partner with few cards to win the trick without a high card or trump."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A mid-card lead risks losing a potentially useful control card while still being vulnerable to opponents; the 3 is a more conservative, partner-friendly lead."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is still higher than necessary; playing the 3 first keeps the 4 as a slightly stronger future option and leaves the weakest card unused."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher single or a trump, forcing partner to use a high card or pass.",
+      "If partner cannot beat the lead, the opponents gain tempo and my remaining higher diamonds may need to be used to regain control."
+    ],
+    "mitigation": "Because partner is near finish, the low lead is the best chance to let partner win cheaply; if opponents take the trick, the saved 4-5-6 diamonds give me better chances to recover lead later."
+  },
+  "confidence": 0.75
+}

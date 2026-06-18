@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-035-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump spades, I cannot realistically win the trick myself, so I want to make it as easy as possible for my partner to take the lead and advance our team."
+  },
+  "partnerBelief": {
+    "summary": "My partner likely holds some cards higher than my 3 of spades or at least one trump, given they have a normal 3-card hand and no public information suggests otherwise.",
+    "confidence": 0.55,
+    "evidence": [
+      "adc0c454-67e8-4a16-9edb-84c3511ee27e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents probably possess higher non-trump cards or trumps that can beat any low spade lead, but their exact holdings are unknown.",
+    "confidence": 0.65,
+    "evidence": [
+      "adc0c454-67e8-4a16-9edb-84c3511ee27e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades sets the lowest possible threshold for the single, maximizing the chance my partner can overtake it while preserving the slightly higher 4, 5, and 6 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "A 4 is still weak and does not improve my chance of winning, but it reduces the range of partner cards that can beat it."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Leading a 5 wastes a modest card without making the trick meaningfully harder for opponents to take."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 would make it harder for my partner to win with a 4 or 5 and would leave me with even weaker follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may immediately win the trick with a higher non-trump or any trump.",
+      "My partner may not be able to beat even a 3, giving opponents control.",
+      "Leading a spade reveals my suit weakness to observant opponents."
+    ],
+    "mitigation": "By keeping the 4, 5, and 6, I retain the ability to play on later spade leads and potentially assist my partner, while the very low lead maximizes partner's chance to take control."
+  },
+  "confidence": 0.72
+}

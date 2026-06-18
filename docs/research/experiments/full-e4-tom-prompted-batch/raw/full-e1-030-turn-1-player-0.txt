@@ -1,0 +1,34 @@
+{
+  "selectedActionId": "play-single-spade-3-copy1",
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-030-turn-1-player-0",
+  "reasoningTrace": {
+    "evidence": [
+      {
+        "eventId": "4146e761-f843-4d99-950d-e4fd792151fd",
+        "type": "new_game",
+        "relevance": "Initial state; no public cards played, so partner and opponents have revealed no signals about their holdings."
+      }
+    ],
+    "partnerIntent": {
+      "beliefs": "Partner (player 2) holds 3 unknown cards. With no public plays, partner has not signaled any preferred suit or strength. Leading a low non-trump single is a neutral, conventional opening that preserves my high cards and allows partner to respond with whatever strength they choose.",
+      "uncertainty": "High; partner's exact ranks and suits are unknown and can only become probabilistically informed after observing plays."
+    },
+    "opponentIntent": {
+      "beliefs": "Opponents (players 1 and 3) each hold 3 unknown cards. They will try to win the trick or force out higher cards. A low lead induces them to either pass (giving me information about weakness) or commit a higher card (revealing strength), both of which are useful.",
+      "uncertainty": "High; no hidden cards are known, only the public hand counts."
+    },
+    "counterfactuals": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "analysis": "Leading the highest available single would commit my best card immediately, reduce future defensive options, and reveal that I have limited high-card support in spades."
+      },
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "analysis": "Leading the lowest single conserves higher cards for later tricks, follows conservative opening-lead conventions, and avoids overcommitting while gathering information from opponents' responses."
+      }
+    ],
+    "teamObjective": "Conserve hand strength, gather information, and avoid handing opponents an easy high-card exchange on the opening lead.",
+    "conclusion": "The lowest singleton lead best supports the team objective by minimizing exposure and keeping stronger spades in reserve, without asserting any hidden cards as facts."
+  }
+}

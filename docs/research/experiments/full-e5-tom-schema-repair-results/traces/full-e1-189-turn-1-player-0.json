@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-189-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only 2 cards while every other player has 3, so the top priority is to empty this hand as quickly as possible. Leading the strongest single maximizes the chance of winning a trick immediately and getting a second consecutive lead to discard the remaining card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards and has made no public signal. They likely want to help the team finish ahead of the opponents, but I cannot assume they hold a specific winner or trump. If I lead low, they might be able to insert a middle card to win the trick, but this is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "9ee1ce5c-f0e5-49ec-9d00-c727a4b18e41"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. They will try to prevent the short-stacked leader from going out first, possibly by using a trump on a strong lead or by seizing initiative. There is no public evidence that they have bombs, trumps, or high cards, so any such holdings remain probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "9ee1ce5c-f0e5-49ec-9d00-c727a4b18e41"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The spade A is the highest non-trump single in my hand. Leading it gives the best chance of winning the opening trick. If it wins, I immediately lead again and play the spade 2, guaranteeing I finish my hand before anyone else. Even if the A is trumped, I will still have used my only strong card against the most important objective: securing a second lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 gives up initiative. Opponents can win the trick with a modest card or a trump, after which I must wait for a single-card lead to play the A. With only 2 cards left, that delay risks opponents controlling the endgame and stranding my high card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump and beat the A, leaving me with only a weak 2 and no lead.",
+      "Opponents may use the lead after winning to play combinations I cannot answer, slowing my exit."
+    ],
+    "mitigation": "Playing the A now uses the only card that can reliably win a single lead. If it is trumped, partner still has cards to contest the endgame, whereas passing with the 2 would leave my strongest card unused until a favorable single lead appears."
+  },
+  "confidence": 0.7
+}

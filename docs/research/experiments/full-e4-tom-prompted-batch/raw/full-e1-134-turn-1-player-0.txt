@@ -1,0 +1,38 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-134-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoning": {
+    "beliefSummary": "I hold only a non-trump Ace and a non-trump 2, while every other player holds 3 cards. No cards have been played, so partner/opponent distributions are highly uncertain and must be treated probabilistically. My team’s immediate objective is to get me out before the opponents can control the lead.",
+    "partnerIntent": {
+      "inference": "My partner (player 2) has 3 hidden cards. Given the hand counts, my partner likely wants me to exit quickly and may hold a high card or trump to cover a future low lead, but I cannot assume this as fact.",
+      "evidence": [
+        "0fe0cab8-4483-4661-bad8-2412de7041b0"
+      ]
+    },
+    "opponentIntent": {
+      "inference": "Each opponent holds 3 hidden cards and will try to seize the lead to stop me from going out. They are very likely to be able to beat a low 2 lead with an ordinary higher card or a trump 7/joker.",
+      "evidence": [
+        "0fe0cab8-4483-4661-bad8-2412de7041b0"
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "assessment": "Leading the Ace is the strongest non-trump single I have. It is likely to win the trick, giving me the next lead with the 2 and a direct path to exit. Even if an opponent has a higher card/trump, my partner still has a chance to respond.",
+        "evidence": [
+          "0fe0cab8-4483-4661-bad8-2412de7041b0"
+        ]
+      },
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "assessment": "Leading the 2 is the weakest possible single and almost certainly loses to one of the three hidden cards held by each opponent. It risks handing the lead to the opponents, who can then pressure my remaining Ace and prevent my exit.",
+        "evidence": [
+          "0fe0cab8-4483-4661-bad8-2412de7041b0"
+        ]
+      }
+    ],
+    "uncertaintyNote": "All partner and opponent card beliefs are probabilistic because only hand counts and the public new_game event are known. The Ace lead best supports the team objective under this uncertainty."
+  },
+  "confidence": 0.88
+}

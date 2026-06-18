@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-165-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "This is the opening lead with a very weak, non-trump hand. Leading the lowest single gives my partner the best chance to win the trick with a higher card, while I keep my slightly stronger 4-6 for future plays."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and no public signals yet. They might hold a higher single or trump to take this trick, but they could also be weak.",
+    "confidence": 0.3,
+    "evidence": [
+      "5b3c0798-34d6-46e0-a286-98743322ea2f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 unknown cards and are likely to beat a low single if they can, but no specific distribution or strength can be inferred from public events alone.",
+    "confidence": 0.3,
+    "evidence": [
+      "5b3c0798-34d6-46e0-a286-98743322ea2f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade 3 is the weakest card, so it minimizes the value I give away and maximizes the chance that partner can win the trick with any higher single or trump. It also preserves the 4, 5, and 6 for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly stronger than the 3 and still very unlikely to win the trick outright; playing it now would leave me with an even weaker remaining hand."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is one of my better low cards; leading it wastes a card that might help me win or control a future low trick, with little added chance of winning this lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest non-trump card and my best chance to win a low trick later; leading it now risks wasting my only meaningful winner on an opening trick where opponents or partner likely have higher cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead and then lead a combination I cannot match.",
+      "Partner may not have a higher card, so the lead may pass to the opponent team anyway.",
+      "I have no trump cards, so I cannot regain control easily if I lose the lead."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the strength I reveal and retain my modest 4-6 cards, giving me the best available options if I get another turn."
+  },
+  "confidence": 0.7
+}

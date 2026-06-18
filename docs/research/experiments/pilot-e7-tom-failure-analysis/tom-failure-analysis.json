@@ -1,0 +1,354 @@
+{
+  "schemaVersion": "0.1.0",
+  "conditionId": "tom-prompted-llm",
+  "totalDecisionPoints": 50,
+  "parsedTraces": 36,
+  "parseFailures": 14,
+  "hardFailures": 1,
+  "parseFailureCategoryCounts": {
+    "nested_reasoning_wrong_schema": 11,
+    "field_alias_wrong_schema": 0,
+    "tool_call_like_output": 1,
+    "missing_required_trace_fields": 2,
+    "non_json_output": 0
+  },
+  "verifierHardFailureCodeCounts": {
+    "HIDDEN_INFO_ASSERTED_AS_FACT": 1
+  },
+  "parseFailureRows": [
+    {
+      "decisionId": "pilot-e1-000-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "decisionId",
+        "evidence",
+        "gameId",
+        "reasoning",
+        "schemaVersion",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-000-turn-1-player-0.txt",
+      "snippet": "{ \"schemaVersion\": \"0.1.0\", \"gameId\": \"pilot-e1-000\", \"decisionId\": \"pilot-e1-000-turn-1-player-0\", \"agentId\": \"tom-prompted-llm\", \"selectedActionId\": \"play-single-spade-3-copy1\", \"reasoning\": { \"situationAssessment\": \"I am leading the very"
+    },
+    {
+      "decisionId": "pilot-e1-002-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-002-turn-1-player-0.txt",
+      "snippet": "{\"agentId\":\"tom-prompted-llm\",\"decisionId\":\"pilot-e1-002-turn-1-player-0\",\"selectedActionId\":\"play-single-diamond-3-copy1\",\"reasoning\":{\"partnerIntent\":{\"belief\":\"Partner (player 2) holds only 2 cards, the lowest count at the table, so they"
+    },
+    {
+      "decisionId": "pilot-e1-003-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "actionId",
+        "agentId",
+        "confidence",
+        "decisionId",
+        "hiddenInformationNote",
+        "reasoning",
+        "selectedActionId",
+        "timestamp"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-003-turn-1-player-0.txt",
+      "snippet": "{\"actionId\": \"play-single-club-3-copy1\", \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-003-turn-1-player-0\", \"timestamp\": \"2026-06-18T16:14:07.002208+08:00\", \"selectedActionId\": \"play-single-club-3-copy1\", \"reasoning\": {\"playerInte"
+    },
+    {
+      "decisionId": "pilot-e1-010-turn-1-player-0",
+      "category": "tool_call_like_output",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "decisionId",
+        "agentId",
+        "selectedActionId",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "action",
+        "path",
+        "pattern"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-010-turn-1-player-0.txt",
+      "snippet": "{\"action\": \"search_files\", \"path\": \"/Users/lv/Workspace/guandan\", \"pattern\": \"reasoning-trace.schema.json\"}"
+    },
+    {
+      "decisionId": "pilot-e1-018-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "decisionId",
+        "evidence",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-018-turn-1-player-0.txt",
+      "snippet": "{\"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-018-turn-1-player-0\", \"selectedActionId\": \"play-single-club-3-copy1\", \"reasoning\": {\"partnerIntent\": \"Partner P2 holds 3 cards and has not acted; I cannot infer specific ranks. A low l"
+    },
+    {
+      "decisionId": "pilot-e1-020-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "hiddenInformationBeliefs",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-020-turn-1-player-0.txt",
+      "snippet": "{ \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-020-turn-1-player-0\", \"selectedActionId\": \"play-single-spade-3-copy1\", \"reasoning\": { \"partnerIntent\": { \"summary\": \"Partner (player 2, 3 cards) has no public signals yet. With my han"
+    },
+    {
+      "decisionId": "pilot-e1-029-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "decisionId",
+        "evidence",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-029-turn-1-player-0.txt",
+      "snippet": "{ \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-029-turn-1-player-0\", \"selectedActionId\": \"play-single-spade-A-copy2\", \"reasoning\": { \"partnerBelief\": { \"summary\": \"Partner (player 2) holds 3 cards and has made no public plays. Wit"
+    },
+    {
+      "decisionId": "pilot-e1-033-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "gameId",
+        "reasoning",
+        "schemaVersion",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-033-turn-1-player-0.txt",
+      "snippet": "{ \"schemaVersion\": \"0.1.0\", \"gameId\": \"pilot-e1-033\", \"decisionId\": \"pilot-e1-033-turn-1-player-0\", \"agentId\": \"tom-prompted-llm\", \"selectedActionId\": \"play-single-club-3-copy1\", \"reasoning\": { \"partnerIntent\": { \"belief\": \"Partner (player "
+    },
+    {
+      "decisionId": "pilot-e1-036-turn-2-player-1",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "decisionId",
+        "evidence",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-036-turn-2-player-1.txt",
+      "snippet": "{ \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-036-turn-2-player-1\", \"selectedActionId\": \"play-single-heart-4-copy1\", \"reasoning\": { \"overview\": \"Player 0 led a low heart 3 and has only 2 cards remaining, indicating they are near "
+    },
+    {
+      "decisionId": "pilot-e1-037-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "counterfactuals",
+        "decisionId",
+        "evidence",
+        "opponentIntent",
+        "partnerIntent",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-037-turn-1-player-0.txt",
+      "snippet": "{ \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-037-turn-1-player-0\", \"selectedActionId\": \"play-single-diamond-3-copy1\", \"reasoning\": \"I hold only low non-trump diamonds (3-6) with no trumps and no bombs, so this hand cannot force "
+    },
+    {
+      "decisionId": "pilot-e1-040-turn-1-player-0",
+      "category": "missing_required_trace_fields",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment",
+        "confidence"
+      ],
+      "observedTopLevelKeys": [
+        "actionId",
+        "agentId",
+        "decisionId",
+        "reasoningTrace",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-040-turn-1-player-0.txt",
+      "snippet": "{\"actionId\": \"play-single-spade-6-copy1\", \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-040-turn-1-player-0\", \"selectedActionId\": \"play-single-spade-6-copy1\", \"reasoningTrace\": {\"schemaVersion\": \"0.1.0\", \"decisionId\": \"pilot-e1-040"
+    },
+    {
+      "decisionId": "pilot-e1-041-turn-2-player-1",
+      "category": "missing_required_trace_fields",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "reasoningTrace",
+        "schemaVersion",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-041-turn-2-player-1.txt",
+      "snippet": "{ \"schemaVersion\": \"0.1.0\", \"agentId\": \"tom-prompted-llm\", \"decisionId\": \"pilot-e1-041-turn-2-player-1\", \"selectedActionId\": \"play-single-heart-4-copy1\", \"reasoningTrace\": { \"partnerInference\": { \"summary\": \"Partner (player 3) holds 3 cards"
+    },
+    {
+      "decisionId": "pilot-e1-048-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "schemaVersion",
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "reasoning",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-048-turn-1-player-0.txt",
+      "snippet": "{\"agentId\":\"tom-prompted-llm\",\"decisionId\":\"pilot-e1-048-turn-1-player-0\",\"selectedActionId\":\"play-single-club-3-copy1\",\"reasoning\":{\"partnerIntent\":{\"belief\":\"Partner (player 2) holds 3 cards and has made no public plays. At this early sta"
+    },
+    {
+      "decisionId": "pilot-e1-049-turn-1-player-0",
+      "category": "nested_reasoning_wrong_schema",
+      "message": "Parsed JSON does not match the required reasoning trace shape.",
+      "missingRequiredFields": [
+        "teamObjective",
+        "partnerBelief",
+        "opponentBelief",
+        "actionRationale",
+        "riskAssessment"
+      ],
+      "observedTopLevelKeys": [
+        "agentId",
+        "confidence",
+        "decisionId",
+        "evidence",
+        "reasoning",
+        "schemaVersion",
+        "selectedActionId"
+      ],
+      "rawOutputFile": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw/pilot-e1-049-turn-1-player-0.txt",
+      "snippet": "{\"schemaVersion\":\"0.1.0\",\"agentId\":\"tom-prompted-llm\",\"decisionId\":\"pilot-e1-049-turn-1-player-0\",\"selectedActionId\":\"play-single-spade-2-copy2\",\"reasoning\":{\"beliefSummary\":\"I hold only a non-trump A♠ and 2♠ and am leading with 2 cards lef"
+    }
+  ],
+  "verifierHardFailureRows": [
+    {
+      "decisionId": "pilot-e1-028-turn-1-player-0",
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ]
+}

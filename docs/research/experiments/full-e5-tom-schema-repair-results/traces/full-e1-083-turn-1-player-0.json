@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-083-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 is down to only 2 cards (opponent_near_finish), so a key goal is to avoid giving that opponent a cheap path to win the lead and go out. With a weak hand of low clubs, I want to force opponents to spend stronger cards if they try to take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and could hold higher non-trump cards or trumps, but there are no public signals about their exact strength. Their likely aim is to support the team by taking the lead when possible or covering my weak plays.",
+    "confidence": 0.5,
+    "evidence": [
+      "0b93ac59-bb52-4b5b-8923-fd39372d0ef5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1, with only 2 cards remaining, is plausibly close to finishing and may be holding a high single or a trump to try to win the lead. Opponents may try to exploit my weak lead by taking control and allowing player 1 to exit, but this is uncertain without hidden card knowledge.",
+    "confidence": 0.7,
+    "evidence": [
+      "0b93ac59-bb52-4b5b-8923-fd39372d0ef5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs is the strongest low card I have. It makes it slightly harder for opponents to beat with a non-trump and may force a near-finish opponent to use a valuable high card or trump to seize the lead, slowing their finish. It also keeps 3-5 as even weaker exit cards for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Leading the lowest card gives an opponent with a modest high card the easiest chance to win the lead, which is dangerous when player 1 is near finish."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still a very low single and likely loses just as easily as the 3, without the small extra pressure of the 6."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is intermediate, but the 6 is the highest available low club and therefore the best of the weak options for forcing opponents to spend more strength."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a higher non-trump or trump will still beat the 6 and take the lead.",
+      "Partner may not be able to cover, leaving the near-finish opponent in control.",
+      "My remaining 3-5 are all low and may be hard to play effectively if opponents maintain the lead."
+    ],
+    "mitigation": "By leading the highest available low card, I maximize the chance that an opponent must spend a meaningful card to win, and I preserve my very weakest cards for situations where I may need to shed under pressure."
+  },
+  "confidence": 0.6
+}

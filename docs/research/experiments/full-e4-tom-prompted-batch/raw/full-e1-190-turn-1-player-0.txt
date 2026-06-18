@@ -1,0 +1,21 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-190-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "partnerIntent": "Partner has not acted yet and holds 3 cards (public hand count). Without asserting specific cards, partner is likely to hold a mix of ranks around/above 7 plus possible trumps. By leading a low non-trump single, I signal weakness in the lead suit and give partner a cheap opportunity to take the trick with a moderate high card or trump, preserving their stronger combinations.",
+  "opponentIntent": "Opponents each hold 3 cards and are likely to contain higher non-trump cards and trumps. They will try to win the trick cheaply if possible. Leading a very low card forces them to spend a real high card or a trump if they want control; leading higher lets them win with a slightly lower card.",
+  "counterfactuals": [
+    {
+      "actionId": "play-single-spade-6-copy1",
+      "assessment": "Leads my highest non-trump. This maximizes the chance I win the trick outright against weak opponent hands, but with only ranks 3-6 and trump rank 7, any 7+ non-trump or any trump beats it. It likely wastes my best single and leaves me with even weaker follow-ups."
+    },
+    {
+      "actionId": "play-single-spade-3-copy1",
+      "assessment": "Leads the lowest card, preserving 4, 5, 6 for later tricks. If partner can win cheaply, we gain control; if an opponent takes it, they expend a higher resource. This is safest for a weak hand with no pairs or bombs."
+    }
+  ],
+  "conclusion": "Given a weak 4-card hand with only small non-trump spades and no visible pairs/bombs, the best team play is to lead the lowest card. This minimizes resource loss and maximizes the chance partner can assume control cheaply.",
+  "evidence": [
+    "3480b227-3e12-46eb-a096-4f257bb57ca6"
+  ]
+}

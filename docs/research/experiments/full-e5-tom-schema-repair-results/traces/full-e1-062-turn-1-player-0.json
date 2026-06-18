@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-062-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My partner has only 2 cards remaining, which is the smallest hand count at the table, so they are likely near finishing. I hold only low non-trump diamonds (3-4-5-6), so I cannot realistically seize and keep control myself. The best team play is to lead the lowest possible single, giving my partner the widest window to play a higher card, win the trick, and then lead out their remaining card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) is probably trying to exit the hand soon. With just 2 cards they likely retain at least one card that can beat a low non-trump 3, or they may already hold a winning/paired shape. They will interpret a low lead as an invitation to take control if they can.",
+    "confidence": 0.75,
+    "evidence": [
+      "fe6d346f-9c23-4937-a68e-160b2b404fb7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, each with 3 cards) have not revealed any cards. They probably possess some trump or high cards and will try to prevent my partner from finishing. If I lead very low, opponents may be tempted to conserve strength and pass, or they may spend a moderate card to take control; either outcome leaks information without costing me much.",
+    "confidence": 0.65,
+    "evidence": [
+      "fe6d346f-9c23-4937-a68e-160b2b404fb7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦ is the minimal-risk probe: it is my weakest card, leaves the 4-5-6 sequence intact, and maximizes the chance that my partner can overtake the trick and finish. It also avoids committing a higher diamond that might otherwise win a later trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly stronger than the 3 but still a low non-trump card. It removes a middle rung from my diamond ladder and provides no meaningful extra chance of winning the trick while weakening my remaining hand."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Same suit sequence, but higher. Playing the 5 now wastes a card that could win against a 3 or 4 later, and it is still easily beaten by any trump or higher non-trump card."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "This is the highest card in my hand and the top of my diamond run. Spending it on an opening lead squanders my best remaining card, gives opponents more information, and does not materially improve the chance of partner escape compared with leading the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or trump and seize control.",
+      "My partner may not be able to beat the 3 if their two cards are even lower or blocked, though this is unlikely given their small hand.",
+      "If everyone passes, I retain the lead with a weaker remaining hand."
+    ],
+    "mitigation": "Leading the 3 minimizes the value lost if an opponent takes the trick and maximizes partner's chance to overtake. Retaining the 4-5-6 gives me follow-up plays if I regain the lead."
+  },
+  "confidence": 0.85,
+  "notes": "No public cards have been played, so all partner/opponent beliefs are probabilistic and grounded only in hand counts and the new_game event."
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-089-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left; the priority is to play out my hand as quickly as possible while preserving a chance to retain or regain the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but their exact composition is unknown. They may be able to cover low leads or continue a run if I pass the lead, but no specific cards can be asserted from public events alone.",
+    "confidence": 0.45,
+    "evidence": [
+      "0f25a0c1-9781-4e0f-8e08-66597155ea36"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. They likely possess cards that beat a low 2 single, and may hold trump-rank 7 cards or bombs that could overtake my A, but these possibilities are probabilistic rather than known.",
+    "confidence": 0.45,
+    "evidence": [
+      "0f25a0c1-9781-4e0f-8e08-66597155ea36"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the high A single is more likely to win the trick outright than the 2, giving me the lead again to shed the remaining 2 immediately afterward. This maximizes the chance I empty my hand in the next two plays rather than losing the lead early and possibly never getting back in.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Playing the 2 first almost certainly loses the lead to any higher non-trump or trump card, leaving me with only the A and no guarantee of a future turn to play it, which slows my exit in an endgame race."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump (rank 7) or a bomb that beats the A and seizes the lead, leaving me stuck with the weak 2.",
+      "A partner who could have covered a low lead is bypassed by leading high, slightly reducing cooperative flexibility."
+    ],
+    "mitigation": "The A is the strongest card I hold and is more likely than the 2 to secure two consecutive plays, which is the dominant path to finishing the hand quickly."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,28 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-038-turn-1-player-0",
+  "partnerIntent": {
+    "summary": "Partner (player 2, 3 cards) has not acted yet; no signals are available. With player 0 holding only low non-trump clubs, the best support for partner is to lead a minimal card that does not consume partner's likely stronger cards and may allow partner to win control cheaply.",
+    "evidence": [
+      "31ee5afd-605a-43d6-805c-7bda8285c228"
+    ]
+  },
+  "opponentIntent": {
+    "summary": "Opponent player 1 has only 2 cards (near finish) and will try to escape quickly or beat leads; opponent player 3 has 3 cards. Both opponents likely hold cards higher than player 0's entire hand, so any single lead is likely to be beaten. Leading low avoids giving opponents a free high-card exchange or letting them burn a strong card just to take control.",
+    "evidence": [
+      "31ee5afd-605a-43d6-805c-7bda8285c228"
+    ]
+  },
+  "candidateComparisons": [
+    {
+      "actionId": "play-single-club-3-copy1",
+      "analysis": "Lowest legal lead. Minimizes information and value surrendered, maximizes chance opponents pass around and partner can take control with a modest card. If it loses, it forces an opponent to spend a higher card."
+    },
+    {
+      "actionId": "play-single-club-6-copy1",
+      "analysis": "Highest legal lead among the four, but still a weak non-trump card. Slightly more likely to win outright if opponents happen to have only low singles, yet still easily beaten. The extra card strength is unlikely to change control and simply gets rid of a higher card first, which is not valuable when all cards are low."
+    }
+  ],
+  "selectedActionId": "play-single-club-3-copy1",
+  "rationale": "With only low non-trump clubs and no control cards, player 0 cannot realistically dominate this trick. The optimal lead is the weakest card (club 3) to avoid helping opponents, preserve partner's strength, and let the trick develop at minimum cost."
+}

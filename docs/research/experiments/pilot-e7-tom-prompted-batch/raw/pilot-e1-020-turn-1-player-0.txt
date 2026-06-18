@@ -1,0 +1,24 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "pilot-e1-020-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": {
+    "partnerIntent": {
+      "summary": "Partner (player 2, 3 cards) has no public signals yet. With my hand being four low spades, I have no strong lead to set up a specific suit; a low single preserves any partner control and avoids forcing partner to reveal strength prematurely.",
+      "evidence": ["035cc7f2-8b6c-45f1-ac93-307f55f76821"]
+    },
+    "opponentIntent": {
+      "summary": "Opponents (players 1 and 3, 3 cards each) are unknown. Leading low minimizes information leakage about my hand shape and avoids inviting an opponent with a higher card or bomb to take cheap control.",
+      "evidence": ["035cc7f2-8b6c-45f1-ac93-307f55f76821"]
+    },
+    "counterfactualComparison": {
+      "summary": "Comparing leading the 3 vs the 6 of spades: both are non-trump singles that cannot beat any 7 or trump, but the 3 is the weakest card and most disposable. Leading the 6 risks wasting the highest card in my hand for no likely trick-winning gain, since opponents likely hold higher cards or trumps. A low lead is standard opening policy when holding no bombs and no trump control.",
+      "comparedActionIds": ["play-single-spade-6-copy1", "play-single-spade-3-copy1"],
+      "evidence": ["035cc7f2-8b6c-45f1-ac93-307f55f76821"]
+    }
+  },
+  "confidence": 0.85,
+  "hiddenInformationBeliefs": {
+    "note": "No public cards have been played; opponent and partner holdings are uniformly uncertain. I avoid asserting any specific hidden cards."
+  }
+}

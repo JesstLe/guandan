@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-183-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Slow the opponent with 2 cards by not giving a free high-value trick, while allowing partner opportunities to take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. With no public plays yet, partner's strength is unknown, but they may have trumps or higher cards to cover a low lead. I should lead a card partner can reasonably beat or that does not force partner to spend high cards unnecessarily.",
+    "confidence": 0.6,
+    "evidence": [
+      "1dfe1525-cea3-4e8c-95bc-01129dc7f813"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing; player 3 has 3 cards. They likely want a cheap trick to let player 1 exit. Leading very low makes it harder for them to win without spending a meaningful card, and may force them to reveal strength.",
+    "confidence": 0.6,
+    "evidence": [
+      "1dfe1525-cea3-4e8c-95bc-01129dc7f813"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Slow the opponent with 2 cards by not giving a free high-value trick, while allowing partner opportunities to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

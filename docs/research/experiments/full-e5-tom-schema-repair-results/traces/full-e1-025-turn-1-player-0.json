@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-025-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "The 3 is the safest and most conventional opening lead: it minimizes future liability, provides no exploitable high-card signal, and aligns with the likely need to let partner or an opponent win the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and no public signals. They may be holding mid-to-high cards that can cover a low lead, but this is only probabilistic; I cannot assume specific ranks or suits.",
+    "confidence": 0.6,
+    "evidence": [
+      "13c51c6f-394f-4019-8c39-2c8c403e600d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards. With trump rank 7 and no trumps in my hand, any opponent with a 7 or higher (very likely) can beat any of my low spades.",
+    "confidence": 0.6,
+    "evidence": [
+      "13c51c6f-394f-4019-8c39-2c8c403e600d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 is the safest and most conventional opening lead: it minimizes future liability, provides no exploitable high-card signal, and aligns with the likely need to let partner or an opponent win the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

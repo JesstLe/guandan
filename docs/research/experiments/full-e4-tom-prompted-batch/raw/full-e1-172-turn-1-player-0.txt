@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-172-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) is down to 2 cards and tagged as near finish. At the opening lead, I should keep the lead as cheap as possible so partner can potentially win the trick with a modest card and get closer to going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has few cards and may be trying to finish. The public hand count (2 cards) and the partner_near_finish tag suggest partner is close to empty, so they probably welcome a low single-card lead that does not force them to burn a high card or trump.",
+    "confidence": 0.65,
+    "evidence": [
+      "eecc8710-1cfb-4c41-9fa1-0952a4b63781"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards, so their strengths are unknown. They may hold trumps or high cards and will try to seize the lead. Because no trumps or big cards have been played, I must assume opponents could overtake a low lead if they choose to spend a high card.",
+    "confidence": 0.55,
+    "evidence": [
+      "eecc8710-1cfb-4c41-9fa1-0952a4b63781"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest non-trump single (diamond 3) sets the smallest possible winning threshold. This best supports a protect-partner objective by giving partner the best chance to win with a modest card, while conserving what little strength I have.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 raises the bar for partner to win the trick. Since partner is near finish with only 2 cards, a higher lead could force them to spend a trump or high card they may need to finish."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Although better than the 6, the 5 still creates a higher single threshold than the 3 and offers no compensating upside, because I have no realistic chance to retain control."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is a reasonable intermediate lead, but the 3 is strictly lower and therefore maximizes partner's chance to win cheaply."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may overtake the low lead with any trump or higher non-trump card.",
+      "If partner cannot beat the lead, opponents may take control and pin partner before they finish."
+    ],
+    "mitigation": "With no trumps and only low cards, any lead would likely be overtaken. Leading the 3 minimizes the required response, avoids wasting potential future winners, and aligns with helping partner finish rather than contesting control directly."
+  },
+  "confidence": 0.7
+}

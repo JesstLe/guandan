@@ -13,8 +13,12 @@ unrelated repository content.
 
 ## Current State
 
-- No provider API call has been completed by the local pipeline.
+- Provider execution is partially complete: the ToM-prompted pilot run is present, and the 500-decision full-split ToM run is partially complete through the local Kimi CLI runner.
 - Plain and candidate-constrained first-pass batches are ready.
+- ToM-prompted pilot provider results are present at `docs/research/experiments/provider-results/tom-prompted-llm.jsonl`.
+- ToM-prompted pilot post-provider artifacts are present at `docs/research/experiments/pilot-e7-tom-prompted-results`; the run produced 50 / 50 raw outputs, 36 / 50 parsed traces, and 14 / 50 parse failures.
+- Full-split plain and candidate-constrained batches are prepared locally.
+- Full-split ToM-prompted was attempted through the local Kimi CLI runner. The provider-result file is present at `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl`, with 268 usable model outputs, 50 explicit Kimi usage/quota-limit errors from the latest bounded attempt, and 182 pending rows not present in the current provider-result file. The run is recoverable with bounded `--resume --attempt-limit <N>` batches after quota refresh.
 - The existing verifier-revision batch is fixture-only and must not be used for
   final empirical claims.
 - A real verifier-revision batch must be regenerated after first-pass LLM traces
@@ -28,6 +32,16 @@ Upload or run these OpenAI-compatible batch files:
 |---|---|---|
 | `plain-llm` | `docs/research/experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/plain-llm.jsonl` |
 | `candidate-constrained-llm` | `docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/candidate-constrained-llm.jsonl` |
+| `tom-prompted-llm` | `docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/tom-prompted-llm.jsonl` (present) |
+
+Optional 500-decision full-split upload files, prepared but not covered by the
+Phase A pilot authorization:
+
+| Condition | Upload file | Suggested provider-result file after download |
+|---|---|---|
+| `plain-llm` | `docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-plain-llm.jsonl` |
+| `candidate-constrained-llm` | `docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl` |
+| `tom-prompted-llm` | `docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl` (partial: 268 usable, 50 quota errors, 182 pending) |
 
 Prepared run parameters:
 
@@ -56,6 +70,14 @@ npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
   --input docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl \
   --out docs/research/experiments/provider-results/candidate-constrained-llm.jsonl \
   --report docs/research/experiments/provider-results/candidate-constrained-llm-openai-run-report.json \
+  --concurrency 4
+```
+
+```bash
+npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
+  --input docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/tom-prompted-llm.jsonl \
+  --report docs/research/experiments/provider-results/tom-prompted-llm-openai-run-report.json \
   --concurrency 4
 ```
 
@@ -97,6 +119,21 @@ time, retry only those failed rows with a larger `--max-steps-per-turn`, then
 merge by `custom_id` while preserving the original input order. Record the merge
 in `docs/research/experiments/provider-results/plain-llm-kimi-merge-report.json`.
 
+For the current full-split ToM run, resume after Kimi quota refresh with:
+
+```bash
+npx tsx server/src/research/runKimiCliBatchJsonlCli.ts \
+  --input docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl \
+  --report docs/research/experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json \
+  --model kimi-code/kimi-for-coding \
+  --max-steps-per-turn 20 \
+  --concurrency 4 \
+  --timeout-ms 600000 \
+  --resume \
+  --attempt-limit 50
+```
+
 ### Post-Provider Materialization
 
 After direct runs or downloaded batch results, run:
@@ -131,6 +168,20 @@ npx tsx server/src/research/runPostProviderConditionCli.ts \
   --model-name gpt-4.1-mini \
   --temperature 0 \
   --notes "OpenAI-compatible batch run; response_format=json_object; max_completion_tokens=1200"
+```
+
+```bash
+npx tsx server/src/research/runPostProviderConditionCli.ts \
+  --packets docs/research/experiments/pilot-e7-tom-prompted-prompts/packets \
+  --batch-jsonl docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl \
+  --provider-results docs/research/experiments/provider-results/tom-prompted-llm.jsonl \
+  --raw docs/research/experiments/pilot-e7-tom-prompted-batch/raw \
+  --out docs/research/experiments/pilot-e7-tom-prompted-results \
+  --condition tom-prompted-llm \
+  --model-provider openai \
+  --model-name gpt-4.1-mini \
+  --temperature 0 \
+  --notes "ToM-prompted baseline batch; response_format=json_object; max_completion_tokens=1200"
 ```
 
 Then refresh downstream artifacts:

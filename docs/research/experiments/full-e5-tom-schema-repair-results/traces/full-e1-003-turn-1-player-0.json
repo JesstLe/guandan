@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-003-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "With only low non-trump clubs, the best team contribution is to spend the smallest card now and keep 4-6 for later tricks where they might win or cover partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. No public plays have occurred, so partner likely has a balanced mix and may be able to take the lead if opponents do not cover a low lead, but I cannot assert any specific cards.",
+    "confidence": 0.4,
+    "evidence": [
+      "5348862d-a26d-44a2-a55b-4b30a029366a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they may hold a high card or trump to win this trick and try to go out. Opponent player 3 has 3 cards and may cover if player 1 does not.",
+    "confidence": 0.5,
+    "evidence": [
+      "5348862d-a26d-44a2-a55b-4b30a029366a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the minimum-cost lead. It preserves the 4, 5, and 6 for later play, avoids handing the opponents information about my strength, and does not commit a card that could be useful after partner or opponents reveal more about their hands.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest club and the most likely to win or force a high cover from opponents. Playing it now would leave only 3-4-5 and remove my only card that might take a later trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a useful mid card. Committing it as the opening lead wastes potential future cover and does not improve on leading the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is the second-lowest card. It saves the 5 and 6 but is strictly worse than the 3 because it expends a slightly stronger card with no compensating advantage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1, with 2 cards remaining, may win this trick with a higher card or trump and then lead out to finish.",
+      "If both opponents pass, partner might still not be able to win, and I could retain the lead with a weak hand, forcing me into another low-value lead."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize resource loss no matter who wins the trick. The saved 4-6 can be used to cover an opponent's later lead or support partner if needed."
+  },
+  "confidence": 0.82,
+  "notes": "No cards have been played yet, so all beliefs are probabilistic and based only on the opening hand counts and the new_game event."
+}

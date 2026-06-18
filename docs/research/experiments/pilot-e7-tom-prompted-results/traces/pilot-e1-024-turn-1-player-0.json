@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-024-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is down to 2 cards while all other players hold 3, so the priority is to empty the hand quickly and avoid being blocked by opponents."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public signals yet. They are likely to play to help our team finish, possibly by winning a lead so I can offload a high card later.",
+    "confidence": 0.5,
+    "evidence": [
+      "dd1471cb-0e15-4103-837d-3bd52f10ff4d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and will try to seize the lead and prevent me from playing my remaining cards. They may hold trumps or jokers that beat a non-trump Ace.",
+    "confidence": 0.5,
+    "evidence": [
+      "dd1471cb-0e15-4103-837d-3bd52f10ff4d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the low 2 first to discard the card that is hardest to play later. The Ace is kept as a high stopper to win back the lead or cover a future low single lead from partner/opponents.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace would likely win the trick, but it would leave the weak 2 stranded. The 2 can only be discarded easily while I control the lead, so playing the Ace first risks a later blockage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 2 and take control of the table.",
+      "If opponents or partner do not lead a single I can beat, the Ace might sit unused temporarily."
+    ],
+    "mitigation": "The Ace provides a strong recovery card if a winnable single is led, and the partner may lead a low single to help me offload it."
+  },
+  "confidence": 0.65,
+  "notes": "No public signals beyond the new-game event, so partner/opponent beliefs remain probabilistic."
+}

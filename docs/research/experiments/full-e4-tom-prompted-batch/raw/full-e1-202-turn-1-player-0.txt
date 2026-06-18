@@ -1,0 +1,41 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-202-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoningTrace": {
+    "partnerIntentInference": {
+      "summary": "Partner (player 2) has only 2 cards, suggesting they are near finishing. With no public plays yet, I cannot know their exact strength, but a near-finish partner likely wants a low, controllable lead they can beat to shed cards and possibly go out.",
+      "belief": "Partner probably holds at least one card above a low diamond 3, possibly a trump or higher non-trump, and prefers a small lead to an expensive one.",
+      "evidence": ["953e6c55-2104-43be-a9a4-5c2a58e3ef60"]
+    },
+    "opponentIntentInference": {
+      "summary": "Opponents (players 1 and 3) have 3 cards each and have not acted. They will try to win the trick or force the leader to waste strength. A low non-trump lead is cheap for them to beat if they have any high card, but they may also let it pass to preserve cards.",
+      "belief": "Opponents likely have enough variety to beat a 3 if they wish; they are unlikely to be threatened by such a low lead and may conserve resources unless they need to stop partner.",
+      "evidence": ["953e6c55-2104-43be-a9a4-5c2a58e3ef60"]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "analysis": "The cheapest lead. Maximizes the chance partner can win with a modest card and minimizes information/value given to opponents. If partner wins, my remaining 4-6 may still be playable later; if opponents win, I lose little.",
+        "pros": ["Easiest for near-finish partner to beat", "Preserves higher diamonds for later", "Low cost if opponents take the trick"],
+        "cons": ["Almost any opponent card can beat it if they choose to"],
+        "evidence": ["953e6c55-2104-43be-a9a4-5c2a58e3ef60"]
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "analysis": "The highest card in hand, but still a low non-trump below the trump rank 7. It is slightly harder for partner to beat if they are trying to go out, and it gives opponents more information about my hand shape without substantially improving trick control.",
+        "pros": ["Slightly harder for opponents to beat than a 3"],
+        "cons": ["Harder for partner to win with a small card", "Wastes the most useful card in a weak hand", "Still loses to any 7+ or trump"],
+        "evidence": ["953e6c55-2104-43be-a9a4-5c2a58e3ef60"]
+      }
+    ],
+    "counterfactuals": {
+      "ifLeadSix": "If I lead the 6, partner may be forced to play a higher/trump card to win, depleting their last resources and possibly preventing a clean finish.",
+      "ifLeadThree": "If I lead the 3, partner can potentially win cheaply, finish, and preserve team strength."
+    },
+    "selectedActionJustification": {
+      "summary": "Leading the lowest card supports the near-finish partner best. It gives partner the widest chance to take the trick with minimal cost, aligning with the team objective of helping player 2 go out. It also preserves my limited higher cards for later tricks.",
+      "evidence": ["953e6c55-2104-43be-a9a4-5c2a58e3ef60"]
+    }
+  }
+}

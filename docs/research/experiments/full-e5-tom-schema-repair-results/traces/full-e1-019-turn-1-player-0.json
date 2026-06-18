@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-019-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Leading the A maximizes the probability of retaining the lead and exiting with the 2 on the next turn, which is the dominant play in this endgame race."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. They likely want me to exit quickly so our team secures first place, but no specific signal about their card strength exists yet.",
+    "confidence": 0.6,
+    "evidence": [
+      "3596718e-29a4-4936-82e5-bc801d3b2afd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to win this lead to deny me a second lead. They may hold trump-7s, the red trump, or jokers that can beat a non-trump A, but a 2 loses to almost any card they play.",
+    "confidence": 0.6,
+    "evidence": [
+      "3596718e-29a4-4936-82e5-bc801d3b2afd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A maximizes the probability of retaining the lead and exiting with the 2 on the next turn, which is the dominant play in this endgame race.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -1,0 +1,40 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-195-turn-1-player-0",
+  "reasoning": [
+    {
+      "step": 1,
+      "type": "belief_partner",
+      "content": "Partner (player 2) has 3 cards and no public plays have occurred, so I have no reliable signal about their strength or suit distribution. They are likely to respond opportunistically if I lead a card they can beat, but I cannot assert any specific holdings.",
+      "evidence": [
+        "659c6578-be83-4a53-b571-391ce49e47f1"
+      ]
+    },
+    {
+      "step": 2,
+      "type": "belief_opponent",
+      "content": "Opponents (players 1 and 3) each have 3 cards and have also made no public plays. Their incentives are to win tricks to avoid being last or to burn high cards if they must. With zero public information, I must treat their hidden cards as uniformly uncertain.",
+      "evidence": [
+        "659c6578-be83-4a53-b571-391ce49e47f1"
+      ]
+    },
+    {
+      "step": 3,
+      "type": "counterfactual",
+      "content": "Comparing lead options: playing the 6 of spades would use my highest single, making it harder to win a future trick if opponents respond with middling cards. Playing the 3 of spades expends my lowest card, keeps the 4-6 for later, and because this is the opening lead it still wins the table. All four candidates are singles with identical type and no bomb/wildcard usage, so the only differentiator is rank preservation.",
+      "evidence": [
+        "659c6578-be83-4a53-b571-391ce49e47f1"
+      ]
+    },
+    {
+      "step": 4,
+      "type": "decision",
+      "content": "Select the lowest single (3 of spades) to conserve higher cards under hidden-information uncertainty while fulfilling the lead.",
+      "evidence": [
+        "659c6578-be83-4a53-b571-391ce49e47f1"
+      ]
+    }
+  ],
+  "selectedActionId": "play-single-spade-3-copy1",
+  "confidence": 0.85
+}

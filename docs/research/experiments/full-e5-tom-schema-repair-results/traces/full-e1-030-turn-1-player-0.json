@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-030-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Conserve hand strength, gather information, and avoid handing opponents an easy high-card exchange on the opening lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays, partner has not signaled any preferred suit or strength. Leading a low non-trump single is a neutral, conventional opening that preserves my high cards and allows partner to respond with whatever strength they choose. High; partner's exact ranks and suits are unknown and can only become probabilistically informed after observing plays.",
+    "confidence": 0.6,
+    "evidence": [
+      "4146e761-f843-4d99-950d-e4fd792151fd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. They will try to win the trick or force out higher cards. A low lead induces them to either pass (giving me information about weakness) or commit a higher card (revealing strength), both of which are useful. High; no hidden cards are known, only the public hand counts.",
+    "confidence": 0.6,
+    "evidence": [
+      "4146e761-f843-4d99-950d-e4fd792151fd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The lowest singleton lead best supports the team objective by minimizing exposure and keeping stronger spades in reserve, without asserting any hidden cards as facts.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

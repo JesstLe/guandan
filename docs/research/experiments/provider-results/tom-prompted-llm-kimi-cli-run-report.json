@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/tom-prompted-llm.jsonl",
+  "expectedCount": 50,
+  "writtenCount": 50,
+  "successCount": 43,
+  "errorCount": 7,
+  "kimiBin": "/Users/lv/.local/bin/kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/tom-prompted-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-18T08:13:33.678Z",
+  "runner": "kimi-cli"
+}

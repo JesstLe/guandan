@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-161-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 (opponent) is near finishing with only 2 cards and led a low heart 3. Taking control with the cheapest winning card stops them from freely continuing and secures the lead for our team."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards and has not played yet, so they likely have some covering strength, but I cannot assume any specific high cards. They may be able to support me later if an opponent takes control.",
+    "confidence": 0.5,
+    "evidence": [
+      "6ac2524d-98c4-4ce7-9c22-fd3836a6041f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 and has only 2 cards left, signaling they are trying to shed a weak card to get closer to going out. Their remaining card is unknown and could be low or high. Player 2 has 3 cards with no public information.",
+    "confidence": 0.6,
+    "evidence": [
+      "6ac2524d-98c4-4ce7-9c22-fd3836a6041f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the heart 4: it is the lowest legal winning single, takes the lead away from the near-finish opponent, and preserves the stronger heart 9 and heart 10 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 win this trick and lead again with only one card left, making it easier for them to finish."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the trick but overcommits strength; the 4 already wins, so saving the 9 is better for later tricks."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is stronger than needed and should be held for a higher-leverage trick later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 may beat the heart 4 with their remaining card and then lead their final card to go out.",
+      "Player 2 may overtake and take control."
+    ],
+    "mitigation": "Using the minimal winner keeps the 9 and 10 in hand to regain or contest the lead on later tricks, and partner may cover if an opponent plays a high card."
+  },
+  "confidence": 0.75
+}

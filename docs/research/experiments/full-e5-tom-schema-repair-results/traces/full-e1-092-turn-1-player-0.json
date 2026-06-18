@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-092-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is down to two cards and likely near finishing. With no trumps and only low diamonds, my best contribution is to lead the weakest possible card so partner has the broadest range of ways to win the trick and then play out their remaining hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has only two cards left, which publicly signals they may be close to going out. I believe they are likely holding at least one card that can beat a very low single lead, but I cannot assert any specific hidden cards. They probably want me to feed them a cheap lead rather than consume their high cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "b2b08fa2-c45f-4d54-94a4-13e15b30ca9c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three unknown cards. Because nothing has been played yet, they likely possess higher cards or trumps. I expect them to try to seize the lead if I play anything they can beat, especially to stop my partner from finishing. I do not assume any particular opponent card.",
+    "confidence": 0.5,
+    "evidence": [
+      "b2b08fa2-c45f-4d54-94a4-13e15b30ca9c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 is the lowest single available. It maximizes the chance that partner can take the trick cheaply, supports the partner_near_finish situation, and expends my weakest card first while preserving the slightly higher diamonds for later if needed.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Playing the 4 instead of the 3 removes an only marginally stronger card but gives the partner and opponents a slightly narrower band of cards that can beat it, and it keeps a lower card unused without clear benefit."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more likely to be beaten by ordinary opponent cards and is more likely to force partner to spend a higher card than necessary, which is worse when partner is near finish."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest non-trump single in hand and most likely to be topped by an opponent; it also wastes a card that might win a later low single trick if opponents run low on answers."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the diamond 3 and take control, pressuring the partner.",
+      "Partner may not have a card that can beat a single lead, causing the lead to circle back to an opponent.",
+      "My hand contains no trumps, so I cannot rescue the lead if opponents play trumps."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the strength opponents must commit to win and gives partner the most flexibility. It also preserves my remaining low cards for future low leads."
+  },
+  "confidence": 0.65,
+  "notes": "Theory-of-mind reasoning treats partner and opponent cards as uncertain; the choice is driven by the public partner_near_finish signal and the minimization of committed card strength."
+}

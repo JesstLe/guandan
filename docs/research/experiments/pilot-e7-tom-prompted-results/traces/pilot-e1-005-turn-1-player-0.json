@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-005-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With no trumps and only low spades, leading the weakest card invites partner to take control with a higher card while preserving my limited high cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards. Since no cards have been played, partner is roughly equally likely to hold higher spades, trump-rank cards, or other suits. I believe partner can plausibly beat a low spade lead but should not assume it.",
+    "confidence": 0.5,
+    "evidence": [
+      "92c3571c-01b6-4559-bc9e-dba33200863e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. They likely contain cards higher than spade-3, and possibly trump-rank 7s or red trumps. They will probably overtake a low spade lead if they can, but they cannot reveal hidden cards yet.",
+    "confidence": 0.6,
+    "evidence": [
+      "92c3571c-01b6-4559-bc9e-dba33200863e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade-3 is the minimal commitment: it is the lowest card in my hand, least likely to win outright, and keeps the 4/5/6 for future tricks or to avoid being forced to play them under pressure.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the 6 wastes my highest non-trump and still loses to almost any trump or higher card; it gives opponents more information without meaningful gain."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 but loses the same card-positioning advantage; keeping sequential low cards is more valuable."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 sits in the middle of my hand and is better retained for a later lead or response than thrown away opening the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher spade and keep the lead, forcing my team onto defense.",
+      "If partner is also weak, the opening 3 may simply pass control to opponents without learning much."
+    ],
+    "mitigation": "By leading the lowest card I minimize resource loss regardless of outcome, leaving my slightly higher spades available for later tricks or to cover partner."
+  },
+  "confidence": 0.75
+}

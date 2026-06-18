@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-018-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "With a 4-card hand of low non-trump clubs, the priority is to survive, feed partner opportunities, and avoid helping the near-finish opponent P1 exit. Playing the lowest single minimizes my commitment and keeps my hand as flexible as possible given the uncertainty."
+  },
+  "partnerBelief": {
+    "summary": "Partner P2 holds 3 cards and has not acted; I cannot infer specific ranks. A low lead lets P2 possibly win the trick cheaply if P2 has any non-trump card above 3 or a small trump, without committing P2 to a high card unnecessarily. Leading low also avoids consuming any intermediate card that P2 might need to beat later.",
+    "confidence": 0.6,
+    "evidence": [
+      "70f3bd58-8736-4b9a-911c-f9daa7dc8388"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent P1 has only 2 cards and is tagged near-finish, suggesting P1 likely retains cards strong enough to exit soon. P3 has 3 cards and will try to beat the lead to seize initiative. By leading the weakest card I minimize the chance that an opponent expends a merely medium card to take control; instead they must beat a 3, which any playable card can do, revealing little about their exact strength.",
+    "confidence": 0.6,
+    "evidence": [
+      "70f3bd58-8736-4b9a-911c-f9daa7dc8388"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "With a 4-card hand of low non-trump clubs, the priority is to survive, feed partner opportunities, and avoid helping the near-finish opponent P1 exit. Playing the lowest single minimizes my commitment and keeps my hand as flexible as possible given the uncertainty.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 is still weak because trump rank is 7, so any 7 or trump beats it. It uses my highest non-trump and, against a near-finish P1, does not materially reduce P1's chance to win the trick; it only gives away my best remaining card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

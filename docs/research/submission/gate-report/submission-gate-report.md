@@ -41,7 +41,7 @@ None.
 
 ### Gate 3: Experiment Sufficiency
 
-- Pilot metrics summary has 5 rows.
+- Pilot metrics summary has 6 rows.
 - Verifier-revision comparison status is metrics_available.
 
 ### Gate 4: Writing Readiness

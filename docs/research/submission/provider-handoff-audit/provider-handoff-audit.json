@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T02:48:48.925Z",
+  "generatedAt": "2026-06-18T10:24:27.187Z",
   "status": "ready",
-  "conditionCount": 3,
+  "conditionCount": 4,
   "conditions": [
     {
       "conditionId": "plain-llm",
@@ -28,6 +28,23 @@
       "mappingJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-input.jsonl",
       "uploadJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl",
       "expectedProviderResultPath": "docs/research/experiments/provider-results/candidate-constrained-llm.jsonl",
+      "mappingExists": true,
+      "uploadExists": true,
+      "providerResultExists": true,
+      "mappingRequestCount": 50,
+      "uploadRequestCount": 50,
+      "customIdMismatchCount": 0,
+      "missingFromUpload": [],
+      "missingFromMapping": [],
+      "notes": []
+    },
+    {
+      "conditionId": "tom-prompted-llm",
+      "title": "ToM-prompted LLM first-pass run",
+      "status": "provider_results_present",
+      "mappingJsonlPath": "docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl",
+      "uploadJsonlPath": "docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl",
+      "expectedProviderResultPath": "docs/research/experiments/provider-results/tom-prompted-llm.jsonl",
       "mappingExists": true,
       "uploadExists": true,
       "providerResultExists": true,

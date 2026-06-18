@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-058-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "Opening the first trick with a low legal single lets the team probe the table while preserving slightly higher clubs for later control."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a normal 3-card hand; since no cards have been played, partner may hold a card strong enough to beat a low club if they want to take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "382b164b-bbbd-416a-8147-97589f0c4a2a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "One opponent is near finish with only 2 cards left, so that opponent may have kept strong cards or trumps to close out the hand; leading low avoids giving them an easy tempo.",
+    "confidence": 0.65,
+    "evidence": [
+      "382b164b-bbbd-416a-8147-97589f0c4a2a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 is the lowest legal single and the least committal opening lead. It lets partner possibly take the trick with a modest card while I keep the 4-6 sequence for later plays, and it reveals little about my holding.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly higher than the 3 but still very low; it uses a card that could be more useful later and does not meaningfully increase the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher still, reducing flexibility for future leads while remaining likely to lose to any unseen high card or trump."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The strongest club available, but winning with a 6 is unlikely against unseen high cards and trumps; it also wastes the one card partner might not be able to beat cheaply."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A near-finish opponent may beat the low lead with a strong single or trump and seize tempo.",
+      "Partner may be unable to take the trick, allowing opponents to retain control."
+    ],
+    "mitigation": "By leading the lowest card, I minimize resource loss and keep modest follow-up cards; if partner can take control, we can coordinate the remaining cards."
+  },
+  "confidence": 0.7
+}

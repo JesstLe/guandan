@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-192-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner P2 has only 2 cards remaining and is near finishing. By leading the weakest possible card, I minimize the strength opponents must spend to beat it and give P2 the best chance to take control of the trick and potentially finish the hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner P2 likely has a small but possibly strong hand near finish. With 2 cards left, P2 may have conserved trumps or high cards to win a trick, but could also be stuck with unplayable cards. P2 probably wants me to lead low so they can attempt to seize the lead.",
+    "confidence": 0.65,
+    "evidence": [
+      "002a0644-1f61-4516-9c38-0beef9a456a3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents P1 and P3 each hold 3 cards and have revealed nothing. Given an unplayed deck, it is probable that at least one opponent can beat a low diamond single with a higher non-trump or a trump. They will try to prevent P2 from gaining lead and finishing.",
+    "confidence": 0.7,
+    "evidence": [
+      "002a0644-1f61-4516-9c38-0beef9a456a3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦, my lowest card, is the safest way to open the trick. It conserves my slightly stronger diamonds, forces opponents to reveal information, and gives my near-finish partner the most favorable position to win the trick with a trump or high card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6♦ is my highest non-trump but is still weak; any opponent with a 7 or trump can beat it easily. Playing it now wastes my best card and does not materially increase the chance of helping partner finish."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5♦ is intermediate: stronger than the 3 but still a low non-trump. It is more likely to be beaten by ordinary opponent cards than the 3, yet no more likely to let partner win."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4♦ is only marginally stronger than the 3 and offers no strategic advantage over leading the absolute lowest card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a trump (rank 7) or higher non-trump can immediately take the lead.",
+      "Partner P2 may not have a card that can beat opponents, causing us to lose initiative.",
+      "If opponents gain lead, they may play combinations that my weak diamond hand cannot match."
+    ],
+    "mitigation": "Leading the minimum-strength card keeps my best resources in reserve, avoids overcommitting, and maximizes the chance that partner can win with a conserved strong card. Even if opponents take this trick, I have not weakened my position further."
+  },
+  "confidence": 0.7,
+  "notes": "Beliefs remain probabilistic because no cards have been played. The partner-near-finish signal comes from public hand counts, and the only public event is the new_game event."
+}

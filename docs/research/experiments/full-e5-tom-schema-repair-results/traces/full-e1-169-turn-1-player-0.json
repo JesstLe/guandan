@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-169-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "In the endgame race, retaining the lead is critical. Leading the strongest single maximizes the probability that I win the trick and get to play my final card."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unknown cards and has not yet acted. Because I am about to finish (2 cards), my partner likely wants me to retain or regain the lead so I can shed my last card, or alternatively take control themselves if they can finish first. With no public signals, I cannot assume partner has a specific card, only that they have 3 random-ish unknown cards that may include trumps or higher singles.",
+    "confidence": 0.6,
+    "evidence": [
+      "3e95bc33-0eff-404d-b64d-25c063bb3357"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. They want to prevent me from going out, so if I lead a low single they are likely to beat it if they can. They may hold trump 7s or red trumps that beat any non-trump single, but I cannot assert that as a fact.",
+    "confidence": 0.6,
+    "evidence": [
+      "3e95bc33-0eff-404d-b64d-25c063bb3357"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "In the endgame race, retaining the lead is critical. Leading the strongest single maximizes the probability that I win the trick and get to play my final card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

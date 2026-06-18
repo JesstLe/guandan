@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-008-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I am opening the round with a very weak hand (3-6 of clubs, none are trump). My best team chance is to lead the lowest single so that my partner has the easiest possible path to take control of the trick and then guide the rest of the round."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 cards and has not acted yet. With no prior plays, their hand is unknown, but a low club-3 lead is the most likely single they can beat with an ordinary higher card or a small trump. They are probably not signaling anything because no public actions have occurred.",
+    "confidence": 0.55,
+    "evidence": [
+      "47da0651-589e-4c14-ba46-1aaa6aec4ab6"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The left opponent (player 1) is down to 2 cards, suggesting they are close to finishing and may be holding one or more high cards to escape quickly. The right opponent (player 3) has 3 cards. Because nothing has been played, I cannot assume specific ranks, only that player 1 is more likely to try to win this trick aggressively.",
+    "confidence": 0.5,
+    "evidence": [
+      "47da0651-589e-4c14-ba46-1aaa6aec4ab6"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 is the minimal-strength single. It forces opponents to spend a higher card if they want the lead, and it gives my partner the widest range of cards that could beat it. Keeping 4-6 in reserve also leaves me with a small descending sequence for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still a low card but slightly harder for partner to cover than the 3, and it does not improve my chance of winning the trick myself."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is closer to my highest card and is more likely to be wasted against an opponent's higher single; it also reduces my future lead options."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest card, but it is still a weak non-trump single that an opponent or even my partner could easily beat. Spending it now leaves me with only lower cards and no credible threat."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 may play a higher single or a small trump and take the lead, then use their remaining card(s) to go out soon.",
+      "If no one beats the 3, I win a cheap trick but still have only weak cards to continue with.",
+      "My partner may be unable to beat whatever opponent plays next, ceding control to the opponents."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the value an opponent must spend to win and maximize the chance that my partner can overtake with an ordinary card. This also preserves my 4-6 for later singles or as throwaways."
+  },
+  "confidence": 0.65
+}

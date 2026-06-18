@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-243-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a weak, non-trump hand, I want to win the first trick with my strongest card to control the tempo and avoid handing the lead cheaply to the opponent who is down to 2 cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not acted, so their strength is unknown. They are likely to cover a low lead if they have a higher card or trump, but I cannot assume they have one.",
+    "confidence": 0.5,
+    "evidence": [
+      "304997a6-82f3-4c36-8aa2-4848b561e063"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is likely trying to finish quickly, so they may hold a trump or high card. Opponent player 3 has 3 cards and may help block or set up player 1. No cards have been played, so these are probabilistic.",
+    "confidence": 0.55,
+    "evidence": [
+      "304997a6-82f3-4c36-8aa2-4848b561e063"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs gives the best chance to win the trick among my legal singles, because it is the highest card I hold. If it wins, I keep the lead and can continue applying pressure; if an opponent beats it, they must use a higher non-trump or a valuable trump, which slows down the short-stacked opponent.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Leading the 3 is more likely to be beaten by a modest opponent card, which would transfer the lead directly to the opponent closest to finishing. That risk outweighs the signaling benefit at this early, information-scarce point."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still low enough that many opponent holdings can beat it without using premium cards, so it does not sufficiently protect against the near-finish opponent taking control."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is better than 3 or 4, but the 6 still provides the highest probability of winning or forcing a stronger response, so it is the preferred opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or higher non-trump and win the trick, giving the short-stacked opponent the lead.",
+      "Partner may be unable to cover, leaving us with no immediate way to stop a fast finish.",
+      "Even if the 6 wins, my remaining cards are lower and may be beaten on subsequent tricks."
+    ],
+    "mitigation": "By leading my highest card first, I either win the trick or force opponents to spend meaningful strength; this is the least costly way to contest tempo given my weak hand and the opponent's low card count."
+  },
+  "confidence": 0.6,
+  "notes": "Decision made under high uncertainty at game start with only public hand counts observed."
+}

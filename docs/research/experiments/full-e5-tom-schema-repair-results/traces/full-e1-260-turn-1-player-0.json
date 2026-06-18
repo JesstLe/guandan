@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-260-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am opening the trick with no table lead. I want to start cheaply, retain or transfer the lead within my team, and avoid exposing my strongest card."
+  },
+  "partnerBelief": {
+    "summary": "My partner holds 3 unseen cards. With no prior plays, their hand is largely unknown; they may have higher non-trump cards or trumps that could beat a low spade lead, but I cannot assume any specific holdings. Leading the 3 may make it easier for them to take control if they have a modest high card.",
+    "confidence": 0.2,
+    "evidence": [
+      "ae9450b6-e5d9-49ab-8048-5231129c4121"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unseen cards. They likely have cards higher than my low spades, but I cannot assert any particular ranks or bombs. They will probably try to win the trick to seize tempo, though their exact ability is uncertain.",
+    "confidence": 0.25,
+    "evidence": [
+      "ae9450b6-e5d9-49ab-8048-5231129c4121"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is my weakest card. Playing it first expends minimal material, sets the lowest possible bar, and keeps my 6 as my best remaining non-trump card for later. If my partner can beat a low lead, this play supports a lead transfer; if not, I have lost only my least valuable card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 commits my strongest non-trump card on a trick that opponents or partner can likely still beat, leaving me with only lower cards and less end-of-hand flexibility."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is an intermediate card; it neither maximizes the chance of winning the trick nor minimizes my resource loss, so it is less attractive than the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "If my partner cannot beat the 3, opponents may take the lead and control the tempo.",
+      "Opponents may have trumps or higher cards that beat any low spade lead regardless of which rank I choose.",
+      "My remaining cards are still low, so regaining the lead later may be difficult."
+    ],
+    "mitigation": "By leading the 3, I avoid overcommitting a higher card, preserve the 6 as my best exit, and rely on my partner's unseen strength to contest or take the trick."
+  },
+  "confidence": 0.6
+}

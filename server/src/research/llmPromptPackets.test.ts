@@ -28,6 +28,18 @@ describe('llmPromptPackets', () => {
     expect(packet.messages[1].content).toContain(dataset.decisions[0].legalActions[0].actionId)
   })
 
+  it('creates a ToM-prompted packet with partner and opponent intent scaffolding', () => {
+    const dataset = generatePilotDecisionDataset({ targetCount: 1, gameIdPrefix: 'prompt' })
+    const packet = createPromptPacket(dataset.decisions[0], 'tom-prompted-llm')
+
+    expect(packet.conditionId).toBe('tom-prompted-llm')
+    expect(packet.promptTemplatePath).toBe('docs/research/prompts/tom-prompted-llm-v0.1.md')
+    expect(packet.messages[0].content).toContain('theory-of-mind style reasoning')
+    expect(packet.messages[1].content).toContain('Theory-of-mind reasoning checklist:')
+    expect(packet.messages[1].content).toContain('Infer what the partner may be trying to signal')
+    expect(packet.messages[1].content).toContain(dataset.decisions[0].legalActions[0].actionId)
+  })
+
   it('writes prompt packets and a manifest', () => {
     const outputDir = mkdtempSync(join(tmpdir(), 'guandan-prompts-'))
     const dataset = generatePilotDecisionDataset({ targetCount: 3, gameIdPrefix: 'prompt-file' })

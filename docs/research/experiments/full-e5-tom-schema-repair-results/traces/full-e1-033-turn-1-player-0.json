@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-033-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Lead the 3 of clubs to follow standard weak-hand opening strategy, preserve higher cards, and give partner the cheapest opportunity to take the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards with no public plays observed, so their distribution is unknown but they may hold high cards or trumps. As the opening leader with a weak hand, I should present a low card that partner can reasonably beat without committing too much strength.",
+    "confidence": 0.7,
+    "evidence": [
+      "4d3e4725-5338-4e89-b3ef-81479ce3acce"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "An opponent may be near finishing according to public hand-count context; exact hidden cards remain uncertain.",
+    "confidence": 0.7,
+    "evidence": [
+      "4d3e4725-5338-4e89-b3ef-81479ce3acce"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the 3 of clubs to follow standard weak-hand opening strategy, preserve higher cards, and give partner the cheapest opportunity to take the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.7,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

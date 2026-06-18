@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-153-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 is tagged as near finish with only 2 cards. As the opening leader with a weak non-trump hand, the priority is to make it costly for that opponent to progress rather than giving them an easy trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. There is no reliable signal about their suits or strength, but they could potentially cover a low club lead with a higher club or a trump.",
+    "confidence": 0.4,
+    "evidence": [
+      "4c9af7e0-ae47-476f-9d33-751586c63013"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, so they are likely holding strong cards or a near-finish line and may be able to beat a low lead. Opponent player 3 has 3 cards with no public information about their holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "4c9af7e0-ae47-476f-9d33-751586c63013"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of clubs is the weakest card in hand and the lowest legal lead. Leading it minimizes the value opponents gain by beating the trick, preserves the slightly higher clubs for later positions, and does not commit any trump or bomb resources.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still easily beaten by any higher club or trump; playing it now wastes a card that might win a later low-card exchange."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher than the 3 but still a non-trump low card; it is more likely to be captured by an opponent's mid-strength card without improving our position."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Our highest club. Leading it risks losing the strongest card in our hand to a trump or higher club, leaving us with even weaker cards for the rest of the round."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may cover the low lead with a high card or trump and move closer to finishing.",
+      "Partner may be unable to cover, ceding the lead to an opponent.",
+      "Because no cards have been played, the distribution of clubs among opponents is unknown."
+    ],
+    "mitigation": "Play the lowest available card (3 of clubs) to keep the lead cheap and retain our modest club sequence for later tricks."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with no public card-play information beyond hand counts; all beliefs about opponent and partner holdings remain probabilistic."
+}

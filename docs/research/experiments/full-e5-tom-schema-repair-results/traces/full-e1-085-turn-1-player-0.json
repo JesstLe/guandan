@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-085-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a long but low non-trump suit, I want to lead a minimal card to retain higher cards for later control while probing partner and opponent strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and has made no plays yet, so I have no specific read on their holdings. They are likely to have a mixed hand and may be able to cover a low lead if they hold a higher card in the same suit, but this is purely probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "b4d4b883-bd42-482c-9995-daa556585f6d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and no public plays. Given the deck distribution, they probably contain some higher non-trump cards and possibly trumps, but I cannot assert any specific cards. A low lead reduces the chance of immediately drawing out their strongest cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "b4d4b883-bd42-482c-9995-daa556585f6d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the cheapest non-trump lead. It preserves the 4-5-6 for future tricks, avoids revealing strength, and is consistent with a standard opening strategy when holding a low suit.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the highest card in the suit wastes the only card that might win a later non-trump trick and leaves only 3-4-5, which are even weaker."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally higher than the 3 and still loses to almost any higher non-trump or trump, while costing more flexibility than the 3."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a middle card that does not materially improve winning chances over the 3 yet gives up a useful intermediate card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card and take the lead immediately.",
+      "Partner may be unable to cover, so we may not win this trick."
+    ],
+    "mitigation": "Because the lead is the lowest possible card, losing this trick is low cost and keeps our stronger cards available to regain or defend the lead later."
+  },
+  "confidence": 0.85
+}

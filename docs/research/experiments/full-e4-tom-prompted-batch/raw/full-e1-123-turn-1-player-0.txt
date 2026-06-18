@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-123-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The opponent to my left has only 2 cards and is near finishing. With no trumps and only low clubs, my best chance is to raise the threshold of the trick so that opponent cannot win cheaply and exit."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards but has made no public plays. They could hold a covering card, but I cannot assume strength. I will lead in a way that gives them the most information if the opponent responds.",
+    "confidence": 0.25,
+    "evidence": [
+      "240f4583-73d5-4216-b4d1-a4f0606ffcad"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has 2 cards and is near finishing; they likely will seize any cheap trick they can beat and then lead their final card. Opponent player 3 has 3 cards and is also unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "240f4583-73d5-4216-b4d1-a4f0606ffcad"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs is my strongest non-trump card. It maximizes the chance that the near-finish opponent cannot beat the trick without using a trump or high card, and it reduces the chance they win cheaply and exit.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Leading the lowest card gives the near-finish opponent the widest range of cards that can beat it, inviting them to take the trick with a small card and then lead their last card."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still a low lead that the opponent can likely beat with a modest card, preserving their stronger exit cards."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Better than 3 or 4, but still leaves more room for the opponent to win with an ordinary high card rather than forcing them toward a trump."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The near-finish opponent may still hold a higher non-trump card or a trump and win the trick.",
+      "If I do win, my remaining cards are even weaker, so I may lose control on the next trick.",
+      "Partner may not have a covering card if the opponent responds."
+    ],
+    "mitigation": "By leading the highest available club I minimize the chance of a cheap opponent takeover and gain the most information from the opponent's response, allowing better reassessment next turn."
+  },
+  "confidence": 0.55,
+  "notes": "First turn with no public inferences beyond hand counts; all hidden card beliefs remain probabilistic."
+}

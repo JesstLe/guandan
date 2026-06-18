@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-171-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) has only two cards remaining and led a low single 3 of hearts, suggesting they are shedding garbage to exit soon. The priority is to seize control of this trick so they cannot win it and play their final card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unseen cards. Since the opponents led a low single, partner could plausibly have a higher single or trump to beat it; however, with no public signal from partner yet, I cannot rely on them having a safe winning card.",
+    "confidence": 0.55,
+    "evidence": [
+      "9c385678-de2b-4575-a8c7-d4d4b256f2bd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 likely led their weakest card to dump it, keeping one stronger card for a potential finish. Player 3, also unseen, may hold higher singles or trumps and could overcut a weak follow; therefore a stronger follow reduces the chance the opponents reclaim the lead.",
+    "confidence": 0.65,
+    "evidence": [
+      "9c385678-de2b-4575-a8c7-d4d4b256f2bd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 10 of hearts is the strongest available single. It maximizes the probability of winning the trick, stopping player 0 from finishing and giving our team the next lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets opponents or partner contest the trick. If player 3 wins or player 0's low lead goes unchallenged, player 0 may immediately play their final card and exit."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "reason": "The 4 beats the 3 cheaply, but it is vulnerable to overcutting by player 3 with any 5-6, 8, 9, 10, J, Q, K, A, 2, or trump 7. With player 0 near finish, conserving strength is less important than securing the trick."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 is a reasonable middle option, but it can still be beaten by 10-A, 2, or any 7-trump. Since we already hold the 10, using it now gives the best chance of immediately taking control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 3 may still hold a higher non-trump single or a 7-trump that beats our 10, regaining the lead for the opponents.",
+      "Expending the 10 now leaves us with only 4 and 9 for the rest of the hand."
+    ],
+    "mitigation": "By playing the highest available card, we minimize the set of cards that can overcut us. If we win, we lead next and can attempt to exit before the opponents do."
+  },
+  "confidence": 0.72,
+  "notes": "The opponent-near-finish tag dominates the decision: conserving low-value cards is secondary to preventing an opponent from going out."
+}

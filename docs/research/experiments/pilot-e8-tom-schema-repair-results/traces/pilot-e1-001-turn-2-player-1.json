@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-001-turn-2-player-1",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The leading opponent (player 0) has only 2 cards left and is near finishing. The immediate team objective is to take control of the trick with the cheapest legal card, deny the opponent a free lead continuation, and disrupt their endgame timing."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 3) has 3 cards left and has not yet acted in this trick. They might hold a higher heart or a trump that could beat the 3 of hearts, but their exact cards are hidden. If I pass, partner could potentially take control; however, waiting also lets the opponent retain initiative. I therefore believe partner is better served by me taking the lead now and giving them a fresh trick to respond to, rather than relying on them to rescue a pass.",
+    "confidence": 0.55,
+    "evidence": [
+      "1aadd1a3-a6ea-44a2-ad2b-18a41c835526"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 and has only 2 cards remaining, which strongly suggests they are shedding a weak card to get down to a finishing hand. Player 2 (the other opponent, with 3 cards) may hold covering cards or may be preparing to pass to let player 0 lead again. I infer the opponents are trying to let player 0 finish quickly, so ceding control by passing is risky.",
+    "confidence": 0.65,
+    "evidence": [
+      "1aadd1a3-a6ea-44a2-ad2b-18a41c835526"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the minimum card that legally beats the 3 of hearts. It takes control away from the near-finishing opponent at the lowest possible cost, preserving the 9 and 10 of hearts for later plays while immediately disrupting the opponent's likely endgame plan.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the near-finishing opponent possibly win the trick and lead again, accelerating their finish. My partner might rescue, but relying on hidden partner cards is less reliable than taking control myself when I can do so cheaply."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the 3, but it spends a materially stronger card than necessary. Since the 4 already wins the trick, using the 9 now would weaken my remaining hand without gaining additional board control."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts also wins, but it is my highest card and would be an inefficient use of strength against a low 3. Saving the 10 for a later high-pressure trick is more valuable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 may be able to beat my 4 of hearts with a higher heart or a trump, in which case I lose control and spend a card for little gain.",
+      "If my partner had a strong response, my intervention may reduce their chance to act, though this is hidden information.",
+      "I reveal that I have heart length/cards, which may help opponents count the suit."
+    ],
+    "mitigation": "By using the minimum beating card (the 4), I limit resource exposure. Even if player 2 beats it, I have not over-invested, and I still have 9 and 10 of hearts plus whatever draws occur in later rounds."
+  },
+  "confidence": 0.72,
+  "notes": "Decision grounded on public hand counts and the observed low lead from a near-finishing opponent; hidden card beliefs remain probabilistic."
+}

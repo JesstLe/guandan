@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T10:30:11.958Z",
+  "paper": "Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games",
+  "localSubmissionHygiene": "not_ready",
+  "aamasFullPaperReadiness": "not_ready",
+  "headline": "The package is locally clean and pilot-complete, but it is not yet an AAMAS full-paper empirical package because full-split LLM evidence and replication/human-audit evidence remain missing.",
+  "facts": {
+    "gateStatus": "ready",
+    "manifestEntries": 80,
+    "manifestMissing": 1,
+    "localPipelineStatus": "completed",
+    "localPipelineSteps": 39,
+    "aamasPageCount": 8,
+    "pilot": {
+      "plainParsed": "26/50",
+      "candidateParsed": "32/50",
+      "tomParsed": "36/50",
+      "tomRepairParsed": "49/50",
+      "verifierRevisionParsed": "32/32",
+      "verifierRevisionHardFailures": "10"
+    },
+    "fullSplit": {
+      "decisionPoints": 500,
+      "deterministicBaselinesHardFailures": 0,
+      "plainRawPresent": "0/500 present",
+      "candidateRawPresent": "0/500 present",
+      "tomRawPresent": "268/500 present",
+      "tomParsed": "missing",
+      "tomRepairParsed": "268/500"
+    }
+  },
+  "gates": [
+    {
+      "id": "local-artifact-hygiene",
+      "title": "Local Artifact Hygiene",
+      "status": "needs_revision",
+      "evidence": [
+        "submission/gate-report/submission-gate-report.json",
+        "submission/reproducibility-manifest.json",
+        "submission/local-pipeline/local-research-pipeline-report.json"
+      ],
+      "finding": "Local artifact hygiene is not clean enough to support a submission package.",
+      "requiredAction": "Fix local blockers before interpreting research readiness."
+    },
+    {
+      "id": "pilot-evidence",
+      "title": "Pilot Evidence and Denominator Accounting",
+      "status": "pass",
+      "evidence": [
+        "experiments/pilot-metrics-summary/pilot-metrics-summary.json",
+        "experiments/pilot-e8-tom-schema-repair-results/metrics.json",
+        "figures/figure-2-tom-schema-repair-flow.md"
+      ],
+      "finding": "The pilot now separates provider completion, raw parse yield, schema repair, and verifier failures: ToM raw parse is 36/50, schema repair yields 49/50, and verifier revision reports 32/32.",
+      "requiredAction": "Keep the paper wording scoped to a 50-decision diagnostic pilot unless larger LLM evidence is added."
+    },
+    {
+      "id": "schema-vs-reasoning-attribution",
+      "title": "Schema vs. Reasoning Attribution",
+      "status": "pass",
+      "evidence": [
+        "experiments/pilot-e7-tom-failure-analysis/tom-failure-analysis.json",
+        "experiments/pilot-e8-tom-schema-repair-results/schema-repair-report.json",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json"
+      ],
+      "finding": "Schema repair passes through 36, repairs 13, leaves 1 unrepaired, and preserves the remaining hard verifier failure count at 1.",
+      "requiredAction": "Use this as a reviewer-facing defense against the claim that all gains are formatting gains."
+    },
+    {
+      "id": "full-split-substrate",
+      "title": "500-Decision Substrate",
+      "status": "pass",
+      "evidence": [
+        "experiments/full-e1/manifest.json",
+        "experiments/full-e2-heuristic-verifier/metrics.json",
+        "experiments/full-e3-strategic-heuristic/metrics.json"
+      ],
+      "finding": "The 500-decision substrate is locally executable for deterministic baselines: legal-first hard failures 0, strategic hard failures 0.",
+      "requiredAction": "Treat these rows as infrastructure validation only; do not use them as LLM evidence."
+    },
+    {
+      "id": "full-split-llm-evidence",
+      "title": "500-Decision LLM Evidence",
+      "status": "needs_experiment",
+      "evidence": [
+        "experiments/full-e4-tom-prompted-results/metrics.json",
+        "experiments/full-e4-tom-prompted-results/post-provider-report.json",
+        "experiments/provider-results/full-tom-prompted-llm.jsonl",
+        "experiments/full-e2-plain-llm-batch/raw-output-audit.json",
+        "experiments/full-e3-candidate-constrained-batch/raw-output-audit.json",
+        "experiments/full-e4-tom-prompted-batch/raw-output-audit.json"
+      ],
+      "finding": "Full-split raw output audits show plain 0/500 present, candidate 0/500 present, and ToM 268/500 present; deterministic full-ToM schema repair currently yields 268/500.",
+      "requiredAction": "Run at least one full-split LLM condition, preferably ToM plus schema repair first, before broad AAMAS full-paper claims."
+    },
+    {
+      "id": "replication-and-human-audit",
+      "title": "Replication and Human Audit",
+      "status": "needs_experiment",
+      "evidence": [
+        "reviews/reviewer_report.md",
+        "submission/aamas-latex/main.tex"
+      ],
+      "finding": "The current package is single-provider at pilot scale and has no human audit artifact for soft strategic labels.",
+      "requiredAction": "Add either a second model/provider pilot replication or a small human audit of soft labels; ideally do both before claiming robust multi-agent reasoning behavior."
+    },
+    {
+      "id": "page-budget",
+      "title": "AAMAS Page Budget",
+      "status": "pass",
+      "evidence": [
+        "submission/aamas-latex/main.pdf",
+        "submission/aamas-latex/build-status.md"
+      ],
+      "finding": "AAMAS-style PDF page count is 8.",
+      "requiredAction": "Preserve page budget by replacing prose with tables/figures when adding evidence."
+    }
+  ],
+  "nextActions": [
+    "Run the 500-decision ToM full-split provider batch first, because it directly tests whether the strongest current prompt scales beyond the pilot.",
+    "Run schema repair and verifier analysis on the full-split ToM outputs, preserving selectedActionId exactly as in the pilot ablation.",
+    "Add a second provider/model pilot replication or a small human audit of soft labels to reduce single-provider and verifier-subjectivity attacks.",
+    "Update the AAMAS draft only after the new evidence exists; keep current broad claims scoped to the 50-decision diagnostic pilot."
+  ]
+}

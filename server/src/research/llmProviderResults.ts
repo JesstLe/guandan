@@ -1,6 +1,8 @@
 import {
+  existsSync,
   mkdirSync,
   readFileSync,
+  unlinkSync,
   writeFileSync,
 } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -80,6 +82,8 @@ export function materializeProviderResults(options: MaterializeProviderResultsOp
   let writtenCount = 0
 
   for (const [customId, outputFile] of expectedByCustomId) {
+    const rawOutputPath = join(options.rawOutputDir, outputFile)
+    if (existsSync(rawOutputPath)) unlinkSync(rawOutputPath)
     const result = providerByCustomId.get(customId)
     if (!result) {
       missingCustomIds.push(customId)
@@ -94,7 +98,7 @@ export function materializeProviderResults(options: MaterializeProviderResultsOp
       continue
     }
 
-    writeFileSync(join(options.rawOutputDir, outputFile), result.content, 'utf8')
+    writeFileSync(rawOutputPath, result.content, 'utf8')
     writtenCount++
   }
 

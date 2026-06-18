@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-223-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "With opponent player 1 down to 2 cards and near finish, I want to force opponents to spend higher cards or trumps on this trick while conserving my own limited high cards. Leading low prevents giving the opponent a cheap pass."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not acted publicly. They could hold trumps or high cards that might win a trick later, but no specific inference is justified from the new_game event alone.",
+    "confidence": 0.3,
+    "evidence": [
+      "07826efc-8555-4240-a1b2-3be5dbcc0ce2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining, suggesting they may be close to finishing and likely holding strong cards or trumps. Opponent player 3 has 3 cards and may also hold cards that can beat a low club lead. The public hand counts are the only evidence; exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "07826efc-8555-4240-a1b2-3be5dbcc0ce2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3♣) minimizes the value I expose, forces opponents to play higher cards or trumps to take the trick, and keeps my slightly stronger clubs (4♣-6♣) for later plays. This is especially important against an opponent near finish who may need to spend power cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than 3♣ but otherwise equivalent; leading the 3 preserves the 4 as a later resource and is strictly better for conservation."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Wastes a middle card on an opening lead where the trick is likely to be taken by an opponent with a trump or higher card; reduces future flexibility."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the highest club risks losing it to a higher non-trump or any trump, and it gives opponents maximum information while leaving me with weaker follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3♣ lead may still be beaten by any higher non-trump or any trump, so I may lose the lead immediately.",
+      "If partner has no supporting cards, my team could lose tempo."
+    ],
+    "mitigation": "By leading the weakest card I limit downside and retain 4♣-6♣ for future tricks; even if the trick is lost, opponents have expended cards that might otherwise finish the game."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with a weak hand against a near-finish opponent favors low-card conservation and forcing opponents to reveal strength."
+}

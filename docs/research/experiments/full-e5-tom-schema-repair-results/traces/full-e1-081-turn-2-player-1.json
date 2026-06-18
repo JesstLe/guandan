@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-081-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Win the current trick with the cheapest legal card to seize the lead, denying the near-finished opponent (player 0) continued initiative while keeping higher hearts in reserve."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not yet acted; their exact hand is unknown, but with three cards they could plausibly support later if I can set a favorable lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "5794557c-6dba-4acb-adce-7eedbf814b1a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 and has only 2 cards left, suggesting they are trying to shed cards rapidly and may have weak remaining cards. Player 3 has 3 cards and no public information; they may have cards that can beat a low heart.",
+    "confidence": 0.7,
+    "evidence": [
+      "5794557c-6dba-4acb-adce-7eedbf814b1a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The heart 4 is the smallest card that beats the led heart 3. Playing it wins the trick cheaply, gives me the next lead, and preserves the 9 and 10 for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves player 0 in control with only 2 cards, increasing the chance they finish quickly or set up a favorable ending for the opposing team."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the trick but is a stronger card than necessary; it is better saved for a later trick where a higher card is required."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 also unnecessarily overcommits a high card when the 4 already wins, reducing future flexibility."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or player 3 may still beat the heart 4 with a higher heart or trump, so I might lose the trick and a card without gaining the lead.",
+      "If I do win, my remaining cards (heart 9 and 10) may be vulnerable to opponent trumps or higher hearts."
+    ],
+    "mitigation": "Using the minimum winning card limits cost if the trick is lost, and holding two higher hearts gives a reasonable chance to continue controlling the suit."
+  },
+  "confidence": 0.85
+}

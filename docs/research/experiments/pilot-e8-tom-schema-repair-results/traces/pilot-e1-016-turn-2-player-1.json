@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-016-turn-2-player-1",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 is an opponent with only 2 cards remaining and led a low single heart-3. Allowing them to win this trick would let them get closer to going out. Taking the lead with the cheapest winning card prevents the opponent from advancing while preserving higher cards for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards left and has not yet acted in this trick. Their exact composition is unknown, but they are likely holding a normal distribution of remaining cards. They may be able to beat a low heart but cannot be relied upon to stop the opponent; by winning cheaply now, I signal control and let partner react to subsequent leads.",
+    "confidence": 0.6,
+    "evidence": [
+      "e6d837ed-57ba-4cc9-b582-13f12988902a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent, led the lowest possible heart single and has only 2 cards left. This suggests they are trying to shed cards quickly and may be near finishing. Player 3 has 3 cards and has not yet acted; they may hold a higher heart or a trump, so winning with the minimum viable card reduces over-exposure.",
+    "confidence": 0.75,
+    "evidence": [
+      "e6d837ed-57ba-4cc9-b582-13f12988902a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Heart-4 is the lowest legal card that beats the led heart-3. It wins the trick, denies the opponent near finish a free pass, and keeps the stronger heart-9 and heart-10 in reserve for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing would let player 0 win the trick with a 3 while they have only 2 cards left, accelerating their path to going out and hurting our team's chance to control the endgame."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Heart-9 also wins, but it spends a stronger card unnecessarily when heart-4 already beats the table. Saving the 9 improves flexibility later."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Heart-10 is the strongest winning option but wasteful against a 3; overpaying now leaves fewer high cards for future critical tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning the trick gives me the lead, but my remaining cards are only heart-9 and heart-10, which limits my ability to vary suit or combination type.",
+      "Player 3 may still be able to beat heart-4 with a higher heart or trump, in which case I lose both the card and the trick."
+    ],
+    "mitigation": "Using the cheapest winner minimizes the loss if an opponent overtakes, and preserves my two stronger cards for the next lead or a follow situation."
+  },
+  "confidence": 0.85,
+  "notes": "The opponent_near_finish tag strongly favors contesting this trick rather than passing. No trump or bomb is required, so the minimum winning single is the most resource-efficient response."
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-199-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, team 0) holds 3 cards and has not acted; no public signal exists. In this endgame-race opening lead, partner likely wants the team to exit cards quickly and preserve any high/trump cards for winning tricks or counters.",
+    "confidence": 0.6,
+    "evidence": [
+      "11e82410-6de0-4c0d-8a30-5f6dd7499682"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have revealed nothing. They will try to win tricks cheaply, retain trumps/bombs, and exploit any high card we waste. Leading low prevents them from immediately gaining tempo.",
+    "confidence": 0.6,
+    "evidence": [
+      "11e82410-6de0-4c0d-8a30-5f6dd7499682"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (A♠) best supports the team objective in this endgame race: it conserves the marginally stronger 2♠, minimizes the chance an opponent wins the trick with a just-above-minimum card, and follows standard opening-lead discipline of low-first when holding only small cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

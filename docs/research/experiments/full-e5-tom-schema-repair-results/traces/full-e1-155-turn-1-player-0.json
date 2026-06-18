@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-155-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump cards, I cannot realistically expect to keep the lead. Leading the weakest card lets the partner (who may hold higher cards) potentially win the trick and take control, while I preserve slightly stronger cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards. Since the game just started, the partner's hand is random and could contain high cards or trumps, but there is no public information to support any stronger inference.",
+    "confidence": 0.4,
+    "evidence": [
+      "b51bf182-3de7-4f08-ae0a-fdad3d1ce8ae"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 unknown cards. They likely hold cards higher than 3–6 of spades and possibly trumps, but the exact distribution is unknown and should be treated probabilistically.",
+    "confidence": 0.5,
+    "evidence": [
+      "b51bf182-3de7-4f08-ae0a-fdad3d1ce8ae"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♠ expends the least valuable card. It minimizes resource loss, gives the partner the best chance to overtake with a higher card, and keeps the 4–6 for potential future tricks when low cards might win.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6♠ is the strongest card in hand but still weak overall. Playing it now wastes the card most likely to win a future low-card trick, and it does not improve the chance of keeping the lead meaningfully."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4♠ is still a weak lead and is higher than the 3. Keeping the 4 as a middle low card and discarding the 3 first is more resource-efficient."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5♠ is closer to the top of this weak hand. Retaining it for a later exchange gives marginally more winning potential than playing it as the opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3♠ will almost certainly be beaten by any higher non-trump or trump card.",
+      "An opponent may win the trick and gain the lead, potentially accelerating their finish.",
+      "The partner may not be able to overtake, since partner cards are hidden and random."
+    ],
+    "mitigation": "Because all legal leads are low non-trump singles, there is no safe controlling lead. Choosing the lowest card minimizes loss of future winning potential and gives the partner the cleanest chance to take control."
+  },
+  "confidence": 0.65,
+  "notes": "Public information is minimal (only the new_game event), so partner and opponent beliefs remain probabilistic. The decision is based on general opening principles: discard weakest, preserve relative strength."
+}

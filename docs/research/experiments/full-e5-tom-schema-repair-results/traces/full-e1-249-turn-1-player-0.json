@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-249-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only 2 cards left and is leading the first trick, so the immediate objective is to retain or exploit the lead to play out both cards and finish as early as possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards; with no public plays yet their exact composition is unknown, but they are likely to contain some high cards or trumps that could support a finish or regain the lead if needed.",
+    "confidence": 0.5,
+    "evidence": [
+      "cb9bdd3a-7fb1-4d08-bfab-5f7f83979c94"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards. They may possess trump 7s, jokers, 2s, or bombs that they will use to block player 0 from finishing, but no specific distribution can be asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "cb9bdd3a-7fb1-4d08-bfab-5f7f83979c94"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 (the highest non-trump single) minimizes the ranks that can beat it: only trumps, jokers, or bombs can overtake it, whereas the A could be beaten by a 2, trump, joker, or bomb. Winning the trick keeps the initiative and sets up the remaining A as the next lead toward finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is strong but loses to an opponent's 2, which is plausible given opponents hold 6 cards between them. Losing the lead now would let opponents control tempo in the endgame race."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may play a trump 7, joker, or bomb to take the lead.",
+      "If the 2 is beaten and the A cannot regain the lead, player 0 may be stranded while opponents or partner play out."
+    ],
+    "mitigation": "Leading the strongest non-trump single reduces the chance of a non-trump beat; retaining the A provides a second high re-entry card if the lead is lost."
+  },
+  "confidence": 0.75
+}

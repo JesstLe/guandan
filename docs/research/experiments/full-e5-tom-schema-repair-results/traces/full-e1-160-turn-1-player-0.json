@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-160-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump spades, the best team use of this opening lead is to play the cheapest card and let partner try to take control without me wasting a relatively higher card."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards. Because the game just started, I have no concrete read, but it is plausible partner holds at least one card above a 3 or a trump, so a low lead gives them a cheap chance to win the trick and set the tempo for our team.",
+    "confidence": 0.5,
+    "evidence": [
+      "c40e0cb0-6c0c-4d96-8e82-b89a23925825"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent also has 3 unknown cards. They likely hold higher non-trump cards or trump 7s that can beat any low spade I lead, but I cannot assert which opponent has what. Leading low does not reveal strength and avoids encouraging an opponent to burn a high card to beat me.",
+    "confidence": 0.5,
+    "evidence": [
+      "c40e0cb0-6c0c-4d96-8e82-b89a23925825"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "play-single-spade-3-copy1 is the smallest investment. It gives partner the widest range of cards that can beat it, avoids committing my best card, and aligns with a weak hand's goal of transferring initiative cheaply.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only slightly stronger than the 3; still loses to most opponent cards and consumes a card that could be useful later. The marginal gain does not justify the extra cost."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "A middle card in my hand. Playing it now wastes a card that might win a later trick when opponents are lower, while still being beaten by most trumps and high cards."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "This is my highest non-trump card. Leading it squanders the only card with any late-trick potential, and it is still unlikely to survive against unseen trumps or higher cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading low may let an opponent win the trick and establish control.",
+      "Partner may not be able to beat even a 3, leaving our team without tempo.",
+      "Because all my cards are weak, any lead probably loses the trick unless partner helps."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the information and resources I give away. If partner can take the lead, I have preserved slightly better cards for later; if not, the loss is the cheapest possible."
+  },
+  "confidence": 0.6,
+  "notes": "Opening lead with a very weak hand; no trump cards are held, so the plan is to play the lowest spade and rely on partner response."
+}

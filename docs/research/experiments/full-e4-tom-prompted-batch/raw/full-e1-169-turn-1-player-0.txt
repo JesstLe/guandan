@@ -1,0 +1,27 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-169-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoning": {
+    "context": "Turn 1 lead, trump rank is 7. I hold only two non-trump spade singles (A♠ and 2♠). All other players hold 3 cards. No cards have been played, so all inferences about hidden hands are probabilistic.",
+    "partnerIntent": "My partner (player 2) holds 3 unknown cards and has not yet acted. Because I am about to finish (2 cards), my partner likely wants me to retain or regain the lead so I can shed my last card, or alternatively take control themselves if they can finish first. With no public signals, I cannot assume partner has a specific card, only that they have 3 random-ish unknown cards that may include trumps or higher singles.",
+    "opponentIntent": "Each opponent holds 3 unknown cards. They want to prevent me from going out, so if I lead a low single they are likely to beat it if they can. They may hold trump 7s or red trumps that beat any non-trump single, but I cannot assert that as a fact.",
+    "candidateAnalysis": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "pros": "A♠ is the highest non-trump single in my hand and likely the highest non-trump single overall; it maximizes the chance of winning this trick immediately. Winning the trick lets me lead again, ideally shedding the 2♠ next. It also gives my partner the option to pass and let me continue if they cannot or choose not to win.",
+        "cons": "An opponent or partner with a trump (rank 7 or red trump) can still beat it, leaving me with only the weak 2♠."
+      },
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "pros": "Conserves the A♠ as a potential later stopper if an opponent leads a lower single.",
+        "cons": "A 2 single is very weak; opponents are likely to beat it and take control. I would then be left with only A♠ and no guaranteed chance to lead my last card."
+      }
+    ],
+    "counterfactuals": "If I lead the 2♠ and an opponent wins, the lead passes to an opponent, who can choose a combination I may not be able to beat. If I lead the A♠ and it wins, I remain in control and can lead the 2♠ next, when my partner might pass to help me go out. Even if A♠ is beaten by a trump, the opponent expends a valuable trump, and the game state is roughly similar to leading low but with my stronger card already used.",
+    "teamObjective": "In the endgame race, retaining the lead is critical. Leading the strongest single maximizes the probability that I win the trick and get to play my final card.",
+    "evidence": [
+      "3e95bc33-0eff-404d-b64d-25c063bb3357"
+    ]
+  }
+}

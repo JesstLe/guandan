@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-259-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two cards and am ahead in hand count; the priority is to empty my hand quickly while keeping a high stopper to win a final trick if needed."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public signals have been sent; they likely hold a mix of cards and may be able to cover if opponents lead combinations I cannot match, but no specific high cards can be assumed.",
+    "confidence": 0.5,
+    "evidence": [
+      "184928f2-5dab-480e-baa3-d3fbb1030007"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 cards. They can probably beat a low single 2 with a higher card or bomb, and may hold trumps or jokers that also beat A. Their objective is to seize the lead and prevent me from going out.",
+    "confidence": 0.6,
+    "evidence": [
+      "184928f2-5dab-480e-baa3-d3fbb1030007"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the weak 2 first to dispose of the low card, preserving the A as a high single stopper. If an opponent later leads a single that A can beat, I can win and finish my hand. Even if opponents spend a high card or bomb on the 2, it improves the relative strength of my remaining A.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading A now would likely win and keep the lead, but it would leave the weak 2. I would then have to lead the 2, almost certainly lose the lead, and no longer hold a high stopper to win a final single trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may lead a pair, bomb, or high/trump single that makes my A unplayable or beaten",
+      "Partner may be unable to cover if opponents build pressure before I get a chance to play A"
+    ],
+    "mitigation": "Pass on non-single leads and hold the A for a likely winning opportunity on a later single lead, relying on partner to handle other combinations."
+  },
+  "confidence": 0.65
+}

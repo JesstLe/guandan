@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-084-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Because I am down to 2 cards and leading, maximizing immediate control is the team-optimal play. The A♠ lead is likely to win the trick and set up a consecutive 2♠ exit, whereas the 2♠ lead surrenders initiative. I choose to lead the A♠."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. No public signals exist yet, so partner likely has a mix of ranks. If I lead the strong A♠, partner should pass to let me win the trick and retain the lead, since passing control to a teammate with only 2 cards left advances our team's race to go out.",
+    "confidence": 0.6,
+    "evidence": [
+      "7ab7696a-313d-41d8-bc42-8ab2da1a9c5b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and want to block me from finishing. With A being the highest non-trump rank, the only cards that can beat a single A♠ are trump-rank 7s (or wildcards/bombs). Since trump 7s are scarce and no trumps/bombs have been shown, opponents probably cannot stop a single A♠ lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "7ab7696a-313d-41d8-bc42-8ab2da1a9c5b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because I am down to 2 cards and leading, maximizing immediate control is the team-optimal play. The A♠ lead is likely to win the trick and set up a consecutive 2♠ exit, whereas the 2♠ lead surrenders initiative. I choose to lead the A♠.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the weakest card gives opponents an easy chance to take control with almost any card. Even if partner covers, control passes away from me, and with only one card left I cannot guarantee a quick exit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

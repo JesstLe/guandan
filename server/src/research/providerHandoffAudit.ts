@@ -95,6 +95,13 @@ export const defaultProviderHandoffConditions: ProviderHandoffConditionInput[] =
     expectedProviderResultPath: 'docs/research/experiments/provider-results/candidate-constrained-llm.jsonl',
   },
   {
+    conditionId: 'tom-prompted-llm',
+    title: 'ToM-prompted LLM first-pass run',
+    mappingJsonlPath: 'docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl',
+    uploadJsonlPath: 'docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl',
+    expectedProviderResultPath: 'docs/research/experiments/provider-results/tom-prompted-llm.jsonl',
+  },
+  {
     conditionId: 'verifier-revision-llm',
     title: 'Verifier-revision LLM run',
     mappingJsonlPath: 'docs/research/experiments/pilot-e6-verifier-revision-batch/batch-input.jsonl',

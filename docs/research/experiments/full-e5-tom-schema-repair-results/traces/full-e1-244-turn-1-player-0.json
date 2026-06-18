@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-244-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only 2 cards, the smallest hand at the table. The immediate team objective is to empty this hand first by winning the lead and then playing the remaining card, securing the first-out advantage for team 0."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public play. With no signals, the partner is likely trying to help team 0 finish first, but their exact strength is unknown. They might cover a low lead if possible, yet cannot be relied on to control the trick.",
+    "confidence": 0.3,
+    "evidence": [
+      "b9d523bb-9f9e-437c-8b12-127994965887"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards and no cards have been played, so their hands are largely unknown. Because trump rank is 7, opponents may hold 7s, jokers, or red trumps that can beat a non-trump ace; they would use such cards to seize initiative in an endgame race.",
+    "confidence": 0.3,
+    "evidence": [
+      "b9d523bb-9f9e-437c-8b12-127994965887"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A now is the strongest path to finishing first. As the highest non-trump card in hand, the A has the best chance to win this trick and earn a second lead, after which the remaining 2 can be played to empty the hand. Winning the lead immediately accelerates the endgame race.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 first surrenders initiative. Opponents can beat it with almost any higher or trump card and take control of the lead, forcing player 0 to rely on the A later to regain control. That path is riskier in a race because a well-timed opponent lead could delay or block the finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The spade A could be trumped by an opponent holding a 7, joker, or red trump.",
+      "If the A loses, player 0 is left with only the 2 and no guaranteed way to regain the lead.",
+      "An opponent with a strong remaining hand could go out before player 0 finishes."
+    ],
+    "mitigation": "Playing the A immediately maximizes the chance of winning the current trick outright. Even though hidden trumps create uncertainty, the A is the only card in hand that can realistically command the lead in this endgame situation."
+  },
+  "confidence": 0.65,
+  "notes": "No public plays beyond new_game, so partner and opponent beliefs remain highly uncertain. The choice prioritizes direct hand-completion over delegating control to partner."
+}

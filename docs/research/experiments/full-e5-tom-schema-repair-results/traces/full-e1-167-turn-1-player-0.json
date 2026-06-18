@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-167-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards and likely close to finishing. Leading the lowest single gives them the best chance to take control with a modest high card or trump and then play out their remaining hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner has only 2 cards left, suggesting they are near finishing. They likely retain at least one card that can beat a low diamond lead, but their exact ranks and suits are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "321c55a8-1c2d-45fa-92c2-e73f0fac3e20"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and no cards have been played, so they could hold trumps or high cards capable of taking a low lead. Their exact holdings remain highly uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "321c55a8-1c2d-45fa-92c2-e73f0fac3e20"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3♦ as a single lead is the minimal commitment: it gives partner the widest window to win the trick with a non-trump high card or any trump, while preserving the 6♦ for a future lead if I regain control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest remaining diamond expends our best card unnecessarily and leaves only weaker cards if we later win the lead."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5♦ is stronger than needed; it is still easily beaten by opponents and does not improve partner's chance to take the trick meaningfully."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4♦ is intermediate and similarly wastes more strength than the 3♦ without a clear gain."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a trump or higher non-trump can capture the lead.",
+      "Partner may be unable to beat the 3♦ if their two remaining cards are both low non-trumps.",
+      "Leading reveals that I hold weak diamonds, potentially inviting pressure."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize resource loss and keep higher cards for later, while maximizing the chance that partner can take control and finish."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no prior public play; beliefs are probabilistic and grounded only in the new_game event and hand counts."
+}

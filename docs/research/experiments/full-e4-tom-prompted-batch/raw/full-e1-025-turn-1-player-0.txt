@@ -1,0 +1,29 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-025-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoningTrace": {
+    "partnerIntent": {
+      "summary": "Partner has 3 unknown cards and no public signals. They may be holding mid-to-high cards that can cover a low lead, but this is only probabilistic; I cannot assume specific ranks or suits.",
+      "implications": "A low single lead lets the partner win cheaply if they have a higher card, preserving team strength."
+    },
+    "opponentIntent": {
+      "summary": "Opponents each hold 3 unknown cards. With trump rank 7 and no trumps in my hand, any opponent with a 7 or higher (very likely) can beat any of my low spades.",
+      "implications": "A high-card opponent will probably win this trick regardless of which low spade I lead, so the primary objective is to discard a weak card with minimal loss."
+    },
+    "candidateComparison": {
+      "compared": [
+        "play-single-spade-3-copy1",
+        "play-single-spade-6-copy1"
+      ],
+      "analysis": {
+        "play-single-spade-3-copy1": "Unloads the weakest card, keeps slightly stronger 4-6 for future leads or responses, and loses the same trick to any higher card.",
+        "play-single-spade-6-copy1": "Removes the strongest of the four low cards but still loses to any 7+ or trump; less efficient because it leaves the 3-5 as a weaker future holding."
+      }
+    },
+    "conclusion": "The 3 is the safest and most conventional opening lead: it minimizes future liability, provides no exploitable high-card signal, and aligns with the likely need to let partner or an opponent win the trick."
+  },
+  "evidence": [
+    "13c51c6f-394f-4019-8c39-2c8c403e600d"
+  ]
+}

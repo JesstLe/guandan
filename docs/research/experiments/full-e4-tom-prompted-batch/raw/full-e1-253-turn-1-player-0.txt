@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-253-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 has only 2 cards remaining and is near finishing. As the opening leader, I should apply maximum pressure to prevent this opponent from cheaply winning the lead and going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has not acted yet, so no reliable signal exists. They may have cards strong enough to support later in the trick, but I cannot assume specific ranks or suits.",
+    "confidence": 0.5,
+    "evidence": [
+      "53804154-27f7-4f54-b598-f05010d15b65"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is near finish with only 2 cards and will likely try to seize the lead or play out quickly. Opponent player 3 has 3 cards and may assist or conserve strength. Neither opponent has publicly revealed trumps or bombs.",
+    "confidence": 0.6,
+    "evidence": [
+      "53804154-27f7-4f54-b598-f05010d15b65"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6♣ is the strongest non-trump single in my hand. With opponent player 1 down to 2 cards, playing the highest available card forces opponents to beat it with a higher non-trump or a trump, increasing the cost for the near-finish opponent to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Leading the 3♣ is the weakest card and gives the near-finish opponent the cheapest path to win the trick, which directly helps them go out."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but still very low; opponents can beat it easily without expending trumps or bombs."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Stronger than the 4 but still weaker than the 6; it suppresses the opponent less effectively than leading the 6 in this urgent situation."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent may have a higher non-trump single or a trump and win the trick anyway.",
+      "If player 1 wins, they are down to 1 card and very close to going out.",
+      "I have no trumps or bombs, so I cannot reclaim the lead easily if I lose it."
+    ],
+    "mitigation": "By leading the highest club, I maximize the chance that the trick returns to my team or that opponents must spend valuable trumps/bombs, which helps my team even if I lose this trick."
+  },
+  "confidence": 0.65,
+  "notes": "All legal actions are single clubs; the decision reduces to choosing the rank. The opponent_near_finish tag drives the preference toward the highest lead to suppress player 1."
+}

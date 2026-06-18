@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-210-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner P2 has 3 unknown cards and no public signals. Given my hand is all low non-trump spades (3-6), I believe partner may hold higher non-trump cards or trumps to cover a low lead, but this is only probabilistic; I should not assume specific hidden cards.",
+    "confidence": 0.82,
+    "evidence": [
+      "53e17300-f43e-41da-b02f-6e8aa63f8768"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents P1 and P3 each have 3 unknown cards. Since no cards have been played, they likely possess cards above 6 and/or trumps. If I lead a high single, opponents can win cheaply with a modest trump or high card while preserving their strong combinations.",
+    "confidence": 0.82,
+    "evidence": [
+      "53e17300-f43e-41da-b02f-6e8aa63f8768"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.82,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-113-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The opponent across player 1 has only 2 cards left (opponent_near_finish), so the immediate team objective is to avoid handing them an easy lead that could let them go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards but no public signals have been sent; I keep their strength distribution probabilistic. They could have covering cards, yet I cannot assume it.",
+    "confidence": 0.5,
+    "evidence": [
+      "No partner signalling has occurred since the new-game event dcfc2f1f-44d8-4153-bf44-53da781bc45f."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is near finishing with only 2 cards. The other opponent (player 3) holds 3 cards. Neither has exposed any cards, so I assume they likely hold some higher non-trump clubs or trumps that could beat a low lead, but this remains uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "Public hand counts from new-game event dcfc2f1f-44d8-4153-bf44-53da781bc45f show player 1 has 2 cards and player 3 has 3 cards."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I lead the highest non-trump single I have, the club 6, because it raises the bar for the near-finishing opponent to take control. A higher lead forces them to spend a better card or a trump if they want the lead, reducing the chance they run out cheaply.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "Leading the 3 gives the near-finishing opponent the cheapest possible path to win the trick with a higher card and continue their turn; it also does not pressure the other opponent."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is stronger than 3 or 4 but still easier for an opponent to beat than the 6, so it is less effective at suppressing the near-finishing opponent."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the club 6 with a higher club, a trump, or a bomb and gain the lead.",
+      "Partner might have had a higher club that could have covered a lower lead, so leading high could miss a chance to let partner win."
+    ],
+    "mitigation": "Because I have no trumps or bombs, the best mitigation is to make any opponent win as expensive as possible by playing my strongest available single, preserving the weaker cards for later if I regain the lead."
+  },
+  "confidence": 0.65
+}

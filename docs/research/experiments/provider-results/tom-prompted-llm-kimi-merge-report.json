@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18",
+  "providerResultsPath": "docs/research/experiments/provider-results/tom-prompted-llm.jsonl",
+  "runner": "kimi-cli",
+  "model": "kimi-code/kimi-for-coding",
+  "mergePolicy": "Prefer successful retry rows over earlier error rows with the same custom_id; preserve the original 50-row prompt order.",
+  "runs": [
+    {
+      "name": "initial",
+      "expectedCount": 50,
+      "writtenCount": 50,
+      "successCount": 43,
+      "errorCount": 7,
+      "maxStepsPerTurn": 8,
+      "timeoutMs": 120000
+    },
+    {
+      "name": "retry1",
+      "expectedCount": 7,
+      "writtenCount": 7,
+      "successCount": 6,
+      "errorCount": 1,
+      "maxStepsPerTurn": 12,
+      "timeoutMs": 180000
+    },
+    {
+      "name": "retry2",
+      "expectedCount": 1,
+      "writtenCount": 1,
+      "successCount": 1,
+      "errorCount": 0,
+      "maxStepsPerTurn": 20,
+      "timeoutMs": 240000
+    }
+  ],
+  "finalProviderResults": {
+    "rowCount": 50,
+    "successCount": 50,
+    "errorCount": 0
+  },
+  "postProviderArtifacts": {
+    "report": "docs/research/experiments/pilot-e7-tom-prompted-results/post-provider-report.json",
+    "metrics": "docs/research/experiments/pilot-e7-tom-prompted-results/metrics.json",
+    "provenance": "docs/research/experiments/pilot-e7-tom-prompted-results/provenance.json"
+  }
+}

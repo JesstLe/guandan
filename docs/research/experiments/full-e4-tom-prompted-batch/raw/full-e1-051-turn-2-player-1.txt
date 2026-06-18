@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-051-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As a follower facing the opponent's low single lead, the cheapest winning play lets our team seize tempo. Controlling the lead is especially important because the leading opponent is down to two cards and may be trying to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds three unknown cards and has not acted this round. No specific signal has been revealed, so I assume they have ordinary coverage over low singles and will support our team if opponents contest.",
+    "confidence": 0.5,
+    "evidence": [
+      "d22f7533-f4ac-4eff-8d0c-bba65c52bf6f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 of hearts and has only two cards left, which suggests they may be dumping a weak card or attempting to finish quickly. Player 2 (opponent) has three unknown cards and could hold a higher heart or trump, but no high cards or trumps have appeared yet.",
+    "confidence": 0.6,
+    "evidence": [
+      "d22f7533-f4ac-4eff-8d0c-bba65c52bf6f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the minimum card that beats the 3. It wins the trick, gives our team the lead, and keeps the stronger 9 and 10 available to counter future plays from the opponent who is near finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent retain or transfer the lead. With an opponent down to two cards, ceding tempo risks letting them finish before our team can intervene."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is stronger than necessary. Spending it now wastes a card that is more valuable for a later trick when the opponent tries to escape."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is even more overcommitted. Using it leaves fewer high cards to regain control and provides no extra benefit over the 4 for this trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 may play a higher heart or a trump and take the lead away from us.",
+      "If we later lead, we have no trump suit cards, which limits our ability to stop a finishing attempt by player 0.",
+      "Expending any card now reduces our hand, but doing so is required to challenge the lead."
+    ],
+    "mitigation": "By using the smallest winner, we keep the 9 and 10 as reserve power to recapture the lead. We also rely on partner to cover if an opponent beats the 4, and we avoid giving opponents a free pass."
+  },
+  "confidence": 0.85
+}

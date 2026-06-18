@@ -26,19 +26,57 @@ describe('localResearchPipeline', () => {
       expect(result.status).toBe('completed')
       expect(result.steps.map(step => step.id)).toEqual([
         'pilot-metrics-summary',
+        'full-heuristic-verifier',
+        'full-strategic-heuristic',
+        'full-baseline-summary',
+        'tom-pilot-prompts',
+        'tom-pilot-batch',
+        'tom-pilot-openai-batch',
+        'tom-pilot-raw-audit',
+        'plain-full-prompts',
+        'plain-full-batch',
+        'plain-full-openai-batch',
+        'plain-full-raw-audit',
+        'candidate-full-prompts',
+        'candidate-full-batch',
+        'candidate-full-openai-batch',
+        'candidate-full-raw-audit',
+        'tom-full-prompts',
+        'tom-full-batch',
+        'tom-full-openai-batch',
+        'tom-full-raw-audit',
+        'tom-full-post-provider',
+        'tom-full-schema-repair',
+        'full-llm-summary',
         'revision-comparison',
+        'tom-failure-analysis',
+        'tom-schema-repair',
+        'verifier-attribution',
         'ablation-summary',
+        'figure-artifacts',
         'paper-tables',
         'manuscript',
         'marker-inventory',
         'experiment-resolution-ledger',
         'submission-gate',
         'preflight',
+        'aamas-readiness',
         'provider-handoff-audit',
         'bibliography-integrity',
         'reproducibility-manifest',
       ])
       expect(calls[0]).toContain('writePilotMetricsSummaryCli.ts')
+      expect(calls[2]).toContain('runPilotVerifierCli.ts')
+      expect(calls.some(call => call.includes('tom-prompted-llm'))).toBe(true)
+      expect(calls.some(call => call.includes('full-e2-plain-llm-prompts'))).toBe(true)
+      expect(calls.some(call => call.includes('full-e3-candidate-constrained-prompts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeLLMFailureAnalysisCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('runLLMSchemaRepairCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writePairedVerifierAttributionCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('runOptionalPostProviderConditionCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('full-llm-summary'))).toBe(true)
+      expect(calls.some(call => call.includes('writeFigureArtifactsCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeAAMASReadinessReportCli.ts'))).toBe(true)
       expect(calls.at(-1)).toContain('writeReproducibilityManifestCli.ts')
 
       const report = JSON.parse(readFileSync(result.jsonPath, 'utf8'))
@@ -48,6 +86,17 @@ describe('localResearchPipeline', () => {
       const markdown = readFileSync(result.markdownPath, 'utf8')
       expect(markdown).toContain('# Local Research Pipeline Report')
       expect(markdown).toContain('| Pilot Metrics Summary | `passed` |')
+      expect(markdown).toContain('| Full Split Baseline Summary | `passed` |')
+      expect(markdown).toContain('| ToM Pilot Prompt Packets | `passed` |')
+      expect(markdown).toContain('| Plain Full OpenAI Batch | `passed` |')
+      expect(markdown).toContain('| Candidate Full OpenAI Batch | `passed` |')
+      expect(markdown).toContain('| ToM Full Optional Post-Provider Ingest | `passed` |')
+      expect(markdown).toContain('| ToM Full Schema Repair | `passed` |')
+      expect(markdown).toContain('| Full Split LLM Summary | `passed` |')
+      expect(markdown).toContain('| ToM Failure Analysis | `passed` |')
+      expect(markdown).toContain('| ToM Schema Repair | `passed` |')
+      expect(markdown).toContain('| Figure Artifacts | `passed` |')
+      expect(markdown).toContain('| AAMAS Full-Paper Readiness | `passed` |')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }
@@ -71,8 +120,10 @@ describe('localResearchPipeline', () => {
       })
 
       expect(result.status).toBe('failed')
-      expect(result.steps.map(step => step.status)).toEqual(['passed', 'failed'])
-      expect(calls).toHaveLength(2)
+      expect(result.steps.at(-1)?.id).toBe('revision-comparison')
+      expect(result.steps.at(-1)?.status).toBe('failed')
+      expect(result.steps.slice(0, -1).every(step => step.status === 'passed')).toBe(true)
+      expect(calls.at(-1)).toContain('writeRevisionComparisonCli.ts')
       expect(readFileSync(result.markdownPath, 'utf8')).toContain('revision failed')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })

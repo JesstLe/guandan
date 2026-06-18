@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-020-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "I hold only low non-trump spades, so I should not commit my strongest card on an opening lead. Playing the 3 first preserves 4-6 for later tricks while probing whether my partner can cover."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) likely has some higher cards or trumps, but I cannot assume specific ranks or suits. They may be willing to cover a low lead if it is cheap to do so, especially since no cards have been played.",
+    "confidence": 0.5,
+    "evidence": [
+      "f6338a8a-8b1b-4053-b312-f3b359deb934"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards. Because I hold no trumps and only low ranks, it is probable that at least one opponent can beat any single I lead, but I cannot identify which opponent has the higher cards or trumps.",
+    "confidence": 0.6,
+    "evidence": [
+      "f6338a8a-8b1b-4053-b312-f3b359deb934"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 is the cheapest way to use my lead. It dumps my weakest card, keeps the 4-6 for future tricks, and gives my partner a chance to win the trick if they have a modest higher card. If an opponent takes it, I have lost almost nothing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 would commit my highest card on a trick that opponents are still likely to beat with any trump or higher rank, leaving me with even weaker cards afterward."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a relatively valuable card in this weak hand; saving it for a later exchange or to cover a partner play is better than leading it now."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly stronger than the 3 and would be beaten just as easily, so it is better to preserve it and lead the 3 instead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with any higher single or trump can take the trick and keep the lead.",
+      "My partner may not be able or willing to cover the 3, letting opponents control the next lead."
+    ],
+    "mitigation": "By leading the lowest card, I minimize resource loss and keep 4-6 available to recapture the lead or support my partner later in the round."
+  },
+  "confidence": 0.6
+}

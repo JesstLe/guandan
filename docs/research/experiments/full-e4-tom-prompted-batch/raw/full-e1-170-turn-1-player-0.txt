@@ -1,0 +1,59 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-170-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": {
+    "summary": "Opening lead with a weak non-trump hand (3-6 spades, no trumps). Leading the lowest card preserves the slightly higher spades for later and gives partner the best chance to win the trick or relay control.",
+    "partnerModel": {
+      "beliefs": [
+        {
+          "targetPlayer": 2,
+          "targetTeam": 0,
+          "hypothesis": "Partner likely holds a mix of ranks; by leading the 3, I create a low target that partner can beat with a modest non-trump or any trump, conserving their stronger cards.",
+          "confidence": "medium",
+          "evidence": [
+            "81dd177c-662a-4fee-a15e-bcbdef1ce974"
+          ]
+        }
+      ]
+    },
+    "opponentModel": {
+      "beliefs": [
+        {
+          "targetPlayer": 1,
+          "targetTeam": 1,
+          "hypothesis": "Opponents have 3 cards each and will try to capture the lead; they can beat any of my singles with higher non-trumps or trumps, so minimizing the value of the card I lead is safest.",
+          "confidence": "medium",
+          "evidence": [
+            "81dd177c-662a-4fee-a15e-bcbdef1ce974"
+          ]
+        },
+        {
+          "targetPlayer": 3,
+          "targetTeam": 1,
+          "hypothesis": "Same as player 1; leading low reduces the card-value cost if opponents overtake.",
+          "confidence": "medium",
+          "evidence": [
+            "81dd177c-662a-4fee-a15e-bcbdef1ce974"
+          ]
+        }
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "evaluation": "Best opening lead. Lowest card, preserves 4/5/6, minimal loss if opponents take control, easiest for partner to beat.",
+        "teamValue": "high"
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "evaluation": "Worst among singles. Uses the highest card in hand; if an opponent beats it, we lose our best non-trump and still have only low cards left.",
+        "teamValue": "low"
+      }
+    ],
+    "uncertaintyNote": "No public cards have been played beyond the new-game event; partner/opponent exact holdings are unknown, so inferences remain probabilistic."
+  },
+  "evidence": [
+    "81dd177c-662a-4fee-a15e-bcbdef1ce974"
+  ]
+}

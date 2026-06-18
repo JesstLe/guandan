@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-033-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Given a weak hand of low non-trump clubs and an opponent near finish, the lowest single lead (club-3) minimizes my own exposure, preserves stronger cards, and maximizes the chance that partner can take control. I therefore select play-single-club-3-copy1."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not yet acted. With no public plays, partner's exact hand is unknown, but they are likely to hold at least some cards higher than my club-3 or a small trump. A very low lead gives them the cheapest chance to take control of the trick if the first opponent does not overtake it, which aligns with our team objective.",
+    "confidence": 0.75,
+    "evidence": [
+      "df960385-8fb3-4b61-81f0-64b0c09bcdec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining and is tagged as near finish, so they are likely holding at least one relatively strong or trump card and want to win the trick cheaply to exit soon. Opponent player 3 has 3 cards and will generally try to seize the lead to stop our team. Because no cards have been played, I cannot assert specific hidden cards; I only know they may have higher cards or trumps.",
+    "confidence": 0.75,
+    "evidence": [
+      "df960385-8fb3-4b61-81f0-64b0c09bcdec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Given a weak hand of low non-trump clubs and an opponent near finish, the lowest single lead (club-3) minimizes my own exposure, preserves stronger cards, and maximizes the chance that partner can take control. I therefore select play-single-club-3-copy1.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 uses my highest non-trump card. It is still beaten by any trump-rank 7, red trump, or higher card, and it makes it harder for my partner to overtake. If an opponent wins the trick, I have lost my best remaining card for little gain."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.75,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

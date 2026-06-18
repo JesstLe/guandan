@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-020-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has no public signals yet. With my hand being four low spades, I have no strong lead to set up a specific suit; a low single preserves any partner control and avoids forcing partner to reveal strength prematurely.",
+    "confidence": 0.85,
+    "evidence": [
+      "035cc7f2-8b6c-45f1-ac93-307f55f76821"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, 3 cards each) are unknown. Leading low minimizes information leakage about my hand shape and avoids inviting an opponent with a higher card or bomb to take cheap control.",
+    "confidence": 0.85,
+    "evidence": [
+      "035cc7f2-8b6c-45f1-ac93-307f55f76821"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.85,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

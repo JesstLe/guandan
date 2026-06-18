@@ -1,0 +1,36 @@
+{
+  "selectedActionId": "play-single-club-3-copy1",
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-108-turn-1-player-0",
+  "partnerModel": {
+    "intentInference": "Partner (player 2, 3 cards) has not acted publicly. As my teammate, their interests align with exhausting opponents' high cards and enabling us to win tricks. With no public plays, I cannot infer a specific suit signal, but leading a low card invites partner to contribute whatever strength they have without committing high value from my hand.",
+    "signaledSuits": [],
+    "likelyFinishRoles": "unknown",
+    "evidence": [
+      "c64b9db5-4f3a-443c-aab4-84af83bc0df7"
+    ]
+  },
+  "opponentModel": {
+    "threatInferences": "Opponent player 1 has only 2 cards, which is the nearest to finishing. This makes them dangerous: they may be holding a high trump or a ready-to-go winning combination. Opponent player 3 has 3 cards. Because no cards have been played, both opponents likely retain trumps and possibly bombs; an early low lead avoids provoking an immediate bomb or high trump from the short-stacked opponent unless necessary.",
+    "targetedPlayer": 1,
+    "defensiveAdjustments": "Lead the weakest single to force opponents to spend cards to take control, preserving my stronger cards (4/5/6 of clubs) for later races or to cover partner. A low lead is less likely to be bombed than a middle or high lead, and it gives maximum flexibility on subsequent turns."
+  },
+  "counterfactuals": [
+    {
+      "actionId": "play-single-club-6-copy1",
+      "analysis": "Leading the 6 of clubs expends my highest non-trump card first. It might win the trick outright if opponents cannot beat it, but it also risks being trumped or bombed by the short-stacked opponent, leaving me with only 3-4-5 and little end-game power. The gain in immediate trick control is outweighed by the loss of a potential later winner.",
+      "partnerImpact": "Partner may not be able to overtake if opponents respond with trumps, and I have burned my best club.",
+      "opponentImpact": "Signals that I have weak cards below 6; opponents with trumps may confidently take the trick and retain initiative."
+    },
+    {
+      "actionId": "play-single-club-3-copy1",
+      "analysis": "Leading the 3 of clubs keeps my stronger clubs (4, 5, 6) in reserve. Since it is the lowest legal card, it minimally commits my hand and invites opponents to spend resources to win the trick. If the trick comes back around or partner wins it, my higher clubs remain useful.",
+      "partnerImpact": "Partner can play whatever card best advances our team without needing to cover a high lead from me.",
+      "opponentImpact": "Forces opponents to reveal some strength to take the trick; the short-stacked opponent may be compelled to use a trump or high card early, reducing their end-game threat."
+    }
+  ],
+  "uncertaintyNote": "All inferences about partner and opponent holdings remain probabilistic because no cards have been played beyond the new_game event. The hand-count distribution (4,2,3,3) only tells us player 1 is closest to finishing, not what those two cards are.",
+  "evidence": [
+    "c64b9db5-4f3a-443c-aab4-84af83bc0df7"
+  ]
+}

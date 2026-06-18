@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-102-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds only 2 cards and is near finishing. As the opening leader with a very weak hand, the best team goal is to lead a low single that partner can win cheaply, giving partner the lead to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely near a finishing hand and may hold at least one card that can beat a low diamond 3 (e.g., any higher non-trump or any trump). With only 2 cards, partner probably has a plan to go out if they gain control.",
+    "confidence": 0.65,
+    "evidence": [
+      "cdc93b95-fa91-44be-a5fb-8387cdca26aa"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards. Given two decks and the trump rank 7, it is probable at least one opponent has a card that beats a low non-trump single. They will try to win the trick, seize the lead, and block the partner from finishing.",
+    "confidence": 0.75,
+    "evidence": [
+      "cdc93b95-fa91-44be-a5fb-8387cdca26aa"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 is the cheapest possible lead. It gives partner the highest chance to win the trick with a modest card, avoids wasting the slightly stronger 4-6, and does not signal strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is still weak but requires partner to have at least a 5 or trump to win, which is harder than beating a 3, with no compensating advantage."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A 5 consumes a higher low card and still loses to most opponent cards; it also makes it harder for partner to take the trick."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is our strongest card, but it is still non-trump and below the trump rank 7, so opponents likely beat it. It minimizes partner's chance to win and wastes our best card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may overtake the low lead and then control the table, targeting the partner.",
+      "Partner may not be able to beat even a 3, in which case we merely lose our weakest card."
+    ],
+    "mitigation": "By leading the cheapest card, we preserve the rest of our hand and maximize the probability that partner can win the trick. If opponents take control, we have not expended our modest high cards and can still support partner later."
+  },
+  "confidence": 0.78,
+  "notes": "All legal actions are weak non-trump singles, so the priority is enabling the near-finish partner rather than trying to win the trick ourselves."
+}

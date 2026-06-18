@@ -1,0 +1,52 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-078-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "partnerInference": {
+    "summary": "Partner (player 2, 3 cards) has not acted yet; no direct signal available. With only public hand counts, partner likely holds a mix of cards and is not obviously strong or weak. Leading low keeps partner's potential trumps or high cards available for later control rather than forcing them to cover a high lead now.",
+    "beliefs": [
+      {
+        "type": "probabilistic",
+        "claim": "Partner likely has cards of varying strength, no strong reason to believe they are long or void in any suit.",
+        "confidence": 0.5
+      }
+    ]
+  },
+  "opponentInference": {
+    "summary": "Opponents (players 1 and 3) hold 2 and 3 cards respectively, tagged as near finish. Player 1 with 2 cards could be close to winning, so the lead should avoid giving them an easy trick. Leading the lowest card (club 3) minimizes the chance an opponent wins cheaply with a low card; to beat it they must play a higher non-trump or a trump.",
+    "beliefs": [
+      {
+        "type": "probabilistic",
+        "claim": "Player 1 with 2 cards may have a playable low card; leading the 3 denies them a free trick.",
+        "confidence": 0.6
+      },
+      {
+        "type": "probabilistic",
+        "claim": "Opponents may hold trump cards (rank 7) that could beat any non-trump single, so no lead is completely safe.",
+        "confidence": 0.5
+      }
+    ]
+  },
+  "counterfactuals": [
+    {
+      "actionId": "play-single-club-6-copy1",
+      "assessment": "Leading the 6 is the highest non-trump single available. It is more likely to be beaten by an opponent's lower trump or higher non-trump, and uses up our best non-trump card unnecessarily. If partner wanted to win the trick, they could still do so over a 3 lead without us committing the 6.",
+      "relativeValue": "worse"
+    },
+    {
+      "actionId": "play-single-club-4-copy1",
+      "assessment": "Leads a slightly higher card than the 3 with no strategic benefit. The 4 still loses to most opponent cards and is less likely to walk than the 3.",
+      "relativeValue": "worse"
+    },
+    {
+      "actionId": "play-single-club-5-copy1",
+      "assessment": "Middle of our range; no pairing potential and no strategic upside over leading the 3. Keeping the 5 for a later single response offers marginally more flexibility.",
+      "relativeValue": "worse"
+    }
+  ],
+  "evidence": [
+    "41acd544-75fa-41bf-9328-f61d6a8f3451"
+  ],
+  "reasoning": "At the opening lead with only non-trump clubs 3-6 and an opponent near finish (2 cards), the priority is to lead the smallest card to avoid donating a cheap trick. The 3 of clubs is the minimum legal single; opponents must beat it with a higher card or a trump, and partner is not forced to commit a trump unnecessarily. No pair, straight, or bomb combination is available, so a single is mandatory. Among singles, the 3 is the least committal and maximizes the chance the lead 'walks' or forces opponents to use stronger cards.",
+  "teamObjective": "Avoid giving the near-finish opponent a free trick; preserve stronger cards for future turns; maintain flexibility for partner."
+}

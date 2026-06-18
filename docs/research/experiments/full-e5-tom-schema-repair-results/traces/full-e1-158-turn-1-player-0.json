@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-158-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Lead the weakest card to avoid giving the opponent with 2 cards an easy path to win the trick and finish, while keeping partner coverage possibilities open."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and has made no public plays. They may hold a card strong enough to cover a low single lead, but this is uncertain; no hidden card is asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "4a7122ee-429c-404d-8daf-7c2c773c488d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1 has only 2 cards, suggesting a near-finish threat; they likely possess at least one high or trump card to try to exit. Player 3 has 3 cards and may help player 1. Hidden distributions remain probabilistic.",
+    "confidence": 0.55,
+    "evidence": [
+      "4a7122ee-429c-404d-8daf-7c2c773c488d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 3 of clubs, the lowest legal single. It is the easiest for partner to cover with a modest winner, preserves any higher partner cards, and minimizes the chance the near-finish opponent can win with a marginal card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "A middle low card that is harder for partner to cover than the 3 without being meaningfully more defensive against a strong opponent."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Still low, but reduces partner's coverage options and offers little extra protection against an opponent who can already beat any of these cards."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The highest club in hand; it is slightly more demanding for the near-finish opponent but also much harder for partner to take with a marginal card, and it expends our top non-trump card for minimal gain."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The near-finish opponent may hold a trump or high card and win the trick regardless of the lead.",
+      "Partner may be unable to cover the 3, conceding the lead to opponents."
+    ],
+    "mitigation": "Leading the absolute lowest card makes the trick as cheap as possible for partner to win if they have any playable cover, and avoids wastefully committing our own highest card."
+  },
+  "confidence": 0.65,
+  "notes": "Reasoning grounded only in public hand counts and the new-game event; no hidden cards are treated as known."
+}

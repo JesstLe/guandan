@@ -1,0 +1,40 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-146-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "partnerBeliefs": {
+    "summary": "Partner (player 3) has not acted yet and may be able to beat a single heart later; with player 0 down to 2 cards, partner likely wants us to contest the lead to deny the opponent a cheap trick.",
+    "evidence": [
+      "ce65268b-81b7-4b2b-9b27-91d14e42b93e"
+    ]
+  },
+  "opponentBeliefs": {
+    "summary": "Opponent player 0 led a low single heart with only 2 cards remaining, suggesting a near-finish shed attempt; if player 0 wins this trick they may exit soon. Opponent players 2 and 3 still hold 3 cards each and may have higher hearts or trumps, so overcommitting a high card now is risky.",
+    "evidence": [
+      "ce65268b-81b7-4b2b-9b27-91d14e42b93e"
+    ]
+  },
+  "candidateEvaluations": [
+    {
+      "actionId": "pass",
+      "rationale": "Passing lets the opponent who led with 2 cards potentially win the trick uncontested and move closer to finishing. This is poor team defense when we have a legal follower that beats the lead.",
+      "teamObjectiveAlignment": "low"
+    },
+    {
+      "actionId": "play-single-heart-4-copy1",
+      "rationale": "The cheapest heart that beats the 3 of hearts. It denies the near-finish opponent the trick, preserves the 9 and 10 for future single-heart leads, and follows suit without using a bomb or wildcard.",
+      "teamObjectiveAlignment": "high"
+    },
+    {
+      "actionId": "play-single-heart-9-copy1",
+      "rationale": "Beats the table but expends a mid-strength heart unnecessarily when the 4 is sufficient; less efficient for later tricks if hearts are led again.",
+      "teamObjectiveAlignment": "medium"
+    },
+    {
+      "actionId": "play-single-heart-10-copy1",
+      "rationale": "Beats the table with our highest heart, overcommitting strength for a low lead and leaving us weaker if a higher single is led or if we need to recapture control later.",
+      "teamObjectiveAlignment": "low"
+    }
+  ],
+  "finalReasoning": "Because player 0 has only 2 cards remaining and led a low single heart, the strongest team play is to beat the lead with the minimum necessary card. Playing the heart 4 denies the opponent a cheap trick, protects partner, and keeps higher cards in reserve."
+}

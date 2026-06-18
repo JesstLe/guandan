@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-188-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is weak (no trumps, no bombs, only low non-trump clubs). The best way to help the team is to lead the lowest card, inviting my partner to take control with a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. With no public plays yet, I cannot assert specific ranks. I believe partner is more likely than an opponent to be able to beat a very low lead, so a low card offers a good chance to transfer the lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "521440af-4d86-470f-a090-d8ae2f4a91d2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they may be holding high cards or trumps to close out. Opponent player 3 has 3 cards with unknown strength. Leading low minimizes the chance of immediately losing a valuable card to an opponent's high card.",
+    "confidence": 0.5,
+    "evidence": [
+      "521440af-4d86-470f-a090-d8ae2f4a91d2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the weakest legal play. It is most likely to be beaten by partner, least likely to draw out an opponent's bomb, and preserves my slightly higher clubs for later while disposing of a low card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest non-trump. Leading it risks losing my best card immediately if an opponent or partner plays higher, leaving me with only 3-4-5 and no control."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a middling card. If partner cannot beat it, an opponent may win the trick, and I retain a weaker remaining hand than if I had led the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is better than the 5 or 6, but the 3 is strictly lower and still gives partner the same opportunity to take the lead while disposing of the least useful card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1, with only 2 cards, may have a high card or bomb and take the lead.",
+      "Partner may not be able to beat the 3, so the lead could pass to opponents.",
+      "I have no trumps or bombs to regain control if opponents seize the lead."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the value lost and maximize the chance that partner can win cheaply. Keeping the 4-5-6 gives me slightly more options on future tricks."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with complete uncertainty; play is conservative due to weak hand and opponent near finish."
+}

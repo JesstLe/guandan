@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-212-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds only 2 cards, the smallest hand count visible, so they are closest to finishing. As the opening leader with a weak non-trump hand, the priority is to play a card that partner can realistically beat to seize the lead and play out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely needs the lead to finish their last two cards. Because no cards have been played, their hand is unknown, but a player with only two cards at the start of a round is probably holding one or two cards they hope to play consecutively if they gain control.",
+    "confidence": 0.55,
+    "evidence": [
+      "35d9471f-6d92-4810-8012-58d9b5744e4b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have no public signals yet. They each hold 3 cards and will try to win control if they can do so cheaply, especially to stop the short-handed partner from going out. They likely have cards that beat a low diamond single, but I cannot assume any specific ranks or trumps.",
+    "confidence": 0.5,
+    "evidence": [
+      "35d9471f-6d92-4810-8012-58d9b5744e4b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦ is the cheapest way to give partner a chance to take control. Partner only needs to beat a 3, which is easier than beating a 4, 5, or 6, and the 3 is my weakest card so I lose minimal defensive value if an opponent wins the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my strongest non-trump card. Leading it makes it harder for partner to win the trick and burns a card that could otherwise win a future low-card exchange."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is still higher than necessary for a transfer-lead goal. It offers no advantage over the 3 while slightly raising the threshold partner must clear."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is in the middle of my hand. Playing it now neither maximizes the chance of partner winning nor preserves enough strength for a later trick, so it is dominated by either the 3 or the 6 depending on the objective."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3♦ and gain control, slowing partner's finish.",
+      "Partner may not be able to beat even a 3 if their two cards are very low or incompatible.",
+      "With no trumps in my hand, I cannot recover control easily if opponents take the lead."
+    ],
+    "mitigation": "By leading the minimum 3♦, I minimize the cost of losing this trick and keep the 4-5-6 sequence for later rounds. If partner does win, I have supported the best team outcome."
+  },
+  "confidence": 0.6,
+  "notes": "No trumps or trump-rank cards are held; all legal candidates are weak diamonds, so the choice is governed by helping the short-handed partner rather than by winning the trick outright."
+}

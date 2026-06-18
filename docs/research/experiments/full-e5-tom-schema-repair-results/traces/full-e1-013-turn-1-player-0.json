@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-013-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is weak and entirely non-trump clubs, so the best way to help the team is to lead the lowest card and let partner win the trick cheaply."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds cards that can beat a low club single and wants to take the lead to help the team finish first.",
+    "confidence": 0.55,
+    "evidence": [
+      "fb08fb95-4d92-4c93-8adf-993765421cf5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponent with 2 cards is near finishing and probably holds a high card or trump to win a trick; the other opponent may also try to suppress our lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "fb08fb95-4d92-4c93-8adf-993765421cf5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 maximizes the chance that partner can cover with a modest card, preserves my slightly higher clubs for later, and avoids forcing partner to spend a high card to win.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 makes it harder for partner to win with a low club and still does not stop a near-finish opponent who likely has a high trump or club."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still lets opponents beat with many mid-rank clubs, while giving partner less room to cover cheaply."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The opponent with 2 cards could win the trick and finish the hand immediately.",
+      "Partner may be unable to beat even a low club single, leaving opponents in control."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the cost to partner if they cover and keep my better cards for a future opportunity."
+  },
+  "confidence": 0.6
+}

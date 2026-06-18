@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-115-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Because no trump or high outside cards are in hand, the 6 is unlikely to guarantee the trick, and leading it would leave an exceptionally weak remainder. Leading the 3 of spades keeps the run intact, minimizes information, and aligns with a standard low-to-high lead progression."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and has made no public play, so any inferred intent is probabilistic. With no prior signals, partner is likely neutral but would prefer an early lead they can potentially overtake or that does not burn their high cards. A low lead gives partner maximum flexibility to either pass under cheaply or win with a modest card.",
+    "confidence": 0.6,
+    "evidence": [
+      "10f0be03-f47d-4f30-a220-90233b75ebe6"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and have seen no cards played. They will try to win the trick if they can, probably using the cheapest card that beats the lead. Leading low discourages them from expending a premium card and reduces the chance they use a trump to capture a high lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "10f0be03-f47d-4f30-a220-90233b75ebe6"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because no trump or high outside cards are in hand, the 6 is unlikely to guarantee the trick, and leading it would leave an exceptionally weak remainder. Leading the 3 of spades keeps the run intact, minimizes information, and aligns with a standard low-to-high lead progression.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

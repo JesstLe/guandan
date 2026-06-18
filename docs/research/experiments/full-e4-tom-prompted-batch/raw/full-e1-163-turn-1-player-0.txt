@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-163-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "I am leading the first trick with no table lead, and the scenario tag indicates an opponent is near finish (player 1 has only 2 cards). Gaining the lead now lets my team control the tempo and reduces the chance the short-stacked opponent gets an uncontested path to go out."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 cards and has not acted; given only the new-game public event, I have no direct signal about their hand strength. I believe they are likely to support team 0 if they can follow or cover, but I cannot treat any specific holding as fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "971e734e-9b4b-4295-b4cf-74eb6b4f6289"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, so they are likely trying to finish quickly; opponent player 3 has 3 cards. Because no cards have been played, I only know their hand counts, not their suits or ranks. I believe at least one opponent probably holds a card that can beat a low club, but the exact cards are uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "971e734e-9b4b-4295-b4cf-74eb6b4f6289"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of clubs gives my single the highest chance of winning this trick among my legal cards. If opponents must follow suit and lack a higher club or trump, the 6 survives; the 3, 4, or 5 would lose to even more possible opponent holdings. Winning the opening trick secures the lead and lets me or my partner dictate the next trick at a critical moment when opponent player 1 is down to 2 cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The 3 is the weakest card and would lose to any higher club or any trump from any player. Saving the 6 does not help much because if I lose the lead now, the near-finish opponent may get an opportunity to go out before I regain control."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still loses to almost any follow-suit card or trump. It does not materially improve my chance of taking the lead compared with the 6."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is intermediate, but the same logic applies: the 6 maximizes the probability of winning the trick while all options remain non-trump and vulnerable. There is no benefit to preserving the 5 over the 6 in this low, uniformly weak hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent or my partner may have a higher club or a trump and beat the 6, causing me to lose the lead.",
+      "If opponent player 1 is holding a bomb or strong finishers, winning one trick may not stop them from going out soon.",
+      "My hand is entirely non-trump clubs ranked 3-6, so I have limited power to recover the lead later."
+    ],
+    "mitigation": "By leading the strongest available card (6 of clubs), I give myself the best possible chance to win this trick and retain/initiate control. Even if I lose, I have only sacrificed the least valuable cards first, keeping slightly higher cards for later follow opportunities."
+  },
+  "confidence": 0.55,
+  "notes": "This is the opening lead with maximum hidden information; all beliefs are probabilistic and grounded only in public hand counts and the new_game event."
+}

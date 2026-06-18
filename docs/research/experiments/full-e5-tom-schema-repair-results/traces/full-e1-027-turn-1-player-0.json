@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-027-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards left and is near finishing the hand. Leading the lowest single gives them the cheapest opportunity to win the trick and then lead out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds a small, strong set of cards since they are down to 2 cards with no plays yet. They may have a high single or pair that can beat a low diamond lead, but this is uncertain because their exact cards are hidden.",
+    "confidence": 0.7,
+    "evidence": [
+      "ec26dfc2-0c79-45a2-ab6a-85664e2fb5c0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and no public plays. They probably contain some higher non-trump or trump cards that can beat a low single, but they may also choose to conserve high cards depending on their own hands.",
+    "confidence": 0.6,
+    "evidence": [
+      "ec26dfc2-0c79-45a2-ab6a-85664e2fb5c0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of diamonds is the cheapest lead. It minimally depletes our hand, maximizes the chance that partner can win the trick with a modest card, and preserves the 4, 5, and 6 for later tricks if needed.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card gives opponents the same ability to beat it while wasting our best non-trump; if partner could win a low lead they can also win this, but we lose our strongest card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is middle-strength; it is more likely to be beaten than the 3 and still uses a card we might need later, with no compensating advantage."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only slightly better than the 3 but is still likely beaten by any higher card; playing the 3 keeps every higher card available."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher single and take control.",
+      "Partner may not have a card to win the trick, leaving us in the same weak position.",
+      "Even if partner wins, they might not be able to finish both remaining cards."
+    ],
+    "mitigation": "Leading the 3 minimizes our own commitment and gives partner the broadest range of winning responses; if the trick is lost, we still hold three slightly higher cards for future rounds."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with a weak hand; prioritize setting up the partner who is near finish."
+}

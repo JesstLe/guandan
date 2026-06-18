@@ -2,7 +2,11 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { GuandanDecisionPoint } from '@guandan/shared'
 
-export type LLMConditionId = 'plain-llm' | 'candidate-constrained-llm' | 'verifier-revision-llm'
+export type LLMConditionId =
+  | 'plain-llm'
+  | 'candidate-constrained-llm'
+  | 'tom-prompted-llm'
+  | 'verifier-revision-llm'
 
 export interface PromptMessage {
   role: 'system' | 'user'
@@ -34,9 +38,7 @@ export function createPromptPacket(
   decision: GuandanDecisionPoint,
   conditionId: LLMConditionId,
 ): LLMPromptPacket {
-  const promptTemplatePath = conditionId === 'plain-llm'
-    ? 'docs/research/prompts/plain-llm-v0.1.md'
-    : 'docs/research/prompts/candidate-constrained-llm-v0.1.md'
+  const promptTemplatePath = promptTemplatePathForCondition(conditionId)
 
   return {
     schemaVersion: '0.1.0',
@@ -77,6 +79,15 @@ export function writePromptPackets(options: WritePromptPacketsOptions): PromptPa
 }
 
 function systemMessage(conditionId: LLMConditionId): string {
+  if (conditionId === 'tom-prompted-llm') {
+    return [
+      'You are an LLM agent acting in a zero-communication cooperative-competitive Guandan decision point.',
+      'Use theory-of-mind style reasoning over partner intent, opponent intent, and counterfactual alternatives before selecting one legal action.',
+      'Do not assert hidden partner or opponent cards as facts; keep hidden-information beliefs probabilistic and grounded in public events.',
+      'Return JSON only, matching reasoning-trace.schema.json.',
+    ].join(' ')
+  }
+
   if (conditionId === 'candidate-constrained-llm') {
     return [
       'You are an LLM agent acting in a zero-communication cooperative-competitive Guandan decision point.',
@@ -96,13 +107,26 @@ function systemMessage(conditionId: LLMConditionId): string {
 
 function userMessage(decision: GuandanDecisionPoint, conditionId: LLMConditionId): string {
   const decisionJson = JSON.stringify(decision, null, 2)
-  if (conditionId === 'candidate-constrained-llm') {
+  if (conditionId === 'candidate-constrained-llm' || conditionId === 'tom-prompted-llm') {
+    const tomInstruction = conditionId === 'tom-prompted-llm'
+      ? [
+        '',
+        'Theory-of-mind reasoning checklist:',
+        '1. Infer what the partner may be trying to signal from public actions and hand counts.',
+        '2. Infer what opponents may be trying to prevent or exploit from public actions and hand counts.',
+        '3. Compare at least two legal candidate actions under these partner/opponent beliefs.',
+        '4. Choose one selectedActionId that best supports the team objective while respecting hidden-information uncertainty.',
+        '5. Put only public eventId values from publicHistory in evidence arrays.',
+      ].join('\n')
+      : ''
+
     return [
       'Decision point:',
       decisionJson,
       '',
       'Legal candidates:',
       JSON.stringify(decision.legalActions, null, 2),
+      tomInstruction,
       '',
       `Use agentId "${conditionId}" and decisionId "${decision.decisionId}".`,
     ].join('\n')
@@ -114,6 +138,13 @@ function userMessage(decision: GuandanDecisionPoint, conditionId: LLMConditionId
     '',
     `Use agentId "${conditionId}" and decisionId "${decision.decisionId}".`,
   ].join('\n')
+}
+
+function promptTemplatePathForCondition(conditionId: LLMConditionId): string {
+  if (conditionId === 'plain-llm') return 'docs/research/prompts/plain-llm-v0.1.md'
+  if (conditionId === 'candidate-constrained-llm') return 'docs/research/prompts/candidate-constrained-llm-v0.1.md'
+  if (conditionId === 'tom-prompted-llm') return 'docs/research/prompts/tom-prompted-llm-v0.1.md'
+  return 'docs/research/prompts/verifier-revision-llm-v0.1.md'
 }
 
 function writeJson(path: string, value: unknown): void {

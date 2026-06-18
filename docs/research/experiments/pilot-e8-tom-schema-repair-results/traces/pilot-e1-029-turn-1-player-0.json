@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-029-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. With no public cards played, partner cannot have signaled anything beyond the observed hand distribution. In this endgame race, partner likely wants me to seize initiative so they can shed cards or cover later, but this remains probabilistic.",
+    "confidence": 0.6,
+    "evidence": [
+      "39a0cb5b-94ce-4d4b-bdf2-0001b76a2d8e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to win the trick to deprive player 0 of the lead. They may hold non-trump cards between 2 and A, or trumps/wildcards. Because the public history contains only the new_game event, exact holdings are unknown and should be treated as uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "39a0cb5b-94ce-4d4b-bdf2-0001b76a2d8e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-A-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

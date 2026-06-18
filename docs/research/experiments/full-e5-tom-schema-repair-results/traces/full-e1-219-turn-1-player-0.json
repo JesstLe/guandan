@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-219-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards remaining and the opponents holding three each, the priority is to play out quickly. Leading the ace gives the highest chance of winning this trick so I can lead the 2 next and empty my hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards but has made no plays, so their exact strength and suit distribution are unknown. They may be able to cover a single if the ace is beaten, but no reliable signal has been sent.",
+    "confidence": 0.3,
+    "evidence": [
+      "e3d4ba06-b201-4488-b0b5-4f57f326d672"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three cards and have not acted. Any of them could hold a trump 7, joker, or bomb. Because the hand is so short, they may try to seize control immediately rather than pass.",
+    "confidence": 0.3,
+    "evidence": [
+      "e3d4ba06-b201-4488-b0b5-4f57f326d672"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The ace of spades is the stronger of my two cards. Leading it now maximizes the chance of winning the trick uncontested and lets me play the remaining 2 on my next turn to finish my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is much more likely to be beaten immediately. If control passes to an opponent, I may never get a clean single lead for the ace, slowing my finish and relying on partner rescue."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump 7, joker, or bomb over the ace and take control.",
+      "If the ace is beaten, my remaining 2 is very weak and may be hard to play on my own turn."
+    ],
+    "mitigation": "By leading the ace first, I still keep the 2 in hand if I lose the trick, and if the ace wins I guarantee a next-turn finish. The alternative of leading the 2 gives up control from the start."
+  },
+  "confidence": 0.75,
+  "notes": "Only the new_game event is public; all partner and opponent beliefs remain probabilistic."
+}

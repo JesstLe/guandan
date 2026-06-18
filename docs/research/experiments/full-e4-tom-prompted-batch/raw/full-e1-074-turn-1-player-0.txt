@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-074-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is down to 2 cards while every other player still holds 3, so the immediate team objective is to play out the remaining cards and finish the hand before opponents can block or overtake."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public play. With no signalling history, the partner likely wants player 0 to finish and may be able to cover later tricks, but no specific holding can be inferred.",
+    "confidence": 0.3,
+    "evidence": [
+      "8cff9169-6679-471a-94cd-8d0c121094c4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unseen cards from a freshly shuffled double deck. Because this is the opening lead and no trumps, bombs, or big cards have been revealed, opponents may individually hold trump-7s, jokers, or other high singles that can win the trick. Their inferred goal is to seize the lead and prevent player 0 from going out.",
+    "confidence": 0.5,
+    "evidence": [
+      "8cff9169-6679-471a-94cd-8d0c121094c4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade 2 is the stronger remaining single. In Guandan non-trump ordering, 2 outranks A, so opponents need a trump-7 or a joker to beat it rather than merely another 2. If the 2 wins or draws the highest response, player 0 can lead the A next turn and attempt to finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A first is weaker; an opponent could beat it with a 2 and take control, leaving player 0 with only the 2 and no guaranteed way to regain the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still have a trump-7 or joker that beats the spade 2 and takes the lead.",
+      "Even if player 0 wins this trick, a subsequent opponent response may prevent the A from winning the next trick."
+    ],
+    "mitigation": "By leading the maximum-strength card first, player 0 maximizes the chance of retaining the lead for one more turn and getting down to a single card, which is the best available play given the visible holdings."
+  },
+  "confidence": 0.7
+}

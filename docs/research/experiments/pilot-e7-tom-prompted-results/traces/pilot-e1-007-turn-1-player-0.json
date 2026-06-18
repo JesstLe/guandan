@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-007-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards, so the best immediate team goal is to lead a very low non-trump single that partner can capture and continue toward finishing their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds cards they are trying to run out and may be able to beat a low diamond single; a low lead gives them the best chance to take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "8bd49425-5ab4-4485-804c-9fec1b3099db"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and will try to contest weak leads to stop partner from finishing, but they must spend a higher non-trump or a trump to do so.",
+    "confidence": 0.5,
+    "evidence": [
+      "8bd49425-5ab4-4485-804c-9fec1b3099db"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest non-trump single, maximizing the probability that partner can win the trick and keep playing toward an empty hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "A 6 is harder for a nearly-finished partner to beat and is still easily overtaken by opponents, so it transfers control less effectively."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Intermediate card; still raises the bar for partner to win and does not improve defense against opponents."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Better than 5 or 6 but still higher than necessary; a 3 gives partner the widest window to take the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a higher card or trump can win the trick and deny partner the lead.",
+      "If partner cannot beat even a 3, the lead passes to opponents who may then suppress the near-finished partner."
+    ],
+    "mitigation": "Play the absolute lowest legal card to minimize the strength partner needs to win, while keeping the 4, 5, and 6 for later tricks."
+  },
+  "confidence": 0.65,
+  "notes": "No cards have been played yet, so beliefs are grounded only in the initial deal and public hand counts; partner intent is inferred probabilistically."
+}

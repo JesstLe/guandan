@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-091-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not yet acted in this trick, so their holdings are hidden. Given that player 0 (opponent) is down to 2 cards and led a very low heart, partner likely recognizes the opponent-is-near-finish pressure and may hold a higher heart or a trump to contest the trick if needed.",
+    "confidence": 0.6,
+    "evidence": [
+      "0ef90c64-9a56-41a6-bc58-30eebedc4580"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a 3 of hearts despite having only 2 cards remaining. This is consistent with either dumping a losing low card to preserve a strong second card, or attempting to sneak a cheap trick toward going out first.",
+    "confidence": 0.6,
+    "evidence": [
+      "0ef90c64-9a56-41a6-bc58-30eebedc4580"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-heart-4-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

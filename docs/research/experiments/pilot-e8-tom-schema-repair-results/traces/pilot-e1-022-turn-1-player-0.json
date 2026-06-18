@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-022-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards remaining, suggesting they are near finishing. With only low, non-trump diamonds, my best contribution is to lead the weakest possible card so the partner has the highest chance to win the trick, take the lead, and potentially go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds some cards strong enough to beat a low diamond lead, possibly including trumps or higher ranks, since they are down to 2 cards and are presumably trying to finish. However, this is probabilistic; they could also be stuck with low cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "95421219-ab0f-4833-8852-4e569274778c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards, and with no cards yet revealed they may contain trumps or higher non-trump cards that can overtake a low lead. They are likely to try to seize the lead to prevent the short-handed partner from finishing.",
+    "confidence": 0.5,
+    "evidence": [
+      "95421219-ab0f-4833-8852-4e569274778c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest legal lead, giving the partner (and even an opponent with a marginal card) the easiest path to win the trick. It preserves the 4, 5, and 6 for future tricks if I regain the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only marginally stronger and still very weak; it makes it slightly harder for the partner to beat while using up a card I might need later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more likely to be beaten by ordinary opponent cards and consumes a middle-low card that could be useful in a later low-rank contest."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the strongest of a very weak set and most likely to be taken by an opponent; it wastes the card most likely to win among my diamonds."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher non-trump and take the lead.",
+      "The partner may not have a card that can beat even a low diamond lead.",
+      "If the lead is lost, opponents can control the table and pressure the partner."
+    ],
+    "mitigation": "By leading the absolute lowest card, I maximize the chance that the partner can win with any playable higher card or trump. The remaining 4-6 diamonds give me modest follow-up options if my team regains control."
+  },
+  "confidence": 0.55
+}

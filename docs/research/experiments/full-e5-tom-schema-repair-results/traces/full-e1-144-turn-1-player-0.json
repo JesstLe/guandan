@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-144-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two non-trump cards and am leading. The fastest path to emptying my hand is to seize the lead with the stronger card, then use the lead on the next trick to play the weaker card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has made no public plays, so their composition is unknown. They are likely trying to finish their own hand and may be able to support if I retain or transfer the lead, but no specific hand shape can be inferred.",
+    "confidence": 0.5,
+    "evidence": [
+      "1c4d0976-fedc-462b-8441-5353ee8af6b2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unseen cards. Because no cards have been played, they may hold trump-rank cards, jokers, or higher spades that can beat my A♠. Their immediate incentive is to beat my lead and take control.",
+    "confidence": 0.5,
+    "evidence": [
+      "1c4d0976-fedc-462b-8441-5353ee8af6b2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ gives the best chance to win this trick. In Guandan the trick winner leads the next trick, so winning now lets me lead the 2♠ next and clear my hand in two consecutive tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2♠ is the weakest non-trump rank and will almost certainly be beaten by an opponent, ceding the lead. I would then face an opponent-led trick with only the A♠ left, likely forcing me to play it reactively rather than using it to win and finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump-rank 7, a joker, or a higher spade and beat the A♠, preventing me from leading next.",
+      "Partner may be unable to reclaim the lead if opponents take control."
+    ],
+    "mitigation": "There is no safer alternative that improves my chance of finishing; leading the weaker card guarantees loss of control. Leading the A♠ maximizes the probability of retaining the lead and completing my hand in the next trick."
+  },
+  "confidence": 0.85,
+  "notes": "Evidence is limited to the new_game event because no other public actions have occurred; all partner and opponent hand beliefs remain probabilistic."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-216-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 (opponent) is down to 2 cards and just led a low single. Seizing the lead now prevents the opponent team from controlling the pace and lets our team dictate the next trick, which is especially important when an opponent is close to finishing."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has not acted, so there is no strong signal about their hand. They could potentially beat a single 3, but since their cards are hidden they may also be unable to. I cannot rely on partner winning this trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "f839b246-d498-4df9-8fd2-b56907b54d67"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 of hearts while holding only 2 cards, suggesting they are trying to shed a low card and get off-lead quickly. Player 2 (the other opponent) has 3 unknown cards and could beat a low lead if given the chance. The opponent team likely wants to keep the lead to let player 0 finish.",
+    "confidence": 0.6,
+    "evidence": [
+      "f839b246-d498-4df9-8fd2-b56907b54d67"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the cheapest card that wins the trick. It takes control away from the opponent team, counters an opponent near finish, and preserves stronger cards (9 and 10) for later leads or follow plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting player 2 (opponent) win the trick, which would keep the lead with the opponent team and give player 0 a chance to finish their last card. Partner may not be able to beat the 3."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but uses a stronger card unnecessarily; keeping the 9 for a later lead or a higher follow is more efficient."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is our strongest single and would be wasted on a low 3; it is better saved for a trick where more strength is needed."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning with the 4 commits us to lead next; if an opponent has a higher single or trump, we could lose the lead immediately.",
+      "Player 0 could still finish on their next opportunity if they have a playable high card or their partner covers them."
+    ],
+    "mitigation": "By winning with the lowest possible card we retain high cards (9 and 10) that can compete for future tricks, and we remove the immediate chance for the opponent team to run player 0 out."
+  },
+  "confidence": 0.75,
+  "notes": "The decision prioritizes low-cost control when an opponent is near finishing, using the minimal card that beats the table while preserving stronger resources."
+}

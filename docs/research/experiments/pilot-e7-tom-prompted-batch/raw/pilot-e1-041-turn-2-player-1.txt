@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "agentId": "tom-prompted-llm",
+  "decisionId": "pilot-e1-041-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoningTrace": {
+    "partnerInference": {
+      "summary": "Partner (player 3) holds 3 cards and has not acted in this trick. There is no public signal yet about whether partner can beat a single 3-heart. Partner sits after both opponents in the follow order, so if we pass and the opponents also pass, opponent player 0 will win the trick and lead again before partner can intervene. A low winning play from us therefore protects partner's cards for later leads rather than forcing partner to spend value now.",
+      "evidence": ["7846d99a-c727-4b00-8b5a-debd07b5e875"]
+    },
+    "opponentInference": {
+      "summary": "Opponent player 0 has only 2 cards remaining and led a low single 3-heart. This is consistent with a player trying to shed a weak card while keeping the lead to finish quickly. Opponent player 2 holds 3 cards but has shown no public signal about ability or willingness to beat the 3. Because player 0 is near finishing, allowing player 0 to win this trick and lead again is the biggest risk.",
+      "evidence": ["7846d99a-c727-4b00-8b5a-debd07b5e875"]
+    },
+    "counterfactualComparison": [
+      {
+        "actionId": "pass",
+        "analysis": "Passing risks letting player 0 win the trick with the 3-heart and lead again with one card left. Because player 0 is only 2 cards from finishing, that is too dangerous. Partner cannot act before player 0 would lead again.",
+        "conclusion": "rejected"
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "analysis": "Beats the table but expends our highest non-trump heart unnecessarily. We do not need this much strength to beat a 3, and using it now weakens our ability to beat later opponent leads.",
+        "conclusion": "rejected"
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "analysis": "Beats the table, but still spends more strength than required. Since no public evidence suggests partner is forced to cover, preserving the 9 for later is preferable.",
+        "conclusion": "rejected"
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "analysis": "The cheapest winning follow. It defeats opponent 0's 3-heart, denies the lead to a two-card opponent, and preserves the 9-heart and 10-heart for future tricks. This best supports the team objective while respecting uncertainty about hidden cards.",
+        "conclusion": "selected"
+      }
+    ],
+    "finalRationale": "Play the minimum winning card (4-heart) to stop the near-finishing opponent from retaining the lead, while keeping stronger cards available for later in the round."
+  },
+  "confidence": 0.85
+}

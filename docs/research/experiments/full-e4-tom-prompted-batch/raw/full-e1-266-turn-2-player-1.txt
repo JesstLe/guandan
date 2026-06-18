@@ -1,0 +1,50 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-266-turn-2-player-1",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "reasoning": {
+    "partner": {
+      "summary": "Partner (player 2) has 3 cards and has not yet acted. By leading a low heart, opponent player 0 may be probing for weakness. Partner likely holds some useful cards but has not signaled strength; I cannot assume partner can or wants to win this trick. If I pass, I rely entirely on partner to beat the 3 or risk letting player 0 win and retain initiative.",
+      "evidence": [
+        "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+      ]
+    },
+    "opponent": {
+      "summary": "Opponent player 0 is near finishing with only 2 cards remaining. Leading the 3 of hearts suggests player 0 is trying to shed a small card while setting up a quick exit. Letting player 0 win this trick is dangerous because it gives them the lead with very few cards left. Opponent player 3 has 3 cards and may hold higher hearts or trumps to contest, but they have not acted yet.",
+      "evidence": [
+        "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+      ]
+    },
+    "counterfactuals": [
+      {
+        "actionId": "pass",
+        "assessment": "Passing conserves cards but surrenders control. Since player 0 is at 2 cards, giving them a chance to win and continue is high-risk. Partner might beat it, but I have no evidence partner can win, so passing is too passive.",
+        "evidence": [
+          "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "assessment": "Beats the table with minimal card value, but opponent player 3 or partner could easily overtake with a higher heart or trump. This uses a card without securing the lead.",
+        "evidence": [
+          "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "assessment": "A stronger follow that likely beats ordinary heart cards, but still leaves room for a 10, J, Q, K, A, or trump. Given player 0's near-finish threat, securing the lead now is valuable.",
+        "evidence": [
+          "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "assessment": "Plays the highest available non-trump heart to maximize the chance of winning the trick immediately. Winning gives our team the lead, which is especially important because opponent player 0 is down to 2 cards and we must disrupt their exit plan. The 10 is still a single non-trump, so it does not waste a bomb or wildcard.",
+        "evidence": [
+          "8876c14a-7955-4c12-9aaa-f26f64b4c4f8"
+        ]
+      }
+    ],
+    "conclusion": "Winning the lead is the team priority because opponent player 0 is near finishing. Among the legal plays, the 10 of hearts gives the highest probability of immediately capturing the trick without expending special resources, so it best supports the team objective."
+  }
+}

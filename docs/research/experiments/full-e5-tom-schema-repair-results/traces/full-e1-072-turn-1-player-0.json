@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-072-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is down to 2 cards (public hand count), so the priority is to create a lead they can win or at least survive, helping them finish before opponents. Leading the weakest card keeps pressure minimal while giving partner the widest range of winning replies."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 2 cards that could include a higher non-trump single or a trump, and is probably trying to go out quickly. The public hand count signals they are near finish, but their exact ranks are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "18227715-0a0e-434c-bcaa-6837d1c6ee6c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and no cards have been played, so they likely have higher cards and/or trumps. They will try to seize the lead to stop our partner from finishing, but their exact holdings are uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "18227715-0a0e-434c-bcaa-6837d1c6ee6c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the lowest single (3♦) to maximize the chance that partner can beat it with a higher card or a trump, potentially winning the trick and continuing toward an exit. It also commits the least strength if opponents take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading our highest card makes it harder for partner to win the trick and wastes the best card in a weak hand; opponents with trumps or higher cards can still take it."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A middle card still leaves partner needing a relatively high card to win, and does not preserve as much future flexibility as leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Better than 5 or 6, but still not as low as 3♦, so it gives partner slightly fewer winning replies and keeps less room for later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may beat the 3 with a higher card or a trump and then lead a combination partner cannot answer, stalling partner's finish.",
+      "Partner may not have a card strong enough to win the trick, so the lead may simply pass to an opponent."
+    ],
+    "mitigation": "Leading the weakest legal single minimizes the value lost if opponents take the trick and preserves the slightly higher diamonds for future plays."
+  },
+  "confidence": 0.75
+}

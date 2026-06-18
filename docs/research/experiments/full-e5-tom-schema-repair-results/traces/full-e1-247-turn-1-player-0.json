@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-247-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is near finishing. My hand is four low non-trump diamonds, so I cannot realistically win the trick myself; the best team play is to lead the lowest card to make it easy for partner to take the lead and continue toward going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds relatively strong remaining cards because they are down to 2 cards at the start of the round. They may have trumps, wildcards, or high singles, but without any public plays I cannot assert specific ranks; their exact composition is probabilistic.",
+    "confidence": 0.6,
+    "evidence": [
+      "88ddb12c-1ae4-4c25-9a94-c7317466b6ab"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards. They have not played any cards, so they could hold trumps, bombs, or high cards, but there is no public evidence to favor any specific distribution.",
+    "confidence": 0.4,
+    "evidence": [
+      "88ddb12c-1ae4-4c25-9a94-c7317466b6ab"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest legal lead. It gives partner the widest range of cards that can beat it, avoids wasting any of my slightly higher low cards, and minimizes loss if an opponent wins the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is still low but strictly worse than the 3 for this purpose; it reduces partner's ability to play a marginal low winner and consumes a marginally more useful card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Leading the 5 expends a higher low card with no compensating benefit; partner may need to use a better card to beat it, and it increases the chance an opponent can win cheaply."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest non-trump; leading it wastes the most card value, makes it hardest for partner to take the lead cheaply, and leaves me with the very weakest follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat the 3 if their 2 cards are also low non-trumps.",
+      "An opponent may overtake with a trump or bomb and seize the lead.",
+      "Leading a single gives opponents full information that I am weak."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the value surrendered, maximize the chance partner can win the trick, and keep my slightly higher low cards for later opportunistic plays."
+  },
+  "confidence": 0.65
+}

@@ -124,10 +124,12 @@ Current implementation status:
 
 - [x] Plain LLM prompt template fixed at `docs/research/prompts/plain-llm-v0.1.md`.
 - [x] Candidate-constrained LLM prompt template fixed at `docs/research/prompts/candidate-constrained-llm-v0.1.md`.
+- [x] ToM-prompted LLM baseline template fixed at `docs/research/prompts/tom-prompted-llm-v0.1.md`.
 - [x] Prompt packet exporter implemented at `server/src/research/llmPromptPackets.ts`.
 - [x] Raw-output ingestion and verifier runner implemented at `server/src/research/llmOutputIngest.ts`.
 - [x] Plain prompt packets exported at `docs/research/experiments/pilot-e4-plain-llm-prompts`.
 - [x] Candidate-constrained prompt packets exported at `docs/research/experiments/pilot-e5-candidate-constrained-prompts`.
+- [x] ToM-prompted prompt packets exported at `docs/research/experiments/pilot-e7-tom-prompted-prompts`.
 - [x] Provider-neutral JSONL batch exporter implemented at `server/src/research/llmBatchFiles.ts`.
 - [x] Raw-output completeness audit implemented at `server/src/research/llmBatchFiles.ts`.
 - [x] Provider-result materializer implemented at `server/src/research/llmProviderResults.ts`.
@@ -135,8 +137,18 @@ Current implementation status:
 - [x] OpenAI Batch JSONL exporter implemented at `server/src/research/openAIBatchExport.ts`.
 - [x] Plain batch artifacts exported at `docs/research/experiments/pilot-e4-plain-llm-batch`.
 - [x] Candidate-constrained batch artifacts exported at `docs/research/experiments/pilot-e5-candidate-constrained-batch`.
+- [x] ToM-prompted batch artifacts exported at `docs/research/experiments/pilot-e7-tom-prompted-batch`.
 - [x] OpenAI-ready plain and candidate batch files exported under each condition's `openai/` directory.
+- [x] OpenAI-ready ToM-prompted batch file exported under `pilot-e7-tom-prompted-batch/openai`.
 - [x] Raw-output audit currently records 0 / 50 present and 50 / 50 missing for both LLM conditions, as expected before a real model run.
+- [x] ToM provider run completed through Kimi CLI at `docs/research/experiments/provider-results/tom-prompted-llm.jsonl`.
+- [x] ToM post-provider artifacts exported at `docs/research/experiments/pilot-e7-tom-prompted-results`.
+- [x] ToM materialization records 50 / 50 raw outputs available for audit.
+- [x] ToM ingest parsed 36 / 50 traces and recorded 14 / 50 parse failures.
+- [x] ToM verifier metrics record 1 hard failure over the 36 parsed traces.
+- [x] ToM failure analysis generated at `docs/research/experiments/pilot-e7-tom-failure-analysis`, with parse-failure categories and the parsed-trace hard-failure code.
+- [x] ToM schema-repair ablation generated at `docs/research/experiments/pilot-e8-tom-schema-repair-results`, preserving the model-selected `selectedActionId` while normalizing non-conforming reasoning output into the trace schema.
+- [x] The schema-repair ablation parses 49 / 50 ToM outputs: 36 pass through unchanged, 13 are schema-repaired, and 1 tool-call-like output remains not repairable; verifier hard failures remain 1 after repair.
 - [x] Pilot metrics summary generator implemented at `server/src/research/experimentMetricsSummary.ts`.
 - [x] Current pilot metrics summary generated at `docs/research/experiments/pilot-metrics-summary`.
 - [x] Runbook written at `docs/research/experiments/llm-pipeline-runbook.md`.
@@ -144,6 +156,7 @@ Current implementation status:
 - [ ] Raw outputs.
 - [ ] Parsed traces.
 - [ ] Verifier metrics.
+- [x] ToM-prompted model run and verifier metrics.
 
 ### E4: Verifier-in-the-Loop Pilot
 
@@ -183,6 +196,34 @@ Evidence:
 - ablation tables,
 - failure taxonomy,
 - case studies.
+
+Current implementation status:
+
+- [x] 500-decision full split exported at `docs/research/experiments/full-e1/decisions`.
+- [x] Full split manifest records deterministic scenario-template construction and five scenario tags.
+- [x] Full-split `heuristic-legal-first` verifier artifacts generated at `docs/research/experiments/full-e2-heuristic-verifier`.
+- [x] Full-split `strategic-heuristic` verifier artifacts generated at `docs/research/experiments/full-e3-strategic-heuristic`.
+- [x] Full-split baseline summary generated at `docs/research/experiments/full-baseline-summary/full-baseline-summary.md`.
+- [x] Both deterministic baselines parse 500 / 500 traces and produce 0 hard verifier failures on the full split.
+- [x] Full-split plain prompt packets exported at `docs/research/experiments/full-e2-plain-llm-prompts`.
+- [x] Full-split plain batch artifacts exported at `docs/research/experiments/full-e2-plain-llm-batch`.
+- [x] Full-split plain raw-output audit records 0 / 500 present and 500 / 500 missing before provider execution.
+- [x] Full-split candidate-constrained prompt packets exported at `docs/research/experiments/full-e3-candidate-constrained-prompts`.
+- [x] Full-split candidate-constrained batch artifacts exported at `docs/research/experiments/full-e3-candidate-constrained-batch`.
+- [x] Full-split candidate-constrained raw-output audit records 0 / 500 present and 500 / 500 missing before provider execution.
+- [x] Full-split ToM-prompted prompt packets exported at `docs/research/experiments/full-e4-tom-prompted-prompts`.
+- [x] Full-split ToM-prompted batch artifacts exported at `docs/research/experiments/full-e4-tom-prompted-batch`.
+- [x] Full-split ToM-prompted raw-output audit records 0 / 500 present and 500 / 500 missing before provider execution.
+- [ ] Full-split LLM provider run.
+- [ ] Full-split verifier-revision run.
+- [ ] ToM-prompted LLM provider results.
+- [ ] Verifier-component ablations using full-split or paired pilot provider outputs.
+
+Current metrics note:
+
+- Scope: local sanity check for full split, trace schema, and verifier plumbing.
+- This is not an LLM result and should not be used as evidence that LLM reasoning generalizes to 500 decisions.
+- The result strengthens the submission package by showing that the full evaluation substrate is already executable.
 
 ## Expected Result Table Shapes
 

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-037-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is down to 2 cards (public hand count), so the priority is to give them a cheap path to play a winning card or finish. Leading the lowest available single keeps pressure minimal and preserves my slightly better cards for later tricks if needed."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely near finishing because they hold only 2 cards; they may be looking for a low, controllable lead to shed a winning or final card.",
+    "confidence": 0.7,
+    "evidence": [
+      "95517e19-dead-4751-97c8-4f2aecb0bbd9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 3 cards each and no cards have been played, so they may have a mix of ordinary and trump/high cards; their exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "95517e19-dead-4751-97c8-4f2aecb0bbd9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Opening with the 3 of diamonds is the smallest possible lead. It maximizes the chance that partner can win the trick with a modest card, avoids wasting my highest card (6), and minimizes the information revealed about my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Leading the 4 uses a slightly better card without improving the chance of winning the trick, and it removes a middle card that could be useful later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more likely to be overtaken by opponents and would cost a card that is relatively strong within my weak hand."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 wastes my best card on a trick I am unlikely to keep, and it gives opponents more information about my remaining low cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may overtake the low lead and keep control.",
+      "Partner may not have a card that can win the trick if an opponent plays in between."
+    ],
+    "mitigation": "By leading the lowest card, I force opponents to spend value to take the trick and leave my better cards for future turns where I or partner might regain control."
+  },
+  "confidence": 0.75,
+  "notes": "All inferences are probabilistic and based solely on public hand counts and the new_game event; no hidden cards are asserted."
+}

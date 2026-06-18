@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-043-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a low, non-trump hand, I want to lead a card that either wins the trick cheaply or forces opponents to spend a higher card, preserving my limited high cards for later control while my partner still has cards to support."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 cards, but no public actions have occurred, so their exact distribution is unknown. Given the hand counts, they likely have at least one card that can cover a low single if needed, but I cannot treat this as a fact.",
+    "confidence": 0.45,
+    "evidence": [
+      "42e5b43e-0077-47ec-b5fd-55052407183e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is down to 2 cards, creating near-finish pressure; they may be holding high singles or trumps to close the game. Opponent player 3 has 3 cards and is less immediate but still a threat. No cards have been played, so I only know their public hand counts.",
+    "confidence": 0.6,
+    "evidence": [
+      "42e5b43e-0077-47ec-b5fd-55052407183e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the cheapest probe: it expends my lowest non-trump card, keeps 4/5/6 as potential recapture cards if opponents respond with mid-rank singles, and avoids committing a higher card when opponents may still hold many trumps and rank-7 cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only slightly stronger but still easily beaten by any higher card or trump; keeping it over the 3 provides marginally better end-game coverage without improving this lead's chances."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is in the middle of my sequence; playing it now wastes a card that could win a trick against a 3 or 4 later, and it is still vulnerable to higher cards and trumps."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest non-trump card; leading it commits my best single and still loses to any 7-rank or trump card, leaving me with only 3/4/5 and weaker control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may cover the 3 with a higher single or trump and take the lead while close to finishing.",
+      "Player 3 may hold a higher card and win the trick, shifting tempo to the opposing team.",
+      "My partner may be unable to assist because their 3 cards could be low or non-matching."
+    ],
+    "mitigation": "By leading the 3, I minimize my own exposure; if the trick is lost, my remaining 4/5/6 give me better cards to fight back, and I have not revealed any strength beyond this low club sequence."
+  },
+  "confidence": 0.7,
+  "notes": "All inferences about partner and opponent hands remain probabilistic because only the new_game event is public."
+}

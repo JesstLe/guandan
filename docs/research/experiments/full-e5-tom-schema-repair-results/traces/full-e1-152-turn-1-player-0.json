@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-152-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards remaining and is likely close to going out. My hand is very weak (3-4-5-6 of diamonds, all below trump rank 7), so the best team objective is to lead the lowest possible card to give partner a chance to win the trick cheaply and continue leading to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) is likely holding a small number of cards that they hope to play out quickly. With only 2 cards left, partner probably wants to win a trick to gain the lead and play their remaining cards before opponents can interfere. They likely do not need high bombs from me; they need a low lead they can overtake with a modest card.",
+    "confidence": 0.85,
+    "evidence": [
+      "b5f5c892-f3c8-4095-be13-62d19a09148d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and have played nothing yet. Because trump rank is 7 and my hand contains only low non-trump diamonds, any opponent with a 7 or higher, any trump, or any red trump can beat my lead. Opponents likely want to prevent my partner from finishing, so they may use a trump or high card to seize lead if they can afford it, but with no public information their exact holdings remain uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "b5f5c892-f3c8-4095-be13-62d19a09148d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the 3 of diamonds, the lowest legal single. This maximizes the chance that partner can win the trick with a low-to-moderate card, gain the lead, and play down toward going out. It also preserves the 4, 5, and 6 for later low leads or discards if needed.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest card in hand but still loses to any 7+ or trump. Playing it now wastes the only slightly higher low card without increasing the chance of helping partner finish."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still below trump rank and opponents with ordinary mid cards can beat it. It is not low enough to give partner the best chance to win cheaply and it consumes a card that is higher than the 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only marginally better than the 3, but leading the 3 is strictly better for partner support because it is the easiest for partner to beat with a low card and keeps all higher cards in reserve."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or a card of rank 7 or higher to take the lead away from partner.",
+      "If partner cannot beat the lead, I may lose the lead and have to play from a weakened position with only weak low cards remaining.",
+      "Because I have no trumps or high cards, I cannot regain control if opponents seize it."
+    ],
+    "mitigation": "By leading the 3, I minimize the value of the card I sacrifice and keep my slightly higher low cards for future turns. This also gives partner the widest possible range of cards with which they can win the trick."
+  },
+  "confidence": 0.85
+}

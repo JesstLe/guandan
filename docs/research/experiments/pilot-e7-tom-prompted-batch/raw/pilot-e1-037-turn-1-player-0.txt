@@ -1,0 +1,21 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "pilot-e1-037-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoning": "I hold only low non-trump diamonds (3-6) with no trumps and no bombs, so this hand cannot force control against opponents. Player 2, my partner, has only 2 cards left and is near finishing. An opening low single lead gives my partner the most flexibility: they can cover with a slightly higher card if they need to win the trick, or let it ride while preserving their own finish card. Leading the 6 would waste my highest card on a lead that almost certainly loses to opponents' higher cards or trumps, ceding initiative without helping the partner. Between low leads, the 3 is the safest because it removes the weakest card first and leaves the 4-6 sequence for later coverage if needed.",
+  "partnerIntent": "Player 2 likely wants to shed a card cheaply or seize a trick with their remaining cards to get down to one card and finish. A low lead from me supports that by not forcing them to split a pair or spend a trump.",
+  "opponentIntent": "Opponents (players 1 and 3, each with 3 cards) have no public play history, so they likely hold higher cards and/or trumps. They will try to overtake any lead to deny my partner a free exit. Leading low minimizes the information and value I give away when they likely take the trick.",
+  "counterfactuals": [
+    {
+      "actionId": "play-single-diamond-6-copy1",
+      "assessment": "Leads my strongest card but 6 is still weak; opponents probably beat it, and I lose my only card that could win a later trick if the table empties."
+    },
+    {
+      "actionId": "play-single-diamond-3-copy1",
+      "assessment": "Leads the weakest card, preserves 4-6 for later, and maximizes partner's chance to cover or shed cheaply."
+    }
+  ],
+  "evidence": [
+    "ec56dc9a-9384-4cac-809e-167e9b43bd59"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-039-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards remaining, the immediate team objective is to get player 0 out of cards. Winning this lead and keeping the tempo maximizes the chance of playing the remaining card next."
+  },
+  "partnerBelief": {
+    "summary": "No partner signal has been sent yet (the only public event is the new-game event). Partner holds 3 cards and is likely positioned to support the team finish, but I cannot assert any specific holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "5bb48d2e-4b73-4a76-a23a-b2fcf08961a9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and are likely to hold cards that can beat a weak lead. They will try to seize tempo and block the short-handed player, though I cannot claim specific high cards or trumps.",
+    "confidence": 0.6,
+    "evidence": [
+      "5bb48d2e-4b73-4a76-a23a-b2fcf08961a9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace gives the highest chance of winning the trick and retaining the lead, which lets me play the weaker deuce on the next turn. In a 2-card endgame against opponents with larger hands, keeping initiative is more valuable than trying to save a high card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce now risks losing the lead immediately to a higher card from either opponent. If that happens, I would be left with only the Ace and no tempo, forcing reliance on partner to regain control in an endgame race."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still have a higher non-trump card or a trump that beats the Ace, costing tempo.",
+      "If the Ace loses, I am left with only the low deuce and may be blocked from finishing.",
+      "Partner may not be able to regain the lead if opponents coordinate to control the trick."
+    ],
+    "mitigation": "There is no risk-free play with two low cards, but leading the stronger Ace first preserves the most tempo and gives the best chance to play the deuce next while I still hold the lead."
+  },
+  "confidence": 0.72,
+  "notes": "The decision treats all opponent/partner holdings as uncertain and is grounded solely in public counts and the new-game event."
+}

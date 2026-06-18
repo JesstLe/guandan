@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-007-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards remaining, so the most valuable team goal is to let partner win the trick and move toward finishing their hand. Leading the lowest card maximizes the chance partner can overtake with one of their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner is very close to finishing with just 2 cards left. They likely hold at least one card strong enough to beat a low non-trump lead, possibly a trump or a high card saved for the endgame, but their exact composition is hidden.",
+    "confidence": 0.6,
+    "evidence": [
+      "d54bcc21-6d1d-432d-a597-a4463c5225e9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards. They may have trumps or high cards and will likely try to seize the lead if partner attempts to finish, but no specific card knowledge is public.",
+    "confidence": 0.4,
+    "evidence": [
+      "d54bcc21-6d1d-432d-a597-a4463c5225e9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦ is the lowest legal single and gives partner the widest window to play a winning card from their 2-card hand, supporting a finish or at least retaining team control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest non-trump single in hand and would be harder for the 2-card partner to beat, reducing the chance of transferring the lead."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A 5 is still a relatively high lead for a partner with only 2 cards; it offers no defensive benefit over lower cards because all options are non-trump."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is better than 5/6 but still higher than necessary; the 3 provides the best opportunity for partner to take control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat even a 3♦ if their two cards are both lower non-trumps, allowing an opponent to win the lead.",
+      "An opponent with a trump or high single may overtake regardless of which low card is led."
+    ],
+    "mitigation": "Leading the lowest possible card cannot make partner's situation worse than leading higher, and it maximizes the set of partner hands that can win the trick. If partner cannot take it, the same opponent response would likely beat any higher lead anyway."
+  },
+  "confidence": 0.65,
+  "notes": "All legal actions are non-trump singles, so the main lever is rank. Partner's 2-card count dominates the strategic calculus at this early lead."
+}

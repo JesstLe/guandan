@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1.0",
+  "gameId": "pilot-e1-000",
+  "decisionId": "pilot-e1-000-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": {
+    "situationAssessment": "I am leading the very first trick of the game with a hand of four low, non-trump spades (3-4-5-6). No cards have been played, so the public state gives minimal information beyond the initial deal counts: I hold 4 cards, partner and opponents each hold 3. I have no trumps, no wildcards, and no bomb. My only legal leads are low single spades.",
+    "partnerBeliefs": {
+      "summary": "Partner (player 2) has not acted. Given uniform prior over the remaining deck, partner is more likely than not to hold at least one card above my 6 of spades, but could also be weak. Without any signal, I cannot assume partner has a specific card; I should lead a card partner can potentially overtake if they have a higher non-trump, or at least a card that does not force partner to waste a trump.",
+      "evidence": ["bd502256-4629-4512-b762-698f9b56c609"]
+    },
+    "opponentBeliefs": {
+      "summary": "Opponents (players 1 and 3) each hold 3 cards and have not acted. They are likely to hold cards higher than my spades, and possibly trumps or bombs. Leading a very low card minimizes the chance I immediately lose a high card and makes it more likely opponents must spend a higher card or a trump to take the trick, exposing strength.",
+      "evidence": ["bd502256-4629-4512-b762-698f9b56c609"]
+    },
+    "counterfactualComparison": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "assessment": "Leads my highest card. If an opponent takes the trick, I have permanently lost my best non-trump and retained only 3-4-5, which are even more vulnerable. This is weak because I have no control cards and no reason to expect the 6 will win the trick."
+      },
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "assessment": "Leads my lowest card. It gives away minimal value, preserves 4-5-6 for later tricks, and lets partner or an opponent reveal strength. If partner can overtake, we gain tempo cheaply; if an opponent wins, they have used a stronger card than necessary."
+      }
+    ],
+    "selectedRationale": "Because my hand has no trumps, no bombs, and no strong winning potential, the team objective is best served by minimal expenditure. Leading the 3 of spades is the least committal action, keeps my slightly higher cards for later, and induces opponents or partner to reveal information with stronger cards. It respects hidden-information uncertainty by not assuming partner can win, but giving partner the cheapest possible chance to help."
+  },
+  "evidence": ["bd502256-4629-4512-b762-698f9b56c609"]
+}

@@ -18,6 +18,8 @@ Guandan is used as a compact testbed for structured multi-agent decision problem
 
 The main limitation is that verifier labels are only as strong as the rules and consistency checks behind them. Hard checks are deterministic, but soft strategic checks may reflect design assumptions. To avoid overclaiming, the experiments report hard and soft labels separately and use ablations to show which verifier components drive observed changes.
 
+The verifier-attribution analysis is paired and descriptive rather than a broad generalization test. It strengthens the pilot by showing that the hard-failure reduction is concentrated in public-history and hidden-information checks, but it is still measured only on the 32 candidate traces that were parseable and eligible for revision. The 18 unparseable candidate outputs remain an end-to-end reliability problem rather than a revision-success denominator. [Evidence: `experiments/pilot-verifier-attribution/verifier-attribution.json`.]
+
 A second limitation is model and prompt sensitivity. LLM agents can vary across model versions, sampling settings, and prompt formats. The evaluation must therefore log model names, dates, temperatures, raw outputs, parsed traces, and verifier labels. Results should be presented as diagnostic patterns under specified settings rather than universal claims about all LLMs.
 
 ## Claim-Evidence Map

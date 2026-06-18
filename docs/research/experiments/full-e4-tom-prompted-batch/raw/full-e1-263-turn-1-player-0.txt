@@ -1,0 +1,48 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-263-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoningTrace": {
+    "partnerBeliefs": {
+      "summary": "Partner (player 2) holds 3 cards and has made no public plays. Partner likely wants to gain or preserve the lead to unload cards quickly, but with no visible cards their exact strength is uncertain. A low lead gives partner flexibility to either take the trick with a moderate card or let it pass without committing strong resources.",
+      "evidence": [
+        "6b6f91c7-f062-47da-ab91-3a84adcd47db"
+      ]
+    },
+    "opponentBeliefs": {
+      "summary": "Opponents hold 2 and 3 cards. Player 1, with only 2 cards, is near finishing and will try to win tricks or play out low cards to exit. Player 3, with 3 cards, may hold higher cards to block our team. They will likely attack any low lead to deny us control.",
+      "evidence": [
+        "6b6f91c7-f062-47da-ab91-3a84adcd47db"
+      ]
+    },
+    "candidateComparisons": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "rationale": "Play the lowest club to start. This preserves the 4, 5, and 6 for later tricks where they might win or block the near-finish opponent.",
+        "strengths": [
+          "Conserves higher cards",
+          "Standard opening-lead tempo",
+          "Does not overcommit strength against an opponent close to finishing"
+        ],
+        "weaknesses": [
+          "Easily beaten by any higher card",
+          "Does not immediately pressure player 1"
+        ]
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "rationale": "Play the highest club to try to win the opening trick and retain the lead.",
+        "strengths": [
+          "More likely to win the trick",
+          "Keeps the lead for a subsequent play"
+        ],
+        "weaknesses": [
+          "Leaves only 3-4-5, weakening future options",
+          "If an opponent beats it with a trump or higher card, the spent 6 is wasted",
+          "Helps the near-finish opponent by revealing our top low card"
+        ]
+      }
+    ],
+    "selectedRationale": "In an opening lead with a weak, sequential low hand and an opponent near finish, the best team play is to lead the 3. It follows standard low-to-high card economy, keeps the stronger clubs for blocking or winning later tricks, and avoids giving the near-finish opponent information or free advantage by overcommitting the 6 too early."
+  }
+}

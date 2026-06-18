@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-034-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only two non-trump cards and is leading, so the overriding team goal is to empty this hand before opponents can regain control. Playing the higher card first maximizes the chance of retaining the lead and playing out the remaining 2♠ on the next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public signals exist yet. Partner likely recognizes that player 0 is in an endgame race and would prefer player 0 to finish rather than burn partner resources. No reliable inference about specific ranks or suits is possible.",
+    "confidence": 0.5,
+    "evidence": [
+      "e965721b-9026-437a-bc27-6ef1f9f04609"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards. With trump rank 7 and no cards yet played, opponents may hold 7s, other trump, or high non-trump cards that can beat a 2♠ or even an A♠. They will try to seize the lead to stop player 0 from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "e965721b-9026-437a-bc27-6ef1f9f04609"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading A♠ is the strongest single available and is more likely to win the trick than 2♠. If it wins, player 0 keeps the lead and can dump 2♠ next, finishing the hand in two consecutive plays. This directly supports the finish-hand objective.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading 2♠ is weaker and more likely to be beaten by opponents, who may hold trumps or higher non-trump cards. Losing the lead forces reliance on partner to regain control, and player 0 would still need another opportunity to play A♠, increasing the risk of being trapped before finishing."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat A♠ with a trump or a higher card, forcing player 0 to wait for another lead.",
+      "Partner may misread the lead and use a high card unnecessarily if they must intervene."
+    ],
+    "mitigation": "Leading A♠ minimizes the chance of losing the lead on this trick. Since A♠ is the strongest card in player 0's hand, it is the correct card to play when trying to finish quickly."
+  },
+  "confidence": 0.75,
+  "notes": "No public signals exist beyond the new_game event, so all inferences about partner and opponent holdings remain probabilistic."
+}

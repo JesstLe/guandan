@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "0.1.0",
+  "sourceBatchJsonl": "docs/research/experiments/pilot-e7-tom-prompted-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/tom-prompted-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/pilot-e7-tom-prompted-batch/raw",
+  "expectedCount": 50,
+  "writtenCount": 50,
+  "missingResultCount": 0,
+  "failedResultCount": 0,
+  "unexpectedResultCount": 0,
+  "emptyContentCount": 0,
+  "readyForAudit": true,
+  "missingCustomIds": [],
+  "unexpectedCustomIds": [],
+  "emptyCustomIds": [],
+  "failures": []
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-018-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (only low non-trump clubs), so the best team plan is to lead the cheapest card and let partner try to win the trick, rather than pretend strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not acted yet. They may have a mid-to-high single or a trump that can beat this low lead, but I cannot assume any specific cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "b786ab51-2b02-4ed7-9cee-23023c2a72e5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing; they are likely to hold at least one playable card that can beat a low single, though the exact ranks and suits are hidden. Player 3 has 3 cards and may support them.",
+    "confidence": 0.6,
+    "evidence": [
+      "b786ab51-2b02-4ed7-9cee-23023c2a72e5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 is the lowest-risk opening: it spends the weakest card, keeps the slightly stronger 4-6 for later, and gives partner the easiest possible chance to take control while forcing opponents to use a higher card if they want the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is stronger than the 3 but still weak; playing it now wastes a card that might be useful later and does not materially increase the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is the second-strongest card in my hand; leading it would reveal a slightly higher card prematurely and leave me with weaker follow-ups."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my best card and might only win if everyone else passes, which is unlikely; committing it now would strip me of any future high-card option without improving team control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 could beat the 3 with a higher single and then use their remaining card to finish.",
+      "Partner may be unable to win the trick, leaving opponents in control.",
+      "I have no trumps, so I cannot recover the lead once it is lost."
+    ],
+    "mitigation": "By playing the absolute lowest card, I minimize the value surrendered if opponents win and preserve my slightly higher clubs for later. I also make it as cheap as possible for partner to cover and take over the lead."
+  },
+  "confidence": 0.7
+}

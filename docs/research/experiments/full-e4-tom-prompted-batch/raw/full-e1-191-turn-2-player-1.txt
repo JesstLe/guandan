@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-191-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Take the lead away from the opponent who has only 2 cards left, reducing their chance to control the endgame and finish first."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and may hold higher hearts or trumps, so they could cover if the 4 is beaten, but their exact strength is hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "d0db0182-eb9e-4859-b399-e4a4d61782bb"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 with only 2 cards remaining, suggesting they are shedding a weak card to set up a final winning play; player 2 may support them.",
+    "confidence": 0.65,
+    "evidence": [
+      "d0db0182-eb9e-4859-b399-e4a4d61782bb"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest winning heart (4) to beat the table lead, gain the lead, and conserve the 9 and 10 for future tricks without overcommitting high cards against hidden opponent strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 potentially win the trick and continue leading while near finish, which is too risky for the team."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beats the 3 but spends a middle card; it does not greatly improve the chance of winning the trick if opponents have 10+ or trumps, and it weakens future options."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Gives the best immediate chance to win, but if an opponent has a heart J/Q/K/A or any trump the 10 is wasted; keeping it for a later lead or response is more valuable with only three cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may still beat the heart 4 with a higher heart or trump.",
+      "Player 0 may already hold a final winning card for the next trick."
+    ],
+    "mitigation": "Retaining the 9 and 10 provides two stronger singles to contest later tricks, and the partner may still cover if an opponent plays into the trick."
+  },
+  "confidence": 0.6,
+  "notes": "All hidden-card beliefs are probabilistic and grounded only in public hand counts and the observed lead event."
+}

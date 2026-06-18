@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-003-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.85,
+    "evidence": [
+      "3bf96ebc-a4bf-4049-9b24-01deafc42642"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "_opponent_may_cover_with_trump_or_high_card _opponent_near_finish_player_1_has_2_cards _lead_lowest_single_to_force_opponents_to_spend_value _preserve_6_for_later_control",
+    "confidence": 0.85,
+    "evidence": [
+      "3bf96ebc-a4bf-4049-9b24-01deafc42642"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Better because it preserves hand strength and is the standard opening-lead heuristic in Guandan.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Worse because it reduces future control and does not exploit the partner's position."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.85,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-234-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in the endgame with only two cards; the priority is to play out the remaining cards and avoid being stuck with a high card at the end."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and has not acted yet. Since this is the opening lead, partner likely holds ordinary cards and will follow suit if possible rather than overtake; partner cannot signal strength from an empty public history.",
+    "confidence": 0.5,
+    "evidence": [
+      "668edf5c-c658-4109-ad35-ada516a16b5a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards. Without any played cards, their hands are uniformly unknown; they may hold higher non-trump cards, trumps (rank 7), or bombs. They are likely to beat a low lead if they can.",
+    "confidence": 0.5,
+    "evidence": [
+      "668edf5c-c658-4109-ad35-ada516a16b5a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A maximizes the chance of winning this trick, allowing player 0 to retain the lead and play the weaker spade 2 next turn to finish the hand. A high-card-first sequence protects against opponents taking control with a higher single.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weaker and more likely to be beaten by opponents' higher singles or trumps, which would force player 0 to follow suit on a future lead and could strand the A or delay finishing."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the spade A with a trump (rank 7), joker, or higher bomb, taking the lead.",
+      "Partner may be unable to help if opponents win the trick."
+    ],
+    "mitigation": "Playing the A first is the strongest legal single available and gives the best chance to win two consecutive tricks. There is no safer lead with only these two cards."
+  },
+  "confidence": 0.8,
+  "notes": "Endgame race favors leading the higher single to retain initiative and clear the hand."
+}

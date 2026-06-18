@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-014-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left. The priority is to empty my hand, but I want to keep a high card (the Ace) to control a later trick if an opponent takes this one."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards and has made no public plays, so their hand composition is unknown. They may hold a high card or trump to cover me later, but I cannot rely on it.",
+    "confidence": 0.4,
+    "evidence": [
+      "ff1494f8-2404-4d96-9999-2024b3063356"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has three cards and no cards have been played. They likely hold cards that can beat a low 2, and may have trumps or jokers. They will try to win the lead and block me from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "ff1494f8-2404-4d96-9999-2024b3063356"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the low 2 preserves the Ace as a winning stopper. If an opponent beats the 2, I can use the Ace on a later trick to regain the lead and play my final card. This maximizes my chance of going out first in the endgame.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Playing the Ace first would win this trick, but then I would lead the 2 next. Any opponent with a higher non-trump or trump could beat the 2 and take control, leaving me with no high card to recover."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 2 and lead a high card that even the Ace cannot beat.",
+      "An opponent may have a trump or joker that beats the Ace when I try to use it later."
+    ],
+    "mitigation": "By keeping the Ace, I retain the strongest non-trump single card for this suit. Unless opponents have trump/joker, I can retake the lead and finish."
+  },
+  "confidence": 0.75,
+  "notes": "Decision grounded on public hand counts and the opening lead; no hidden cards are treated as known."
+}

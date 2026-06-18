@@ -1,0 +1,30 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-021-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "partnerInference": {
+      "belief": "My partner (player 2) has 3 cards and has not acted yet. They may hold a card that can beat the opponent's 3 of hearts, but since no trumps or high cards have been played, their ability to control the trick is uncertain. Partner may prefer that I spend a low card to take control now rather than commit a higher card later.",
+      "evidence": ["f8ff3124-9703-4804-9fb3-50f443141dbe"]
+    },
+    "opponentInference": {
+      "belief": "Player 0 (opponent) is near finish with only 2 cards remaining and led a very low 3 of hearts. This suggests they may be trying to conserve a higher final card or escape a weak lead. Player 0 likely does not hold strong trumps or bombs, otherwise they would probably have played them given their low card count. Players 0 and 3 may want to let player 0 win cheaply so player 0 can lead again.",
+      "evidence": ["f8ff3124-9703-4804-9fb3-50f443141dbe"]
+    },
+    "counterfactualComparison": [
+      {
+        "actionId": "pass",
+        "analysis": "Passing avoids spending any card, but it lets the trick continue. If my partner cannot or does not beat the 3, player 0 may win and lead again while still near finish, giving our team less control over the endgame. Passing is too passive when a cheap winning card is available."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "analysis": "Playing the 10 of hearts wins the trick but wastes my highest non-trump card. Since no trumps have appeared and the opponent's remaining hand is unknown, preserving the 10 for a future critical trick is more valuable than over-winning this early low lead."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "analysis": "Playing the 4 of hearts is the minimal winning response. It secures control of the lead for my team at the lowest possible cost, keeps my 9 and 10 in reserve, and prevents the opponent near finish from retaining the lead."
+      }
+    ],
+    "conclusion": "Taking control of the trick now is important because the leading opponent is near finish. The 4 of hearts is the cheapest winning card, so it best supports the team objective while conserving stronger cards for later uncertainty."
+  }
+}

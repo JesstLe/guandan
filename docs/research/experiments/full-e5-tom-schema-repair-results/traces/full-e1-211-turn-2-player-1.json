@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-211-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to two cards and just led a low heart, so the immediate team goal is to deny them this trick and stop them from reaching a one-card finishing position with the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has not yet acted publicly and holds three unknown cards. They may have a higher heart or a trump that could beat a single, but I cannot assume they do. Their likely intent is to support the team if they can, yet their ability is hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "f9bf4854-e2c5-4f74-b2da-71ab4a3319a2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent with only two cards remaining, led the 3 of hearts. This is consistent with trying to shed a weak card while retaining a stronger final card. If allowed to win, they will likely lead their last card and may finish the hand.",
+    "confidence": 0.75,
+    "evidence": [
+      "f9bf4854-e2c5-4f74-b2da-71ab4a3319a2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the cheapest legal card that beats the led 3 of hearts. Taking the lead now prevents player 0 from winning and advancing toward a finish, while preserving the 9 and 10 of hearts for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the trick to player 0 if partner cannot beat it. Because player 0 is near finish, giving them the lead is too risky."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts wins the trick but wastes mid-strength; the 4 of hearts already wins, so the extra strength provides no marginal benefit."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts also wins, but it is the strongest heart in hand and should be saved for a later trick where extra value matters."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 may be able to beat the 4 of hearts with a higher heart or trump.",
+      "Player 0 may still finish on a later turn if their remaining card is high."
+    ],
+    "mitigation": "Using the minimum winning card keeps stronger resources in hand for the next trick and avoids overcommitting when partners or opponents may still hold trumps."
+  },
+  "confidence": 0.78,
+  "notes": "Decision is grounded only on public events; card distributions for partner and opponents remain probabilistic."
+}

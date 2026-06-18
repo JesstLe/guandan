@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-232-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) is near finish with only 2 cards. As the opening leader with a weak diamond run, I should lead the lowest possible single to avoid forcing partner to spend high cards and to give them the best chance to win or contribute constructively."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 2 cards and is close to going out, which suggests they may have cards strong enough to beat a low diamond single, but their exact ranks are hidden from me.",
+    "confidence": 0.6,
+    "evidence": [
+      "703e675e-c965-42ba-882b-a2a988aa96f1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards with no public play history; they may possess cards that can beat a low diamond single, but I cannot assert any specific holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "703e675e-c965-42ba-882b-a2a988aa96f1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest legal single, maximizing the chance that partner can beat it when acting third while preserving my slightly higher diamonds for later tricks. This directly supports the protect_partner objective.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally higher than the 3 and still weak; it offers no strategic advantage and makes it slightly harder for partner to win the trick."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Wastes a middle card without improving my position; it reduces my future low-lead options and is more easily beaten by opponents."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Uses my highest diamond in a weak hand, is more likely to be beaten by opponents, and gives partner the least room to play a constructive card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Players 1 or 3 may have a card that beats the 3 of diamonds and win the trick before partner can act.",
+      "Partner may be unable to beat the lead if their remaining 2 cards are unsuited or lower than opponents' responses.",
+      "Leading a low single signals that my hand is weak, which opponents may exploit."
+    ],
+    "mitigation": "By selecting the lowest available card, I minimize the strength required for partner to contribute and keep my remaining cards as flexible as possible for future tricks."
+  },
+  "confidence": 0.75
+}

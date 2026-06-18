@@ -1,6 +1,8 @@
 import {
+  existsSync,
   readFileSync,
   mkdirSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -78,6 +80,7 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
   if (!audit.readyForIngest) blockers.push('Raw-output audit is not ready for ingest.')
 
   if (blockers.length > 0) {
+    removeStaleIngestArtifacts(options.outputDir)
     const result: PostProviderConditionResult = {
       schemaVersion: '0.1.0',
       status: 'not_ready_for_ingest',
@@ -116,6 +119,13 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
   }
   writeJson(reportPath, result)
   return result
+}
+
+function removeStaleIngestArtifacts(outputDir: string): void {
+  for (const relative of ['metrics.json', 'traces', 'results']) {
+    const path = join(outputDir, relative)
+    if (existsSync(path)) rmSync(path, { recursive: true, force: true })
+  }
 }
 
 function readRawOutputFileMap(batchJsonlPath: string): Record<string, string> {

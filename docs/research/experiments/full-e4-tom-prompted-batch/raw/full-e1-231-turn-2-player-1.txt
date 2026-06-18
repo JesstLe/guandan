@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-231-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is an opponent with only two cards left, so the priority is to stop them from winning this trick and getting another lead near a finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has three cards and may be able to overcall a low play later, but I cannot assume they have a card above the 3; their action will depend on their private hand.",
+    "confidence": 0.6,
+    "evidence": [
+      "0fa11394-1a08-41cd-bdf2-39b604d74303"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent 0 led a low heart 3 with only two cards remaining, signaling a near-finish dump. Opponent 2 likely has cards that can beat a 3 but may pass to let their teammate win the trick and lead again.",
+    "confidence": 0.75,
+    "evidence": [
+      "0fa11394-1a08-41cd-bdf2-39b604d74303"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the minimum heart that beats the 3 to deny opponent 0 the trick, suppress their near-finish push, and keep the 9 and 10 for later control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting opponent 0's 3 win the trick if opponents 2 and partner 3 also pass, giving opponent 0 another lead while near finish."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but spends a materially higher card when the 4 already defeats the lead."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the strongest follow but is an unnecessary resource expenditure on a low opponent lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 2 may overbeat the 4, transferring control to the opposing team.",
+      "Partner 3 may overbeat the 4, which is acceptable but changes who leads next.",
+      "I spend one card without a guaranteed win of the trick."
+    ],
+    "mitigation": "Using the 4 keeps the cost minimal and preserves the 9 and 10 for subsequent tricks where I can fight harder for control."
+  },
+  "confidence": 0.75
+}

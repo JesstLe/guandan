@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-061-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent 0 has only 2 cards remaining and led a low 3, suggesting they are trying to shed a weak singleton to finish. Winning this trick cheaply denies them continuation and protects our team's position."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards but has not yet acted on this trick, so their ability to beat a 3 is unknown. They may be able to support later, but I should not assume they can rescue the trick if I pass.",
+    "confidence": 0.5,
+    "evidence": [
+      "8de1da78-3704-46e8-ae19-2c4b43adb58c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent 0 led the 3 of hearts with only 2 cards left, signaling a likely weak singleton they want to unload. Opponent 2 has 3 cards and may be able to beat a low card or support opponent 0, so giving them a free chance to play is risky.",
+    "confidence": 0.6,
+    "evidence": [
+      "8de1da78-3704-46e8-ae19-2c4b43adb58c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 4 of hearts to beat the lead with minimal cost. This immediately stops opponent 0 from continuing and preserves the 9 and 10 for later tricks where they may be more valuable.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing would let opponent 0 keep initiative or allow opponent 2 to contest the trick. Since opponent 0 is near finishing, ceding control is too risky when I have a cheap beat."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is a stronger card than necessary. Using it now weakens my hand without improving the trick outcome compared with the 4."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is my highest card and overcommits resources. Saving it for a later critical trick is better than spending it to beat a 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 0 may still hold a higher card and retake the lead next trick.",
+      "Winning with the 4 gives me the lead but my remaining cards are not strong, so I may struggle to maintain control."
+    ],
+    "mitigation": "By keeping the 9 and 10, I retain options to compete on future single-card tricks and can look for opportunities to transfer control to my partner if they show strength."
+  },
+  "confidence": 0.75
+}

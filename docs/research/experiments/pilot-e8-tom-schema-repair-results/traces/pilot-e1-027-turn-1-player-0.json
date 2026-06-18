@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-027-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards, so the priority is to lead a low single that partner can win cheaply, letting them control the remainder of the hand and finish first."
+  },
+  "partnerBelief": {
+    "summary": "Partner has only 2 cards remaining, which suggests they may be close to going out. They could hold a high non-trump, a trump, or a small bomb that can beat a low diamond single, but their exact cards are hidden.",
+    "confidence": 0.55,
+    "evidence": [
+      "93928d66-4dd1-4185-a0ca-48f12070e8ca"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards with no public plays yet. They may possess trumps or higher non-trumps capable of overtaking a low diamond lead, but their exact holdings are unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "93928d66-4dd1-4185-a0ca-48f12070e8ca"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest legal single (diamond 3) minimizes the strength an opponent or partner needs to win the trick. It best supports a near-finish partner by not forcing them to spend a high card or bomb unless necessary.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly higher than diamond 3; makes it harder for partner to win with a weak card and provides no strategic advantage over the lower lead."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Higher still, increasing the chance an opponent or partner must commit a trump or strong card to take the lead."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Uses our best non-trump card but remains low enough that opponents can likely beat it; it gives up the highest card in our weak suit without improving our chance to win the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a trump or higher non-trump may win the lead and stall the partner's finish.",
+      "Partner may be unable to beat even a low diamond single, leaving us in a weaker position for the next trick."
+    ],
+    "mitigation": "By selecting the absolute lowest legal single, we keep our remaining cards as high as possible within this weak suit and give partner the easiest path to seize control."
+  },
+  "confidence": 0.65,
+  "notes": "No cards have been played, so all inferences about partner and opponent hands remain probabilistic and grounded solely in public hand counts and the new_game event."
+}

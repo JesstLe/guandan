@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-177-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoning": {
+    "gameContext": {
+      "phase": "lead",
+      "trumpRank": "7",
+      "teamObjective": "Help partner near finish while minimizing risk with a weak non-trump hand"
+    },
+    "partnerBeliefs": {
+      "summary": "Partner (player 2) has only 2 cards remaining, suggesting they are near finishing. They may have retained a high card or trump to escape, but their exact holdings are hidden and should be treated probabilistically.",
+      "evidence": ["f8930fa9-7ea7-483a-bc7e-22b4b7a26ded"]
+    },
+    "opponentBeliefs": {
+      "summary": "Opponents (players 1 and 3) each have 3 cards and have revealed nothing. Given the opening state, they likely hold cards that can beat my 3-6 of diamonds and will try to seize control or block my partner.",
+      "evidence": ["f8930fa9-7ea7-483a-bc7e-22b4b7a26ded"]
+    },
+    "candidateComparisons": [
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "evaluation": "Leading the lowest card minimizes risk. It gives partner the widest possible range of cards to beat it and discards my weakest card, preserving 4-6 for later tricks.",
+        "supportingBeliefs": [
+          "partner likely retains at least one card above 3",
+          "opponents can beat any low lead, so minimizing committed value is prudent"
+        ]
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "evaluation": "Leading the highest card in my hand still loses to any trump or card above 6, which opponents likely possess. It also wastes my best low card and gives partner a narrower window to win.",
+        "supportingBeliefs": [
+          "opponents likely hold cards above 6",
+          "partner with 2 cards may still beat 6, but less flexibly than 3"
+        ]
+      }
+    ],
+    "conclusion": "Lead the 3 of diamonds. It is the safest opening lead, maximizes the probability partner can take control, and aligns with supporting a partner who is near finish."
+  },
+  "evidence": ["f8930fa9-7ea7-483a-bc7e-22b4b7a26ded"]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-224-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two non-trump cards. The immediate objective is to empty the hand as quickly as possible while preserving enough strength to regain or keep the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays yet. They are likely to support a strong lead if possible, but no reliable inference about specific high cards, trumps, or bombs can be drawn from public events alone.",
+    "confidence": 0.3,
+    "evidence": [
+      "83be9ef5-bb1d-4e8f-b093-47bb7e56bd15"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have not played yet. They may hold trump 7s, red trumps, or bombs that could overtake a spade A, but such holdings are uncertain and only probabilistic given the unobserved deal.",
+    "confidence": 0.4,
+    "evidence": [
+      "83be9ef5-bb1d-4e8f-b093-47bb7e56bd15"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A single is stronger than leading the spade 2. If the A wins the trick, player 0 retains the lead and can exit the low 2 on the next turn. If an opponent overtakes, the partner still has a chance to regain the lead. Leading the 2 first would almost certainly lose the trick immediately, leaving player 0 with only the A and no guaranteed path to play it.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Playing the 2 first surrenders the lead and risks being unable to play the A. It would require the partner to win the trick to return the lead, which is uncertain with no public signals."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card, bomb, or trump to take the lead.",
+      "If the A loses, the partner may not be able to recover the lead, and player 0 could be stuck with the 2."
+    ],
+    "mitigation": "Playing the higher A maximizes the chance of winning the current trick outright. Keeping the 2 for a later lead after a won trick minimizes final-card risk."
+  },
+  "confidence": 0.75,
+  "notes": "Only one public event has occurred so far, so partner and opponent beliefs remain highly uncertain and grounded solely in hand counts and the start-of-game declaration."
+}

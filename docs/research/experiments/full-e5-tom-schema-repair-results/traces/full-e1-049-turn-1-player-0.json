@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-049-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two cards left while every opponent still has three, so the team objective is to play out my hand as quickly as possible and secure the first finish. Leading the highest card maximizes the chance of winning the current trick and retaining the lead."
+  },
+  "partnerBelief": {
+    "summary": "My partner also has three cards and no public plays have occurred, so I can only believe they will try to support the team if the lead reaches them. I cannot confidently infer specific holdings.",
+    "confidence": 0.3,
+    "evidence": [
+      "f4141b7c-8cae-472d-bd1d-ee30542ca11e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three cards and are incentivized to take the lead and slow my finish. They could hold jokers or other high cards, but a non-trump 2 is only beaten by a joker, so leading it restricts their winning replies.",
+    "confidence": 0.5,
+    "evidence": [
+      "f4141b7c-8cae-472d-bd1d-ee30542ca11e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "In Guandan, 2 outranks A. Leading the spade 2 gives the highest probability of winning this trick, allowing me to lead again and play the A next to finish my hand. Even if the 2 is beaten by a joker, I still keep the A as a strong defensive card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A is weaker; an opponent or partner could beat it with a 2 or joker, costing me tempo. If the A somehow won, I would then have to lead the 2 into an unknown table rather than using the 2 proactively."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a joker and beat the 2, seizing the lead.",
+      "If the lead is lost, my remaining A may not match an opponent's combination."
+    ],
+    "mitigation": "Leading the strongest normal rank limits beating cards to jokers and preserves the A as a high follow-up, keeping my exit path as open as the hidden information allows."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-162-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is down to 2 cards (public partner_near_finish tag), so the priority is to let them win or safely shed a card. Leading the lowest possible single gives them the widest range of cards that can beat it, without using up any of my own limited high cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has one or two cards left that could win a low single, or at least wants to get rid of a low card to finish. Their small hand count is consistent with being close to going out, but I cannot assert any specific hidden cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "0a30df2e-8e05-46f6-8a5d-1ddf5373e236"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards with unknown ranks and suits. They probably have cards that can beat a low non-trump diamond, and they will try to take the lead to block my partner from finishing, but no public information reveals their exact holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "0a30df2e-8e05-46f6-8a5d-1ddf5373e236"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 3 of diamonds, the lowest single available. It gives partner the best chance to beat the lead with any medium or high card, preserves the 4/5/6 for later, and avoids wasting my strongest card on a trick I am unlikely to win outright.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest card, but it is still a low non-trump. Leading it now wastes the only card that might have any end-game value and gives partner less room to beat or shed safely."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is stronger than the 3 but offers no real extra protection against opponents; it only reduces the small amount of ordering leverage I have among my remaining cards."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is intermediate, but the 3 is strictly lower and therefore strictly better for partner reach and resource preservation."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may beat the 3 with a higher card or trump and seize the lead.",
+      "Partner may not be able to win the trick, delaying their finish.",
+      "My own hand is weak, so regaining control may be difficult."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize resource loss and maximize the probability that partner can win or at least play a card safely, keeping us on track toward the team objective."
+  },
+  "confidence": 0.7
+}

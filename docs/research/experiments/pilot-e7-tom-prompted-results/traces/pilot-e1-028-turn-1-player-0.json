@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-028-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "At the opening lead with no table pressure, playing a low card keeps higher cards for later tricks while establishing a manageable lead that partner can support."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, team 0) holds 3 cards and has not yet signaled any strength. With no public plays, their hand is uniformly uncertain, so I assume an ordinary distribution and expect them to cover the trick when possible.",
+    "confidence": 0.5,
+    "evidence": [
+      "8b72f3e2-9dce-45e6-8dae-921d8020a7ab"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards left and is near finishing; player 3 has 3 cards. No cards have been played, so specific holdings are unknown, but their incentive is to win tricks and empty their hands quickly. Leading low avoids giving them a high-value trick or revealing my strength.",
+    "confidence": 0.6,
+    "evidence": [
+      "8b72f3e2-9dce-45e6-8dae-921d8020a7ab"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♣ is the safest opening move: it is the lowest card in hand, preserves 4♣-6♣ for future tricks, and forces opponents to reveal strength without committing my higher cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing the highest card now would waste a card that could win a later trick and leave only weaker cards for the remaining tricks."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is still a middling card; there is no immediate pressure requiring a higher lead, so saving it yields better endgame leverage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead and seize the initiative.",
+      "If partner cannot cover, opponent 1 (with 2 cards) could use the lead to finish."
+    ],
+    "mitigation": "By keeping 4♣-6♣ in hand, I retain follow-up cards to recapture the lead if the trick returns to me, and partner still has 3 cards to intervene."
+  },
+  "confidence": 0.8
+}

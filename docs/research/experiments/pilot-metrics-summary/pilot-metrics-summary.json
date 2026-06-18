@@ -62,6 +62,21 @@
       "notes": "Kimi Code CLI with verifier-provided legal candidates"
     },
     {
+      "agentId": "tom-prompted-llm",
+      "status": "metrics_available",
+      "totalDecisionPoints": 50,
+      "parsedTraces": 36,
+      "parseFailures": 14,
+      "hardFailures": 1,
+      "legalAction": "36 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "36 pass / 0 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "35 pass / 1 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 6 pass / 2 fail / 28 unknown; opponent 9 pass / 5 fail / 22 unknown",
+      "reasonActionConsistent": "36 pass / 0 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "16 pass / 2 fail / 18 unknown / 0 n/a",
+      "notes": "Kimi Code CLI with explicit theory-of-mind reasoning checklist"
+    },
+    {
       "agentId": "verifier-revision-llm",
       "status": "metrics_available",
       "totalDecisionPoints": 32,

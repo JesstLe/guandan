@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-053-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 has only 2 cards remaining, so the priority is to avoid giving them a cheap winning trick. By leading the strongest available club single, I maximize the chance of retaining the lead and force any opponent who wants to win to spend a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards left and has made no public plays. They could hold covering cards or be waiting for a favorable lead, but no specific hand composition can be inferred.",
+    "confidence": 0.3,
+    "evidence": [
+      "78176f36-83b4-4bb4-b20c-b05cf906e873"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is near finishing with 2 cards, so they likely want to win or cheaply exit. Opponent player 3 has 3 cards and may hold trumps or high cards to protect player 1. No specific cards are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "78176f36-83b4-4bb4-b20c-b05cf906e873"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Among the legal single-card leads, 6♣ is the highest non-trump club available. Leading it gives the best chance of winning the trick outright and retaining control, which is critical when an opponent is one trick away from going out.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The weakest lead; almost any club 4+ or any trump beats it, handing the opponent with 2 cards an easy path to win and possibly finish."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still too low to credibly contest the trick and similarly invites the near-finish opponent to take control cheaply."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Better than 3♣ or 4♣, but 6♣ is strictly stronger and no less likely to be beaten, so 5♣ is dominated here."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a 7 (trump rank) or higher club and immediately win the trick.",
+      "If control is lost, player 1 may play their final cards and go out before the team can respond.",
+      "Partner may be unable to cover if opponents have saved bombs or trumps."
+    ],
+    "mitigation": "Leading the maximum-rank card in the suit reduces the set of cards that can beat it without using trumps or bombs, making opponents pay a higher price to seize control."
+  },
+  "confidence": 0.6,
+  "notes": "Hand contains only low clubs; no bomb or trump options are available, so the best available defensive play is the highest club single."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-013-turn-1-player-0",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only weak non-trump clubs (3-6) and no obvious path to finish. Leading the lowest card lets my partner potentially cover with a stronger card and take control, which is the best chance for our team given the visible hand distribution."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 hidden cards. They could be strong or weak, but with a 4-card weak hand I should assume they might have playable strength and want a chance to lead. I cannot infer specific ranks/suits.",
+    "confidence": 0.5,
+    "evidence": [
+      "8d48a65d-d689-48db-a899-214f0256a02e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards left, suggesting they are near finishing and likely hold at least one playable high or trump card. Player 3 has 3 cards. Their exact cards are unknown, so I must avoid overcommitting my limited high cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "8d48a65d-d689-48db-a899-214f0256a02e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the smallest investment. It preserves the 6 as my best ordinary card, gives partner the first opportunity to take the lead, and avoids handing the opponent near finish my only slightly higher card for free.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally higher than the 3 and does not improve the lead; it wastes a slightly stronger card for no gain."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher than necessary and weakens the remaining hand without increasing the chance of retaining control."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Squanders my highest ordinary card and leaves me with 3-5, which are even less likely to win a future trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low lead may be beaten immediately by the opponent with 2 cards, who could then finish.",
+      "Partner may be unable to cover, leaving opponents in control.",
+      "Opponents may use a bomb to seize the lead."
+    ],
+    "mitigation": "Since all my cards are low and I have no trump or bomb, preserving the 6 maximizes my future flexibility and minimizes wasted strength; the 3 is the safest card to probe the table."
+  },
+  "confidence": 0.65
+}

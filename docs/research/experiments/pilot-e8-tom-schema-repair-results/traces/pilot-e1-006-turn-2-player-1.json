@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-006-turn-2-player-1",
+  "agentId": "tom-schema-repair",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards left and led a low heart single, suggesting they are trying to shed a weak card while staying close to going out. Seizing the lead now reduces their chance to control the trick and finish before our team."
+  },
+  "partnerBelief": {
+    "summary": "Partner player 3 has 3 cards and has not yet acted, so I cannot assert their holdings. They may be able to beat a heart single or may hold trumps, but they might also be weak in hearts. I will not assume partner can solve this trick.",
+    "confidence": 0.4,
+    "evidence": [
+      "94e57718-b665-4289-aa5d-3c123d213a1e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 is likely trying to offload a low heart to preserve stronger cards for a quick exit. Opponent player 2 still has 3 cards and could hold a higher heart or a trump, but no trumps or bombs have been played yet.",
+    "confidence": 0.6,
+    "evidence": [
+      "94e57718-b665-4289-aa5d-3c123d213a1e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest legal beating card, heart 4, to take the lead from the nearly-finished opponent while conserving the higher heart 9 and heart 10 for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves player 0 in control with only 2 cards remaining, giving them a high chance to finish or set a favorable lead for their team."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but spends a much stronger card unnecessarily; keeping it for a later trick where a higher single is needed is better."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest single in my hand and is overkill here; using it now would weaken my ability to win future single leads."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Another player may still beat my heart 4 with a higher heart or a trump.",
+      "Winning this trick gives me the lead, but my remaining hand is all hearts, which may be easy for opponents to counter."
+    ],
+    "mitigation": "By using the 4 instead of 9 or 10, I minimize the cost if I lose the trick and keep my stronger cards for later. Partner still has three cards and may be able to support if opponents respond."
+  },
+  "confidence": 0.75
+}

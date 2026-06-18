@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-237-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards, so the best team objective is to lead a low single that partner can beat, giving them the lead and a chance to finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner has only 2 cards, which likely includes at least one card strong enough to win a low single lead, or possibly a finishing combination. They probably want the lead to play their remaining card(s).",
+    "confidence": 0.55,
+    "evidence": [
+      "c0b892e0-acd2-4da0-b2cc-1f3c2081980a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to take the lead and block partner from finishing. They likely can beat a low single, but may be conserving high cards and trumps for later.",
+    "confidence": 0.5,
+    "evidence": [
+      "c0b892e0-acd2-4da0-b2cc-1f3c2081980a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single (diamond 3) gives partner the widest range of higher singles to win the trick, uses almost no hand value, and best supports a near-finish partner by letting them seize lead cheaply.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 consumes the highest card in my hand, leaves less room for partner to win with a medium-high card, and wastes my best non-trump single."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Leading the 5 is stronger than needed; partner may only be able to beat a 3 or 4 with their remaining cards, so it reduces the chance of transferring lead."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Leading the 4 is better than 5 or 6 but still higher than necessary; the 3 gives partner the most flexibility to win without overcommitting resources."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents can easily beat a diamond 3 with any higher card or trump, taking the lead away from partner.",
+      "Partner may not have a winning card and could be unable to capitalize on the low lead.",
+      "If partner loses the trick, my remaining low cards may also be weak against opponent pressure."
+    ],
+    "mitigation": "Leading the minimum card is the least committal play, preserves 4/5/6 for later rounds, and maximizes the probability that a near-finish partner can win cheaply and play their last card."
+  },
+  "confidence": 0.65
+}

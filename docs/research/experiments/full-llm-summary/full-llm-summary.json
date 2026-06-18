@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "0.1.0",
+  "rows": [
+    {
+      "agentId": "tom-prompted-llm-full",
+      "status": "missing_raw_outputs",
+      "totalDecisionPoints": 500,
+      "parsedTraces": 268,
+      "parseFailures": null,
+      "hardFailures": null,
+      "legalAction": "[NEED_EXPERIMENT]",
+      "publicHistoryConsistent": "[NEED_EXPERIMENT]",
+      "hiddenInfoDisciplined": "[NEED_EXPERIMENT]",
+      "partnerOpponentTagConsistency": "[NEED_EXPERIMENT]",
+      "reasonActionConsistent": "[NEED_EXPERIMENT]",
+      "teamObjectiveValid": "[NEED_EXPERIMENT]",
+      "notes": "500-decision Kimi Code CLI ToM-prompted full split"
+    },
+    {
+      "agentId": "tom-schema-repair-full",
+      "status": "metrics_available",
+      "totalDecisionPoints": 500,
+      "parsedTraces": 268,
+      "parseFailures": 232,
+      "hardFailures": 30,
+      "legalAction": "268 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "267 pass / 1 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "239 pass / 29 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 43 pass / 11 fail / 214 unknown; opponent 83 pass / 24 fail / 161 unknown",
+      "reasonActionConsistent": "267 pass / 1 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "142 pass / 18 fail / 108 unknown / 0 n/a",
+      "notes": "deterministic schema repair over available full-split ToM raw outputs"
+    }
+  ]
+}

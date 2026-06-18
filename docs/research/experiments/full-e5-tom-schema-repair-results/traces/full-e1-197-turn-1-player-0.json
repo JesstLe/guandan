@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-197-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "With partner near finish (2 cards) and my hand weak, the immediate objective is to support partner by minimizing the value of my lead and preserving what little leverage I have. Leading the lowest card best serves this objective under uncertainty."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has only 2 cards, the lowest count at the table, suggesting they are close to going out. With no public history beyond the new_game event, the partner has not signaled anything specific, but their low hand count means they likely want low-value cards to be led so they can win cheap tricks and exit, or want support if they lead. Since I am leading and my hand is very weak (3-6 of diamonds, all non-trump), the best support I can give is to play the lowest possible card to avoid helping opponents and to give partner a chance to take the trick with a marginal card.",
+    "confidence": 0.6,
+    "evidence": [
+      "1103c64f-bcf2-4e10-ae57-be2c0663c13d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) have 3 cards each, more than partner. They will try to win this trick cheaply or set up a situation where they can control the lead. Since my cards are all low non-trump, any opponent with a trump (rank 7 or red joker/black joker) or even a higher off-suit diamond can win the trick. Opponents likely hope I lead a high card they can capture or that I burn a valuable card. Leading low minimizes the value I give away and forces opponents to spend higher cards if they want the trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "1103c64f-bcf2-4e10-ae57-be2c0663c13d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the 3 of diamonds, the lowest non-trump single, to minimize loss, support a partner who may be able to win cheaply, and avoid giving opponents a valuable trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Playing the 6 of diamonds is the highest non-trump in my hand. It is still very weak against likely opponent trumps or higher cards, and it gives away the most card value without improving control. If an opponent wins, they benefit more; if partner wins, a 6 is harder to win with than a lower card. Not best."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Intermediate option. Better than 6 but worse than 3 because it still gives more value than necessary and is no more likely to win against opponents."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Higher than necessary. Same drawbacks as 6 but slightly less severe."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}
