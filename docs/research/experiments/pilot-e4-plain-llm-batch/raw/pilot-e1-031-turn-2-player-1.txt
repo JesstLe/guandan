@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-031-turn-2-player-1",
+  "chosenActionId": "play-single-heart-4-copy1",
+  "reasoningTrace": "Player 0 (opponent) led a single 3♥ and has only 2 cards remaining, so passing risks letting them win the trick, lead again, and finish first. All three of my hearts (4♥, 9♥, 10♥) legally beat the lead as higher cards of the same suit. I will play the minimum winning card, 4♥, to take control of the trick while conserving 9♥ and 10♥ for future plays."
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-007-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards left and is near finishing the hand. With a weak hand of low non-trump diamonds, I want to lead the smallest possible card so partner has the best chance to beat it, seize the lead, and finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner is close to going out but I have no direct knowledge of their cards. They may be able to beat a low diamond 3.",
+    "confidence": 0.4,
+    "evidence": [
+      "Partner hand count is 2 (tagged partner_near_finish).",
+      "No cards have been played yet, so partner's strength is unknown."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards. They collectively hold 6 unseen cards and are likely to have at least one card that can beat a diamond 3.",
+    "confidence": 0.5,
+    "evidence": [
+      "Opponents hold 6 unseen cards across players 1 and 3.",
+      "A diamond 3 is a very low non-trump card, so many unseen cards would beat it."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 is the lowest legal single. It minimizes the value I commit, gives partner the easiest card to beat, and preserves the slightly higher 4, 5, and 6 for later tricks if I survive.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is still low, but it is harder for partner to beat than a 3 and wastes a marginally stronger card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more likely to be taken by an opponent and does not improve the chance of helping partner finish."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest card and the hardest for partner to beat; leading it squanders the most resource without a clear upside."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump or trump card and take the lead.",
+      "Partner may not be able to beat a diamond 3, causing us to lose initiative."
+    ],
+    "mitigation": "Playing the absolute lowest card maximizes the chance partner can win the trick while keeping my remaining cards as high as possible for any future opportunity."
+  },
+  "confidence": 0.7
+}

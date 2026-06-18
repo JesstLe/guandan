@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-008-turn-1-player-0",
+  "chosenActionId": "play-single-club-3-copy1",
+  "reasoning": "I am leading the first trick with only low off-suit clubs and no trumps. Playing the lowest card (club 3) preserves my slightly higher clubs for later tricks and avoids giving opponents an easy high-card capture. Since all legal actions are singles, leading small is the standard opening approach."
+}

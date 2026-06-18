@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-005-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "On the opening lead with only low non-trump cards, playing the lowest single makes it as easy as possible for my partner to win the trick if they hold a higher card, without committing my strongest card."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 unknown cards; they may have higher non-trump cards or trumps, but no specific information is available.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played yet.",
+      "Partner hand count is 3."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 9 unknown cards and may contain trumps or higher non-trump cards, but no specific cards are known.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played yet.",
+      "Opponents hold 9 cards total."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the lowest card in my hand, so leading it keeps my slightly higher cards (4, 5, 6) for later tricks while giving partner the best chance to overtake with any higher card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still a very low card and would not materially improve my chance to win the trick, while removing a slightly higher card from my hand."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is my second-highest card; playing it now reduces my ability to beat lower leads later and does not add meaningful winning potential."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card; leading it risks losing my best low card to an opponent's trump or higher card without enough upside in an opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher non-trump and win the trick.",
+      "Partner may not be able to overtake, leaving opponents in control."
+    ],
+    "mitigation": "Since my hand has no trump and only low cards, the 3 lead minimizes information and resource loss. I retain 4, 5, 6 to respond to future leads or to play under partner control."
+  },
+  "confidence": 0.55,
+  "notes": "Opening lead with a very weak hand; no strong winning option exists, so the safest transfer-oriented play is chosen."
+}

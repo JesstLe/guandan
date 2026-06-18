@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-006-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is the leading opponent with only 2 cards left (public opponent_near_finish tag). By playing a legal beat I take the lead away from the near-finish opponent and deny them an easy path to exit."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards remaining and no public signal suggests they are near finishing; they may be able to support later if needed.",
+    "confidence": 0.6,
+    "evidence": [
+      "2df4ad1a-0ce6-4469-b605-5c520e7aa93c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 appears near finishing with only 2 cards left and has just led a low heart single; they may be trying to shed a small card or set up a quick exit.",
+    "confidence": 0.75,
+    "evidence": [
+      "2df4ad1a-0ce6-4469-b605-5c520e7aa93c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Player 0 led a low heart 3 and is down to 2 cards, so I should beat it with my lowest heart 4 to take the lead, suppress the near-finish opponent, and keep my higher hearts (9, 10) for later control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing would let the near-finish opponent retain the lead and likely finish soon; I have a cheap legal beat, so I contest the trick."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 also wins the trick but is a stronger card than necessary; the 4 already beats the lead and preserves middle strength."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 wins as well, but it is my highest heart and I want to save it for a future critical trick rather than spend it now."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Beating with the 4 still leaves player 0 with 2 cards; they might win back the lead with a higher heart or a trump.",
+      "If my partner cannot support, my remaining 9 and 10 may not be enough to stop a fast opponent finish."
+    ],
+    "mitigation": "By winning this trick cheaply I gain the next lead and can choose a card that forces the opponent to spend a higher resource before they can exit."
+  },
+  "confidence": 0.82
+}

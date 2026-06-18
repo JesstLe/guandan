@@ -1,0 +1,5 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-017-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1"
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-043-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "minimize_loss",
+    "explanation": "My hand contains only low non-trump clubs (3-6), and an opponent is down to 2 cards. I cannot realistically expect to win the lead, so I dispose of my weakest card while limiting the value I surrender."
+  },
+  "partnerBelief": {
+    "summary": "No direct evidence about partner's hand; partner may hold some higher cards since my hand is weak, but this is speculative.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played in public history",
+      "My own hand is weak, suggesting partner may hold stronger cards by distribution"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponent with 2 cards likely holds cards strong enough to beat any of my low singles, but I cannot assert specific ranks or suits.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts shows an opponent with only 2 cards remaining",
+      "scenarioTags includes opponent_near_finish"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♣ is the smallest card and follows the principle of disposing of low cards first when holding a weak hand. It minimizes the value surrendered if an opponent takes control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Playing the 4♣ leaves a lower card stuck in hand and gives away slightly more value on a trick I am unlikely to win."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is higher than necessary; retaining it preserves a slightly stronger card for later and avoids exposing extra value now."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6♣ is my highest card; leading it wastes the most strength and leaves me with weaker follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The opponent with 2 cards may win the trick immediately and finish their hand",
+      "My partner may not be able to cover if the trick comes back around"
+    ],
+    "mitigation": "By leading the minimum card, I keep my slightly higher cards (4-6) for future turns and do not expose more value than necessary."
+  },
+  "confidence": 0.75
+}

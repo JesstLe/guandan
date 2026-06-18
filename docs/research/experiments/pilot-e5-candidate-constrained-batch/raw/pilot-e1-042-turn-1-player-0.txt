@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-042-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards (near finish), so I want to lead a low single that partner can potentially win, giving them the lead and a chance to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 2 cards and may be close to finishing, but I cannot assert their exact ranks or suits.",
+    "confidence": 0.5,
+    "evidence": [
+      "b89b769a-b84f-4971-b170-06f0963a702c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 and 2 cards respectively; their exact compositions are unknown, but they may hold cards higher than mine or trump cards.",
+    "confidence": 0.4,
+    "evidence": [
+      "b89b769a-b84f-4971-b170-06f0963a702c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3 of diamonds) minimizes resource use, gives partner the best chance to win the trick and take the lead, and avoids wasting the slightly higher cards in my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly higher than the 3, but still very low and unlikely to win; playing it now wastes a card that is marginally stronger."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A middle-low card that is unlikely to hold the trick; keeping it for later is better than leading it now."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The highest card in my hand, but still non-trump and low; leading it risks losing my best card without a high chance of winning the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low 3 with a higher card or trump and take the lead.",
+      "Partner may be unable to win the trick if their cards are even lower than the 3."
+    ],
+    "mitigation": "By leading the minimum card, I preserve the rest of my weak hand and do not commit resources; if the trick is lost, the loss is minimal."
+  },
+  "confidence": 0.75
+}

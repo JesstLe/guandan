@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-014-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two cards left and the lead. My priority is to play both cards and go out before opponents, securing a first-place finish for my team."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 3 cards, but no cards have been played, so their exact distribution and strength are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "cb702647-3462-485e-8cf2-d6096c727327"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold 3 cards each. Because no cards have been played, their ability to beat a low single or interrupt with trumps/bombs is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "cb702647-3462-485e-8cf2-d6096c727327"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the weaker 2 of spades preserves the Ace as a stronger card for a potential later lead. If opponents pass on the 2, I regain the lead and can play the Ace to go out.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace risks an opponent beating it with a trump or bomb, leaving me with only the weak 2 and possibly no way to regain control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single on the 2 and take the lead.",
+      "An opponent may have a trump or bomb that interrupts my plan."
+    ],
+    "mitigation": "By leading low first, I keep my strongest remaining card to try to win back the lead if necessary."
+  },
+  "confidence": 0.85
+}

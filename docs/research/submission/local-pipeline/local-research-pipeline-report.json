@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T00:49:22.943Z",
+  "generatedAt": "2026-06-18T02:48:49.668Z",
   "status": "completed",
   "steps": [
     {
@@ -30,7 +30,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.md\",\n  \"status\": \"missing_raw_outputs\"\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-revision-comparison/revision-comparison.md\",\n  \"status\": \"metrics_available\"\n}",
       "stderr": ""
     },
     {
@@ -73,7 +73,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 2825,\n  \"readyForSubmission\": false,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 8,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
+      "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 2983,\n  \"readyForSubmission\": true,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 0,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
       "stderr": ""
     },
     {
@@ -90,7 +90,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.json\",\n  \"markdownPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.md\",\n  \"markerScope\": \"submission_relevant_files\",\n  \"counts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 25,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  },\n  \"itemCount\": 25\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.json\",\n  \"markdownPath\": \"docs/research/submission/marker-inventory/submission-marker-inventory.md\",\n  \"markerScope\": \"submission_relevant_files\",\n  \"counts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 0,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  },\n  \"itemCount\": 0\n}",
       "stderr": ""
     },
     {
@@ -107,7 +107,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.json\",\n  \"markdownPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.md\",\n  \"totalItems\": 8,\n  \"byStatus\": {\n    \"missing_evidence\": 8,\n    \"evidence_available_marker_still_present\": 0\n  },\n  \"byEvidenceFamily\": {\n    \"first_pass_llm\": 7,\n    \"verifier_revision\": 6,\n    \"full_dataset\": 0,\n    \"ablation\": 2,\n    \"case_study\": 2,\n    \"generalization\": 0\n  }\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.json\",\n  \"markdownPath\": \"docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.md\",\n  \"totalItems\": 0,\n  \"byStatus\": {\n    \"missing_evidence\": 0,\n    \"evidence_available_marker_still_present\": 0\n  },\n  \"byEvidenceFamily\": {\n    \"first_pass_llm\": 0,\n    \"verifier_revision\": 0,\n    \"full_dataset\": 0,\n    \"ablation\": 0,\n    \"case_study\": 0,\n    \"generalization\": 0\n  }\n}",
       "stderr": ""
     },
     {
@@ -124,7 +124,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/gate-report/submission-gate-report.json\",\n  \"markdownPath\": \"docs/research/submission/gate-report/submission-gate-report.md\",\n  \"overallStatus\": \"not_ready\",\n  \"blockerCount\": 5\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/gate-report/submission-gate-report.json\",\n  \"markdownPath\": \"docs/research/submission/gate-report/submission-gate-report.md\",\n  \"overallStatus\": \"ready\",\n  \"blockerCount\": 0\n}",
       "stderr": ""
     },
     {
@@ -141,7 +141,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"waiting_for_provider_results\",\n  \"externalBlockers\": 4,\n  \"localBlockers\": 1\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"ready_for_submission\",\n  \"externalBlockers\": 0,\n  \"localBlockers\": 0\n}",
       "stderr": ""
     },
     {
@@ -156,7 +156,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 3,\n  \"issueCount\": 3\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 3,\n  \"issueCount\": 1\n}",
       "stderr": ""
     },
     {
@@ -190,7 +190,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 43,\n  \"missing\": 3\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 43,\n  \"missing\": 0\n}",
       "stderr": ""
     }
   ]

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "promptPacketDir": "docs/research/experiments/pilot-e5-candidate-constrained-prompts/packets",
+  "rawOutputDir": "docs/research/experiments/pilot-e5-candidate-constrained-batch/raw",
+  "expectedCount": 50,
+  "presentCount": 50,
+  "emptyCount": 0,
+  "missingCount": 0,
+  "unexpectedCount": 0,
+  "readyForIngest": true,
+  "missingFiles": [],
+  "emptyFiles": [],
+  "unexpectedFiles": []
+}

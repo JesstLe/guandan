@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "promptPacketDir": "docs/research/experiments/pilot-e6-verifier-revision-prompts/packets",
+  "rawOutputDir": "docs/research/experiments/pilot-e6-verifier-revision-batch/raw",
+  "expectedCount": 32,
+  "presentCount": 32,
+  "emptyCount": 0,
+  "missingCount": 0,
+  "unexpectedCount": 0,
+  "readyForIngest": true,
+  "missingFiles": [],
+  "emptyFiles": [],
+  "unexpectedFiles": []
+}

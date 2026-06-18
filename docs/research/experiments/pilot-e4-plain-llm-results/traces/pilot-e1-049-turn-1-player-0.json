@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-049-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only two cards remaining, so the immediate objective is to play out the hand as quickly as possible while preserving enough control to avoid being stuck with a card at the end."
+  },
+  "partnerBelief": {
+    "summary": "Partner is equally uninformed at the start of the hand; no signal has been exchanged. They likely hold some cards that can support if needed, but I cannot infer specifics.",
+    "confidence": 0.5,
+    "evidence": [
+      "No public cards have been played yet",
+      "Hand counts show only relative lengths, not ranks or suits"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents are also unseen. They may hold higher singles such as trump-rank cards or wildcards, but without evidence I must assume A♠ is a strong lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "No publicHistory beyond new_game",
+      "No inferences provided"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades is the stronger single. It maximizes the chance of winning this trick so player 0 regains the lead and can immediately play the remaining 2♠ to finish the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the weaker 2♠ risks losing the trick immediately. If opponents play a higher single, player 0 loses the lead and may not get a clean chance to play the A♠, depending on what combinations opponents lead next."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump-rank 7, joker, or wildcard that beats A♠",
+      "If A♠ is beaten, the 2♠ could be stranded if opponents lead non-single combinations"
+    ],
+    "mitigation": "By leading A♠ first, player 0 keeps initiative. Even if A♠ is beaten, the 2♠ can still be played on a future single lead, and the hand will likely empty soon given the low card counts."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead in a very short endgame favors aggressive use of the high card to force a finish."
+}

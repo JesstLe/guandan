@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-010-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "This is the opening lead with no table lead, so I should play my lowest card to start the trick cheaply while preserving the 4, 5, and 6 for future control."
+  },
+  "partnerBelief": {
+    "summary": "Partner's hand is completely unknown at the start of the game; they could hold any remaining cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "2cd7c100-0e6e-40bd-b0ff-5feb6f57e7b2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents' hands are completely unknown at the start of the game; they could hold any remaining cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "2cd7c100-0e6e-40bd-b0ff-5feb6f57e7b2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades removes the weakest card first and keeps the 4, 5, and 6 for later tricks where they have more value.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Playing the 4 wastes a card that could beat later low leads and leaves the weaker 3 stuck in hand."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is stronger than necessary for an opening lead and is better saved for a later trick."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card and should be reserved to regain the lead or contest a later trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and immediately win the trick."
+    ],
+    "mitigation": "Retaining the 4, 5, and 6 preserves stronger cards for subsequent tricks; partner may also cover if able."
+  },
+  "confidence": 0.7
+}

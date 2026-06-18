@@ -72,11 +72,11 @@ const requiredLLMConditions = [
 const requiredFirstPassProvenance: Array<{ condition: string; path: string }> = [
   {
     condition: 'plain-llm',
-    path: 'experiments/pilot-e4-plain-llm-batch/provenance.json',
+    path: 'experiments/pilot-e4-plain-llm-results/provenance.json',
   },
   {
     condition: 'candidate-constrained-llm',
-    path: 'experiments/pilot-e5-candidate-constrained-batch/provenance.json',
+    path: 'experiments/pilot-e5-candidate-constrained-results/provenance.json',
   },
 ]
 

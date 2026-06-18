@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-029-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while opponents hold three each, the priority is to expend both cards as quickly as possible; leading the stronger card first maximizes the chance of winning the trick and retaining the lead for the final card."
+  },
+  "partnerBelief": {
+    "summary": "Partner's exact cards are unknown; no public history beyond the new-game event provides evidence about their holdings.",
+    "confidence": 0,
+    "evidence": [
+      "No cards have been played or exposed.",
+      "No bids or communication have occurred."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold cards that can beat a low spade 2, but no specific cards are known.",
+    "confidence": 0.1,
+    "evidence": [
+      "Opponents each hold three unknown cards.",
+      "Rank 2 is the weakest natural card, so any non-2 non-trump card of the same or other suit likely beats it."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades is the strongest available move. If it wins the trick, I keep the lead and can play the 2 next to exit my hand. If it loses, the outcome is similar to leading the 2, but the Ace has a higher chance of winning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 is the weakest natural card and will almost certainly be beaten by an opponent, surrendering the lead and giving opponents a chance to reduce their hands before I can play my Ace."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump or higher non-trump card that beats the Ace, causing me to lose the lead.",
+      "Even if the Ace wins, an opponent may still win the next trick before I can play my final card."
+    ],
+    "mitigation": "Leading the Ace first is the best available mitigation because it maximizes the chance of retaining control and playing the final card on the following trick."
+  },
+  "confidence": 0.85,
+  "notes": "No hidden cards are asserted as facts; the choice follows standard endgame race logic of leading high to retain the lead."
+}

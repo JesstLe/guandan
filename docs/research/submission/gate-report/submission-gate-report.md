@@ -1,6 +1,6 @@
 # Submission Gate Report
 
-Overall status: `not_ready`
+Overall status: `ready`
 
 ## Marker Counts
 
@@ -8,7 +8,7 @@ Overall status: `not_ready`
 | --- | ---: |
 | NEED_SOURCE | 0 |
 | UNCERTAIN | 0 |
-| NEED_EXPERIMENT | 8 |
+| NEED_EXPERIMENT | 0 |
 | DO_NOT_SUBMIT | 0 |
 | AUTHOR_DECISION | 0 |
 
@@ -18,17 +18,13 @@ Overall status: `not_ready`
 | --- | --- | --- |
 | Gate 1: Question Quality | pass | 0 |
 | Gate 2: Related Work Integrity | pass | 0 |
-| Gate 3: Experiment Sufficiency | fail | 4 |
-| Gate 4: Writing Readiness | fail | 1 |
+| Gate 3: Experiment Sufficiency | pass | 0 |
+| Gate 4: Writing Readiness | pass | 0 |
 | Gate 5: Submission Readiness | pass | 0 |
 
 ## Immediate Blockers
 
-- LLM condition plain-llm has status missing_raw_outputs.
-- LLM condition candidate-constrained-llm has status missing_raw_outputs.
-- LLM condition verifier-revision-llm has status missing_raw_outputs.
-- Verifier-revision comparison status is missing_raw_outputs.
-- Submission-relevant files still have 8 NEED_EXPERIMENT markers.
+None.
 
 ## Evidence
 
@@ -46,7 +42,7 @@ Overall status: `not_ready`
 ### Gate 3: Experiment Sufficiency
 
 - Pilot metrics summary has 5 rows.
-- Verifier-revision comparison status is missing_raw_outputs.
+- Verifier-revision comparison status is metrics_available.
 
 ### Gate 4: Writing Readiness
 
@@ -60,6 +56,6 @@ Overall status: `not_ready`
 
 ### Gate 5: Submission Readiness
 
-- experiments/pilot-e4-plain-llm-batch/provenance.json pending because plain-llm status is missing_raw_outputs.
-- experiments/pilot-e5-candidate-constrained-batch/provenance.json pending because candidate-constrained-llm status is missing_raw_outputs.
+- experiments/pilot-e4-plain-llm-results/provenance.json exists.
+- experiments/pilot-e5-candidate-constrained-results/provenance.json exists.
 - AI-use disclosure draft exists.

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-035-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "play_to_board",
+    "explanation": "As the opening leader with a weak hand, I want to play a low card to start the trick cheaply while keeping my stronger cards for later control."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; partner is equally likely to hold any remaining cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "3e135e63-1f98-4d7e-8100-d62338ca573e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No specific information about opponent holdings; all three-card opponent hands are possible.",
+    "confidence": 0.1,
+    "evidence": [
+      "3e135e63-1f98-4d7e-8100-d62338ca573e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3♠ is the lowest card in hand. Leading it minimizes resource expenditure and keeps 4♠, 5♠, and 6♠ available for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Higher than necessary; expends a stronger card when the 3 is sufficient to lead."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Wastes mid-strength; better reserved for later tricks or to beat opponent plays."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The strongest single held; should be kept for winning a later trick rather than opening."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and win the trick.",
+      "Partner may be unable to assist because no information is available."
+    ],
+    "mitigation": "The cost of losing the trick is minimal since the lowest card was played; remaining cards still provide chances to regain control."
+  },
+  "confidence": 0.85
+}

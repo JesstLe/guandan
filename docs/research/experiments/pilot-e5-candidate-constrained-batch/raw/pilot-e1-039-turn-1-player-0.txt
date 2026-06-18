@@ -1,0 +1,1 @@
+{"agentId": "candidate-constrained-llm", "decisionId": "pilot-e1-039-turn-1-player-0", "selectedActionId": "play-single-spade-A-copy2", "reasoning": "Leading the Ace maximizes the chance to win the opening trick, keep the lead, and quickly exit the remaining card in this endgame race."}

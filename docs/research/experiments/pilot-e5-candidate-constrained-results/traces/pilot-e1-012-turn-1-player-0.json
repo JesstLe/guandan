@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-012-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards left, suggesting they may finish soon. Leading the lowest card invites them to take the trick with a modest card and reach finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a compact hand and may be close to going out, but specific high cards are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts[2] = 2, tagged as partner_near_finish",
+      "no public cards have been played yet"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold the majority of unseen cards; their exact strength is unknown at the opening lead.",
+    "confidence": 0.3,
+    "evidence": [
+      "playedCardSummary shows zero played cards",
+      "opponents have 3 and 3 cards respectively"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds keeps my stronger cards (4-5-6) for later, gives partner the best chance to win or pass cheaply, and avoids revealing high-card strength this early.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly stronger but still weakens the ability to play a low card later and does not materially help partner."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Medium-high card is more likely to win the trick myself, leaving partner unable to lead and potentially stranded."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Uses my strongest non-trump card on an opening lead where opponents are likely to have higher cards or trumps, wasting a useful later card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to beat a low 3 if their remaining cards are also low",
+      "An opponent may take the trick with a higher card or trump"
+    ],
+    "mitigation": "By leading the lowest possible card I minimize resource expenditure and retain 4-5-6 for subsequent tricks or to regain the lead."
+  },
+  "confidence": 0.75,
+  "notes": "The verifier supplied only single-card plays; among them, the lowest card aligns with partner-support strategy on an opening lead."
+}

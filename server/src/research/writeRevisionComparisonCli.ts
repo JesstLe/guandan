@@ -33,8 +33,8 @@ function parseArgs(argv: string[]): Args {
   const parsed: Args = {
     firstPassAgentId: 'candidate-constrained-llm',
     revisionAgentId: 'verifier-revision-llm',
-    firstPassAudit: 'docs/research/experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json',
-    revisionAudit: 'docs/research/experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json',
+    firstPassMetrics: 'docs/research/experiments/pilot-e5-candidate-constrained-results/metrics.json',
+    revisionMetrics: 'docs/research/experiments/pilot-e6-verifier-revision-results/metrics.json',
     out: 'docs/research/experiments/pilot-revision-comparison',
   }
 

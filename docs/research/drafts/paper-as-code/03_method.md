@@ -43,7 +43,7 @@ Hard failures are submission-critical because they indicate that a trace cannot 
 
 The verifier-in-the-loop scaffold uses verification as feedback before finalizing an action. The agent first produces a structured reasoning trace. The verifier returns hard failures and soft warnings. The agent then revises its trace and selected action under the constraint that hard failures must be resolved. The final trace is evaluated against the same verifier labels, allowing a controlled comparison between initial and revised reasoning.
 
-We aggregate verifier labels into reasoning reliability metrics and compare them with team-decision metrics. Reasoning reliability includes legality rate, public-history consistency, hidden-information discipline, and reasoning-action consistency. Team-decision metrics include partner support, opponent suppression, bomb efficiency, pass regret, and team score proxies. [NEED_EXPERIMENT] The goal is not to certify strategic optimality but to measure whether verifier feedback reduces identifiable reasoning failures.
+We aggregate verifier labels into reasoning reliability metrics. The current pilot reports legality, public-history consistency, hidden-information discipline, partner/opponent consistency, reasoning-action consistency, team-objective validity, parse failures, and hard verifier failures. These metrics do not certify strategic optimality or full-game team performance; they measure whether verifier feedback reduces identifiable reasoning failures in structured decision-point traces.
 
 ## Module Table
 

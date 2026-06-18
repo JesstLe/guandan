@@ -12,7 +12,7 @@ Source:
 `notes/literature_matrix.csv`; `notes/gap_map.md`.
 
 Experiment:
-[NEED_EXPERIMENT] Compare outcome metrics and verifier metrics across agent conditions.
+Pilot verifier metrics compare deterministic baselines, plain LLM prompting, candidate-constrained prompting, and verifier-revision prompting on 50 controlled decision points. The current pilot evaluates reasoning reliability rather than full-game outcome metrics.
 
 Risk:
 If related work already includes equivalent rule-grounded verifier labels for structured LLM traces in dynamic legal-action mixed-motive games, the novelty weakens.
@@ -66,13 +66,13 @@ Claim:
 Verifier feedback can reduce reasoning-action mismatch and invalid reasoning compared with plain and candidate-constrained LLM agents.
 
 Evidence:
-Planned experiment conditions C1-C5.
+Pilot LLM experiments with Kimi Code CLI show that verifier revision reduces hard verifier failures on the parsed candidate-trace subset: candidate-constrained prompting has 35 hard failures over 50 decision points, while verifier revision has 10 hard failures over the 32 candidate traces that parsed and were eligible for revision.
 
 Source:
-`experiments/README.md`; `2026-06-17-experiment-plan.md`.
+`experiments/pilot-metrics-summary/pilot-metrics-summary.json`; `experiments/pilot-revision-comparison/revision-comparison.json`; `tables/table-1-reasoning-reliability.md`; `tables/table-2-verifier-revision-effect.md`.
 
 Experiment:
-Before/after verifier-in-the-loop evaluation. [NEED_EXPERIMENT]
+Before/after verifier-in-the-loop evaluation on parsed candidate traces.
 
 Risk:
 Verifier feedback may only improve formatting or legality, not strategic reasoning.
@@ -86,13 +86,13 @@ Claim:
 LLM agents exhibit distinct reasoning failures in this setting, including illegal-action hallucination, hidden-information hallucination, partner-intent mismatch, opponent-threat mismatch, and reasoning-action inconsistency.
 
 Evidence:
-Taxonomy defined in research plan and experiment plan.
+The verifier labels expose parse failures, public-history inconsistencies, hidden-information failures, partner/opponent consistency warnings, reasoning-action mismatch, and team-objective failures in the pilot LLM conditions.
 
 Source:
-`2026-06-17-research-proposal.md`; `2026-06-17-experiment-plan.md`.
+`2026-06-17-research-proposal.md`; `2026-06-17-experiment-plan.md`; `experiments/pilot-metrics-summary/pilot-metrics-summary.json`; `experiments/pilot-e4-plain-llm-results/metrics.json`; `experiments/pilot-e5-candidate-constrained-results/metrics.json`; `experiments/pilot-e6-verifier-revision-results/metrics.json`.
 
 Experiment:
-Manual and verifier-labeled failure analysis. [NEED_EXPERIMENT]
+Verifier-labeled pilot failure analysis. Manual qualitative case-study writing remains future work.
 
 Risk:
 Taxonomy may overlap with existing M3-BENCH process labels.

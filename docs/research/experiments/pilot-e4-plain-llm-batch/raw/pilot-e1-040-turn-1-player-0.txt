@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-040-turn-1-player-0",
+  "reasoningTrace": "Opening lead with no table card to beat. My hand is four sequential non-trump spades (3-4-5-6) with trump rank 7. Leading the lowest card preserves my stronger cards for later and avoids exposing a high card unnecessarily. Among the legal single-card leads, play-single-spade-3-copy1 is the safest, lowest-rank opening.",
+  "selectedActionId": "play-single-spade-3-copy1"
+}

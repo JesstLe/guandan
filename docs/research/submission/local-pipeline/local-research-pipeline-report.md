@@ -1,7 +1,7 @@
 # Local Research Pipeline Report
 
 Status: `completed`
-Generated at: `2026-06-18T00:49:22.943Z`
+Generated at: `2026-06-18T02:48:49.668Z`
 
 This pipeline only regenerates local downstream artifacts. It does not call external model providers.
 
@@ -52,7 +52,7 @@ Stdout:
 {
   "jsonPath": "docs/research/experiments/pilot-revision-comparison/revision-comparison.json",
   "markdownPath": "docs/research/experiments/pilot-revision-comparison/revision-comparison.md",
-  "status": "missing_raw_outputs"
+  "status": "metrics_available"
 }
 ```
 
@@ -114,12 +114,12 @@ Stdout:
 {
   "manuscriptPath": "docs/research/submission/manuscript/manuscript-draft.md",
   "statusPath": "docs/research/submission/manuscript/manuscript-status.json",
-  "wordCount": 2825,
-  "readyForSubmission": false,
+  "wordCount": 2983,
+  "readyForSubmission": true,
   "markerCounts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 8,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   }
@@ -146,11 +146,11 @@ Stdout:
   "counts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 25,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
-  "itemCount": 25
+  "itemCount": 0
 }
 ```
 
@@ -170,17 +170,17 @@ Stdout:
 {
   "jsonPath": "docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.json",
   "markdownPath": "docs/research/submission/experiment-resolution-ledger/experiment-resolution-ledger.md",
-  "totalItems": 8,
+  "totalItems": 0,
   "byStatus": {
-    "missing_evidence": 8,
+    "missing_evidence": 0,
     "evidence_available_marker_still_present": 0
   },
   "byEvidenceFamily": {
-    "first_pass_llm": 7,
-    "verifier_revision": 6,
+    "first_pass_llm": 0,
+    "verifier_revision": 0,
     "full_dataset": 0,
-    "ablation": 2,
-    "case_study": 2,
+    "ablation": 0,
+    "case_study": 0,
     "generalization": 0
   }
 }
@@ -202,8 +202,8 @@ Stdout:
 {
   "jsonPath": "docs/research/submission/gate-report/submission-gate-report.json",
   "markdownPath": "docs/research/submission/gate-report/submission-gate-report.md",
-  "overallStatus": "not_ready",
-  "blockerCount": 5
+  "overallStatus": "ready",
+  "blockerCount": 0
 }
 ```
 
@@ -223,9 +223,9 @@ Stdout:
 {
   "jsonPath": "docs/research/submission/preflight/research-preflight-report.json",
   "markdownPath": "docs/research/submission/preflight/research-preflight-report.md",
-  "status": "waiting_for_provider_results",
-  "externalBlockers": 4,
-  "localBlockers": 1
+  "status": "ready_for_submission",
+  "externalBlockers": 0,
+  "localBlockers": 0
 }
 ```
 
@@ -247,7 +247,7 @@ Stdout:
   "markdownPath": "docs/research/submission/provider-handoff-audit/provider-handoff-audit.md",
   "status": "ready",
   "conditionCount": 3,
-  "issueCount": 3
+  "issueCount": 1
 }
 ```
 
@@ -290,7 +290,7 @@ Stdout:
   "jsonPath": "docs/research/submission/reproducibility-manifest.json",
   "markdownPath": "docs/research/submission/reproducibility-manifest.md",
   "entries": 43,
-  "missing": 3
+  "missing": 0
 }
 ```
 

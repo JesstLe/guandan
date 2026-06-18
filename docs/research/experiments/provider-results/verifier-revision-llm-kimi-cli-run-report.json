@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/pilot-e6-verifier-revision-batch/kimi/openai-batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
+  "expectedCount": 32,
+  "writtenCount": 32,
+  "successCount": 32,
+  "errorCount": 0,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/verifier-revision-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-18T02:40:18.812Z",
+  "runner": "kimi-cli"
+}

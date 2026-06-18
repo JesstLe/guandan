@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-034-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left, while all other players hold three. The top priority is to empty my hand as quickly as possible. Leading the higher single gives the best chance to win the trick, retain the lead, and then play the remaining low card to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three hidden cards and may be able to support, but no specific cards are known.",
+    "confidence": 0.3,
+    "evidence": [
+      "5e78c386-fb0c-42d5-979a-47949debc64e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold nine hidden cards; some may include trumps or jokers that could beat a non-trump Ace, but this is uncertain.",
+    "confidence": 0.3,
+    "evidence": [
+      "5e78c386-fb0c-42d5-979a-47949debc64e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace of spades is my strongest single. If it wins the trick, I will lead again with the 2 of spades and finish my hand. This keeps the initiative rather than surrendering it with a low card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 gives up the lead immediately and leaves the Ace stranded until I can regain the lead, which is uncertain and slows down finishing the hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or joker that beats the Ace, causing me to lose the lead with one card still in hand."
+    ],
+    "mitigation": "Leading the Ace still maximizes the chance of winning the trick and going out next lead; leading the 2 would face the same or greater risk of never regaining the lead."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-013-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low, non-trump clubs, so I cannot reliably retain the lead. I should lead the weakest card to maximize the chance that my partner can capture the trick and steer the remainder of the round."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and may be able to beat a low single lead, but I have no direct evidence of their strength.",
+    "confidence": 0.5,
+    "evidence": [
+      "Partner hand count is 3 (handCounts[2]).",
+      "No cards have been played, so partner's distribution is unknown.",
+      "A low single is the easiest combination for partner to overtake."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 5 cards; opponent player 1 holds only 2 cards and is close to finishing, but I cannot assert the ranks or trump content of those cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "Opponent player 1 hand count is 2 (handCounts[1]), flagged as near finish.",
+      "No cards have been played, so specific opponent holdings are hidden.",
+      "A low lead could be taken by any opponent with a higher card or trump."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the weakest legal lead. It gives my partner the broadest range of cards that can beat it and preserves my slightly higher cards (4, 5, 6) for later tricks or to support my partner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "A 4 is still weak but harder for partner to beat than a 3, and it does not materially reduce opponent winning chances."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Leading a 5 wastes a middle card from an already weak hand and makes it harder for partner to take the trick with a low card."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest non-trump; leading it leaves me with even weaker cards and is more difficult for partner to overtake."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1, with only 2 cards, may have a higher card or trump and take the lead.",
+      "If partner cannot beat the lead, opponents may coordinate to finish the round.",
+      "My remaining cards are all low non-trumps, limiting my ability to regain control."
+    ],
+    "mitigation": "Play the lowest single to give partner the maximum chance to win the trick, while keeping the 4-5-6 for subsequent support or as second-hand control."
+  },
+  "confidence": 0.6,
+  "notes": "Decision is constrained to the four single-club actions; no bombs, wildcards, or trumps are available in my hand."
+}

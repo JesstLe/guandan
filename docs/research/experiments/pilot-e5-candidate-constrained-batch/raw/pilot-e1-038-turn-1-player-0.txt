@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-038-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "This is the opening lead of the round. I hold four consecutive low non-trump clubs and must choose a single to lead. Playing the highest single maximizes the chance of winning the trick, retaining the lead, and continuing to shed the remaining low cards on subsequent leads."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds two unknown cards and is closer to finishing than opponents or me. No cards have been played, so no reliable inferences about partner's holdings exist.",
+    "confidence": 0.1,
+    "evidence": [
+      "No plays or passes have occurred beyond the new game event.",
+      "Hand count shows partner has two cards remaining."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. With trump rank 7 and unseen jokers possible, opponents likely have higher singles and other combinations, but no specific holdings can be asserted.",
+    "confidence": 0.2,
+    "evidence": [
+      "No cards have been played.",
+      "Opponents hold three cards each.",
+      "Trump rank is 7; jokers and trump-rank cards are possible but unobserved."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Among my four club singles, the 6 is the highest. Leading the 6 gives the best chance to win this trick and keep the lead so I can continue leading my remaining low cards (5, 4, 3) in sequence. This avoids ceding initiative to opponents who could then choose non-single combinations that I cannot match.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The 3 is the weakest card and will almost certainly be beaten by any higher single, immediately surrendering the lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still very weak and likely loses the trick, giving opponents control without improving my position."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is stronger than the 3 and 4 but still lower than the 6, so it has a strictly worse chance of winning the trick while leaving the same remaining hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may still beat the club 6 with a higher non-trump single, a trump-rank 7, or a joker.",
+      "If the 6 loses, opponents gain the lead and may force me to pass or play suboptimally."
+    ],
+    "mitigation": "Leading the 6 is the strongest available single, so it minimizes the chance of losing the trick. Even if it loses, no alternative lead would have fared better."
+  },
+  "confidence": 0.6,
+  "notes": "No hidden partner or opponent cards are asserted as facts; beliefs are based solely on public hand counts and the absence of prior plays."
+}

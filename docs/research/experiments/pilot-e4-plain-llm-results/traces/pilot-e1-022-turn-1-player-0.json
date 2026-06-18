@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-022-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards and is near finishing, so I want to lead a low non-trump single that partner may be able to beat, giving them control and a path to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely close to going out with only 2 cards remaining; their exact holdings are unknown but a low opening lead is least likely to block them.",
+    "confidence": 0.6,
+    "evidence": [
+      "f2c4a682-23df-48b8-b23e-844b7266cd75",
+      "handCounts show partner at 2 cards"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards with no public plays observed; their strength is completely unknown and no hidden cards are asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "f2c4a682-23df-48b8-b23e-844b7266cd75",
+      "playedCardSummary shows 0 cards played"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "My hand is entirely low non-trump diamonds, so I cannot control the trick. Leading the smallest card (3 of diamonds) gives partner the best chance to overtake with a higher card or trump, while I keep marginally higher cards for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest non-trump, but it is still weak and may waste a card that could win a later low-rank trick; leading it first is less cooperative."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Middle card; keeping it preserves some flexibility, but the 3 is a safer, lower lead that still conveys the same suit signal."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally higher than the 3; no strategic advantage over leading the 3, and it leaves the 3 as a potentially even weaker late card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A low lead may let an opponent win cheaply if partner cannot beat it.",
+      "If opponents have trumps or high cards, they can seize control immediately.",
+      "My remaining cards are all weak, so regaining the lead will be difficult."
+    ],
+    "mitigation": "Accept the loss of control because my hand has no high cards anyway; prioritize helping the partner who is one step from finishing."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with a weak, uniform hand; chose the lowest non-trump single to minimize obstruction to a partner near finish."
+}

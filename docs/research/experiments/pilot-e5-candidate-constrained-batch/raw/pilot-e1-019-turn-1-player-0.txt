@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-019-turn-1-player-0",
+  "reasoning": "Leading in the opening endgame with only two non-trump cards, I should maximize my chance to win this trick and retain the lowest card for last. The Ace-high single is stronger than the 2, so I will lead the Ace.",
+  "selectedActionId": "play-single-spade-A-copy2"
+}

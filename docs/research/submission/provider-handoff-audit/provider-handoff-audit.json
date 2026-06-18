@@ -1,46 +1,42 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T00:49:22.154Z",
+  "generatedAt": "2026-06-18T02:48:48.925Z",
   "status": "ready",
   "conditionCount": 3,
   "conditions": [
     {
       "conditionId": "plain-llm",
       "title": "Plain LLM first-pass run",
-      "status": "waiting_for_provider_results",
+      "status": "provider_results_present",
       "mappingJsonlPath": "docs/research/experiments/pilot-e4-plain-llm-batch/batch-input.jsonl",
       "uploadJsonlPath": "docs/research/experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl",
       "expectedProviderResultPath": "docs/research/experiments/provider-results/plain-llm.jsonl",
       "mappingExists": true,
       "uploadExists": true,
-      "providerResultExists": false,
+      "providerResultExists": true,
       "mappingRequestCount": 50,
       "uploadRequestCount": 50,
       "customIdMismatchCount": 0,
       "missingFromUpload": [],
       "missingFromMapping": [],
-      "notes": [
-        "Provider result should be saved to docs/research/experiments/provider-results/plain-llm.jsonl after the external run completes."
-      ]
+      "notes": []
     },
     {
       "conditionId": "candidate-constrained-llm",
       "title": "Candidate-constrained LLM first-pass run",
-      "status": "waiting_for_provider_results",
+      "status": "provider_results_present",
       "mappingJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/batch-input.jsonl",
       "uploadJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl",
       "expectedProviderResultPath": "docs/research/experiments/provider-results/candidate-constrained-llm.jsonl",
       "mappingExists": true,
       "uploadExists": true,
-      "providerResultExists": false,
+      "providerResultExists": true,
       "mappingRequestCount": 50,
       "uploadRequestCount": 50,
       "customIdMismatchCount": 0,
       "missingFromUpload": [],
       "missingFromMapping": [],
-      "notes": [
-        "Provider result should be saved to docs/research/experiments/provider-results/candidate-constrained-llm.jsonl after the external run completes."
-      ]
+      "notes": []
     },
     {
       "conditionId": "verifier-revision-llm",
@@ -49,31 +45,53 @@
       "mappingJsonlPath": "docs/research/experiments/pilot-e6-verifier-revision-batch/batch-input.jsonl",
       "uploadJsonlPath": "docs/research/experiments/pilot-e6-verifier-revision-batch/openai/openai-batch-input.jsonl",
       "expectedProviderResultPath": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
-      "mappingExists": false,
+      "mappingExists": true,
       "uploadExists": false,
-      "providerResultExists": false,
-      "mappingRequestCount": 0,
+      "providerResultExists": true,
+      "mappingRequestCount": 32,
       "uploadRequestCount": 0,
-      "customIdMismatchCount": 0,
-      "missingFromUpload": [],
+      "customIdMismatchCount": 32,
+      "missingFromUpload": [
+        "pilot-e1-002-turn-1-player-0",
+        "pilot-e1-003-turn-1-player-0",
+        "pilot-e1-004-turn-1-player-0",
+        "pilot-e1-005-turn-1-player-0",
+        "pilot-e1-006-turn-2-player-1",
+        "pilot-e1-007-turn-1-player-0",
+        "pilot-e1-008-turn-1-player-0",
+        "pilot-e1-010-turn-1-player-0",
+        "pilot-e1-012-turn-1-player-0",
+        "pilot-e1-013-turn-1-player-0",
+        "pilot-e1-014-turn-1-player-0",
+        "pilot-e1-016-turn-2-player-1",
+        "pilot-e1-020-turn-1-player-0",
+        "pilot-e1-021-turn-2-player-1",
+        "pilot-e1-022-turn-1-player-0",
+        "pilot-e1-024-turn-1-player-0",
+        "pilot-e1-026-turn-2-player-1",
+        "pilot-e1-029-turn-1-player-0",
+        "pilot-e1-031-turn-2-player-1",
+        "pilot-e1-032-turn-1-player-0",
+        "pilot-e1-033-turn-1-player-0",
+        "pilot-e1-034-turn-1-player-0",
+        "pilot-e1-035-turn-1-player-0",
+        "pilot-e1-036-turn-2-player-1",
+        "pilot-e1-038-turn-1-player-0",
+        "pilot-e1-040-turn-1-player-0",
+        "pilot-e1-041-turn-2-player-1",
+        "pilot-e1-042-turn-1-player-0",
+        "pilot-e1-043-turn-1-player-0",
+        "pilot-e1-045-turn-1-player-0",
+        "pilot-e1-047-turn-1-player-0",
+        "pilot-e1-048-turn-1-player-0"
+      ],
       "missingFromMapping": [],
       "notes": [
-        "Real verifier-revision package is expected to be generated only after first-pass LLM traces and verifier results exist.",
-        "Provider result should be saved to docs/research/experiments/provider-results/verifier-revision-llm.jsonl after the external run completes."
+        "Real verifier-revision package is expected to be generated only after first-pass LLM traces and verifier results exist."
       ]
     }
   ],
   "issues": [
-    {
-      "severity": "info",
-      "conditionId": "plain-llm",
-      "message": "Provider result not present yet: docs/research/experiments/provider-results/plain-llm.jsonl."
-    },
-    {
-      "severity": "info",
-      "conditionId": "candidate-constrained-llm",
-      "message": "Provider result not present yet: docs/research/experiments/provider-results/candidate-constrained-llm.jsonl."
-    },
     {
       "severity": "info",
       "conditionId": "verifier-revision-llm",

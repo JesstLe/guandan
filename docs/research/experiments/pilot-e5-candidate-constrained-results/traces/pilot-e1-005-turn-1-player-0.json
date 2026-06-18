@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-005-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Lead the lowest non-trump single to keep my slightly higher cards and give my partner a chance to win the trick with a bigger card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner's hand is unknown; I hope they have a higher card or trump to capture the lead.",
+    "confidence": 0.4,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely have cards higher than 3 and possibly trumps, but no specific information is available.",
+    "confidence": 0.4,
+    "evidence": []
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3 is the cheapest lead. It preserves 4, 5, and 6 for future tricks and lets partner try to take control without committing any of my own strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger and would waste a card that could be useful later for catching a 3 lead."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Leading the 5 sacrifices a higher card and is still easily beaten by opponents or trump."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my strongest card; leading it now removes my best chance to win a later trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may easily beat the 3 and keep the lead.",
+      "Partner may not be able to win the trick, leaving us on the defensive.",
+      "My remaining cards are still weak non-trumps."
+    ],
+    "mitigation": "Retain the 4-5-6 for later tricks and avoid committing trumps or bombs at this early stage."
+  },
+  "confidence": 0.7
+}

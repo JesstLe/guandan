@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-026-turn-2-player-1",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-heart-4-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action metadata says it beats the table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: eventId:b3b63410-40d3-4db7-8c09-6c142fd1d851 is the only public play so far, providing no direct information about partner holdings, handCounts[3]=3 indicates partner has three cards, but their composition is hidden, eventId:b3b63410-40d3-4db7-8c09-6c142fd1d851 shows player 0 led the 3 of hearts, handCounts[0]=2 shows player 0 is down to two cards, scenario tag opponent_near_finish signals potential finishing pressure"
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "suppress_opponent is grounded in opponent_near_finish tag."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 1 failure(s)."
+}

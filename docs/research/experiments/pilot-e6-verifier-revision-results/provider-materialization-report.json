@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "0.1.0",
+  "sourceBatchJsonl": "docs/research/experiments/pilot-e6-verifier-revision-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/pilot-e6-verifier-revision-batch/raw",
+  "expectedCount": 32,
+  "writtenCount": 32,
+  "missingResultCount": 0,
+  "failedResultCount": 0,
+  "unexpectedResultCount": 0,
+  "emptyContentCount": 0,
+  "readyForAudit": true,
+  "missingCustomIds": [],
+  "unexpectedCustomIds": [],
+  "emptyCustomIds": [],
+  "failures": []
+}

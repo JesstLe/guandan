@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-008-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: public handCounts shows my partner has 3 cards, public handCounts shows opponents hold 2 and 3 cards"
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: I have no direct knowledge of my partner's cards beyond the public hand count. Based on handCounts, my partner holds 3 cards, but their ranks, suits, and strength are unknown to me."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Opponent belief omits the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "save_resources with a play action may be valid but needs strategic context."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    },
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [
+    {
+      "code": "OPPONENT_BELIEF_OMITS_PUBLIC_TAG",
+      "message": "Opponent belief does not reflect a public opponent_near_finish tag.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "summary": "Hard verifier found 2 failure(s)."
+}

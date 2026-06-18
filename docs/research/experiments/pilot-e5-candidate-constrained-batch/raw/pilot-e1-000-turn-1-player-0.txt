@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-000-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": "Opening lead with the lowest card preserves stronger cards for later tricks."
+}

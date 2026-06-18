@@ -1,6 +1,6 @@
 # Reproducibility Manifest
 
-Generated at: `2026-06-18T00:50:07.843Z`
+Generated at: `2026-06-18T02:48:49.616Z`
 
 Missing entries are audit findings, not experimental results.
 
@@ -23,28 +23,28 @@ Missing entries are audit findings, not experimental results.
 | Plain OpenAI Batch Input | `present` | file | `experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl` |  | 188880 | `15583ed3d45dbf1768238b3c334f0c344ea348d98c727044ef648c503b993775` |
 | Candidate OpenAI Batch Input | `present` | file | `experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl` |  | 266180 | `f81386553dcf8b64e71b26230c36c3cbcfcb8a565e9074a8d68a4ba3b972577f` |
 | Fixture Revision OpenAI Batch Input | `present` | file | `experiments/pilot-e6-verifier-revision-fixture-batch/openai/openai-batch-input.jsonl` |  | 399850 | `ba76709a0f51220f6b5b86c3806f62f0b321c8caad98e800b29ce8a4b012236a` |
-| Provider Run Handoff | `present` | file | `submission/provider-run-handoff.md` |  | 6078 | `1d978083fb957321ef28f61bbea48bc3bedfe7a77f590496cac90c94cc891678` |
-| Provider Handoff Audit | `present` | file | `submission/provider-handoff-audit/provider-handoff-audit.json` |  | 3623 | `3008bc68665c687677dd1d4106c39b01d32f979d9d8bf645b22d20bc206c70cc` |
+| Provider Run Handoff | `present` | file | `submission/provider-run-handoff.md` |  | 9047 | `0e639216ea941652250bd6810842f73a2029ac2981985b0c1c893f80dfdd13af` |
+| Provider Handoff Audit | `present` | file | `submission/provider-handoff-audit/provider-handoff-audit.json` |  | 4040 | `8e6d99b1d03989ec9a5bc81c7157a0542f071b31d3e06340a50f3b0270f655ea` |
 | Plain Raw Output Audit | `present` | file | `experiments/pilot-e4-plain-llm-batch/raw-output-audit.json` |  | 2397 | `9fe4a04e32c41fa67bb54adb02b23e1ffc46f9a603aeaafada79191c2a2d9cde` |
 | Candidate Raw Output Audit | `present` | file | `experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json` |  | 2421 | `c52951771531742a1641e97fc391c81c69b30ca605c6094a3d12619c7b41c5f9` |
 | Revision Raw Output Audit | `present` | file | `experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json` |  | 2879 | `44e92c125a1d974ec8bc2aab3a136d98635bab128d65f0746b39b9ad8c75d40c` |
-| Plain Provider Results | `missing` | missing | `experiments/provider-results/plain-llm.jsonl` |  | 0 |  |
-| Candidate Provider Results | `missing` | missing | `experiments/provider-results/candidate-constrained-llm.jsonl` |  | 0 |  |
-| Verifier Revision Provider Results | `missing` | missing | `experiments/provider-results/verifier-revision-llm.jsonl` |  | 0 |  |
-| Pilot Metrics Summary | `present` | file | `experiments/pilot-metrics-summary/pilot-metrics-summary.json` |  | 3238 | `86b836e8f66bc7db9a2bded2691bda5890b8281b40afd30d03d2e1fafab38640` |
-| Revision Comparison | `present` | file | `experiments/pilot-revision-comparison/revision-comparison.json` |  | 2602 | `b790ce216268155d229155906de7b3a1089443efaca4a458ca72f3e4613719f4` |
+| Plain Provider Results | `present` | file | `experiments/provider-results/plain-llm.jsonl` |  | 79327 | `872234cb1d070856f51f8212fc10693b26960647adeea0d258e9d7dfd9558c12` |
+| Candidate Provider Results | `present` | file | `experiments/provider-results/candidate-constrained-llm.jsonl` |  | 88650 | `327f8e01edb869abb5bef46064169fb4c4ccb9b500e4461e3b95be821d7ff454` |
+| Verifier Revision Provider Results | `present` | file | `experiments/provider-results/verifier-revision-llm.jsonl` |  | 79343 | `653dcae7dc2ae944094913a59aa80d7837bd4440527845d3f759473261cac44b` |
+| Pilot Metrics Summary | `present` | file | `experiments/pilot-metrics-summary/pilot-metrics-summary.json` |  | 3679 | `b74386d25baeda4513752b0eec014bba392377c6672b13542032f5e93cf4e7d2` |
+| Revision Comparison | `present` | file | `experiments/pilot-revision-comparison/revision-comparison.json` |  | 1928 | `1adb7936f98bde01953c960d547e5b66cd1a5450e64cb3a7f26c3d303650f835` |
 | Verifier Ablation Summary | `present` | file | `experiments/pilot-ablation-summary/ablation-summary.json` |  | 3444 | `d601f51a62cb4ab6c8b9d610c651ecf4dac101fe8232df9a83f8438f34fb42ea` |
-| Paper Table Sources | `present` | directory | `tables` | 5 | 4764 | tree:`99e84e653a08a75aa75cc9ee90ab9cfdddc86ab5ae53c470930699aa014c88d5` |
+| Paper Table Sources | `present` | directory | `tables` | 5 | 4214 | tree:`747f473c9adbb9613a3bf1602e122cb243b60384fb6fcbe66c97feb0fd2e1299` |
 | Figure Sources | `present` | directory | `figures` | 2 | 1253 | tree:`ea476cdd21e94be0a6dd2aa830b402453c6542004a893f2ffe535ca02e5c2a3c` |
 | Normalized Bibliography | `present` | file | `submission/references.bib` |  | 5918 | `86f88c35847b07cb41386b5d5b19e63535f2dbb5a8f5b1d11f9a3ded174badf1` |
-| Bibliography Integrity Report | `present` | file | `submission/citation-integrity/bibliography-integrity-report.json` |  | 255 | `0fba8f813933e6926e179be97b70ed97e3a0e29513e61b98cbfd9ea6dddf9d2e` |
-| Assembled Manuscript | `present` | file | `submission/manuscript/manuscript-draft.md` |  | 22291 | `2c03ea61cf15f90cfef04d4436f6ece8fc99153017c681b522b7466657bc3119` |
-| Manuscript Status | `present` | file | `submission/manuscript/manuscript-status.json` |  | 831 | `abbb6e070407085f29a17250fe5bff3066f936d50c45be600ebc6d4aab9fc9fb` |
-| Submission Gate Report | `present` | file | `submission/gate-report/submission-gate-report.json` |  | 2716 | `436b93e83a4625a678a6cdd0a028bce9b57c8c44501481bd7d42008d1d6bdf9d` |
-| Submission Marker Inventory | `present` | file | `submission/marker-inventory/submission-marker-inventory.json` |  | 10204 | `8ad706f47db6a6345fa7e75ed070472bfe0a12c073f54bc2674ddb16a56bc5b9` |
-| Experiment Resolution Ledger | `present` | file | `submission/experiment-resolution-ledger/experiment-resolution-ledger.json` |  | 39324 | `a2bc4e818dad2be72e717e31fdf74c7fc6ecb8c175e0f0cfda1fc24a31609f2b` |
-| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 2009 | `69288e0b7b62ada87193f9c7c3cb32f1df7b443aedd030c43384090d213afdb8` |
-| Local Research Pipeline Report | `present` | file | `submission/local-pipeline/local-research-pipeline-report.json` |  | 8344 | `fd502bd9fba34e81734eaf5cbc89a1789ba1f677a01265038ff85d4817989cf2` |
+| Bibliography Integrity Report | `present` | file | `submission/citation-integrity/bibliography-integrity-report.json` |  | 255 | `1d2151e39a7ce4c76ca8b434494e6dfc2dedd1c2c7d5f120371d3332195d887e` |
+| Assembled Manuscript | `present` | file | `submission/manuscript/manuscript-draft.md` |  | 23220 | `e58b24162940f1bb5255e0d620da12b7001143bfd54ad2ff3be3b7993a4d8d21` |
+| Manuscript Status | `present` | file | `submission/manuscript/manuscript-status.json` |  | 830 | `ab9a64a73b5aee22de476b114a17a7a381b38cfbfcfcebcc7177cefb2ddde89f` |
+| Submission Gate Report | `present` | file | `submission/gate-report/submission-gate-report.json` |  | 1856 | `24281071b818fe93edf96853591c2309ea7cbe3a7f3cdbefd1fee87fafe81e00` |
+| Submission Marker Inventory | `present` | file | `submission/marker-inventory/submission-marker-inventory.json` |  | 562 | `3784140b74c163018dc170fea3940331fb4d25ce50132ff7d6c507f5f6463a35` |
+| Experiment Resolution Ledger | `present` | file | `submission/experiment-resolution-ledger/experiment-resolution-ledger.json` |  | 522 | `d1a24e84c35aee71776e15204829f18436a1b1154c0627c34470f81eae029d3b` |
+| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 1464 | `8ebc77710b7bf169c678bd2065067b2f4c91f0669e717382abefcd76b6127151` |
+| Local Research Pipeline Report | `present` | file | `submission/local-pipeline/local-research-pipeline-report.json` |  | 8328 | `0436a7c45310d64c9d744ef6888ac13e97237287791c156668c0913631d54897` |
 | Submission Checklist | `present` | file | `submission/submission_checklist.md` |  | 8025 | `d7ee66a3a522a6bfc4e25c827ef644faea1d873f35898d63575a180200bc2aa1` |
 | Working Submission Profile | `present` | file | `submission/submission-profile.md` |  | 4191 | `4830c603c5293d3c08afa112d014aa0779c4ff21d483ee221ba4c055b8f66a27` |
 | Author Decision Brief | `present` | file | `submission/author-decision-brief.md` |  | 5696 | `7ec62cfb0801c72324e449605ac89fe389641456bed6d65719eab6be59939184` |

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-003-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Open the trick with the lowest card to discard minimal strength and keep the slightly higher clubs for future leads or responses."
+  },
+  "partnerBelief": {
+    "summary": "Partner's exact cards are unknown; based on the observed hand count they likely hold 3 cards and may be able to contest later in the trick.",
+    "confidence": 0.3,
+    "evidence": [
+      "3bf96ebc-a4bf-4049-9b24-01deafc42642"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents' exact cards are unknown. The observed hand counts suggest player 1 has only 2 cards, so one opponent may be close to finishing and could hold a strong card.",
+    "confidence": 0.5,
+    "evidence": [
+      "3bf96ebc-a4bf-4049-9b24-01deafc42642"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "All legal leads are low single clubs. Leading the club 3 discards the weakest card, preserves the 4-6 for future tricks, and forces opponents to spend a higher card or trump if they want to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally higher than the 3 and still weak; better kept for a later trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "More useful as a later response; any opponent with a higher non-trump or trump can still beat it."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "My highest non-trump card; leading it now wastes my best card and it can still be beaten by any trump or level card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1, with only 2 cards observed, could beat the 3 with a higher card or trump and finish soon after.",
+      "If partner cannot contest, I lose the lead and must defend with a weak hand."
+    ],
+    "mitigation": "Leading the lowest card minimizes the strength opponents need to spend to take the lead and preserves flexibility for partner or future leads."
+  },
+  "confidence": 0.7,
+  "notes": "No trumps or bombs have been played publicly. All four hand cards are low clubs, so a conservative lowest-card lead is preferred."
+}

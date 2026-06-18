@@ -36,7 +36,7 @@ describe('submissionGate', () => {
       expect(result.report.gates.find(gate => gate.id === 'submission_readiness')?.status).toBe('fail')
       expect(result.report.markerCounts.NEED_EXPERIMENT).toBeGreaterThan(0)
       expect(result.report.immediateBlockers).toContain('LLM condition plain-llm has status missing_raw_outputs.')
-      expect(result.report.immediateBlockers).not.toContain('Missing experiments/pilot-e4-plain-llm-batch/provenance.json.')
+      expect(result.report.immediateBlockers).not.toContain('Missing experiments/pilot-e4-plain-llm-results/provenance.json.')
 
       const markdown = readFileSync(result.markdownPath, 'utf8')
       expect(markdown).toContain('Overall status: `not_ready`')
@@ -69,8 +69,8 @@ describe('submissionGate', () => {
       })
 
       expect(result.report.overallStatus).toBe('not_ready')
-      expect(result.report.immediateBlockers).toContain('Missing experiments/pilot-e4-plain-llm-batch/provenance.json.')
-      expect(result.report.immediateBlockers).toContain('Missing experiments/pilot-e5-candidate-constrained-batch/provenance.json.')
+      expect(result.report.immediateBlockers).toContain('Missing experiments/pilot-e4-plain-llm-results/provenance.json.')
+      expect(result.report.immediateBlockers).toContain('Missing experiments/pilot-e5-candidate-constrained-results/provenance.json.')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }
@@ -188,8 +188,8 @@ function writeMinimalResearchProject(rootDir: string, options: {
   mkdirSync(join(rootDir, 'drafts', 'paper-as-code'), { recursive: true })
   mkdirSync(join(rootDir, 'experiments', 'pilot-metrics-summary'), { recursive: true })
   mkdirSync(join(rootDir, 'experiments', 'pilot-revision-comparison'), { recursive: true })
-  mkdirSync(join(rootDir, 'experiments', 'pilot-e4-plain-llm-batch'), { recursive: true })
-  mkdirSync(join(rootDir, 'experiments', 'pilot-e5-candidate-constrained-batch'), { recursive: true })
+  mkdirSync(join(rootDir, 'experiments', 'pilot-e4-plain-llm-results'), { recursive: true })
+  mkdirSync(join(rootDir, 'experiments', 'pilot-e5-candidate-constrained-results'), { recursive: true })
   mkdirSync(join(rootDir, 'reviews'), { recursive: true })
   mkdirSync(join(rootDir, 'submission'), { recursive: true })
 
@@ -224,8 +224,8 @@ function writeMinimalResearchProject(rootDir: string, options: {
   }, null, 2), 'utf8')
 
   if (options.includeProvenance) {
-    writeFileSync(join(rootDir, 'experiments', 'pilot-e4-plain-llm-batch', 'provenance.json'), '{}', 'utf8')
-    writeFileSync(join(rootDir, 'experiments', 'pilot-e5-candidate-constrained-batch', 'provenance.json'), '{}', 'utf8')
+    writeFileSync(join(rootDir, 'experiments', 'pilot-e4-plain-llm-results', 'provenance.json'), '{}', 'utf8')
+    writeFileSync(join(rootDir, 'experiments', 'pilot-e5-candidate-constrained-results', 'provenance.json'), '{}', 'utf8')
   }
   if (options.includeDisclosure) {
     writeFileSync(join(rootDir, 'submission', 'ai-use-disclosure.md'), 'AI-use disclosure draft.', 'utf8')

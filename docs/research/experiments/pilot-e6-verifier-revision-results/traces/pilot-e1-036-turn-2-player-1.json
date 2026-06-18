@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-036-turn-2-player-1",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent 0 is near finishing with only 2 cards and currently has the lead. Reclaiming the lead with the cheapest legal winner slows their path to going out."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; partner has not acted publicly and the hand counts show 3 remaining cards.",
+    "confidence": 0.3,
+    "evidence": [
+      "50aead2c-c74d-47a8-9333-271c60ac275a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Leading opponent 0 is near finishing with only 2 cards left and just played a single 3 of hearts. They may still hold a heart or a trump, but no trumps or bombs have appeared publicly.",
+    "confidence": 0.4,
+    "evidence": [
+      "50aead2c-c74d-47a8-9333-271c60ac275a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the lowest legal card that beats the table lead. Playing it contests the lead from a near-finishing opponent while conserving the 9 and 10 for future pressure.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets opponent 0 keep the lead with only 2 cards remaining, risking they finish soon."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Wins the trick but uses a higher card unnecessarily when the 4 already beats the lead."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Same as the 9; overcommits a high card when the lowest winner is available."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Another player may still beat the 4 of hearts.",
+      "If an opponent has a higher heart or a trump, the trick may still be lost.",
+      "Playing now uses one of only three cards and could leave few options later."
+    ],
+    "mitigation": "By choosing the minimum winning card, resource consumption is minimized and stronger cards are retained to respond to future leads."
+  },
+  "confidence": 0.85,
+  "notes": "This is a straightforward follow decision: beat the lowest possible lead with the lowest possible winner, while recognizing the opponent is near finishing."
+}

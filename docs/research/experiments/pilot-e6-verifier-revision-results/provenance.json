@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "0.1.0",
+  "modelProvider": "kimi-code-cli",
+  "modelName": "kimi-for-coding",
+  "temperature": 0,
+  "notes": "Verifier-revision batch generated from real candidate-constrained traces; Kimi Code CLI run via official kimi client.",
+  "sourceBatchJsonl": "docs/research/experiments/pilot-e6-verifier-revision-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/pilot-e6-verifier-revision-batch/raw",
+  "materializationReport": "docs/research/experiments/pilot-e6-verifier-revision-results/provider-materialization-report.json"
+}

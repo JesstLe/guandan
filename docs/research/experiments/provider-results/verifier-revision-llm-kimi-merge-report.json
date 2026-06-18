@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T02:40:30.227Z",
+  "conditionId": "verifier-revision-llm",
+  "provider": "kimi-code-cli",
+  "model": "kimi-for-coding",
+  "runner": "server/src/research/runKimiCliBatchJsonlCli.ts",
+  "sourceInput": "docs/research/experiments/pilot-e6-verifier-revision-batch/kimi/openai-batch-input.jsonl",
+  "attempts": [
+    {
+      "path": "docs/research/experiments/provider-results/verifier-revision-llm-kimi-cli-run-report.json",
+      "total": 32,
+      "success": 32,
+      "error": 0
+    }
+  ],
+  "merged": {
+    "path": "docs/research/experiments/provider-results/verifier-revision-llm.jsonl",
+    "total": 32,
+    "success": 32,
+    "error": 0
+  },
+  "notes": [
+    "Revision prompts were generated only for candidate-constrained traces that parsed and had verifier results.",
+    "Kimi Code CLI was used through the official kimi client.",
+    "Provider completion success is distinct from reasoning-trace schema parse success."
+  ]
+}

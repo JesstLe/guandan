@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-025-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": "Opening lead with a weak four-card hand (3-6 of spades, no trumps). With no high cards or trumps, the best strategy is to lead the lowest card to conserve marginally higher cards for later tricks and minimize immediate loss of control. Playing the 3 of spades is the safest, weakest lead."
+}

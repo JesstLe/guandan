@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-015-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I am leading the first trick with only low non-trump spades. A low single gives my partner the best chance to win the trick and keep control for our team."
+  },
+  "partnerBelief": {
+    "summary": "My partner likely holds some higher cards or trumps among their 3 cards, but I have no direct evidence of their exact holdings.",
+    "confidence": 0.4,
+    "evidence": [
+      "12a7d14d-73ce-482f-976c-84b0fbfaac84"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards; either opponent may have a higher single or trump, but no cards have been revealed.",
+    "confidence": 0.5,
+    "evidence": [
+      "12a7d14d-73ce-482f-976c-84b0fbfaac84"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 is the lowest card in my hand. Leading it keeps my slightly higher low cards (4, 5, 6) for later and lets my partner try to take the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Expends a higher low card without increasing the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Wastes a stronger low card when the 3 already satisfies the goal of a low lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Uses the highest card in my hand prematurely; it still loses to most opponent cards and reduces future flexibility."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher single or trump.",
+      "If my partner cannot cover, the opponents gain control."
+    ],
+    "mitigation": "Leading the lowest card conserves my limited hand and maximizes the chance my partner can win the trick, as my partner has not yet acted."
+  },
+  "confidence": 0.6
+}

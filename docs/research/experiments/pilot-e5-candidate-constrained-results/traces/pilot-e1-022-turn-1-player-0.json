@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-022-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is near finish with only 2 cards. I hold only low non-trump singles, so the best opening lead is the weakest card to give partner a chance to win the trick and continue toward going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a small remaining hand and may be holding one or more playable cards to win a low lead.",
+    "confidence": 0.35,
+    "evidence": [
+      "handCounts[2] = 2",
+      "scenario tag 'partner_near_finish'",
+      "no public card information for partner"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have limited known information; they may hold higher non-trump or trump cards that can overtake a low diamond.",
+    "confidence": 0.25,
+    "evidence": [
+      "handCounts[1]=3, handCounts[3]=3",
+      "no cards have been played",
+      "trump rank is 7, unknown trump suit distribution"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the minimal-cost play. It preserves the 4, 5, and 6 for future tricks and maximizes the chance that partner can take the lead with one of their two remaining cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A single 4 is a higher card than the 3 with the same combo type; it offers no extra benefit and wastes a slightly stronger card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is the second-strongest card in hand; using it now reduces future options without improving the lead."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest non-trump card held; leading it squanders the best chance to win a future low trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a higher card or trump can win the trick and take the lead.",
+      "Partner may not have a card strong enough to overtake the opponents.",
+      "Remaining 4-6 diamonds may still be too low to regain control later."
+    ],
+    "mitigation": "By playing the lowest card first, I minimize immediate loss and keep the strongest available low cards for subsequent tricks, while giving partner the cheapest path to take control."
+  },
+  "confidence": 0.7,
+  "notes": "All legal actions are low non-trump singles; card-value minimization and partner support drive the choice."
+}

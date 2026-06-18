@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-042-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards, so I want to lead a very low card that they can likely beat, giving them control to push toward finishing their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds cards that can beat a 3 of diamonds, but their exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "Partner hand count is 2, tagged as near finish.",
+      "No public history beyond the new-game event."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents may have higher non-trump cards or trump cards that could capture a low diamond lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "Opponents collectively hold 6 cards, but their ranks and suits are hidden.",
+      "No trumps or big cards have been played yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds preserves the 4, 5, and 6 for later tricks while giving partner the best chance to win the lead with a minimal card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is still low but stronger than necessary; saving it for later is better."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Expends a mid-low card too early when a lower lead is available."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Uses the highest card in hand for no advantage, weakening future tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher non-trump or any trump to capture the lead.",
+      "Partner may not be able to beat the 3 if their remaining cards are low or unrelated."
+    ],
+    "mitigation": "Leading the lowest possible card minimizes the cost if the trick is lost and keeps stronger cards for future leads or responses."
+  },
+  "confidence": 0.6,
+  "notes": "Opening lead with the minimum card in a connected diamond sequence."
+}

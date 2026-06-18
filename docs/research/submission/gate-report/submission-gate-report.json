@@ -1,10 +1,10 @@
 {
   "schemaVersion": "0.1.0",
-  "overallStatus": "not_ready",
+  "overallStatus": "ready",
   "markerCounts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 8,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
@@ -33,22 +33,17 @@
     {
       "id": "experiment_sufficiency",
       "title": "Gate 3: Experiment Sufficiency",
-      "status": "fail",
+      "status": "pass",
       "evidence": [
         "Pilot metrics summary has 5 rows.",
-        "Verifier-revision comparison status is missing_raw_outputs."
+        "Verifier-revision comparison status is metrics_available."
       ],
-      "blockers": [
-        "LLM condition plain-llm has status missing_raw_outputs.",
-        "LLM condition candidate-constrained-llm has status missing_raw_outputs.",
-        "LLM condition verifier-revision-llm has status missing_raw_outputs.",
-        "Verifier-revision comparison status is missing_raw_outputs."
-      ]
+      "blockers": []
     },
     {
       "id": "writing_readiness",
       "title": "Gate 4: Writing Readiness",
-      "status": "fail",
+      "status": "pass",
       "evidence": [
         "00_claims.md exists.",
         "01_introduction.md exists.",
@@ -58,27 +53,19 @@
         "05_discussion_limitations.md exists.",
         "06_abstract.md exists."
       ],
-      "blockers": [
-        "Submission-relevant files still have 8 NEED_EXPERIMENT markers."
-      ]
+      "blockers": []
     },
     {
       "id": "submission_readiness",
       "title": "Gate 5: Submission Readiness",
       "status": "pass",
       "evidence": [
-        "experiments/pilot-e4-plain-llm-batch/provenance.json pending because plain-llm status is missing_raw_outputs.",
-        "experiments/pilot-e5-candidate-constrained-batch/provenance.json pending because candidate-constrained-llm status is missing_raw_outputs.",
+        "experiments/pilot-e4-plain-llm-results/provenance.json exists.",
+        "experiments/pilot-e5-candidate-constrained-results/provenance.json exists.",
         "AI-use disclosure draft exists."
       ],
       "blockers": []
     }
   ],
-  "immediateBlockers": [
-    "LLM condition plain-llm has status missing_raw_outputs.",
-    "LLM condition candidate-constrained-llm has status missing_raw_outputs.",
-    "LLM condition verifier-revision-llm has status missing_raw_outputs.",
-    "Verifier-revision comparison status is missing_raw_outputs.",
-    "Submission-relevant files still have 8 NEED_EXPERIMENT markers."
-  ]
+  "immediateBlockers": []
 }

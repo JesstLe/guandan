@@ -19,6 +19,7 @@ export interface IngestLLMRawOutputsOptions {
   rawOutputDir: string
   outputDir: string
   conditionId: LLMConditionId
+  rawOutputFileByDecisionId?: Record<string, string>
 }
 
 export interface LLMParseFailure {
@@ -47,7 +48,9 @@ export function ingestLLMRawOutputs(options: IngestLLMRawOutputsOptions): LLMOut
   const resultPaths: string[] = []
 
   for (const decision of options.decisions) {
-    const rawOutputFile = join(options.rawOutputDir, `${safeFilename(decision.decisionId)}.txt`)
+    const rawOutputFilename = options.rawOutputFileByDecisionId?.[decision.decisionId]
+      ?? `${safeFilename(decision.decisionId)}.txt`
+    const rawOutputFile = join(options.rawOutputDir, rawOutputFilename)
     const raw = existsSync(rawOutputFile) ? readFileSync(rawOutputFile, 'utf8') : null
 
     if (raw === null) {

@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-049-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoning": "Leading with the higher A♠ gives the best chance to win this trick and retain the lead. If I win, I can then play the 2♠ next. Playing the weak 2♠ first risks losing the lead and being stuck with the A♠ while opponents control the table. With only 2 cards remaining and all opponents holding 3 cards, maximizing the chance to win this lead is critical for finishing first."
+}

@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-023-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoning": "Opening lead with a weak, non-trump hand containing only low clubs. Playing the lowest card (3♣) preserves the slightly higher clubs, avoids taking control with a hand that cannot defend it, and does not help the opponent who is near finish with only 2 cards."
+}

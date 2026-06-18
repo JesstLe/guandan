@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-022-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-diamond-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "All cited evidence ids are present in public history."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Partner belief reflects the public partner_near_finish scenario tag."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Opponent consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    }
+  },
+  "hardFailures": [],
+  "softWarnings": [],
+  "summary": "Hard verifier checks passed."
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-026-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) is down to 2 cards and led a low heart; beating this trick denies them continuity and reduces their chance to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards, but no public information reveals their strength or suit distribution.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts[3] = 3",
+      "No partner plays or discards have been observed."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 likely has one remaining card after this lead and is trying to shed a low card to keep control or finish quickly.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts[0] = 2",
+      "Led a non-trump single 3 heart",
+      "No trumps or bombs have been played yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the cheapest legal winner, taking the lead away from a near-finishing opponent while keeping the higher hearts (9, 10) for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent who has only 2 cards retain the lead, increasing the risk they finish their hand."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beating with the 9 is unnecessary; it spends a higher card that may be needed later without improving the outcome over the 4."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Beating with the 10 wastes the highest heart and weakens future control over larger singles or the endgame."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may have been able to beat the trick, so this play consumes a card the team might need later.",
+      "Winning the lead with limited high cards could expose me to opponent trumps or bombs."
+    ],
+    "mitigation": "Use the minimum winning card (4 heart) to suppress the opponent while preserving the 9 and 10 for subsequent rounds."
+  },
+  "confidence": 0.75,
+  "notes": "Selected the lowest winning single to stop a near-finishing opponent with minimal resource use."
+}

@@ -1,0 +1,1 @@
+{"agentId":"candidate-constrained-llm","decisionId":"pilot-e1-018-turn-1-player-0","selectedActionId":"play-single-club-6-copy1","reasoning":"With only low clubs and an opponent near finish, leading the highest available single (6♣) gives the best chance to win the trick outright and keep the lead to run out the remaining cards."}

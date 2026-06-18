@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-016-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) is down to 2 cards and led a low heart single. Taking the trick with the cheapest winning card denies them the lead and slows their potential finish."
+  },
+  "partnerBelief": {
+    "summary": "No direct evidence about partner's hand; partner has 3 cards remaining.",
+    "confidence": 0.3,
+    "evidence": [
+      "No public plays by partner yet; handCounts show partner has 3 cards left."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 likely holds low cards or is trying to shed a weak single to go out quickly.",
+    "confidence": 0.6,
+    "evidence": [
+      "Player 0 led a 3 of hearts, the lowest non-trump single.",
+      "Player 0 has only 2 cards left, indicating near-finish pressure."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the minimal card that beats the led 3, winning the trick while preserving the 9 and 10 for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the opponent with the lead and 2 cards, increasing their chance to finish first. Also, we can legally follow with a heart."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Wastes a higher heart that could win a later, more important trick; 4 already beats the 3."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Same as 9: overcommits strength for a trick that does not require it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning this trick may force us to lead from a weak remaining hand (9 and 10 of hearts), which could be easy for opponents to beat.",
+      "Player 0 still has 2 cards; if they contain high cards or trumps, our remaining hearts may not stop them next lead."
+    ],
+    "mitigation": "By expending only the 4, we retain the maximum remaining strength in our small hand and gain the initiative now."
+  },
+  "confidence": 0.8
+}

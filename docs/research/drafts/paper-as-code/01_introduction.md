@@ -7,7 +7,7 @@
 3. Explain why Guandan is a dense testbed.
 4. State the technical gap: reasoning traces are not verified against rules, public history, and action consistency.
 5. Present the proposed framework and contributions.
-6. Preview planned experiments with `[NEED_EXPERIMENT]` markers.
+6. Preview the pilot evidence and its remaining limitations.
 
 ## Draft
 
@@ -21,14 +21,14 @@ The central technical challenge is to verify LLM reasoning without assuming that
 
 We propose a verifier-grounded evaluation framework for LLM agents in zero-communication mixed-motive games. The framework represents each game turn as a decision point with public history, hand counts, legal candidate actions, and strategic tags. The LLM agent outputs a structured reasoning trace containing its selected action, partner belief, opponent belief, team objective, action rationale, risk assessment, and confidence. A rule-grounded verifier then labels the trace along hard and soft dimensions, including action legality, table-beating validity, public-history consistency, hidden-information discipline, partner consistency, opponent consistency, and reasoning-action consistency.
 
-This paper aims to answer whether verifier-grounded reasoning reveals failures that outcome metrics miss and whether verifier feedback can improve agent behavior. We will compare plain LLM agents, candidate-constrained LLM agents, theory-of-mind prompted agents, and verifier-in-the-loop agents on Guandan decision points. The expected evidence includes reasoning reliability metrics, team decision metrics, ablations over verifier components, and qualitative cases where a fluent explanation fails verification. [NEED_EXPERIMENT]
+This paper asks whether verifier-grounded reasoning reveals failures that fluent explanations hide and whether verifier feedback can improve structured reasoning. In the current pilot, we compare plain LLM prompting, candidate-constrained prompting, and verifier-revision prompting on 50 controlled Guandan decision points. The pilot shows that provider outputs can be complete while structured reasoning still fails: the plain condition yields 26 parsed traces out of 50 outputs, the candidate-constrained condition yields 32 parsed traces out of 50, and verifier revision parses all 32 eligible revision traces while reducing hard verifier failures from 35 to 10. The current evidence is a decision-point reasoning pilot rather than a full-game outcome evaluation.
 
 ## Claimed Contributions
 
 1. We formulate verifiable multi-agent reasoning in zero-communication mixed-motive games as a decision-point evaluation problem.
 2. We introduce structured reasoning traces and verifier labels for checking LLM beliefs, objectives, and actions against rules and public history.
-3. We build a Guandan-based benchmark for action-only implicit coordination under imperfect information. [NEED_EXPERIMENT]
-4. We evaluate whether verifier feedback reduces invalid reasoning and reasoning-action mismatch compared with LLM prompting baselines. [NEED_EXPERIMENT]
+3. We build a Guandan-based benchmark for action-only implicit coordination under imperfect information.
+4. We evaluate whether verifier feedback reduces invalid reasoning and reasoning-action mismatch compared with LLM prompting baselines in a cost-controlled pilot.
 
 ## Reverse Outline
 
@@ -42,13 +42,13 @@ This paper aims to answer whether verifier-grounded reasoning reveals failures t
 ## Claim-Evidence Map
 
 Claim: Outcome-only evaluation can miss invalid reasoning.  
-Evidence: Conceptual motivation plus planned case studies.  
-Status: needs evidence.
+Evidence: Pilot verifier labels identify parse failures, hidden-information violations, public-history inconsistencies, and reasoning-action failures despite provider-complete outputs.  
+Status: supported for decision-point reasoning diagnostics; not yet supported for full-game outcome correlation.
 
 Claim: Guandan provides strict verifiable constraints and implicit signaling.  
 Evidence: Local game rules and schemas; Guandan literature.  
 Status: partially supported.
 
 Claim: Verifier feedback improves reasoning reliability.  
-Evidence: Planned experiments.  
-Status: needs evidence.
+Evidence: Pilot revision comparison reduces hard verifier failures from 35 in candidate-constrained first-pass traces to 10 after verifier revision on the 32 eligible parsed traces.  
+Status: supported in the pilot revision subset.

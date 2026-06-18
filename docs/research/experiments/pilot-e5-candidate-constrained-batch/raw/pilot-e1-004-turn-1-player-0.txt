@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-004-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with the smallest hand (2 cards). Leading a high single gives the best chance to win this trick, retain the lead, and then play the remaining low card to go out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner's exact cards are unknown; they are not the current player and have 3 cards left.",
+    "confidence": 0.0,
+    "evidence": [
+      "No public card plays by partner have occurred yet."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents' exact holdings are unknown; each opponent has 3 cards remaining.",
+    "confidence": 0.0,
+    "evidence": [
+      "No cards have been played, so no inference about opponent strength is available."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The spade A is the stronger of my two singles. Playing it now maximizes the chance I win the opening trick and keep control, allowing me to shed the spade 2 on the next lead and finish my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low 2 risks losing the trick to an opponent's higher single, leaving me with only the A and possibly surrendering the lead in a race where others have more cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still have a higher single (trump 7, red trump, or joker) and win the trick.",
+      "Winning this trick with A may leave me leading a low 2 into a situation where an opponent can win and stall."
+    ],
+    "mitigation": "Even if the A is beaten, I have preserved my only high card for a later response; if the A wins, I immediately lead the 2 to exit."
+  },
+  "confidence": 0.85,
+  "notes": "Open lead in endgame race with a clear high-then-low exit plan."
+}

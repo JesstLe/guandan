@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-013-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: Partner hand count is 3 (handCounts[2])., No cards have been played, so partner's distribution is unknown., A low single is the easiest combination for partner to overtake., Opponent player 1 hand count is 2 (handCounts[1]), flagged as near finish., No cards have been played, so specific opponent holdings are hidden., A low lead could be taken by any opponent with a higher card or trump."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: Opponents collectively hold 5 cards; opponent player 1 holds only 2 cards and is close to finishing, but I cannot assert the ranks or trump content of those cards."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    },
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 2 failure(s)."
+}

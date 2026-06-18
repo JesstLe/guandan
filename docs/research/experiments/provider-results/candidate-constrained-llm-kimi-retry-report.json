@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/kimi/retry-failed-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/candidate-constrained-llm-kimi-retry.jsonl",
+  "expectedCount": 5,
+  "writtenCount": 5,
+  "successCount": 5,
+  "errorCount": 0,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/candidate-constrained-llm-kimi-retry-report.json",
+  "generatedAt": "2026-06-18T02:27:15.749Z",
+  "runner": "kimi-cli"
+}

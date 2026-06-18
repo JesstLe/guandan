@@ -1,0 +1,11 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-041-turn-2-player-1",
+  "chosenActionId": "play-single-heart-4-copy1",
+  "reasoning": [
+    "Player 0 led a single 3 of hearts and has only 2 cards remaining, indicating they are near finishing.",
+    "Because an opponent is close to going out, passing would risk letting them retain control and potentially finish.",
+    "My legal winning plays are the 4, 9, or 10 of hearts, all of which beat the 3 of hearts.",
+    "I will play the 4 of hearts, the lowest winning card, to take the trick while preserving the higher 9 and 10 for future use."
+  ]
+}

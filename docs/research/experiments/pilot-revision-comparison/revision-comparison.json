@@ -1,79 +1,79 @@
 {
   "schemaVersion": "0.1.0",
-  "status": "missing_raw_outputs",
+  "status": "metrics_available",
   "firstPassAgentId": "candidate-constrained-llm",
   "revisionAgentId": "verifier-revision-llm",
   "totalDecisionPoints": 50,
-  "parsedBefore": 0,
-  "parsedAfter": 0,
-  "hardFailuresBefore": null,
-  "hardFailuresAfter": null,
-  "hardFailureDelta": null,
+  "parsedBefore": 32,
+  "parsedAfter": 32,
+  "hardFailuresBefore": 35,
+  "hardFailuresAfter": 10,
+  "hardFailureDelta": -25,
   "rows": [
     {
       "label": "legalAction",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 32,
+      "afterPass": 32,
+      "beforeFailureBurden": 0,
+      "afterFailureBurden": 0,
+      "burdenDelta": 0
     },
     {
       "label": "beatsTable",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 7,
+      "afterPass": 7,
+      "beforeFailureBurden": 0,
+      "afterFailureBurden": 0,
+      "burdenDelta": 0
     },
     {
       "label": "publicHistoryConsistent",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 3,
+      "afterPass": 23,
+      "beforeFailureBurden": 29,
+      "afterFailureBurden": 9,
+      "burdenDelta": -20
     },
     {
       "label": "hiddenInfoDisciplined",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 26,
+      "afterPass": 31,
+      "beforeFailureBurden": 6,
+      "afterFailureBurden": 1,
+      "burdenDelta": -5
     },
     {
       "label": "partnerConsistent",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 3,
+      "afterPass": 6,
+      "beforeFailureBurden": 29,
+      "afterFailureBurden": 26,
+      "burdenDelta": -3
     },
     {
       "label": "opponentConsistent",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 10,
+      "afterPass": 12,
+      "beforeFailureBurden": 22,
+      "afterFailureBurden": 20,
+      "burdenDelta": -2
     },
     {
       "label": "reasonActionConsistent",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 31,
+      "afterPass": 32,
+      "beforeFailureBurden": 1,
+      "afterFailureBurden": 0,
+      "burdenDelta": -1
     },
     {
       "label": "teamObjectiveValid",
-      "beforePass": "[NEED_EXPERIMENT]",
-      "afterPass": "[NEED_EXPERIMENT]",
-      "beforeFailureBurden": "[NEED_EXPERIMENT]",
-      "afterFailureBurden": "[NEED_EXPERIMENT]",
-      "burdenDelta": "[NEED_EXPERIMENT]"
+      "beforePass": 13,
+      "afterPass": 14,
+      "beforeFailureBurden": 19,
+      "afterFailureBurden": 18,
+      "burdenDelta": -1
     }
   ],
-  "notes": "Raw outputs are missing; this file is a readiness artifact, not an experimental result."
+  "notes": "Failure burden is fail + unknown; lower after-revision values indicate fewer verifier-visible reasoning problems."
 }

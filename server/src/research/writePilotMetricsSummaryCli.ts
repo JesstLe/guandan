@@ -57,18 +57,18 @@ function defaultSources(): MetricsSummarySource[] {
     },
     {
       agentId: 'plain-llm',
-      rawAuditPath: 'docs/research/experiments/pilot-e4-plain-llm-batch/raw-output-audit.json',
-      notes: 'waiting for real model raw outputs',
+      metricsPath: 'docs/research/experiments/pilot-e4-plain-llm-results/metrics.json',
+      notes: 'Kimi Code CLI plain LLM baseline',
     },
     {
       agentId: 'candidate-constrained-llm',
-      rawAuditPath: 'docs/research/experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json',
-      notes: 'waiting for real model raw outputs',
+      metricsPath: 'docs/research/experiments/pilot-e5-candidate-constrained-results/metrics.json',
+      notes: 'Kimi Code CLI with verifier-provided legal candidates',
     },
     {
       agentId: 'verifier-revision-llm',
-      rawAuditPath: 'docs/research/experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json',
-      notes: 'fixture revision prompts exported; waiting for real revision raw outputs',
+      metricsPath: 'docs/research/experiments/pilot-e6-verifier-revision-results/metrics.json',
+      notes: 'Kimi Code CLI revision on parsed candidate traces',
     },
   ]
 }

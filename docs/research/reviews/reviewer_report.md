@@ -1,150 +1,248 @@
-# Preliminary Reviewer Report
+# Reviewer Attack Report: Post-Pilot Submission Stress Test
 
-This is a pre-experiment adversarial review. It evaluates the current research plan and paper-as-code skeleton, not a completed manuscript.
+Date: 2026-06-18
 
-## Area Chair Summary
+Paper: **Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games**
 
-The project has a promising but narrower defensible direction: verifier-grounded multi-agent reasoning in zero-explicit-communication mixed-motive games with dynamic legal actions. The closest-neighbor audit tightened the framing: ToM-Guandan already covers LLM Guandan, ToM planning, absence of communication, and dynamic action-space support. M3-BENCH already covers process-aware mixed-motive evaluation. The strongest potential contribution is therefore a diagnostic framework that separates game outcome from deterministic rule-verifiable reasoning-trace consistency.
+This report treats the current manuscript and artifacts as a near-submission package and reviews them as a skeptical CCF B+ or above reviewer panel would. It is intentionally stricter than the local submission gate: the gate checks artifact completeness and marker hygiene, while this report asks whether the empirical story would survive external review.
 
-Current decision:
+## Evidence Base
 
-**Reject if submitted now. Encourage continuation after experiments.**
+Primary manuscript:
 
-Main reason:
+- `docs/research/submission/manuscript/manuscript-draft.md`
+- `docs/research/submission/manuscript/manuscript-status.json`
 
-The current materials define a good research program and now include a first hard-verifier API, a 50-point decision dataset, legal-first heuristic artifacts, a strategic non-LLM baseline, prompt packets, provider-neutral LLM batch artifacts, raw-output audits, and a closest-neighbor source audit. However, there are still no real LLM comparison results and no evidence yet that verifier feedback improves reasoning reliability.
+Primary result artifacts:
 
-## Method Reviewer
+- `docs/research/tables/table-1-reasoning-reliability.md`
+- `docs/research/tables/table-2-verifier-revision-effect.md`
+- `docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.json`
+- `docs/research/experiments/pilot-revision-comparison/revision-comparison.json`
 
-### Strengths
+Submission checks:
 
-- The method decomposes the problem into decision points, structured reasoning traces, and verifier labels.
-- The hard/soft verifier distinction is methodologically important and prevents overclaiming.
-- The JSON schemas are concrete enough to guide implementation.
+- `docs/research/submission/gate-report/submission-gate-report.json`
+- `docs/research/submission/preflight/research-preflight-report.json`
 
-### Weaknesses
+Local status:
 
-- The hard verifier has a first implementation. Reason-action, team-objective, and public-tag partner/opponent soft checks are operationalized conservatively; deeper counterfactual partner/opponent intent quality remains deferred.
-- Soft checks such as partner consistency and opponent consistency are public-tag checks, not full counterfactual intent-quality labels.
-- The legal action generator is a dependency; if it is weak, the full method becomes unstable.
+- Gate status: `ready`
+- Preflight status: `ready_for_submission`
+- Manuscript marker counts: `NEED_SOURCE=0`, `UNCERTAIN=0`, `NEED_EXPERIMENT=0`, `DO_NOT_SUBMIT=0`, `AUTHOR_DECISION=0`
 
-### Required Fixes
+Pilot evidence:
 
-1. Extend the hard verifier labels with sample output artifacts:
-   - legal action,
-   - beats table,
-   - public-history consistency,
-   - hidden-information discipline.
-2. Extend public-tag partner/opponent checks into counterfactual intent-quality rubrics only after LLM pilot failures are observed.
-3. Add examples of pass/fail verifier outputs.
+- `plain-llm`: 50/50 provider outputs, 26/50 parsed traces, 24 parse failures, 26 hard verifier failures.
+- `candidate-constrained-llm`: 50/50 provider outputs, 32/50 parsed traces, 18 parse failures, 35 hard verifier failures.
+- `verifier-revision-llm`: 32/32 provider outputs on eligible parsed candidate traces, 32/32 parsed traces, 10 hard verifier failures.
+- Revision comparison: hard failures drop from 35 to 10 on the parsed candidate subset; public-history burden drops from 29 to 9; hidden-information burden drops from 6 to 1.
 
-## Experiment Reviewer
+## Editorial Decision
 
-### Strengths
+**Major Revision before external submission.**
 
-- Agent conditions are reasonable: plain LLM, candidate-constrained LLM, ToM-prompted LLM, verifier-in-the-loop LLM.
-- Metrics separate reasoning reliability from team-decision outcomes.
-- The ablation plan is aligned with the main mechanism.
-- A deterministic strategic heuristic baseline now exists, which gives the future LLM comparison a nontrivial non-LLM reference point.
+The work has a defensible contribution shape: it is not trying to be a stronger Guandan bot, but a verifier-grounded diagnostic framework for LLM-agent reasoning in zero-communication, mixed-motive, dynamic-action settings. The current package is substantially stronger than a plan-only paper because it includes provider-complete pilot runs, structured traces, verifier outputs, tables, reproducibility artifacts, and a clean local submission gate.
 
-### Weaknesses
+However, a strong reviewer can still reject the current version as an underpowered pilot with ambiguous causal attribution. The biggest vulnerability is not artifact completeness. It is the inference from "verifier revision improves failures" to "verifier-grounded reasoning is a robust method." The revision result is promising, but it is measured only on the 32 parsed candidate-constrained traces, and the paper has not yet separated schema/format repair from reasoning repair.
 
-- A 50-point pilot dataset, deterministic baselines, prompt packets, and provider-neutral batch files exist, but no LLM raw outputs, larger dataset, or sampling protocol exists yet.
-- No model list is fixed.
-- No sample size calculation or statistical plan is specified.
-- No external baseline plan is finalized for OpenGuanDan or ToM-Guandan.
+## Reviewer Matrix
 
-### Required Fixes
+| Dimension | Area Chair | R1 Methodology | R2 Literature/Domain | R3 Systems/Reproducibility | Devil's Advocate |
+| --- | --- | --- | --- | --- | --- |
+| Overall | Major Revision | Major Revision | Borderline | Minor-to-Major | Reject unless strengthened |
+| Confidence | 4/5 | 5/5 | 4/5 | 4/5 | 5/5 |
+| Main strength | Clear verifier-grounded framing | Decomposed labels and artifacts | Careful novelty boundary | Reproducible local pipeline | Real pilot, not only proposal |
+| Main weakness | Pilot-level evidence | Selection and attribution | Close prior work pressure | Provider/client disclosure | Could look like prompt engineering |
+| Must fix | Add attribution evidence | Paired subset + ablations | Sharpen novelty table | Log run metadata and cases | Show verifier catches nontrivial failures |
 
-1. Expand or freeze the pilot dataset protocol after inspecting coverage quality.
-2. Run a small pilot with one LLM against the strategic heuristic baseline.
-3. Report parse success, legality rate, and verifier label distribution before attempting full game outcomes.
-4. Decide whether OpenGuanDan is required as an external comparison.
+## Major Findings
 
-## Related-Work Reviewer
+### F1. The revision result is promising but selection-biased.
 
-### Strengths
+Severity: **High**
 
-- The materials correctly identify close work: LLM-Coordination, Hanabi LLM agents, M3-BENCH, mixed-motive explanations, DanZero, ToM-Guandan, and OpenGuanDan.
-- The gap is narrowed to deterministic verifier-grounded reasoning-action consistency in dynamic-action mixed-motive team play.
-- ToM-Guandan, LLM-Coordination, Hanabi LLM agents, and DanZero have now been PDF-read. M3-BENCH / OpenGuanDan / mixed-motive explanation work have been read from arXiv HTML.
+The verifier-revision condition is run only on the 32 candidate-constrained traces that were parseable. This is methodologically reasonable, but the manuscript must make the estimand explicit:
 
-### Weaknesses
+- It does not prove improvement over all 50 decision points.
+- It proves improvement on the parsed candidate subset.
+- It mixes two different failure channels: parseability and verifier consistency.
 
-- The immediate closest-neighbor risk is now better covered. Some medium-priority background entries remain less deeply read than the direct competitors.
-- The old gap claim was too broad. ToM-Guandan already includes an absence-of-communication Guandan setting, and M3-BENCH already argues for process-aware mixed-motive evaluation.
-- LLM-Coordination includes an LLM answer-verification step for Hanabi, and Hanabi LLM agents include reasoning traces and move-level utilities, so the paper must not claim novelty for verification or trace collection in games generally.
-- Search coverage for deterministic verifier labels, rule-grounded trace checking, and hidden-information hallucination should be expanded.
+Current text mostly acknowledges this, but a reviewer can still argue that the headline "hard failures drop from 35 to 10" is too easy to overread. The paper should report two views side by side:
 
-### Required Fixes
+- End-to-end condition reliability over all 50 prompts.
+- Paired revision reliability over the 32 eligible traces.
 
-1. Read full PDFs for the closest four papers.
-2. Add direct quotations or page-level notes only where permitted and concise.
-3. Add a related-work table comparing: communication setting, motive structure, environment, reasoning labels, verifier type, and dynamic legal actions.
+### F2. The paper has not yet proven that verifier feedback improves reasoning rather than formatting.
 
-## Skeptical Reviewer
+Severity: **High**
 
-### Likely Rejection Argument
+The largest observed gain is public-history consistency: burden drops from 29 to 9. Hidden-information burden drops from 6 to 1. These are strong signals, but the current evidence does not yet isolate why the gain happened.
 
-This is a benchmark/scaffold paper over a niche card game. ToM-Guandan already evaluates LLM agents in no-communication Guandan with ToM and action recommendation; M3-BENCH already does process-aware mixed-motive evaluation. The verifier may only check legality, which is already expected in game agents. The strategic labels may be subjective, and without strong empirical gains the paper may look incremental over both works.
+A skeptical reviewer will ask whether the revision prompt simply made the model obey JSON/schema instructions better or copy verifier labels back into the answer, instead of improving the underlying decision reasoning. This is the most important attack to neutralize before CCF B+ submission.
 
-### Best Response
+Required response:
 
-The paper must show that:
+- Add a component ablation or paired error analysis showing which verifier labels drive the gain.
+- Separate "format/schema repair" from "reasoning-label repair."
+- Include qualitative examples where the selected action/rationale changes in a verifier-meaningful way, not only the JSON shape.
 
-1. Outcome-only evaluation hides measurable reasoning failures.
-2. These failures are not limited to trivial illegal actions.
-3. Verifier feedback reduces reasoning-action inconsistency.
-4. Deterministic rule-grounded checks reveal failures not captured by broad RPA/CCA scores or ToM-Guandan performance metrics.
+### F3. The pilot sample is too small for broad claims.
 
-## Five-Dimension Self-Review
+Severity: **High**
 
-### 1. Contribution
+The 50-decision pilot is enough to validate the pipeline and motivate the method. It is not enough to support strong claims about LLM agents in general, Guandan reasoning in general, or zero-communication mixed-motive games in general.
 
-Status: needs experiment.
+The manuscript currently says this is a pilot and avoids full-game claims. That is good. But for CCF B+ or above, the paper should still add at least one of:
 
-The contribution is plausible but unproven. The novelty is defensible only if the verifier labels produce insights beyond legality.
+- A full `full-e1` run with the same conditions on 500 decision points.
+- A cheaper statistical treatment of the existing 50-decision pilot with bootstrap confidence intervals and paired tests.
+- A second model/provider replication on the pilot set.
 
-### 2. Writing Clarity
+The lowest-cost useful step is the statistical treatment plus verifier ablation, because it can be done on existing artifacts before new API spending.
 
-Status: pass for planning stage.
+### F4. Candidate constraints improve parse rate but not hard failures.
 
-The paper-as-code skeleton has a coherent story and stable terminology. It still needs formal definitions and examples.
+Severity: **Medium-High**
 
-### 3. Experimental Strength
+The candidate-constrained condition parses more traces than plain prompting: 32/50 vs. 26/50. But it also has more hard verifier failures: 35 vs. 26. This is not necessarily bad because more parsed traces expose more verifier-checkable failures, but the table can confuse reviewers.
 
-Status: needs new experiment.
+The paper should explicitly explain:
 
-No empirical evidence exists yet.
+- Parse yield and verifier failures measure different things.
+- A condition with more parsed traces can reveal more failures.
+- The appropriate comparison for revision is paired on candidate-constrained parsed traces, not raw hard-failure totals across conditions.
 
-### 4. Evaluation Completeness
+Without this explanation, a reviewer may incorrectly conclude that candidate constraints make reasoning worse.
 
-Status: needs revision.
+### F5. The related-work boundary is narrow and must stay disciplined.
 
-Baselines and metrics are planned, but external baseline decisions and sample-size protocol are missing.
+Severity: **Medium-High**
 
-### 5. Method Design Soundness
+The manuscript correctly avoids claiming novelty for Guandan LLM agents, ToM prompting, dynamic legal actions, mixed-motive process evaluation, or game-agent verification in general. This restraint is crucial because ToM-Guandan, OpenGuanDan, M3-BENCH, LLM-Coordination, Hanabi LLM agents, Strat-Reasoner, and ToolPoker all occupy nearby space.
 
-Status: needs implementation.
+The novelty claim should remain:
 
-The schema-first design is sound. The main risk is that soft strategic verifier labels become subjective or brittle.
+> A rule-grounded diagnostic verifier for structured LLM reasoning traces in zero-explicit-communication, mixed-motive, dynamic-action team play.
 
-## Blocking Items
+Do not broaden this into "first LLM Guandan benchmark" or "first verification of LLM game reasoning." Those claims are attackable.
 
-- [DO_NOT_SUBMIT] Pilot dataset and heuristic baseline artifacts exist, but no LLM comparison has used them yet.
-- [DO_NOT_SUBMIT] LLM batch files exist, but raw-output audits currently show 0 / 50 outputs present for the plain, candidate-constrained, and fixture-only verifier-revision pilot conditions.
-- [DO_NOT_SUBMIT] Verifier-revision prompts are fixture-only so far; before/after claims require revision prompts built from real first-pass LLM traces and verifier results.
-- [DO_NOT_SUBMIT] Soft-label protocol v0.2 exists, but deeper partner/opponent intent-quality labels and LLM evidence remain missing.
-- [DO_NOT_SUBMIT] No empirical result.
-- [DO_NOT_SUBMIT] Citation integrity is improved but not manuscript-ready; page/section alignment and metadata verification remain incomplete.
-- [DO_NOT_SUBMIT] Citation audit exists, but final BibTeX normalization and page/section alignment are incomplete.
+### F6. Soft verifier labels need calibration language.
 
-## Recommended Next Step
+Severity: **Medium**
 
-Implement the pilot research harness:
+Hard labels such as legal action, table beating, public-history consistency, and hidden-information discipline are defensible. Soft labels such as partner consistency, opponent consistency, and team-objective validity are more subjective.
 
-1. decision-point exporter,
-2. hard verifier,
-3. one LLM prompt condition,
-4. one strategic-heuristic-vs-LLM metrics table,
-5. LLM-driven partner/opponent failure taxonomy.
+The manuscript already separates hard and soft labels, but the next revision should add clearer calibration:
+
+- Soft labels are conservative diagnostics, not proof of optimality.
+- Unknown labels are not failures in the same sense as deterministic rule violations.
+- Failure burden is `fail + unknown`, so it intentionally penalizes noncommittal or under-specified traces.
+
+This protects the paper from the attack that the verifier is secretly a hand-written strategic judge.
+
+### F7. Reproducibility is strong locally but provider disclosure needs care.
+
+Severity: **Medium**
+
+The code and artifacts are unusually complete for this stage: raw provider outputs, parser outputs, verifier results, summary tables, gate report, preflight, and reproducibility manifest exist. That is a real strength.
+
+But external reviewers will still need:
+
+- Exact provider/client identity.
+- Model name or CLI mode.
+- Date of runs.
+- Temperature or decoding settings when available.
+- Prompt template versions.
+- A note that API keys are never stored in artifacts.
+
+The paper can describe the pilot as "Kimi Code CLI outputs" if that is the actual reproducible client, but it should avoid implying a stable public model ID unless one was logged.
+
+## Devil's Advocate Rejection Letter
+
+The paper proposes a verifier for LLM traces in Guandan, but the core experiment is only a 50-decision pilot with one provider/client. The strongest result, verifier revision reducing hard failures from 35 to 10, is measured only after excluding 18 unparseable candidate outputs. The verifier may be teaching the model to satisfy a checklist rather than improving strategic reasoning. Candidate constraints increase parseability but do not clearly improve hard-failure counts. The evaluation does not include full-game outcomes, multi-model replication, confidence intervals, or component ablations. Closely related work already studies LLMs in Guandan, mixed-motive process evaluation, and game reasoning traces. Without stronger empirical attribution, this looks like a useful engineering diagnostic rather than a CCF B+ research contribution.
+
+## Best Author Response
+
+The paper should concede the pilot scope and answer the rejection at the exact weak point:
+
+1. The target is not game-winning strength; it is verifier-visible reasoning reliability.
+2. The current pilot establishes that provider-complete outputs still fail structured reasoning checks.
+3. Revision is evaluated only on the eligible paired subset, and the paper reports this explicitly.
+4. A new ablation and paired analysis show that the gain is not merely schema repair.
+5. Qualitative cases show concrete public-history and hidden-information reasoning repairs.
+
+This response turns the weakness into a controlled-scope contribution instead of overclaiming.
+
+## Required Next Experiment
+
+**Run a verifier-attribution experiment on existing artifacts before spending more API budget.**
+
+This is the highest-value next step because it directly addresses the most dangerous reviewer attack and can likely be done without new model calls.
+
+Minimum deliverables:
+
+1. **Paired subset table**
+   - Unit: the 32 candidate-constrained traces that have corresponding revision traces.
+   - Report before/after for each verifier label.
+   - Separate hard deterministic labels from soft labels.
+   - Include exact counts and deltas.
+
+2. **Uncertainty estimates**
+   - Add bootstrap confidence intervals for the before/after failure-burden delta.
+   - Add a paired sign test or McNemar-style test for binary hard-failure presence if the label representation supports it.
+
+3. **Verifier-component ablation**
+   - Recompute failure burden with each verifier component removed:
+     - public-history consistency,
+     - hidden-information discipline,
+     - partner consistency,
+     - opponent consistency,
+     - reasoning-action consistency,
+     - team-objective validity.
+   - Show which components account for the 35 to 10 hard-failure drop.
+
+4. **Qualitative case pack**
+   - One public-history hallucination repaired by verifier revision.
+   - One hidden-information failure repaired.
+   - One remaining failure after revision.
+   - One parse/schema failure that remains outside the revision subset.
+
+5. **End-to-end vs paired framing**
+   - Add a small table that distinguishes:
+     - all 50 prompts,
+     - 32 parsed candidate traces,
+     - 32 revised traces.
+
+## Revision Roadmap
+
+### P0: Must do before CCF B+ submission
+
+- Add the verifier-attribution experiment above.
+- Add paired subset framing to the manuscript.
+- Add uncertainty estimates or explicitly state that the current numbers are descriptive pilot counts.
+- Add 3-4 qualitative cases from raw traces and verifier outputs.
+- Clarify that revision results are not measured over unparseable candidate outputs.
+
+### P1: Strongly recommended
+
+- Run a second provider/model on the 50-decision pilot, or explain why the pilot is single-provider.
+- Run at least one more condition on `full-e1` if budget allows.
+- Add a compact "closest work vs this paper" table in the main manuscript, not only notes.
+- Add exact run metadata for all provider-backed rows.
+
+### P2: Nice to have
+
+- Add full-game outcome evaluation.
+- Add human annotation for a small sample of soft labels.
+- Add cross-game transfer beyond Guandan.
+
+## Submission Recommendation
+
+Do not send the current version as the final CCF B+ submission yet. It is locally clean and coherent, but one more narrow experiment will make it much harder to reject.
+
+Recommended next action:
+
+> Implement the verifier-attribution analysis on existing pilot artifacts, update Tables 1-2, add a qualitative case pack, then rerun the submission gate.
+
+This is a better next step than immediately scaling to 500 LLM calls, because it attacks the central causal question first: whether the verifier improves verifiable reasoning, not just output format.

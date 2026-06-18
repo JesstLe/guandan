@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "0.1.0",
+  "modelProvider": "kimi-code-cli",
+  "modelName": "kimi-for-coding",
+  "temperature": 0,
+  "notes": "Kimi Code CLI run via official kimi client; initial 50 run plus failed-row retries; source input generated with model kimi-for-coding.",
+  "sourceBatchJsonl": "docs/research/experiments/pilot-e4-plain-llm-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/plain-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/pilot-e4-plain-llm-batch/raw",
+  "materializationReport": "docs/research/experiments/pilot-e4-plain-llm-results/provider-materialization-report.json"
+}

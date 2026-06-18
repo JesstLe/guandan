@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type {
   GuandanDecisionPoint,
@@ -79,19 +79,23 @@ export function writeRevisionPromptPackets(
 export function readRevisionPromptInputsFromDirectories(
   options: ReadRevisionPromptInputsOptions,
 ): RevisionPromptInput[] {
-  return readdirSync(options.decisionDir)
+  const inputs: RevisionPromptInput[] = []
+
+  for (const filename of readdirSync(options.decisionDir)
     .filter(filename => filename.endsWith('.json'))
-    .sort()
-    .map(filename => {
-      const decision = readJson<GuandanDecisionPoint>(join(options.decisionDir, filename))
-      const tracePath = join(options.traceDir, `${safeFilename(decision.decisionId)}.json`)
-      const resultPath = join(options.resultDir, `${safeFilename(decision.decisionId)}.json`)
-      return {
-        decision,
-        trace: readJson<LLMReasoningTrace>(tracePath),
-        verifierResult: readJson<VerifierResult>(resultPath),
-      }
+    .sort()) {
+    const decision = readJson<GuandanDecisionPoint>(join(options.decisionDir, filename))
+    const tracePath = join(options.traceDir, `${safeFilename(decision.decisionId)}.json`)
+    const resultPath = join(options.resultDir, `${safeFilename(decision.decisionId)}.json`)
+    if (!existsSync(tracePath) || !existsSync(resultPath)) continue
+    inputs.push({
+      decision,
+      trace: readJson<LLMReasoningTrace>(tracePath),
+      verifierResult: readJson<VerifierResult>(resultPath),
     })
+  }
+
+  return inputs
 }
 
 function revisionSystemMessage(): string {

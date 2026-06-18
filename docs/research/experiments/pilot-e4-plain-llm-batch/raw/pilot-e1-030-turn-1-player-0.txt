@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-030-turn-1-player-0",
+  "chosenActionId": "play-single-spade-3-copy1",
+  "reasoning": "Opening lead with a weak hand containing only non-trump spades (3, 4, 5, 6). I have no trumps or red trumps, so I should not try to seize control aggressively. Leading the lowest card, the 3 of spades, minimizes the value I give away and keeps the 4, 5, and 6 for later tricks if opportunities arise."
+}

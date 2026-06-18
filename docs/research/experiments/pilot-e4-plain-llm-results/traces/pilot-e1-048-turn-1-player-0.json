@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-048-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "I hold only low, non-trump clubs and have no strong winning combination. The best opening lead is the lowest card to preserve marginally higher cards for later tricks and avoid wasting potential winners."
+  },
+  "partnerBelief": {
+    "summary": "Partner's strength is unknown, but they may be able to cover a low lead or eventually take the lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "No public history beyond the new game event.",
+      "Partner hand count is 3, which is neither dominant nor empty."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher cards and possible trumps; one opponent has only 2 cards remaining and may be close to finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "Hand counts are [4, 2, 3, 3]; player 1 has only 2 cards.",
+      "No cards have been played, so opponent ranks and suits are unknown.",
+      "Any single I lead can be beaten by a higher card or a trump."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the safest play because it is the weakest card, keeps 4-6 as slightly better end-game options, and forces opponents to spend higher cards if they want to win the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Marginally better than the 3 but still extremely weak; better saved until later."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher than necessary for an opening lead and slightly more valuable later."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The highest club I hold; leading it now wastes the best chance to win a future non-trump trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low lead is likely to lose the trick to a higher card or trump.",
+      "The opponent with 2 cards may capitalize on regaining the lead."
+    ],
+    "mitigation": "Losing the lead with the weakest card minimizes resource loss and keeps my best cards for later rounds when hand sizes are smaller."
+  },
+  "confidence": 0.85
+}

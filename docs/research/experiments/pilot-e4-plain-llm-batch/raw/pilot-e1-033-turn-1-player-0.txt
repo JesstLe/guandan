@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-033-turn-1-player-0",
+  "chosenActionId": "play-single-club-3-copy1",
+  "reasoning": "Opening lead with the weakest card in hand. I hold only small clubs (3-4-5-6) and no trumps or bombs, so leading the 3♣ minimizes risk: opponents with stronger hands may be forced to spend a higher card to take the trick, while partner may have a chance to win cheaply. The opponent to my right (player 1) has only 2 cards remaining, but without knowing those cards I cannot assume they are high or low; a small lead is still the safest way to start the round."
+}

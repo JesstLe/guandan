@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-033-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Lead the weakest single to keep the highest remaining club and give partner a chance to take control with a higher card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards, but no public or private information reveals their ranks, suits, or trump holdings. They may be able to beat a low club, but this is uncertain.",
+    "confidence": 0.3,
+    "evidence": [
+      "71e645fc-f602-4b13-9e73-8f5c587333c3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 8 cards total; player 1 is down to 2 cards and near finishing. They likely possess cards that beat a low non-trump club, though exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "71e645fc-f602-4b13-9e73-8f5c587333c3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of clubs is the lowest legal lead, exposing minimal value, preserving the 6 as the best remaining card, and allowing partner to win the trick with any higher non-trump or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the highest remaining club wastes the only card that might win a later trick and is still likely to be beaten by opponents."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A middle card gives no better chance of winning the lead than the 3 while reducing the remaining high-card buffer."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "There is no strategic benefit to leading a higher club when a lower one is legal and safer."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 1 has only 2 cards and may win the trick, then go out quickly.",
+      "Partner may be unable to beat the low club, ceding initiative to opponents.",
+      "All legal actions are low non-trump singles with no strong stopper available."
+    ],
+    "mitigation": "Preserve the 6 of clubs as the highest remaining card and use opponent responses to guide later tricks."
+  },
+  "confidence": 0.6
+}

@@ -1,0 +1,6 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "pilot-e1-030-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": "Opening lead with the lowest card in hand. All legal actions are single spades, so suit is fixed; playing the 3 preserves the higher cards (4, 5, 6) for later tricks and avoids immediately revealing the strength of a sequential hand. It is the most conservative lead while retaining flexibility."
+}

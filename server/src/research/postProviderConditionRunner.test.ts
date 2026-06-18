@@ -12,6 +12,8 @@ import { createBaselineTrace } from './baselineTraceAgents'
 import { generatePilotDecisionDataset } from './pilotDatasetExporter'
 import { writePromptPackets } from './llmPromptPackets'
 import { writeLLMBatchFiles } from './llmBatchFiles'
+import { createRevisionPromptPacket, writeRevisionPromptPackets } from './verifierRevisionPackets'
+import { verifyReasoningTrace } from './reasoningVerifier'
 import { runPostProviderCondition } from './postProviderConditionRunner'
 
 describe('postProviderConditionRunner', () => {
@@ -113,6 +115,66 @@ describe('postProviderConditionRunner', () => {
       expect(result.ingest).toBeUndefined()
       const report = JSON.parse(readFileSync(result.reportPath, 'utf8'))
       expect(report.blockers).toContain('Raw-output audit is not ready for ingest.')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('ingests revision outputs using packet raw-output filenames', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-post-provider-revision-'))
+    const decisionsDir = join(rootDir, 'decisions')
+    const promptDir = join(rootDir, 'revision-prompts')
+    const batchDir = join(rootDir, 'revision-batch')
+    const providerResultsPath = join(batchDir, 'provider-results.jsonl')
+    const outputDir = join(rootDir, 'revision-results')
+    const dataset = generatePilotDecisionDataset({ targetCount: 1, gameIdPrefix: 'post-provider-revision' })
+    const decision = dataset.decisions[0]
+    const trace = createBaselineTrace(decision, 'strategic-heuristic')
+    const verifierResult = verifyReasoningTrace(decision, trace)
+
+    try {
+      mkdirSync(decisionsDir, { recursive: true })
+      writeFileSync(join(decisionsDir, `${decision.decisionId}.json`), JSON.stringify(decision), 'utf8')
+      writeRevisionPromptPackets({
+        inputs: [{ decision, trace, verifierResult }],
+        outputDir: promptDir,
+      })
+      const batch = writeLLMBatchFiles({ promptPacketDir: join(promptDir, 'packets'), outputDir: batchDir })
+      const revisionTrace = {
+        ...createRevisionPromptPacket(decision, trace, verifierResult),
+        schemaVersion: '0.1.0',
+        decisionId: decision.decisionId,
+        agentId: 'verifier-revision-llm',
+        selectedActionId: trace.selectedActionId,
+        teamObjective: trace.teamObjective,
+        partnerBelief: trace.partnerBelief,
+        opponentBelief: trace.opponentBelief,
+        actionRationale: trace.actionRationale,
+        riskAssessment: trace.riskAssessment,
+        confidence: trace.confidence,
+      }
+      writeFileSync(providerResultsPath, `${JSON.stringify(openAiBatchResult(decision.decisionId, JSON.stringify(revisionTrace)))}\n`, 'utf8')
+
+      const result = runPostProviderCondition({
+        decisionsDir,
+        promptPacketDir: join(promptDir, 'packets'),
+        batchJsonlPath: batch.batchJsonlPath,
+        providerResultJsonlPath: providerResultsPath,
+        rawOutputDir: batch.rawOutputDir,
+        outputDir,
+        conditionId: 'verifier-revision-llm',
+        provenance: {
+          modelProvider: 'openai',
+          modelName: 'gpt-test',
+        },
+      })
+
+      expect(result.status).toBe('ingested')
+      expect(result.ingest?.failures).toHaveLength(0)
+      const metrics = JSON.parse(readFileSync(join(outputDir, 'metrics.json'), 'utf8'))
+      expect(metrics.totalDecisionPoints).toBe(1)
+      expect(metrics.totalParsedTraces).toBe(1)
+      expect(metrics.parseFailureCount).toBe(0)
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

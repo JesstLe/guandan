@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-008-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand is very weak (3-6 of clubs, all non-trump) and I am leading the first trick. I lead the lowest card to preserve the slightly higher cards for future tricks rather than overcommitting on a trick I am unlikely to win."
+  },
+  "partnerBelief": {
+    "summary": "No factual information about partner's cards. The partner holds 3 cards but their ranks, suits, and strength are unknown.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "No factual information about opponent cards. One opponent holds only 2 cards (near finish) and the other holds 3 cards; either may hold higher non-trump cards or trumps that can beat any of my singles.",
+    "confidence": 0,
+    "evidence": [
+      "handCounts show one opponent with 2 cards"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "All legal actions are single clubs. The 3 of clubs is the weakest card in my hand and the lowest-ranking legal action. Playing it first minimizes the value I expose and keeps the 4, 5, and 6 for later tricks, which increases my chances of eventually winning a trick or supporting my partner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is more valuable than the 3; playing it now would waste a card that is more likely to be useful later."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is the second-highest card in my hand and should be saved for a later trick where it has a better chance of winning or beating a low lead."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest card; leading it now would reveal my strongest card and leave only weaker cards for future tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may have a higher single card or a trump and win this trick, giving them the lead.",
+      "An opponent is near finish with only 2 cards, so losing the lead could let them go out quickly.",
+      "Leading the lowest card does not contest the trick, so the team gains no immediate advantage."
+    ],
+    "mitigation": "By preserving the 4, 5, and 6, I keep what little strength I have for later tricks, avoid overcommitting on a trick I am unlikely to win, and maintain flexibility if the lead returns to me."
+  },
+  "confidence": 0.75
+}

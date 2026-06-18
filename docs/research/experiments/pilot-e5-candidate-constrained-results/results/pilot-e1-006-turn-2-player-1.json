@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-006-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-heart-4-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action metadata says it beats the table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: 2df4ad1a-0ce6-4469-b605-5c520e7aa93c, 2df4ad1a-0ce6-4469-b605-5c520e7aa93c"
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "suppress_opponent is grounded in opponent_near_finish tag."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 1 failure(s)."
+}

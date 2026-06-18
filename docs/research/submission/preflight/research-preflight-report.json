@@ -1,61 +1,53 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T00:49:21.774Z",
-  "status": "waiting_for_provider_results",
-  "localReady": false,
-  "submissionGateStatus": "not_ready",
-  "manuscriptReadyForSubmission": false,
-  "manuscriptWordCount": 2825,
+  "generatedAt": "2026-06-18T02:48:48.576Z",
+  "status": "ready_for_submission",
+  "localReady": true,
+  "submissionGateStatus": "ready",
+  "manuscriptReadyForSubmission": true,
+  "manuscriptWordCount": 2983,
   "markerCounts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 8,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
-  "externalBlockers": [
-    "LLM condition plain-llm has status missing_raw_outputs.",
-    "LLM condition candidate-constrained-llm has status missing_raw_outputs.",
-    "LLM condition verifier-revision-llm has status missing_raw_outputs.",
-    "Verifier-revision comparison status is missing_raw_outputs."
-  ],
-  "localBlockers": [
-    "Submission-relevant files still have 8 NEED_EXPERIMENT markers."
-  ],
+  "externalBlockers": [],
+  "localBlockers": [],
   "rawOutputAudits": [
     {
       "id": "plain-llm",
       "title": "Plain LLM",
-      "path": "experiments/pilot-e4-plain-llm-batch/raw-output-audit.json",
+      "path": "experiments/pilot-e4-plain-llm-results/raw-output-audit.json",
       "status": "present",
       "expectedCount": 50,
-      "presentCount": 0,
-      "missingCount": 50,
-      "readyForIngest": false
+      "presentCount": 50,
+      "missingCount": 0,
+      "readyForIngest": true
     },
     {
       "id": "candidate-constrained-llm",
       "title": "Candidate-Constrained LLM",
-      "path": "experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json",
+      "path": "experiments/pilot-e5-candidate-constrained-results/raw-output-audit.json",
       "status": "present",
       "expectedCount": 50,
-      "presentCount": 0,
-      "missingCount": 50,
-      "readyForIngest": false
+      "presentCount": 50,
+      "missingCount": 0,
+      "readyForIngest": true
     },
     {
       "id": "verifier-revision-llm",
       "title": "Verifier Revision LLM",
-      "path": "experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json",
+      "path": "experiments/pilot-e6-verifier-revision-results/raw-output-audit.json",
       "status": "present",
-      "expectedCount": 50,
-      "presentCount": 0,
-      "missingCount": 50,
-      "readyForIngest": false
+      "expectedCount": 32,
+      "presentCount": 32,
+      "missingCount": 0,
+      "readyForIngest": true
     }
   ],
   "nextActions": [
-    "Materialize real provider outputs for: plain-llm, candidate-constrained-llm, verifier-revision-llm.",
-    "Resolve local blockers after provider outputs are ingested, then regenerate metrics, manuscript, gate, and preflight reports."
+    "Run final submission formatting and venue-specific policy checks."
   ]
 }

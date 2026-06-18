@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-029-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left while opponents hold three cards each. Leading a high single lets me fight for initiative so I can play my remaining card on the next lead and finish my hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three unknown cards and no information has been revealed beyond the new game event.",
+    "confidence": 0.2,
+    "evidence": [
+      "No plays or passes have occurred.",
+      "Hand count shows partner holds three cards."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has three unknown cards; they could hold jokers or trump-rank cards that can beat a 2.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played.",
+      "With eleven unseen cards, jokers and trump 7s are possible."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 of spades is the higher of my two singles. Leading it gives the best chance to win the trick immediately, retain the lead, and then play the A as my final card to go out. If the 2 loses, I still preserve the A, but conceding the lead with the weaker A first is more likely to strand my 2.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is lower and will almost certainly be beaten by a higher single, giving the lead to an opponent. That makes it harder to play my remaining 2, since the opponent could lead non-single combinations."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may beat the 2 with a joker or a trump 7.",
+      "If the 2 loses, I am left with only the A and may not regain the lead."
+    ],
+    "mitigation": "Leading the 2 maximizes the chance of winning this trick and getting a consecutive lead. Even if it is beaten, taking a shot at initiative is better than surrendering it with the weaker A."
+  },
+  "confidence": 0.65,
+  "notes": "No hidden cards are asserted as facts; beliefs are based solely on public counts and the absence of prior plays."
+}

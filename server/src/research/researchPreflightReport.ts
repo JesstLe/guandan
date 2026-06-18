@@ -194,17 +194,17 @@ function defaultRawAudits(): ResearchPreflightRawAuditInput[] {
     {
       id: 'plain-llm',
       title: 'Plain LLM',
-      path: 'experiments/pilot-e4-plain-llm-batch/raw-output-audit.json',
+      path: 'experiments/pilot-e4-plain-llm-results/raw-output-audit.json',
     },
     {
       id: 'candidate-constrained-llm',
       title: 'Candidate-Constrained LLM',
-      path: 'experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json',
+      path: 'experiments/pilot-e5-candidate-constrained-results/raw-output-audit.json',
     },
     {
       id: 'verifier-revision-llm',
       title: 'Verifier Revision LLM',
-      path: 'experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json',
+      path: 'experiments/pilot-e6-verifier-revision-results/raw-output-audit.json',
     },
   ]
 }

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-029-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-spade-A-copy2 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: No cards have been played or exposed., No bids or communication have occurred., Opponents each hold three unknown cards., Rank 2 is the weakest natural card, so any non-2 non-trump card of the same or other suit likely beats it."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: Leading the Ace of spades is the strongest available move. If it wins the trick, I keep the lead and can play the 2 next to exit my hand. If it loses, the outcome is similar to leading the 2, but the Ace has a higher chance of winning."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Opponent consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "finish_hand is compatible with playing from an endgame hand."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    },
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 2 failure(s)."
+}

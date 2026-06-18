@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-047-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds only 2 cards and is near finishing, so the highest-value opening objective is to lead a low card that partner can beat and thereby gain the lead to play out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner is very close to going out with 2 cards left; they likely retain at least one card that can beat a low single, but no specific cards are known.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts shows partner with 2 cards remaining",
+      "scenarioTags includes partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards; nothing has been played, so their strength is unknown. They may or may not be able to beat a low single.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts: [4, 3, 2, 3]",
+      "playedCardSummary shows 0 cards played"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦ (the lowest legal single) maximizes the chance that partner can win the trick, take the lead, and finish their hand, while preserving my slightly higher cards for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than the 3, making it slightly harder for partner to beat and wasting a card that could be useful later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still higher; reduces partner's ability to overtake and does not improve my own chances of winning the trick."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The highest single available; least likely to be beaten by partner and leaves me with weaker remaining cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and seize the lead.",
+      "Partner may not be able to beat even a low single if their cards are lower or must be saved."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the strength needed for partner to win and keeps my higher diamonds for future tricks if I regain the lead."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no prior plays; favor low-card lead to support a partner near finish."
+}

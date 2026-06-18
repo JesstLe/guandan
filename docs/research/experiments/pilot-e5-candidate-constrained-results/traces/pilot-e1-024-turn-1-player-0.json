@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-024-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only two non-trump singles and has the opening lead, so the immediate objective is to exit the hand as quickly as possible while retaining enough strength to win the first trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unknown cards. No specific ranks or suits are asserted; partner may be able to support later if they gain the lead.",
+    "confidence": 0.4,
+    "evidence": [
+      "6d3df209-c607-427f-8f25-a70cae57e451"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. They may hold trump 7s, jokers, or other 2s that can beat a plain 2, but no hidden cards are asserted.",
+    "confidence": 0.4,
+    "evidence": [
+      "6d3df209-c607-427f-8f25-a70cae57e451"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the higher plain 2 first maximizes the chance of winning the opening trick. If the 2 wins, player 0 regains the lead and plays the A next, guaranteeing the hand is finished by the end of the following trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the weaker A first is more likely to be beaten immediately, leaving player 0 with only the 2 but without the lead. Recovering control from that position is uncertain, especially when opponents may lead combinations the remaining 2 cannot answer."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7 or joker that beats the 2 and seizes the lead.",
+      "Even if the 2 wins, the follow-up A could be beaten, though player 0 will still have played all cards."
+    ],
+    "mitigation": "By leading the strongest single first, player 0 gives itself the best chance to control both remaining tricks and exit before opponents can exploit the weaker A."
+  },
+  "confidence": 0.7,
+  "notes": "Candidate-constrained-LLM reasoning trace for the opening lead in an endgame race."
+}

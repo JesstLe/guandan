@@ -1,4 +1,5 @@
 import {
+  readFileSync,
   mkdirSync,
   writeFileSync,
 } from 'node:fs'
@@ -90,12 +91,16 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
     return result
   }
 
+  const rawOutputFileByDecisionId = readRawOutputFileMap(options.batchJsonlPath)
+  const decisionIdsWithProviderOutputs = new Set(Object.keys(rawOutputFileByDecisionId))
   const decisions = readDecisionPointsFromDirectory(options.decisionsDir)
+    .filter(decision => decisionIdsWithProviderOutputs.size === 0 || decisionIdsWithProviderOutputs.has(decision.decisionId))
   const ingest = ingestLLMRawOutputs({
     decisions,
     rawOutputDir: options.rawOutputDir,
     outputDir: options.outputDir,
     conditionId: options.conditionId,
+    rawOutputFileByDecisionId,
   })
 
   const result: PostProviderConditionResult = {
@@ -111,6 +116,22 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
   }
   writeJson(reportPath, result)
   return result
+}
+
+function readRawOutputFileMap(batchJsonlPath: string): Record<string, string> {
+  const map: Record<string, string> = {}
+  for (const rawLine of readFileSync(batchJsonlPath, 'utf8').split(/\r?\n/)) {
+    const line = rawLine.trim()
+    if (!line) continue
+    const value = JSON.parse(line) as {
+      custom_id?: string
+      expected_raw_output_file?: string
+    }
+    if (value.custom_id && value.expected_raw_output_file) {
+      map[value.custom_id] = value.expected_raw_output_file
+    }
+  }
+  return map
 }
 
 function writeJson(path: string, value: unknown): void {

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/pilot-e4-plain-llm-batch/kimi/retry-failed-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/plain-llm-kimi-retry.jsonl",
+  "expectedCount": 29,
+  "writtenCount": 29,
+  "successCount": 27,
+  "errorCount": 2,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/plain-llm-kimi-retry-report.json",
+  "generatedAt": "2026-06-18T02:03:33.214Z",
+  "runner": "kimi-cli"
+}

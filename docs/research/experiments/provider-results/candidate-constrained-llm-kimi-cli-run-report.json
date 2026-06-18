@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/pilot-e5-candidate-constrained-batch/kimi/openai-batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/candidate-constrained-llm.jsonl",
+  "expectedCount": 50,
+  "writtenCount": 50,
+  "successCount": 45,
+  "errorCount": 5,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/candidate-constrained-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-18T02:22:14.092Z",
+  "runner": "kimi-cli"
+}

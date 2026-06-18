@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-023-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "minimize_loss",
+    "explanation": "My hand is weak (only non-trump 3-6 clubs) and an opponent is down to 2 cards, so the priority is to avoid wasting any useful card and let the trick pass as cheaply as possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards; I have no information about their strength, but with 3 cards they might be able to take control if I lead low.",
+    "confidence": 0.4,
+    "evidence": [
+      "publicHistory event 26d6aed2-5a75-4074-811b-71fa4e206efd (new_game)",
+      "handCounts[2] = 3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 5 cards; player 1 has only 2 cards and may be close to finishing, but I cannot know whether they can beat a low club lead.",
+    "confidence": 0.4,
+    "evidence": [
+      "handCounts[1] = 2",
+      "handCounts[3] = 3",
+      "publicHistory event 26d6aed2-5a75-4074-811b-71fa4e206efd (new_game)"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs expends the weakest card, keeps the slightly higher 4-6 clubs for later, and gives partner a chance to win the trick without committing any of my limited strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still weak; playing the 4 first would leave the 3 as a stranded low card and waste a slightly better card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is one of my better cards; leading it now gives up mid-strength without increasing the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest card; leading it would sacrifice my best remaining card when opponents likely have higher or trump cards to beat it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may be able to beat the 3 with a low trump or higher non-trump and continue toward finishing.",
+      "Partner may be unable to take the trick, leaving opponents in control."
+    ],
+    "mitigation": "By leading the absolute lowest card I preserve my small amount of card strength and avoid helping opponents win the current trick with unnecessarily high value."
+  },
+  "confidence": 0.5,
+  "notes": "Opening lead with a weak, non-trump hand; no bombs or wildcards available. The safest play is to discard the lowest card."
+}

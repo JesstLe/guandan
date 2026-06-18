@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-012-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards (near finish). Leading the lowest single gives partner the best chance to win the trick with a higher card or small trump and continue toward finishing, while I conserve my remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds low-value or nearly exhausted cards, but could still possess a single higher non-trump or a small trump to take this trick.",
+    "confidence": 0.55,
+    "evidence": [
+      "handCounts shows partner has only 2 cards",
+      "scenario tag 'partner_near_finish'",
+      "no public card information is available"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 3 cards each with no public play history; they may have higher cards or trumps that can beat a low diamond lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts: opponents have 3 cards each",
+      "playedCardSummary is empty",
+      "trump rank is 7; I hold no trumps"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "A 3-diamond is the weakest non-trump in hand. Leading it minimizes resource expenditure, signals a low lead to partner, and still allows partner an opportunity to win or control the trick without forcing me to commit stronger cards early.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is higher than the 3 but otherwise equivalent; playing it wastes a slightly stronger card with no added benefit."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is a middle card that is more valuable for later tricks or for covering partner; it should be preserved."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the strongest card in hand; leading it now would burn a potentially useful higher single while still being vulnerable to opponent trumps."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump or any trump and win the lead.",
+      "Partner may not be able to beat the lead and could lose a chance to finish."
+    ],
+    "mitigation": "By leading the absolute lowest card, I keep 4, 5, and 6 available for future tricks and avoid overcommitting when partner is close to finishing."
+  },
+  "confidence": 0.65,
+  "notes": "No bombs, wildcards, or trumps are held; the hand is a pure diamond straight segment, so a minimal lead is the most resource-efficient option."
+}

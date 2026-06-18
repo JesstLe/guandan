@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-026-turn-2-player-1",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and has led a low heart. Seizing the lead now prevents the opponent from controlling the next trick and getting closer to going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards, but their ranks and suits are unknown. They may or may not be able to beat a heart lead.",
+    "confidence": 0.3,
+    "evidence": [
+      "eventId:b3b63410-40d3-4db7-8c09-6c142fd1d851 is the only public play so far, providing no direct information about partner holdings",
+      "handCounts[3]=3 indicates partner has three cards, but their composition is hidden"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 likely has 2 cards remaining and is trying to finish quickly. Their remaining cards could include a higher heart, a trump, or other playable cards, but this is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "eventId:b3b63410-40d3-4db7-8c09-6c142fd1d851 shows player 0 led the 3 of hearts",
+      "handCounts[0]=2 shows player 0 is down to two cards",
+      "scenario tag opponent_near_finish signals potential finishing pressure"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the cheapest card that beats the led 3 of hearts. It wins the trick, takes the lead away from the opponent near finish, and preserves the stronger 9 and 10 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 win the trick and keep the initiative while holding only two cards, increasing the risk they go out soon."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts wins the trick but wastes a higher card when the 4 already beats the lead."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts also wins but is an even bigger over-commitment; saving it for a later trick is preferable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning with the 4 reveals I have hearts and want control, which may help opponents infer my remaining cards.",
+      "After taking the lead I will have to play a 9 or 10 next, which a higher card or trump may beat.",
+      "Player 0 may still hold a winning card and could retake the lead quickly."
+    ],
+    "mitigation": "By using the minimum winning card, I keep the 9 and 10 in reserve for later tricks and disrupt the opponent's immediate attempt to finish."
+  },
+  "confidence": 0.82
+}

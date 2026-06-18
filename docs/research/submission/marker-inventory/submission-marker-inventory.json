@@ -1,228 +1,27 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T00:49:20.646Z",
+  "generatedAt": "2026-06-18T02:48:47.526Z",
   "markerScope": "submission_relevant_files",
   "counts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 25,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
   "blockingCounts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 8,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
   "workbenchCounts": {
     "NEED_SOURCE": 0,
     "UNCERTAIN": 0,
-    "NEED_EXPERIMENT": 17,
+    "NEED_EXPERIMENT": 0,
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   },
-  "items": [
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/00_claims.md",
-      "line": 15,
-      "excerpt": "[NEED_EXPERIMENT] Compare outcome metrics and verifier metrics across agent conditions."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/00_claims.md",
-      "line": 75,
-      "excerpt": "Before/after verifier-in-the-loop evaluation. [NEED_EXPERIMENT]"
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/00_claims.md",
-      "line": 95,
-      "excerpt": "Manual and verifier-labeled failure analysis. [NEED_EXPERIMENT]"
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/01_introduction.md",
-      "line": 10,
-      "excerpt": "6. Preview planned experiments with `[NEED_EXPERIMENT]` markers."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/01_introduction.md",
-      "line": 24,
-      "excerpt": "This paper aims to answer whether verifier-grounded reasoning reveals failures that outcome metrics miss and whether verifier feedback can improve agent behavior. We will compar..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/01_introduction.md",
-      "line": 30,
-      "excerpt": "3. We build a Guandan-based benchmark for action-only implicit coordination under imperfect information. [NEED_EXPERIMENT]"
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/01_introduction.md",
-      "line": 31,
-      "excerpt": "4. We evaluate whether verifier feedback reduces invalid reasoning and reasoning-action mismatch compared with LLM prompting baselines. [NEED_EXPERIMENT]"
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/02_related_work.md",
-      "line": 21,
-      "excerpt": "Overall, the closest prior work supplies nearly all surrounding pieces: LLM coordination, imperfect-information card games, mixed-motive process-aware evaluation, Guandan benchm..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/03_method.md",
-      "line": 46,
-      "excerpt": "We aggregate verifier labels into reasoning reliability metrics and compare them with team-decision metrics. Reasoning reliability includes legality rate, public-history consist..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 29,
-      "excerpt": "The main comparison tests whether the verifier-in-the-loop condition reduces failures relative to plain and candidate-constrained prompting. A positive result would show lower h..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 31,
-      "excerpt": "Ablations remove verifier components one at a time. We test variants without hidden-information checks, partner consistency checks, opponent consistency checks, reasoning-action..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 33,
-      "excerpt": "Qualitative case studies will show failures that outcome metrics miss. Planned cases include a legal winning action with invalid hidden-information reasoning, a fluent explanati..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 45,
-      "excerpt": "The generated pilot table currently includes `heuristic-legal-first`, `strategic-heuristic`, `plain-llm`, `candidate-constrained-llm`, and `verifier-revision-llm`. The two heuri..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 47,
-      "excerpt": "The verifier-revision comparison artifact at `docs/research/experiments/pilot-revision-comparison` is also a readiness artifact, not an empirical result. It defines the final be..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/04_experiments.md",
-      "line": 53,
-      "excerpt": "The verifier-ablation summary artifact at `docs/research/experiments/pilot-ablation-summary` defines the planned variant set and final table shape. It currently reports `missing..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/06_abstract.md",
-      "line": 5,
-      "excerpt": "Large language model agents are increasingly evaluated in multi-agent decision settings, but final outcomes and fluent explanations do not guarantee valid reasoning. We study th..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "workbench",
-      "relativePath": "drafts/paper-as-code/06_abstract.md",
-      "line": 5,
-      "excerpt": "Large language model agents are increasingly evaluated in multi-agent decision settings, but final outcomes and fluent explanations do not guarantee valid reasoning. We study th..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 7,
-      "excerpt": "Large language model agents are increasingly evaluated in multi-agent decision settings, but final outcomes and fluent explanations do not guarantee valid reasoning. We study th..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 7,
-      "excerpt": "Large language model agents are increasingly evaluated in multi-agent decision settings, but final outcomes and fluent explanations do not guarantee valid reasoning. We study th..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 23,
-      "excerpt": "This paper aims to answer whether verifier-grounded reasoning reveals failures that outcome metrics miss and whether verifier feedback can improve agent behavior. We will compar..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 35,
-      "excerpt": "Overall, the closest prior work supplies nearly all surrounding pieces: LLM coordination, imperfect-information card games, mixed-motive process-aware evaluation, Guandan benchm..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 68,
-      "excerpt": "We aggregate verifier labels into reasoning reliability metrics and compare them with team-decision metrics. Reasoning reliability includes legality rate, public-history consist..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 86,
-      "excerpt": "The main comparison tests whether the verifier-in-the-loop condition reduces failures relative to plain and candidate-constrained prompting. A positive result would show lower h..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 88,
-      "excerpt": "Ablations remove verifier components one at a time. We test variants without hidden-information checks, partner consistency checks, opponent consistency checks, reasoning-action..."
-    },
-    {
-      "marker": "NEED_EXPERIMENT",
-      "category": "experiment_result",
-      "resolutionScope": "blocking",
-      "relativePath": "submission/manuscript/manuscript-draft.md",
-      "line": 90,
-      "excerpt": "Qualitative case studies will show failures that outcome metrics miss. Planned cases include a legal winning action with invalid hidden-information reasoning, a fluent explanati..."
-    }
-  ]
+  "items": []
 }

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-047-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards and may be close to finishing; leading the weakest single lets them take the lead if they can and avoids burning my only slightly higher cards."
+  },
+  "partnerBelief": {
+    "summary": "No direct knowledge of partner's 2 cards; they are simply short-stacked and likely trying to exit.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts shows partner (player 2) holds 2 cards",
+      "scenario tag 'partner_near_finish'"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No information about opponent holdings; they have not played any cards.",
+    "confidence": 0.0,
+    "evidence": [
+      "playedCardSummary is empty",
+      "publicHistory only contains new_game event"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "All four cards are weak non-trump diamonds. The lowest lead gives partner the best chance to win the trick and preserves my marginally higher diamonds for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly stronger than the 3 but still weak; playing it now reduces a future higher option without meaningful upside."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Middle card of a weak run; better kept for a later moment when card value matters more."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The strongest card in hand; using it as an opening lead wastes the only card most likely to win against a low trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat a low diamond, leaving opponents in control.",
+      "A 3 may still be beaten by any higher non-trump or trump."
+    ],
+    "mitigation": "Accept the risk because the hand is weak; transferring initiative to a short-stacked partner is the highest-upside play."
+  },
+  "confidence": 0.6,
+  "notes": "No hidden partner or opponent cards are asserted as facts."
+}

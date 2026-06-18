@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-002-turn-1-player-0",
+  "agentId": "verifier-revision-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is weak, the table lead is open, and the public partner_near_finish tag indicates my partner has few cards. Leading the lowest single gives my partner the easiest path to win the trick and retain control."
+  },
+  "partnerBelief": {
+    "summary": "Partner is near finishing (public partner_near_finish tag) and may be able to beat a low single lead, but their exact cards are unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "6e87a342-9381-417b-ad4a-b135c5334933"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents may hold higher cards that could win the trick if partner cannot, but no specific opponent holdings are known.",
+    "confidence": 0.45,
+    "evidence": [
+      "6e87a342-9381-417b-ad4a-b135c5334933"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 3 of diamonds, the weakest legal single, to minimize my own strength expenditure and maximize the chance that my nearly-finished partner can capture the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Still low but slightly stronger than necessary; keeping the 4 provides marginally better coverage for future leads without increasing partner's winning chance now."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A mid-low card that reduces future flexibility and gives opponents more information about my hand."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The strongest of four weak cards; using it now wastes the only card that could potentially beat a 3, 4, or 5 single later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat the 3 of diamonds, allowing an opponent to win the trick.",
+      "A 3 single may be passed around and I could lose a chance to offload a low card under higher pressure."
+    ],
+    "mitigation": "Because all my cards are low, leading the very lowest now is the safest way to preserve what little strength I have and support partner."
+  },
+  "confidence": 0.6,
+  "notes": "All candidates are non-trump singles; the choice is purely about minimizing card value to enable partner control. No hidden cards are asserted as facts."
+}

@@ -88,6 +88,34 @@ describe('verifierRevisionPackets', () => {
       rmSync(rootDir, { recursive: true, force: true })
     }
   })
+
+  it('skips decisions without parsed traces or verifier results', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-revision-inputs-partial-'))
+    const decisionDir = join(rootDir, 'decisions')
+    const verifierDir = join(rootDir, 'verifier')
+    const dataset = generatePilotDecisionDataset({ targetCount: 2, gameIdPrefix: 'revision-partial' })
+
+    try {
+      writeDatasetDecisions(decisionDir, dataset.decisions)
+      writePilotVerifierArtifacts({
+        decisions: dataset.decisions,
+        outputDir: verifierDir,
+        agentId: 'strategic-heuristic',
+      })
+      rmSync(join(verifierDir, 'traces', `${dataset.decisions[0].decisionId}.json`), { force: true })
+
+      const inputs = readRevisionPromptInputsFromDirectories({
+        decisionDir,
+        traceDir: join(verifierDir, 'traces'),
+        resultDir: join(verifierDir, 'results'),
+      })
+
+      expect(inputs).toHaveLength(1)
+      expect(inputs[0].decision.decisionId).toBe(dataset.decisions[1].decisionId)
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
 })
 
 function writeDatasetDecisions(

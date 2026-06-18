@@ -3,13 +3,17 @@
 Date: 2026-06-17
 
 This handoff is the external-run boundary for the paper pipeline. It tells the
-operator exactly which batch files leave the repository and where downloaded
-provider results must return. It does not authorize any external upload by
-itself.
+operator exactly which batch files leave the repository and where provider
+results must return. It does not authorize any external upload by itself.
+
+As of 2026-06-18, the PI has authorized sending the 50 pilot decision prompt
+packets to OpenAI for Phase A. This authorization covers the prompt packets/game
+state JSON for the pilot run, not the unpublished manuscript, private notes, or
+unrelated repository content.
 
 ## Current State
 
-- No provider API call has been made by the local pipeline.
+- No provider API call has been completed by the local pipeline.
 - Plain and candidate-constrained first-pass batches are ready.
 - The existing verifier-revision batch is fixture-only and must not be used for
   final empirical claims.
@@ -32,7 +36,70 @@ Prepared run parameters:
 - max completion tokens: `1200`
 - response format: `json_object`
 
-After downloading provider results, run:
+### Option 1: Direct OpenAI API Runner
+
+The direct runner executes the existing OpenAI-compatible JSONL locally and
+writes provider-result JSONL in the same shape expected by the downstream
+materializer. It requires `OPENAI_API_KEY` in the environment or an explicit
+`--env-file` that defines it.
+
+```bash
+npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
+  --input docs/research/experiments/pilot-e4-plain-llm-batch/openai/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/plain-llm.jsonl \
+  --report docs/research/experiments/provider-results/plain-llm-openai-run-report.json \
+  --concurrency 4
+```
+
+```bash
+npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
+  --input docs/research/experiments/pilot-e5-candidate-constrained-batch/openai/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/candidate-constrained-llm.jsonl \
+  --report docs/research/experiments/provider-results/candidate-constrained-llm-openai-run-report.json \
+  --concurrency 4
+```
+
+### Option 2: OpenAI Batch Upload
+
+Alternatively, upload the OpenAI batch JSONL files listed above and save the
+downloaded provider results to the expected provider-result paths.
+
+### Option 3: Kimi Code CLI Runner
+
+Kimi Code documents an OpenAI-compatible endpoint at
+`https://api.kimi.com/coding/v1/chat/completions` with model id
+`kimi-for-coding`, but the service rejects generic raw clients and requires a
+supported coding-agent identity. Do not spoof another agent's User-Agent. If the
+official `kimi` CLI is configured locally, use the CLI runner instead:
+
+```bash
+npx tsx server/src/research/exportOpenAIBatchCli.ts \
+  --source docs/research/experiments/pilot-e4-plain-llm-batch/batch-input.jsonl \
+  --out docs/research/experiments/pilot-e4-plain-llm-batch/kimi \
+  --model kimi-for-coding \
+  --temperature 0 \
+  --max-completion-tokens 1200 \
+  --response-format json_object
+```
+
+```bash
+npx tsx server/src/research/runKimiCliBatchJsonlCli.ts \
+  --input docs/research/experiments/pilot-e4-plain-llm-batch/kimi/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/plain-llm.jsonl \
+  --report docs/research/experiments/provider-results/plain-llm-kimi-cli-run-report.json \
+  --model kimi-code/kimi-for-coding \
+  --max-steps-per-turn 3 \
+  --concurrency 4
+```
+
+If some rows fail because the CLI does not emit a final assistant text block in
+time, retry only those failed rows with a larger `--max-steps-per-turn`, then
+merge by `custom_id` while preserving the original input order. Record the merge
+in `docs/research/experiments/provider-results/plain-llm-kimi-merge-report.json`.
+
+### Post-Provider Materialization
+
+After direct runs or downloaded batch results, run:
 
 Important: the upload file is the OpenAI batch JSONL, but the post-provider
 command must receive the provider-neutral `batch-input.jsonl`. That file carries

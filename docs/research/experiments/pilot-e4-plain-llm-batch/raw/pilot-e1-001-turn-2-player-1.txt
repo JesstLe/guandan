@@ -1,0 +1,14 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "pilot-e1-001-turn-2-player-1",
+  "chosenActionId": "play-single-heart-4-copy1",
+  "reasoningTrace": {
+    "summary": "Player 0 led a single 3♥. My hand contains only hearts: 4♥, 9♥, and 10♥. Since the lead is non-trump hearts, I must follow with hearts if I choose to play. All three cards beat the 3♥. To win the trick while conserving stronger cards for later, I should play the lowest winning card, 4♥. Player 0 is near finish with only 2 cards remaining, so winning this trick helps prevent opponent control. Passing would cede the lead unnecessarily.",
+    "keyConsiderations": [
+      "All legal plays beat the table lead",
+      "4♥ is the minimal winning card, preserving 9♥ and 10♥",
+      "Opponent player 0 has only 2 cards left, so taking control is valuable"
+    ],
+    "confidence": 0.95
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "pilot-e1-035-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump cards, the best opening play is a low single to let the partner win the trick cheaply and take control, rather than trying to force a lead myself."
+  },
+  "partnerBelief": {
+    "summary": "No specific belief about partner's cards; they are hidden.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "No specific belief about opponents' cards; they are hidden.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the lowest card in my hand. Leading the lowest available card minimizes the value I commit and maximizes the chance that my partner can capture the trick with a modest card, while still starting to shed my weak cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher than the 3 but otherwise equally vulnerable; playing it wastes a slightly stronger low card with no additional benefit."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is higher than necessary for an opening low-card lead and provides no advantage over leading the 3."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the strongest card in this weak hand; leading it now throws away the most valuable card without a clear path to retain the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or the partner may simply beat the 3 with any higher card and take the lead.",
+      "If the opponents capture the lead, my weak remaining hand may not be able to regain control."
+    ],
+    "mitigation": "Since every card in my hand is low and non-trump, no lead is safe; starting with the absolute minimum limits the opponent's gain and gives my partner the best chance to win cheaply."
+  },
+  "confidence": 0.6
+}
