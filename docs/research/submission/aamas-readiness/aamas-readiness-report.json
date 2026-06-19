@@ -1,17 +1,18 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T10:30:11.958Z",
+  "generatedAt": "2026-06-18T21:15:57.996Z",
   "paper": "Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games",
-  "localSubmissionHygiene": "not_ready",
+  "localSubmissionHygiene": "ready",
   "aamasFullPaperReadiness": "not_ready",
-  "headline": "The package is locally clean and pilot-complete, but it is not yet an AAMAS full-paper empirical package because full-split LLM evidence and replication/human-audit evidence remain missing.",
+  "headline": "The package is pilot-complete and within the AAMAS body-page budget, but it is not yet an AAMAS full-paper empirical package because full-split LLM evidence and completed replication or human-audit evidence remain missing.",
   "facts": {
     "gateStatus": "ready",
-    "manifestEntries": 80,
-    "manifestMissing": 1,
+    "manifestEntries": 107,
+    "manifestMissing": 0,
     "localPipelineStatus": "completed",
-    "localPipelineSteps": 39,
-    "aamasPageCount": 8,
+    "localPipelineSteps": 46,
+    "aamasPageCount": 9,
+    "aamasBodyPages": 8,
     "pilot": {
       "plainParsed": "26/50",
       "candidateParsed": "32/50",
@@ -25,23 +26,24 @@
       "deterministicBaselinesHardFailures": 0,
       "plainRawPresent": "0/500 present",
       "candidateRawPresent": "0/500 present",
-      "tomRawPresent": "268/500 present",
-      "tomParsed": "missing",
-      "tomRepairParsed": "268/500"
+      "tomRawPresent": "384/500 present",
+      "tomParsed": "306/500",
+      "tomRepairParsed": "384/500",
+      "tomProviderRun": "384/500 successful, 0 errors, 116 pending"
     }
   },
   "gates": [
     {
       "id": "local-artifact-hygiene",
       "title": "Local Artifact Hygiene",
-      "status": "needs_revision",
+      "status": "pass",
       "evidence": [
         "submission/gate-report/submission-gate-report.json",
         "submission/reproducibility-manifest.json",
         "submission/local-pipeline/local-research-pipeline-report.json"
       ],
-      "finding": "Local artifact hygiene is not clean enough to support a submission package.",
-      "requiredAction": "Fix local blockers before interpreting research readiness."
+      "finding": "Local gate is ready, manifest has 107 entries with 0 missing, and the local pipeline status is completed.",
+      "requiredAction": "Keep regenerating this report after every experiment or manuscript edit."
     },
     {
       "id": "pilot-evidence",
@@ -50,7 +52,7 @@
       "evidence": [
         "experiments/pilot-metrics-summary/pilot-metrics-summary.json",
         "experiments/pilot-e8-tom-schema-repair-results/metrics.json",
-        "figures/figure-2-tom-schema-repair-flow.md"
+        "figures/figure-3-tom-schema-repair-flow.md"
       ],
       "finding": "The pilot now separates provider completion, raw parse yield, schema repair, and verifier failures: ToM raw parse is 36/50, schema repair yields 49/50, and verifier revision reports 32/32.",
       "requiredAction": "Keep the paper wording scoped to a 50-decision diagnostic pilot unless larger LLM evidence is added."
@@ -87,23 +89,33 @@
         "experiments/full-e4-tom-prompted-results/metrics.json",
         "experiments/full-e4-tom-prompted-results/post-provider-report.json",
         "experiments/provider-results/full-tom-prompted-llm.jsonl",
+        "experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json",
         "experiments/full-e2-plain-llm-batch/raw-output-audit.json",
         "experiments/full-e3-candidate-constrained-batch/raw-output-audit.json",
         "experiments/full-e4-tom-prompted-batch/raw-output-audit.json"
       ],
-      "finding": "Full-split raw output audits show plain 0/500 present, candidate 0/500 present, and ToM 268/500 present; deterministic full-ToM schema repair currently yields 268/500.",
-      "requiredAction": "Run at least one full-split LLM condition, preferably ToM plus schema repair first, before broad AAMAS full-paper claims."
+      "finding": "Full-split raw output audits show plain 0/500 present, candidate 0/500 present, and ToM 384/500 present; ToM metrics are 306/500 and deterministic full-ToM schema repair currently yields 384/500. The latest kimi-cli using kimi-code/kimi-for-coding run reports 384/500 successful, 0 errors, 116 pending.",
+      "requiredAction": "Complete and materialize both the 500-decision ToM provider metrics and the matching schema-repair metrics before broad AAMAS full-paper claims."
     },
     {
       "id": "replication-and-human-audit",
       "title": "Replication and Human Audit",
       "status": "needs_experiment",
       "evidence": [
-        "reviews/reviewer_report.md",
+        "experiments/human-soft-label-audit/human-audit-manifest.json",
+        "experiments/human-soft-label-audit/human-audit-annotation-sheet.csv",
+        "experiments/human-soft-label-audit/human-audit-annotator.html",
+        "experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
+        "experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
+        "experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json",
+        "experiments/human-soft-label-audit/human-audit-packet-quality-report.json",
+        "experiments/human-soft-label-audit/human-audit-intake-report.json",
+        "experiments/human-soft-label-audit/human-audit-agreement-report.json",
+        "experiments/human-soft-label-audit/human-audit-protocol.md",
         "submission/aamas-latex/main.tex"
       ],
-      "finding": "The current package is single-provider at pilot scale and has no human audit artifact for soft strategic labels.",
-      "requiredAction": "Add either a second model/provider pilot replication or a small human audit of soft labels; ideally do both before claiming robust multi-agent reasoning behavior."
+      "finding": "A human soft-label audit packet is prepared with 40 blind samples, including a local annotator HTML; the packet-quality report is packet_ready with 0 failed checks and is ready for annotation; it is not paper evidence until human labels are completed. The blind annotator package is package_ready with 0 failed checks, excludes private reference files, and excludes reference labels. The blind annotator archive is archive_ready with 0 failed checks, 53634 bytes, with SHA-256 recorded. The returned-annotation intake is awaiting_return with 1 failed checks; no returned CSV is present yet, 0/200 labels are filled, and it is not ready for agreement evaluation. The agreement evaluator is pending with 0/200 labels completed.",
+      "requiredAction": "Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior."
     },
     {
       "id": "page-budget",
@@ -113,12 +125,12 @@
         "submission/aamas-latex/main.pdf",
         "submission/aamas-latex/build-status.md"
       ],
-      "finding": "AAMAS-style PDF page count is 8.",
-      "requiredAction": "Preserve page budget by replacing prose with tables/figures when adding evidence."
+      "finding": "AAMAS-style PDF has 9 total pages, with the main body ending on page 8 and references allowed on additional pages.",
+      "requiredAction": "Preserve the 8-page body budget by replacing protocol/scaffolding material when adding full-split results."
     }
   ],
   "nextActions": [
-    "Run the 500-decision ToM full-split provider batch first, because it directly tests whether the strongest current prompt scales beyond the pilot.",
+    "Complete the 500-decision ToM full-split provider batch and materialize both raw ToM metrics and schema-repair metrics before upgrading claims beyond the pilot.",
     "Run schema repair and verifier analysis on the full-split ToM outputs, preserving selectedActionId exactly as in the pilot ablation.",
     "Add a second provider/model pilot replication or a small human audit of soft labels to reduce single-provider and verifier-subjectivity attacks.",
     "Update the AAMAS draft only after the new evidence exists; keep current broad claims scoped to the 50-decision diagnostic pilot."

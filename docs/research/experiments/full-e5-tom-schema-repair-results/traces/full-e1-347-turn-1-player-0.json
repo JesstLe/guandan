@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-347-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) has only 2 cards left, so I want to keep the opening lead as cheap as possible and avoid forcing partner to spend a scarce high card or trump just to stay in the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner is near finishing the hand with only 2 cards remaining; they likely want to exit quickly but may still hold a playable answer. I cannot assume their exact ranks, only that their hand is small and constrained by public handCounts.",
+    "confidence": 0.6,
+    "evidence": [
+      "bdfeb29d-426a-46d9-9ca7-66b3676b7c01"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards yet, so their holdings are unconstrained beyond the public hand counts. They will try to seize the lead if they can, but I have no evidence of specific trumps or high cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "bdfeb29d-426a-46d9-9ca7-66b3676b7c01"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the smallest card (diamond 3) makes the lead cheap for everyone, minimizing the chance that my short-handed partner must burn a trump or high card to respond. It also unloads my weakest card while preserving the slightly stronger 4-6 diamonds for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Playing the 4 leaves the weaker 3 in hand and asks partner to beat a slightly higher card, increasing the chance they must spend a better card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is a stronger low card; leading it consumes more of my limited mid-rank equity and gives opponents a clearer target to attack."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest card in my hand; using it now would leave me with only 3-5 and would most pressure a partner who is trying to finish with only two cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump single or a trump and take control of the lead.",
+      "If partner cannot answer, the opponents may dictate tempo at a moment when partner is already low on cards."
+    ],
+    "mitigation": "A minimal 3 lead makes it as cheap as possible for partner to stay in the trick and keeps my remaining cards flexible for the next round."
+  },
+  "confidence": 0.75
+}

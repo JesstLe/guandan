@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-088-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds three cards and opponents are short; as the opening leader with a very weak hand, the priority is to play the lowest possible single so partner can most easily beat it and take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely wants to help team 0 finish. With three cards they could hold a mix of singles and possibly a pair; they have had no chance to signal beyond their card count. They are more likely to be able to beat a 3 than any higher lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "f6a6842f-beed-4808-9046-ef86d0492725"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is down to two cards (opponent_near_finish) and is likely trying to exit quickly, so they will cover a low lead if they can. Opponent player 3 holds three cards and will also try to seize control to stop partner. No bombs or high cards have been revealed yet.",
+    "confidence": 0.65,
+    "evidence": [
+      "f6a6842f-beed-4808-9046-ef86d0492725"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the lowest non-trump single available. It maximizes the chance that partner can cover it with a higher single, transferring the lead, while preserving my slightly higher clubs for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest card and the hardest for partner to beat; if partner only has low singles, this wastes the chance to hand them the lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Still relatively high and gives partner a smaller window to beat it compared with the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Better than 5/6 but still harder for partner to cover than the 3, with no compensating benefit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat a single lead if their cards are all lower, are a pair, or are trumps they wish to conserve.",
+      "The near-finish opponent (player 1) may have a higher single or trump and win the trick, gaining control and possibly exiting.",
+      "Even if opponents take this trick, my remaining 4/5/6 are weak and may not regain control."
+    ],
+    "mitigation": "Keeping 4/5/6 preserves my highest cards for future leads. The low lead minimizes my own commitment and gives partner the best chance to take over."
+  },
+  "confidence": 0.7,
+  "notes": "Hand is uniformly weak with no trumps, bombs, or combinations. Cooperative-optimal play is to facilitate partner by leading the lowest card."
+}

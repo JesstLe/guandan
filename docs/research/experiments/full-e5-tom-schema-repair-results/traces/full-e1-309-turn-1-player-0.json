@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-309-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Leading A♠ gives Player 0 the best direct path to go out by winning the current trick and then playing 2♠. The alternative of leading 2♠ surrenders initiative and relies on opponents or partner to create a favorable situation, which is unlikely in a competitive endgame."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 2) likely wants Player 0 to exit because Player 0 is down to 2 cards. Without any public plays, partner's exact cards are unknown, but partner may hold high cards or support cards. Partner cannot directly help Player 0 play cards, but may later win tricks to prevent opponents from controlling the pace.",
+    "confidence": 0.6,
+    "evidence": [
+      "e1897eca-ce89-44d1-8f34-38e257b4a94b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (Players 1 and 3) want to prevent Player 0 from going out. Each holds 3 unknown cards. They may possess trump-ranked singles (7s), jokers, or red trumps that can beat an A♠ lead. They prefer forcing Player 0 to spend the A♠ without winning the lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "e1897eca-ce89-44d1-8f34-38e257b4a94b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading A♠ gives Player 0 the best direct path to go out by winning the current trick and then playing 2♠. The alternative of leading 2♠ surrenders initiative and relies on opponents or partner to create a favorable situation, which is unlikely in a competitive endgame.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

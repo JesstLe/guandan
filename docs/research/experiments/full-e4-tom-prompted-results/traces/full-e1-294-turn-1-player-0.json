@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-294-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left and the lead. The immediate team objective is to play out both cards as quickly as possible while retaining control, so the partnership does not lose the initiative to opponents who still hold three cards each."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three hidden cards. With no public plays observed, I have no direct signal about their strength. They could hold trumps, high cards, or bombs, but I cannot assert any of those as fact. I treat it as a probabilistic possibility that partner could support if I cede the lead, though their exact composition is unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "1e6ae435-517a-4e8d-a59d-78cf54f2d385"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have three hidden cards. No public events reveal their holdings, so they may possess trumps, bombs, or high non-trump singles. They are likely to try to seize control if I lead a low card, and to prevent player 0 from emptying their hand cheaply.",
+    "confidence": 0.3,
+    "evidence": [
+      "1e6ae435-517a-4e8d-a59d-78cf54f2d385"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ is the strongest non-trump single in my hand. It maximizes the chance of winning this trick and earning a second lead, which lets me play the 2♠ and empty my hand. Retaining control is critical in this endgame race because opponents outnumber my remaining cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2♠ risks letting an opponent win the trick with even a middling card, ceding control. If opponents take the lead, I would be left holding the A♠ without a lead and could be blocked or forced into a worse position."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the A♠ with a trump or bomb despite none having been played publicly.",
+      "If the A♠ is beaten, I lose the lead and the 2♠ becomes harder to play safely.",
+      "Leading the 2♠ instead could hand initiative to opponents and waste the A♠ as a defensive card."
+    ],
+    "mitigation": "Play the highest available single (A♠) to maximize the probability of winning the trick, retaining the lead, and getting a clean exit for the remaining 2♠."
+  },
+  "confidence": 0.75
+}

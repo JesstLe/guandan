@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-301-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and led a low heart 3, so the priority is to take the lead away from this near-finishing opponent rather than letting them keep initiative."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and has not acted yet in this trick. They may have a card that can beat a heart 3, but I cannot assume that, and I should not rely on them to stop the opponent alone.",
+    "confidence": 0.6,
+    "evidence": [
+      "be960188-44e9-4a43-954a-7549a731489b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 while holding only 2 cards, which suggests they are shedding a weak card and likely retaining at least one stronger card to try to finish quickly. They probably want to keep or quickly regain the lead.",
+    "confidence": 0.75,
+    "evidence": [
+      "be960188-44e9-4a43-954a-7549a731489b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the cheapest card that beats the table. It seizes the lead from the near-finishing opponent while preserving my 9 and 10 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 keep the lead with only 2 cards left, giving them a direct chance to finish first."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 also wins the trick, but it uses a higher card unnecessarily when the 4 suffices."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 wins too, but wasting my highest card now is inefficient and leaves me weaker later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 (opponent) may play a higher single or a trump to take the trick.",
+      "If opponents counter, partner may not be able to recover the lead.",
+      "Even if I win this trick, my remaining hand is modest and may not stop a strong opponent lead."
+    ],
+    "mitigation": "By playing the minimal 4, I keep the 9 and 10 in reserve for future leads or follows, and I avoid depending on partner to stop a near-finishing opponent."
+  },
+  "confidence": 0.8
+}

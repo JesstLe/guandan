@@ -1,0 +1,29 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-328-turn-1-player-0",
+  "reasoning": {
+    "partnerIntent": {
+      "summary": "Partner (player 2) has 3 cards and no public actions yet. With no signal from partner, I assume they hold an average near-finish hand; I should lead low so they can potentially take control if they have a higher non-trump card or any trump.",
+      "evidence": ["e3aae02e-70a7-495f-9ff8-9c9091cd4971"]
+    },
+    "opponentIntent": {
+      "summary": "Opponent player 1 has only 2 cards and is near finish, so their team has a strong incentive to win this trick or finish soon. Player 3 also has 3 cards. They likely saved strong cards (trump-rank 7s, jokers, or high trumps) to counter low leads. Without seeing any played cards, I must treat hidden cards probabilistically and avoid over-committing my modest strength.",
+      "evidence": ["e3aae02e-70a7-495f-9ff8-9c9091cd4971"]
+    },
+    "candidateComparison": {
+      "summary": "All legal actions are single clubs. Leading the 6♣ would burn my highest card for little gain since any trump or higher non-trump beats it. Leading the 5♣ or 4♣ still wastes mid-strength. Leading the 3♣ preserves my higher clubs for future tricks, keeps the lead commitment minimal, and gives partner the widest possible range of cards to beat the lead or for me to regain control later.",
+      "comparedActions": [
+        "play-single-club-3-copy1",
+        "play-single-club-4-copy1",
+        "play-single-club-5-copy1",
+        "play-single-club-6-copy1"
+      ],
+      "evidence": ["e3aae02e-70a7-495f-9ff8-9c9091cd4971"]
+    },
+    "selectedActionRationale": {
+      "summary": "Select the lowest single, 3♣, to minimize information and strength revealed, preserve the 4-6 for future tricks, and give partner the best chance to control the trick without over-committing against opponents who may hold strong hidden cards.",
+      "evidence": ["e3aae02e-70a7-495f-9ff8-9c9091cd4971"]
+    }
+  },
+  "selectedActionId": "play-single-club-3-copy1"
+}

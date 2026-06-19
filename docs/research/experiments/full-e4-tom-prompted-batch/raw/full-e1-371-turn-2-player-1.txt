@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-371-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Take control of the trick from the leading opponent so our team decides the next lead, rather than letting the opponent (who is down to 2 cards) retain initiative and possibly finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and has not acted yet; no public signal about strength or suit distribution. They are likely holding an ordinary, balanced hand.",
+    "confidence": 0.5,
+    "evidence": [
+      "c33b5420-62be-4953-adcb-cf93361ee605"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 led a low heart 3 and has only 2 cards left. This looks like a shed-and-run attempt: get rid of a weak card now while saving a stronger final card, possibly to go out on the next lead.",
+    "confidence": 0.75,
+    "evidence": [
+      "c33b5420-62be-4953-adcb-cf93361ee605"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the smallest legal winner, the heart 4, to beat the heart 3, seize the lead, and stop the near-finish opponent from continuing. This keeps the 9 and 10 available for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent win the trick and keep the lead with only one card left, giving them a direct path to finish and score."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is a higher card than necessary; using it now weakens my remaining hand without any extra benefit."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest heart I hold and would be wasted on a low 3; conserving it for a later, more important trick is better."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Taking the lead exposes my remaining cards to opponent trumps or higher hearts.",
+      "If partner cannot support, I may lose control in the next trick."
+    ],
+    "mitigation": "By winning with the minimal 4, I preserve the 9 and 10 as playable cards for the next lead, reducing the chance of being stuck with unplayable low cards."
+  },
+  "confidence": 0.85,
+  "notes": "Evidence is limited to the single public play event."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-131-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and led a low 3 of hearts. Winning this trick prevents the opponent from retaining the lead and potentially finishing their hand on the next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and may be able to beat a low heart, but no public signal about their exact strength has been revealed.",
+    "confidence": 0.5,
+    "evidence": [
+      "fcb7d354-48ea-4085-84f1-cd732af487cf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 of hearts with only 2 cards left, likely trying to shed a weak card, keep the lead, and set up a quick finish. They are probably not holding strong trumps or high cards; otherwise they might have played a higher card.",
+    "confidence": 0.6,
+    "evidence": [
+      "fcb7d354-48ea-4085-84f1-cd732af487cf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the cheapest card that still beats the table. It removes the opponent's lead, uses minimal hand value, and keeps the 9 and 10 of hearts for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 win the trick and maintain the lead with only 1 card left, giving them a strong chance to finish next."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but consumes a higher heart unnecessarily when the 4 already wins the trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest heart in hand and should be saved for a later trick where a stronger card is needed."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning the trick gives me the lead, and my remaining hand (9 and 10 of hearts) may not control the next trick if opponents have higher cards or trumps.",
+      "Partner might have been better positioned to win and lead with a stronger hand."
+    ],
+    "mitigation": "Using the 4 minimizes resource expenditure, leaving two higher hearts to contest the next lead and reducing the cost of an unfavorable lead transfer."
+  },
+  "confidence": 0.85,
+  "notes": "Evidence is limited to the single public play event; hidden-card beliefs remain probabilistic."
+}

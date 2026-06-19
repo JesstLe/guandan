@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-178-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only low non-trump clubs, so the best team-oriented opening is to lead the smallest card. This gives partner the widest chance to win the trick with a higher card or trump and take control, while I keep my slightly larger clubs for later leads."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards remaining and no public actions have occurred, so I cannot assert their strength. Given the opening lead, I believe partner is moderately likely to hold at least one card that can beat a low club 3 or a controlling card later.",
+    "confidence": 0.6,
+    "evidence": [
+      "e83d05a2-8f7c-4d1b-9777-7d1ad6adc530"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) hold 2 and 3 cards respectively. Player 1 is close to finishing, which raises the chance they may hold high or trump cards, but it is not certain. Either opponent may try to seize the lead if they can, especially player 1.",
+    "confidence": 0.5,
+    "evidence": [
+      "e83d05a2-8f7c-4d1b-9777-7d1ad6adc530"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 is the smallest legal single, minimizing the cost of this opening lead. If partner can beat it, we gain or keep team control; if an opponent takes it, I have only sacrificed my lowest card and retained 4, 5, 6 for future leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 expends my highest low card without making the lead meaningfully harder for opponents to beat, since any trump or higher non-trump still wins. It also leaves me with even weaker cards for later leads."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a low non-trump single; leading it does not materially suppress opponents or protect partner, and it wastes a card that could be useful for a later lead or to avoid being stuck with the lowest cards."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only slightly higher than the 3 and offers no real defensive or offensive advantage in an opening lead. Playing the 3 first preserves the 4 for a subsequent lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent, especially player 1 with only 2 cards, may win the trick with a higher card or trump and gain tempo toward finishing.",
+      "If partner cannot cover the club 3, the opposing team controls the next lead.",
+      "My remaining hand is all low non-trump cards, so I may struggle to regain control later."
+    ],
+    "mitigation": "By leading the lowest card, the potential loss is minimized and partner is given the maximum chance to take control. Keeping 4, 5, 6 gives me options for future low leads."
+  },
+  "confidence": 0.75
+}

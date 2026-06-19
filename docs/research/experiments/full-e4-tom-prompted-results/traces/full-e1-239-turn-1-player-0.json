@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-239-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am down to 2 cards in an endgame race with no trumps. The best team outcome is to play out my cards quickly, ideally win the lead now so I can exit my last card to partner on the next trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no prior public plays, partner could be strong or weak, but is more likely to help if I first secure the lead and then give them a low-card lead opportunity.",
+    "confidence": 0.5,
+    "evidence": [
+      "614ddf55-44ae-473f-bfa3-698393e6990b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. Given trump rank 7 and unseen jokers, at least one opponent may have a trump or high card that can beat my A, but this cannot be assumed. Leading a low card would let even a weak opponent take control.",
+    "confidence": 0.5,
+    "evidence": [
+      "614ddf55-44ae-473f-bfa3-698393e6990b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The spade A is my highest non-trump single. Leading it maximizes the chance of winning this trick and retaining the lead, after which I can play the 2 and either finish my hand or pass the lead to partner. Seizing initiative is critical when each player has only a few cards left.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 immediately gives the lead to opponents, who can beat it with almost any card or a trump. That would leave me holding only the A with no guaranteed chance to lead it, which is weaker in a race to empty hands."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a 7 or a joker and beat my A, causing my team to lose the lead.",
+      "If I win with A, my follow-up 2 may be beaten by an opponent, who then leads into partner."
+    ],
+    "mitigation": "Despite these risks, contesting the lead now forces opponents to spend higher cards and creates the best chance for my team to control the remainder of the hand. Ceding the lead with a low card would avoid spending the A but would surrender initiative with no compensating upside."
+  },
+  "confidence": 0.75
+}

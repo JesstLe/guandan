@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-105-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only low non-trump spades (3-6) with no trumps or bombs. By leading the lowest card, I set a cheap target that makes it easier for my partner to win the trick with a higher card or trump if they have one, rather than spending my own relative strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and has made no public plays, so I cannot infer specific ranks. It is possible they hold a higher non-trump or a trump that could cover a low spade lead, but this remains uncertain.",
+    "confidence": 0.55,
+    "evidence": [
+      "bdb8d3bb-0381-4703-848c-2f79e968a43f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have revealed nothing. Given the deck distribution, it is likely at least one opponent can beat a low non-trump single with a higher card or a trump, but I cannot identify which opponent or card.",
+    "confidence": 0.6,
+    "evidence": [
+      "bdb8d3bb-0381-4703-848c-2f79e968a43f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♠ is the smallest card and minimizes the strength I commit to the trick. It gives my partner the lowest possible card to beat if they have suitable cards, while preserving the 6♠ as my strongest remaining card for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4♠ is still low and likely to be beaten, but it uses a card that is closer to my top card and offers no meaningful advantage over the 3♠."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5♠ wastes mid-strength; it is still vulnerable to opponent high cards and trumps and leaves me with fewer options for a future low trick."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6♠ is my highest card and best chance to regain control on a low spade trick later. Spending it now on an opening lead squanders that resource without a strong chance of winning the trick outright."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may easily beat the 3♠ with a higher non-trump or any trump and seize control.",
+      "My partner may not have a card that can cover the lead, in which case the trick is lost."
+    ],
+    "mitigation": "Leading the absolute minimum limits the value lost and keeps my best card (6♠) in reserve; opponent responses will also reveal information about their holdings."
+  },
+  "confidence": 0.7
+}

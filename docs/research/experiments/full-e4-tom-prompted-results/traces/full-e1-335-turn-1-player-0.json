@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-335-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "minimize_loss",
+    "explanation": "Player 0 holds only low non-trump spades (3-6) with no pairs, bombs, or wildcards visible, and is leading the first trick. The priority is to play the weakest card to avoid bleeding value, force opponents to spend higher cards to take the lead, and leave the slightly higher cards for any later winning opportunity."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has a 3-card hand and has had no chance to act; no reliable signal about strength or suit distribution exists yet. Partner likely has a normal random hand and will try to win cheaply if possible.",
+    "confidence": 0.3,
+    "evidence": [
+      "2434015e-18e1-4bc6-9296-9fff41e22c7c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3-card hands and no cards have been revealed. They are likely to contain some higher cards or trumps that can beat a low spade lead, but exact holdings are unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "2434015e-18e1-4bc6-9296-9fff41e22c7c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest legal play, minimizing the value surrendered while forcing opponents to use a higher card or pass. If opponents pass, partner can win cheaply; if they take the lead, player 0 still retains the 4, 5, and 6 for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the highest card in the hand now would give up the only card that might win a later low-rank trick and would make the remaining 3, 4, 5 even more vulnerable."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still loses to almost any higher single or trump; there is no benefit to leading it instead of the strictly lower 3."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is higher than necessary for an opening lead and uses up a card that is more likely to be useful as a mid-strength stopper later in the hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win immediately with a higher single or any trump, costing the lead and giving player 0 no chance to offload a card safely.",
+      "If partner is also weak, the team may lose the trick and the next lead, accelerating the loss."
+    ],
+    "mitigation": "By leading the 3, player 0 commits the minimum possible strength. The remaining cards are all higher than the 3, giving slightly better options on subsequent turns, and no trump or high value is wasted."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no public history; partner and opponent beliefs remain highly uncertain and grounded only in hand counts and the new_game event."
+}

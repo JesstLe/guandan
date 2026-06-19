@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-127-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) is down to 2 cards and tagged as near finish. At this opening lead, the highest-value team goal is to give partner a chance to seize the lead and play out, rather than trying to win the trick myself with weak non-trump cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 2 cards they are trying to exit. Because they are near finish, they probably retain at least one card strong enough to beat a low lead, but I cannot assert any specific ranks or suits. They would prefer a low single lead that they can overtake to gain initiative.",
+    "confidence": 0.65,
+    "evidence": [
+      "107865bd-4abb-4745-a59d-ab822900255c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to block partner from finishing. Since no cards have been played, their exact strength is unknown, but they may hold trump-rank cards or other high cards that can capture a low lead. They cannot be assumed to have or lack any particular card.",
+    "confidence": 0.5,
+    "evidence": [
+      "107865bd-4abb-4745-a59d-ab822900255c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single (3♦) maximizes the probability that partner can beat it and gain the lead to finish their hand. It also conserves my slightly higher diamonds and avoids making it easier for opponents to win a cheap trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "A 6 is the hardest of my cards for partner to beat and does not meaningfully stop opponents, who would use trumps or higher cards anyway."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still higher than necessary; it reduces partner's chance of overtaking without improving my own control of the trick."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Better than 5 or 6, but 3 is the weakest lead and therefore gives partner the widest range of cards that can take the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3♦ with a higher non-trump or a trump and seize the lead, preventing partner from finishing.",
+      "If partner cannot beat even a 3, the lead may still pass to opponents regardless of which card I led."
+    ],
+    "mitigation": "Leading the lowest legal single minimizes the chance that I myself block partner's winning card and forces opponents to spend real strength to take the trick. Since I have no trumps or bombs, a higher lead would not materially improve defense."
+  },
+  "confidence": 0.72
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-363-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Open with the weakest card so partner, who has 3 cards and full information about their own hand, has the best chance to beat it and take control of the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not acted yet, so I have no direct signal. With 3 cards they could hold either a controlling card or be weak; I should not assume strength, only that a low lead is easier for them to overtake than a higher one.",
+    "confidence": 0.5,
+    "evidence": ["98a44caf-7dae-4cc5-87e0-601ee4c35aea"]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards (near finish), suggesting they may be holding finishers or be nearly out. Player 3 has 3 cards. Both likely have cards higher than my 3–6, so any single I lead will probably be beaten if they choose to contest.",
+    "confidence": 0.6,
+    "evidence": ["98a44caf-7dae-4cc5-87e0-601ee4c35aea"]
+  },
+  "actionRationale": {
+    "primaryReason": "All my cards are low non-trump clubs, so the opening lead should be the 3, the weakest. This gives my partner the widest window to play a higher card and seize the lead, while conserving my 4–6 for later tricks if I regain control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest club but still low overall; leading it now wastes the only card that might win if opponents are short in clubs, and it is more likely to be covered anyway."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is a middle card; playing it early neither maximizes my chance to win nor gives my partner the cheapest chance to take over, so it is dominated by the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is slightly stronger than the 3 but equally unlikely to win; keeping it for a future trick while discarding the 3 is better resource management."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may beat the low lead and keep control, especially player 1 who is near finish and may have a high card.",
+      "If partner cannot overtake, I may remain last to act on the next trick with limited high cards."
+    ],
+    "mitigation": "By leading the weakest card I minimize the value lost when the trick is taken by opponents and keep my slightly stronger clubs for a later opportunity or to cover a partner lead."
+  },
+  "confidence": 0.65,
+  "notes": "No public signals exist beyond the new-game event, so beliefs are grounded solely in hand counts and the private low hand."
+}

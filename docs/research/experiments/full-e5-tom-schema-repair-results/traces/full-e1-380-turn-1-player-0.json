@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-380-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low spades, the opening lead should be the weakest card to reduce hand clutter and give partner a chance to win the trick with a higher single."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public signals have been exchanged, so partner's hand is unknown but likely contains some mid-to-high cards that can beat a 3 of spades.",
+    "confidence": 0.5,
+    "evidence": [
+      "289e02ea-fbc4-4332-843d-7b68f8cd4ccf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and no public actions yet; they probably hold higher cards than 3 and may be able to capture the lead, but their exact strength is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "289e02ea-fbc4-4332-843d-7b68f8cd4ccf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades dumps the lowest card, minimizing future liability, while making it easy for partner to win with almost any higher card and keep the initiative for our team.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the 6 uses the strongest card in this weak set; it is still likely beaten by opponents and leaves the 3-5 as dead weight later."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally better than the 3 and does not materially change opponent or partner responses, while keeping a lower card in hand."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is similar to the 4: slightly higher but still low, and saving it offers no clear advantage over leading the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and seize the lead.",
+      "Partner may be unable to beat the 3 if their cards are also low or unsuited."
+    ],
+    "mitigation": "Even if opponents take the trick, partner still has cards to respond, and retaining 4-6 of spades gives follow-up plays; a low lead is the standard opening strategy."
+  },
+  "confidence": 0.8
+}

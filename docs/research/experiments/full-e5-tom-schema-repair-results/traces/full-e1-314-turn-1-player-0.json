@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-314-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and the endgame_race scenario, the top priority is to empty my hand quickly while preserving enough control to win a trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely prefers that I maintain or regain the lead so our team controls the endgame, but no concrete information about partner's cards is available.",
+    "confidence": 0.5,
+    "evidence": [
+      "575de840-9f70-4449-9bc0-829cc806660b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents probably hold cards that can beat a low single and will try to seize the lead to stall my finish, though their exact ranks are hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "575de840-9f70-4449-9bc0-829cc806660b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace single is the strongest legal play. It has the highest chance of winning the trick immediately, letting me retain the lead and play the remaining 2 on the next turn to finish the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is more likely to be beaten by an opponent, ceding control of the lead and risking a stall when I am trying to finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still hold a trump, joker, or bomb that beats the Ace and takes the lead.",
+      "Even if the Ace wins, the follow-up 2 could be beaten on a later trick."
+    ],
+    "mitigation": "Playing the Ace first maximizes the probability of winning the current trick and keeping initiative, which is the best available endgame path given the hidden cards."
+  },
+  "confidence": 0.75
+}

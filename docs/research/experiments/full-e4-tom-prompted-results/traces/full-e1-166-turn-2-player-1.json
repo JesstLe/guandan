@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-166-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is an opponent with only two cards remaining and led a low heart 3. The priority is to prevent them from winning this trick and retaining or extending a lead that could let them finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three hidden cards and has not yet acted. They may be able to beat a heart 3, but there is no public signal about their suit distribution or strength. Their optimal support play would be to beat with the cheapest possible card if they can, preserving higher cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "45c54959-47c2-4886-83a8-a23282cc2113"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 while holding only two cards, suggesting they are trying to shed a weak card or win a cheap trick to get down to one card. Player 3, the other opponent, has three hidden cards and may hold higher hearts or trumps to contest a follow, but no trumps or high cards have appeared yet.",
+    "confidence": 0.65,
+    "evidence": [
+      "45c54959-47c2-4886-83a8-a23282cc2113"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Beating the heart 3 with the heart 4 is the cheapest way to take control of the trick and stop the near-finished opponent (player 0) from winning. It preserves the higher hearts (9 and 10) for future tricks while immediately applying pressure.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting player 0 win the trick if partner cannot beat it, putting the opponent on one card and a likely fast finish."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the trick but expends a stronger card unnecessarily when the 4 already beats the table; saving the 9 is better for later high-pressure tricks."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is even more valuable and should be reserved; using it now overcommits a high non-trump card to a trick the 4 can win."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 3 may hold a higher heart or trump and overtake the heart 4, regaining control for the opponents.",
+      "Using the 4 now leaves only the 9 and 10 in hand, which could make future low-card shedding harder."
+    ],
+    "mitigation": "Playing the minimum winning card limits resource loss. Even if player 3 overtakes, the team has forced opponents to spend a stronger card and denied player 0 an easy win."
+  },
+  "confidence": 0.75
+}

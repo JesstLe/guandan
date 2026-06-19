@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-285-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is leading in round 1 with a short, low hand (3-6 of spades, no trumps). The immediate team objective is to start shedding cards efficiently so that the hand can be finished before opponents, while recognizing that any single-card lead is likely to be beaten by higher cards or trumps held by other players."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 unknown cards. Since no cards have been played, partner likely has a normal distribution including some cards above 6 and possibly trumps around rank 7. Partner may be able to win tricks later and return the lead, but this is uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "921e36de-6c14-4063-8c1c-3a1e7e4d6147"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. Given that trump rank is 7 and our highest card is 6, it is probable that at least one opponent holds cards of rank 7 or higher, including possible trumps, that can beat any single-card lead we make.",
+    "confidence": 0.7,
+    "evidence": [
+      "921e36de-6c14-4063-8c1c-3a1e7e4d6147"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the safest way to begin shedding our weak hand. Since all our cards are low non-trumps and any single lead is vulnerable, playing the lowest card first preserves the relatively higher 4, 5, and 6 for later positions or potential partner-supported plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher than the 3 but equally non-trump and vulnerable; playing it first leaves the weaker 3 for later and wastes relative card value."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is one of our stronger low cards; leading it now reduces our ability to compete in later small-card tricks and does not improve our chance of winning this lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is our highest card; leading it immediately gives up our best remaining card when no opponent has shown weakness, making it harder to shed later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or trump and win the lead, forcing player 0 to respond from a weakened position.",
+      "If partner cannot cover, the opponents may chain multiple winning tricks.",
+      "Shedding only one card leaves three low cards that remain vulnerable to higher plays."
+    ],
+    "mitigation": "By leading the lowest card, we minimize the immediate value lost and keep the highest remaining cards for future turns, maximizing the chance that partner or later cards can regain control."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with no public information beyond hand counts; beliefs about partner and opponent holdings remain probabilistic."
+}

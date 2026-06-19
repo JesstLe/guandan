@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-104-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two non-trump cards and am in the lead. The fastest path to helping my team is to retain control, play out my cards, and try to go out before opponents can dominate the trick sequence."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) has three cards but has not acted, so I have almost no signal about their strength. Given the endgame hand counts, they likely hold a mix of ordinary and possibly some trump cards that could cover a later low lead, but this is a prior belief, not a fact.",
+    "confidence": 0.3,
+    "evidence": [
+      "ab0954cb-6c97-47c5-bf75-57b7731bd359"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has three cards and has not yet played. They are likely to contain at least some trumps (rank 7) or high cards, and opponents will try to beat any weak lead to seize control and prevent me from finishing my hand.",
+    "confidence": 0.5,
+    "evidence": [
+      "ab0954cb-6c97-47c5-bf75-57b7731bd359"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A is the strongest non-trump single I hold. It is likely to win the trick, keeps the lead with me, and lets me lead the remaining spade 2 next. That maximizes my chance of playing both cards quickly in an endgame race.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weak and likely to be beaten by an opponent, ceding control when I have only two cards. Even though my partner might cover, losing the initiative reduces my direct chance to go out."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or red-trump 7 that beats the A and regains control.",
+      "If the A wins but my follow-up 2 is beaten, I may be left with no cards anyway (good) or my partner may have to rescue the trick."
+    ],
+    "mitigation": "Playing the A first uses my strongest single while I still have the lead, giving me the best chance to control the next trick. There is no safer way to spend a single card given my hand."
+  },
+  "confidence": 0.75
+}

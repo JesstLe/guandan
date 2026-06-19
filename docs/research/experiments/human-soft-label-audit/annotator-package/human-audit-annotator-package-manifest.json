@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T21:15:52.598Z",
+  "status": "package_ready",
+  "sampleCount": 40,
+  "stratumCounts": {
+    "lead_opening": 8,
+    "lead_opening;endgame_race": 8,
+    "lead_opening;opponent_near_finish": 8,
+    "follow_beat_or_pass;opponent_near_finish": 8,
+    "lead_opening;partner_near_finish": 8
+  },
+  "files": {
+    "README.md": "docs/research/experiments/human-soft-label-audit/annotator-package/README.md",
+    "human-audit-annotator.html": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator.html",
+    "human-audit-annotation-sheet.csv": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotation-sheet.csv",
+    "human-audit-blind-sample.jsonl": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-blind-sample.jsonl"
+  },
+  "checks": [
+    {
+      "id": "required-files",
+      "status": "pass",
+      "detail": "4/4 files present"
+    },
+    {
+      "id": "private-reference-excluded",
+      "status": "pass",
+      "detail": "package file list contains no private reference file"
+    },
+    {
+      "id": "no-forbidden-filenames",
+      "status": "pass",
+      "detail": "no forbidden filenames"
+    },
+    {
+      "id": "no-forbidden-content",
+      "status": "pass",
+      "detail": "no private reference terms in package files"
+    },
+    {
+      "id": "nonempty-samples",
+      "status": "pass",
+      "detail": "40 blind samples"
+    },
+    {
+      "id": "unique-sample-ids",
+      "status": "pass",
+      "detail": "40/40 unique sample ids"
+    },
+    {
+      "id": "blind-hides-reference-fields",
+      "status": "pass",
+      "detail": "blind sample fields contain no reference labels"
+    }
+  ],
+  "instructions": {
+    "completedCsvName": "human-audit-completed-annotations.csv",
+    "referenceFileIncluded": false,
+    "referenceLabelsIncluded": false
+  }
+}

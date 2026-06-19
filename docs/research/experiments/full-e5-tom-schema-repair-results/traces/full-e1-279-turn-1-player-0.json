@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-279-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "The low-card lead is the dominant endgame play: it minimizes the chance of losing the lead permanently and leaves the A as a winning exit card."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.6,
+    "evidence": [
+      "40a53778-0644-49f2-948d-c5d39b088095"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent state is uncertain; no hidden cards are asserted as facts.",
+    "confidence": 0.6,
+    "evidence": [
+      "40a53778-0644-49f2-948d-c5d39b088095"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The low-card lead is the dominant endgame play: it minimizes the chance of losing the lead permanently and leaves the A as a winning exit card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

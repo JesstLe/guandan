@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-278-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is four low non-trump clubs, so I cannot realistically dominate the trick. I want to play the weakest card possible so my partner has the best chance to cover it, keep the lead away from the near-finish opponent (player 1 with 2 cards), and avoid wasting any modest future value."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. Without any signals, the prior is that their hand is roughly random; they are somewhat likely to have at least one card higher than a 3 of clubs or a trump, so they may be able to cover a low lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "a492fd78-a954-4b9b-b986-68ae4d788816"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they may hold strong cards or trumps to close out. Opponent player 3 has 3 cards. Both opponents probably can beat any low single I lead, but the near-finish opponent may prefer to save their strong cards unless forced.",
+    "confidence": 0.55,
+    "evidence": [
+      "a492fd78-a954-4b9b-b986-68ae4d788816"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the lowest single, giving partner the widest possible range of cards that can cover it and keeping my stronger low cards (relatively, the 6) for later. It also minimizes the value of any card an opponent must spend to win the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing my highest club makes it harder for partner to cover and wastes the most useful of my low cards; if partner cannot take the trick, it also gives a stronger card to the opponent who wins lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a low card, but the 3 is strictly better for the same purpose because more partner cards can beat it and it preserves slightly more future value."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Similar to the 5, it is harder to cover than the 3 and keeps no meaningful extra strength; the 3 is the safest lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 (2 cards, near finish) may have a higher single or trump and win the lead, then go out.",
+      "Partner may not be able to cover the 3, in which case opponents gain control regardless.",
+      "A low lead gives no immediate pressure, but my hand has no high cards anyway."
+    ],
+    "mitigation": "By choosing the absolute lowest card, I maximize the chance that partner can cover with a marginal card, and I keep the highest of my weak cards for a future trick. I do not overcommit any potential value."
+  },
+  "confidence": 0.65
+}

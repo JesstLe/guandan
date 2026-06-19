@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-297-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards and is close to finishing, so I want to lead a low single that they can realistically beat, giving them control to play out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds at least one card strong enough to beat a low diamond single, given they are down to 2 cards, but their exact ranks and suits are unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "20b27514-8f43-4670-9f61-4d5a7f4a1a11"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and will try to take the trick to deny my partner the lead; they may hold trump, the rank-7, or simply higher non-trump cards, but no specific cards are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "20b27514-8f43-4670-9f61-4d5a7f4a1a11"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond-3 sets the lowest possible single, giving partner the easiest chance to win the trick while keeping my higher diamonds (4, 5, 6) for later rounds.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest non-trump card; leading it wastes a resource and raises the bar partner must clear to take the lead."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly higher than the 3 and therefore makes it marginally harder for partner to win without saving a noticeably stronger card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Intermediate between 3 and 6; less conservative than leading the 3 and does not add enough strength to justify giving up the lowest lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher single or trump and capture the lead immediately.",
+      "Partner may not have a card that beats the lead, so the lead-transfer plan could fail."
+    ],
+    "mitigation": "By leading the smallest card I preserve the rest of my hand and accept the uncertainty inherent in the opening lead; I can use any retained higher diamond in a later trick if I regain the lead."
+  },
+  "confidence": 0.6
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-148-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is entirely low non-trump clubs, so I cannot realistically win or control the trick. The best team goal is to lead a card my partner can beat, passing the lead to player 2 so our team can dictate the next trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) is likely to hold at least one card higher than a low club or a trump, giving them a reasonable chance to win this trick. There is no public information contradicting this, but the distribution is unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "0e01bd88-2482-4100-9296-636f2053f3e5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is close to finishing, so they are probably looking for a cheap win or to lead next. Opponent player 3 has 3 cards and may also be able to beat a low club, but no specific holdings are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "0e01bd88-2482-4100-9296-636f2053f3e5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the least committal play. Because I hold the 4, 5, and 6 of clubs, any opponent or partner forced to follow clubs needs a club higher than the 6 (or a trump) to win regardless of whether I lead the 3 or the 6. Leading the 3 therefore gives the same trick-winning threshold to partner while preserving my slightly higher low cards for later positional plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Functionally equivalent to the 3 for trick-winning purposes, but it consumes a higher card now and leaves the weaker 3 for later, which is strictly worse for future leads."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Same trick-winning threshold as the 3, but uses a more valuable low card and does not improve the chance of partner winning."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest low card. Leading it does not make opponents need a higher card to win, because the intermediate club ranks 4 and 5 are already in my hand, so it merely expends my best non-trump card without benefit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 (2 cards) may beat the 3 and be one play away from going out.",
+      "Player 3 may overtake and gain the lead for the opposing team.",
+      "Partner may be unable to beat the lead, leaving the opposing team in control."
+    ],
+    "mitigation": "Leading the lowest possible card minimizes my own commitment and maximizes the set of partner hands that can win the trick. It also keeps my higher low cards intact for future tricks if my partner regains the lead."
+  },
+  "confidence": 0.6,
+  "notes": "At the opening lead with no prior plays, beliefs remain probabilistic. The near-finish opponent is the main source of urgency, but no strong signal justifies deviating from a simple low-card lead."
+}

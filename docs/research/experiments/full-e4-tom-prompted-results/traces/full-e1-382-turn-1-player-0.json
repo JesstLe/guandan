@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-382-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards, so the immediate team priority is to let them take control of the trick and move toward finishing their hand. Leading the lowest single maximizes the chance that partner can beat it and preserves higher cards for future rounds."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds a small number of mixed-strength cards and is trying to exit soon. Because this is the opening lead and no cards have been revealed, their exact holdings are unknown, but the low hand count signals an urgent finishing posture.",
+    "confidence": 0.55,
+    "evidence": [
+      "329ed430-438f-4ff6-bf29-70297c16e4de"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have normal opening ranges with 3 cards each. They will try to capture the lead to block the partner finish and force me to spend stronger cards, but no specific opponent weakness or strength can be inferred yet.",
+    "confidence": 0.5,
+    "evidence": [
+      "329ed430-438f-4ff6-bf29-70297c16e4de"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the cheapest way to probe partner ability and transfer initiative. If partner can beat it, they get the lead while I keep 4-6 as stronger follow-up singles.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 spends the strongest card in a purely cooperative situation where partner is about to finish; if an opponent beats it, my remaining 3-5 are weaker and I have less control over later tricks."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is middling: it neither maximizes the chance partner can afford to win the trick nor preserves as much strength as leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is stronger than necessary for an opening lead and risks losing a card that could win a later critical trick when partner is down to one card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 and seize lead, delaying the partner finish.",
+      "The 3 may be too low for partner to win if they only have very low cards left.",
+      "My hand is a 3-6 diamond sequence, so playing singles one by one may sacrifice potential straight value if the engine later allows a run."
+    ],
+    "mitigation": "By playing the lowest card first I minimize information and resource loss; I can use progressively higher singles to respond to opponents or support partner on subsequent tricks."
+  },
+  "confidence": 0.6,
+  "notes": "Only public evidence is the new_game event; all partner and opponent beliefs are probabilistic and conditioned on hand counts and scenario tags."
+}

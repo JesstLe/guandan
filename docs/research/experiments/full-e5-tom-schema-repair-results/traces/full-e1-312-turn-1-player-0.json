@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-312-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is near finishing; with a very weak hand my best chance is to lead the lowest card so partner can potentially take control and exit."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely holding one or two cards that can win a trick, possibly a high non-trump or trump, because their small hand count suggests they are close to going out.",
+    "confidence": 0.6,
+    "evidence": [
+      "5e982b94-b9a7-4893-8bbf-c176592e1cd2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards and, with no public plays yet, are likely to have many cards higher than my 3-6 diamonds; they will probably beat any low single I lead.",
+    "confidence": 0.7,
+    "evidence": [
+      "5e982b94-b9a7-4893-8bbf-c176592e1cd2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds expends the minimum card value, gives partner the easiest possible card to beat, and preserves the 6 as my best remaining low card for later support.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than the 3, making it harder for partner to win while still being easily beaten by opponents."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Wastes a middle card with no offsetting benefit; all my cards are weak and the lead should be as low as possible."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Squanders my highest low card; a 6 is still very beatable and gives partner the least room to take the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents can easily beat a 3 with any higher single or trump.",
+      "Partner may not have a card strong enough to win the trick and could be left in a difficult position.",
+      "My hand contains no trumps or bombs, so I cannot regain control directly."
+    ],
+    "mitigation": "Keep leads low to avoid helping opponents and to maximize partner's chance to cover; save the 6 for a later covering opportunity if partner gains the lead."
+  },
+  "confidence": 0.75
+}

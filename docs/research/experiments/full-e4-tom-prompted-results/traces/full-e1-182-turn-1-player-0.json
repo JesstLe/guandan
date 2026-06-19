@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-182-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "With my partner publicly near finish (only two cards left), I want to make the trick as easy as possible for them to take, preserving their stronger cards and my own slightly higher diamonds for later."
+  },
+  "partnerBelief": {
+    "summary": "My partner likely has very few cards left and may be trying to finish this round, based on the public hand count and the partner_near_finish tag.",
+    "confidence": 0.8,
+    "evidence": [
+      "b81f1bfc-2a62-4583-b41d-61fbd074a942"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not revealed any cards, so their exact holdings are uncertain; they may have higher non-trump singles or trumps that could beat a low diamond lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "b81f1bfc-2a62-4583-b41d-61fbd074a942"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦, my lowest card, gives my near-finish partner the best chance to win the trick while preserving my 4♦-6♦ as safer exit cards. It also avoids wasting any meager strength I have on a lead that is unlikely to stand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Playing the 6♦ uses up my highest non-trump card for a lead that opponents can almost certainly beat, leaving me with even weaker follow-ups."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5♦ is still a low, easily beaten card and does not meaningfully increase the chance of winning the trick; keeping it preserves mid-ranked options."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4♦ is only marginally stronger than the 3♦ and offers no strategic advantage, whereas the 3♦ is the safest lead for supporting my partner."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump single or any trump and take control of the trick.",
+      "If my partner cannot beat the 3♦, opponents may gain tempo and delay our team's finish."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize resource loss and leave my partner the widest range of possible responses to win the trick and finish."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with a very weak hand; priority is partner support rather than trick strength."
+}

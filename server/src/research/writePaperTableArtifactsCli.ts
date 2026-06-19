@@ -4,6 +4,8 @@ interface Args {
   metrics: string
   revision: string
   ablation: string
+  humanAuditAgreement: string
+  humanAuditPacketQuality: string
   out: string
 }
 
@@ -12,6 +14,8 @@ const result = writePaperTableArtifacts({
   metricsSummaryPath: args.metrics,
   revisionComparisonPath: args.revision,
   ablationSummaryPath: args.ablation,
+  humanAuditAgreementPath: args.humanAuditAgreement,
+  humanAuditPacketQualityPath: args.humanAuditPacketQuality,
   outputDir: args.out,
 })
 
@@ -22,6 +26,8 @@ function parseArgs(argv: string[]): Args {
     metrics: 'docs/research/experiments/pilot-metrics-summary/pilot-metrics-summary.json',
     revision: 'docs/research/experiments/pilot-revision-comparison/revision-comparison.json',
     ablation: 'docs/research/experiments/pilot-ablation-summary/ablation-summary.json',
+    humanAuditAgreement: 'docs/research/experiments/human-soft-label-audit/human-audit-agreement-report.json',
+    humanAuditPacketQuality: 'docs/research/experiments/human-soft-label-audit/human-audit-packet-quality-report.json',
     out: 'docs/research/tables',
   }
 
@@ -38,6 +44,12 @@ function parseArgs(argv: string[]): Args {
       i++
     } else if (arg === '--ablation') {
       parsed.ablation = value
+      i++
+    } else if (arg === '--human-audit-agreement') {
+      parsed.humanAuditAgreement = value
+      i++
+    } else if (arg === '--human-audit-packet-quality') {
+      parsed.humanAuditPacketQuality = value
       i++
     } else if (arg === '--out') {
       parsed.out = value

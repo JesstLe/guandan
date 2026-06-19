@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-054-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left. The team objective is to empty player 0's hand as quickly as possible before the opponents can finish."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) is likely also trying to finish a small hand and may be able to support me later, but at this first lead there is no public signal about their exact cards or intended suit.",
+    "confidence": 0.5,
+    "evidence": [
+      "afb2ebea-bd39-4650-9e6f-1e9adb34138b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three cards and, given no cards have been played, they may hold trumps or high cards that could beat a non-trump Ace. I treat this as probable rather than certain.",
+    "confidence": 0.6,
+    "evidence": [
+      "afb2ebea-bd39-4650-9e6f-1e9adb34138b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades keeps the initiative with a strong single. If it wins the trick, I can lead the 2 next and likely empty my hand in two consecutive leads, which is the fastest path to finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weaker and more likely to be beaten immediately, handing control to opponents or even partner. Losing the lead now risks my Ace being stuck and opponents finishing before I can play it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump (rank 7 or red 7) or a joker that beats the Ace, costing the initiative.",
+      "If the Ace loses, player 0 may not get another lead and the remaining 2 could be difficult to play."
+    ],
+    "mitigation": "The Ace is still the stronger lead; even if it is beaten, retaining the 2 gives a chance to respond if the lead returns. Playing low first would almost certainly surrender the lead anyway."
+  },
+  "confidence": 0.7,
+  "notes": "Decision is made with probabilistic beliefs because no cards have been played yet."
+}

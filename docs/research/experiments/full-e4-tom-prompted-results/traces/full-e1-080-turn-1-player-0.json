@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-080-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "This is the opening lead with no table lead, so the goal is to play a card that either wins the trick or lets the partner win it cheaply while keeping the team's control of tempo."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and no public actions have occurred, so partner could have higher non-trump cards or trumps that may beat a low lead, but this is only probable, not certain.",
+    "confidence": 0.5,
+    "evidence": [
+      "42cf3d00-d18d-4556-89b1-94f8d1a872e9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards and no cards have been played, so opponents may hold cards that beat a 3 of spades, but their exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "42cf3d00-d18d-4556-89b1-94f8d1a872e9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the cheapest way to open the trick. It preserves the slightly higher spades (4-6) for later tricks and gives the partner a chance to take control with a modest card while forcing opponents to show strength if they want the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is our strongest non-trump single, but playing it now uses our only card that might win a later low trick and still may lose to any trump or higher non-trump."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is stronger than the 3 but still weak overall; it saves less than the 6 while being slightly more likely to win now, so the preservation value is lower."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is intermediate; it does not save as much high-card value as leading the 3, and it is unlikely to win against random opponent holdings."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may easily beat the 3 and seize the lead.",
+      "The partner may not have a card that can take control, leaving us in a reactive position.",
+      "Saving higher low cards may be ineffective if opponents or partner play trumps."
+    ],
+    "mitigation": "By committing only the weakest card, we minimize immediate resource loss and gather information from how opponents and partner respond to a low single lead."
+  },
+  "confidence": 0.65
+}

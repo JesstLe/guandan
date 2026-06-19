@@ -3,7 +3,7 @@
   "modelProvider": "kimi-cli",
   "modelName": "kimi-code/kimi-for-coding",
   "temperature": 0,
-  "notes": "500-decision full-split ToM Kimi CLI run; 268 usable outputs; latest bounded resume attempt hit Kimi quota again.",
+  "notes": "500-decision full-split ToM run; optional step skips until provider JSONL exists.",
   "sourceBatchJsonl": "docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl",
   "providerResultJsonl": "docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl",
   "rawOutputDir": "docs/research/experiments/full-e4-tom-prompted-batch/raw",

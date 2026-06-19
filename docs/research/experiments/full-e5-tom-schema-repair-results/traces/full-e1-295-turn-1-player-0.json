@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-295-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "minimize_loss",
+    "explanation": "My hand contains only low spade singles (3-6) with no trump and no high cards, so the realistic objective is to shed a weak card cheaply rather than attempt to control the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards, but no public actions have occurred, so partner's strength and suit distribution are completely unknown. I cannot assume partner can win this trick.",
+    "confidence": 0.1,
+    "evidence": [
+      "27984f24-14c8-4bb8-9bcb-9862deb24f25"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents jointly hold 6 cards. With trump rank 7, it is probable that at least one opponent holds a non-spade card higher than 6 or a trump, giving them the ability to overtake any of my legal leads.",
+    "confidence": 0.7,
+    "evidence": [
+      "27984f24-14c8-4bb8-9bcb-9862deb24f25"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades, the weakest card, minimizes wasted value. Since 4, 5, and 6 are also low and likely to be beaten by any higher non-trump or trump, preserving them offers slightly more flexibility in later tricks while immediately shedding the least useful card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is still very low and almost certain to be beaten; playing it first wastes the highest card in my weak hand without improving the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is marginally stronger than the 3 and 4 but remains vulnerable to any higher card, so it is better kept for a later exchange."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly above the 3 and offers no meaningful increase in trick-winning probability; leading the 3 is the more conservative shed."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a card higher than 3 or a trump can immediately take the lead.",
+      "If partner cannot intervene, opponents may use the initiative to force unfavorable suits."
+    ],
+    "mitigation": "By playing the absolute lowest card, I limit information leakage and retain 4, 5, and 6 as slightly better resources for responding to future leads."
+  },
+  "confidence": 0.75
+}

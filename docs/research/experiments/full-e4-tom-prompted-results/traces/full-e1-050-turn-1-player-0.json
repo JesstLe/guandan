@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-050-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With a weak hand of 3-6 spades and no trumps or bombs, I cannot realistically expect to control the trick. The best team play is to lead the lowest single, maximizing the chance that partner (player 2) can cover it and take the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 cards and has not yet acted. They likely have a mix of cards and will try to win the trick if possible to help our team. Leading low gives them the widest range of cards that can beat it.",
+    "confidence": 0.6,
+    "evidence": [
+      "f210657a-9c1f-411f-8c81-3ec12d559750"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and no cards have been played. They probably contain some higher cards or trumps that can beat a low spade lead, so I should not expect to win this trick with force.",
+    "confidence": 0.65,
+    "evidence": [
+      "f210657a-9c1f-411f-8c81-3ec12d559750"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3♠ is the lowest card in hand. Leading it minimizes the strength needed for partner to win the trick and preserves 4♠/5♠/6♠ for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 wastes my highest non-trump card. Opponents with any card 7+ or any trump can beat it, and partner may not be able to cover it either."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still relatively high and gives partner a smaller window to beat it than the 3, while not being strong enough to win on its own."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Better than 5/6 but still less cooperative than the 3; it preserves fewer high cards and makes it harder for partner to take control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not have a higher spade or any card that can beat the 3♠.",
+      "An opponent may play a higher single or trump and win the trick.",
+      "Even if I keep 4/5/6, they may all be beaten by opponents' higher cards."
+    ],
+    "mitigation": "By leading the lowest card first, I keep my strongest cards for later tricks and give partner the best opportunity to take control now."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with a weak, non-trump hand. Cooperative play suggests minimizing the lead to facilitate partner control."
+}

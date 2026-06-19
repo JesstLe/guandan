@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-383-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 has only 2 cards and is near finishing. My hand is all low non-trump clubs, so I cannot aggressively finish, but I can try to make the opening trick expensive for the near-finish opponent by leading my highest single, reducing the chance they win cheaply and lead out their last card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. I have no direct signal about partner's strength or suit distribution, but with 3 cards they are likely still building shape and would prefer a low, manageable lead if they are to take over. Their exact holdings remain uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "a3c3204e-1597-4614-b499-a3f11d178557"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 holds only 2 cards and is therefore the immediate finishing threat. Their goal is likely to win a cheap trick and lead their final card. Opponent player 3 holds 3 cards and has also played nothing; both opponents may hold higher non-trumps or trumps that can beat a low club, but this is probabilistic rather than certain.",
+    "confidence": 0.6,
+    "evidence": [
+      "a3c3204e-1597-4614-b499-a3f11d178557"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6♣ is my strongest single. Against an opponent with only 2 cards, it raises the bar for winning the trick immediately: they need a card above rank 6 or a trump. If they cannot meet that, I keep the lead and can continue to pressure with my remaining clubs, delaying their potential finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "The 3♣ is the cheapest lead, but almost any card in the near-finish opponent's 2-card hand can beat it. That gives opponent player 1 a high probability of winning the trick and leading their last card, which is exactly the outcome I want to avoid."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4♣ is only slightly stronger than the 3 and still very easy for an opponent to beat. It does not materially change the risk of letting the near-finish opponent take control."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is better than 3 or 4, but the 6♣ is still stronger and gives the best chance to survive against the near-finish opponent's limited hand. Saving the 5 instead of the 6 provides little extra value because my hand is already weak."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may still hold a card above rank 6 or a trump and win the trick, then lead their final card.",
+      "Partner may be unable or unwilling to cover the 6♣, so if opponent 1 passes, the trick could still be taken by opponent 3.",
+      "If I do win, my remaining cards are even lower, so I may lose the lead on the next trick anyway."
+    ],
+    "mitigation": "By leading the maximum card now, I at least force the near-finish opponent to use their stronger card if they want to win immediately. If the trick is lost, I retain lower cards for subsequent leads and can continue to give partner opportunities to intervene."
+  },
+  "confidence": 0.55
+}

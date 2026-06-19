@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-373-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "With opponent player 1 down to 2 cards and tagged as near finish, the priority is to avoid handing the opponents an easy path to take the lead and go out. Leading the weakest card keeps my slightly stronger low cards in reserve and lets the partner potentially intervene."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has not acted publicly, so their exact strength is unknown. They are likely to have a balanced hand and may be able to beat a very low single if opponents do not contest it.",
+    "confidence": 0.5,
+    "evidence": [
+      "eca65ae6-d4d6-47c2-82b7-03f5953356be"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining and is tagged near finish, so they likely possess at least one high card or trump to try to win the lead and finish. Opponent player 3 has 3 cards and is less constrained but still unknown.",
+    "confidence": 0.7,
+    "evidence": [
+      "eca65ae6-d4d6-47c2-82b7-03f5953356be"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I lead the club 3, the lowest single. This sets the lowest possible bar, giving my partner the best chance to beat it if opponents pass, and preserves my 4, 5, and 6 for later tricks while I have no strong winning card now.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 uses my highest low card without making the trick meaningfully harder for opponents to beat; it is still likely to be overtaken by any higher non-trump or trump."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is only marginally stronger than the 3 and 4 but does not change the fact that opponents near finish can likely beat it, so it is better to keep it for a later play."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is slightly higher than the 3 but offers no real advantage in winning the trick and expends a card that could be useful later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may beat the low lead with a high card or trump and take control, possibly going out next.",
+      "If partner cannot or does not beat the lead, the opponents may coordinate to finish."
+    ],
+    "mitigation": "By leading the 3 I keep my modestly higher cards and avoid overcommitting; this leaves maximum flexibility to respond if the lead comes back and minimizes the value opponents gain from winning this trick."
+  },
+  "confidence": 0.6
+}

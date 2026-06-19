@@ -1,0 +1,68 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-341-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "partnerIntent": {
+      "summary": "Partner (player 3) has not yet acted; their hand count is 3. No direct signal is available, but by leading a low heart the opponent has revealed a vulnerability in the heart suit. Partner likely wants the team to win the trick or at least prevent the opponent from retaining the lead.",
+      "belief": "Partner probably holds middling cards and would prefer we use the minimum card needed to take control, preserving team strength for later tricks.",
+      "evidence": [
+        "0f3bf8c3-217f-47c2-90a8-03e6f979a5ed"
+      ]
+    },
+    "opponentIntent": {
+      "summary": "Opponent player 0 led a low single heart and has only 2 cards remaining, indicating they are near finishing. Their objective is likely to play out their last cards quickly, possibly with another low single or a small combination. They may be hoping opponents will pass or overcommit high cards.",
+      "belief": "Player 0 is trying to bleed a cheap winner or force us to waste high cards. They probably do not have a strong follow-up, otherwise they would not lead a 3 when near the end.",
+      "evidence": [
+        "0f3bf8c3-217f-47c2-90a8-03e6f979a5ed"
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "pass",
+        "analysis": "Passing lets opponent player 0 retain the lead with only 2 cards, which directly risks them going out and scoring against our team. There is no compelling reason to pass when we can cheaply win the trick.",
+        "supportingBeliefs": [
+          "opponent player 0 is near finish with 2 cards",
+          "a single 3 is a weak lead we can beat"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "analysis": "Beats the table with the minimum card, seizing the lead and putting pressure on the opponent. Saves the 9 and 10 for later control. This is the most efficient use of hand resources.",
+        "supportingBeliefs": [
+          "we can win the trick with any of our hearts",
+          "opponent likely has weak remaining cards",
+          "higher cards are more valuable later"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "analysis": "Also wins the trick but expends a materially stronger card than necessary. The 9 is better reserved for a later trick where opponent might play a 5-8 or where partner cannot cover.",
+        "supportingBeliefs": [
+          "higher single cards are scarce resources",
+          "no information suggests a 4 would be insufficient"
+        ]
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "analysis": "Wins the trick but is the highest cost option. The 10 is our strongest card and should be kept for a must-win trick or to block an opponent's higher single, not to marginally beat a 3.",
+        "supportingBeliefs": [
+          "10 is our highest non-trump card",
+          "no opponents have shown high cards yet"
+        ]
+      }
+    ],
+    "finalDecision": {
+      "selectedActionId": "play-single-heart-4-copy1",
+      "justification": "The opponent near finish led a weak single 3. Taking the lead is imperative to stop them from going out, and the 4 of hearts is the cheapest card that accomplishes this. It preserves 9 and 10 for future tricks while immediately regaining control for team 1.",
+      "keyBeliefs": [
+        "opponent player 0 is near finish with 2 cards",
+        "lowest winning card minimizes resource waste",
+        "regaining lead now reduces opponent's chance to finish"
+      ]
+    }
+  },
+  "evidence": [
+    "0f3bf8c3-217f-47c2-90a8-03e6f979a5ed"
+  ]
+}

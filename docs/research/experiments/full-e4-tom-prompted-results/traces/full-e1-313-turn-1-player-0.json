@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-313-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand contains only low non-trump clubs. The most useful team contribution is to spend the smallest card now and keep the 4-6 for later tricks where they might cover partner or force a higher response."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. No specific cards can be asserted, but partner may be able to win a cheap trick if opponents do not cover a very low lead.",
+    "confidence": 0.4,
+    "evidence": [
+      "f9b01d2e-eba6-46ee-baf7-97a2c27bb1cf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, signaling a near-finish threat, and may hold a high card or trump to win this trick and try to go out. Opponent player 3 has 3 cards and may cover if player 1 does not. Exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "f9b01d2e-eba6-46ee-baf7-97a2c27bb1cf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the minimum-cost opening lead. It preserves the slightly stronger 4, 5, and 6, avoids committing my best card, and gives partner the widest window to take the trick with a modest card while keeping opponents' covering costs uncertain.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest club and the card most likely to win or force a high cover. Playing it now would strip my only real future winning chance and leave only 3-4-5."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is a useful middle card that may cover an opponent's later low lead. Using it as the opening lead wastes that flexibility with no offsetting gain."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is better than 5 or 6 but still higher than necessary; it expends a card that could be useful later while offering no strategic advantage over the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1, with 2 cards left, may overtake with a higher card or trump and then lead out to finish.",
+      "If opponents pass, partner may be unable to beat the 3, leaving me with the lead and a still-weak hand."
+    ],
+    "mitigation": "By leading the absolute lowest card, I limit resource loss regardless of who wins the trick and retain the 4-6 for covering future opponent leads or supporting partner."
+  },
+  "confidence": 0.8,
+  "notes": "No cards have been played yet, so all partner and opponent beliefs are probabilistic and grounded only in public hand counts and the new_game event."
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T10:30:11.966Z",
+  "generatedAt": "2026-06-18T21:15:59.414Z",
   "rootDir": "docs/research",
   "entries": [
     {
@@ -272,8 +272,8 @@
       "path": "submission/provider-run-handoff.md",
       "kind": "file",
       "status": "present",
-      "bytes": 12618,
-      "sha256": "77b7ebc294e86cc8a3c4f6713b4c93c36c88deb3bd30aed7519b65eeab267365"
+      "bytes": 14171,
+      "sha256": "684480bef0ef282fa37bf123d6697dc97cf5e70bdd0645c318a54123d2e4679a"
     },
     {
       "id": "provider-handoff-audit",
@@ -281,8 +281,8 @@
       "path": "submission/provider-handoff-audit/provider-handoff-audit.json",
       "kind": "file",
       "status": "present",
-      "bytes": 4781,
-      "sha256": "f4ae0a5bbc2ce8737f5193e43d2ed2cbfd02c595c6a56514c2966146c0c4a689"
+      "bytes": 6557,
+      "sha256": "8f2b48835415c39e00f838b5c34361304a6d23decd002b42bd11cf0c68c004fd"
     },
     {
       "id": "plain-raw-audit",
@@ -335,8 +335,8 @@
       "path": "experiments/full-e4-tom-prompted-batch/raw-output-audit.json",
       "kind": "file",
       "status": "present",
-      "bytes": 9453,
-      "sha256": "6985544d1f9cc87285abd4222397589bc12d23d3bdd5af3cf395e16ffa99860b"
+      "bytes": 4929,
+      "sha256": "967056332185f1388b89d39e5e08a9c970350b8bfc31ce82a9acc305d1d590f3"
     },
     {
       "id": "revision-raw-audit",
@@ -389,8 +389,8 @@
       "path": "experiments/provider-results/full-tom-prompted-llm.jsonl",
       "kind": "file",
       "status": "present",
-      "bytes": 760736,
-      "sha256": "3f5469839454b5ada4a04dab7bc47d6d56ab1ca2ddeac1c5da331f9dbe63566f"
+      "bytes": 1070418,
+      "sha256": "2bd7fd52552011a0261d6e1abc3652497b66d491df4e3f8456b9a2dc2bc54948"
     },
     {
       "id": "full-tom-provider-run-report",
@@ -398,8 +398,8 @@
       "path": "experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 610,
-      "sha256": "055da7a00f792d0f020f79299db0470721cd1b1a2b9e1b54543e9f7d127b3f07"
+      "bytes": 654,
+      "sha256": "f20101cd1e3c7812fb916b7aa43daf0bfe20da70509a9e47f5d617809e65d984"
     },
     {
       "id": "revision-provider-results",
@@ -468,9 +468,12 @@
       "id": "full-tom-prompted-metrics",
       "title": "Full Split ToM-Prompted Metrics",
       "path": "experiments/full-e4-tom-prompted-results/metrics.json",
-      "kind": "missing",
-      "status": "missing",
-      "bytes": 0
+      "statusOverride": "pending",
+      "reason": "Pending until full-split ToM provider outputs reach 500/500 and post-provider ingest materializes metrics.",
+      "kind": "file",
+      "status": "present",
+      "bytes": 76859,
+      "sha256": "79e6c5afa5ac60c5bafd20bfe7ac6f35b3cb32b63400110a61243a364ec5f914"
     },
     {
       "id": "full-tom-prompted-post-provider-report",
@@ -478,8 +481,8 @@
       "path": "experiments/full-e4-tom-prompted-results/post-provider-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 34225,
-      "sha256": "2393aeb849d00e16042e2c452cfdb46338d17e3107cbba2bcf12e5fadc7ec332"
+      "bytes": 123209,
+      "sha256": "08e7b54df5a7228266f8f9b80ba73db1e1d80a9a9575355cc8cb7bac5276f66b"
     },
     {
       "id": "full-tom-schema-repair-metrics",
@@ -487,8 +490,8 @@
       "path": "experiments/full-e5-tom-schema-repair-results/metrics.json",
       "kind": "file",
       "status": "present",
-      "bytes": 79213,
-      "sha256": "b1c73aaba3838d0787cddf3fe40a8ee87c14c91075fdca26e9ce955a17b5cca9"
+      "bytes": 64018,
+      "sha256": "ff66830d1bd6f5015ca317889de86f00a732ffc7370df5cd7478ba394e5de25a"
     },
     {
       "id": "full-tom-schema-repair-report",
@@ -496,8 +499,8 @@
       "path": "experiments/full-e5-tom-schema-repair-results/schema-repair-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 230919,
-      "sha256": "a33edc9f86a61b84030a4a5c90531ec7898ee7400b2ded7c2015c71645caa14a"
+      "bytes": 268351,
+      "sha256": "d91e919d4862e25316aed98d33cfaadf1da338f308416320c8fd5ab489ed3355"
     },
     {
       "id": "full-llm-summary",
@@ -505,8 +508,198 @@
       "path": "experiments/full-llm-summary/full-llm-summary.json",
       "kind": "file",
       "status": "present",
-      "bytes": 1410,
-      "sha256": "c56b770b03c04c8a6172694dab74dbd363744e37ac6e1773bd563da0f57dbe6e"
+      "bytes": 1764,
+      "sha256": "20de5ad7c121831f4240a552a15f7b580f58eacfa662d7559d0821f9d4ffa3af"
+    },
+    {
+      "id": "human-audit-manifest",
+      "title": "Human Soft-Label Audit Manifest",
+      "path": "experiments/human-soft-label-audit/human-audit-manifest.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1168,
+      "sha256": "4203d71b73e681f29719432f274279b0c734d58a52fa88d02bbcb0bcf41c50f8"
+    },
+    {
+      "id": "human-audit-blind-sample",
+      "title": "Human Soft-Label Audit Blind Sample",
+      "path": "experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 71724,
+      "sha256": "f3c41e0d160d1de238f90098e953d976a44fd707f033107f21f0b3f2ba02e040"
+    },
+    {
+      "id": "human-audit-annotation-sheet",
+      "title": "Human Soft-Label Audit Annotation Sheet",
+      "path": "experiments/human-soft-label-audit/human-audit-annotation-sheet.csv",
+      "kind": "file",
+      "status": "present",
+      "bytes": 64755,
+      "sha256": "c23cd6669d65e14de5e1f547ff3c3d5e7e3842ca2956816dafe1bcdde46b0272"
+    },
+    {
+      "id": "human-audit-annotator",
+      "title": "Human Soft-Label Audit Annotator HTML",
+      "path": "experiments/human-soft-label-audit/human-audit-annotator.html",
+      "kind": "file",
+      "status": "present",
+      "bytes": 91529,
+      "sha256": "adf32e168e92438f8bba1ea9854af602f3d7d05914e85788fa0dd8c504594880"
+    },
+    {
+      "id": "human-audit-answer-key",
+      "title": "Human Soft-Label Audit Answer Key",
+      "path": "experiments/human-soft-label-audit/human-audit-answer-key.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 81697,
+      "sha256": "1b19e864534448ddfbc3a0e8e010722712de0a844b8a3b2ab18d6a86c0c2d1fa"
+    },
+    {
+      "id": "human-audit-protocol",
+      "title": "Human Soft-Label Audit Protocol",
+      "path": "experiments/human-soft-label-audit/human-audit-protocol.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3622,
+      "sha256": "58cda4cdcf7890ae1a3ef65e092da326c1c5a47b7c4c1b201cb623ead7b2090d"
+    },
+    {
+      "id": "human-audit-packet-quality-report",
+      "title": "Human Soft-Label Audit Packet Quality Report",
+      "path": "experiments/human-soft-label-audit/human-audit-packet-quality-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 3294,
+      "sha256": "288fe9bc464499329bbe1058c1a3a55a97bb4caa9795e139c6bbf3ac030e07ef"
+    },
+    {
+      "id": "human-audit-packet-quality-report-md",
+      "title": "Human Soft-Label Audit Packet Quality Report Markdown",
+      "path": "experiments/human-soft-label-audit/human-audit-packet-quality-report.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2349,
+      "sha256": "de09c4618e0f5fc6a6dabf896d6b98b36aee2c41b0df5037f62138d435e1cc4c"
+    },
+    {
+      "id": "human-audit-annotator-package-manifest",
+      "title": "Human Soft-Label Audit Blind Annotator Package Manifest",
+      "path": "experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1923,
+      "sha256": "7f6a3a8983e637460bf9af1959b0632ae2b0f38208a8b38f522488b951b194c3"
+    },
+    {
+      "id": "human-audit-annotator-package-readme",
+      "title": "Human Soft-Label Audit Blind Annotator Package README",
+      "path": "experiments/human-soft-label-audit/annotator-package/README.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 891,
+      "sha256": "c8b3d1d9114142388403d7abf2e09a7c0e14aaf0e00a9b98046d458ac34f97a3"
+    },
+    {
+      "id": "human-audit-annotator-package-html",
+      "title": "Human Soft-Label Audit Blind Annotator Package HTML",
+      "path": "experiments/human-soft-label-audit/annotator-package/human-audit-annotator.html",
+      "kind": "file",
+      "status": "present",
+      "bytes": 91529,
+      "sha256": "adf32e168e92438f8bba1ea9854af602f3d7d05914e85788fa0dd8c504594880"
+    },
+    {
+      "id": "human-audit-annotator-package-sheet",
+      "title": "Human Soft-Label Audit Blind Annotator Package Sheet",
+      "path": "experiments/human-soft-label-audit/annotator-package/human-audit-annotation-sheet.csv",
+      "kind": "file",
+      "status": "present",
+      "bytes": 64755,
+      "sha256": "c23cd6669d65e14de5e1f547ff3c3d5e7e3842ca2956816dafe1bcdde46b0272"
+    },
+    {
+      "id": "human-audit-annotator-package-blind",
+      "title": "Human Soft-Label Audit Blind Annotator Package Samples",
+      "path": "experiments/human-soft-label-audit/annotator-package/human-audit-blind-sample.jsonl",
+      "kind": "file",
+      "status": "present",
+      "bytes": 71724,
+      "sha256": "f3c41e0d160d1de238f90098e953d976a44fd707f033107f21f0b3f2ba02e040"
+    },
+    {
+      "id": "human-audit-annotator-package-archive",
+      "title": "Human Soft-Label Audit Blind Annotator Package Archive",
+      "path": "experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
+      "kind": "file",
+      "status": "present",
+      "bytes": 53634,
+      "sha256": "e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87"
+    },
+    {
+      "id": "human-audit-annotator-package-archive-report",
+      "title": "Human Soft-Label Audit Blind Annotator Package Archive Report",
+      "path": "experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2429,
+      "sha256": "fed6bca17088419dd0746df888bb6effd8c41fd248b76053d60a9d8ab58d0e21"
+    },
+    {
+      "id": "human-audit-annotator-package-archive-report-md",
+      "title": "Human Soft-Label Audit Blind Annotator Package Archive Report Markdown",
+      "path": "experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1352,
+      "sha256": "28f366d3f01b55302d84c51d8e82a994e985f837e5910a5c300313bba73500ee"
+    },
+    {
+      "id": "human-audit-completed-annotations",
+      "title": "Human Soft-Label Audit Returned Completed Annotations",
+      "path": "experiments/human-soft-label-audit/human-audit-completed-annotations.csv",
+      "statusOverride": "pending",
+      "reason": "Pending until external annotators return the completed blind annotation CSV.",
+      "kind": "pending",
+      "status": "pending",
+      "bytes": 0
+    },
+    {
+      "id": "human-audit-intake-report",
+      "title": "Human Soft-Label Audit Returned-Annotation Intake Report",
+      "path": "experiments/human-soft-label-audit/human-audit-intake-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 2238,
+      "sha256": "55426edff6e23b7ac4e64981885a9b88050077338431ef2686620313821bb0b3"
+    },
+    {
+      "id": "human-audit-intake-report-md",
+      "title": "Human Soft-Label Audit Returned-Annotation Intake Report Markdown",
+      "path": "experiments/human-soft-label-audit/human-audit-intake-report.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1492,
+      "sha256": "aa4b13f40177cc71241d310632473cbbf95ec6d0d0dc6c3d831d01afe030f2af"
+    },
+    {
+      "id": "human-audit-agreement-report",
+      "title": "Human Soft-Label Audit Agreement Report",
+      "path": "experiments/human-soft-label-audit/human-audit-agreement-report.json",
+      "kind": "file",
+      "status": "present",
+      "bytes": 4092,
+      "sha256": "3a7ea14aaf6358fb393817785d31b6d2d947dafaa18d3cd05234a4cf8b626e43"
+    },
+    {
+      "id": "human-audit-agreement-report-md",
+      "title": "Human Soft-Label Audit Agreement Report Markdown",
+      "path": "experiments/human-soft-label-audit/human-audit-agreement-report.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1347,
+      "sha256": "073c5964e4498548014ef2869d33675824f4cda2f1c7f8081a1ffe2c4197b4b4"
     },
     {
       "id": "metrics-summary",
@@ -541,8 +734,8 @@
       "path": "experiments/pilot-ablation-summary/ablation-summary.json",
       "kind": "file",
       "status": "present",
-      "bytes": 3444,
-      "sha256": "d601f51a62cb4ab6c8b9d610c651ecf4dac101fe8232df9a83f8438f34fb42ea"
+      "bytes": 5296,
+      "sha256": "aa96ab43078bf960fea216ef3e2e809ff72d0df14ef3094edc1793c092a314f1"
     },
     {
       "id": "paper-tables",
@@ -550,9 +743,9 @@
       "path": "tables",
       "kind": "directory",
       "status": "present",
-      "bytes": 4306,
-      "fileCount": 5,
-      "treeSha256": "57276e0be2d0ee123265c185505907ff0d875c89a7bbed8b861ccc53ea74dc04"
+      "bytes": 5922,
+      "fileCount": 6,
+      "treeSha256": "4c3ed29bf72f6ef02d37b73195bfaffeb247c68efbff3c3cb3b6ce12fd7fd1dc"
     },
     {
       "id": "figures",
@@ -560,14 +753,50 @@
       "path": "figures",
       "kind": "directory",
       "status": "present",
-      "bytes": 13553,
-      "fileCount": 5,
-      "treeSha256": "041058ca9edf072f4d42c396ce459e0e8eb72f471508ae6521d58fefa9d6f284"
+      "bytes": 358247,
+      "fileCount": 11,
+      "treeSha256": "50e1edbfc5940d1e15947786edcd66a4912e9b20fafc88f80d497fd85413894c"
+    },
+    {
+      "id": "verifier-pipeline-figure",
+      "title": "Verifier Pipeline Figure",
+      "path": "figures/figure-1-verifier-pipeline.svg",
+      "kind": "file",
+      "status": "present",
+      "bytes": 8811,
+      "sha256": "cddb82111d925aaf76cd1200de539bc73d593d0e58792d232cb482dda3c17037"
+    },
+    {
+      "id": "verifier-pipeline-figure-notes",
+      "title": "Verifier Pipeline Figure Notes",
+      "path": "figures/figure-1-verifier-pipeline.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1227,
+      "sha256": "ef9e8873d5c1f47f216df9fad4108500dbd540385e0f93d142e1ddf54db761e9"
+    },
+    {
+      "id": "revision-architecture-figure",
+      "title": "Verifier-Grounded Revision Architecture Figure",
+      "path": "figures/figure-2-revision-architecture.svg",
+      "kind": "file",
+      "status": "present",
+      "bytes": 7761,
+      "sha256": "7bb2fce4f50cc8b67547f3c11cb9135e312ae604d403f1c9d977ff04954ee5aa"
+    },
+    {
+      "id": "revision-architecture-figure-notes",
+      "title": "Verifier-Grounded Revision Architecture Figure Notes",
+      "path": "figures/figure-2-revision-architecture.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1222,
+      "sha256": "3e43f1397ea10b61c2c88e34f7cfe169f524c3ef647e38e6d23556d3058665d7"
     },
     {
       "id": "tom-schema-repair-flow-figure",
       "title": "ToM Schema Repair Flow Figure",
-      "path": "figures/figure-2-tom-schema-repair-flow.svg",
+      "path": "figures/figure-3-tom-schema-repair-flow.svg",
       "kind": "file",
       "status": "present",
       "bytes": 4584,
@@ -576,11 +805,29 @@
     {
       "id": "tom-schema-repair-flow-figure-notes",
       "title": "ToM Schema Repair Flow Figure Notes",
-      "path": "figures/figure-2-tom-schema-repair-flow.md",
+      "path": "figures/figure-3-tom-schema-repair-flow.md",
       "kind": "file",
       "status": "present",
       "bytes": 838,
-      "sha256": "bc7bb9f34e7796f7e290ea752db39aad757bc83842bb4d876618fe8e33a5a188"
+      "sha256": "77c1b530dde6e2b7efea32b0f8821ed4509cab11bd08e4f06cbb131eaaf63448"
+    },
+    {
+      "id": "main-pilot-results-figure",
+      "title": "Main Pilot Results Figure",
+      "path": "figures/figure-4-main-pilot-results.svg",
+      "kind": "file",
+      "status": "present",
+      "bytes": 8758,
+      "sha256": "e8ad2998231c8804117a89e744810e4be2dc1af82aa9e5294c46794a5f340fbc"
+    },
+    {
+      "id": "main-pilot-results-figure-notes",
+      "title": "Main Pilot Results Figure Notes",
+      "path": "figures/figure-4-main-pilot-results.md",
+      "kind": "file",
+      "status": "present",
+      "bytes": 1248,
+      "sha256": "f10e18801290643c6991a73d3e41f3011410bc90882469016df21cd5c09a919b"
     },
     {
       "id": "references-bib",
@@ -598,7 +845,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 255,
-      "sha256": "f2fef7194c3f1e439854e355c29e89036132a78c66a30f294c385cf29c0fadcf"
+      "sha256": "77afdc8ab4dd3ed8f9bc348ed3a74bd9825b0922daf94c9aa891a09904df57c2"
     },
     {
       "id": "manuscript",
@@ -607,7 +854,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 29553,
-      "sha256": "de0dfbbb7591a2e077a86f31eaf94b3e6531137df041fdacaceb4a47266bfdd0"
+      "sha256": "6f96355c979fba0f5b091a50bea9726b84cc63f28c13c46b3d4ffa18e275447e"
     },
     {
       "id": "manuscript-status",
@@ -624,9 +871,9 @@
       "path": "submission/aamas-latex",
       "kind": "directory",
       "status": "present",
-      "bytes": 2722107,
-      "fileCount": 12,
-      "treeSha256": "ef69ec15d60b698da81b17f50f72518c69933e32fbd1a45d955d617afafa107f"
+      "bytes": 6699222,
+      "fileCount": 22,
+      "treeSha256": "fe136843a707246f3745ad00b40335d4b0c8a4c0b83845d9fd85c63388ac5f06"
     },
     {
       "id": "submission-gate",
@@ -644,7 +891,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 562,
-      "sha256": "cdb1abf44782f2e66f1e95088ee259cbee5a9e2e9844dad576588a4bf288cf33"
+      "sha256": "840a067577fbd51ca313a6fbeeec86bf801d926dc673f60af1c429526bab9b92"
     },
     {
       "id": "experiment-resolution-ledger",
@@ -653,7 +900,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 522,
-      "sha256": "bd33566826ad3b589f14d043e93132c9a08300feae9c9c59e504c8c28e14391d"
+      "sha256": "a2bea975dd9cc5d827746b91c812ff7390217d57e15722a4909c242afec9507c"
     },
     {
       "id": "preflight-report",
@@ -661,8 +908,8 @@
       "path": "submission/preflight/research-preflight-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 1464,
-      "sha256": "cab6e572c9829de78108cf2e5d8af1987db1dc58c2d58f884c68a9421c93cb3c"
+      "bytes": 3759,
+      "sha256": "066eac0ca56cff14cbb58066027ed415c50d97e9eb1bb2b49f507a9bd4e6869d"
     },
     {
       "id": "aamas-readiness-report",
@@ -670,8 +917,8 @@
       "path": "submission/aamas-readiness/aamas-readiness-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 6149,
-      "sha256": "de159f9c49227ca420120fef92c1568a46fa44982179001c4da473743d58c807"
+      "bytes": 8076,
+      "sha256": "65de4041fc9dc343be98de8a781def685cf88a76b8d6e4f38f7f9bc0c0539f90"
     },
     {
       "id": "aamas-readiness-report-md",
@@ -679,8 +926,8 @@
       "path": "submission/aamas-readiness/aamas-readiness-report.md",
       "kind": "file",
       "status": "present",
-      "bytes": 3639,
-      "sha256": "2ed0333ee10d9fd2c2ef45ff424c3ddfcbe2d3d634a4ce741084ab9d76899437"
+      "bytes": 4690,
+      "sha256": "b827ee09d0a409d1dbd01dd541fce253a25e486986012c08c3f767316467c6c6"
     },
     {
       "id": "local-pipeline-report",
@@ -688,8 +935,8 @@
       "path": "submission/local-pipeline/local-research-pipeline-report.json",
       "kind": "file",
       "status": "present",
-      "bytes": 31149,
-      "sha256": "da843a8cbf7ccfd4f7d9509513688a3fa6164a214d3e520393b35357e7027c99"
+      "bytes": 40225,
+      "sha256": "05850af3a58f36e1ef28302a20398f628d37ebe41da7eb60c2cabc614a9da276"
     },
     {
       "id": "submission-checklist",
@@ -715,8 +962,8 @@
       "path": "submission/page-budget.md",
       "kind": "file",
       "status": "present",
-      "bytes": 5364,
-      "sha256": "17368a15520fb2ef78e74ce6b3bd910fae712c5b243311f95542787d2a89b6b8"
+      "bytes": 6035,
+      "sha256": "109451411191d2b5f0213f7fbf726f5837594a9a3b4bb2d4cc9f3bb48d34a15f"
     },
     {
       "id": "author-decision-brief",

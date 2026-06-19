@@ -44,10 +44,17 @@ describe('localResearchPipeline', () => {
         'tom-full-prompts',
         'tom-full-batch',
         'tom-full-openai-batch',
-        'tom-full-raw-audit',
         'tom-full-post-provider',
+        'tom-full-raw-audit',
         'tom-full-schema-repair',
         'full-llm-summary',
+        'human-soft-label-audit-packet',
+        'human-soft-label-audit-annotator',
+        'human-soft-label-audit-packet-quality',
+        'human-soft-label-audit-annotator-package',
+        'human-soft-label-audit-annotator-package-archive',
+        'human-soft-label-audit-intake',
+        'human-soft-label-audit-agreement',
         'revision-comparison',
         'tom-failure-analysis',
         'tom-schema-repair',
@@ -59,8 +66,8 @@ describe('localResearchPipeline', () => {
         'marker-inventory',
         'experiment-resolution-ledger',
         'submission-gate',
-        'preflight',
         'aamas-readiness',
+        'preflight',
         'provider-handoff-audit',
         'bibliography-integrity',
         'reproducibility-manifest',
@@ -75,6 +82,15 @@ describe('localResearchPipeline', () => {
       expect(calls.some(call => call.includes('writePairedVerifierAttributionCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('runOptionalPostProviderConditionCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('full-llm-summary'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditPacketCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAnnotatorCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditPacketQualityCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAnnotatorPackageCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAnnotatorPackageArchiveCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditIntakeCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAgreementCli.ts'))).toBe(true)
+      const humanAuditAgreementCall = calls.find(call => call.includes('writeHumanAuditAgreementCli.ts'))
+      expect(humanAuditAgreementCall).not.toContain('human-audit-annotation-sheet.csv')
       expect(calls.some(call => call.includes('writeFigureArtifactsCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('writeAAMASReadinessReportCli.ts'))).toBe(true)
       expect(calls.at(-1)).toContain('writeReproducibilityManifestCli.ts')
@@ -93,6 +109,13 @@ describe('localResearchPipeline', () => {
       expect(markdown).toContain('| ToM Full Optional Post-Provider Ingest | `passed` |')
       expect(markdown).toContain('| ToM Full Schema Repair | `passed` |')
       expect(markdown).toContain('| Full Split LLM Summary | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Packet | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Annotator | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Packet Quality | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Annotator Package | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Annotator Package Archive | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Returned-Annotation Intake | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Agreement | `passed` |')
       expect(markdown).toContain('| ToM Failure Analysis | `passed` |')
       expect(markdown).toContain('| ToM Schema Repair | `passed` |')
       expect(markdown).toContain('| Figure Artifacts | `passed` |')

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-250-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "At the opening lead, player 0 has only low non-trump spades. The best team-oriented use of the lead is to play the weakest card, preserving 4-6 for later while giving partner a chance to win the trick with a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. Given no cards have been played, partner's hand is likely a random mix from the remaining deck and may include some higher non-trump cards or trumps that can beat a low spade single, but this is probabilistic rather than certain.",
+    "confidence": 0.5,
+    "evidence": [
+      "f8e0742d-a3bc-48e5-b34d-a5bb4ed38106"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) jointly hold 6 unknown cards. With six unseen cards and a trump rank of 7, it is probable that at least one opponent can beat a 3-6 single, either with a higher non-trump or a trump, though no specific opponent strength is known.",
+    "confidence": 0.55,
+    "evidence": [
+      "f8e0742d-a3bc-48e5-b34d-a5bb4ed38106"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3 of spades is the lowest legal single. It minimally commits resources, lets partner try to take the trick, and keeps the slightly higher 4-6 cards for later tricks or to cover opponent leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still very beatable; wasting the 4 removes a card that could cover an opponent's 3 later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Higher value than necessary for an opening probe; holding the 5 preserves more flexibility against likely stronger opponent or partner cards."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The strongest of four weak cards but unlikely to win against six unseen opponent cards plus partner's hand; winning with it would leave player 0 with even weaker follow-up cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to beat the 3, allowing an opponent to win the trick and set the tempo.",
+      "An opponent may win with a strong card and follow with a lead that player 0's remaining low cards cannot beat.",
+      "Leading a low single reveals that player 0 has small cards but provides little information loss."
+    ],
+    "mitigation": "Keep the 4, 5, and 6 to retain as many playable follow-up cards as possible, and use the opponent's response to update beliefs about trump and high-card distribution."
+  },
+  "confidence": 0.65
+}

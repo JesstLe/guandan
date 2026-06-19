@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-269-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two cards while every other player holds three, so the immediate team objective is to play out my remaining cards and go out. I already have the lead, so I should choose a lead that maximizes the chance I win this trick and lead again."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, team 0) holds three cards and has made no public plays. With no cards revealed, I cannot assert partner's exact holdings, but partner's incentive is to help me finish. If I lead the high spade A, partner is unlikely to beat it because A is already a strong non-trump card and partner would prefer I retain the lead. If I led a low card, partner might try to take the trick to feed me, but that is risky because opponents act in between.",
+    "confidence": 0.5,
+    "evidence": [
+      "12ef68b5-4eab-4f0c-bd63-9882f482d790"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three cards and has played nothing. Public evidence shows zero trumps, bombs, or big cards played, so their strengths are unknown. It is plausible that at least one opponent holds a trump (rank 7) or a joker that can beat my spade A, but I cannot treat this as a fact. They certainly can beat a spade 2 with many higher cards.",
+    "confidence": 0.45,
+    "evidence": [
+      "12ef68b5-4eab-4f0c-bd63-9882f482d790"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A gives the highest probability of winning this trick. Only trumps or jokers can beat it, and if it wins I lead again and play the spade 2 to go out. This directly converts my current lead into a finish. Leading A also preserves the 2 as a throw-away follow-up rather than a weak lead that surrenders control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 is the lowest non-trank and will almost certainly be beaten by any opponent with a higher card or trump. If I lead the 2, I immediately lose the lead and am stuck with only the A, relying on someone else to lead a single I can beat. That is much worse than keeping the lead with A."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump (rank 7) or joker and beat the spade A, taking the lead.",
+      "If the A is beaten, I lose control and may not get another lead before an opponent finishes.",
+      "Partner may be unable to help because no cards have been revealed."
+    ],
+    "mitigation": "The spade A is still the strongest legal lead I have and minimizes the set of cards that can beat it. Even if an opponent takes the trick, I still hold the 2 and may get another opportunity. The alternative of leading the 2 is dominated because it cedes the lead with near certainty."
+  },
+  "confidence": 0.75
+}

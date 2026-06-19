@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-348-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (3-6 of clubs, no trumps), so I cannot realistically win the trick myself. I want to play the smallest card to let my partner, who acts after both opponents, potentially take control with a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds some higher cards or trumps since they have three cards and no public plays have occurred. They may be able to beat a low club lead, but this is uncertain because their exact hand is hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "3b504a6b-13e5-4785-abb6-32314ce59613"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only two cards and is near finishing, so they may be holding a high card or trump to try to win and go out. Opponent player 3 has three cards and may also hold cards that beat a low club, but no specific cards are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "3b504a6b-13e5-4785-abb6-32314ce59613"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the smallest legal lead. It sheds my weakest card, minimizes the chance I accidentally feed a just-higher card to an opponent, and gives my partner the best chance to overtake with a higher card or trump after both opponents have played.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is the highest card in my hand but still very low and non-trump. Playing it now would remove my best remaining card without improving the chance of winning the trick, and it could be beaten by the same opponent cards anyway."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is slightly higher than the 3 but otherwise identical in effect. Since all my cards are weak clubs, I should keep marginally higher cards for later and discard the lowest one first."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Same reasoning as the 4 and 6: any single club lead is likely to be beaten, so the smallest lead is the least costly and preserves better low cards for future turns."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or higher non-trump card and win the trick.",
+      "Opponent player 1, with only two cards, could win and go out if they hold a strong finishing card.",
+      "My partner may not be able to beat the opponents' responses, leaving opponents in control."
+    ],
+    "mitigation": "Play the minimum-ranked card (3 of clubs) to reduce the value given away and keep my slightly higher clubs for later plays, while hoping partner can take the trick."
+  },
+  "confidence": 0.6
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-140-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 is opening the first trick with a very weak hand (3-6 of spades, no trumps). The best team-oriented lead is the lowest non-trump single, forcing opponents to commit their cards before partner (player 2) acts last and can potentially capture the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no prior plays, partner could have higher non-trump cards or trumps that can beat a low spade lead. Leading low gives partner maximum flexibility to win the trick.",
+    "confidence": 0.4,
+    "evidence": [
+      "a4a60f9d-567e-462b-86a9-855942cda12a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. They likely possess cards stronger than a 3 of spades, including potential trumps (rank 7) or higher ranks, and will try to win the opening trick.",
+    "confidence": 0.4,
+    "evidence": [
+      "a4a60f9d-567e-462b-86a9-855942cda12a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the weakest card in hand. Playing it first minimizes resource loss, since the 4-6 of spades are slightly stronger and more useful later. It also lets partner see opponents' responses before deciding whether to take the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is marginally stronger than the 3, but still weak; saving it for a later trick where it might beat a lower lead from partner is better."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is the third-strongest card in a very weak hand; wasting it on an opening low-lead trick reduces future defensive options."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest non-trump card held; leading it now would sacrifice the most useful card for no gain."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win the trick with a higher non-trump or any trump.",
+      "If partner cannot overtake, the opposing team gains the lead and initiative."
+    ],
+    "mitigation": "Because the lead costs only the lowest card, the downside is small. The remaining 4-6 of spades preserve some ability to contest future tricks, and partner can choose to pass or play based on opponent reactions."
+  },
+  "confidence": 0.7
+}

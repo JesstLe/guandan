@@ -3,33 +3,33 @@
   "rows": [
     {
       "agentId": "tom-prompted-llm-full",
-      "status": "missing_raw_outputs",
+      "status": "partial_metrics_available",
       "totalDecisionPoints": 500,
-      "parsedTraces": 268,
-      "parseFailures": null,
-      "hardFailures": null,
-      "legalAction": "[NEED_EXPERIMENT]",
-      "publicHistoryConsistent": "[NEED_EXPERIMENT]",
-      "hiddenInfoDisciplined": "[NEED_EXPERIMENT]",
-      "partnerOpponentTagConsistency": "[NEED_EXPERIMENT]",
-      "reasonActionConsistent": "[NEED_EXPERIMENT]",
-      "teamObjectiveValid": "[NEED_EXPERIMENT]",
-      "notes": "500-decision Kimi Code CLI ToM-prompted full split"
+      "parsedTraces": 306,
+      "parseFailures": 194,
+      "hardFailures": 38,
+      "legalAction": "306 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "305 pass / 1 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "269 pass / 37 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 50 pass / 13 fail / 243 unknown; opponent 94 pass / 27 fail / 185 unknown",
+      "reasonActionConsistent": "305 pass / 1 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "158 pass / 23 fail / 125 unknown / 0 n/a",
+      "notes": "500-decision Kimi Code CLI ToM-prompted full split; PARTIAL ONLY: raw outputs present 384/500; missing 116; not final full-split evidence"
     },
     {
       "agentId": "tom-schema-repair-full",
-      "status": "metrics_available",
+      "status": "partial_metrics_available",
       "totalDecisionPoints": 500,
-      "parsedTraces": 268,
-      "parseFailures": 232,
-      "hardFailures": 30,
-      "legalAction": "268 pass / 0 fail / 0 unknown / 0 n/a",
-      "publicHistoryConsistent": "267 pass / 1 fail / 0 unknown / 0 n/a",
-      "hiddenInfoDisciplined": "239 pass / 29 fail / 0 unknown / 0 n/a",
-      "partnerOpponentTagConsistency": "partner 43 pass / 11 fail / 214 unknown; opponent 83 pass / 24 fail / 161 unknown",
-      "reasonActionConsistent": "267 pass / 1 fail / 0 unknown / 0 n/a",
-      "teamObjectiveValid": "142 pass / 18 fail / 108 unknown / 0 n/a",
-      "notes": "deterministic schema repair over available full-split ToM raw outputs"
+      "parsedTraces": 384,
+      "parseFailures": 116,
+      "hardFailures": 41,
+      "legalAction": "384 pass / 0 fail / 0 unknown / 0 n/a",
+      "publicHistoryConsistent": "383 pass / 1 fail / 0 unknown / 0 n/a",
+      "hiddenInfoDisciplined": "344 pass / 40 fail / 0 unknown / 0 n/a",
+      "partnerOpponentTagConsistency": "partner 62 pass / 15 fail / 307 unknown; opponent 122 pass / 32 fail / 230 unknown",
+      "reasonActionConsistent": "383 pass / 1 fail / 0 unknown / 0 n/a",
+      "teamObjectiveValid": "191 pass / 23 fail / 170 unknown / 0 n/a",
+      "notes": "deterministic schema repair over available full-split ToM raw outputs; PARTIAL ONLY: raw outputs present 384/500; missing 116; not final full-split evidence"
     }
   ]
 }

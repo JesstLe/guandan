@@ -1,0 +1,29 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-368-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoning": {
+    "partnerIntent": "Partner (player 2, 3 cards) has not acted; no direct signal exists. With three cards remaining, partner could be holding one or more mid-to-high cards that can cover a low lead, but I should not assert this as fact. Leading low invites partner to take the trick if they have a stronger single or to shed safely if they do not.",
+    "opponentIntent": "Opponent player 1 has only 2 cards and is therefore near finishing; they will likely try to win any cheap lead to retain control and exit. Opponent player 3 has 3 cards and is also a threat, but less imminent. Because no cards have been played, I cannot assume which ranks or suits they hold, only that they are incentivized to exploit a weak opening lead.",
+    "candidateComparison": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "assessment": "Lowest card in hand. Minimizes the chance an opponent can play just slightly higher to steal control, and preserves 4-6 for later tricks if I regain the lead. A standard weak-hand opening."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "assessment": "Highest non-trump card in hand. Slightly harder for opponents to beat, but expends my best card and leaves me with even weaker follow-ups. Against a 2-card opponent trying to finish, this small improvement in rank is unlikely to matter."
+      }
+    ],
+    "conclusion": "Because my hand is entirely low non-trump clubs and an opponent is near finish, the priority is to shed cards while conceding as little control as possible. Playing the 3 preserves my higher cards and gives partner the best chance to cover the trick. The marginal defensive gain of leading the 6 does not outweigh the loss of my only modestly stronger card."
+  },
+  "evidence": [
+    "01f496b1-fa56-419a-8493-2ac827a479b3"
+  ],
+  "beliefState": {
+    "partnerHighCardProbability": "uncertain_no_public_signal",
+    "opponent1FinishThreat": "high_due_to_low_hand_count",
+    "opponent3FinishThreat": "moderate_due_to_low_hand_count",
+    "ownHandStrength": "weak_all_low_non_trump"
+  }
+}

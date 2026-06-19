@@ -92,4 +92,126 @@ describe('researchPreflightReport', () => {
       rmSync(rootDir, { recursive: true, force: true })
     }
   })
+
+  it('blocks preflight when local hygiene is ready but AAMAS full-paper evidence is not ready', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-preflight-aamas-blocked-'))
+    const outputDir = join(rootDir, 'submission', 'preflight')
+
+    mkdirSync(join(rootDir, 'submission', 'gate-report'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'manuscript'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'aamas-readiness'), { recursive: true })
+
+    writeFileSync(join(rootDir, 'submission', 'gate-report', 'submission-gate-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      overallStatus: 'ready',
+      markerCounts: {
+        NEED_SOURCE: 0,
+        UNCERTAIN: 0,
+        NEED_EXPERIMENT: 0,
+        DO_NOT_SUBMIT: 0,
+        AUTHOR_DECISION: 0,
+      },
+      immediateBlockers: [],
+    }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'manuscript', 'manuscript-status.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      wordCount: 3176,
+      readyForSubmission: true,
+    }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'aamas-readiness', 'aamas-readiness-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      aamasFullPaperReadiness: 'not_ready',
+      gates: [
+        {
+          id: 'full-split-llm-evidence',
+          title: '500-Decision LLM Evidence',
+          status: 'needs_experiment',
+          finding: 'ToM full-split metrics are missing.',
+          requiredAction: 'Complete the 500-decision ToM provider metrics.',
+        },
+        {
+          id: 'page-budget',
+          title: 'AAMAS Page Budget',
+          status: 'pass',
+          finding: 'Body is within 8 pages.',
+          requiredAction: 'Keep it within budget.',
+        },
+      ],
+      nextActions: [
+        'Complete the 500-decision ToM full-split provider batch.',
+      ],
+    }), 'utf8')
+
+    try {
+      const result = writeResearchPreflightReport({
+        researchRoot: rootDir,
+        outputDir,
+        rawAudits: [],
+      })
+
+      expect(result.report.status).toBe('research_not_ready')
+      expect(result.report.localReady).toBe(true)
+      expect(result.report.aamasFullPaperReadiness).toBe('not_ready')
+      expect(result.report.readinessBlockers).toEqual([
+        {
+          id: 'full-split-llm-evidence',
+          title: '500-Decision LLM Evidence',
+          status: 'needs_experiment',
+          finding: 'ToM full-split metrics are missing.',
+          requiredAction: 'Complete the 500-decision ToM provider metrics.',
+        },
+      ])
+      expect(result.report.nextActions[0]).toBe('Complete the 500-decision ToM full-split provider batch.')
+
+      const markdown = readFileSync(result.markdownPath, 'utf8')
+      expect(markdown).toContain('Status: `research_not_ready`')
+      expect(markdown).toContain('AAMAS full-paper readiness: `not_ready`')
+      expect(markdown).toContain('## AAMAS Readiness Blockers')
+      expect(markdown).toContain('| 500-Decision LLM Evidence | `needs_experiment` |')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('reports ready only when both local hygiene and AAMAS readiness are ready', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-preflight-aamas-ready-'))
+    const outputDir = join(rootDir, 'submission', 'preflight')
+
+    mkdirSync(join(rootDir, 'submission', 'gate-report'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'aamas-readiness'), { recursive: true })
+
+    writeFileSync(join(rootDir, 'submission', 'gate-report', 'submission-gate-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      overallStatus: 'ready',
+      markerCounts: {},
+      immediateBlockers: [],
+    }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'aamas-readiness', 'aamas-readiness-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      aamasFullPaperReadiness: 'ready',
+      gates: [
+        {
+          id: 'local-artifact-hygiene',
+          title: 'Local Artifact Hygiene',
+          status: 'pass',
+        },
+      ],
+      nextActions: [],
+    }), 'utf8')
+
+    try {
+      const result = writeResearchPreflightReport({
+        researchRoot: rootDir,
+        outputDir,
+        rawAudits: [],
+      })
+
+      expect(result.report.status).toBe('ready_for_submission')
+      expect(result.report.aamasFullPaperReadiness).toBe('ready')
+      expect(result.report.readinessBlockers).toEqual([])
+      expect(result.report.nextActions).toEqual(['Run final submission formatting and venue-specific policy checks.'])
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
 })

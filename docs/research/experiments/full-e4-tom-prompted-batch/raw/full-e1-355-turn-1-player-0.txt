@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-355-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low, non-trump spades (3-6). I cannot realistically dominate the table, so the best team objective is to lead the weakest card and give my partner a chance to win the trick with a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) observes an opening lead of the 3 of spades. They will likely infer that I have a weak hand and am trying to let them take the trick, so they should be willing to commit a moderately high card or trump if they have one. Because no cards have been played, they cannot know my exact distribution and must hold broad beliefs about my remaining cards.",
+    "confidence": 0.45,
+    "evidence": [
+      "c12ba9cc-4b66-4564-ab93-ecf74ea488ba"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent (players 1 and 3) sees a low opening lead and will reason that I probably lack strong trumps or high cards, otherwise I would have led something more commanding. They will try to win the trick cheaply with a moderately high card or a small trump, while conserving their biggest cards for later. They must also account for the possibility that my partner can overtake, so they may not commit their strongest cards yet.",
+    "confidence": 0.45,
+    "evidence": [
+      "c12ba9cc-4b66-4564-ab93-ecf74ea488ba"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the standard play from a weak hand: it exposes the minimum card, preserves the 4-6 for potential later use, and gives my partner the widest possible range of cards that can beat it. A low lead also signals to my partner that I am not strong and would like them to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest regular card. Leading it wastes my best exit card and it is still vulnerable to any 8 or higher, any trump, or any 7. If it loses, I am left with even weaker cards and no flexibility."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is only slightly better than the 3 and 4, and leading it commits a card I might need later to get under partner's winners or to beat an even lower lead. It offers no clear advantage over leading the minimum."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still higher than the 3 and does not preserve as much value. Since all my cards are weak, the priority is to minimize the card led, making the 3 the strictly better resource-preserving choice."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win the trick cheaply with a moderately high card or a small trump.",
+      "If my partner also has a weak hand, our team may lose control of the round.",
+      "Because I hold no trumps, I cannot regain the lead once it is lost."
+    ],
+    "mitigation": "By leading the absolute minimum (3 of spades), I keep the 4-6 in reserve. Those cards can be used later to duck under partner's winners or to take tricks if the table is even weaker. The low lead also minimizes information revealed about any potential strength in my hand."
+  },
+  "confidence": 0.6,
+  "notes": "This is the opening lead with no public history beyond the new_game event, so all beliefs about hidden hands remain probabilistic and grounded only in hand counts and the fact that I hold a weak, non-trump hand."
+}

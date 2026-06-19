@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-245-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with only low non-trump cards, the immediate team objective is to start the trick cheaply and either win it or let partner take control, preserving any marginal high-card value for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely holds a random 3-card hand with unknown strength; no signal has been sent yet, so partner is equally likely to be strong or weak in the current suit.",
+    "confidence": 0.5,
+    "evidence": [
+      "8988d5d3-ae62-4823-adcf-470da87c5dc0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards; with no prior play, they are likely to contain a mix of ranks and suits, and either opponent may be able to beat a low spade lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "8988d5d3-ae62-4823-adcf-470da87c5dc0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3 of spades) expends minimum strength, keeps the 4-5-6 sequence intact for possible later use, and gives partner the cheapest opportunity to win or signal.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest card in hand and the closest to being a winner; playing it first wastes the only card with any realistic chance of taking a trick uncontested."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still the second-best card and more valuable than the 3 or 4 for a later trick; leading it now sacrifices more potential without compensating benefit."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly higher than the 3 but still loses to almost any non-trump or trump, so keeping it preserves a small escalation option."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher spade or any trump and immediately take the lead.",
+      "If partner cannot beat the lead, the team loses this trick and opponent may lead a pattern we cannot match.",
+      "All four cards are non-trump, so any trump played beats our lead."
+    ],
+    "mitigation": "By leading the 3, we minimize the information revealed and the strength committed, leaving the slightly higher spades to respond to future leads or to attempt a later trick."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with four consecutive low spades; no trump or bomb available, so a minimal single lead is the standard opening."
+}

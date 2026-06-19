@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-267-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My partner has only 2 cards and is near finishing, so I want to lead cheaply to give them the best chance to take control with a modest card or trump."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely holds two cards intended to finish the hand; with so few cards they probably have at least one reasonably high card or trump and prefer a low lead they can win without overspending.",
+    "confidence": 0.65,
+    "evidence": [
+      "3f32948e-0a00-4274-997f-085a698ba370"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have full or nearly full hands and no public signals yet. They will try to capture the lead at minimal cost, especially because my partner is close to going out.",
+    "confidence": 0.6,
+    "evidence": [
+      "3f32948e-0a00-4274-997f-085a698ba370"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest plain card (diamond 3) minimizes my commitment, preserves my slightly higher low cards for later, and gives my near-finish partner the easiest possible trick to win.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Playing my highest card wastes the only card that might win a later low trick and invites opponents to capture it with a bigger card, giving them free control."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still higher than necessary; since all four cards are weak and in the same suit, there is no strategic benefit to leading a 5 instead of a 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly better than 5 or 6 but still not as efficient as the 3; leading the absolute lowest card best supports a transfer-lead goal."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 cheaply and seize the lead.",
+      "Partner may not have a card that can win the trick, delaying our finish."
+    ],
+    "mitigation": "Because the 3 is my weakest card, losing this trick costs almost nothing. Partner's short hand makes it plausible they can respond with a trump or high card if needed."
+  },
+  "confidence": 0.8
+}

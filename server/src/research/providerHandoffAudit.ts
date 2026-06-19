@@ -10,6 +10,7 @@ export type ProviderHandoffConditionStatus =
   | 'ready_for_provider_run'
   | 'waiting_for_provider_results'
   | 'provider_results_present'
+  | 'provider_results_partial'
   | 'blocked_by_first_pass_results'
   | 'invalid'
 
@@ -32,6 +33,10 @@ export interface ProviderHandoffConditionReport {
   mappingExists: boolean
   uploadExists: boolean
   providerResultExists: boolean
+  providerResultLineCount: number
+  providerSuccessCount: number
+  providerErrorCount: number
+  providerPendingCount: number
   mappingRequestCount: number
   uploadRequestCount: number
   customIdMismatchCount: number
@@ -79,6 +84,13 @@ interface UploadJsonlLine {
   body?: unknown
 }
 
+interface ProviderResultLine {
+  custom_id?: string
+  customId?: string
+  response?: unknown
+  error?: unknown
+}
+
 export const defaultProviderHandoffConditions: ProviderHandoffConditionInput[] = [
   {
     conditionId: 'plain-llm',
@@ -108,6 +120,13 @@ export const defaultProviderHandoffConditions: ProviderHandoffConditionInput[] =
     uploadJsonlPath: 'docs/research/experiments/pilot-e6-verifier-revision-batch/openai/openai-batch-input.jsonl',
     expectedProviderResultPath: 'docs/research/experiments/provider-results/verifier-revision-llm.jsonl',
     requiresFirstPassResults: true,
+  },
+  {
+    conditionId: 'full-tom-prompted-llm',
+    title: 'Full-split ToM-prompted LLM run',
+    mappingJsonlPath: 'docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl',
+    uploadJsonlPath: 'docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl',
+    expectedProviderResultPath: 'docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl',
   },
 ]
 
@@ -148,8 +167,8 @@ export function renderProviderHandoffAudit(report: ProviderHandoffAuditReport): 
     '',
     'This audit checks local handoff package consistency. Missing provider-result files are expected until external model runs are downloaded.',
     '',
-    '| Condition | Status | Mapping rows | Upload rows | Mismatches | Provider result |',
-    '| --- | --- | ---: | ---: | ---: | --- |',
+    '| Condition | Status | Mapping rows | Upload rows | Mismatches | Provider result | Success | Error | Pending |',
+    '| --- | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: |',
     ...report.conditions.map(condition => [
       condition.conditionId,
       `\`${condition.status}\``,
@@ -157,6 +176,9 @@ export function renderProviderHandoffAudit(report: ProviderHandoffAuditReport): 
       String(condition.uploadRequestCount),
       String(condition.customIdMismatchCount),
       condition.providerResultExists ? '`present`' : '`missing`',
+      String(condition.providerSuccessCount),
+      String(condition.providerErrorCount),
+      String(condition.providerPendingCount),
     ].map(escapeMarkdownCell).join(' | ')).map(row => `| ${row} |`),
     '',
   ]
@@ -189,11 +211,21 @@ function auditCondition(input: ProviderHandoffConditionInput): ProviderHandoffCo
   const providerResultExists = existsSync(input.expectedProviderResultPath)
   const mappingLines = mappingExists ? readJsonl<MappingJsonlLine>(input.mappingJsonlPath as string) : []
   const uploadLines = uploadExists ? readJsonl<UploadJsonlLine>(input.uploadJsonlPath as string) : []
+  const providerLines = providerResultExists ? readJsonl<ProviderResultLine>(input.expectedProviderResultPath) : []
   const mappingCustomIds = new Set(mappingLines.map(line => line.custom_id).filter(isNonEmptyString))
   const uploadCustomIds = new Set(uploadLines.map(line => line.custom_id).filter(isNonEmptyString))
+  const providerSuccessIds = new Set(providerLines
+    .filter(line => getProviderResultCustomId(line) && !isProviderErrorLine(line))
+    .map(line => getProviderResultCustomId(line) as string))
+  const providerErrorIds = new Set(providerLines
+    .filter(line => getProviderResultCustomId(line) && isProviderErrorLine(line))
+    .map(line => getProviderResultCustomId(line) as string))
   const missingFromUpload = [...mappingCustomIds].filter(id => !uploadCustomIds.has(id)).sort()
   const missingFromMapping = [...uploadCustomIds].filter(id => !mappingCustomIds.has(id)).sort()
   const customIdMismatchCount = missingFromUpload.length + missingFromMapping.length
+  const providerPendingCount = !providerResultExists || mappingCustomIds.size === 0
+    ? 0
+    : [...mappingCustomIds].filter(id => !providerSuccessIds.has(id)).length
   const notes: string[] = []
 
   if (input.requiresFirstPassResults && (!mappingExists || !uploadExists)) {
@@ -201,23 +233,32 @@ function auditCondition(input: ProviderHandoffConditionInput): ProviderHandoffCo
   }
   if (!providerResultExists) {
     notes.push(`Provider result should be saved to ${input.expectedProviderResultPath} after the external run completes.`)
+  } else if (providerPendingCount > 0) {
+    notes.push(`Provider result is partial: ${providerSuccessIds.size}/${mappingCustomIds.size} successful rows, ${providerErrorIds.size} error rows, and ${providerPendingCount} rows still needing successful output.`)
   }
+
+  const status = conditionStatus(input, {
+    mappingExists,
+    uploadExists,
+    providerResultExists,
+    customIdMismatchCount,
+    providerPendingCount,
+  })
 
   return {
     conditionId: input.conditionId,
     title: input.title,
-    status: conditionStatus(input, {
-      mappingExists,
-      uploadExists,
-      providerResultExists,
-      customIdMismatchCount,
-    }),
+    status,
     mappingJsonlPath: input.mappingJsonlPath,
     uploadJsonlPath: input.uploadJsonlPath,
     expectedProviderResultPath: input.expectedProviderResultPath,
     mappingExists,
     uploadExists,
     providerResultExists,
+    providerResultLineCount: providerLines.length,
+    providerSuccessCount: providerSuccessIds.size,
+    providerErrorCount: providerErrorIds.size,
+    providerPendingCount,
     mappingRequestCount: mappingLines.length,
     uploadRequestCount: uploadLines.length,
     customIdMismatchCount,
@@ -234,6 +275,7 @@ function conditionStatus(
     uploadExists: boolean
     providerResultExists: boolean
     customIdMismatchCount: number
+    providerPendingCount: number
   },
 ): ProviderHandoffConditionStatus {
   if (input.requiresFirstPassResults && (!state.mappingExists || !state.uploadExists)) {
@@ -242,6 +284,7 @@ function conditionStatus(
   if (!state.mappingExists || !state.uploadExists || state.customIdMismatchCount > 0) {
     return 'invalid'
   }
+  if (state.providerResultExists && state.providerPendingCount > 0) return 'provider_results_partial'
   if (state.providerResultExists) return 'provider_results_present'
   return 'waiting_for_provider_results'
 }
@@ -286,8 +329,25 @@ function conditionToIssues(condition: ProviderHandoffConditionReport): ProviderH
       message: `Provider result not present yet: ${condition.expectedProviderResultPath}.`,
     })
   }
+  if (condition.status === 'provider_results_partial') {
+    issues.push({
+      severity: 'warning',
+      conditionId: condition.conditionId,
+      message: `Provider result is partial: ${condition.providerSuccessCount}/${condition.mappingRequestCount} successful rows, ${condition.providerErrorCount} error rows, ${condition.providerPendingCount} rows still pending successful output.`,
+    })
+  }
 
   return issues
+}
+
+function getProviderResultCustomId(line: ProviderResultLine): string | undefined {
+  return line.custom_id ?? line.customId
+}
+
+function isProviderErrorLine(line: ProviderResultLine): boolean {
+  if (line.error) return true
+  const responseError = (line.response as Record<string, unknown> | undefined)?.error
+  return Boolean(responseError)
 }
 
 function readJsonl<T>(path: string): T[] {

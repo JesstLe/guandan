@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-333-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is four low non-trump clubs, so I cannot realistically seize and keep control. By leading the weakest card, I maximize the chance that my partner can beat the lead, take control, and apply pressure while I conserve my slightly stronger cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays yet, partner likely has some cards that can beat a low club 3, but I cannot assume any specific rank or suit; partner is plausibly willing to take the lead if able.",
+    "confidence": 0.5,
+    "evidence": [
+      "bb415ff7-acdd-48ee-a9f6-385bc9b89149"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards (near finish), while opponent player 3 has 3. Their exact ranks/suits are unknown. Player 1 probably wants to win a trick quickly to go out, and may have at least one card that can beat a low club, but this is uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "bb415ff7-acdd-48ee-a9f6-385bc9b89149"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the least committal play. It gives partner the widest range of cards to win the trick (any 4+ non-trump or any trump), preserves my 6 as the best remaining card, and avoids feeding information about my hand's strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest card; playing it now wastes a card that might win or force a higher response later, and it makes it harder for partner to cover with a middling card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a low non-trump with little chance of holding the trick; keeping it and playing the 3 instead preserves higher cards and still lets partner cover broadly."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only slightly better than the 3 and offers no meaningful extra protection; starting from the bottom uses the card with the least future value."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent, especially the 2-card player 1, may beat the 3 and gain the lead, moving closer to going out.",
+      "Partner may be unable to cover the 3, causing our team to lose tempo.",
+      "All four of my cards are non-trump and low, so I have limited ability to recover the lead if opponents win."
+    ],
+    "mitigation": "By playing the very lowest card I minimize resource expenditure and keep the 6 as a potential late stopper; the wide coverage requirement for opponents (they must still beat a 3) gives partner the best chance to win or force the opponent near finish to expend a valuable card."
+  },
+  "confidence": 0.7
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-308-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The opponent in seat 1 has only 2 cards and is near finishing. My primary goal is to make it as hard as possible for that opponent to win this trick cheaply and then lead out their last card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards but has made no public plays. They might have a card high enough to cover a low lead, yet they could also be weak. I therefore cannot rely on partner to rescue a very low lead.",
+    "confidence": 0.45,
+    "evidence": [
+      "a1b95064-416b-40ad-9a5e-1f6484f5b0ed"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has just 2 cards left, so they are likely to play any card that can win this trick and then try to finish with their remaining card. Player 3, with 3 cards, may also hold cover. I expect player 1 to be aggressive if they can beat a low single.",
+    "confidence": 0.65,
+    "evidence": [
+      "a1b95064-416b-40ad-9a5e-1f6484f5b0ed"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 6 applies the most pressure to the short-stacked opponent. It forces them to commit a higher card if they want to win, leaving a weaker residual card that my team might be able to beat. Leading a 3 would let them win cheaply with a low card while preserving a strong finisher.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "A 3 is the cheapest card for opponent 1 to beat, allowing them to win the trick with a low card and keep their best card for a final lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still a very low lead; an opponent can beat it with a modest card without spending their highest value or trump."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Better than the 3 or 4, but still lower than 6, so it does less to force the opponent to burn a strong card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 1 may hold a trump or bomb and beat any non-trump lead, then go out next.",
+      "If opponent 1 beats the 6 with a high card, their last card may still be strong enough that partner cannot cover.",
+      "I have no trumps or bombs, so I cannot regain control once I lose the lead."
+    ],
+    "mitigation": "By leading the highest available non-trump card, I maximize the chance that opponent 1 must use a strong card to win, leaving a more beatable last card. This gives partner and the other opponent the best chance to interfere."
+  },
+  "confidence": 0.6
+}

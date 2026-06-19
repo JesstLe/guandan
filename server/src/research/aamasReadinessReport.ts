@@ -1,6 +1,7 @@
 import {
   existsSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   writeFileSync,
 } from 'node:fs'
@@ -36,6 +37,7 @@ export interface AAMASReadinessReport {
     localPipelineStatus: string
     localPipelineSteps: number
     aamasPageCount: number | null
+    aamasBodyPages: number | null
     pilot: {
       plainParsed: string
       candidateParsed: string
@@ -52,6 +54,7 @@ export interface AAMASReadinessReport {
       tomRawPresent: string
       tomParsed: string
       tomRepairParsed: string
+      tomProviderRun: string
     }
   }
   gates: AAMASReadinessGate[]
@@ -100,6 +103,76 @@ interface RawAudit {
   readyForIngest?: boolean
 }
 
+interface ProviderRunReport {
+  expectedCount?: number
+  attemptedCount?: number
+  skippedCount?: number
+  writtenCount?: number
+  successCount?: number
+  errorCount?: number
+  pendingSuccessCount?: number
+  stoppedAfterError?: boolean
+  runner?: string
+  model?: string
+}
+
+interface HumanAuditManifest {
+  sampleCount?: number
+  status?: string
+  files?: Record<string, string>
+}
+
+interface HumanAuditAgreement {
+  status?: 'pending' | 'partial' | 'completed'
+  sampleCount?: number
+  completedRows?: number
+  fullyCompletedRows?: number
+  completedLabels?: number
+  totalLabels?: number
+  macroAgreement?: number | null
+}
+
+interface HumanAuditPacketQuality {
+  status?: 'packet_ready' | 'needs_attention'
+  sampleCount?: number
+  readyForAnnotation?: boolean
+  readyForPaperEvidence?: boolean
+  checks?: Array<{ status?: string }>
+  warnings?: string[]
+}
+
+interface HumanAuditAnnotatorPackage {
+  status?: 'package_ready' | 'needs_attention'
+  sampleCount?: number
+  instructions?: {
+    referenceFileIncluded?: boolean
+    referenceLabelsIncluded?: boolean
+  }
+  checks?: Array<{ status?: string }>
+}
+
+interface HumanAuditIntake {
+  status?: 'awaiting_return' | 'ready_for_agreement' | 'needs_attention'
+  returnedCsvPresent?: boolean
+  completedLabels?: number
+  totalLabels?: number
+  readyForAgreement?: boolean
+  checks?: Array<{ status?: string }>
+}
+
+interface HumanAuditAnnotatorPackageArchive {
+  status?: 'archive_ready' | 'needs_attention'
+  bytes?: number
+  sha256?: string | null
+  sampleCount?: number | null
+  checks?: Array<{ status?: string }>
+}
+
+interface PageBudget {
+  totalPages: number | null
+  bodyPages: number | null
+}
+
 export function writeAAMASReadinessReport(options: AAMASReadinessOptions): AAMASReadinessResult {
   mkdirSync(options.outputDir, { recursive: true })
   const report = buildAAMASReadinessReport(options.researchRoot)
@@ -126,7 +199,17 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
   const fullTomAudit = readJsonOptional<RawAudit>(researchRoot, 'experiments/full-e4-tom-prompted-batch/raw-output-audit.json')
   const fullTom = readJsonOptional<Metrics>(researchRoot, 'experiments/full-e4-tom-prompted-results/metrics.json')
   const fullTomRepair = readJsonOptional<Metrics>(researchRoot, 'experiments/full-e5-tom-schema-repair-results/metrics.json')
-  const pageCount = readPageCountFromBuildStatus(researchRoot)
+  const fullTomProviderRun = readJsonOptional<ProviderRunReport>(researchRoot, 'experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json')
+  const humanAudit = readJsonOptional<HumanAuditManifest>(researchRoot, 'experiments/human-soft-label-audit/human-audit-manifest.json')
+  const humanAuditQuality = readJsonOptional<HumanAuditPacketQuality>(researchRoot, 'experiments/human-soft-label-audit/human-audit-packet-quality-report.json')
+  const humanAnnotatorPackage = readJsonOptional<HumanAuditAnnotatorPackage>(researchRoot, 'experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json')
+  const humanAnnotatorPackageArchive = readJsonOptional<HumanAuditAnnotatorPackageArchive>(researchRoot, 'experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json')
+  const humanAuditIntake = readJsonOptional<HumanAuditIntake>(researchRoot, 'experiments/human-soft-label-audit/human-audit-intake-report.json')
+  const humanAgreement = readJsonOptional<HumanAuditAgreement>(researchRoot, 'experiments/human-soft-label-audit/human-audit-agreement-report.json')
+  const humanAnnotatorPresent = existsSync(join(researchRoot, 'experiments/human-soft-label-audit/human-audit-annotator.html'))
+  const completedHumanAuditFiles = countCompletedHumanAuditFiles(researchRoot)
+  const completedHumanAuditEvidence = completedHumanAuditFiles > 0 && humanAgreement?.status === 'completed'
+  const pageBudget = readPageBudgetFromBuildStatus(researchRoot)
   const manifestEntries = manifest?.entries?.length ?? 0
   const manifestMissing = manifest?.entries?.filter(entry => entry.status === 'missing').length ?? 0
   const localSubmissionHygiene = gate?.overallStatus === 'ready'
@@ -135,8 +218,10 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
     ? 'ready'
     : 'not_ready'
   const fullBaselineHardFailures = sumNullable(fullLegal?.hardFailureCount, fullStrategic?.hardFailureCount)
-  const fullTomReady = fullTom?.totalDecisionPoints === 500
-    || Boolean(fullTomAudit?.readyForIngest && fullTomAudit.expectedCount === 500)
+  const fullTomRawAuditReady = hasCompleteRawAudit(fullTomAudit)
+  const fullTomMetricsReady = hasCompleteFullSplitMetrics(fullTom)
+  const fullTomRepairMetricsReady = hasCompleteFullSplitMetrics(fullTomRepair)
+  const fullTomReady = fullTomRawAuditReady && fullTomMetricsReady && fullTomRepairMetricsReady
   const gates: AAMASReadinessGate[] = [
     {
       id: 'local-artifact-hygiene',
@@ -161,7 +246,7 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
       evidence: [
         'experiments/pilot-metrics-summary/pilot-metrics-summary.json',
         'experiments/pilot-e8-tom-schema-repair-results/metrics.json',
-        'figures/figure-2-tom-schema-repair-flow.md',
+        'figures/figure-3-tom-schema-repair-flow.md',
       ],
       finding: `The pilot now separates provider completion, raw parse yield, schema repair, and verifier failures: ToM raw parse is ${formatParsed(tom)}, schema repair yields ${formatParsed(tomRepair)}, and verifier revision reports ${formatParsed(revision)}.`,
       requiredAction: 'Keep the paper wording scoped to a 50-decision diagnostic pilot unless larger LLM evidence is added.',
@@ -202,41 +287,63 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
         'experiments/full-e4-tom-prompted-results/metrics.json',
         'experiments/full-e4-tom-prompted-results/post-provider-report.json',
         'experiments/provider-results/full-tom-prompted-llm.jsonl',
+        'experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json',
         'experiments/full-e2-plain-llm-batch/raw-output-audit.json',
         'experiments/full-e3-candidate-constrained-batch/raw-output-audit.json',
         'experiments/full-e4-tom-prompted-batch/raw-output-audit.json',
       ],
       finding: fullTomReady
-        ? `The primary 500-decision ToM full-split condition is present with parsed traces ${formatParsed(fullTom)}. Secondary full-split raw audits are plain ${formatRawAudit(fullPlainAudit)} and candidate ${formatRawAudit(fullCandidateAudit)}.`
-        : `Full-split raw output audits show plain ${formatRawAudit(fullPlainAudit)}, candidate ${formatRawAudit(fullCandidateAudit)}, and ToM ${formatRawAudit(fullTomAudit)}; deterministic full-ToM schema repair currently yields ${formatParsed(fullTomRepair)}.`,
+        ? `The primary 500-decision ToM full-split condition is present with raw parse ${formatParsed(fullTom)} and schema repair ${formatParsed(fullTomRepair)}. Secondary full-split raw audits are plain ${formatRawAudit(fullPlainAudit)} and candidate ${formatRawAudit(fullCandidateAudit)}. ${formatProviderRunSentence(fullTomProviderRun)}`
+        : `Full-split raw output audits show plain ${formatRawAudit(fullPlainAudit)}, candidate ${formatRawAudit(fullCandidateAudit)}, and ToM ${formatRawAudit(fullTomAudit)}; ToM metrics are ${formatParsed(fullTom)} and deterministic full-ToM schema repair currently yields ${formatParsed(fullTomRepair)}. ${formatProviderRunSentence(fullTomProviderRun)}`,
       requiredAction: fullTomReady
         ? 'Use the ToM full split as the primary larger-scale result, then decide whether plain/candidate full baselines are needed for a stronger final submission.'
-        : 'Run at least one full-split LLM condition, preferably ToM plus schema repair first, before broad AAMAS full-paper claims.',
+        : fullTomProviderRun?.stoppedAfterError && (fullTomProviderRun.errorCount ?? 0) > 0
+          ? 'Resume the 500-decision ToM provider run after the provider quota or rate-limit window refreshes, then materialize raw metrics and schema-repair metrics.'
+          : 'Complete and materialize both the 500-decision ToM provider metrics and the matching schema-repair metrics before broad AAMAS full-paper claims.',
     },
     {
       id: 'replication-and-human-audit',
       title: 'Replication and Human Audit',
-      status: 'needs_experiment',
+      status: completedHumanAuditEvidence ? 'pass' : 'needs_experiment',
       evidence: [
-        'reviews/reviewer_report.md',
+        'experiments/human-soft-label-audit/human-audit-manifest.json',
+        'experiments/human-soft-label-audit/human-audit-annotation-sheet.csv',
+        'experiments/human-soft-label-audit/human-audit-annotator.html',
+        'experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json',
+        'experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz',
+        'experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json',
+        'experiments/human-soft-label-audit/human-audit-packet-quality-report.json',
+        'experiments/human-soft-label-audit/human-audit-intake-report.json',
+        'experiments/human-soft-label-audit/human-audit-agreement-report.json',
+        'experiments/human-soft-label-audit/human-audit-protocol.md',
         'submission/aamas-latex/main.tex',
       ],
-      finding: 'The current package is single-provider at pilot scale and has no human audit artifact for soft strategic labels.',
-      requiredAction: 'Add either a second model/provider pilot replication or a small human audit of soft labels; ideally do both before claiming robust multi-agent reasoning behavior.',
+      finding: completedHumanAuditEvidence
+        ? `Human soft-label audit has ${completedHumanAuditFiles} completed annotation file(s), and the agreement evaluator is completed with ${humanAgreement.completedLabels ?? 'unknown'}/${humanAgreement.totalLabels ?? 'unknown'} labels.`
+        : humanAgreement
+          ? `A human soft-label audit packet is prepared with ${humanAudit?.sampleCount ?? humanAgreement.sampleCount ?? 'unknown'} blind samples${humanAnnotatorPresent ? ', including a local annotator HTML' : ''}; ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditIntake(humanAuditIntake)} The agreement evaluator is ${humanAgreement.status ?? 'unknown'} with ${humanAgreement.completedLabels ?? 0}/${humanAgreement.totalLabels ?? 'unknown'} labels completed.`
+        : humanAudit
+          ? `A human soft-label audit packet is prepared with ${humanAudit.sampleCount ?? 'unknown'} blind samples. ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditIntake(humanAuditIntake)}`
+          : 'The current package is single-provider at pilot scale and has no human audit packet or completed human audit artifact for soft strategic labels.',
+      requiredAction: completedHumanAuditEvidence
+        ? 'Report agreement with verifier soft labels and keep the completed annotator file under the human audit directory.'
+        : 'Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.',
     },
     {
       id: 'page-budget',
       title: 'AAMAS Page Budget',
-      status: pageCount !== null && pageCount <= 8 ? 'pass' : 'needs_revision',
+      status: pageBudget.bodyPages !== null && pageBudget.bodyPages <= 8 ? 'pass' : 'needs_revision',
       evidence: [
         'submission/aamas-latex/main.pdf',
         'submission/aamas-latex/build-status.md',
       ],
-      finding: pageCount === null
+      finding: pageBudget.totalPages === null
         ? 'Could not read a page-count line from the LaTeX build status.'
-        : `AAMAS-style PDF page count is ${pageCount}.`,
-      requiredAction: pageCount !== null && pageCount <= 8
-        ? 'Preserve page budget by replacing prose with tables/figures when adding evidence.'
+        : pageBudget.bodyPages === null
+          ? `AAMAS-style PDF has ${pageBudget.totalPages} total pages, but the report cannot identify the body/reference boundary.`
+          : `AAMAS-style PDF has ${pageBudget.totalPages} total pages, with the main body ending on page ${pageBudget.bodyPages} and references allowed on additional pages.`,
+      requiredAction: pageBudget.bodyPages !== null && pageBudget.bodyPages <= 8
+        ? 'Preserve the 8-page body budget by replacing protocol/scaffolding material when adding full-split results.'
         : 'Compress or restructure the manuscript before adding more results.',
     },
   ]
@@ -255,14 +362,15 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
         : 'ready',
     headline: fullTomReady
       ? 'The package now has a primary 500-decision ToM full-split LLM path; remaining AAMAS risks are replication, human soft-label audit, and optional stronger full-split baselines.'
-      : 'The package is locally clean and pilot-complete, but it is not yet an AAMAS full-paper empirical package because full-split LLM evidence and replication/human-audit evidence remain missing.',
+      : 'The package is pilot-complete and within the AAMAS body-page budget, but it is not yet an AAMAS full-paper empirical package because full-split LLM evidence and completed replication or human-audit evidence remain missing.',
     facts: {
       gateStatus: gate?.overallStatus ?? 'unknown',
       manifestEntries,
       manifestMissing,
       localPipelineStatus: pipeline?.status ?? 'unknown',
       localPipelineSteps: pipeline?.steps?.length ?? 0,
-      aamasPageCount: pageCount,
+      aamasPageCount: pageBudget.totalPages,
+      aamasBodyPages: pageBudget.bodyPages,
       pilot: {
         plainParsed: formatParsed(plain),
         candidateParsed: formatParsed(candidate),
@@ -279,13 +387,16 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
         tomRawPresent: formatRawAudit(fullTomAudit),
         tomParsed: formatParsed(fullTom),
         tomRepairParsed: formatParsed(fullTomRepair),
+        tomProviderRun: formatProviderRun(fullTomProviderRun),
       },
     },
     gates,
     nextActions: [
       fullTomReady
         ? 'Add the 500-decision ToM full-split result to the main AAMAS table and update the claims from pilot-only to pilot-plus-full-ToM.'
-        : 'Run the 500-decision ToM full-split provider batch first, because it directly tests whether the strongest current prompt scales beyond the pilot.',
+        : fullTomProviderRun?.stoppedAfterError && (fullTomProviderRun.errorCount ?? 0) > 0
+          ? 'Resume the 500-decision ToM full-split provider batch after the Kimi quota or rate-limit window refreshes, then materialize raw ToM metrics and schema-repair metrics.'
+          : 'Complete the 500-decision ToM full-split provider batch and materialize both raw ToM metrics and schema-repair metrics before upgrading claims beyond the pilot.',
       'Run schema repair and verifier analysis on the full-split ToM outputs, preserving selectedActionId exactly as in the pilot ablation.',
       'Add a second provider/model pilot replication or a small human audit of soft labels to reduce single-provider and verifier-subjectivity attacks.',
       'Update the AAMAS draft only after the new evidence exists; keep current broad claims scoped to the 50-decision diagnostic pilot.',
@@ -313,7 +424,7 @@ export function renderAAMASReadinessReport(report: AAMASReadinessReport): string
     `| Submission gate | \`${report.facts.gateStatus}\` |`,
     `| Manifest | ${report.facts.manifestEntries} entries, ${report.facts.manifestMissing} missing |`,
     `| Local pipeline | \`${report.facts.localPipelineStatus}\`, ${report.facts.localPipelineSteps} steps |`,
-    `| AAMAS page count | ${report.facts.aamasPageCount ?? 'unknown'} |`,
+    `| AAMAS page count | ${report.facts.aamasPageCount ?? 'unknown'} total, ${report.facts.aamasBodyPages ?? 'unknown'} body |`,
     `| Plain pilot parse | ${report.facts.pilot.plainParsed} |`,
     `| Candidate pilot parse | ${report.facts.pilot.candidateParsed} |`,
     `| ToM pilot parse | ${report.facts.pilot.tomParsed} |`,
@@ -323,6 +434,7 @@ export function renderAAMASReadinessReport(report: AAMASReadinessReport): string
     `| Full split plain raw outputs | ${report.facts.fullSplit.plainRawPresent} |`,
     `| Full split candidate raw outputs | ${report.facts.fullSplit.candidateRawPresent} |`,
     `| Full split ToM raw outputs | ${report.facts.fullSplit.tomRawPresent} |`,
+    `| Full split ToM provider run | ${report.facts.fullSplit.tomProviderRun} |`,
     `| Full split ToM parse | ${report.facts.fullSplit.tomParsed} |`,
     `| Full split ToM after schema repair | ${report.facts.fullSplit.tomRepairParsed} |`,
     '',
@@ -350,6 +462,19 @@ function hasPilotEvidence(...metrics: Array<Metrics | null>): boolean {
   return metrics.every(metric => Boolean(metric?.totalDecisionPoints ?? metric?.resultFiles?.length))
 }
 
+function hasCompleteFullSplitMetrics(metrics: Metrics | null): boolean {
+  return metrics?.totalDecisionPoints === 500
+}
+
+function hasCompleteRawAudit(audit: RawAudit | null): boolean {
+  return Boolean(
+    audit?.readyForIngest
+    && audit.expectedCount === 500
+    && audit.presentCount === 500
+    && (audit.missingCount ?? 0) === 0,
+  )
+}
+
 function formatParsed(metrics: Metrics | null): string {
   if (!metrics) return 'missing'
   const parsed = metrics.totalParsedTraces
@@ -366,17 +491,78 @@ function formatRawAudit(audit: RawAudit | null): string {
   return `${audit.presentCount ?? 'unknown'}/${audit.expectedCount ?? 'unknown'} present`
 }
 
+function formatProviderRun(report: ProviderRunReport | null): string {
+  if (!report) return 'missing'
+  const stopReason = report.stoppedAfterError ? ', stopped after provider error' : ''
+  return `${report.successCount ?? 'unknown'}/${report.expectedCount ?? 'unknown'} successful, ${report.errorCount ?? 0} errors, ${report.pendingSuccessCount ?? 'unknown'} pending${stopReason}`
+}
+
+function formatProviderRunSentence(report: ProviderRunReport | null): string {
+  if (!report) return 'No full-split ToM provider-run report is present.'
+  const runner = report.runner ?? 'provider runner'
+  const model = report.model ? ` using ${report.model}` : ''
+  return `The latest ${runner}${model} run reports ${formatProviderRun(report)}.`
+}
+
+function formatHumanAuditQuality(report: HumanAuditPacketQuality | null): string {
+  if (!report) return 'no packet-quality report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const status = report.status ?? 'unknown'
+  const ready = report.readyForAnnotation ? 'ready for annotation' : 'not ready for annotation'
+  return `the packet-quality report is ${status} with ${failedChecks} failed checks and is ${ready}; it is not paper evidence until human labels are completed.`
+}
+
+function formatHumanAnnotatorPackage(report: HumanAuditAnnotatorPackage | null): string {
+  if (!report) return 'No blind annotator package manifest is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const status = report.status ?? 'unknown'
+  const referenceFileIncluded = report.instructions?.referenceFileIncluded ? 'includes a private reference file' : 'excludes private reference files'
+  const referenceIncluded = report.instructions?.referenceLabelsIncluded ? 'includes reference labels' : 'excludes reference labels'
+  return `The blind annotator package is ${status} with ${failedChecks} failed checks, ${referenceFileIncluded}, and ${referenceIncluded}.`
+}
+
+function formatHumanAuditIntake(report: HumanAuditIntake | null): string {
+  if (!report) return 'No returned-annotation intake report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const status = report.status ?? 'unknown'
+  const returned = report.returnedCsvPresent ? 'a returned CSV is present' : 'no returned CSV is present yet'
+  const ready = report.readyForAgreement ? 'ready for agreement evaluation' : 'not ready for agreement evaluation'
+  return `The returned-annotation intake is ${status} with ${failedChecks} failed checks; ${returned}, ${report.completedLabels ?? 0}/${report.totalLabels ?? 'unknown'} labels are filled, and it is ${ready}.`
+}
+
+function formatHumanAnnotatorPackageArchive(report: HumanAuditAnnotatorPackageArchive | null): string {
+  if (!report) return 'No blind annotator package archive report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const status = report.status ?? 'unknown'
+  const bytes = typeof report.bytes === 'number' ? `${report.bytes} bytes` : 'unknown size'
+  const digest = report.sha256 ? 'with SHA-256 recorded' : 'without SHA-256'
+  return `The blind annotator archive is ${status} with ${failedChecks} failed checks, ${bytes}, ${digest}.`
+}
+
 function sumNullable(...values: Array<number | undefined>): number | null {
   if (values.some(value => typeof value !== 'number')) return null
   return values.reduce<number>((sum, value) => sum + (value ?? 0), 0)
 }
 
-function readPageCountFromBuildStatus(researchRoot: string): number | null {
+function readPageBudgetFromBuildStatus(researchRoot: string): PageBudget {
   const path = join(researchRoot, 'submission/aamas-latex/build-status.md')
-  if (!existsSync(path)) return null
+  if (!existsSync(path)) return { totalPages: null, bodyPages: null }
   const text = readFileSync(path, 'utf8')
   const match = text.match(/Page count:\s*(\d+)\s+pages/i)
-  return match ? Number(match[1]) : null
+  const bodyMatch = text.match(/(?:main body and conclusion end|body\/reference boundary:[^\n]*end)s? on page\s+(\d+)/i)
+    ?? text.match(/body reaches page\s+(\d+)/i)
+  return {
+    totalPages: match ? Number(match[1]) : null,
+    bodyPages: bodyMatch ? Number(bodyMatch[1]) : null,
+  }
+}
+
+function countCompletedHumanAuditFiles(researchRoot: string): number {
+  const dir = join(researchRoot, 'experiments/human-soft-label-audit')
+  if (!existsSync(dir)) return 0
+  return readdirSync(dir)
+    .filter(filename => /^human-audit-(completed|adjudicated).*\.(csv|json)$/i.test(filename))
+    .length
 }
 
 function readJsonOptional<T>(researchRoot: string, relativePath: string): T | null {

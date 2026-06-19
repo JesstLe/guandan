@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-293-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only low non-trump clubs, so the best team use of the opening lead is to play the weakest card and let my partner cover it if possible, keeping any slightly better low cards for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unknown cards. With no public plays yet, I believe they probabilistically have some cards above 6 or trumps that could beat opponents on a low club lead, but this is uncertain.",
+    "confidence": 0.55,
+    "evidence": [
+      "95f77345-c882-467c-a53a-56fe7828306f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards (near finish) and opponent player 3 has 3 cards. They likely possess at least one card above 6 or a trump to beat a low club lead, and player 1 in particular is motivated to win the trick and play out. I do not assume specific hidden cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "95f77345-c882-467c-a53a-56fe7828306f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the smallest card in my hand. It minimizes the value I give away, forces opponents to spend a higher card or trump to take the trick, and gives my partner the best chance to cover.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally higher than the 3 and still loses to any 7/trump or higher non-trump; playing it now wastes a slightly better low card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher low card with no better chance of winning the trick; keeping it provides more end-game flexibility."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The best card in my hand, but still a low non-trump that any trump or rank 7+ beats. I should preserve it for a later trick rather than lead it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 may beat the low lead and use their remaining card to finish the hand.",
+      "Player 3 may overtake with a higher card or bomb and seize the lead.",
+      "My partner may be unable to cover, letting opponents control the tempo."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the rank I surrender and retain the 6 of clubs as my strongest remaining non-trump for a later opportunity."
+  },
+  "confidence": 0.65
+}

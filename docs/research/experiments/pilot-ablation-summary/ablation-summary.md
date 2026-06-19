@@ -1,15 +1,23 @@
 # Verifier Ablation Summary
 
-Status: `missing_metrics`
+Status: `metrics_available`
 
-Rows marked `[NEED_EXPERIMENT]` are not experimental results.
+Analysis mode: `post_hoc_label_ablation`
 
-| Variant | Status | Removed Component | Target Label | Hard Failures | Hard Delta | Target Burden | Target Delta | Reason-Action Burden | Reason-Action Delta |
-| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| No Hidden-Info Check | missing_metrics | hidden-information discipline | hiddenInfoDisciplined | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] |
-| No Partner Check | missing_metrics | partner consistency | partnerConsistent | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] |
-| No Opponent Check | missing_metrics | opponent consistency | opponentConsistent | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] |
-| No Reason-Action Check | missing_metrics | reason-action consistency | reasonActionConsistent | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] |
-| No Legal-Action Check | missing_metrics | legal-action check | legalAction | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] | [NEED_EXPERIMENT] |
+Paired decisions: 32
 
-Notes: Ablation metrics are missing; this file is a readiness artifact, not an experimental result.
+Full paired label-burden delta: -32
+
+
+Rows remove one label group from the paired label-burden accounting. This is a post-hoc diagnostic over existing traces, not a rerun with different feedback prompts.
+
+| Variant | Status | Removed Component | Target Label | Target Before | Target After | Target Delta | Residual Delta Without Target | Share of Observed Reduction |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| No Public-History Check | metrics_available | public-history consistency | publicHistoryConsistent | 29 | 9 | -20 | -12 | 63% |
+| No Hidden-Info Check | metrics_available | hidden-information discipline | hiddenInfoDisciplined | 6 | 1 | -5 | -27 | 16% |
+| No Partner Check | metrics_available | partner consistency | partnerConsistent | 29 | 26 | -3 | -29 | 9% |
+| No Opponent Check | metrics_available | opponent consistency | opponentConsistent | 22 | 20 | -2 | -30 | 6% |
+| No Reason-Action Check | metrics_available | reason-action consistency | reasonActionConsistent | 1 | 0 | -1 | -31 | 3% |
+| No Team-Objective Check | metrics_available | team-objective validity | teamObjectiveValid | 19 | 18 | -1 | -31 | 3% |
+
+Notes: Post-hoc label ablations remove one verifier label from paired burden accounting over the same before/after traces. They attribute observed verifier-label burden reductions but do not replace a future rerun that removes feedback components from the prompt.

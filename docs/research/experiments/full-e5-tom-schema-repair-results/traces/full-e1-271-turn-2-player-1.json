@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-271-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 (opponent) has only 2 cards left and just led a low heart, suggesting they are trying to exit quickly. Seizing the lead with the cheapest winning card lets our team control the tempo and push toward finishing."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and no public plays yet. They are likely able to support later in the trick or on a future lead, but their exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "2ad95456-0582-4055-8db6-1521d2126184"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is probably trying to dump a low card and get out soon given their 2-card hand. Player 2 may hold higher hearts or trumps to contest the trick.",
+    "confidence": 0.55,
+    "evidence": [
+      "2ad95456-0582-4055-8db6-1521d2126184"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the minimum winning follow, costing the least card value while taking the lead away from a nearly finished opponent.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent who is down to 2 cards retain or transfer the lead, increasing their chance to finish before our team can act."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beating with the 9 is unnecessary; it expends a higher card that may be needed later, while the 4 already wins the current trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is our strongest card and should be saved for a decisive winning lead or to finish, not spent on a marginal single-card follow."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or partner may overtake with a higher heart or trump, so we may not actually win the trick.",
+      "Player 0 could still finish on their next turn if they win or regain the lead."
+    ],
+    "mitigation": "By using the lowest winning heart, we preserve the 9 and 10 for future leads and limit downside if another player takes the trick."
+  },
+  "confidence": 0.7
+}

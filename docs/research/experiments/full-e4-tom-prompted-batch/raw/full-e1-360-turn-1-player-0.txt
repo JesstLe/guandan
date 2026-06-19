@@ -1,0 +1,25 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-360-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "reasoning": {
+    "summary": "Opening lead with a very weak non-trump hand. No trump cards and only low spades are held, so the priority is to make a cheap lead that preserves what little high value exists while not telegraphing strength. The 3♠ is the lowest card and keeps 4♠-6♠ for any future exchange.",
+    "partnerInference": "Partner has not acted publicly, so I cannot claim any specific holding. Given our team is leading the very first trick, a likely partner goal is to use this lead to gain or retain initiative. With no trump in my hand, my partner may need to supply control later, but I have no signal to coordinate beyond the opening low-card lead convention.",
+    "opponentInference": "Opponents have not played yet. They are likely to hold higher non-trump cards, trump rank-7 cards, or jokers. A low single lead minimizes the chance an opponent can immediately seize tempo with an overplay while preserving my modest cards for later tricks.",
+    "counterfactualComparison": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "assessment": "Leads the highest card in hand but still loses to any 7+ non-trump or any trump. It throws away the only card with marginal endplay value and is dominated by leading the 3."
+      },
+      {
+        "actionId": "play-single-spade-3-copy1",
+        "assessment": "Cheapest possible lead; advances the game without committing power; keeps higher cards for later. Best fits a weak-hand opening lead."
+      }
+    ],
+    "teamObjective": "Avoid handing the opponents an easy tempo gain while progressing my hand. Leading the minimum card advances play at lowest cost.",
+    "uncertaintyNote": "All inferences about partner and opponent holdings are probabilistic; the only public fact is that the game just started."
+  },
+  "evidence": [
+    "71c7d104-ee6d-4efe-b9c9-54095d88e36b"
+  ]
+}

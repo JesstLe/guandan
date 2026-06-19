@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-076-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards left and led a low heart 3, so the immediate team objective is to deny that opponent continued control of the lead and a chance to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 unseen cards and is last to act in the trick, so they may be able to cover if an opponent plays a higher heart over a low winner from me, but there is no public signal about their exact strength.",
+    "confidence": 0.6,
+    "evidence": [
+      "8c6490ae-5df2-419a-82fe-bcffd9457aec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 is near finishing (2 cards remaining) and chose to lead the low heart 3, which is consistent with shedding a weak card while holding a higher card to try to win a later lead. Opponent player 2 may have a heart in the 5-J range that could contest a low winner.",
+    "confidence": 0.75,
+    "evidence": [
+      "8c6490ae-5df2-419a-82fe-bcffd9457aec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the cheapest beating card, the heart 4, to take control of the trick, prevent the near-finish opponent from keeping the lead, and preserve the 9 and 10 for future leads or counters.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponents contest the trick uncontested and risks the near-finish opponent or their teammate winning and maintaining momentum."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the lead but uses a stronger card than necessary; if an opponent has a higher heart, this still loses and wastes mid-strength."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is more likely to win outright, but it expends the highest card in a non-trump suit when the cheaper 4 already beats the lead and lets partner cover from last position."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 may beat the heart 4 with a higher heart and regain the lead for the opposing team.",
+      "Opponent player 0 may still hold a high card for a later lead if their teammate wins this trick.",
+      "Using a card now slightly reduces my hand size before my own finish plan is clear."
+    ],
+    "mitigation": "Playing the lowest winner minimizes resource expenditure, contests the lead immediately, and keeps the 9 and 10 available; partner in last position can still cover a higher opponent card."
+  },
+  "confidence": 0.75,
+  "notes": "The low lead from a nearly-empty opponent makes contesting the trick the priority, with the cheapest legal winner preferred."
+}

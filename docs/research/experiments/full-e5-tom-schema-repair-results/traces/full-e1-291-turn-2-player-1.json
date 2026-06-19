@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-291-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 led a low heart 3 with only two cards remaining, so taking the trick with my cheapest legal heart prevents the opponent from advancing toward a finish and gives my team control of the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds three cards but has not acted this trick. They likely want the team to win control, yet I have no evidence they can beat a heart 3; they may lack hearts or may be saving higher cards for later leads.",
+    "confidence": 0.5,
+    "evidence": [
+      "9ef19fc1-e866-44ed-8fe8-cd54ff6954db"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent with only two cards left, led the lowest heart 3, signaling an attempt to shed a weak card while near finishing; their remaining card may be strong. Player 2 also has three cards and could overtake a low follow.",
+    "confidence": 0.6,
+    "evidence": [
+      "9ef19fc1-e866-44ed-8fe8-cd54ff6954db"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the heart 4 is the minimal card that beats the led heart 3. It wins the trick cheaply, gains the lead for team 1, and preserves the higher heart 9 and heart 10 for future tricks or to counter opponent finishing threats.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing cedes the trick to player 0, who is near finishing with only two cards, increasing the chance the opponent wins the round or sets up a quick exit."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the trick but expends a materially stronger card when the 4 already beats the 3, leaving fewer high-card resources for later leads."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is my strongest single and is unnecessary here; using it now would waste a valuable card and weaken my ability to control upcoming tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or player 0 may still beat the heart 4 with a higher heart or trump, in which case I lose the trick and reveal my low card.",
+      "Player 0 may hold a bomb or trump 7 and could use it to regain lead immediately.",
+      "Winning now may make me the target on the next lead while I still hold only modest high cards."
+    ],
+    "mitigation": "By playing the lowest winning card, I minimize resource exposure while still contesting control; even if overtake occurs, my 9 and 10 remain available for counter-play."
+  },
+  "confidence": 0.75,
+  "notes": "The heart 4 is the unique dominant choice under a minimum-resource principle: it beats the table, denies the near-finishing opponent, and preserves stronger cards."
+}

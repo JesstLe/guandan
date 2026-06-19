@@ -1,0 +1,91 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-381-turn-2-player-1",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "reasoningTrace": {
+    "partnerBeliefs": [
+      {
+        "belief": "Partner (player 2, team 1) has 3 cards and has not yet acted; they may hold coverage for a heart single if I pass, but no public event confirms a high heart or trump.",
+        "confidence": "probabilistic",
+        "evidence": [
+          "3f83d3fa-3f86-4292-8c99-46c894220377"
+        ]
+      },
+      {
+        "belief": "Because the hand counts show player 0 is down to 2 cards, my partner likely recognizes the same urgency and may be conserving a high card for a later critical trick rather than spending it now.",
+        "confidence": "probabilistic",
+        "evidence": [
+          "3f83d3fa-3f86-4292-8c99-46c894220377"
+        ]
+      }
+    ],
+    "opponentBeliefs": [
+      {
+        "belief": "Player 0 (opponent, 2 cards remaining) led a low 3 of hearts, signaling they are trying to shed a weak card and reach their final card quickly.",
+        "confidence": "high",
+        "evidence": [
+          "3f83d3fa-3f86-4292-8c99-46c894220377"
+        ]
+      },
+      {
+        "belief": "Player 3 (opponent, 3 cards) may hold a higher heart or a trump to contest the trick if I play a low heart, or may pass to let player 0 escape.",
+        "confidence": "probabilistic",
+        "evidence": [
+          "3f83d3fa-3f86-4292-8c99-46c894220377"
+        ]
+      }
+    ],
+    "candidateComparisons": [
+      {
+        "actionId": "pass",
+        "pros": [
+          "Conserves all three hearts for future tricks.",
+          "Allows partner a chance to cover if they have a suitable card."
+        ],
+        "cons": [
+          "If partner cannot or chooses not to beat the 3, player 0 wins the trick and gets to lead their final card while near finishing.",
+          "Cedes initiative to the opponent closest to going out."
+        ],
+        "assessment": "Too risky given the opponent-near-finish tag; losing this trick could let player 0 escape."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "pros": [
+          "Beats the led 3 with minimal card value.",
+          "Keeps 9 and 10 for later."
+        ],
+        "cons": [
+          "Very vulnerable to being overcut by either opponent or even partner, so it may not actually win the trick.",
+          "If it loses, the same near-finish danger remains."
+        ],
+        "assessment": "Minimal beat is insufficient when the opponent is about to finish; it likely loses control."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "pros": [
+          "Strongly likely to win the trick against a 3 lead.",
+          "Conserves the 10 for an even more critical moment."
+        ],
+        "cons": [
+          "Could still be beaten by a 10, J, Q, K, A, or trump from an opponent.",
+          "Leaves the 10 in hand, which may be hard to play later if opponents control the lead."
+        ],
+        "assessment": "A solid middle option, but with player 0 near finish I prefer the highest immediate chance to seize the lead."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "pros": [
+          "Highest chance among my cards to win the trick and take the lead.",
+          "Prevents player 0 from winning and leading their final card.",
+          "With only 2 cards left for the leading opponent, seizing initiative now is high value."
+        ],
+        "cons": [
+          "Expends my highest single card.",
+          "Could be overcut by a face card or trump, but no such card has been publicly revealed."
+        ],
+        "assessment": "Best supports the team objective: stop the near-finish opponent from escaping and gain control of the next lead."
+      }
+    ],
+    "decisionSummary": "Player 0 is near finish and led a low heart, indicating a likely escape attempt. Passing or under-beating cedes initiative and risks letting player 0 win and lead their final card. Playing the 10 of hearts maximizes the probability of winning this trick, taking the lead, and forcing the near-finish opponent to respond to our cards rather than escaping."
+  }
+}

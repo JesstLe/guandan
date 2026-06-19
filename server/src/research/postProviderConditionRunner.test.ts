@@ -120,6 +120,62 @@ describe('postProviderConditionRunner', () => {
     }
   })
 
+  it('can write explicitly marked partial metrics for incomplete provider results', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-post-provider-partial-'))
+    const decisionsDir = join(rootDir, 'decisions')
+    const promptDir = join(rootDir, 'prompts')
+    const batchDir = join(rootDir, 'batch')
+    const providerResultsPath = join(batchDir, 'provider-results.jsonl')
+    const outputDir = join(rootDir, 'results')
+    const dataset = generatePilotDecisionDataset({ targetCount: 2, gameIdPrefix: 'post-provider-partial' })
+
+    try {
+      mkdirSync(decisionsDir, { recursive: true })
+      for (const decision of dataset.decisions) {
+        writeFileSync(join(decisionsDir, `${decision.decisionId}.json`), JSON.stringify(decision), 'utf8')
+      }
+      writePromptPackets({ decisions: dataset.decisions, conditionId: 'tom-prompted-llm', outputDir: promptDir })
+      const batch = writeLLMBatchFiles({ promptPacketDir: join(promptDir, 'packets'), outputDir: batchDir })
+      const trace = {
+        ...createBaselineTrace(dataset.decisions[0], 'strategic-heuristic'),
+        agentId: 'tom-prompted-llm',
+      }
+      writeFileSync(providerResultsPath, `${JSON.stringify(openAiBatchResult(dataset.decisions[0].decisionId, JSON.stringify(trace)))}\n`, 'utf8')
+
+      const result = runPostProviderCondition({
+        decisionsDir,
+        promptPacketDir: join(promptDir, 'packets'),
+        batchJsonlPath: batch.batchJsonlPath,
+        providerResultJsonlPath: providerResultsPath,
+        rawOutputDir: batch.rawOutputDir,
+        outputDir,
+        conditionId: 'tom-prompted-llm',
+        provenance: {
+          modelProvider: 'kimi-cli',
+          modelName: 'kimi-code/kimi-for-coding',
+        },
+        allowPartialIngest: true,
+      })
+
+      expect(result.status).toBe('partial_ingested')
+      expect(result.blockers).toContain('Provider-result materialization is not ready for audit.')
+      expect(result.blockers).toContain('Raw-output audit is not ready for ingest.')
+      expect(result.metricsPath).toBe(join(outputDir, 'metrics.json'))
+
+      const metrics = JSON.parse(readFileSync(join(outputDir, 'metrics.json'), 'utf8'))
+      expect(metrics.totalDecisionPoints).toBe(2)
+      expect(metrics.totalParsedTraces).toBe(1)
+      expect(metrics.parseFailureCount).toBe(1)
+      expect(metrics.failures[0].message).toBe('Raw output file is missing.')
+
+      const report = JSON.parse(readFileSync(result.reportPath, 'utf8'))
+      expect(report.status).toBe('partial_ingested')
+      expect(report.blockers).toHaveLength(2)
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
   it('ingests revision outputs using packet raw-output filenames', () => {
     const rootDir = mkdtempSync(join(tmpdir(), 'guandan-post-provider-revision-'))
     const decisionsDir = join(rootDir, 'decisions')

@@ -16,6 +16,7 @@ interface Args {
   runId?: string
   temperature?: number
   notes?: string
+  allowPartialIngest: boolean
 }
 
 const args = parseArgs(process.argv.slice(2))
@@ -53,6 +54,7 @@ if (!existsSync(args.providerResults) || statSync(args.providerResults).size ===
       temperature: args.temperature,
       notes: args.notes,
     },
+    allowPartialIngest: args.allowPartialIngest,
   })
 
   console.log(JSON.stringify({
@@ -70,11 +72,16 @@ function parseArgs(argv: string[]): Args {
     decisions: 'docs/research/experiments/pilot-e1/decisions',
     modelProvider: 'unknown',
     modelName: 'unknown',
+    allowPartialIngest: false,
   }
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     const value = argv[i + 1]
+    if (arg === '--allow-partial-ingest') {
+      parsed.allowPartialIngest = true
+      continue
+    }
     if (value === undefined) continue
 
     if (arg === '--decisions') {

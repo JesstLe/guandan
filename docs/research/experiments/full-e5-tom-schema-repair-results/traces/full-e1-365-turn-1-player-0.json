@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-365-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only four weak non-trump cards, the immediate goal is to reduce hand length while preserving the strongest card (spade 6) for a later trick. Leading the lowest card advances the team toward finishing a hand without sacrificing limited high-card value."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. There is no public signal about their strength, so they could have anything from low non-trumps to trump winners. They may be able to cover a low lead, but this cannot be assumed.",
+    "confidence": 0.3,
+    "evidence": [
+      "beb956dd-86b0-46f3-bfce-72d3bf7d03a7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. Given the deck distribution, it is likely that at least one opponent has a card higher than 6 or a trump that can beat a low spade lead, but no specific holdings are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "beb956dd-86b0-46f3-bfce-72d3bf7d03a7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the single spade 3 is the lowest-value play. It discards the weakest card, sets a low trick threshold that the partner might be able to take, and keeps the spade 6 as the hand's only relatively high card for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the strongest card in this hand. Leading it now wastes the only card that might win a later low trick, and it is still likely beaten by opponents' trumps or higher non-trumps."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is intermediate; leading it gives away more trick strength than the 3 without much extra chance of winning the trick, and it still leaves the 6 unused."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is slightly stronger than the 3 but offers no strategic advantage over the 3; preserving card value strictly favors the lower lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A low single lead is likely to be beaten by an opponent, ceding initiative.",
+      "With no trumps and only cards 3-6, this hand has limited ability to regain control if opponents seize the lead.",
+      "Partner may not be able to cover, especially if their 3 cards are also weak."
+    ],
+    "mitigation": "By leading the 3, the hand's maximum remaining value (the 6) is preserved, giving a small chance to win a future non-trump trick. The low lead also minimizes information revealed about remaining strength."
+  },
+  "confidence": 0.82,
+  "notes": "Opening lead with the weakest card follows the standard principle of minimizing value loss when holding a uniformly weak hand."
+}

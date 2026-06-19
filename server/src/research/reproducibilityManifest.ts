@@ -13,12 +13,15 @@ export interface ReproducibilityManifestEntryInput {
   id: string
   title: string
   path: string
+  statusOverride?: 'pending'
+  reason?: string
 }
 
 export type ReproducibilityManifestEntry =
   | ReproducibilityFileEntry
   | ReproducibilityDirectoryEntry
   | ReproducibilityMissingEntry
+  | ReproducibilityPendingEntry
 
 export interface ReproducibilityFileEntry extends ReproducibilityManifestEntryInput {
   kind: 'file'
@@ -39,6 +42,13 @@ export interface ReproducibilityMissingEntry extends ReproducibilityManifestEntr
   kind: 'missing'
   status: 'missing'
   bytes: 0
+}
+
+export interface ReproducibilityPendingEntry extends ReproducibilityManifestEntryInput {
+  kind: 'pending'
+  status: 'pending'
+  bytes: 0
+  reason: string
 }
 
 export interface ReproducibilityManifest {
@@ -90,7 +100,7 @@ export function renderReproducibilityManifest(manifest: ReproducibilityManifest)
     '',
     `Generated at: \`${manifest.generatedAt}\``,
     '',
-    'Missing entries are audit findings, not experimental results.',
+    'Missing entries are audit findings, not experimental results. Pending entries are expected external-evidence gaps tracked by readiness gates.',
     '',
     '| Artifact | Status | Kind | Path | Files | Bytes | Digest |',
     '| --- | --- | --- | --- | ---: | ---: | --- |',
@@ -112,6 +122,15 @@ export function renderReproducibilityManifest(manifest: ReproducibilityManifest)
 function inspectEntry(rootDir: string, entry: ReproducibilityManifestEntryInput): ReproducibilityManifestEntry {
   const absolutePath = join(rootDir, entry.path)
   if (!existsSync(absolutePath)) {
+    if (entry.statusOverride === 'pending') {
+      return {
+        ...entry,
+        kind: 'pending',
+        status: 'pending',
+        bytes: 0,
+        reason: entry.reason ?? 'Awaiting external evidence.',
+      }
+    }
     return {
       ...entry,
       kind: 'missing',
@@ -175,6 +194,7 @@ function listDirectoryFiles(rootDir: string, dir: string): DirectoryFileRecord[]
 function formatDigest(entry: ReproducibilityManifestEntry): string {
   if (entry.kind === 'file') return `\`${entry.sha256}\``
   if (entry.kind === 'directory') return `tree:\`${entry.treeSha256}\``
+  if (entry.kind === 'pending') return entry.reason
   return ''
 }
 

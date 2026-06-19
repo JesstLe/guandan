@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-368-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Because my hand is entirely low non-trump clubs and an opponent is near finish, the priority is to shed cards while conceding as little control as possible. Playing the 3 preserves my higher cards and gives partner the best chance to cover the trick. The marginal defensive gain of leading the 6 does not outweigh the loss of my only modestly stronger card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has not acted; no direct signal exists. With three cards remaining, partner could be holding one or more mid-to-high cards that can cover a low lead, but I should not assert this as fact. Leading low invites partner to take the trick if they have a stronger single or to shed safely if they do not.",
+    "confidence": 0.6,
+    "evidence": [
+      "01f496b1-fa56-419a-8493-2ac827a479b3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is therefore near finishing; they will likely try to win any cheap lead to retain control and exit. Opponent player 3 has 3 cards and is also a threat, but less imminent. Because no cards have been played, I cannot assume which ranks or suits they hold, only that they are incentivized to exploit a weak opening lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "01f496b1-fa56-419a-8493-2ac827a479b3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Because my hand is entirely low non-trump clubs and an opponent is near finish, the priority is to shed cards while conceding as little control as possible. Playing the 3 preserves my higher cards and gives partner the best chance to cover the trick. The marginal defensive gain of leading the 6 does not outweigh the loss of my only modestly stronger card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

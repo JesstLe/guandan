@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-354-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two non-trump cards while every other player holds three. The best team outcome is to empty my hand quickly, so I want to win the lead now and keep it long enough to play out both cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three hidden cards. With no prior plays, partner likely has a mix of ordinary and possibly trump/high cards and prefers that I either finish or transfer control safely. There is no strong signal yet about partner's exact strength.",
+    "confidence": 0.4,
+    "evidence": [
+      "6d52e869-335e-4a31-bf47-69ae185ecc86"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three hidden cards. They probably contain some higher singles or trumps (rank 7 / red 7) because the deck is still nearly complete. They will try to seize or prolong control to stop me from finishing.",
+    "confidence": 0.5,
+    "evidence": [
+      "6d52e869-335e-4a31-bf47-69ae185ecc86"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade Ace is the strongest non-trump single available. If it wins the trick, I remain the leader and can immediately lead the spade 2 next, finishing my hand in two consecutive leads and securing a fast finish for my team.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The deuce is the lowest non-trank single. Leading it would let opponents with any ordinary higher card or any trump easily take control, break my sequence, and delay or prevent my finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump (level 7 or red 7) or a higher non-trump single that beats the Ace and steals the lead.",
+      "If the Ace loses, my remaining deuce is weak and I may not regain initiative."
+    ],
+    "mitigation": "The Ace is still the highest-probability lead to win the trick and keep the lead. Even if it is beaten, I have played my strongest card first, leaving partner and the hidden deck a chance to recover control."
+  },
+  "confidence": 0.72
+}

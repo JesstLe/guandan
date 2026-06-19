@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-225-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only four low non-trump cards, the priority is to start shedding cards quickly while keeping the highest card (6) for a later chance to regain the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 unknown cards and, on average, is more likely than any single opponent to be able to win a low lead, but no specific signal has been exchanged.",
+    "confidence": 0.4,
+    "evidence": [
+      "0a6312d6-5ffb-47aa-8338-664e804fa00f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 6 cards and are likely to possess trump or higher non-trump cards that can beat any of my singles; they will try to win the lead and pressure me.",
+    "confidence": 0.6,
+    "evidence": [
+      "0a6312d6-5ffb-47aa-8338-664e804fa00f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single (spade 3) gives the cheapest discard, requires opponents to spend a higher or trump card, and keeps the 4-5-6 sequence intact for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 demands a stronger reply but wastes my highest card; if opponents beat it I lose my best remaining card and still have 3-4-5 to clear."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is middle strength; it neither disposes of my weakest card nor reliably wins the trick, making it a worse opener than the 3."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still better than the 5 or 6, but holding the 4 while dumping the 3 leaves a more compact remaining hand and defers slightly more strength."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent can beat the 3 with a low trump or a higher non-trump and then control the tempo.",
+      "Partner may be unable to help, leaving me to play defensively."
+    ],
+    "mitigation": "By leading the 3 I minimize the value surrendered on this trick and retain the 6 as my strongest card to potentially win a later trick or block an opponent's low winner."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with no public card information; all hidden card beliefs are uniform priors conditioned on hand counts."
+}

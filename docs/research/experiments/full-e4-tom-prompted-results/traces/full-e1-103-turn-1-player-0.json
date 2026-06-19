@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-103-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Lead the lowest single to give my partner the widest chance to cover with a higher card, transferring control to my teammate while preserving my own highest club for a later trick."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unknown cards. Because I am leading a very low 3, the partner has the maximum range of possible higher singles or trumps with which to win the trick, but their exact strength is unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "8d8d1100-2a85-425e-97f5-47ddac7c9dd1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponents hold 2 and 3 cards respectively, so one opponent is near finishing. They may possess higher singles or trumps to beat a low lead, or they may be stuck with a pair and forced to pass; their exact cards remain hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "8d8d1100-2a85-425e-97f5-47ddac7c9dd1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3 maximizes the chance my partner can take the trick, transfers initiative to my team, and conserves my 6 as the strongest remaining card for a future single.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "A 4 is still low, but it narrows the range of partner cards that can cover and wastes a slightly higher card than the 3."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Leading a 5 gives opponents more information and makes it harder for a weak partner to win the trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest card and most likely to be beaten by an opponent's high card or trump; if it loses, only weaker cards remain, and the partner is less able to cover."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The partner may be unable to beat the 3, allowing an opponent to win and accelerate toward finishing.",
+      "An opponent with a high single or trump can seize control of the trick.",
+      "My remaining hand is weak, so regaining the lead later will be difficult."
+    ],
+    "mitigation": "Leading the 3 keeps the 6 in reserve, giving the best future chance to win a low single trick if the lead returns, while maximizing the chance the partner can take control now."
+  },
+  "confidence": 0.6
+}

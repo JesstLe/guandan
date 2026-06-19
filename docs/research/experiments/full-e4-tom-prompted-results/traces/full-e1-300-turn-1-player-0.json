@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-300-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "At the opening lead I hold only low spades (3-6) with no trumps. The priority is to shed the weakest card now while keeping the slightly higher low cards for potential later tricks, rather than committing a card that could matter."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has not signaled anything. Because the only public event is the new-game deal, partner likely has an ordinary random hand and may be able to beat a low spade if they hold a higher card or trump, but that is probabilistic and uncertain.",
+    "confidence": 0.65,
+    "evidence": [
+      "33d20665-848c-41c0-b49a-c2ed424da98c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, 3 cards each) will try to win the trick and take the lead. Since no cards have been played, each opponent probably holds some higher singles and possibly trumps, but their exact holdings are unknown.",
+    "confidence": 0.65,
+    "evidence": [
+      "33d20665-848c-41c0-b49a-c2ed424da98c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3 of spades is the lowest single and sheds the weakest card. It avoids wasting the 4, 5, or 6, which are still low but are more likely to win against even lower cards later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger and is almost as likely to lose the trick; keeping it gives a slightly better chance to win a future low-card trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is my third-weakest card; leading it now sacrifices a card that could beat a 3 or 4 later without improving my chance to win this trick meaningfully."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest non-trump; leading it wastes the card most likely to win a later trick and still loses to any higher single or trump."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading low lets an opponent win the trick cheaply and control tempo.",
+      "Partner may be unable to cover, and the trick may be lost to opponents."
+    ],
+    "mitigation": "With a hand of only low cards, contesting the lead is impossible. Shedding the 3 minimizes resource loss and preserves the 4-6 for opportunities against equally low opponent cards."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with very weak cards; chosen action follows a conservative shedding strategy while treating all opponent and partner holdings as uncertain."
+}

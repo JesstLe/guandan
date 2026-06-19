@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-378-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I am leading the first trick with four low non-trump clubs. Opponent player 1 has only 2 cards and is near finishing, so my team needs to avoid ceding cheap control. Leading the lowest club gives partner (player 2) the best chance to cover with a modestly higher card or a cheap trump, win the trick, and take control while I preserve my remaining strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. Given only the public hand counts and the new-game event, partner's exact composition is unknown, but with 3 random cards they are more likely than not to hold at least one card higher than my 6 of clubs or a trump. A low club lead is easier for partner to overtake than a high club lead, so partner is plausibly positioned to cover if they have any covering strength.",
+    "confidence": 0.55,
+    "evidence": [
+      "18fd9f5a-7e0c-458a-bb93-489c342300ad"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 holds only 2 cards, publicly signalling a near-finish hand; they likely want a cheap trick or a free lead to empty their remaining cards. Opponent player 3 holds 3 cards and may have higher clubs, trumps, or bombs. The opponents are likely to try to let player 1 finish or to win control with minimal cost. Leading low forces them to spend real strength to take the trick rather than giving them an easy win.",
+    "confidence": 0.6,
+    "evidence": [
+      "18fd9f5a-7e0c-458a-bb93-489c342300ad"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of clubs is the lowest legal lead. It preserves the 4-5-6 sequence, minimizes the value lost if an opponent takes the trick, and maximizes the chance that partner can cover with a modestly higher card. It also avoids helping the near-finish opponent by leading a card they might beat without spending strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 of clubs risks immediately losing our strongest non-trump to a higher card or trump, leaving us with only 3-4-5 and little chance of regaining control. This benefits opponents because they can win the trick while we have sacrificed our best card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 of clubs is still a relatively high card in our weak hand. Although it might occasionally win the trick, the gain is small and the cost in preserved hand strength is meaningful; the 3 or 4 lead is safer."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 of clubs is better than the 5 or 6, but it still leaves the 3 as a potentially wasted future card. Leading the 3 first is the strictest minimum-cost play and keeps the 4-5-6 as a more useful sequence of covering cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low club may lose immediately to a higher club, trump, bomb, or wildcard from an opponent, ceding initiative.",
+      "The near-finish opponent (player 1) may still take the trick cheaply and then go out on the next lead.",
+      "Partner may be unable to cover, in which case our team has no immediate answer to an opponent winning control."
+    ],
+    "mitigation": "By leading the 3 rather than any higher club, I keep 4-5-6 in reserve, so if the trick comes back to me I have more options; I also force opponents to reveal strength, which helps partner calibrate later plays. The low lead is the cheapest way to probe the table while preserving resources."
+  },
+  "confidence": 0.65,
+  "notes": "Partner and opponent exact cards are unknown; beliefs are grounded only in the public hand counts and the new-game event."
+}

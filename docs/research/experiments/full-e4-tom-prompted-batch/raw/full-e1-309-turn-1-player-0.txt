@@ -1,0 +1,48 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-309-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoning": {
+    "context": "Player 0 is leading with only 2 cards remaining (A♠, 2♠), while all other players hold 3 cards. This is an endgame race where Player 0's team benefits if Player 0 can go out quickly. No cards have been played beyond the new_game event, so all inferences about opponents' and partner's hands must remain probabilistic.",
+    "partnerIntent": {
+      "belief": "Partner (Player 2) likely wants Player 0 to exit because Player 0 is down to 2 cards. Without any public plays, partner's exact cards are unknown, but partner may hold high cards or support cards. Partner cannot directly help Player 0 play cards, but may later win tricks to prevent opponents from controlling the pace.",
+      "signaling": "No signals available yet; the only public event is new_game."
+    },
+    "opponentIntent": {
+      "belief": "Opponents (Players 1 and 3) want to prevent Player 0 from going out. Each holds 3 unknown cards. They may possess trump-ranked singles (7s), jokers, or red trumps that can beat an A♠ lead. They prefer forcing Player 0 to spend the A♠ without winning the lead.",
+      "exploitRisk": "If Player 0 leads low, opponents can cheaply win control and then lead combinations Player 0 may be unable to answer, stranding the A♠."
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "pros": [
+          "Highest single in hand; strong chance to win the trick outright if no opponent has a 7/joker/red-trump single.",
+          "Winning the trick lets Player 0 lead again and play the 2♠ to go out immediately.",
+          "Forces opponents to spend a high card if they want to stop Player 0."
+        ],
+        "cons": [
+          "If an opponent beats it with a 7/joker/red trump, Player 0 is left with only the weak 2♠.",
+          "Reveals that Player 0 holds no higher single."
+        ],
+        "likelihoodEstimate": "Moderate-to-good chance of winning the lead, given only 9 opponent cards remain unseen and many are not higher than A♠."
+      },
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "pros": [
+          "Keeps the A♠ in reserve for a later winning play.",
+          "If opponents let the 2♠ slide, Player 0 could still win the trick."
+        ],
+        "cons": [
+          "2♠ is the weakest rank and will almost certainly be beaten, surrendering the lead.",
+          "Without the lead, Player 0 must wait for someone to lead a single that A♠ can beat; opponents can avoid that.",
+          "Allows opponents to control tempo and potentially strand Player 0's last card."
+        ],
+        "likelihoodEstimate": "Very low chance of winning the lead or enabling Player 0 to go out quickly."
+      }
+    ],
+    "conclusion": "Leading A♠ gives Player 0 the best direct path to go out by winning the current trick and then playing 2♠. The alternative of leading 2♠ surrenders initiative and relies on opponents or partner to create a favorable situation, which is unlikely in a competitive endgame."
+  },
+  "evidence": [
+    "e1897eca-ce89-44d1-8f34-38e257b4a94b"
+  ]
+}

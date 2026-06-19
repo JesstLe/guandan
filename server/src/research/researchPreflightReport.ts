@@ -9,6 +9,7 @@ import { join } from 'node:path'
 export type ResearchPreflightStatus =
   | 'ready_for_submission'
   | 'waiting_for_provider_results'
+  | 'research_not_ready'
   | 'local_blockers'
 
 export interface ResearchPreflightRawAuditInput {
@@ -37,16 +38,18 @@ export interface ResearchPreflightMarkerCounts {
 }
 
 export interface ResearchPreflightReport {
-  schemaVersion: '0.1.0'
+  schemaVersion: '0.2.0'
   generatedAt: string
   status: ResearchPreflightStatus
   localReady: boolean
+  aamasFullPaperReadiness: 'missing' | 'not_ready' | 'borderline' | 'ready'
   submissionGateStatus: string
   manuscriptReadyForSubmission: boolean | null
   manuscriptWordCount: number | null
   markerCounts: ResearchPreflightMarkerCounts
   externalBlockers: string[]
   localBlockers: string[]
+  readinessBlockers: ResearchPreflightReadinessBlocker[]
   rawOutputAudits: ResearchPreflightRawAudit[]
   nextActions: string[]
 }
@@ -79,6 +82,26 @@ interface RawOutputAuditFile {
   presentCount?: number
   missingCount?: number
   readyForIngest?: boolean
+}
+
+interface AAMASReadinessReportFile {
+  aamasFullPaperReadiness?: 'not_ready' | 'borderline' | 'ready'
+  gates?: Array<{
+    id?: string
+    title?: string
+    status?: string
+    finding?: string
+    requiredAction?: string
+  }>
+  nextActions?: string[]
+}
+
+export interface ResearchPreflightReadinessBlocker {
+  id: string
+  title: string
+  status: string
+  finding: string
+  requiredAction: string
 }
 
 const defaultMarkerCounts: ResearchPreflightMarkerCounts = {
@@ -116,30 +139,37 @@ export function buildResearchPreflightReport(options: ResearchPreflightReportOpt
   const manuscript = readOptionalJson<ManuscriptStatusFile>(
     join(options.researchRoot, 'submission/manuscript/manuscript-status.json'),
   )
+  const aamasReadiness = readOptionalJson<AAMASReadinessReportFile>(
+    join(options.researchRoot, 'submission/aamas-readiness/aamas-readiness-report.json'),
+  )
   const blockers = gate?.immediateBlockers ?? ['Missing submission/gate-report/submission-gate-report.json.']
   const externalBlockers = blockers.filter(isProviderBlocker)
   const localBlockers = blockers.filter(blocker => !isProviderBlocker(blocker))
+  const readinessBlockers = inspectReadinessBlockers(aamasReadiness)
   const rawOutputAudits = (options.rawAudits ?? defaultRawAudits()).map(audit => inspectRawAudit(options.researchRoot, audit))
   const localReady = localBlockers.length === 0
-  const status = determineStatus(gate?.overallStatus, localBlockers, externalBlockers)
+  const aamasFullPaperReadiness = aamasReadiness?.aamasFullPaperReadiness ?? 'missing'
+  const status = determineStatus(gate?.overallStatus, localBlockers, externalBlockers, aamasFullPaperReadiness, readinessBlockers)
   const markerCounts = {
     ...defaultMarkerCounts,
     ...(gate?.markerCounts ?? {}),
   }
 
   return {
-    schemaVersion: '0.1.0',
+    schemaVersion: '0.2.0',
     generatedAt: new Date().toISOString(),
     status,
     localReady,
+    aamasFullPaperReadiness,
     submissionGateStatus: gate?.overallStatus ?? 'missing',
     manuscriptReadyForSubmission: manuscript?.readyForSubmission ?? null,
     manuscriptWordCount: manuscript?.wordCount ?? null,
     markerCounts,
     externalBlockers,
     localBlockers,
+    readinessBlockers,
     rawOutputAudits,
-    nextActions: buildNextActions(localBlockers, externalBlockers, rawOutputAudits),
+    nextActions: buildNextActions(localBlockers, externalBlockers, rawOutputAudits, aamasReadiness),
   }
 }
 
@@ -152,6 +182,7 @@ export function renderResearchPreflightReport(report: ResearchPreflightReport): 
     '',
     `Submission gate: \`${report.submissionGateStatus}\``,
     `Local ready: \`${report.localReady}\``,
+    `AAMAS full-paper readiness: \`${report.aamasFullPaperReadiness}\``,
     `Manuscript ready: \`${report.manuscriptReadyForSubmission}\``,
     `Manuscript words: \`${report.manuscriptWordCount ?? 'unknown'}\``,
     '',
@@ -179,6 +210,21 @@ export function renderResearchPreflightReport(report: ResearchPreflightReport): 
     '## Local Blockers',
     '',
     ...(report.localBlockers.length > 0 ? report.localBlockers.map(blocker => `- ${blocker}`) : ['None.']),
+    '',
+    '## AAMAS Readiness Blockers',
+    '',
+    ...(report.readinessBlockers.length > 0
+      ? [
+          '| Gate | Status | Finding | Required Action |',
+          '| --- | --- | --- | --- |',
+          ...report.readinessBlockers.map(blocker => [
+            blocker.title,
+            `\`${blocker.status}\``,
+            blocker.finding,
+            blocker.requiredAction,
+          ].map(escapeMarkdownCell).join(' | ')).map(row => `| ${row} |`),
+        ]
+      : ['None.']),
     '',
     '## Next Actions',
     '',
@@ -237,18 +283,26 @@ function determineStatus(
   gateStatus: string | undefined,
   localBlockers: string[],
   externalBlockers: string[],
+  aamasFullPaperReadiness: ResearchPreflightReport['aamasFullPaperReadiness'],
+  readinessBlockers: ResearchPreflightReadinessBlocker[],
 ): ResearchPreflightStatus {
-  if (gateStatus === 'ready' && localBlockers.length === 0 && externalBlockers.length === 0) return 'ready_for_submission'
   if (externalBlockers.length > 0) return 'waiting_for_provider_results'
-  return 'local_blockers'
+  if (gateStatus !== 'ready' || localBlockers.length > 0) return 'local_blockers'
+  if (aamasFullPaperReadiness !== 'ready' || readinessBlockers.length > 0) return 'research_not_ready'
+  return 'ready_for_submission'
 }
 
 function buildNextActions(
   localBlockers: string[],
   externalBlockers: string[],
   rawOutputAudits: ResearchPreflightRawAudit[],
+  aamasReadiness: AAMASReadinessReportFile | null,
 ): string[] {
   const actions: string[] = []
+
+  if ((aamasReadiness?.aamasFullPaperReadiness ?? 'missing') !== 'ready') {
+    actions.push(...(aamasReadiness?.nextActions ?? ['Generate the AAMAS full-paper readiness report before treating preflight as submission-ready.']))
+  }
 
   if (externalBlockers.length > 0) {
     const missingConditions = rawOutputAudits
@@ -264,6 +318,28 @@ function buildNextActions(
 
   if (actions.length === 0) actions.push('Run final submission formatting and venue-specific policy checks.')
   return actions
+}
+
+function inspectReadinessBlockers(aamasReadiness: AAMASReadinessReportFile | null): ResearchPreflightReadinessBlocker[] {
+  if (!aamasReadiness) {
+    return [{
+      id: 'aamas-readiness-report',
+      title: 'AAMAS Full-Paper Readiness Report',
+      status: 'missing',
+      finding: 'The preflight report could not find submission/aamas-readiness/aamas-readiness-report.json.',
+      requiredAction: 'Generate the AAMAS readiness report before treating preflight as submission-ready.',
+    }]
+  }
+
+  return (aamasReadiness.gates ?? [])
+    .filter(gate => gate.status !== 'pass')
+    .map((gate, index) => ({
+      id: gate.id ?? `readiness-gate-${index + 1}`,
+      title: gate.title ?? gate.id ?? `Readiness gate ${index + 1}`,
+      status: gate.status ?? 'unknown',
+      finding: gate.finding ?? 'No finding recorded.',
+      requiredAction: gate.requiredAction ?? 'Resolve this readiness gate before submission.',
+    }))
 }
 
 function isProviderBlocker(blocker: string): boolean {

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-344-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left, the immediate team goal is to empty this hand as quickly as possible while retaining enough control to avoid letting opponents seize and prolong the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not had a chance to signal anything yet, so their hand strength is unknown. They may have cards that can support later if the lead is lost, but I cannot assume any specific holding.",
+    "confidence": 0.4,
+    "evidence": [
+      "a979fc4d-b601-42bf-917d-cfe6d402a38e"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards, so they may hold trumps or higher non-trump cards. They likely want to win this trick to delay my finish, but I cannot assert any hidden card as a fact.",
+    "confidence": 0.4,
+    "evidence": [
+      "a979fc4d-b601-42bf-917d-cfe6d402a38e"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the ace of spades is the strongest legal single available. It maximizes the chance of winning this trick and keeping the lead, which lets me play the remaining 2-spade next and exit the hand quickly.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weaker and likely to be beaten by opponents, ceding control. If opponents take the trick, they may force me into a position where my ace must be played reactively rather than clearing my hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump card or a higher non-trump card and could win this trick immediately.",
+      "If partner cannot or does not intervene, losing the lead may delay the hand finish."
+    ],
+    "mitigation": "By leading the ace, I reduce the chance that a normal non-trump card can beat me. Even if an opponent has a trump, I still have the 2 left for a future play rather than being stuck with the ace."
+  },
+  "confidence": 0.75,
+  "notes": "No public signals beyond the new game event, so all beliefs about hidden hands remain probabilistic."
+}

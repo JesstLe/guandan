@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-287-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards and is near finishing, so the best opening lead is a low single that partner can likely beat or that forces opponents to spend a high card, transferring initiative toward the finishing partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has one or two relatively strong cards since they are down to 2 cards; they probably want a cheap path to win a trick and lead out their last card.",
+    "confidence": 0.6,
+    "evidence": [
+      "3578e766-2d49-40db-acb3-d9470be6c3d3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 3 cards each and have seen no cards played yet; they are likely to conserve high cards unless forced, so a low lead may be allowed to pass or be taken cheaply by a middling card.",
+    "confidence": 0.55,
+    "evidence": [
+      "3578e766-2d49-40db-acb3-d9470be6c3d3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the cheapest sacrifice; it maximizes the chance that partner can win the trick with a modest card while keeping my 4/5/6 for later tricks if I regain the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 expends my highest non-trump single and is still easily beaten by any 7, trump, or higher card; it weakens my hand without increasing the chance of partner winning."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is middling and could directly lose to partner's winning card or force partner to use a higher card than necessary; preserving it is better."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only slightly higher than the 3 and still weak; playing the 3 instead preserves all stronger cards and is the most economical lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat whatever opponent plays and we lose the lead.",
+      "An opponent may play a trump or high card to seize initiative.",
+      "My remaining low cards may not win any future trick if I need to finish."
+    ],
+    "mitigation": "By keeping 4/5/6 and leading the weakest card, I limit information leakage and retain cards that can potentially beat similarly low future leads or be played in sequence."
+  },
+  "confidence": 0.75
+}

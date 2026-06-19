@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-159-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only 2 cards while all other players have 3, so the priority is to win consecutive tricks and finish the hand before opponents can take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public play history, partner likely has a typical distribution that may include high cards or trumps, but no specific holdings can be asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "29d22e1b-beb0-425b-9c3a-af96dca4aaea"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent (players 1 and 3) holds 3 unknown cards. Given the deck composition, it is plausible that at least one opponent holds a trump (rank 7 or red 7) or another 2 that could beat a single A lead, but this remains uncertain.",
+    "confidence": 0.6,
+    "evidence": [
+      "29d22e1b-beb0-425b-9c3a-af96dca4aaea"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2♠ first maximizes the chance of winning the opening trick because 2 is the highest natural rank. Winning the first trick lets player 0 retain the lead and play the A♠ next, advancing toward finishing the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading A♠ first risks losing the trick to a single 2 or any trump from an opponent, which would give an opponent the lead while player 0 is left with only the 2♠ in a reactive position."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump single or bomb that beats the 2♠ lead, seizing initiative.",
+      "Partner may be unable to help if opponents coordinate to block player 0's second card."
+    ],
+    "mitigation": "By leading the strongest single first, player 0 forces opponents to spend a premium card to take control; if the 2♠ wins, the weaker A♠ can be led next from a position of strength."
+  },
+  "confidence": 0.75,
+  "notes": "No hidden cards are asserted as facts; all beliefs are probabilistic given only the new_game public event and observed hand counts."
+}

@@ -1,0 +1,38 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-366-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "partnerIntent": {
+      "summary": "Partner (Player 2) has 3 cards and has not acted this trick. Since Player 0 led a low single heart, partner may hold a higher heart or trump and could win the trick if I pass. However, partner might also be saving a high card for a critical later moment, especially with an opponent near finish.",
+      "belief": "Uncertain; partner likely has at least one card that can beat a 3 of hearts, but cannot be assumed to have hearts or trumps.",
+      "supportingEvidence": ["b7a696d9-1336-4ad9-8227-8deb7225cdd0"]
+    },
+    "opponentIntent": {
+      "summary": "Player 0 (opponent) led a low 3 of hearts with only 2 cards remaining. This suggests an attempt to shed a weak card quickly and get another lead before going out. Player 0's remaining card is therefore likely stronger than a 3.",
+      "belief": "Player 0 is trying to escape a weak card and finish; their last card is probably not very low.",
+      "supportingEvidence": ["b7a696d9-1336-4ad9-8227-8deb7225cdd0"]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "pass",
+        "pros": ["Conserves all three cards for future tricks."],
+        "cons": ["Lets opponent (Player 0) potentially win the trick and lead again while near finish.", "Relies entirely on partner to stop Player 0."],
+        "verdict": "Too risky given opponent is down to 2 cards."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "pros": ["Strong chance of winning the trick and seizing lead from the near-finishing opponent.", "May force opponent's last card to be a trump or high heart."],
+        "cons": ["Expends a relatively high card when a lower card already beats the table.", "Leaves me with weaker cards if the trick is lost anyway."],
+        "verdict": "Over-investment; no evidence the 10 is needed to win this trick."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "pros": ["Beats the table using the minimum sufficient card.", "Conserves 9 and 10 for later.", "Prevents opponent from getting a free lead while near finish."],
+        "cons": ["If Player 0's last card is higher than 4, I may lose the trick anyway."],
+        "verdict": "Best balance of controlling the trick and preserving hand strength."
+      }
+    ],
+    "conclusion": "With opponent near finish, passing is too passive. Playing the 10 overcommits a high card. The 4 of hearts is the cheapest card that beats the 3, controls the lead, and keeps stronger cards in reserve."
+  }
+}

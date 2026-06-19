@@ -1,0 +1,30 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-329-turn-1-player-0",
+  "reasoningTrace": [
+    {
+      "type": "belief_state",
+      "content": "Opening lead of round 1. Public history contains only new_game. My hand is {2♠, A♠} with 2 cards remaining; partner and opponents each hold 3 cards. Trump rank is 7, so 2 is the strongest non-trump rank and outranks A. No cards have been played, so all hidden cards are possible but constrained by deck composition."
+    },
+    {
+      "type": "partner_intent",
+      "content": "Partner has 3 cards and shares my team. Since I am down to 2 cards, partner likely wants me to exit quickly. Partner may hold mid/high singles or trumps to cover my leads if opponents intervene, but this is uncertain. Leading a strong single makes it easier for partner to pass the lead back or for me to retain initiative."
+    },
+    {
+      "type": "opponent_intent",
+      "content": "Each opponent has 3 cards and will try to seize the lead or force me to burn a high card. They may have trump-rank 7s, jokers, or other 2s. Leading a weaker card invites an opponent to win cheaply and control the endgame, which is dangerous when I have only 2 cards."
+    },
+    {
+      "type": "action_comparison",
+      "content": "Candidate play-single-spade-2-copy2 leads the 2, the strongest card in my hand, maximizing the chance of winning this trick and retaining the lead for my final A♠. Candidate play-single-spade-A-copy2 leads a lower single; if it loses, an opponent controls the table and my 2 may be trumped or trapped later. In a 2-vs-3 endgame race, preserving initiative is more valuable than card-order subtlety."
+    },
+    {
+      "type": "decision",
+      "content": "Select play-single-spade-2-copy2 to lead the strongest card, maximize probability of winning the first trick, and keep the initiative to play out the remaining A♠."
+    }
+  ],
+  "selectedActionId": "play-single-spade-2-copy2",
+  "evidence": [
+    "3545c30d-d553-4a48-8320-c2bae5c32795"
+  ]
+}

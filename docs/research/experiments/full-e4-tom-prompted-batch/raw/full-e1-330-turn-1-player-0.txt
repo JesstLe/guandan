@@ -1,0 +1,15 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-330-turn-1-player-0",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "confidence": 0.88,
+  "reasoning": {
+    "partnerIntent": "Partner (player 2) has 3 cards and no public actions. They likely want a low, safe lead so they can win the trick with a moderate card or at least avoid being forced to split a strong hand.",
+    "opponentIntent": "Opponents (players 1 and 3) each have 3 cards and no public actions. They may try to win the trick cheaply or preserve high cards/trumps for later; a low lead gives them no free information about my hand strength.",
+    "candidateComparison": "Leading the 6 preserves some high-card power but wastes the strongest single and makes the remaining cards weaker. Leading the 3 keeps higher spades for later tricks, is least committal, and follows the standard opening principle of leading low.",
+    "teamObjective": "Minimize risk on the opening lead, conserve mid-strength cards for later control, and let the partner potentially take the trick without revealing my full holding."
+  },
+  "evidence": [
+    "303bd233-22bd-427d-97c0-c16a53342dd4"
+  ]
+}

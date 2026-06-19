@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-097-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is near finishing. By leading the cheapest non-trump single, I keep the trick affordable so partner has the best chance to win it, gain the lead, and possibly go out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely trying to exit quickly with only 2 cards left. They may hold a card that can beat a low diamond single, but exact ranks/suits are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "fcf7ae35-0a0d-4362-a3ac-c4572cdc43ec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely have higher non-trump cards or trumps to beat a low diamond lead, but there is no public evidence of bombs, trumps played, or specific high-card holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "fcf7ae35-0a0d-4362-a3ac-c4572cdc43ec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The diamond 3 is the lowest legal lead. It preserves the 4, 5, and 6 for later, minimizes value loss if opponents win the trick, and gives the partner with a small hand the best chance to take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 uses my strongest non-trump card. If opponents take the trick, I lose my best card and retain only weaker cards for future leads."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still a low card, but it is not the cheapest lead and preserves less value than leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is better than the 5 or 6, but leading the 3 is strictly more conservative and maximizes partner's chance to beat the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may have a trump or higher diamond and win the lead.",
+      "Partner may be unable to beat the trick and could be forced to spend a valuable card.",
+      "With no trumps in my hand, I cannot easily regain the lead if opponents take it."
+    ],
+    "mitigation": "Leading the lowest possible card minimizes the value surrendered on this trick and keeps stronger cards in reserve for later rounds or to support the partner."
+  },
+  "confidence": 0.75
+}

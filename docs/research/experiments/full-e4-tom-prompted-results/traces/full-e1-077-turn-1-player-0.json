@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-077-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Both teammates have small hands (player 0 has 4 cards, partner has 2). The immediate priority is to progress cards out of our own hand while giving partner the cheapest possible lane to shed one of their last two cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) is near finish with only 2 cards. Their exact composition is unknown, but with such a short hand they likely hold low or medium singles they want to play rather than high control cards. They may pass on a low lead if they cannot beat it cleanly, or may play a slightly higher card to take the trick if it advances their finish.",
+    "confidence": 0.6,
+    "evidence": [
+      "11d54426-c86d-4b9c-8313-e21e177ea75f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and their holdings are completely unknown. They can almost certainly beat a 3 of diamonds, but at the opening of the game they have little incentive to commit high cards or trumps to win a trivial trick. They are more likely to pass and conserve strength unless one of them is also near finish.",
+    "confidence": 0.55,
+    "evidence": [
+      "11d54426-c86d-4b9c-8313-e21e177ea75f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3 of diamonds) is the standard opening progression play. It starts emptying our hand with minimum strength, preserves the 4, 5 and 6 for subsequent tricks, and forces opponents to spend real value if they want to take control. It also gives partner the widest range of possible responses from their 2-card hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Still a reasonable low lead, but it consumes the 4 and leaves only 5 and 6 as higher non-trump cards, slightly weakening future tricks with no compensating benefit."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Wastes a middle card from an already weak straight; reduces the number of cards that can reliably beat lower future leads."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest available card sacrifices our best non-trump card for no advantage. A 6 is still easily beaten by opponents and does not protect partner or increase our chance of retaining the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and seize the lead.",
+      "Partner may be unable to respond, leaving us needing to recover the lead with a weak hand.",
+      "We break up a potential 3-4-5-6 straight, though no straight lead was available in the legal actions."
+    ],
+    "mitigation": "By leading the absolute lowest card we minimize the value opponents gain when they take the trick, and we keep our 4, 5 and 6 available to compete for future leads or cover partner's exit attempts."
+  },
+  "confidence": 0.85,
+  "notes": "No public cards have been played, so all beliefs about opponent and partner holdings remain probabilistic. The hand-count signal (partner at 2 cards) is the only public information beyond the new_game event."
+}

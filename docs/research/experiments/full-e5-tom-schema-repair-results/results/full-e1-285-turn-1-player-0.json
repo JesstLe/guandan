@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-285-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-spade-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "All cited evidence ids are present in public history."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: Opponents (players 1 and 3) each hold 3 unknown cards. Given that trump rank is 7 and our highest card is 6, it is probable that at least one opponent holds cards of rank 7 or higher, including possible trumps, that can beat any single-card lead we make."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Opponent consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "finish_hand requires an endgame hand and a play action."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [
+    {
+      "code": "TEAM_OBJECTIVE_ACTION_MISMATCH",
+      "message": "Team objective is not compatible with the selected action and decision context.",
+      "path": "teamObjective.type"
+    }
+  ],
+  "summary": "Hard verifier found 1 failure(s)."
+}

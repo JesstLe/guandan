@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-307-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 2 (partner) holds only 2 cards and is near finishing. With a weak non-trump hand, my best contribution is to lead a low single that partner can overtake cheaply, giving them control to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely trying to exit their last cards quickly. With only 2 cards, they probably retain at least one reasonably high card or trump to capitalize on a low lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "732bde00-143e-471f-b351-38ec669b678c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have no public card information and will likely try to win the trick if they can, but a very low lead may force them to spend a trump or strong card.",
+    "confidence": 0.5,
+    "evidence": [
+      "732bde00-143e-471f-b351-38ec669b678c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the single diamond 3, the lowest card, maximizes the chance that partner can beat the trick with a modest card or small trump, transferring control to the player closest to finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest of my low cards demands a stronger response from partner and wastes my best non-trump exit card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still a relatively high low card; leading it does not improve my defensive position compared with the 3 and is harder for partner to beat."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is better than 5 or 6 but still higher than necessary; the 3 is the most economical lead for partner support."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or higher diamond and win the trick.",
+      "Partner may not be able to beat even a 3, leaving opponents in control."
+    ],
+    "mitigation": "A low lead is the cheapest possible probe; if opponents spend resources to win, the team learns about their strength while preserving my own modest cards for later."
+  },
+  "confidence": 0.75,
+  "notes": "No trumps are visible; leading the minimum non-trump single is the standard cooperative opening when partner is near finish."
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-358-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (only low off-suit clubs), so the best opening lead is the lowest card to avoid committing strength and give my partner a chance to take control of the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards remaining. No cards have been played, so their distribution is unknown, but with only 3 cards they could hold a higher single or trump to cover a low lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "e2d0769a-97fc-458d-91e0-046131c87db3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards left (near finish) and likely retains at least one high card or trump to close out; player 3 has 3 cards and may also have playable coverage. Either opponent can probably beat a low club lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "e2d0769a-97fc-458d-91e0-046131c87db3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the weakest legal move. It signals a weak hand, expends the least valuable card, and preserves the 4/5/6 for later tricks where relative rank might matter more.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but still easily beaten; wasting a higher club now reduces future options without improving the lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A middle card that is more likely to win only if opponents are extremely low, but it uses up a card that could be useful later."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Best chance among these to win the trick immediately, but as the strongest club it is better kept for a later situation rather than spent on an opening lead that opponents are likely to cover."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 (2 cards) may have a high single or trump and win the trick, possibly finishing soon.",
+      "If partner cannot cover, the lead may transfer to an opponent near finish."
+    ],
+    "mitigation": "By keeping the 4/5/6, I retain marginally better cards for future tricks and avoid handing an opponent an easy win with my strongest remaining card."
+  },
+  "confidence": 0.75
+}

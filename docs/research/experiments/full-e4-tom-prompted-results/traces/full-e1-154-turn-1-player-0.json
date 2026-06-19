@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-154-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards remaining, the highest-priority team objective is for me to go out first by winning two consecutive tricks. Leading the strongest natural card maximizes the chance of retaining the lead and playing the A♠ last."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, team 0) has three cards and no public actions have occurred. In an endgame race, they likely want to help me finish if I have a strong position, so they will pass on a high lead unless they hold a much stronger path to go out themselves. I cannot assume their exact composition; they may hold trumps, 2s, or bombs, but as a teammate they have incentive to let my high single win.",
+    "confidence": 0.65,
+    "evidence": [
+      "bc8e901f-155a-45c5-9c13-b87ade59dfdf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, team 1) each have three cards and want to stop me from going out. They may hold trump 7s, other 2s, jokers, or bombs, any of which could beat my lead. Since no cards have been played, their high-card density is uncertain, but with only eight non-hand cards distributed among three players, some strength is probable.",
+    "confidence": 0.55,
+    "evidence": [
+      "bc8e901f-155a-45c5-9c13-b87ade59dfdf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "In Guandan, 2 ranks above A, so the 2♠ is the stronger single. Leading it first gives the highest probability of winning the opening trick and keeping the lead. If it wins, I can then lead the A♠ to try to finish. This sequencing uses my strongest card to open the door for my final card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A♠ is weaker than any 2 or trump. Leading it first risks an opponent or even partner taking control with a higher single, after which my remaining 2♠ may not be strong enough to regain the lead. The 2♠ lead dominates the A♠ lead for finishing."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7, joker, or bomb and beat the 2♠, taking control.",
+      "The partner may override my lead with a higher card if they see a better path, disrupting the finish plan.",
+      "Even if the 2♠ wins, the remaining A♠ could still be beaten on the second trick."
+    ],
+    "mitigation": "There is no safer sequence with only these two singles; leading the maximum-strength card first is the optimal endgame race play. The partner's pass or support, and the opponents' inability to beat a 2 without trump/joker/bomb, are the best available conditions for success."
+  },
+  "confidence": 0.72,
+  "notes": "No public cards have been played, so all beliefs about partner and opponents remain probabilistic and grounded only in the new_game event and hand counts."
+}

@@ -120,7 +120,7 @@ const familyEvidence: Record<ExperimentEvidenceFamily, EvidenceTemplate[]> = {
   ablation: [
     {
       artifactPath: 'experiments/pilot-ablation-summary/ablation-summary.json',
-      purpose: 'Ablation results isolating each verifier component named in the manuscript.',
+      purpose: 'Post-hoc verifier-label ablation over paired before/after traces, plus an explicit boundary separating it from future prompt-level component-removal reruns.',
     },
   ],
   case_study: [
@@ -153,7 +153,7 @@ const familyCommands: Record<ExperimentEvidenceFamily, string[]> = {
     'Scale the decision-point export to the final dataset target or rewrite the manuscript claim to pilot scope before removing the marker.',
   ],
   ablation: [
-    'Run verifier-component ablations and write experiments/pilot-ablation-summary/ablation-summary.json before removing ablation claims.',
+    'Regenerate the post-hoc verifier-label ablation at experiments/pilot-ablation-summary/ablation-summary.json, or remove ablation claims from the manuscript.',
   ],
   case_study: [
     'Select trace-level case studies after LLM conditions are ingested and write experiments/pilot-case-studies/case-studies.json.',

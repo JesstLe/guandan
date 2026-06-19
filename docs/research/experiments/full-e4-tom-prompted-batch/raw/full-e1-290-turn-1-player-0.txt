@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-290-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is extremely weak (only 3-6 of spades, no trump), so I cannot realistically keep control. By leading the lowest possible card, I give my partner the cheapest chance to win the trick with a higher card or a trump, while I shed a weak card."
+  },
+  "partnerBelief": {
+    "summary": "Partner has a 3-card hand with no public information. They could hold higher cards or trumps that can beat a low spade lead, but I cannot assume any specific cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "f27d69f4-9d42-4d89-bed0-b651be9c9ea7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely have cards higher than 6 or trumps that can beat any of my leads, but this is probabilistic. They may also have weak cards, so a low lead is not guaranteed to lose.",
+    "confidence": 0.5,
+    "evidence": [
+      "f27d69f4-9d42-4d89-bed0-b651be9c9ea7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the least valuable play. It preserves the slightly higher 4-6 for future tricks, minimizes information given to opponents, and maximizes the chance that partner can overtake with a modest card or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Playing the 4 expends a slightly stronger card for no clear gain and leaves the 3 as a dead low card later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is the second-strongest card in my hand; using it now weakens my remaining hand without improving the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 wastes my highest card on a lead that any higher non-trump or trump can beat, leaving only 3-5 for later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card or trump and win the trick, giving the opposing team initiative.",
+      "My partner may be forced to follow spade and waste a useful card if they hold spades.",
+      "Even if I shed the 3, my remaining hand is still weak and may struggle to win future leads."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the value lost and the information revealed. If my partner can take the trick, they gain control; if not, I have preserved my slightly stronger cards for a future opportunity."
+  },
+  "confidence": 0.7
+}

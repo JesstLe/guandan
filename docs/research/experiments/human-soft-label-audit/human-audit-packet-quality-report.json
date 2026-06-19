@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T21:15:52.234Z",
+  "status": "packet_ready",
+  "manifestPath": "docs/research/experiments/human-soft-label-audit/human-audit-manifest.json",
+  "blindJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+  "answerKeyJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-answer-key.jsonl",
+  "annotationCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-annotation-sheet.csv",
+  "annotatorHtmlPath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator.html",
+  "protocolPath": "docs/research/experiments/human-soft-label-audit/human-audit-protocol.md",
+  "sampleCount": 40,
+  "expectedSampleCount": 40,
+  "annotationRowCount": 40,
+  "answerKeyRowCount": 40,
+  "annotatorEmbeddedSampleCount": 40,
+  "stratumCounts": {
+    "lead_opening": 8,
+    "lead_opening;endgame_race": 8,
+    "lead_opening;opponent_near_finish": 8,
+    "follow_beat_or_pass;opponent_near_finish": 8,
+    "lead_opening;partner_near_finish": 8
+  },
+  "checks": [
+    {
+      "id": "manifest-status",
+      "status": "pass",
+      "detail": "manifest status is annotation_packet_prepared_not_human_completed"
+    },
+    {
+      "id": "manifest-count",
+      "status": "pass",
+      "detail": "manifest sampleCount=40, blind rows=40"
+    },
+    {
+      "id": "nonempty-sample",
+      "status": "pass",
+      "detail": "40 blind samples"
+    },
+    {
+      "id": "unique-blind-sample-ids",
+      "status": "pass",
+      "detail": "40/40 unique blind sample ids"
+    },
+    {
+      "id": "answer-key-count",
+      "status": "pass",
+      "detail": "40 answer rows for 40 blind rows"
+    },
+    {
+      "id": "answer-key-id-match",
+      "status": "pass",
+      "detail": "answer-key sample ids match blind sample ids"
+    },
+    {
+      "id": "annotation-row-count",
+      "status": "pass",
+      "detail": "40 annotation rows for 40 blind rows"
+    },
+    {
+      "id": "annotation-id-match",
+      "status": "pass",
+      "detail": "annotation CSV sample ids match blind sample ids"
+    },
+    {
+      "id": "annotation-human-fields",
+      "status": "pass",
+      "detail": "annotation CSV contains all human label fields"
+    },
+    {
+      "id": "blind-required-fields",
+      "status": "pass",
+      "detail": "blind JSONL contains all public annotation fields"
+    },
+    {
+      "id": "blind-hides-verifier-labels",
+      "status": "pass",
+      "detail": "blind JSONL contains no verifier answer fields"
+    },
+    {
+      "id": "answer-key-has-verifier-labels",
+      "status": "pass",
+      "detail": "answer key contains all verifier fields"
+    },
+    {
+      "id": "annotator-embeds-samples",
+      "status": "pass",
+      "detail": "40 embedded samples for 40 blind rows"
+    },
+    {
+      "id": "annotator-id-match",
+      "status": "pass",
+      "detail": "annotator embedded sample ids match blind sample ids"
+    },
+    {
+      "id": "protocol-rubric",
+      "status": "pass",
+      "detail": "protocol contains rubric and all human label names"
+    }
+  ],
+  "warnings": [
+    "Annotation CSV contains no human labels yet; agreement remains pending until annotation is completed."
+  ],
+  "readyForAnnotation": true,
+  "readyForPaperEvidence": false
+}

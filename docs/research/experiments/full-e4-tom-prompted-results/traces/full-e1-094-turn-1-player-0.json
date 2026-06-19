@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-094-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two cards while every other player holds three, so the top priority is to empty my hand quickly by winning the lead and playing out the remaining card."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three hidden cards and has not yet acted, so there is no public signal about their exact strength. They may be able to support later if they gain the lead, but their specific cards are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "6018925a-7b00-4685-a01f-008c4547f8f7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three hidden cards and will likely try to prevent me from finishing. They may have trump cards, bombs, or high singles, but no hidden holdings are known for certain at the opening lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "6018925a-7b00-4685-a01f-008c4547f8f7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 of spades is the higher of my two singles. Leading it maximizes the chance of winning this trick, keeping the lead so I can play the Ace next and finish my hand before opponents can react.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The Ace is lower than the 2, so leading it is more likely to be beaten immediately and would surrender the lead in a race where I need to play out both cards quickly."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 2 with a trump, bomb, or higher single and seize the lead.",
+      "Even if the 2 wins, an opponent may win the next trick before I can play my final card."
+    ],
+    "mitigation": "Leading the strongest available single gives the highest chance of retaining control and sequencing both remaining cards, which is the best option given the hidden cards."
+  },
+  "confidence": 0.75,
+  "notes": "The endgame race favors an aggressive high lead to finish the hand."
+}

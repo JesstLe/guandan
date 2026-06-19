@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-341-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has not yet acted; their hand count is 3. No direct signal is available, but by leading a low heart the opponent has revealed a vulnerability in the heart suit. Partner likely wants the team to win the trick or at least prevent the opponent from retaining the lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "0f3bf8c3-217f-47c2-90a8-03e6f979a5ed"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 led a low single heart and has only 2 cards remaining, indicating they are near finishing. Their objective is likely to play out their last cards quickly, possibly with another low single or a small combination. They may be hoping opponents will pass or overcommit high cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "0f3bf8c3-217f-47c2-90a8-03e6f979a5ed"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-heart-4-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

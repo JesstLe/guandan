@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-015-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader in a new round, the immediate team objective is to establish a cheap lead that preserves stronger cards for later tricks and avoids burning high value unnecessarily."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards but no public action has occurred, so there is no reliable signal about their hand strength or distribution. I probabilistically believe they may hold some high cards or trump, but I cannot assert any specific holdings.",
+    "confidence": 0.2,
+    "evidence": [
+      "f73abe34-4085-420a-b53e-ed603c6bd1f4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and have played nothing yet. They may hold higher non-trump singles or trump cards that could overtake my lead, but this is uncertain and cannot be treated as fact.",
+    "confidence": 0.2,
+    "evidence": [
+      "f73abe34-4085-420a-b53e-ed603c6bd1f4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3♠) is the standard opening play: it attempts to win or cheaply contest the trick while keeping the 4♠, 5♠, and 6♠ available for later tricks. Since all my cards are low and non-trump, minimizing the value spent on each lead maximizes my remaining trick-taking potential.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4♠ is a stronger card than the 3♠ but still low; leading it now wastes a card that might win a later trick when opponents have already spent higher cards."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5♠ is even more valuable in this very weak hand; leading it prematurely reduces the chance of winning a subsequent trick after the opening lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6♠ is my highest card and the best chance to win a future trick; burning it on the opening lead is inefficient and leaves only lower cards for later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump single (e.g., 8+) or any trump and take the lead immediately.",
+      "If the trick is lost, my team loses the lead and the remaining low spades may be easier for opponents to control.",
+      "Partner may not be able to assist because their cards are unknown and they act after an opponent in this trick."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the value surrendered if the trick is lost, keeps my best cards in reserve, and avoids revealing strong holdings early."
+  },
+  "confidence": 0.8,
+  "notes": "No public signals exist beyond the new_game event, so all partner/opponent beliefs remain probabilistic."
+}

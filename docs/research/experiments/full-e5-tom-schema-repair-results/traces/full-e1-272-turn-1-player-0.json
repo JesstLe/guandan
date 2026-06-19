@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-272-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards (near finish) and I hold only low non-trump cards. I cannot realistically keep or win the lead with these cards, so I should lead the lowest single to make it as easy as possible for partner to take control and finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a small but possibly strong remaining hand and is trying to finish; they would prefer a low lead they can beat without wasting a high card or trump.",
+    "confidence": 0.7,
+    "evidence": [
+      "7d3ff6cf-8d2d-4d74-91c3-6b2225a2c1a0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have no public information and average hand counts of 3/2/3. They likely hold cards above my 3-6 range and may be able to overtake a low single, but leading the lowest card forces them to spend a higher non-trump or trump if they want control.",
+    "confidence": 0.65,
+    "evidence": [
+      "7d3ff6cf-8d2d-4d74-91c3-6b2225a2c1a0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest single, giving partner the best chance to take the lead cheaply while keeping my slightly higher 4-6 diamonds for later if partner gains control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the highest card in my hand but still a low non-trump; opponents or partner can beat it just as easily, and it wastes my strongest remaining non-trump."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Slightly higher than the 3, so it is marginally harder for partner to beat and does not preserve as much hand strength."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Still higher than the 3 with no meaningful extra chance to win the trick; preserving the 4-6 sequence is better than leading it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card or trump and seize the lead.",
+      "Partner may not be able to beat the 3, leaving the lead with opponents."
+    ],
+    "mitigation": "All my legal actions are low non-trump singles, so any lead is likely to be overtaken. The 3 minimizes the cost to partner if they do take it and minimizes the value opponents gain by winning the trick."
+  },
+  "confidence": 0.78,
+  "notes": "No trumps or bombs are available, so the best support for a near-finish partner is a minimal low-card lead."
+}

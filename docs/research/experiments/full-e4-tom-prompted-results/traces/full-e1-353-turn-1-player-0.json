@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-353-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only weak non-trump clubs, so I cannot expect to win or keep the lead. Leading the lowest card invites partner to take control with a higher card or trump, advancing our team's tempo before the short-stacked opponent can finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not acted publicly. They likely have some playable strength and want to gain the lead to attack, especially since opponent player 1 is down to 2 cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "d7cbc88f-e83b-443c-af9c-5fe160d74af9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is near finish with only 2 cards and will try to win this trick or go out quickly; opponent player 3 has 3 cards and may support. Given the small hand count, player 1 likely holds at least one high card or trump to stop a low lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "d7cbc88f-e83b-443c-af9c-5fe160d74af9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "My hand is four low clubs (3-6) with no trumps, wildcards, or bombs. Leading the 3 gives partner the clearest signal that I am weak and the best chance to overtake with a higher non-trump or trump, while preserving the 6 as a slightly stronger card for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 squanders my highest card. It still loses to any higher non-trump or trump, so it does not materially improve our chance of winning the trick and leaves me with even weaker cards afterward."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a low card that any opponent can beat. Playing it now wastes a card that could cover a later low return, without giving partner a clearer signal than the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is intermediate and offers no strategic advantage over the 3; it is still beaten by most cards and does not maximize the preservation of my slightly higher cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A low single is easily beaten by any higher card or trump, so opponent player 1 could win and move closer to going out.",
+      "If partner cannot cover, the lead passes to the opponents and my weak remaining cards may not help."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize my own commitment, keep my remaining cards in descending order, and maximize the chance that partner can win the trick cheaply. If partner fails, I still have slightly higher cards to support later."
+  },
+  "confidence": 0.55
+}

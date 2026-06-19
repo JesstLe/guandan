@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-041-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 (opponent) has only two cards remaining and led a low heart 3, signaling an attempt to shed cards and finish. The priority is to seize control of the trick now to prevent Player 0 from winning and leading again from a near-finish position."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 2) holds three cards and may possess a card that can beat heart 3, but that is uncertain. There is no public signal yet about partner's exact strength, so I should not rely on partner being able or willing to spend a higher card on this trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "4a197fc7-0df6-4bf4-b4ae-b45c1ff9bbaf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a single heart 3 with only two cards left, strongly suggesting they are trying to dump a weak card to get down to a finishing play. Player 3 (opponent) still holds three cards and could also beat a low heart, so letting the trick remain contested by opponents is dangerous.",
+    "confidence": 0.75,
+    "evidence": [
+      "4a197fc7-0df6-4bf4-b4ae-b45c1ff9bbaf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest legal winner, heart 4, to beat the opponent's lead, take control of the trick, and stop the near-finish opponent from leading the next trick, while conserving the stronger 9 and 10 for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks Player 0 winning the trick and leading again with only two cards, which could allow a quick finish. It also gives Player 3 a chance to take the lead if partner cannot beat it."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beating with the 9 unnecessarily spends a stronger card when the 4 already wins the trick, weakening future defensive options."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Beating with the 10 wastes the highest card in hand for no additional benefit over the 4, leaving fewer resources to counter opponent high cards later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning the trick leaves me with only two cards and the lead, which opponents may be able to beat on the next trick.",
+      "Partner might have had a low winner and could have taken the trick, allowing me to save the 4."
+    ],
+    "mitigation": "By using the minimal winner (heart 4), I maximize the remaining strength of my hand (9 and 10) and immediately disrupt the most urgent threat: a near-finish opponent retaining or regaining the lead."
+  },
+  "confidence": 0.78,
+  "notes": "Hidden card information means beliefs about partner and opponent holdings remain probabilistic; the chosen action is grounded in the public facts of Player 0's low lead and very low hand count."
+}

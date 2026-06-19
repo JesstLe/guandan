@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-184-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is down to 2 cards in the opening lead of an endgame race. The fastest path to team benefit is to win a trick now and immediately lead the remaining 2 to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. They likely contain some mid-to-high non-trump strength or possibly trumps, but no public signals exist yet; any specific composition is only probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "ba71eb8d-d05c-4325-837d-c9ab9c83ebeb"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards. They may hold trumps, jokers, or the trump-rank 7, which are the only cards that can beat a spade A; their exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "ba71eb8d-d05c-4325-837d-c9ab9c83ebeb"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A maximizes the chance of winning this trick because it is the highest non-trump single and only loses to trumps/jokers. Winning lets player 0 retain the lead and play the spade 2 next to finish the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The spade 2 is the weakest non-trump single and would almost certainly be beaten immediately by any opponent with a higher card or trump, ceding initiative when player 0 is already close to going out."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump, joker, or trump-rank 7 that beats the spade A, in which case the opponent seizes the lead.",
+      "If player 0 loses this trick, the opponent may play combinations that player 0 cannot match, delaying or preventing a finish."
+    ],
+    "mitigation": "Leading the strongest available single is the only proactive mitigation; it either wins the trick outright or forces the opponent to spend a high-ranking trump early."
+  },
+  "confidence": 0.75
+}

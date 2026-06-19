@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-299-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while opponents hold three, the immediate team objective is to empty my hand as safely and quickly as possible. Leading the lowest card preserves my high card as a stopper for future tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unknown cards and has not yet acted. In a low-information opening lead, partner likely prefers a low single that they can either cover with a higher card or allow to pass without expending a valuable card. No specific ranks, suits, or trumps can be inferred.",
+    "confidence": 0.5,
+    "evidence": [
+      "2f52a4b1-51a9-4ca9-aea1-88ddffef01b5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three unknown cards. They will generally cover a low 2 lead with any higher non-trump or any trump to seize control and slow my exit. Because no cards have been played, their exact holdings remain uncertain and must be treated probabilistically.",
+    "confidence": 0.55,
+    "evidence": [
+      "2f52a4b1-51a9-4ca9-aea1-88ddffef01b5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2♠ dumps the weakest card while keeping the A♠ as a high non-trump control card. If opponents or partner cover the 2, the retained A can later beat a non-trump single or cover a partner lead, helping me get rid of my final card. If the 2 somehow wins, I still hold the A for the next lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A first squanders my only high card. If an opponent covers it with a trump or higher card, I would be left with only the weak 2 and no reliable way to regain the lead. Even if the A wins, I would then be forced to lead the 2 next, giving opponents a free chance to take control with a low investment."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may cover the 2 with a higher non-trump or trump and then lead a combination that I cannot follow, delaying my exit.",
+      "If the 2 is allowed to win, my follow-up A lead may be beaten by a trump or higher card."
+    ],
+    "mitigation": "By preserving the A, I retain the ability to cover a later non-trump single and regain the lead. The low lead minimizes the information and card value given away, keeping maximum flexibility for the final two cards."
+  },
+  "confidence": 0.75
+}

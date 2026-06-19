@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-064-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two cards left and am in an endgame race. Winning this opening trick lets me keep the lead and immediately play my final card, maximizing the chance that my team finishes first."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unknown cards. With no cards played yet, they likely have a typical mix of ranks and possibly some trumps. They would prefer to beat opponent plays to protect me or regain the lead, but they cannot signal their exact hand.",
+    "confidence": 0.4,
+    "evidence": [
+      "be533211-569e-4a7b-a6f1-8f59587e434c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent (players 1 and 3) holds 3 unknown cards. Because no trump or bomb has appeared, it is plausible one or both have trump cards or high non-trump winners. They will try to beat my lead to seize control and stop me from emptying my hand.",
+    "confidence": 0.5,
+    "evidence": [
+      "be533211-569e-4a7b-a6f1-8f59587e434c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The ace of spades is my highest card and the strongest non-trump single I can lead. It gives the best chance of winning the trick outright, after which I retain the lead and can play the deuce to go out.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce is much weaker; almost any opponent higher card or trump would beat it, ceding the lead and leaving me with only the ace, which I might not be able to play before an opponent finishes."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the ace with a trump, a joker, or the trump-rank 7 card.",
+      "If I lose the lead, I remain with a low deuce and opponents may be able to prevent me from playing it."
+    ],
+    "mitigation": "Leading the ace maximizes the probability of winning the trick immediately. Even if the ace is beaten, my partner may have a strong card to regain control, and the deuce can still be shed if the lead returns."
+  },
+  "confidence": 0.85
+}

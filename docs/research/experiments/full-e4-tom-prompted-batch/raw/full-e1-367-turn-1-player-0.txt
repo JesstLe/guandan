@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-367-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is down to 2 cards (public handCounts) and tagged as near finish. With a weak non-trump hand, I should keep the lead cheap so partner does not have to spend high cards and can try to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely wants to finish the hand soon. With only 2 cards left they may hold a strong winning combination or be waiting for a cheap lead, but their exact cards are hidden and I cannot assert them as fact.",
+    "confidence": 0.65,
+    "evidence": [
+      "a4a5a9e6-ef45-4fa7-ab93-407b1c4a373d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and will try to seize or keep the lead to block my partner's finish. They likely hold some trumps or higher non-trump cards, but I have no public evidence of their exact holdings.",
+    "confidence": 0.55,
+    "evidence": [
+      "a4a5a9e6-ef45-4fa7-ab93-407b1c4a373d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the lowest single, diamond 3, to expend the least hand value and preserve the 4-5-6 for later tricks or to cover my partner. A low lead also gives my partner the cheapest chance to take control if they have a matching or slightly higher card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest non-trump card. Playing it now wastes my best chance to win or cover a later trick, and opponents can still beat it with trumps or higher cards."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "While still low, it consumes a card that is strictly better than the 3 with no compensating gain, since all my diamonds are non-trump and vulnerable to opponent trumps."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Same as the 4 and 6: it expends a higher low card unnecessarily when the 3 already makes a legal, minimally costly lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any non-trump single is likely to be beaten by opponents with trumps or higher cards.",
+      "If my partner cannot win the trick, the opponents gain initiative and may pressure my partner's last cards."
+    ],
+    "mitigation": "By playing the 3 I keep my slightly higher cards in reserve, maximizing my ability to respond in later tricks or support a partner who does win the lead."
+  },
+  "confidence": 0.72,
+  "notes": "Theory-of-mind reasoning is grounded only in public hand counts and the new_game event; no hidden cards are asserted as facts."
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-186-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards left and led a low heart 3. Taking the lead now prevents player 0 from retaining initiative and possibly going out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not yet acted on this trick. They might be able to beat a heart 3 with a higher heart or a trump, but there is no public signal confirming that, so I cannot rely on them to seize control.",
+    "confidence": 0.5,
+    "evidence": [
+      "2577ce5a-047b-4435-bee4-5022a31bd8c9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 is down to 2 cards and opened with a low heart 3, likely trying to shed a weak card while keeping the lead. Opponent player 3 may hold a higher heart or trump that could overtake my play, but that is uncertain.",
+    "confidence": 0.7,
+    "evidence": [
+      "2577ce5a-047b-4435-bee4-5022a31bd8c9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The heart 4 is the cheapest legal card that beats the table. It wins the current trick unless an opponent overplays, strips initiative from the nearly-finished opponent player 0, and preserves the stronger 9 and 10 for future leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks player 0 winning the trick if partner and opponent 3 also pass, giving a 2-card opponent the lead again."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 no more surely than the 4, but it spends a stronger card that may be needed later."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the strongest card in my hand; using it to beat a 3 is wasteful when the 4 already suffices."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 3 might play a higher heart or trump and take the lead.",
+      "Player 0 may still have a strong exit card among their last 2 cards."
+    ],
+    "mitigation": "By playing the minimum winning card, I keep my stronger hearts in reserve and force any overtake to come from opponent 3's higher-value cards, improving my team's flexibility in the following tricks."
+  },
+  "confidence": 0.85
+}

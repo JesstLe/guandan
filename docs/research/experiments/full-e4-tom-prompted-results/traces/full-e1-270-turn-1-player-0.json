@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-270-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (3-6 of spades, all non-trump), so I cannot expect to keep the lead for long. The best team objective is to play the lowest card to invite my partner to take control of the trick."
+  },
+  "partnerBelief": {
+    "summary": "My partner has 3 unknown cards and is likely to hold at least one card higher than 3 or a trump, but I cannot be certain. A low lead signals weakness and asks partner to cover if possible without overcommitting high value cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "1da720cc-fc76-4055-9f13-79f942c3078c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Given the deck distribution, it is probable that at least one opponent has a card higher than a low single such as 3 or a trump. Opponents will likely try to seize the lead early.",
+    "confidence": 0.65,
+    "evidence": [
+      "1da720cc-fc76-4055-9f13-79f942c3078c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the weakest legal play. It signals to my partner that I have a weak hand, gives partner the cheapest chance to take the lead, and preserves the 6 as my strongest remaining card for a later trick or to cover an opponent's low lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Playing the 4 wastes a card that is still unlikely to win the trick outright, and it gives less room for partner to cover cheaply."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is my second-best card; losing it now to a higher opponent card would strip my hand of a card that might win a future trick or beat a low opponent lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 is the most aggressive option but is still very vulnerable to any 7 or higher non-trump, trump-rank, or actual trump card. If an opponent covers, I lose my only high card and retain little control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and take the lead.",
+      "My partner may be unable or unwilling to cover, leaving the opponents in control."
+    ],
+    "mitigation": "By keeping the 6 as my best card, I retain some ability to regain control or respond to a low opponent lead on a later trick."
+  },
+  "confidence": 0.6,
+  "notes": "No public cards have been played, so all beliefs are probabilistic and grounded only in the new_game event and current hand counts."
+}

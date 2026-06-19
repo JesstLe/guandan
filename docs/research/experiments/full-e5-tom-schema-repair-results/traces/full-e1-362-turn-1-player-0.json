@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-362-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "The diamond 3 is the most team-friendly lead: it conserves my higher cards, minimizes the requirement on partner's holding, and gives partner the best chance to take control while near finishing."
+  },
+  "partnerBelief": {
+    "summary": "Because the public hand count shows partner at 2 cards, partner is likely trying to escape with a small remaining hand. They cannot communicate directly, but as their teammate I should assume they may hold at least one card that can beat a low lead (any rank >3 or any trump). A low single is therefore more likely to be winnable by partner than a higher single.",
+    "confidence": 0.6,
+    "evidence": [
+      "1001ff36-838a-4594-9b5e-37505bf005c2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have no public play history yet, so their exact distributions are unknown. They each hold 3 cards. They will try to win the trick if they can, or play low to conserve strength. A low lead forces them to either commit a higher card or pass the initiative to my partner, both of which are acceptable.",
+    "confidence": 0.6,
+    "evidence": [
+      "1001ff36-838a-4594-9b5e-37505bf005c2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The diamond 3 is the most team-friendly lead: it conserves my higher cards, minimizes the requirement on partner's holding, and gives partner the best chance to take control while near finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

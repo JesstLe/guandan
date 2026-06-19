@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-023-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 1 has only 2 cards remaining (opponent_near_finish), so the team objective is to avoid giving that opponent an easy path to control the table and go out. By leading a low non-trump single, player 0 spends minimal resources while inviting partner to cover if possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards, but no public actions have occurred, so their exact composition is unknown. They may hold higher clubs or trumps that could cover a low club lead, but this is only probabilistic.",
+    "confidence": 0.4,
+    "evidence": [
+      "4a159a59-3864-4068-8ee9-17e17ec3799a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents players 1 and 3 have 2 and 3 cards respectively. Player 1 is especially close to finishing, so they likely retain at least one card strong enough to beat a low club. Opponent 3 may also hold trumps or high cards. No specific hidden cards can be asserted.",
+    "confidence": 0.5,
+    "evidence": [
+      "4a159a59-3864-4068-8ee9-17e17ec3799a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Player 0's hand is a weak run of clubs (3-6) with no trumps. Leading the 3 of clubs expends the lowest card, preserves 4-6 for later, and tests whether partner can cover or opponents must reveal strength. It minimizes loss when the trick is likely taken by an opponent anyway.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing the highest club spends the strongest card in a weak hand without compensating upside. If opponents or partner can cover, the 6 would be wasted; if not, a lower lead achieves the same suppression at lower cost."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a low non-trump card and not materially stronger than the 3 in this context, so preserving it by leading the 3 is preferred."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Similar to the 5, the 4 is low and non-trump; it adds no meaningful pressure over the 3 while using a slightly higher resource."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 1, with only 2 cards, may hold a trump or high card and win the trick, moving closer to finishing.",
+      "Partner may be unable to cover the club lead, letting an opponent take control.",
+      "Player 0 has no trumps or bombs to recover the lead if this trick is lost."
+    ],
+    "mitigation": "Lead the lowest card to minimize the value lost on a likely lost trick and keep the slightly higher clubs available for future plays."
+  },
+  "confidence": 0.6,
+  "notes": "Opening lead with very low non-trump cards and no public play history; the selected action prioritizes minimal resource use over aggressive control."
+}

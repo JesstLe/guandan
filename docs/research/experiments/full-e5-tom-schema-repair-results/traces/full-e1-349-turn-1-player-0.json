@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-349-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left, the best team outcome is for me to exit quickly. Leading the low 2 preserves the Ace as a potential trick-winner."
+  },
+  "partnerBelief": {
+    "summary": "Partner has seen no public plays and holds three unknown cards. They likely want me to finish or to transfer lead usefully, but no concrete signal exists.",
+    "confidence": 0.5,
+    "evidence": [
+      "1b57eaac-2c1e-4d19-aeb1-84ba964144d2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unseen cards, more than me. It is plausible at least one opponent has a trump or high non-trump to beat a single Ace, and they will try to seize lead to strand my remaining low card.",
+    "confidence": 0.6,
+    "evidence": [
+      "1b57eaac-2c1e-4d19-aeb1-84ba964144d2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 forces opponents to spend a higher card or trump to take control while keeping my Ace as a winning single. If an opponent later leads a low single, the Ace can win the trick and let me finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace risks being beaten by any unseen trump or red joker, leaving only the weak 2. Even if the Ace wins, the follow-up 2 lead is likely to lose, giving opponents control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win with a high card and lead a combination I cannot follow, delaying my exit.",
+      "Partner may not be able to intervene if opponents coordinate to keep the lead."
+    ],
+    "mitigation": "By keeping the Ace, I maximize the chance of winning a future single lead and exiting immediately. Leading low is the least-worst option given the card distribution."
+  },
+  "confidence": 0.7,
+  "notes": "No public signals exist yet, so all beliefs about partner and opponent cards remain probabilistic."
+}

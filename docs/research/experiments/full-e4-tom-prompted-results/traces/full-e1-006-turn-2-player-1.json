@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-006-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only two cards remaining and led a low single 3 of hearts. By playing the cheapest card that beats the lead, I contest control and delay the opponent's potential finish, supporting our team's objective to avoid letting the opposing team finish first."
+  },
+  "partnerBelief": {
+    "summary": "Partner player 3 has three cards left, so there is no public indication that partner is near finishing. Partner may hold winning cards that could help later, but their exact holdings remain uncertain.",
+    "confidence": 0.55,
+    "evidence": [
+      "03e0a17f-ff41-4f55-a06a-da4fbb01c97f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 is near finish with only two cards remaining and has led a low single. Opponent player 2 may possibly hold covering cards, but exact hidden holdings are uncertain. The public hand counts suggest player 0 is likely trying to shed their last cards quickly.",
+    "confidence": 0.65,
+    "evidence": [
+      "03e0a17f-ff41-4f55-a06a-da4fbb01c97f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I selected the legal play of the 4 of hearts because it is the lowest card in my hand that beats the table lead, allowing me to gain control of the trick while preserving stronger cards (9 and 10 of hearts) for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing would let the near-finish opponent retain or extend their lead, increasing the risk that the opposing team finishes first. Contesting the lead is better here."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the lead but uses a higher card than necessary, which could be more valuable later if opponents play stronger singles."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts also wins but is the highest non-trump single in my hand; saving it for a later trick where no cheaper winner exists is preferable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A later opponent may play a card higher than my remaining 9 or 10 of hearts, or may use a trump or bomb to regain control.",
+      "Player 0's remaining card could be strong, so winning this trick does not guarantee stopping their finish."
+    ],
+    "mitigation": "By using the minimal winner (4 of hearts), I keep my two stronger heart singles as flexible answers to future low leads and reduce resource waste."
+  },
+  "confidence": 0.72,
+  "notes": "Theory-of-mind reasoning: opponent is likely trying to run out their last cards; partner is not publicly near finish. Lowest winner balances immediate suppression with resource preservation."
+}

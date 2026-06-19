@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-302-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards, so the immediate team objective is to give them a cheap opportunity to win the trick and move toward finishing their hand. Leading the weakest card invites partner to play a higher card or small trump without forcing them to waste a bomb."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds at least one card that can beat a 3 of diamonds; with only 2 cards remaining, those cards are plausibly among their stronger remaining assets.",
+    "confidence": 0.6,
+    "evidence": [
+      "9792b72b-b0d8-494a-a28f-18924d9eabb4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and no public information about trump or bomb holdings. They probably contain some cards higher than 3 of diamonds, but it is uncertain whether they will spend them on such a low lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "9792b72b-b0d8-494a-a28f-18924d9eabb4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest-cost play. It creates an easy overtake path for the partner who is near finish, preserves the 4, 5, and 6 for later tricks, and avoids committing a stronger single prematurely.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is the strongest single in hand; leading it wastes the only card that might later win a non-trump single or force a higher response."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Better than the 6, but still higher than necessary for an opening lead and leaves the hand more exposed if opponents respond with middle cards."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally cheaper than the 5 or 6; the 3 is strictly lower cost and achieves the same signaling effect to partner."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and seize the lead.",
+      "Partner may be unable to beat a low diamond, and the lead could cycle unfavorably."
+    ],
+    "mitigation": "By leading the 3, the cost of losing the trick is minimized. The remaining 4/5/6 provide future defensive options, and partner can still overtake with any non-trump card above 3 or a small trump."
+  },
+  "confidence": 0.75
+}

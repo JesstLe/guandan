@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T21:15:52.984Z",
+  "status": "archive_ready",
+  "packageDir": "docs/research/experiments/human-soft-label-audit/annotator-package",
+  "packageManifestPath": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
+  "archivePath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
+  "bytes": 53634,
+  "sha256": "e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87",
+  "sampleCount": 40,
+  "archiveEntries": [
+    "annotator-package/",
+    "annotator-package/README.md",
+    "annotator-package/human-audit-annotation-sheet.csv",
+    "annotator-package/human-audit-annotator-package-manifest.json",
+    "annotator-package/human-audit-annotator.html",
+    "annotator-package/human-audit-blind-sample.jsonl"
+  ],
+  "checks": [
+    {
+      "id": "package-manifest-ready",
+      "status": "pass",
+      "detail": "package manifest status is package_ready"
+    },
+    {
+      "id": "package-excludes-reference-file",
+      "status": "pass",
+      "detail": "package manifest excludes private reference files"
+    },
+    {
+      "id": "package-excludes-reference-labels",
+      "status": "pass",
+      "detail": "package manifest excludes reference labels"
+    },
+    {
+      "id": "tar-create-exit-code",
+      "status": "pass",
+      "detail": "tar archive command succeeded"
+    },
+    {
+      "id": "archive-present",
+      "status": "pass",
+      "detail": "archive file exists"
+    },
+    {
+      "id": "archive-nonempty",
+      "status": "pass",
+      "detail": "53634 bytes"
+    },
+    {
+      "id": "archive-entries-present",
+      "status": "pass",
+      "detail": "6 archive entries"
+    },
+    {
+      "id": "archive-no-forbidden-entry-names",
+      "status": "pass",
+      "detail": "no private reference names in archive entries"
+    },
+    {
+      "id": "archive-has-readme",
+      "status": "pass",
+      "detail": "archive contains README.md"
+    },
+    {
+      "id": "archive-has-blind-samples",
+      "status": "pass",
+      "detail": "archive contains blind sample JSONL"
+    },
+    {
+      "id": "archive-has-annotation-sheet",
+      "status": "pass",
+      "detail": "archive contains annotation sheet CSV"
+    },
+    {
+      "id": "archive-has-annotator-html",
+      "status": "pass",
+      "detail": "archive contains annotator HTML"
+    }
+  ]
+}

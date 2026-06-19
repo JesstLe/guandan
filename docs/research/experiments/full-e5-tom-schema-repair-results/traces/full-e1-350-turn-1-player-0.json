@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-350-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "I already have the lead, and my hand contains only low non-trump spades. The best team-oriented use of this lead is to spend the weakest card while keeping the slightly higher spades for potential later tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not acted, so their 3-card hand is unknown. They likely hold a typical random mixture of ranks and suits, possibly including some cards higher than mine or trumps, but no specific inference is justified.",
+    "confidence": 0.3,
+    "evidence": [
+      "da28815c-b7e1-4407-8872-33d0241160ec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) have not acted. Given the deal, each probably holds some cards above a 3 and possibly trumps, so a low lead is likely to be beaten, but the exact strength is uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "da28815c-b7e1-4407-8872-33d0241160ec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades spends the minimum possible non-trump card. Because all my cards are low and sequential, playing the lowest one first preserves the 6 (and intermediate cards) for later tricks where they might win after stronger cards are exhausted.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 uses the strongest card in my hand. Even if it forces a slightly higher card from an opponent, any non-trump 8+ or any trump still beats it, so the 6 is better kept as a late-card winner."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is no more likely to win the trick than the 3, and playing it now leaves the 3 as a later card with even less winning potential; it is more efficient to discard the weakest card first."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 has marginally more endgame value than the 3, and leading it does not change the fact that opponents almost certainly can beat any of these low cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher non-trump or any trump and retain the lead, reducing partner's chance to act.",
+      "If partner is short in the led suit, they may be unable to cover even if they wanted to.",
+      "Playing low now may sacrifice a rare opportunity if opponents cannot in fact beat a 3."
+    ],
+    "mitigation": "By using the absolute lowest card, I limit information leakage and resource waste. I can adapt future play based on which opponent covers and with what strength."
+  },
+  "confidence": 0.6
+}

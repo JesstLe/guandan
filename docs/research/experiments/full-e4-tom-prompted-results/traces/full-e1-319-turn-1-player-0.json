@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-319-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is down to two non-trump singles in an endgame race. The best chance to go out is to seize the lead with the stronger single (2♠) and then play the A♠ on the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 unknown cards. With no public plays yet, partner could have a trump, a higher single, or cards that can cover later; but no specific signal is available.",
+    "confidence": 0.4,
+    "evidence": [
+      "44cca5ba-3d49-42db-a873-06e34edfd355"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 6 unknown cards. They may hold trump-7s, jokers, or other high cards that can beat a 2♠, especially since many cards remain in play.",
+    "confidence": 0.6,
+    "evidence": [
+      "44cca5ba-3d49-42db-a873-06e34edfd355"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2♠ maximizes the chance of winning this trick and retaining the lead, allowing A♠ to be played next for a possible finish. Even if an opponent beats it, they must expend a high or trump card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the weaker A♠ risks losing the lead immediately while leaving the stronger 2♠ stuck in hand, making it harder to control the finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump-7 or joker to take the lead away from the 2♠.",
+      "A partner may not be able to cover if both opponents can play over the 2♠."
+    ],
+    "mitigation": "Playing the stronger single first is still the highest-probability path to go out in two tricks; the alternative of leading low cedes initiative."
+  },
+  "confidence": 0.7,
+  "notes": "No public signals exist beyond hand counts and the new-game event, so partner/opponent beliefs remain probabilistic."
+}

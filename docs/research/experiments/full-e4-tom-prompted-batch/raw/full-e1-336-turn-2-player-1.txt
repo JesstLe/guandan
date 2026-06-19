@@ -1,0 +1,30 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-336-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoningTrace": [
+    {
+      "type": "belief",
+      "target": "partner",
+      "content": "Partner (player 2) has not acted yet and holds 3 cards. With no public signal from partner, their likely objective is standard: help our team control the trick or at least avoid letting the near-finish opponent (player 0) win and go out. There is no evidence partner is signaling a specific holding, so beliefs remain uniform over plausible hands consistent with the public deck and played 3♥.",
+      "evidence": ["d84ee5d5-a0f7-475f-a43d-8111bd8900ff"]
+    },
+    {
+      "type": "belief",
+      "target": "opponent",
+      "content": "Opponent player 0 led a low single 3♥ and has only 2 cards remaining. The lead is consistent with a player trying to shed a weak card quickly to reach an empty hand. If player 0 wins this trick, they will lead their final card and likely go out, which is dangerous for our team. Opponent may also be hoping we pass or overcommit high cards.",
+      "evidence": ["d84ee5d5-a0f7-475f-a43d-8111bd8900ff"]
+    },
+    {
+      "type": "counterfactual",
+      "content": "Passing preserves all cards but risks player 0 winning the trick and immediately going out with their last card. Since player 0 is at 2 cards, pass is high-risk. Alternatively, playing 9♥ or 10♥ also beats the 3♥ but wastes higher cards that may be needed later. Playing 4♥ beats the lead at the minimum cost, preserving 9♥ and 10♥ for future tricks while denying player 0 the win now.",
+      "evidence": ["d84ee5d5-a0f7-475f-a43d-8111bd8900ff"]
+    },
+    {
+      "type": "decision",
+      "content": "Select the lowest winning card, 4♥, to take control of the trick, prevent the near-finish opponent from winning and going out, and conserve stronger cards for subsequent plays.",
+      "evidence": ["d84ee5d5-a0f7-475f-a43d-8111bd8900ff"]
+    }
+  ],
+  "evidence": ["d84ee5d5-a0f7-475f-a43d-8111bd8900ff"]
+}

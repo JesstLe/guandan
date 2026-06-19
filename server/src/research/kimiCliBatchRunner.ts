@@ -4,9 +4,10 @@ import { spawn } from 'node:child_process'
 
 interface KimiCliBatchLine {
   custom_id: string
-  body: {
+  body?: {
     messages: Array<{ role: string; content: string }>
   }
+  messages?: Array<{ role: string; content: string }>
 }
 
 export interface KimiCliBatchRunnerOptions {
@@ -20,6 +21,7 @@ export interface KimiCliBatchRunnerOptions {
   attemptLimit?: number
   timeoutMs?: number
   resume?: boolean
+  stopOnError?: boolean
 }
 
 export interface KimiCliBatchRunReport {
@@ -32,6 +34,8 @@ export interface KimiCliBatchRunReport {
   writtenCount: number
   successCount: number
   errorCount: number
+  pendingSuccessCount: number
+  stoppedAfterError: boolean
   kimiBin: string
   model?: string
 }
@@ -62,7 +66,7 @@ export async function runKimiCliBatchJsonl(
     'utf8',
   )
 
-  const results = await mapWithConcurrency(lines, concurrency, async line => {
+  const runLine = async (line: KimiCliBatchLine): Promise<Record<string, any> & { custom_id: string }> => {
     try {
       const content = await runKimiCli({
         kimiBin,
@@ -84,26 +88,33 @@ export async function runKimiCliBatchJsonl(
       appendFileSync(options.outputJsonlPath, `${JSON.stringify(result)}\n`, 'utf8')
       return result
     }
-  })
+  }
+
+  const results = options.stopOnError
+    ? await runUntilFirstError(lines, runLine)
+    : await mapWithConcurrency(lines, concurrency, runLine)
 
   const errorCount = results.filter(result => 'error' in result).length
+  const successCount = existingSuccessfulRows.length + results.length - errorCount
   return {
     schemaVersion: '0.1.0',
     inputJsonlPath: options.inputJsonlPath,
     outputJsonlPath: options.outputJsonlPath,
     expectedCount: selectedLines.length,
-    attemptedCount: lines.length,
+    attemptedCount: results.length,
     skippedCount: existingSuccessfulRows.length,
     writtenCount: existingSuccessfulRows.length + results.length,
-    successCount: existingSuccessfulRows.length + results.length - errorCount,
+    successCount,
     errorCount,
+    pendingSuccessCount: selectedLines.length - successCount,
+    stoppedAfterError: Boolean(options.stopOnError && errorCount > 0),
     kimiBin,
     model: options.model,
   }
 }
 
 function formatPrompt(line: KimiCliBatchLine): string {
-  const messages = line.body.messages
+  const messages = messagesForLine(line)
     .map(message => `${message.role.toUpperCase()} MESSAGE:\n${message.content}`)
     .join('\n\n')
   return [
@@ -112,6 +123,14 @@ function formatPrompt(line: KimiCliBatchLine): string {
     '',
     messages,
   ].join('\n')
+}
+
+function messagesForLine(line: KimiCliBatchLine): Array<{ role: string; content: string }> {
+  const messages = line.body?.messages ?? line.messages
+  if (!Array.isArray(messages)) {
+    throw new Error(`Batch line ${line.custom_id} is missing chat messages`)
+  }
+  return messages
 }
 
 async function runKimiCli(options: {
@@ -164,9 +183,27 @@ function spawnAndCollect(command: string, args: string[], timeoutMs: number): Pr
     let stdout = ''
     let stderr = ''
     let timedOut = false
+    let settled = false
+    const finish = (value: {
+      stdout: string
+      stderr: string
+      code: number | null
+      timedOut: boolean
+    }): void => {
+      if (settled) return
+      settled = true
+      clearTimeout(timeout)
+      resolve(value)
+    }
     const timeout = setTimeout(() => {
       timedOut = true
       child.kill('SIGTERM')
+      setTimeout(() => {
+        if (!settled) child.kill('SIGKILL')
+      }, 2_000).unref()
+      setTimeout(() => {
+        finish({ stdout, stderr, code: null, timedOut })
+      }, 3_000).unref()
     }, timeoutMs)
     child.stdout.setEncoding('utf8')
     child.stderr.setEncoding('utf8')
@@ -176,10 +213,14 @@ function spawnAndCollect(command: string, args: string[], timeoutMs: number): Pr
     child.stderr.on('data', chunk => {
       stderr += chunk
     })
-    child.on('error', reject)
-    child.on('close', code => {
+    child.on('error', error => {
+      if (settled) return
+      settled = true
       clearTimeout(timeout)
-      resolve({ stdout, stderr, code, timedOut })
+      reject(error)
+    })
+    child.on('close', code => {
+      finish({ stdout, stderr, code, timedOut })
     })
   })
 }
@@ -214,7 +255,7 @@ function extractFirstJsonObject(value: string): string | null {
   return null
 }
 
-function openAiCompatibleResult(customId: string, content: string): Record<string, unknown> {
+function openAiCompatibleResult(customId: string, content: string): Record<string, any> & { custom_id: string } {
   return {
     custom_id: customId,
     response: {
@@ -264,6 +305,19 @@ async function mapWithConcurrency<T, R>(
   }
 
   await Promise.all(Array.from({ length: Math.min(concurrency, values.length) }, () => worker()))
+  return results
+}
+
+async function runUntilFirstError<T, R extends Record<string, any>>(
+  values: T[],
+  fn: (value: T) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = []
+  for (const value of values) {
+    const result = await fn(value)
+    results.push(result)
+    if ('error' in result) break
+  }
   return results
 }
 

@@ -152,7 +152,7 @@ Current audit status:
 - ToM-prompted LLM: 50 / 50 raw outputs present after Kimi CLI provider run; 36 / 50 parsed traces and 14 / 50 parse failures after ingest.
 - Full-split Plain LLM: 0 / 500 present, 500 missing, not ready for ingest.
 - Full-split Candidate-constrained LLM: 0 / 500 present, 500 missing, not ready for ingest.
-- Full-split ToM-prompted LLM: 268 / 500 raw outputs present after Kimi CLI resume-capable provider runs; the provider JSONL currently has 268 usable model outputs, 50 explicit Kimi usage/quota-limit errors from the latest bounded attempt, and 182 pending rows not present in the current provider-result file. The current full-split ToM artifacts are not ready for ingest until the remaining 232 raw outputs are resumed after quota refresh.
+- Full-split ToM-prompted LLM: 384 / 500 raw outputs present after Kimi CLI resume-capable provider runs; the provider JSONL currently has 384 usable model outputs, 0 retained provider-error rows, and 116 rows still needing successful output. The latest bounded resumes on 2026-06-19 advanced the run from 328 to 384 successful outputs using `--max-steps-per-turn 8`, then `--max-steps-per-turn 12` to clear a max-step retry and continue bounded resumes; direct parsing now yields 306 / 500 traces, and deterministic schema repair yields 384 / 500 usable traces. The current full-split ToM artifacts are not final evidence until the remaining 116 raw outputs are resumed and materialized.
 
 Rows marked as provider errors must not be counted as model outputs. Use
 `runKimiCliBatchJsonlCli.ts --resume --attempt-limit <N>` after quota refresh

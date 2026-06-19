@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-370-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 holds only low non-trump spades and is the opening leader. The best team chance is to lead the weakest card to give partner (player 2) the maximum opportunity to win the trick and take control, while conserving player 0's slightly higher cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a normal random 3-card hand. Since no cards have been played, partner probably holds some cards above 3 and may be able to win a low lead if the intervening opponents do not overtake.",
+    "confidence": 0.5,
+    "evidence": [
+      "5e733164-d537-43fb-acf7-033dbb32f821"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 9 unknown cards. Given the deck composition, it is probable at least one opponent can beat any single from 3 to 6, but their willingness to spend cards early is unknown. They may let a low lead pass to save higher cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "5e733164-d537-43fb-acf7-033dbb32f821"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the safest opening play. It minimizes the rank needed for partner to win and preserves the 4, 5, and 6 for later tricks if opponents take control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Leading the 4 still leaves a low lead but gives partner one fewer card rank to win with and removes a card that could be useful later; the 3 is a cleaner unload."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is already toward the top of player 0's hand; leading it reduces the chance partner can win and leaves only the 6 as cover."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the strongest card now would likely be beaten by opponents' higher cards, and player 0 would be left with only 3-5 and little ability to influence later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a card just above 3 may win the trick and keep the lead.",
+      "Partner may be unable to overtake even a low lead if their 3 cards are all low.",
+      "Player 0's remaining cards are all weak, so regaining the lead later is unlikely."
+    ],
+    "mitigation": "By leading the lowest card, player 0 maximizes the chance that the trick reaches partner at a low cost and keeps the higher low cards as potential late-game counters."
+  },
+  "confidence": 0.7,
+  "notes": "No public cards have been played; all partner and opponent inferences remain probabilistic."
+}

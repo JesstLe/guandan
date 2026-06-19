@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-274-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left and the lead; the priority is to empty my hand before opponents can suppress me or my partner needs cover."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three unknown cards and has had no chance to signal; they likely hold some competing strength, but I cannot assert exact ranks or suits. They benefit if I retain or recapture the lead so I can finish.",
+    "confidence": 0.5,
+    "evidence": [
+      "5d60a6a6-57e7-44a4-a3fa-943b674bdaf3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. With no cards played, their hands could contain trumps (rank 7) or high cards such as 2s. They want to seize the lead and block my escape, but I should not assume any specific hidden cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "5d60a6a6-57e7-44a4-a3fa-943b674bdaf3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 is the strongest non-trump single I hold. It can only be beaten by a trump, whereas the A can be beaten by any 2 or trump. If the 2 holds or I later recapture with the A, I maximize the chance of playing out both cards in consecutive leads.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is lower and more easily overtaken by an opponent's 2, which would hand the lead to an opponent and let them pressure my remaining 2 from a position where I may be unable to beat their lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7 and beat the 2 immediately, forcing me to recover with only the A.",
+      "If the 2 wins but the A is then beaten or unplayable, I may still lose the race."
+    ],
+    "mitigation": "By leading high first, I reduce the set of cards that can stop my immediate escape to trumps only, keeping initiative whenever opponents lack trumps."
+  },
+  "confidence": 0.75,
+  "notes": "No public history beyond new_game, so all partner/opponent beliefs remain probabilistic."
+}

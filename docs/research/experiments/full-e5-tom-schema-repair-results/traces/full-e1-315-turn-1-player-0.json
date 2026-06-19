@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-315-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "My hand is small and contains only low spades. The best path for the team is to start shedding cards while keeping the slightly higher spades as exit cards for later opportunities."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not acted yet and holds 3 unknown cards. They are likely to have some higher cards that could take control if opponents intervene, but no specific signal is available.",
+    "confidence": 0.3,
+    "evidence": [
+      "82296fe6-8119-49ac-9249-ce338f3ce7d0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards. Given that my highest card is only a 6 of spades and the trump rank is 7, it is probable that at least one opponent can beat a low single lead.",
+    "confidence": 0.4,
+    "evidence": [
+      "82296fe6-8119-49ac-9249-ce338f3ce7d0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the lowest single (3 of spades) begins emptying my hand while preserving the 4, 5, and 6 for later tricks. Since opponents likely have higher cards, leading a low card minimizes resource waste.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still low and may not win the trick; playing it now wastes a card that could be more useful later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is one of my stronger exit cards and should be kept until it has a better chance of winning or clearing a difficult lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card and my best chance to win a future trick; using it on the opening lead would be premature."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may easily beat the 3 of spades and gain control of the table.",
+      "If the partner cannot cover, the opponents may chain leads that force me to use my higher cards inefficiently."
+    ],
+    "mitigation": "By keeping the 4, 5, and 6, I retain options to respond to future leads and avoid being stranded with only low cards."
+  },
+  "confidence": 0.75
+}

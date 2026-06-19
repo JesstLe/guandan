@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-233-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Opening with the lowest club widens the range of cards partner can use to take the trick, while conserving higher clubs for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and is likely to have at least one card that can beat a low club, but no specific card can be assumed.",
+    "confidence": 0.45,
+    "evidence": [
+      "499298f2-9f46-4ce9-b488-7cd5317eaeff"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, suggesting they may be close to finishing and likely hold one or more strong cards or trumps; opponents will try to seize control.",
+    "confidence": 0.55,
+    "evidence": [
+      "499298f2-9f46-4ce9-b488-7cd5317eaeff"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs gives partner the broadest window to win the trick with a modest higher card and keeps the 4-6 clubs available for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Requires partner to have a higher card than 4 to win, narrowing their winning range and wasting a slightly stronger card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Still low but gives partner fewer cards that can take the trick and expends a more valuable card now."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Makes it easiest for the opponent to beat with any higher card or trump and leaves us with only weaker cards for later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may beat the 3 and use their remaining card to finish.",
+      "Partner may be unable to beat even a low club, ceding control.",
+      "We hold no trumps or bombs to recover control if opponents win."
+    ],
+    "mitigation": "Play the minimum legal card to maximize the chance partner can overtake and to preserve the 4-6 for later leads."
+  },
+  "confidence": 0.65
+}

@@ -1,6 +1,6 @@
 # Provider Run Handoff
 
-Date: 2026-06-17
+Date: 2026-06-19
 
 This handoff is the external-run boundary for the paper pipeline. It tells the
 operator exactly which batch files leave the repository and where provider
@@ -18,7 +18,7 @@ unrelated repository content.
 - ToM-prompted pilot provider results are present at `docs/research/experiments/provider-results/tom-prompted-llm.jsonl`.
 - ToM-prompted pilot post-provider artifacts are present at `docs/research/experiments/pilot-e7-tom-prompted-results`; the run produced 50 / 50 raw outputs, 36 / 50 parsed traces, and 14 / 50 parse failures.
 - Full-split plain and candidate-constrained batches are prepared locally.
-- Full-split ToM-prompted was attempted through the local Kimi CLI runner. The provider-result file is present at `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl`, with 268 usable model outputs, 50 explicit Kimi usage/quota-limit errors from the latest bounded attempt, and 182 pending rows not present in the current provider-result file. The run is recoverable with bounded `--resume --attempt-limit <N>` batches after quota refresh.
+- Full-split ToM-prompted was attempted through the local Kimi CLI runner. The provider-result file is present at `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl`, with 384 usable model outputs, 0 retained provider-error rows, and 116 rows still needing successful output. The latest bounded resumes on 2026-06-19 advanced the run from 328 to 384 successful outputs using `--max-steps-per-turn 8`, then `--max-steps-per-turn 12` to clear a max-step retry and continue bounded resumes; the partial artifact has been materialized for audit only: raw ToM direct parsing currently yields 306 / 500 structured traces, and deterministic schema repair yields 384 / 500 usable traces. These partial rows remain operational progress and must not be reported as final full-split LLM evidence until 500 / 500 raw provider outputs are present.
 - The existing verifier-revision batch is fixture-only and must not be used for
   final empirical claims.
 - A real verifier-revision batch must be regenerated after first-pass LLM traces
@@ -41,7 +41,7 @@ Phase A pilot authorization:
 |---|---|---|
 | `plain-llm` | `docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-plain-llm.jsonl` |
 | `candidate-constrained-llm` | `docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl` |
-| `tom-prompted-llm` | `docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl` (partial: 268 usable, 50 quota errors, 182 pending) |
+| `tom-prompted-llm` | `docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl` (partial: 384 successful, 0 retained provider-error rows, 116 pending successful outputs) |
 
 Prepared run parameters:
 
@@ -128,10 +128,32 @@ npx tsx server/src/research/runKimiCliBatchJsonlCli.ts \
   --report docs/research/experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json \
   --model kimi-code/kimi-for-coding \
   --max-steps-per-turn 20 \
-  --concurrency 4 \
+  --concurrency 1 \
   --timeout-ms 600000 \
   --resume \
+  --stop-on-error \
   --attempt-limit 50
+```
+
+After any successful resume, regenerate the audit-only partial/full materialization
+before refreshing downstream reports. Keep `--allow-partial-ingest` while the raw
+coverage remains below 500 / 500; remove it once all expected provider outputs
+are present.
+
+```bash
+npx tsx server/src/research/runOptionalPostProviderConditionCli.ts \
+  --decisions docs/research/experiments/full-e1/decisions \
+  --packets docs/research/experiments/full-e4-tom-prompted-prompts/packets \
+  --batch-jsonl docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl \
+  --provider-results docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl \
+  --raw docs/research/experiments/full-e4-tom-prompted-batch/raw \
+  --out docs/research/experiments/full-e4-tom-prompted-results \
+  --condition tom-prompted-llm \
+  --model-provider kimi-cli \
+  --model-name kimi-code/kimi-for-coding \
+  --temperature 0 \
+  --notes "500-decision full-split ToM run; partial metrics are for audit only until 500/500 raw outputs are present." \
+  --allow-partial-ingest
 ```
 
 ### Post-Provider Materialization

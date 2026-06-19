@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-286-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards remaining and led a low heart 3, suggesting they are trying to shed quickly while retaining tempo. Winning this trick prevents the opponent team from controlling the lead and feeding the near-finishing player."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not yet acted. They may be able to beat a 3♥ lead with a higher heart or a trump, but there is no public signal confirming their strength or suit distribution.",
+    "confidence": 0.5,
+    "evidence": [
+      "09d7339e-2bc0-4122-ac64-70882c35b561"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led 3♥ with only 2 cards left, signaling an attempt to clear a weak card and keep the lead. Player 3 has 3 cards and may try to cover a low heart if player 0 cannot, preserving their team's initiative.",
+    "confidence": 0.7,
+    "evidence": [
+      "09d7339e-2bc0-4122-ac64-70882c35b561"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play 4♥, the minimum card that beats the 3♥ lead, to seize the lead from the opponent team at the lowest possible cost while keeping 9♥ and 10♥ in reserve for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing cedes control to partner and opponents. If partner cannot cover, opponent 3 could win and feed player 0, who is at 2 cards and near finishing."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "9♥ wins the trick but over-invests a mid-strength card when 4♥ already beats the lead and achieves the same objective."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "10♥ is my highest heart and using it now strips away my strongest single-card option for no added benefit against a 3♥ lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may have had a stronger winning card, making my 4♥ unnecessary.",
+      "Opponent 3 may still beat my 4♥ with a higher heart or trump, returning the lead to the opponent team.",
+      "If I win, my remaining cards are all hearts, which opponents may be able to follow easily."
+    ],
+    "mitigation": "By playing the cheapest winning card, I minimize the cost of losing the trick and preserve 9♥ and 10♥ to contest future leads."
+  },
+  "confidence": 0.8
+}

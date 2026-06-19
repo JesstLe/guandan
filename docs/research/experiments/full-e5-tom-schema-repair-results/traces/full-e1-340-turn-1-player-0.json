@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-340-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am leading a new trick, so the objective is to open play in a controlled way. By leading the lowest non-trump single, I set a low bar that partner may be able to take over while preserving my slightly higher cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not yet acted, so their exact holding is unknown. Given they start with 3 cards, they may have middle or high cards that can beat a low spade lead, but I cannot assume they do.",
+    "confidence": 0.5,
+    "evidence": [
+      "86a69b1b-4503-492d-b41f-5a74ba3d3612"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) likely have cards that can beat a 3 of spades, since any card of rank 7 or higher or any trump would win the trick, but I do not know their exact holdings.",
+    "confidence": 0.7,
+    "evidence": [
+      "86a69b1b-4503-492d-b41f-5a74ba3d3612"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest legal play. It tests the field without committing stronger cards, gives partner a chance to win the trick if possible, and keeps the 4, 5, and 6 of spades available for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the 6 of spades uses my highest non-trump card in a suit where opponents likely have many higher cards; if it loses, my remaining cards are even weaker and harder to lead effectively."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 of spades is still likely to be beaten by opponents or even partner, so there is little advantage over the 3, but it leaves a larger gap between my remaining cards."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 of spades is similar to the 3 but slightly stronger; since all of these low spades are likely to lose the trick, I prefer the minimum to preserve as much flexibility as possible."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 of spades is very low, so opponents may beat it with any card of rank 7 or higher or any trump.",
+      "Partner may be unable to win the trick, which would cede the lead to an opponent."
+    ],
+    "mitigation": "By playing the minimum non-trump, I avoid wasting a potentially useful higher card and avoid leading a trump prematurely. If partner can take the lead, they can shape the remainder of the hand."
+  },
+  "confidence": 0.65
+}

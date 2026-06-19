@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-339-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "The partner (player 2) has not had any public action beyond the new-game event, so no suit or strength signal is available. With three cards, the partner is roughly even with each opponent and likely wants the team to eliminate one player quickly. Since I have the lead and only two cards, the most helpful play is one that lets me exit as soon as possible, turning the race into a 3-vs-3 with my seat empty.",
+    "confidence": 0.6,
+    "evidence": [
+      "56aecd21-295a-4f26-a8ac-4cd680f50bd1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three unknown cards. Their goal is to prevent my exit. They can block a high single lead with a trump (rank 7) or a joker, or, if I lead low, they can win cheaply and then dictate the shape of subsequent leads to strand my remaining high card.",
+    "confidence": 0.6,
+    "evidence": [
+      "56aecd21-295a-4f26-a8ac-4cd680f50bd1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-A-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

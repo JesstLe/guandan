@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-257-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards (handCounts[2]=2), so the priority is to lead a low card that partner can beat cheaply and then finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner is near finishing with 2 cards left. They likely have at least one card that can beat a low diamond 3, but I cannot assume its exact rank or suit; it could be a small non-trump or a trump.",
+    "confidence": 0.7,
+    "evidence": [
+      "993c18b9-0fa5-4dec-af4d-ff058e97b0b2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and no cards have been played, so they may be able to beat a low 3. However, their hand strength is unknown and leading the weakest card minimizes the value they gain if they win the trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "993c18b9-0fa5-4dec-af4d-ff058e97b0b2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 is the minimum-strength opening lead. It gives partner the best chance to take control with a cheap higher card, and if an opponent beats it, they only win a low-value trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly harder for partner to beat than the 3 and still weak if opponents take the trick; no compensating advantage."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A middle card is more likely to force partner or opponents to spend a higher card, which is worse when partner is close to finishing."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Our strongest non-trump lead is more likely to win the trick ourselves, but that keeps the lead with a player whose hand is weak and leaves partner unable to help finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 and keep the lead, delaying partner's finish.",
+      "Partner may have to spend a trump or high card to beat the 3 if their remaining cards are very low."
+    ],
+    "mitigation": "Leading the absolute lowest card keeps both risks minimal; partner can beat it with any non-trump 4 or better, and opponents gain little if they win."
+  },
+  "confidence": 0.75
+}

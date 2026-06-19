@@ -1,0 +1,43 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-281-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "reasoning": {
+    "summary": "Player 0 (opponent) led a low 3♥ and has only 2 cards left, so they are close to going out. To prevent the opponent team from retaining the lead and potentially finishing, I should win this trick while using the minimum card possible. The 4♥ is the cheapest winning follow, preserving 9♥ and 10♥ for future tricks.",
+    "partnerBeliefs": {
+      "summary": "Partner (P2) has 3 cards and has not yet acted. They may be able to beat a 3♥ with a heart or trump, but I cannot assume they will. They have no public signals beyond the initial deal.",
+      "intent": "Partner likely wants to help Team 1 win tricks, but without knowing their exact cards, relying on them to overtake is risky when an opponent is at 2 cards.",
+      "uncertainty": "High; partner may pass if their cards are low or non-hearts."
+    },
+    "opponentBeliefs": {
+      "summary": "Player 0 led 3♥ and is down to 2 cards, suggesting they are trying to shed cards quickly. Player 3 (other opponent) has 3 cards and acts after partner.",
+      "intent": "P0 wants to win or at least keep the lead to go out soon. P3 may try to cover a low heart if P0 cannot.",
+      "uncertainty": "Medium; P0 may have saved a higher heart or trump for later, but leading 3♥ implies they are not strong in hearts or want to clear a low card."
+    },
+    "counterfactuals": [
+      {
+        "actionId": "pass",
+        "analysis": "Passing lets partner P2 respond first. If partner can beat, we save my cards. However, if partner passes, opponent P3 could win and feed P0, who is at 2 cards. The risk of losing the lead to the near-finished opponent is too high this early.",
+        "verdict": "Rejected due to uncertainty about partner's ability to cover and the danger of letting P0's team control the trick."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "analysis": "9♥ wins the trick but uses a significantly higher card than necessary. It leaves only 10♥ as a higher heart and commits more value than required.",
+        "verdict": "Rejected; overbidding wastes a mid-strength card."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "analysis": "10♥ wins but is my highest heart. Playing it now strips me of a strong future card for no extra benefit over 4♥ against a 3♥ lead.",
+        "verdict": "Rejected; far too expensive for this trick."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "analysis": "4♥ is the minimum winning card. It secures the lead for Team 1, stops P0's team from continuing, and keeps 9♥ and 10♥ in reserve.",
+        "verdict": "Selected as the cost-effective winning move."
+      }
+    ],
+    "evidence": [
+      "137cb4e7-ae0e-491d-bb32-de271878785b"
+    ]
+  }
+}

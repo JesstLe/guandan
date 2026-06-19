@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-065-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump cards (3-6 of spades), I cannot realistically win a lead. The best team objective is to play the cheapest card, force opponents to spend higher cards to take the trick, and hope partner can regain control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. Since no cards have been played, partner could have any ranks or suits. There is a non-negligible chance partner has cards higher than my 3-6 or even trumps that could cover a low lead, but this remains probabilistic.",
+    "confidence": 0.3,
+    "evidence": [
+      "e4f5cd22-a472-454d-93e9-ba1b563a8a5a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. Given that my hand contains only 3-6 of spades, it is likely opponents collectively hold higher cards and/or trumps. They will try to win this opening trick if economical, but they prefer not to waste high cards on a low lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "e4f5cd22-a472-454d-93e9-ba1b563a8a5a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 3 of spades is the minimal-cost lead. It gives away the least value, makes opponents spend a higher card if they want the trick, and preserves the slightly higher 4-6 for later where they might have marginally more chance to win or cover partner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3, but still loses to almost any non-trump above 4 or any trump. It wastes a card that could cover the 3 later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Same problem: still a weak non-trump single. Leading it now reveals more of my hand and gives up a card that might occasionally beat an opponent's 3 or 4."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The strongest card in hand, but still very weak overall. Saving the 6 maximizes the tiny chance I can later win a trick or cover partner's low card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent likely wins the trick with a higher card or trump.",
+      "Partner may be unable to cover, letting opponents chain leads.",
+      "The 3-6 straight is too short to play as a combination, leaving only weak singles."
+    ],
+    "mitigation": "By leading the absolute lowest card, the cost of losing the trick is minimized. Even if opponents win, they must expose a card and spend a trick-winning resource, which may help partner assess their strength."
+  },
+  "confidence": 0.6,
+  "notes": "No public cards have been played, so all partner and opponent inferences remain probabilistic."
+}

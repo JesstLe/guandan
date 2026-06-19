@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-379-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while opponents hold three each, the immediate team priority is to empty my hand safely while preserving a high card that can win a later trick or block an opponent."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three cards and no public actions have occurred, so I cannot infer a specific suit or strength signal. Probabilistically, with three random cards they are more likely than I am to hold a card that can take or support a low lead, but this is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "a77faaa5-fece-40a6-9624-ce701edd299f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent also holds three unseen cards. Given the hand distribution, it is plausible at least one opponent holds a trump or high non-trump card that can beat a single, but I cannot treat any specific hidden card as a fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "a77faaa5-fece-40a6-9624-ce701edd299f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the low 2 preserves the Ace for a later trick where I may need to beat the table or secure the lead. A low lead also gives my partner, who holds more cards, a chance to win the trick without forcing me to spend my only high card now.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace first would exhaust my only strong card immediately, leaving me with just the 2. If an opponent or partner wins the trick, my remaining 2 is very weak and likely to be beaten, making it harder to finish my hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 2 with a higher card or trump and seize the lead.",
+      "My partner may not be able to cover the 2, leaving us without initiative."
+    ],
+    "mitigation": "By keeping the Ace, I retain a counter for a future trick. Even if the 2 loses, the Ace gives me a realistic chance to regain control or finish on the next turn."
+  },
+  "confidence": 0.8,
+  "notes": "The public history contains only the new_game event, so all inferences about partner and opponent hands are probabilistic and grounded solely in hand counts and the known deck structure."
+}

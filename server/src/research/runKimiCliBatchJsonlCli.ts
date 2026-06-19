@@ -14,12 +14,17 @@ interface Args {
   attemptLimit?: number
   timeoutMs?: number
   resume: boolean
+  stopOnError: boolean
 }
 
-main().catch(error => {
-  console.error(error instanceof Error ? error.message : String(error))
-  process.exitCode = 1
-})
+main()
+  .then(() => {
+    process.exit(0)
+  })
+  .catch(error => {
+    console.error(error instanceof Error ? error.message : String(error))
+    process.exit(1)
+  })
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2))
@@ -34,6 +39,7 @@ async function main(): Promise<void> {
     attemptLimit: args.attemptLimit,
     timeoutMs: args.timeoutMs,
     resume: args.resume,
+    stopOnError: args.stopOnError,
   })
 
   mkdirSync(dirname(args.report), { recursive: true })
@@ -51,6 +57,8 @@ async function main(): Promise<void> {
     writtenCount: result.writtenCount,
     successCount: result.successCount,
     errorCount: result.errorCount,
+    pendingSuccessCount: result.pendingSuccessCount,
+    stoppedAfterError: result.stoppedAfterError,
   }, null, 2))
 }
 
@@ -59,12 +67,17 @@ function parseArgs(argv: string[]): Args {
     maxStepsPerTurn: 1,
     concurrency: 1,
     resume: false,
+    stopOnError: false,
   }
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     if (arg === '--resume') {
       parsed.resume = true
+      continue
+    }
+    if (arg === '--stop-on-error') {
+      parsed.stopOnError = true
       continue
     }
     const value = argv[i + 1]
@@ -115,8 +128,8 @@ function parseArgs(argv: string[]): Args {
   if (parsed.limit !== undefined && (!Number.isInteger(parsed.limit) || parsed.limit < 1)) {
     throw new Error('--limit must be a positive integer')
   }
-  if (parsed.attemptLimit !== undefined && (!Number.isInteger(parsed.attemptLimit) || parsed.attemptLimit < 1)) {
-    throw new Error('--attempt-limit must be a positive integer')
+  if (parsed.attemptLimit !== undefined && (!Number.isInteger(parsed.attemptLimit) || parsed.attemptLimit < 0)) {
+    throw new Error('--attempt-limit must be a non-negative integer')
   }
   if (parsed.timeoutMs !== undefined && (!Number.isInteger(parsed.timeoutMs) || parsed.timeoutMs < 1)) {
     throw new Error('--timeout-ms must be a positive integer')

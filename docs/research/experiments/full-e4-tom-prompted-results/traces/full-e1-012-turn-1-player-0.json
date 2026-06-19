@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-012-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards remaining, so the best team objective is to hand the lead to partner with a low-card trick they can win, letting them finish before opponents can block."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely near finishing (public hand count of 2) and wants a low, controllable trick to take the lead. I have no private knowledge of their exact ranks or suits, so this remains a probabilistic belief.",
+    "confidence": 0.75,
+    "evidence": [
+      "1d1b9a68-beef-4206-8efd-17a31a325322"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and have played no cards yet. They probably want to stop partner from finishing, but I cannot assert they hold any specific high cards, trumps, or bombs.",
+    "confidence": 0.5,
+    "evidence": [
+      "1d1b9a68-beef-4206-8efd-17a31a325322"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single, diamond 3, gives my card-limited partner the best chance to win the trick with a low card and then exit. It also preserves my remaining diamonds for future turns.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading my highest diamond makes it harder for partner to win the trick with a small card and wastes my best non-trump, while opponents can still overtake it."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "An intermediate lead still requires partner to hold a higher diamond than necessary, and it does not materially reduce opponent risk compared with the 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Although lower than the 5 or 6, it is still less transfer-friendly than the 3 because partner may only be able to beat a very low lead with their last cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to beat even a 3, allowing an opponent to win the trick.",
+      "An opponent may hold a trump or higher diamond and seize control, delaying partner's finish.",
+      "I have no trump, so reclaiming the lead will be difficult if I lose it."
+    ],
+    "mitigation": "The diamond 3 lead minimizes the bar for partner to win; I keep diamonds 4-6 in reserve to play accurately if I regain the lead."
+  },
+  "confidence": 0.72
+}

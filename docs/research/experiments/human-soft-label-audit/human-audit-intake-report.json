@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T21:15:53.353Z",
+  "status": "awaiting_return",
+  "returnedCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations.csv",
+  "returnedCsvPresent": false,
+  "expectedReturnedCsvName": "human-audit-completed-annotations.csv",
+  "packageManifestPath": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
+  "blindJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+  "sampleCount": 40,
+  "returnedRowCount": 0,
+  "completedLabels": 0,
+  "totalLabels": 200,
+  "checks": [
+    {
+      "id": "package-ready",
+      "status": "pass",
+      "detail": "package status is package_ready"
+    },
+    {
+      "id": "package-excludes-reference-file",
+      "status": "pass",
+      "detail": "package manifest excludes private reference files"
+    },
+    {
+      "id": "package-excludes-reference-labels",
+      "status": "pass",
+      "detail": "package manifest excludes reference labels"
+    },
+    {
+      "id": "returned-file-present",
+      "status": "fail",
+      "detail": "returned annotation CSV is not present yet"
+    },
+    {
+      "id": "returned-filename",
+      "status": "pass",
+      "detail": "expected human-audit-completed-annotations.csv, got human-audit-completed-annotations.csv"
+    },
+    {
+      "id": "required-columns",
+      "status": "pass",
+      "detail": "not evaluated until returned CSV is present"
+    },
+    {
+      "id": "no-reference-columns",
+      "status": "pass",
+      "detail": "no private reference columns in returned CSV"
+    },
+    {
+      "id": "row-count",
+      "status": "pass",
+      "detail": "not evaluated until returned CSV is present"
+    },
+    {
+      "id": "sample-id-match",
+      "status": "pass",
+      "detail": "not evaluated until returned CSV is present"
+    },
+    {
+      "id": "unique-sample-ids",
+      "status": "pass",
+      "detail": "no duplicate returned sample ids"
+    },
+    {
+      "id": "label-values",
+      "status": "pass",
+      "detail": "all filled labels are pass/fail/uncertain/unknown"
+    }
+  ],
+  "readyForAgreement": false,
+  "readyForPaperEvidence": false
+}

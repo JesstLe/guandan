@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-082-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is tagged as near finish. At the opening lead with no table card, I should play my weakest non-trump single so my partner has the best chance to take control while I preserve my stronger diamonds."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely trying to finish their hand soon and probably holds at least one card that can beat a very low diamond single, or a trump/level card to escape.",
+    "confidence": 0.65,
+    "evidence": [
+      "532b0de5-9e0c-4f35-80c6-4892c21180c0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have normal opening hand sizes (3 cards each) and no public plays have been revealed. They probably possess higher cards and trumps and will try to seize the lead if they can.",
+    "confidence": 0.6,
+    "evidence": [
+      "532b0de5-9e0c-4f35-80c6-4892c21180c0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The diamond-3 is the lowest non-trump card in my hand under Guandan rank order (3 is the weakest rank). Leading it minimizes risk, gives my near-finish partner the easiest path to win the trick, and keeps my higher diamonds (4, 5, 6) available for future tricks or defense.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is slightly stronger than the 3 but does not materially increase the chance of winning the trick; using it now wastes an intermediate card that could be useful later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is stronger still and unnecessary for a low transfer lead; preserving it is better because opponents or partner may force higher single plays soon."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my strongest diamond and my best non-trump single; leading it now squanders my most valuable card and still loses to any higher card or trump an opponent might play."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card or trump and take the lead, ending the round before the partner finishes.",
+      "The partner may not be able to beat the 3 if their remaining cards are both lower non-trumps or blocked in a different combination type."
+    ],
+    "mitigation": "Keep the 4, 5, and 6 diamonds to contest later tricks or cover the partner. Watch the partner's response to update beliefs about their hand strength."
+  },
+  "confidence": 0.65,
+  "notes": "All rank comparisons treat 3 as the lowest non-trump rank per Guandan rules; the 7-level trump is not held in this hand."
+}

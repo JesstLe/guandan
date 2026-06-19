@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-107-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is near finishing. Our hand is weak (3-6 diamonds, non-trump), so the best chance for the team is to lead a low card that partner can beat, giving them control to play out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "With only 2 cards, partner is likely holding at least one card strong enough to beat a low diamond lead, and probably wants a small lead to exit their hand safely.",
+    "confidence": 0.6,
+    "evidence": [
+      "dd591920-e826-4a60-bb31-3c527115c65c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 6 unseen cards between them and are likely to hold cards higher than our diamonds or trumps; they will try to win the trick to stop our partner from finishing.",
+    "confidence": 0.55,
+    "evidence": [
+      "dd591920-e826-4a60-bb31-3c527115c65c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest possible card, maximizing the probability that partner can take the trick with a modest card or trump, and minimizing the strength an opponent must spend to seize the lead. It also preserves our slightly higher diamonds for later if partner gains control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is our highest diamond; if an opponent or partner cannot beat it, we keep the lead with only weak cards remaining and cannot easily help partner finish. If they do beat it, we have wasted our best covering card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is still too high for a reliable partner transfer and is more likely to be beaten by an ordinary non-trump or a low trump, losing the initiative without gaining much."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is better than 5 or 6, but the 3 is strictly lower and gives partner the broadest range of cards that can win the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a low trump or card between 3 and partner's holding may still take the trick.",
+      "Partner may be unable to beat a 3, in which case we lose the lead and opponents can pressure partner's last cards."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the required strength for partner to win; if partner cannot take it, an opponent will have spent minimal resources and we retain 4-6 diamonds to contest future small leads."
+  },
+  "confidence": 0.7,
+  "notes": "Given partner's low card count and our weak hand, the dominant strategy is to facilitate partner by leading the smallest card."
+}

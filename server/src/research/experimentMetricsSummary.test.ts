@@ -87,6 +87,65 @@ describe('experimentMetricsSummary', () => {
     expect(markdown).toContain('agent\\|x')
     expect(markdown).toContain('needs\\|data')
   })
+
+  it('marks metrics as partial when the paired raw-output audit is not ready for ingest', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-partial-metrics-summary-'))
+    const metricsPath = join(rootDir, 'metrics.json')
+    const auditPath = join(rootDir, 'audit.json')
+    const outputDir = join(rootDir, 'summary')
+
+    writeFileSync(metricsPath, JSON.stringify({
+      schemaVersion: '0.1.0',
+      agentId: 'tom-schema-repair-full',
+      totalDecisionPoints: 500,
+      totalParsedTraces: 268,
+      parseFailureCount: 232,
+      hardFailureCount: 30,
+      labelStatusCounts: {
+        legalAction: statusCounts(268, 0, 0, 0),
+        publicHistoryConsistent: statusCounts(267, 1, 0, 0),
+        hiddenInfoDisciplined: statusCounts(239, 29, 0, 0),
+        partnerConsistent: statusCounts(43, 11, 214, 0),
+        opponentConsistent: statusCounts(83, 24, 161, 0),
+        reasonActionConsistent: statusCounts(267, 1, 0, 0),
+        teamObjectiveValid: statusCounts(142, 18, 108, 0),
+      },
+    }), 'utf8')
+    writeFileSync(auditPath, JSON.stringify({
+      expectedCount: 500,
+      presentCount: 268,
+      missingCount: 232,
+      emptyCount: 0,
+      unexpectedCount: 0,
+      readyForIngest: false,
+    }), 'utf8')
+
+    try {
+      const result = writeMetricsSummary({
+        outputDir,
+        basename: 'full-llm-summary',
+        title: 'Full Split LLM Summary',
+        sources: [
+          {
+            agentId: 'tom-schema-repair-full',
+            metricsPath,
+            rawAuditPath: auditPath,
+            notes: 'deterministic schema repair over available full-split ToM raw outputs',
+          },
+        ],
+      })
+
+      expect(result.summary.rows[0].status).toBe('partial_metrics_available')
+      expect(result.summary.rows[0].notes).toContain('PARTIAL ONLY')
+      expect(result.summary.rows[0].notes).toContain('raw outputs present 268/500')
+
+      const markdown = readFileSync(result.markdownPath, 'utf8')
+      expect(markdown).toContain('partial_metrics_available')
+      expect(markdown).toContain('must not be reported as final full-split results')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
 })
 
 function statusCounts(pass: number, fail: number, unknown: number, notApplicable: number) {

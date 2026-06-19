@@ -7,8 +7,8 @@ This file estimates how much paper space the current manuscript can plausibly oc
 ## Current Local Length
 
 - Assembled manuscript: `docs/research/submission/manuscript/manuscript-draft.md`
-- Current word count: 3176
-- Current generated table sources: Table 0, Table 1, Table 2, Table 3
+- Current word count: 3724
+- Current generated table sources: Table 0, Table 1, Table 2, Table 3, Table 4
 - Main evidence artifacts now include the paired verifier-attribution report under `docs/research/experiments/pilot-verifier-attribution`.
 
 ## Official Page Limits Checked
@@ -26,21 +26,21 @@ Compiled AAMAS-style skeleton status:
 - Source: `submission/aamas-latex/main.tex`
 - PDF: `submission/aamas-latex/main.pdf`
 - Build command: `tectonic main.tex`
-- Actual compiled length on 2026-06-18 after adding the main pilot results figure: 9 pages total in `sigconf,anonymous,review` mode.
-- The main body and conclusion end on page 8; references begin on page 9. The former reliability table was replaced by a compact results figure, but the added visual evidence still pushes references onto a separate page.
-- Interpretation: the current LaTeX version is no longer a short skeleton. It contains formal setup, trace schema, verifier label taxonomy, verifier-revision algorithm, end-to-end accounting, paired attribution, qualitative cases, provenance, limitations, a full-split sanity check, and a full-evaluation protocol. The remaining quality gap should be closed by full-split LLM results and ablations, not filler prose.
+- Actual compiled length on 2026-06-18 after the Figure 4 three-panel result refresh: 9 pages total in `sigconf,anonymous,review` mode.
+- The main body and conclusion end on page 8; references begin in the lower part of page 8 and continue on page 9. The upgraded Figure 1 now appears at the top of rendered page 2, Figure 2 appears as a three-panel verifier-revision architecture diagram on rendered page 4, and Figure 4 appears as a three-panel source-backed result summary on rendered page 6. The full-evaluation protocol now includes human-audit packet quality as readiness evidence, while preserving the 0/200 human-label blocker.
+- Interpretation: the current LaTeX version is no longer a short skeleton. It contains formal setup, trace schema, verifier label taxonomy, verifier-revision architecture, end-to-end accounting, paired attribution, qualitative cases, provenance, limitations, a full-split sanity check, and a full-evaluation protocol. The remaining quality gap should be closed by full-split LLM results and ablations, not filler prose.
 
 Rule of thumb for two-column AI conference styles:
 
 - Dense prose without many floats: about 650-800 words per page.
 - Tables, equations, section headings, and references reduce usable prose density.
-- A paper with 3176 words plus 4 tables is likely around 5.8-6.8 main-body pages before adding a figure or expanded case-study layout.
+- A paper with 3724 words plus 5 tables is likely around 7.5-8.0 main-body pages in the current AAMAS layout after adding the core result figures.
 
 Current estimate after the case-study paragraph, before full LaTeX expansion:
 
 | Template target | Estimated main-body pages | Notes |
 | --- | ---: | --- |
-| AAMAS style | 7.8-8.0 | Current compiled body reaches page 8 and references start on page 9; full-split LLM results should replace protocol/scaffolding material rather than simply adding new space. |
+| AAMAS style | 7.8-8.0 | Current compiled body reaches page 8 and references begin at the bottom of page 8; full-split LLM results should replace protocol/scaffolding material rather than simply adding new space. |
 | IJCAI style | 6.8-7.2 | Needs compression because IJCAI has a 7-page body target and the current AAMAS version already fills 8 total pages. |
 | AAAI style | 6.8-7.2 | Similar compression pressure to IJCAI, with separate reproducibility checklist after references. |
 

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-18T21:15:51.521Z",
+  "sampleCount": 40,
+  "stratumCounts": {
+    "lead_opening": 8,
+    "lead_opening;endgame_race": 8,
+    "lead_opening;opponent_near_finish": 8,
+    "follow_beat_or_pass;opponent_near_finish": 8,
+    "lead_opening;partner_near_finish": 8
+  },
+  "sourceDecisionsDir": "docs/research/experiments/full-e1/decisions",
+  "sourceTracesDir": "docs/research/experiments/full-e5-tom-schema-repair-results/traces",
+  "sourceResultsDir": "docs/research/experiments/full-e5-tom-schema-repair-results/results",
+  "files": {
+    "blindJsonl": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+    "answerKeyJsonl": "docs/research/experiments/human-soft-label-audit/human-audit-answer-key.jsonl",
+    "annotationSheetCsv": "docs/research/experiments/human-soft-label-audit/human-audit-annotation-sheet.csv",
+    "annotatorHtml": "docs/research/experiments/human-soft-label-audit/human-audit-annotator.html",
+    "protocolMarkdown": "docs/research/experiments/human-soft-label-audit/human-audit-protocol.md"
+  },
+  "status": "annotation_packet_prepared_not_human_completed"
+}

@@ -35,11 +35,12 @@ export interface PostProviderConditionOptions {
   provenancePath?: string
   auditPath?: string
   reportPath?: string
+  allowPartialIngest?: boolean
 }
 
 export interface PostProviderConditionResult {
   schemaVersion: '0.1.0'
-  status: 'ingested' | 'not_ready_for_ingest'
+  status: 'ingested' | 'partial_ingested' | 'not_ready_for_ingest'
   conditionId: LLMConditionId
   materialization: MaterializeProviderResultsReport
   audit: LLMRawOutputAuditResult
@@ -79,7 +80,9 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
   if (!materialization.readyForAudit) blockers.push('Provider-result materialization is not ready for audit.')
   if (!audit.readyForIngest) blockers.push('Raw-output audit is not ready for ingest.')
 
-  if (blockers.length > 0) {
+  const shouldIngestPartial = options.allowPartialIngest === true && materialization.writtenCount > 0
+
+  if (blockers.length > 0 && !shouldIngestPartial) {
     removeStaleIngestArtifacts(options.outputDir)
     const result: PostProviderConditionResult = {
       schemaVersion: '0.1.0',
@@ -108,7 +111,7 @@ export function runPostProviderCondition(options: PostProviderConditionOptions):
 
   const result: PostProviderConditionResult = {
     schemaVersion: '0.1.0',
-    status: 'ingested',
+    status: blockers.length > 0 ? 'partial_ingested' : 'ingested',
     conditionId: options.conditionId,
     materialization,
     audit,

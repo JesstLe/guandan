@@ -1,6 +1,6 @@
 # Pilot Metrics Summary
 
-This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results.
+This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results; rows marked `partial_metrics_available` are exploratory partial evidence and must not be reported as final full-split results.
 
 | Agent | Status | Parsed / Total | Parse Failures | Hard Failures | Legal | Public | Hidden Info | Partner/Opponent Tags | Reason-Action | Objective | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

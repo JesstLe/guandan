@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-275-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "As team 0, I want to win tricks efficiently. With a very weak hand, the best contribution is to lead the lowest card, retain higher cards for later, and avoid committing a card that could be useful if the trick comes back around."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 cards and has not acted; with no public plays, I have no direct signal. As the opening leader with the weakest card in my hand, leading low lets my partner potentially win cheaply with any mid-to-high card without forcing them to spend a trump or bomb.",
+    "confidence": 0.95,
+    "evidence": [
+      "a42d0f66-526f-49a7-b74d-6829d10ff35d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have also not acted. They likely hold higher cards than my 3-6 of spades and may be willing to win an early trick, but they cannot know my exact hand. Leading the 3 minimizes the value I give away if an opponent wins the trick.",
+    "confidence": 0.95,
+    "evidence": [
+      "a42d0f66-526f-49a7-b74d-6829d10ff35d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "As team 0, I want to win tricks efficiently. With a very weak hand, the best contribution is to lead the lowest card, retain higher cards for later, and avoid committing a card that could be useful if the trick comes back around.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.95,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

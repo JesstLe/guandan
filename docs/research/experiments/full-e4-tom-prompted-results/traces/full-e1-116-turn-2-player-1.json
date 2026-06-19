@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-116-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and just led a low 3-heart. The priority is to seize the lead now so the opponent cannot win this trick and immediately lead again with a near-empty hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has not yet acted and holds 3 cards. They might be able to beat a 3-heart if I pass, but there is no public signal about their suit distribution or strength, so I cannot rely on them to stop player 0.",
+    "confidence": 0.5,
+    "evidence": [
+      "579f2aea-9cde-4929-a7f5-4ade90bc94ef"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a small 3-heart with only 2 cards remaining, strongly suggesting they are trying to shed a low card and keep the lead to run out their hand. Their remaining card is likely higher or could be a trump, so allowing them to lead again is dangerous.",
+    "confidence": 0.7,
+    "evidence": [
+      "579f2aea-9cde-4929-a7f5-4ade90bc94ef"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4-heart is the cheapest legal card that beats the table's 3-heart. It takes control of the trick, denies player 0 an immediate second lead, and preserves the stronger 9-heart and 10-heart for later rounds.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 win this trick and lead again while near finishing. Partner might not be able to intervene, so the risk of an opponent finish is too high."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beats the 3-heart but spends a materially stronger card when the 4-heart is already sufficient, weakening future follow or lead options."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Also wins the trick, but using the 10-heart wastes the highest non-trump card in hand; the 4-heart provides the same lead change at lower cost."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 or player 3 may still overtake the 4-heart with a higher heart or a trump, regaining the lead.",
+      "If the 4-heart wins, my subsequent lead may be beaten because I have only 9/10 left and no trumps."
+    ],
+    "mitigation": "Using the minimum winning card limits resource loss. Even if the trick is lost, retaining the 9 and 10 maximizes my ability to compete in upcoming plays while having delayed the opponent's near-finish."
+  },
+  "confidence": 0.75
+}

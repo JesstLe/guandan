@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-374-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "In this endgame race, I have only two cards and need to win the lead so I can shed my remaining card quickly. Playing the stronger single maximizes the chance of winning this opening trick and keeping initiative for my team."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three cards and has not yet signaled anything through play. Since the game just started, I believe my partner likely holds some playable cards that can support me later, but I cannot assume any specific ranks or suits.",
+    "confidence": 0.5,
+    "evidence": [
+      "d8eec179-61c5-44f6-be88-712327f31c52"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. With no cards played yet, it is probable that at least one opponent has a trump, a higher non-trump single, or a wild card that can beat my spade A. Their objective is to seize lead and block my team from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "d8eec179-61c5-44f6-be88-712327f31c52"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A is stronger than leading the spade 2. If it wins the trick, I keep the lead and can play my remaining card next, advancing toward finishing my hand. Even if an opponent beats it, I still retain the 2 for a later opportunity, whereas leading the 2 would likely surrender the lead immediately.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Playing the 2 is the weaker single and would almost certainly be beaten by an opponent or even a low partner card, giving the lead away and leaving me with the A as a single last card that may be harder to shed."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump, the trump-rank 7, a joker, or a higher non-trump single to beat the spade A and take lead.",
+      "If the A loses, I lose tempo and may become dependent on my partner to regain lead before I can play my remaining 2."
+    ],
+    "mitigation": "By playing the A first, I at least force opponents to spend a strong card to win the trick. My partner may cover, and I keep the 2 as a fallback response in subsequent rounds."
+  },
+  "confidence": 0.7
+}

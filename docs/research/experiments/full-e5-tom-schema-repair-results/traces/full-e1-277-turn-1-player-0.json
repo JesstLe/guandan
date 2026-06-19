@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-277-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards left and is near finishing, so the priority is to lead a single that partner is most likely able to beat, giving them control rather than spending my own limited high cards."
+  },
+  "partnerBelief": {
+    "summary": "Because partner's hand count is 2 and the scenario tags include 'partner_near_finish', partner likely holds cards intended to finish the round—possibly a high non-trump or a trump. They probably want to win the trick rather than passively shed low cards, but with only two cards they may also be constrained.",
+    "confidence": 0.6,
+    "evidence": [
+      "d45c8460-fd30-4570-a4a9-b465310c30ac"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have seen no cards played yet. Player 1 and player 3 each hold 3 cards. They will try to win the lead cheaply if possible, or use a trump/high card to stop partner from finishing. They have no public reason yet to know my exact distribution, only that I am leading a single.",
+    "confidence": 0.5,
+    "evidence": [
+      "d45c8460-fd30-4570-a4a9-b465310c30ac"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest single (diamond 3) minimizes the rank partner must beat to take the trick. Since partner is next to act after player 1, a low lead gives player 1 fewer cheap ways to raise the bar and gives partner the broadest range of winning replies. It also keeps my slightly higher diamonds in reserve for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "A 6 lead raises the minimum card partner needs to win; if partner holds only a modest high card or a small trump, they may be unable to take the trick, leaving control with opponents."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A 5 is still higher than necessary; it gives opponents a chance to play in the 3–5 range and forces partner to beat a higher card, reducing partner's winning range without significant upside."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is better than 5 or 6 but still not as low as 3; the 3 lead is strictly better at lowering the threshold for partner while preserving more rank separation among my remaining cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 may simply play a higher non-trump or trump and take the lead, preventing partner from finishing.",
+      "Partner may not have a card that can beat whatever player 1 plays, even after a low lead.",
+      "If opponents have trumps, any non-trump lead will likely lose regardless of rank."
+    ],
+    "mitigation": "By leading the 3, I make it maximally likely that player 1 cannot win cheaply with a marginal card and that partner can cover with a minimal winner. I avoid committing my higher diamonds and avoid signaling strength, keeping options open."
+  },
+  "confidence": 0.65,
+  "notes": "Only public evidence is the new_game event; all partner/opponent card inferences are probabilistic and based on hand counts and scenario tags."
+}

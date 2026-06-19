@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-258-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only low clubs and is leading the first trick. The best team goal is to shed these weak cards quickly while giving partner a chance to take control, rather than trying to win the trick with cards that cannot beat ordinary trumps or high cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has given no signals. They may hold higher non-club cards or trumps that can beat a low club lead, but this is uncertain because the hand has just started.",
+    "confidence": 0.4,
+    "evidence": [
+      "beef65a1-6f0c-4dff-8afe-595370a773bc"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is likely trying to finish; they may hold a trump or high card to seize the lead. Opponent player 3 still has 3 cards and may also compete, but no specific distribution is known.",
+    "confidence": 0.5,
+    "evidence": [
+      "beef65a1-6f0c-4dff-8afe-595370a773bc"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the cheapest possible lead. It minimizes the value handed to opponents if they win, gives partner the widest range of cards that can beat it naturally, and starts shedding the low hand quickly.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is the highest of these low cards and is more likely to be beaten by an opponent's ordinary card, wasting a slightly better exit card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 has no special advantage over the 3 and is still likely to lose; keeping it for a later exit is marginally better."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only slightly higher than the 3 and offers no better chance of winning, while reducing future flexibility."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 may have a trump or high card and win the trick, moving closer to finishing.",
+      "The lead may pass to an opponent, making it harder for the team to control the remainder of the round."
+    ],
+    "mitigation": "Leading the lowest card reduces the card value surrendered and preserves slightly higher low cards for later exits, while still allowing partner to win with almost any playable card."
+  },
+  "confidence": 0.6,
+  "notes": "No public signals exist beyond the new_game event, so all partner and opponent beliefs are probabilistic and grounded only in hand counts and the opening lead situation."
+}

@@ -1,6 +1,6 @@
 # Table 1: Reasoning Reliability
 
-Rows with `missing_raw_outputs` are not model results.
+Rows with `missing_raw_outputs` are not model results; rows with `partial_metrics_available` are exploratory partial evidence and must not be reported as final full-split results.
 
 | Agent | Status | Parsed | Hard Failures | Legal P/F/U | Hidden P/F/U | Reason-Action P/F/U | Objective P/F/U |
 | --- | --- | ---: | ---: | --- | --- | --- | --- |

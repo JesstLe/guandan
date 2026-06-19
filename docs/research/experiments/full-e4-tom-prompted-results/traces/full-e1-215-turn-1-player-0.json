@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-215-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I already have the lead in the opening trick, but my hand is very weak (3-6 spades). My best team-oriented play is to lead the lowest card so my partner has the widest window to win the trick with a higher single and carry the lead for our team."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays, so they are unknown. Given a low lead, there is a reasonable chance they hold a higher single that can win the trick, but this is probabilistic rather than certain.",
+    "confidence": 0.45,
+    "evidence": [
+      "b71e4e76-1ffd-40dc-a408-8d5ee662b0e0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 cards and no cards have been revealed. They likely possess higher singles than my 3-6 and will try to win the trick to take control, but their exact strength is unknown.",
+    "confidence": 0.55,
+    "evidence": [
+      "b71e4e76-1ffd-40dc-a408-8d5ee662b0e0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades expends my weakest card, keeps the 4-6 for later tricks, and gives my partner the best chance to overtake with any higher single.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 uses up my strongest low card and still loses to almost any higher card an opponent or partner may have, leaving me with even weaker follow-up cards."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is no safer than the 3 against unknown opponent hands, and spending it prematurely reduces my options in later tricks."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is marginally stronger than the 3 but does not meaningfully improve the chance of winning the trick, so preserving it is better."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents likely have higher singles and can win the trick, shifting the lead to the opposing team.",
+      "If partner also has only low cards, we will lose this trick without gaining any information beyond the responses."
+    ],
+    "mitigation": "By leading the lowest card, I minimize resource loss and retain slightly better cards for future tricks, allowing me to adapt once opponents reveal more of their hands."
+  },
+  "confidence": 0.55
+}

@@ -44,12 +44,65 @@ describe('providerHandoffAudit', () => {
         status: 'waiting_for_provider_results',
         mappingRequestCount: 2,
         uploadRequestCount: 2,
+        providerSuccessCount: 0,
+        providerErrorCount: 0,
+        providerPendingCount: 0,
         customIdMismatchCount: 0,
       })
       expect(report.issues).toEqual([{
         severity: 'info',
         conditionId: 'plain-llm',
         message: `Provider result not present yet: ${providerResults}.`,
+      }])
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('marks provider result files as partial until every mapping id has a successful row', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-provider-handoff-partial-'))
+    const mapping = join(rootDir, 'batch-input.jsonl')
+    const upload = join(rootDir, 'openai-batch-input.jsonl')
+    const providerResults = join(rootDir, 'provider-results.jsonl')
+
+    try {
+      writeFileSync(mapping, [
+        JSON.stringify(mappingLine('d-1')),
+        JSON.stringify(mappingLine('d-2')),
+        JSON.stringify(mappingLine('d-3')),
+      ].join('\n'), 'utf8')
+      writeFileSync(upload, [
+        JSON.stringify(uploadLine('d-1')),
+        JSON.stringify(uploadLine('d-2')),
+        JSON.stringify(uploadLine('d-3')),
+      ].join('\n'), 'utf8')
+      writeFileSync(providerResults, [
+        JSON.stringify({ custom_id: 'd-1', response: { body: { choices: [{ message: { content: '{}' } }] } } }),
+        JSON.stringify({ custom_id: 'd-2', error: { message: 'quota reached' } }),
+      ].join('\n'), 'utf8')
+
+      const report = auditProviderHandoff({
+        conditions: [{
+          conditionId: 'full-tom-prompted-llm',
+          title: 'Full ToM',
+          mappingJsonlPath: mapping,
+          uploadJsonlPath: upload,
+          expectedProviderResultPath: providerResults,
+        }],
+      })
+
+      expect(report.status).toBe('ready')
+      expect(report.conditions[0]).toMatchObject({
+        status: 'provider_results_partial',
+        providerResultLineCount: 2,
+        providerSuccessCount: 1,
+        providerErrorCount: 1,
+        providerPendingCount: 2,
+      })
+      expect(report.issues).toEqual([{
+        severity: 'warning',
+        conditionId: 'full-tom-prompted-llm',
+        message: 'Provider result is partial: 1/3 successful rows, 1 error rows, 2 rows still pending successful output.',
       }])
     } finally {
       rmSync(rootDir, { recursive: true, force: true })

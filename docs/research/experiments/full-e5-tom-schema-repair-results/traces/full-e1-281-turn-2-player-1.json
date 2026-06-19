@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-281-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (P2) has 3 cards and has not yet acted. They may be able to beat a 3♥ with a heart or trump, but I cannot assume they will. They have no public signals beyond the initial deal.",
+    "confidence": 0.6,
+    "evidence": [
+      "137cb4e7-ae0e-491d-bb32-de271878785b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led 3♥ and is down to 2 cards, suggesting they are trying to shed cards quickly. Player 3 (other opponent) has 3 cards and acts after partner.",
+    "confidence": 0.6,
+    "evidence": [
+      "137cb4e7-ae0e-491d-bb32-de271878785b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-heart-4-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Alternative mentioned in raw ToM output."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

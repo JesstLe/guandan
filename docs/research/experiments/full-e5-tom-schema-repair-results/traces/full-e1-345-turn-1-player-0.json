@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-345-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is weak and entirely non-trump spades 3-6, so I should start the trick cheaply and give partner a chance to take the lead rather than try to hold it myself."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not yet acted and holds three hidden cards. They may have higher spades or trumps that could win a low spade lead, but I cannot assert this as fact.",
+    "confidence": 0.3,
+    "evidence": [
+      "10cb1adb-6c6e-486f-ac03-3c076ea48ff3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not yet played and each holds three hidden cards. It is likely at least one opponent has a card higher than the spade 3 or a trump, but I cannot identify which opponent holds what.",
+    "confidence": 0.3,
+    "evidence": [
+      "10cb1adb-6c6e-486f-ac03-3c076ea48ff3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest spade (3) invests the fewest resources, preserves the 4, 5, and 6 for possible future leads, and creates the broadest opportunity for partner to win the trick with a higher card or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the 6 now uses my highest card while it is still likely beaten by an opponent's trump or higher spade, leaving me with only weaker cards afterward."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 but costs a card that could be more useful later if opponents duck the trick or if I need a slightly higher lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher spade or a trump and seize the lead.",
+      "Partner may be unable to beat the lead, causing us to lose the trick.",
+      "If all other players pass, I win with the 3 and must continue leading from a still-weak hand."
+    ],
+    "mitigation": "Leading the 3 minimizes immediate resource exposure. If an opponent takes the trick, my higher spades are conserved; if partner can win, the lead transfers to them with minimal cost from my hand."
+  },
+  "confidence": 0.6
+}

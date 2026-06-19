@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-008-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is all low non-trump clubs with no bombs, so I cannot realistically dominate the trick myself. The best team goal is to lead a very low single that partner (player 2) can beat with a modest card, transferring the lead to our team and keeping the opponent with only 2 cards from controlling the tempo."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds some mid-to-high non-trump cards or trumps that can beat a low club lead, since they are the only teammate and have 3 cards remaining. No public actions contradict this, and a low lead is the easiest for partner to cover.",
+    "confidence": 0.55,
+    "evidence": [
+      "afaa4913-2a6f-42cb-ad49-7ca4799135e9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponent at player 1 has only 2 cards and is therefore likely to be holding strong winning cards to try to finish quickly. The other opponent at player 3 has 3 cards and may be willing to spend a moderately high card to seize the lead. My low lead gives both opponents a cheap chance to win, but it also avoids committing my strongest low card.",
+    "confidence": 0.6,
+    "evidence": [
+      "afaa4913-2a6f-42cb-ad49-7ca4799135e9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 is the lowest card, making it easiest for partner to win the trick with a minimal card while preserving my slightly higher 4, 5, and 6 for future tricks. Since all my cards are weak, minimizing risk of giving the opponents a free high-card exchange is the priority.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 commits my strongest non-trump card, but it is still very low and will be beaten easily by opponents or partner. It leaves only 3, 4, 5 for later, which are even harder to play safely if the opponent with 2 cards gains the lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is slightly stronger than the 3, but it is no safer against opponents' likely higher cards and makes it slightly harder for partner to cover. Since my whole hand is weak, starting with the absolute lowest is preferable."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 suffers from the same problem as the 4 and 6: it is a weak card that does not control the trick, and it uses a card that is more valuable for later resistance than the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A low lead may be won by the opponent with 2 cards, who could then use their last card to finish the hand.",
+      "Partner may be unable to beat even a 3, in which case we lose the lead with minimal information.",
+      "Leading any single when no teammate can signal strength gives opponents a free tempo."
+    ],
+    "mitigation": "By choosing the minimum legal card, I limit the value I surrender if opponents win, keep slightly better cards for later tricks, and give partner the widest possible range of cards that can take the lead."
+  },
+  "confidence": 0.65,
+  "notes": "First lead with no trumps and no high cards; chosen action is the most conservative path to give partner a chance to take control."
+}

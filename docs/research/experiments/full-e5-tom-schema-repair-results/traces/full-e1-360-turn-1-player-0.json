@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-360-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Avoid handing the opponents an easy tempo gain while progressing my hand. Leading the minimum card advances play at lowest cost."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.6,
+    "evidence": [
+      "71c7d104-ee6d-4efe-b9c9-54095d88e36b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent state is uncertain; no hidden cards are asserted as facts.",
+    "confidence": 0.6,
+    "evidence": [
+      "71c7d104-ee6d-4efe-b9c9-54095d88e36b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Avoid handing the opponents an easy tempo gain while progressing my hand. Leading the minimum card advances play at lowest cost.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leads the highest card in hand but still loses to any 7+ non-trump or any trump. It throws away the only card with marginal endplay value and is dominated by leading the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

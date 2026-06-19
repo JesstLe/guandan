@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-292-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My partner has only 2 cards remaining, so the priority is to lead a low single that they may be able to beat, passing the lead to them so they can try to go out. My own hand is weak (3-6 of diamonds, non-trump), so I cannot realistically expect to win this trick myself."
+  },
+  "partnerBelief": {
+    "summary": "Because the hand count shows partner has only 2 cards and the scenario is tagged 'partner_near_finish', I believe it is plausible (but not certain) that partner holds at least one card strong enough to win a low single lead. Their exact ranks and suits are hidden, so this belief remains probabilistic.",
+    "confidence": 0.6,
+    "evidence": [
+      "e471a43b-5f95-4b14-82cf-302b3b52b169"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 and 2 cards left. Facing a low single lead, they are likely to play the cheapest card that can beat it to seize the lead and block my partner from finishing. I do not know their exact holdings, but they almost certainly have cards higher than 3 of diamonds.",
+    "confidence": 0.7,
+    "evidence": [
+      "e471a43b-5f95-4b14-82cf-302b3b52b169"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the lowest-cost move. It minimizes the strength I commit to the trick, keeps my slightly higher low cards (4-6) for future plays, and gives partner the best chance to win with a modest high card if they have one.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Playing the 4 is only marginally stronger and still almost certainly loses; it wastes a card that might beat a future 3 lead."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is the middle of my sequence; leading it gives up a card that is more useful later and does not meaningfully increase the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest card and best chance to win a future low-card trick, so I should preserve it rather than lead it now."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any low single is very likely to be beaten by opponents, so partner may not receive the lead.",
+      "If an opponent wins, they may play a combination partner cannot answer, delaying or preventing partner from finishing.",
+      "I have no trump or high cards, so I cannot rescue the trick once it is lost."
+    ],
+    "mitigation": "By leading the lowest single, I keep my limited remaining cards as high as possible for the remainder of the round, improving my ability to respond to opponent or partner leads."
+  },
+  "confidence": 0.7
+}

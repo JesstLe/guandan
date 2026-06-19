@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-332-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards remaining and is near finishing. As the opening leader with no table pressure, the best team play is to lead a low single card that partner can potentially win cheaply, giving them control and a chance to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds 2 cards they are trying to dispose of, possibly including a winning single or a pair. With no public plays yet, I believe they are strong enough to compete for a low lead but I cannot assert their exact ranks.",
+    "confidence": 0.55,
+    "evidence": [
+      "ab38e979-0608-4912-bb5d-7a2329fd16ec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and will try to seize or retain the lead to block partner from finishing. They may have higher non-trump singles or trump cards, but no public information reveals their exact holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "ab38e979-0608-4912-bb5d-7a2329fd16ec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3♦) creates the easiest possible threshold for partner to win the trick with a modest card, preserving partner's stronger cards and supporting their finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "4♦ is higher than necessary; it raises the bar for partner to take the trick and wastes a slightly stronger card when no table pressure exists."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "5♦ is even harder for partner to beat and consumes a middle card that could be useful later if opponents play mid-strength singles."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "6♦ is the strongest card in hand but still non-trump and low; leading it squanders the only card that might beat an opponent's 4 or 5 and makes partner's task hardest."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and take the lead, preventing the transfer.",
+      "Partner may be unable to beat even a 3♦ if their two remaining cards are lower non-trump cards.",
+      "Leading a non-trump low card exposes no bomb, so opponents are not deterred from contesting."
+    ],
+    "mitigation": "Leading the minimum legal single is the standard cooperative play; it maximizes the chance partner can win while keeping my stronger cards for future rounds."
+  },
+  "confidence": 0.6,
+  "notes": "No cards have been played, so all beliefs about partner and opponent holdings remain probabilistic and grounded solely in the public hand counts and the new game event."
+}

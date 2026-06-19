@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-366-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "With opponent near finish, passing is too passive. Playing the 10 overcommits a high card. The 4 of hearts is the cheapest card that beats the 3, controls the lead, and keeps stronger cards in reserve."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 2) has 3 cards and has not acted this trick. Since Player 0 led a low single heart, partner may hold a higher heart or trump and could win the trick if I pass. However, partner might also be saving a high card for a critical later moment, especially with an opponent near finish.",
+    "confidence": 0.6,
+    "evidence": [
+      "b7a696d9-1336-4ad9-8227-8deb7225cdd0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 (opponent) led a low 3 of hearts with only 2 cards remaining. This suggests an attempt to shed a weak card quickly and get another lead before going out. Player 0's remaining card is therefore likely stronger than a 3.",
+    "confidence": 0.6,
+    "evidence": [
+      "b7a696d9-1336-4ad9-8227-8deb7225cdd0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "With opponent near finish, passing is too passive. Playing the 10 overcommits a high card. The 4 of hearts is the cheapest card that beats the 3, controls the lead, and keeps stronger cards in reserve.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

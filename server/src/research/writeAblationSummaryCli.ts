@@ -6,6 +6,7 @@ import {
 interface Args {
   out: string
   fullMetrics?: string
+  attribution?: string
   variants: AblationVariantInput[]
 }
 
@@ -14,6 +15,7 @@ const result = writeAblationSummary({
   outputDir: args.out,
   input: {
     fullVerifierMetricsPath: args.fullMetrics,
+    attributionPath: args.attribution,
     variants: args.variants,
   },
 })
@@ -29,6 +31,7 @@ function parseArgs(argv: string[]): Args {
   const parsed: Args = {
     out: 'docs/research/experiments/pilot-ablation-summary',
     fullMetrics: 'docs/research/experiments/pilot-e6-verifier-revision-results/metrics.json',
+    attribution: 'docs/research/experiments/pilot-verifier-attribution/verifier-attribution.json',
     variants: defaultVariants(),
   }
 
@@ -46,6 +49,9 @@ function parseArgs(argv: string[]): Args {
       i++
     } else if (arg === '--full-metrics') {
       parsed.fullMetrics = value
+      i++
+    } else if (arg === '--attribution') {
+      parsed.attribution = value
       i++
     } else if (arg === '--variant') {
       parsed.variants.push(parseVariant(value))
@@ -78,39 +84,40 @@ function parseVariant(value: string): AblationVariantInput {
 function defaultVariants(): AblationVariantInput[] {
   return [
     {
+      variantId: 'no-public-history-check',
+      title: 'No Public-History Check',
+      removedComponent: 'public-history consistency',
+      targetLabel: 'publicHistoryConsistent',
+    },
+    {
       variantId: 'no-hidden-info-check',
       title: 'No Hidden-Info Check',
       removedComponent: 'hidden-information discipline',
       targetLabel: 'hiddenInfoDisciplined',
-      metricsPath: 'docs/research/experiments/pilot-ablation-no-hidden-info/metrics.json',
     },
     {
       variantId: 'no-partner-check',
       title: 'No Partner Check',
       removedComponent: 'partner consistency',
       targetLabel: 'partnerConsistent',
-      metricsPath: 'docs/research/experiments/pilot-ablation-no-partner/metrics.json',
     },
     {
       variantId: 'no-opponent-check',
       title: 'No Opponent Check',
       removedComponent: 'opponent consistency',
       targetLabel: 'opponentConsistent',
-      metricsPath: 'docs/research/experiments/pilot-ablation-no-opponent/metrics.json',
     },
     {
       variantId: 'no-reason-action-check',
       title: 'No Reason-Action Check',
       removedComponent: 'reason-action consistency',
       targetLabel: 'reasonActionConsistent',
-      metricsPath: 'docs/research/experiments/pilot-ablation-no-reason-action/metrics.json',
     },
     {
-      variantId: 'no-legal-action-check',
-      title: 'No Legal-Action Check',
-      removedComponent: 'legal-action check',
-      targetLabel: 'legalAction',
-      metricsPath: 'docs/research/experiments/pilot-ablation-no-legal-action/metrics.json',
+      variantId: 'no-team-objective-check',
+      title: 'No Team-Objective Check',
+      removedComponent: 'team-objective validity',
+      targetLabel: 'teamObjectiveValid',
     },
   ]
 }

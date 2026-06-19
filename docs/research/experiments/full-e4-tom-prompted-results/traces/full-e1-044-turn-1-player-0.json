@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-044-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left and the smallest hand count, so the immediate team goal is to empty my hand and secure a first-place finish."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) has three cards and no public actions yet. Given my low hand count, the partner most likely wants me to finish rather than take the lead, so they will probably pass on my lead to preserve cards.",
+    "confidence": 0.55,
+    "evidence": [
+      "57434756-a811-4623-bc87-7c7c4323ddac"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The two opponents (players 1 and 3) each hold three cards and should try to block my finish. They may have trumps, rank-7 cards, or jokers that can beat a non-trump Ace, but their exact holdings are uncertain.",
+    "confidence": 0.55,
+    "evidence": [
+      "57434756-a811-4623-bc87-7c7c4323ddac"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades gives the highest chance that all opponents pass, letting me keep the lead and play the deuce next to go out. Even if an opponent beats it, they must spend a strong card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce is easy for opponents to overtake with almost any card, which would cede the lead and leave my remaining Ace to respond to whatever combination the opponent chooses, including pairs or trumps that the Ace cannot beat."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The Ace can still be beaten by any trump, rank-7 card, or joker.",
+      "If the Ace is beaten, my remaining 2 is very weak and opponents can likely prevent me from regaining the lead."
+    ],
+    "mitigation": "Leading the strongest single is the best available shot at retaining initiative in a two-card endgame; any other lead would be even easier for opponents to suppress."
+  },
+  "confidence": 0.65,
+  "notes": "Reasoning stays grounded in public hand counts and the new_game event; no hidden cards are asserted as facts."
+}

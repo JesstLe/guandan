@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-288-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is all low non-trump clubs, so I cannot credibly seize or keep control. Leading the weakest single gives my partner the widest chance to overtake the trick, which is especially important because an opponent is down to two cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) likely holds some higher non-trump cards or trumps, since my own hand contains only low clubs and most high cards remain unaccounted for. If I lead a low single, partner may be able to win the trick with a modest card rather than a premium one.",
+    "confidence": 0.6,
+    "evidence": [
+      "9f963165-48c8-4fc0-9907-b0f7cf01bfd5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only two cards and is tagged as near finish, so they probably hold strong singles or trumps to try to go out soon. Opponent player 3 has three cards and is also unknown. I cannot assert exact ranks for either opponent.",
+    "confidence": 0.7,
+    "evidence": [
+      "9f963165-48c8-4fc0-9907-b0f7cf01bfd5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs commits the smallest card, invites opponents to spend a higher card, and leaves my slightly better clubs for future tricks. It maximizes the chance that partner can take control without needing a premium card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still easily beaten by most cards; leading it sacrifices a slightly better card without meaningfully reducing the chance opponents can win the trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Leaves me with mostly very low cards for later leads and is still well below the trump rank and likely opponent high cards."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "My highest remaining card; leading it now would discard my best stopper and leave me weaker on future tricks, while still losing to any 7+ or trump."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may beat the low lead with a high single or trump and continue toward going out.",
+      "Partner may not be able to overtake if opponents hold strong cards.",
+      "I hold no trumps, so I cannot regain control by force later in the round."
+    ],
+    "mitigation": "Play the minimum legal card to reveal as little strength as possible and preserve the 4, 5, and 6 for later leads or blocks if the lead comes back to me."
+  },
+  "confidence": 0.65
+}

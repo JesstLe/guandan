@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-101-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Take control of the trick at the lowest possible cost so our team can dictate the next lead and stop the opponent who is down to two cards from running out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely has some cards that could beat a low heart, but with only public information I cannot assume they have a heart or want to spend a high card on this trick. They may prefer I win cheaply so they preserve strength for later.",
+    "confidence": 0.6,
+    "evidence": [
+      "78598de2-4073-4e83-bd67-7ea28113747b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 led a low heart 3 and is down to two cards, suggesting they may be trying to dump a weak card while retaining a strong exit. Letting them retain the lead risks them finishing or controlling the next trick. Opponent player 3 may hold coverage for player 0.",
+    "confidence": 0.7,
+    "evidence": [
+      "78598de2-4073-4e83-bd67-7ea28113747b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the minimum winning card; it beats the led 3, gives our team the lead, and preserves the 9 and 10 for future tricks. This directly counters the opponent who is near finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing keeps the lead with the opponent who only has two cards left, increasing their chance to finish or set the pace, which is risky for our team."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins but overcommits value; if a higher card appears we lose it unnecessarily, and it leaves fewer strong cards for later leads."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is even more wasteful for a single-heart trick when the 4 already wins; saving the 10 is more valuable for later control or a higher exchange."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A later opponent may still beat the 4 of hearts with a higher heart or trump.",
+      "Winning the trick means we must lead next, and our remaining cards are 9 and 10 which may be manageable but limited."
+    ],
+    "mitigation": "Using the lowest winner minimizes resource waste and keeps stronger cards in hand for the next lead or follow."
+  },
+  "confidence": 0.75,
+  "notes": "Decision is based on public card counts and the visible lead; hidden cards are treated probabilistically."
+}

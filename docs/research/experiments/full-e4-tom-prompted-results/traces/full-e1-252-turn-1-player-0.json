@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-252-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 2 (my partner) has only 2 cards remaining, which publicly signals they are close to going out. Since I hold only weak non-trump diamonds (ranks 3-6, all below trump rank 7), I cannot realistically keep the lead or suppress opponents directly. The best team play is to lead the lowest possible single, maximizing the probability my partner can beat it, seize the lead, and play out their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely holds 2 cards that they believe can win a trick or finish their hand soon, possibly including a high non-trump, a trump, a wildcard, or a pair. Because they are two cards away from going out, they probably have at least one card stronger than my 3 of diamonds, though this remains a probabilistic belief based only on the public hand count.",
+    "confidence": 0.7,
+    "evidence": [
+      "5a7aaa06-1dde-429b-a0a7-132fcaa8c297"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, with 3 cards each) will try to win the trick to stop my partner from going out. Given no cards have been played yet, their exact trump, wildcard, or high-card holdings are hidden, but any trump or card above rank 6 can beat my lead. They are likely to play the minimum card needed to take control if they choose to contest.",
+    "confidence": 0.6,
+    "evidence": [
+      "5a7aaa06-1dde-429b-a0a7-132fcaa8c297"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest legal single, giving partner the lowest threshold to beat it. This best supports the transfer-lead objective while expending my least valuable card. If opponents take the trick, they only win a low card and may be forced to reveal strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest diamond, but it is still below trump rank 7 and easily beaten. Leading it raises the threshold partner must meet to win the trick, reducing the chance they can take the lead and finish."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Better than the 6 but still higher than necessary; it does not improve my ability to win the trick and only makes it harder for partner to beat."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Intermediate option, but the 3 is strictly better for the same objective because it is easier for partner to beat and equally expendable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or high non-trump and win the trick, delaying partner's finish.",
+      "Partner may not be able to beat even a 3 if their two remaining cards are both lower non-trumps (e.g., a pair of 3s or low cards without a trump/wildcard).",
+      "Leading a single gives opponents information that I have diamonds, though this is already inferable from the lead suit."
+    ],
+    "mitigation": "There is no safer lead available (all legal actions are low diamond singles), and the 3 minimizes the required response from partner. If the trick is lost, my remaining low cards can still be played later when partner or I regain the lead."
+  },
+  "confidence": 0.75,
+  "notes": "All hidden-card inferences are probabilistic and grounded solely in the public hand counts and new-game event."
+}

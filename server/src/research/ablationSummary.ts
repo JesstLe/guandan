@@ -7,11 +7,29 @@ import {
 import { dirname, join } from 'node:path'
 
 type StatusCounts = Record<'pass' | 'fail' | 'unknown' | 'not_applicable', number>
-type ComparableNumber = number | '[NEED_EXPERIMENT]'
+type ComparableNumber = number | '[NEED_EXPERIMENT]' | 'n/a'
 
 interface MetricsFile {
   hardFailureCount?: number
   labelStatusCounts?: Record<string, StatusCounts>
+}
+
+interface AttributionLabelRow {
+  label: string
+  beforeFailureBurden: number
+  afterFailureBurden: number
+  burdenDelta: number
+}
+
+interface VerifierAttributionFile {
+  status: string
+  pairedDecisionCount?: number
+  labelRows?: AttributionLabelRow[]
+  hardFailureAttribution?: {
+    beforeHardFailureCount: number
+    afterHardFailureCount: number
+    hardFailureDelta: number
+  } | null
 }
 
 export interface AblationVariantInput {
@@ -24,6 +42,7 @@ export interface AblationVariantInput {
 
 export interface AblationSummaryInput {
   fullVerifierMetricsPath?: string
+  attributionPath?: string
   variants: AblationVariantInput[]
 }
 
@@ -34,8 +53,14 @@ export interface AblationSummaryRow {
   removedComponent: string
   targetLabel: string
   metricsPath: string | null
+  attributionPath?: string | null
   hardFailures: ComparableNumber
   hardFailureDeltaVsFull: ComparableNumber
+  targetBeforeBurden?: ComparableNumber
+  targetAfterBurden?: ComparableNumber
+  observedBurdenReduction?: ComparableNumber
+  residualBurdenDeltaWithoutTarget?: ComparableNumber
+  shareOfObservedReduction?: ComparableNumber
   targetFailureBurden: ComparableNumber
   targetBurdenDeltaVsFull: ComparableNumber
   reasonActionFailureBurden: ComparableNumber
@@ -45,7 +70,12 @@ export interface AblationSummaryRow {
 export interface AblationSummary {
   schemaVersion: '0.1.0'
   status: 'metrics_available' | 'missing_metrics'
+  analysisMode: 'post_hoc_label_ablation' | 'variant_metrics' | 'readiness_artifact'
   fullVerifierMetricsPath: string | null
+  attributionPath: string | null
+  pairedDecisionCount: number | null
+  fullObservedBurdenDelta: ComparableNumber
+  fullObservedBurdenReduction: ComparableNumber
   rows: AblationSummaryRow[]
   notes: string
 }
@@ -62,6 +92,13 @@ export interface WriteAblationSummaryResult {
 }
 
 export function summarizeAblations(input: AblationSummaryInput): AblationSummary {
+  const attribution = input.attributionPath && existsSync(input.attributionPath)
+    ? readJson<VerifierAttributionFile>(input.attributionPath)
+    : null
+  if (attribution?.status === 'metrics_available' && attribution.labelRows?.length) {
+    return summarizePostHocLabelAblations(input, attribution)
+  }
+
   const fullMetrics = input.fullVerifierMetricsPath && existsSync(input.fullVerifierMetricsPath)
     ? readJson<MetricsFile>(input.fullVerifierMetricsPath)
     : null
@@ -73,7 +110,12 @@ export function summarizeAblations(input: AblationSummaryInput): AblationSummary
   return {
     schemaVersion: '0.1.0',
     status,
+    analysisMode: status === 'metrics_available' ? 'variant_metrics' : 'readiness_artifact',
     fullVerifierMetricsPath: input.fullVerifierMetricsPath ?? null,
+    attributionPath: input.attributionPath ?? null,
+    pairedDecisionCount: null,
+    fullObservedBurdenDelta: '[NEED_EXPERIMENT]',
+    fullObservedBurdenReduction: '[NEED_EXPERIMENT]',
     rows,
     notes: status === 'metrics_available'
       ? 'Deltas are variant minus full verifier; positive burden deltas indicate worse verifier-visible reliability.'
@@ -99,21 +141,31 @@ export function renderAblationSummaryMarkdown(summary: AblationSummary): string 
     '',
     `Status: \`${summary.status}\``,
     '',
-    'Rows marked `[NEED_EXPERIMENT]` are not experimental results.',
+    `Analysis mode: \`${summary.analysisMode}\``,
     '',
-    '| Variant | Status | Removed Component | Target Label | Hard Failures | Hard Delta | Target Burden | Target Delta | Reason-Action Burden | Reason-Action Delta |',
-    '| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |',
+    summary.pairedDecisionCount === null ? '' : `Paired decisions: ${summary.pairedDecisionCount}`,
+    summary.pairedDecisionCount === null ? '' : '',
+    typeof summary.fullObservedBurdenDelta === 'number'
+      ? `Full paired label-burden delta: ${formatSigned(summary.fullObservedBurdenDelta)}`
+      : '',
+    typeof summary.fullObservedBurdenDelta === 'number' ? '' : '',
+    '',
+    summary.analysisMode === 'post_hoc_label_ablation'
+      ? 'Rows remove one label group from the paired label-burden accounting. This is a post-hoc diagnostic over existing traces, not a rerun with different feedback prompts.'
+      : 'Rows marked `[NEED_EXPERIMENT]` are not experimental results.',
+    '',
+    '| Variant | Status | Removed Component | Target Label | Target Before | Target After | Target Delta | Residual Delta Without Target | Share of Observed Reduction |',
+    '| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |',
     ...summary.rows.map(row => [
       row.title,
       row.status,
       row.removedComponent,
       row.targetLabel,
-      String(row.hardFailures),
-      String(row.hardFailureDeltaVsFull),
-      String(row.targetFailureBurden),
+      String(row.targetBeforeBurden ?? '[NEED_EXPERIMENT]'),
+      String(row.targetAfterBurden ?? row.targetFailureBurden),
       String(row.targetBurdenDeltaVsFull),
-      String(row.reasonActionFailureBurden),
-      String(row.reasonActionBurdenDeltaVsFull),
+      String(row.residualBurdenDeltaWithoutTarget ?? '[NEED_EXPERIMENT]'),
+      formatShare(row.shareOfObservedReduction),
     ].map(escapeMarkdownCell).join(' | ')).map(row => `| ${row} |`),
     '',
     `Notes: ${summary.notes}`,
@@ -121,6 +173,92 @@ export function renderAblationSummaryMarkdown(summary: AblationSummary): string 
   ]
 
   return lines.join('\n')
+}
+
+function summarizePostHocLabelAblations(
+  input: AblationSummaryInput,
+  attribution: VerifierAttributionFile,
+): AblationSummary {
+  const labelRows = attribution.labelRows ?? []
+  const fullBurdenDelta = sum(labelRows.map(row => row.burdenDelta))
+  const fullBurdenReduction = fullBurdenDelta < 0 ? -fullBurdenDelta : 0
+  const rows = input.variants.map(variant => summarizePostHocVariant(
+    attribution,
+    variant,
+    fullBurdenDelta,
+    fullBurdenReduction,
+    input.attributionPath ?? null,
+  ))
+
+  return {
+    schemaVersion: '0.1.0',
+    status: rows.every(row => row.status === 'metrics_available') ? 'metrics_available' : 'missing_metrics',
+    analysisMode: 'post_hoc_label_ablation',
+    fullVerifierMetricsPath: input.fullVerifierMetricsPath ?? null,
+    attributionPath: input.attributionPath ?? null,
+    pairedDecisionCount: attribution.pairedDecisionCount ?? null,
+    fullObservedBurdenDelta: fullBurdenDelta,
+    fullObservedBurdenReduction: fullBurdenReduction,
+    rows,
+    notes: 'Post-hoc label ablations remove one verifier label from paired burden accounting over the same before/after traces. They attribute observed verifier-label burden reductions but do not replace a future rerun that removes feedback components from the prompt.',
+  }
+}
+
+function summarizePostHocVariant(
+  attribution: VerifierAttributionFile,
+  variant: AblationVariantInput,
+  fullBurdenDelta: number,
+  fullBurdenReduction: number,
+  attributionPath: string | null,
+): AblationSummaryRow {
+  const target = attribution.labelRows?.find(row => row.label === variant.targetLabel)
+  if (!target) {
+    return {
+      variantId: variant.variantId,
+      title: variant.title,
+      status: 'missing_metrics',
+      removedComponent: variant.removedComponent,
+      targetLabel: variant.targetLabel,
+      metricsPath: variant.metricsPath ?? null,
+      attributionPath,
+      hardFailures: '[NEED_EXPERIMENT]',
+      hardFailureDeltaVsFull: '[NEED_EXPERIMENT]',
+      targetBeforeBurden: '[NEED_EXPERIMENT]',
+      targetAfterBurden: '[NEED_EXPERIMENT]',
+      observedBurdenReduction: '[NEED_EXPERIMENT]',
+      residualBurdenDeltaWithoutTarget: '[NEED_EXPERIMENT]',
+      shareOfObservedReduction: '[NEED_EXPERIMENT]',
+      targetFailureBurden: '[NEED_EXPERIMENT]',
+      targetBurdenDeltaVsFull: '[NEED_EXPERIMENT]',
+      reasonActionFailureBurden: '[NEED_EXPERIMENT]',
+      reasonActionBurdenDeltaVsFull: '[NEED_EXPERIMENT]',
+    }
+  }
+
+  const observedReduction = target.burdenDelta < 0 ? -target.burdenDelta : 0
+  const reasonAction = attribution.labelRows?.find(row => row.label === 'reasonActionConsistent')
+  return {
+    variantId: variant.variantId,
+    title: variant.title,
+    status: 'metrics_available',
+    removedComponent: variant.removedComponent,
+    targetLabel: variant.targetLabel,
+    metricsPath: variant.metricsPath ?? null,
+    attributionPath,
+    hardFailures: attribution.hardFailureAttribution?.afterHardFailureCount ?? 'n/a',
+    hardFailureDeltaVsFull: attribution.hardFailureAttribution?.hardFailureDelta ?? 'n/a',
+    targetBeforeBurden: target.beforeFailureBurden,
+    targetAfterBurden: target.afterFailureBurden,
+    observedBurdenReduction: observedReduction,
+    residualBurdenDeltaWithoutTarget: fullBurdenDelta - target.burdenDelta,
+    shareOfObservedReduction: fullBurdenReduction > 0 ? observedReduction / fullBurdenReduction : 'n/a',
+    targetFailureBurden: target.afterFailureBurden,
+    targetBurdenDeltaVsFull: target.burdenDelta,
+    reasonActionFailureBurden: reasonAction?.afterFailureBurden ?? '[NEED_EXPERIMENT]',
+    reasonActionBurdenDeltaVsFull: variant.targetLabel === 'reasonActionConsistent'
+      ? 0
+      : reasonAction?.burdenDelta ?? '[NEED_EXPERIMENT]',
+  }
 }
 
 function summarizeVariant(
@@ -193,4 +331,17 @@ function writeJson(path: string, value: unknown): void {
 
 function escapeMarkdownCell(value: string): string {
   return value.replace(/\|/g, '\\|')
+}
+
+function sum(values: number[]): number {
+  return values.reduce((total, value) => total + value, 0)
+}
+
+function formatShare(value: ComparableNumber | undefined): string {
+  if (typeof value !== 'number') return String(value ?? '[NEED_EXPERIMENT]')
+  return `${Math.round(value * 100)}%`
+}
+
+function formatSigned(value: number): string {
+  return value > 0 ? `+${value}` : String(value)
 }

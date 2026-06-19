@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-073-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only low clubs and an opponent is down to 2 cards. My best chance is to play the weakest card, inviting my partner to win the trick and take control so I can shed my remaining low cards safely."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public signals yet. It is plausible they hold at least one card that can beat a low club—either a higher club or a trump—since I hold only weak clubs myself. Confidence is low because no cards have been played.",
+    "confidence": 0.45,
+    "evidence": [
+      "95377e16-cf21-4b78-97ac-6112e3651d76"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, so they are likely holding strong cards (possibly trumps or high ranks) and trying to finish. Player 3 with 3 cards may support them. They will try to win tricks cheaply or go out if possible.",
+    "confidence": 0.55,
+    "evidence": [
+      "95377e16-cf21-4b78-97ac-6112e3651d76"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the weakest lead. It maximizes the chance that my partner can overtake it with any higher club or a trump, and it preserves my slightly stronger 4–6 clubs for later. It also avoids giving a near-finish opponent an unnecessary free trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading my highest club uses up the card most likely to win a club-only trick, and if opponents have trumps they still win. It also leaves partner fewer ranks with which to beat the lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 of clubs is still stronger than necessary. It slightly reduces partner's chance to overtake and does not provide enough extra suppression against an opponent who likely has trumps or high cards."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 of clubs is an intermediate weak card; leading it neither maximizes partner's chance to take the trick nor conserves enough strength for later, making it inferior to the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 may have a trump or high card and win the trick immediately.",
+      "Partner may be unable to beat a low club, leaving me on lead with only slightly stronger but still weak cards."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the rank an opponent needs to spend to win and keep my remaining cards for later tricks. I rely on partner's 3-card hand to cover a low lead."
+  },
+  "confidence": 0.6
+}

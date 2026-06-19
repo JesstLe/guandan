@@ -35,7 +35,7 @@ export interface MetricsSummarySource {
 
 export interface MetricsSummaryRow {
   agentId: string
-  status: 'metrics_available' | 'missing_raw_outputs' | 'missing_metrics'
+  status: 'metrics_available' | 'partial_metrics_available' | 'missing_raw_outputs' | 'missing_metrics'
   totalDecisionPoints: number | null
   parsedTraces: number | null
   parseFailures: number | null
@@ -99,7 +99,7 @@ export function renderMetricsSummaryMarkdown(
     `# ${options.title ?? 'Pilot Metrics Summary'}`,
     '',
     options.description
-      ?? 'This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results.',
+      ?? 'This table is generated from current experiment artifacts. Rows marked `missing_raw_outputs` are not model results; rows marked `partial_metrics_available` are exploratory partial evidence and must not be reported as final full-split results.',
     '',
     '| Agent | Status | Parsed / Total | Parse Failures | Hard Failures | Legal | Public | Hidden Info | Partner/Opponent Tags | Reason-Action | Objective | Notes |',
     '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |',
@@ -126,12 +126,16 @@ export function renderMetricsSummaryMarkdown(
 function summarizeSource(source: MetricsSummarySource): MetricsSummaryRow {
   if (source.metricsPath && existsSync(source.metricsPath)) {
     const metrics = readJson<MetricsFile>(source.metricsPath)
+    const audit = source.rawAuditPath && existsSync(source.rawAuditPath)
+      ? readJson<RawAuditFile>(source.rawAuditPath)
+      : null
     const total = metrics.totalDecisionPoints ?? 0
     const parsed = metrics.totalParsedTraces ?? total
+    const isPartialMetrics = audit !== null && !audit.readyForIngest
 
     return {
       agentId: source.agentId,
-      status: 'metrics_available',
+      status: isPartialMetrics ? 'partial_metrics_available' : 'metrics_available',
       totalDecisionPoints: total,
       parsedTraces: parsed,
       parseFailures: metrics.parseFailureCount ?? 0,
@@ -142,7 +146,7 @@ function summarizeSource(source: MetricsSummarySource): MetricsSummaryRow {
       partnerOpponentTagConsistency: formatPartnerOpponent(metrics),
       reasonActionConsistent: formatLabel(metrics, 'reasonActionConsistent'),
       teamObjectiveValid: formatLabel(metrics, 'teamObjectiveValid'),
-      notes: source.notes ?? '',
+      notes: appendPartialAuditNote(source.notes ?? '', audit),
     }
   }
 
@@ -180,6 +184,12 @@ function summarizeSource(source: MetricsSummarySource): MetricsSummaryRow {
     teamObjectiveValid: '[NEED_EXPERIMENT]',
     notes: source.notes ?? '',
   }
+}
+
+function appendPartialAuditNote(notes: string, audit: RawAuditFile | null): string {
+  if (audit === null || audit.readyForIngest) return notes
+  const boundary = `PARTIAL ONLY: raw outputs present ${audit.presentCount}/${audit.expectedCount}; missing ${audit.missingCount}; not final full-split evidence`
+  return notes ? `${notes}; ${boundary}` : boundary
 }
 
 function formatLabel(metrics: MetricsFile, label: typeof verifierLabelNames[number]): string {

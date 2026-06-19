@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-093-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand contains only low non-trump clubs (3-6). At this early lead with no table card, I cannot force a high-cost trick, so the best team goal is to spend the weakest card and keep the 6 for a later trick where it might actually win or burden an opponent."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, 3 cards) has received no signaling opportunity because no cards have been played. They are likely holding ordinary mixed cards; if they have any card above a 3 or a trump, they may be able to cover this low lead. I treat their exact composition as unknown and probabilistic.",
+    "confidence": 0.6,
+    "evidence": [
+      "dc74c48d-2014-4e44-8ce8-f20939a3c357"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not acted, so their exact hands are unknown. Player 1 has only 2 cards, suggesting one opponent is near finishing and may be eager to win cheap tricks. They can likely beat a 3 with many cards, but leading low forces them to spend value rather than letting me waste my highest card first.",
+    "confidence": 0.65,
+    "evidence": [
+      "dc74c48d-2014-4e44-8ce8-f20939a3c357"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 is the cheapest expenditure. It communicates little, leaves the 6 as the best remaining club, and lets my partner or the trick dynamics reveal more information before I commit a stronger card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing the 6 now wastes the only card that might win a later trick or force a higher opponent card. With no table lead, a 6 is still very beatable, so the resource cost outweighs the tiny chance it wins."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is my second-best club. Saving it for a later moment where rank ordering matters dominates spending it on an unconditional opening lead."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is higher than the 3 without being materially stronger; playing it first still consumes a card I might need later while offering no better chance of winning the current trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent can beat a 3 with almost any non-trump higher card or any trump, so I will probably not win this trick.",
+      "Player 1 has only 2 cards and may finish soon if they gain cheap leads."
+    ],
+    "mitigation": "By spending only the 3, I retain my relative high card (6) and avoid overcommitting. If partner can cover, we keep control; if not, the loss is minimal and I still have 4-6 to contest later tricks."
+  },
+  "confidence": 0.65
+}

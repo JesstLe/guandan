@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-001-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 is down to 2 cards and led a low single. Taking the trick prevents the opponent from retaining the lead and potentially finishing their hand on the next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not yet shown strength. They may be waiting to see whether we can beat the low lead before committing a card, or they may lack a beating heart. Their inaction so far is neutral, so I should not assume they can rescue this trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "43d4db3b-caab-4f68-98fa-b045a75fa405"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led 3 of hearts with only 2 cards remaining, which is consistent with shedding a weak card while holding a stronger second card (possibly a higher heart or trump). Player 3 has 3 unknown cards and may hold counters. I treat their remaining hands as uncertain but recognize player 0 is close to finishing.",
+    "confidence": 0.7,
+    "evidence": [
+      "43d4db3b-caab-4f68-98fa-b045a75fa405"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 4 of hearts is the cheapest card that beats the led 3 of hearts. It takes control of the trick, denies player 0 a free win when they are near finish, and preserves the stronger 9 and 10 for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting player 0 win the trick outright and lead again with only one card left, which could allow them to finish. It also abdicates our team's chance to control the tempo."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but uses more value than necessary. If an opponent has a higher heart or trump, we lose a stronger card for no benefit."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is even more wasteful as a minimal-beat strategy. It is unlikely to be needed to beat a 3 and weakens our hand for later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 may hold a higher heart or a trump and recapture the trick.",
+      "Player 3 may have a high single that beats the 4 of hearts.",
+      "If we win, our remaining cards (9, 10) may not form a strong lead."
+    ],
+    "mitigation": "By playing the minimum beating card, we limit our exposure. Even if an opponent recaptures, we retain our higher hearts for future tricks, and we have prevented a free pass to a near-finished opponent."
+  },
+  "confidence": 0.75,
+  "notes": "Counterfactual: if partner were known to have a stronger heart, passing could be better to let partner save our cards; given hidden information, the safer team play is to take the trick ourselves with the lowest winner."
+}

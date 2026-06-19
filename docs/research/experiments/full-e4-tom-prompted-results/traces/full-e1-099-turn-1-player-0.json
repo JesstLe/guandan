@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-099-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "In the endgame race I want to empty my hand before the opponents; leading the low 2 lets my partner try to win the trick while I keep the A for a later exit."
+  },
+  "partnerBelief": {
+    "summary": "My partner holds 3 cards, and a lead of the low 2 is a clear signal for them to take the trick if they can. They likely have at least one card that can beat a 2, and with more cards than me they are better positioned to control the trick.",
+    "confidence": 0.75,
+    "evidence": [
+      "4dacc83a-27d3-4fa2-bc74-5c9092cb4e06"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The two opponents together hold 6 cards, so they are likely to hold some trumps, rank-7 level cards, or jokers that could beat a non-trump A. If my partner cannot win the trick, an opponent will probably seize the lead and then try to play combinations I cannot follow.",
+    "confidence": 0.65,
+    "evidence": [
+      "4dacc83a-27d3-4fa2-bc74-5c9092cb4e06"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 surrenders the lead cheaply, preserves my only higher card (the A), and invites my partner to win the trick. If my partner wins, they can continue the attack and possibly set me up to play my A. If an opponent wins instead, I still have the A saved for a later single lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the A uses my only strong card on a trick opponents are likely to beat with trumps or level cards. My partner cannot beat me without wasting strength, so this isolates me and leaves only the weak 2 for the rest of the hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "My partner may be unable to win the trick, giving an opponent the lead.",
+      "The opponent may lead a pair or other combination that I cannot follow, stranding my remaining cards.",
+      "An opponent may finish their hand before I get another chance to play."
+    ],
+    "mitigation": "By saving the A I keep a card that can win or at least contest a future single lead. Leading the 2 minimizes the information and strength I give away, making it harder for opponents to extract value from their high cards."
+  },
+  "confidence": 0.68
+}

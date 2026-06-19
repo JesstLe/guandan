@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-369-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2, team 0) has three cards and knows I am down to two. Their objective is to let me finish first if possible, so they will not overtake my A♠ unless they hold an unavoidable higher card or need to block an opponent. They may also signal by passing or playing low if they can afford to.",
+    "confidence": 0.6,
+    "evidence": [
+      "c1d59db9-1ff9-4dc8-b6df-ee9a2fa5f8ef"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3, team 1) each have three cards and want to prevent me from going out. If I lead low, either opponent with any spade can take the trick cheaply. If I lead high, an opponent who is void in spades may spend a trump-7 to stop me, but that still costs them a high card.",
+    "confidence": 0.6,
+    "evidence": [
+      "c1d59db9-1ff9-4dc8-b6df-ee9a2fa5f8ef"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-A-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

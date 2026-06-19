@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-063-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is entirely low non-trump clubs, so I cannot realistically win this trick. By leading the lowest card I invite my partner to take control with a stronger card."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public plays yet; with my own hand weak, it is plausible partner holds at least one card above a club 3 or a trump to win the trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "d7d65fe1-e3c6-47ad-b98b-211f7a61f3f3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "One opponent has only 2 cards and is close to finishing, so they may hold a high card or trump to try to win quickly. The other opponent has 3 cards and is also unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "d7d65fe1-e3c6-47ad-b98b-211f7a61f3f3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 minimizes the value I commit, makes it cheapest for my partner to overtake, and forces opponents to reveal or spend higher cards if they want the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is the highest card in my weak hand; playing it now wastes my only slightly better exit card without improving winning chances."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still higher than necessary for an opening lead and leaves me with a weaker remaining shape compared to leading the 3."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally better than the 3; when trying to surrender the lead cheaply, the absolute lowest card is preferable."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a high card or trump can immediately win the trick and continue their attack.",
+      "Partner may be unable to beat even a low lead, giving the opponent with 2 cards a chance to finish."
+    ],
+    "mitigation": "Playing the lowest possible card reduces the risk that partner needs to spend a valuable card to overtake and keeps my own higher low cards for later exits."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with the weakest card is consistent with standard Guandan signaling when holding no trump and no high cards."
+}

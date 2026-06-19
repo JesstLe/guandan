@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-283-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Lead 3♣. All four candidates are weak non-trump singles and will almost certainly be covered by any opponent with a playable higher card or trump. The 3 is the lowest, making it the least costly lead and aligning with standard opening-lead conventions. There is no bomb, wildcard, or multi-card play available to change the situation."
+  },
+  "partnerBelief": {
+    "summary": "Partner state is uncertain; only public events and hand counts are used.",
+    "confidence": 0.85,
+    "evidence": [
+      "3116303c-4fbd-4459-bfe2-24df8df03bdb"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "An opponent may be near finishing according to public hand-count context; exact hidden cards remain uncertain.",
+    "confidence": 0.85,
+    "evidence": [
+      "3116303c-4fbd-4459-bfe2-24df8df03bdb"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead 3♣. All four candidates are weak non-trump singles and will almost certainly be covered by any opponent with a playable higher card or trump. The 3 is the lowest, making it the least costly lead and aligning with standard opening-lead conventions. There is no bomb, wildcard, or multi-card play available to change the situation.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.85,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-276-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is down to 2 cards and led a low heart 3. Taking the trick with the cheapest beat denies them a chance to advance or finish while keeping stronger cards in reserve."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and has not yet acted; they might be able to beat a 3, but their exact holdings are hidden. Their likely preference is to let the team win the trick without being forced to spend a high card.",
+    "confidence": 0.7,
+    "evidence": [
+      "b3698da3-891e-40ab-93d0-d2c44c34d2b5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent with only 2 cards remaining, led a low single heart 3. This is consistent with either shedding a weak card or baiting a response while holding a strong final card. Player 3 also has 3 cards and may hold higher hearts or trumps. Exact cards remain uncertain.",
+    "confidence": 0.75,
+    "evidence": [
+      "b3698da3-891e-40ab-93d0-d2c44c34d2b5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the heart 4, the lowest legal card that beats the heart 3. This wins the trick against the current lead, suppresses the near-finish opponent, and preserves the 9 and 10 for future leads or endgame exchanges.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets the opponent who is down to 2 cards potentially win the trick uncontested and move closer to finishing, which is risky when the team can cheaply take control."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but spends a materially stronger card than necessary; the 4 already wins against the current lead, so the extra strength is wasted."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest heart and would overpay for this trick. Keeping it for a later lead or a critical response is more valuable than using it on a 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A later follower (player 2 or player 3) may play a higher heart or trump and take the trick even after our 4.",
+      "If we win the trick, our remaining cards (9 and 10) may not be strong enough to control the next lead if opponents still hold high cards."
+    ],
+    "mitigation": "Use the minimum-strength beat (heart 4) to take the current trick if possible, conserving the 9 and 10 for future rounds and avoiding premature disclosure of high-card strength."
+  },
+  "confidence": 0.85,
+  "notes": "Selected the cheapest legal beat to suppress a near-finish opponent while preserving high cards, based only on public events and hand counts."
+}

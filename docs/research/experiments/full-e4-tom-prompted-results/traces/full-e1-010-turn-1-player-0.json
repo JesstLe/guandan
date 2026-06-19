@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-010-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "At the opening lead with a very weak hand, the best team goal is to play a low card that lets partner win the trick cheaply or forces opponents to spend a higher card/trump, preserving my limited spades for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has 3 cards and no public information about their strength. They may be able to beat a low spade 3 with a higher non-trump or a trump, but this is uncertain.",
+    "confidence": 0.4,
+    "evidence": [
+      "b8922a6e-ff0c-489c-abfb-ba6112ccbc79"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents also have 3 cards each and no public plays have been revealed. They probably can beat a spade 3 with many higher cards, but they may prefer to conserve strength unless they need to take the lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "b8922a6e-ff0c-489c-abfb-ba6112ccbc79"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (spade 3) minimizes resource loss. The 3 is almost certainly not going to win, but it gives partner the cheapest chance to take control and forces opponents to reveal at least one card if they want the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still very unlikely to win; keeping it for a later spade progression or as a slightly higher throwaway is better."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is one of my better cards and would be wasted on an opening lead where opponents or partner are likely to have higher cards."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my strongest card but still weak overall; using it now sacrifices the only card most likely to win a low spade trick later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win the trick with a higher card or trump and retain the lead.",
+      "Partner may not be able to help, leaving my team without control."
+    ],
+    "mitigation": "By playing the 3, the smallest possible commitment, I limit downside and keep 4/5/6 for future tricks where exact rank might matter."
+  },
+  "confidence": 0.7,
+  "notes": "No public plays beyond new_game, so partner and opponent beliefs remain highly uncertain."
+}

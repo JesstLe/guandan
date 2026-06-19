@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-310-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 holds only low spades (3-6) with no trump and no high cards. On the opening lead, the best team play is to lead the weakest card to minimize resource commitment and create an opportunity for the partner to overtake with a higher card or trump, transferring control to the teammate."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and has not acted. With no public signals, partner likely holds a typical random hand that may include higher non-trump cards or trumps capable of taking this trick if I lead low.",
+    "confidence": 0.5,
+    "evidence": [
+      "b31a7f78-8a98-4c84-ba0f-c0b53e55bbda"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Since I only have ranks 3-6 of spades, opponents collectively have strong non-trump cards and trumps. Either opponent can likely beat any single I play, so winning this trick myself is improbable.",
+    "confidence": 0.7,
+    "evidence": [
+      "b31a7f78-8a98-4c84-ba0f-c0b53e55bbda"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades commits the minimum strength, preserves the 4-5-6 sequence for later tricks, and gives partner the best chance to win or finesse over opponents without wasting my own higher cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is still a very weak card and will almost certainly be beaten by an opponent or even partner. Playing it first wastes my highest non-trump card and leaves only 3-4-5, reducing future flexibility."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is slightly better than the 6 but still higher than necessary. Against unknown opponent hands, there is no meaningful difference between leading a 3 or 4 in trick-winning potential, so the lower card is preferred for resource conservation."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is in the middle of my range and offers no advantage over the 3; it risks losing a card that could be useful later without improving the chance of winning the opening trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may overcut the 3 with a higher non-trump or trump and seize the lead.",
+      "Partner may be unable to help, leaving the opponents in control of the next lead.",
+      "My remaining 4-5-6 sequence may be split or overpowered in subsequent tricks."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the value lost if the trick is lost and retain the 4-5-6 for future leads or to cover partner's plays, while leaving open the chance partner can win now."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with a weak sequential suit; standard strategy is to lead low and preserve strength."
+}

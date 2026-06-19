@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-174-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and the lead, the team objective is to play out my remaining cards before opponents can stop me. Leading a strong single keeps initiative and creates a path to exit on the next trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards and is on my team, so they would prefer either me or them to finish rather than let opponents win. With no public play history, I cannot infer their card distribution or strength; they may be able to cover a low lead or may be weak themselves.",
+    "confidence": 0.3,
+    "evidence": [
+      "75549f34-1f5d-42cf-a24e-b78428a74d1c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three cards and wants to prevent me from going out. They may hold trumps (rank 7 cards or jokers) or other high cards that can beat my non-trump A, but without any public plays I can only treat this probabilistically.",
+    "confidence": 0.3,
+    "evidence": [
+      "75549f34-1f5d-42cf-a24e-b78428a74d1c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ single is the strongest available non-trump single. It maximizes the chance that opponents cannot or choose not to beat it, letting me retain the lead and play the 2♠ next to finish my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2♠ is a weak single that opponents are very likely to beat, ceding the lead. With only the A♠ left, I would then need someone to play a single I can beat, which is uncertain and gives opponents a chance to control the endgame."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump (7) or joker that beats the A♠ and seizes the lead.",
+      "If both opponents and partner pass on A♠, I still must win the next trick with 2♠, which any higher single can beat.",
+      "I have no bomb or wildcard to recover control if the A♠ is beaten."
+    ],
+    "mitigation": "With only two singletons and no trumps or bombs, the only available mitigation is to lead the higher card first to give myself the best chance of maintaining initiative."
+  },
+  "confidence": 0.75,
+  "notes": "This is an endgame race with minimal hidden information revealed; the best play is to lead high while acknowledging that trumps or jokers among opponents could still disrupt the plan."
+}

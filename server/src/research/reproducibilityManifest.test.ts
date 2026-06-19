@@ -11,7 +11,7 @@ import { join } from 'node:path'
 import { writeReproducibilityManifest } from './reproducibilityManifest'
 
 describe('reproducibilityManifest', () => {
-  it('records file, directory, and missing artifact status without inventing outputs', () => {
+  it('records file, directory, missing, and pending artifact status without inventing outputs', () => {
     const rootDir = mkdtempSync(join(tmpdir(), 'guandan-repro-manifest-'))
     const outputDir = join(rootDir, 'submission')
     const sourceDir = join(rootDir, 'artifacts', 'dataset')
@@ -30,6 +30,13 @@ describe('reproducibilityManifest', () => {
           { id: 'metrics', title: 'Metrics Summary', path: 'artifacts/metrics.json' },
           { id: 'dataset', title: 'Pilot Dataset', path: 'artifacts/dataset' },
           { id: 'missing-llm', title: 'Provider Results', path: 'artifacts/provider-results.jsonl' },
+          {
+            id: 'pending-full',
+            title: 'Pending Full Metrics',
+            path: 'artifacts/full-metrics.json',
+            statusOverride: 'pending',
+            reason: 'Awaiting full-split provider completion.',
+          },
         ],
       })
 
@@ -38,7 +45,7 @@ describe('reproducibilityManifest', () => {
 
       const manifest = JSON.parse(readFileSync(result.jsonPath, 'utf8'))
       expect(manifest.schemaVersion).toBe('0.1.0')
-      expect(manifest.entries).toHaveLength(3)
+      expect(manifest.entries).toHaveLength(4)
 
       const metrics = manifest.entries.find((entry: { id: string }) => entry.id === 'metrics')
       expect(metrics).toMatchObject({
@@ -73,11 +80,24 @@ describe('reproducibilityManifest', () => {
       })
       expect(missing.bytes).toBe(0)
 
+      const pending = manifest.entries.find((entry: { id: string }) => entry.id === 'pending-full')
+      expect(pending).toMatchObject({
+        id: 'pending-full',
+        title: 'Pending Full Metrics',
+        path: 'artifacts/full-metrics.json',
+        kind: 'pending',
+        status: 'pending',
+        bytes: 0,
+        reason: 'Awaiting full-split provider completion.',
+      })
+
       const markdown = readFileSync(result.markdownPath, 'utf8')
       expect(markdown).toContain('# Reproducibility Manifest')
       expect(markdown).toContain('| Metrics Summary | `present` | file | `artifacts/metrics.json` |')
       expect(markdown).toContain('| Provider Results | `missing` | missing | `artifacts/provider-results.jsonl` |')
-      expect(markdown).toContain('Missing entries are audit findings, not experimental results.')
+      expect(markdown).toContain('| Pending Full Metrics | `pending` | pending | `artifacts/full-metrics.json` |')
+      expect(markdown).toContain('Awaiting full-split provider completion.')
+      expect(markdown).toContain('Pending entries are expected external-evidence gaps tracked by readiness gates.')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }
