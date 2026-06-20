@@ -1,7 +1,7 @@
 # Research Preflight Report
 
 Status: `research_not_ready`
-Generated at: `2026-06-20T19:11:06.786Z`
+Generated at: `2026-06-20T19:15:43.183Z`
 
 Submission gate: `ready`
 Local ready: `true`

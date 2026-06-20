@@ -545,14 +545,14 @@ The qualitative case pack illustrates what the attribution numbers mean operatio
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
   font=\scriptsize,
-  casebox/.style={draw=gray!45, rounded corners=5pt, fill=gray!2, minimum width=7.25cm, minimum height=2.32cm},
+  casebox/.style={draw=gray!45, rounded corners=5pt, fill=gray!2, minimum width=7.25cm, minimum height=2.58cm},
   head/.style={font=\bfseries, anchor=west},
   idline/.style={font=\tiny, text=gray!70!black, anchor=west},
   before/.style={draw=red!58!black, fill=red!6, rounded corners=4pt, align=center, text width=1.80cm, inner sep=3pt},
   after/.style={draw=green!55!black, fill=green!8, rounded corners=4pt, align=center, text width=1.80cm, inner sep=3pt},
   boundary/.style={draw=orange!70!black, fill=orange!8, rounded corners=4pt, align=center, text width=1.80cm, inner sep=3pt},
   neutral/.style={draw=gray!55, fill=white, rounded corners=4pt, align=center, text width=1.80cm, inner sep=3pt},
-  note/.style={align=center, text width=2.75cm, text=gray!75!black},
+  note/.style={font=\tiny, align=center, text width=4.05cm, text=gray!75!black},
   arrow/.style={-Latex, thick},
   badarrow/.style={-Latex, thick, draw=orange!80!black}
 ]
@@ -564,7 +564,7 @@ The qualitative case pack illustrates what the attribution numbers mean operatio
 \node[after] (c1a) at (2.45,1.30) {publicHistory\\partner\\\textbf{pass}};
 \draw[arrow] (c1b) -- (c1f);
 \draw[arrow] (c1f) -- (c1a);
-\node[note] at (0,0.42) {Action stays fixed; evidence ids are repaired.};
+\node[note] at (0,0.52) {Action fixed; evidence ids repaired.};
 
 \node[casebox] (c2) at (7.65,1.45) {};
 \node[head] at ([xshift=0.18cm,yshift=-0.28cm]c2.north west) {B. Hidden-information repair};
@@ -574,7 +574,7 @@ The qualitative case pack illustrates what the attribution numbers mean operatio
 \node[after] (c2a) at (10.10,1.30) {hand-count\\reasoning\\\textbf{pass}};
 \draw[arrow] (c2b) -- (c2f);
 \draw[arrow] (c2f) -- (c2a);
-\node[note] at (7.65,0.42) {Private-card certainty becomes public count inference.};
+\node[note] at (7.65,0.52) {Hidden-card certainty becomes count inference.};
 
 \node[casebox] (c3) at (0,-1.45) {};
 \node[head] at ([xshift=0.18cm,yshift=-0.28cm]c3.north west) {C. Remaining hard failure};
@@ -584,7 +584,7 @@ The qualitative case pack illustrates what the attribution numbers mean operatio
 \node[before] (c3a) at (2.45,-1.60) {unknown\\reference remains\\\textbf{fail}};
 \draw[badarrow] (c3b) -- (c3f);
 \draw[badarrow] (c3f) -- (c3a);
-\node[note] at (0,-2.48) {Feedback is diagnostic, not a repair guarantee.};
+\node[note] at (0,-2.38) {Feedback diagnoses; no repair guarantee.};
 
 \node[casebox] (c4) at (7.65,-1.45) {};
 \node[head] at ([xshift=0.18cm,yshift=-0.28cm]c4.north west) {D. Parse failure outside paired subset};
@@ -594,7 +594,7 @@ The qualitative case pack illustrates what the attribution numbers mean operatio
 \node[before] (c4a) at (10.10,-1.60) {excluded from\\paired test\\counted E2E};
 \draw[badarrow] (c4b) -- (c4f);
 \draw[badarrow] (c4f) -- (c4a);
-\node[note] at (7.65,-2.48) {Schema failures stay in end-to-end accounting.};
+\node[note] at (7.65,-2.38) {Schema failures remain in E2E accounting.};
 \end{tikzpicture}
 }
 \caption{Qualitative verifier-attribution case pack. Cases are selected from the generated attribution artifact to show two repaired semantic failures, one unrepaired hard failure, and one schema failure outside the paired revision subset.}
