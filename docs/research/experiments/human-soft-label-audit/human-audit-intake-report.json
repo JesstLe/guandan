@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T21:15:53.353Z",
+  "generatedAt": "2026-06-19T12:36:15.291Z",
   "status": "awaiting_return",
-  "returnedCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations.csv",
+  "returnedCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
   "returnedCsvPresent": false,
   "expectedReturnedCsvName": "human-audit-completed-annotations.csv",
   "packageManifestPath": "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
@@ -34,8 +34,8 @@
     },
     {
       "id": "returned-filename",
-      "status": "pass",
-      "detail": "expected human-audit-completed-annotations.csv, got human-audit-completed-annotations.csv"
+      "status": "fail",
+      "detail": "expected human-audit-completed-annotations.csv, got human-audit-adjudicated-annotations.csv"
     },
     {
       "id": "required-columns",

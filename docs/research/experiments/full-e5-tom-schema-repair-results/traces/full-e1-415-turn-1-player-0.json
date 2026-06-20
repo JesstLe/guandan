@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-415-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low spades, so I am unlikely to win and retain control with any lead. By playing the weakest card, I aim to let partner (player 2) win the trick with a higher spade or trump if possible, moving the lead to my team without wasting a higher card."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 unknown cards. Given no public card information, partner may have higher spades, trumps, or bombs that could beat a low spade lead, but this is uncertain and cannot be asserted as fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "70874fa3-4fdd-4485-ab73-8aa9aa0c74d1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) hold 6 unknown cards combined. It is probable that at least one opponent can beat a low spade with a higher card or trump, but their exact holdings are hidden.",
+    "confidence": 0.7,
+    "evidence": [
+      "70874fa3-4fdd-4485-ab73-8aa9aa0c74d1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3♠ is the weakest card in my hand and in the entire non-trump deck. Leading it minimizes the value I surrender if an opponent wins the trick, while giving partner the widest range of cards that could overtake. Since all my spades are low, I cannot realistically expect any of them to win control, so a low transfer lead is safer than gambling with the 6.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Although the 6♠ is my highest spade, it is still very low and likely beaten by opponents. Losing my strongest card for no gain would leave me with even weaker cards and no control."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "An intermediate card that is neither the safest transfer nor a realistic winner. It does not clearly advance either a control or a partner-support strategy."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Slightly stronger than the 3 but still a low card. Keeping it over the 3 provides no strategic advantage because both are almost certainly beaten by opponents."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher spade or trump and win the trick, leaving my team without control.",
+      "Partner may be unable to overtake, so the lead could transfer to an opponent.",
+      "Leading a single spade reveals my spade length to observant opponents."
+    ],
+    "mitigation": "Leading the lowest spade limits the value lost when an opponent wins and preserves my slightly higher spades for future opportunities. No other legal lead materially improves my control prospects."
+  },
+  "confidence": 0.75
+}

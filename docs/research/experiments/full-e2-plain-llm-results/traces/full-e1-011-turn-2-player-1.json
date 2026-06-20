@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-011-turn-2-player-1",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 has only 2 cards remaining and led a low single 3 of hearts. By beating this lead with the minimum winning card, I take control of the trick and prevent player 0 from winning it and potentially finishing their hand on the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 cards, but no public information about their composition is available.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts shows partner has 3 cards.",
+      "No public history plays from partner.",
+      "No inferences provided about partner's hand."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent with only 2 cards remaining, led the 3 of hearts. They may be trying to shed a low card while hoping to win the trick or at least delay. Player 2 has 3 cards and may be able to follow or pass.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows player 0 has 2 cards (opponent_near_finish tag).",
+      "Player 0's lead of 3 of hearts is a low non-trump single.",
+      "No other opponent cards are known."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the lowest card in my hand that beats the led 3 of hearts in the same suit. Playing it wins the trick at minimum cost, preserving the 9 and 10 of hearts for later use while denying opponent player 0 control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing would let player 0 retain the lead with only 2 cards left, increasing their chance of finishing the hand quickly."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the 3, but it is unnecessarily high and uses a stronger card that may be more valuable later."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts also wins, but it is the highest non-trump card I hold and would be wasted on such a low lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A later player may play a trump (rank 7 or suit wildcard) or a higher heart to win the trick.",
+      "Player 0 may have held back a higher heart or a bomb for a later lead."
+    ],
+    "mitigation": "Using the minimum winning card limits the value lost if another player overtakes the trick, and keeps my higher hearts available for future tricks."
+  },
+  "confidence": 0.8,
+  "notes": "Selected the minimum winning single to beat opponent player 0's low lead while conserving higher cards."
+}

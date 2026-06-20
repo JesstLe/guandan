@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-492-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards and is near finishing, so the priority is to lead a card they can beat cheaply and seize the lead. A low single minimizes the rank they need to play."
+  },
+  "partnerBelief": {
+    "summary": "With just 2 cards remaining, partner is likely close to going out and would prefer a low-stakes trick to play a small winning card. They may be holding a small non-trump single or a low trump to take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "85aa9b0f-b93b-4e7d-9a1c-a78f9c08d141"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and no public plays yet. They may hold trumps or higher singles to stop a low lead, but their exact strength is unknown. They will likely try to beat a low lead with the cheapest card possible to save resources.",
+    "confidence": 0.5,
+    "evidence": [
+      "85aa9b0f-b93b-4e7d-9a1c-a78f9c08d141"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest legal single, making it easiest for the near-finish partner to win the trick with a minimal card while preserving the 4, 5, and 6 for later rounds.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is still low but sets a higher bar than the 3; it is less likely to be beaten cheaply by partner and wastes a slightly stronger card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 raises the lead unnecessarily, increasing the chance opponents can win with ordinary high cards and reducing partner's ability to take control."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is our strongest non-trump single and our best chance to win if no one has a trump, but it is the hardest for a 2-card partner to beat and contradicts the transfer-lead goal."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or higher single and take the trick anyway.",
+      "Partner may not have a playable single that beats the 3, leaving us without immediate support."
+    ],
+    "mitigation": "Even if the trick is lost, leading the 3 gives partner the mathematically best chance to win and keeps our remaining cards as low and flexible as possible for future leads."
+  },
+  "confidence": 0.75
+}

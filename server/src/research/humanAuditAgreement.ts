@@ -1,4 +1,5 @@
 import {
+  existsSync,
   mkdirSync,
   readFileSync,
   writeFileSync,
@@ -90,7 +91,8 @@ export function writeHumanAuditAgreement(options: HumanAuditAgreementOptions): H
 }
 
 export function buildHumanAuditAgreementReport(options: HumanAuditAgreementOptions): HumanAuditAgreementReport {
-  const rows = parseCsv(readFileSync(options.annotationCsvPath, 'utf8'))
+  const annotationCsvPresent = existsSync(options.annotationCsvPath)
+  const rows = annotationCsvPresent ? parseCsv(readFileSync(options.annotationCsvPath, 'utf8')) : []
   const answerKeys = readJsonl<AnswerKeyRow>(options.answerKeyJsonlPath)
   const answerBySampleId = new Map(answerKeys.map(row => [row.sampleId, row]))
   const sampleIssues = compareAnnotationSamples(rows, answerKeys)

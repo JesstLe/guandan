@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-028-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-6-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 (opponent) has only 2 cards remaining, so I want to make it harder for them to seize and keep the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner's hand is unknown; no public history or inferences are available.",
+    "confidence": 0.5,
+    "evidence": [
+      "No cards have been played beyond the new_game event.",
+      "No inferences are provided."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The near-finish opponent likely holds cards that can beat any of my low club singles, but their exact composition is unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts[1] = 2 triggers the opponent_near_finish scenario tag.",
+      "All my legal actions are low non-trump singles, so any higher non-trump or any trump likely beats them."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the largest of my weak singles (club 6) so that an opponent who wants the lead must use a somewhat stronger card rather than winning cheaply with a marginal low card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "reason": "A 3 is the weakest lead and easiest for an opponent to overtake with a low card, handing them the lead cheaply."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "A 4 is still very low and lets an opponent win with almost any playable single."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A 5 is better than 3/4 but still weaker than 6, so it is slightly easier for the opponent to beat."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a higher card or any trump can win the trick and take the lead.",
+      "My hand is entirely low non-trump cards, so regaining the lead later will be difficult.",
+      "If the opponent near finish has a winning card, this lead may let them close out."
+    ],
+    "mitigation": "Playing the 6 maximizes the rank among my legal singles, making it marginally costlier to beat while preserving my very lowest cards for future turns."
+  },
+  "confidence": 0.55
+}

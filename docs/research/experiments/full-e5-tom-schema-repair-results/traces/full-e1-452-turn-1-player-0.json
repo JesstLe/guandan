@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-452-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) holds only 2 cards and is near finishing, so the best use of this weak diamond lead is to play the lowest single and give partner the cheapest path to take control and exit."
+  },
+  "partnerBelief": {
+    "summary": "Partner is near finish with 2 cards and likely retains at least one playable card they can use to seize the lead or finish; they probably want a low-cost lead to cover.",
+    "confidence": 0.55,
+    "evidence": [
+      "d06fe6b6-d47b-4cfc-b73e-361dd213dfd4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and may cover a low single if it advances their control, but early in the game they are more likely to conserve trumps and bombs unless pressured.",
+    "confidence": 0.5,
+    "evidence": [
+      "d06fe6b6-d47b-4cfc-b73e-361dd213dfd4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the minimal-cost single. With only weak non-trump diamonds, playing the lowest card maximizes the chance that partner can cover with a small remaining card and gain the lead to finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than the 3, so partner needs a stronger card to cover, and it keeps an even weaker card (3) stuck in hand."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still a weak card but costs partner more to cover; not worth leading when a cheaper lead is available."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The strongest of the four, making it hardest for partner to cover while leaving the 3-5 as potentially useless later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable or unwilling to cover the 3, letting opponents take control.",
+      "An opponent with a trump or bomb may capture the trick and dictate tempo."
+    ],
+    "mitigation": "By leading the lowest possible card, we minimize the value lost if opponents take the trick and preserve the 4-6 for later play; we also give partner the easiest cover."
+  },
+  "confidence": 0.65,
+  "notes": "No public cards have been played, so all hidden-hand beliefs remain probabilistic. The lead choice is dominated by partner's near-finish hand count."
+}

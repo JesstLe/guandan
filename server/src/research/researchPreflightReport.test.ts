@@ -179,6 +179,7 @@ describe('researchPreflightReport', () => {
 
     mkdirSync(join(rootDir, 'submission', 'gate-report'), { recursive: true })
     mkdirSync(join(rootDir, 'submission', 'aamas-readiness'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'aamas-reviewer-response'), { recursive: true })
 
     writeFileSync(join(rootDir, 'submission', 'gate-report', 'submission-gate-report.json'), JSON.stringify({
       schemaVersion: '0.1.0',
@@ -198,6 +199,25 @@ describe('researchPreflightReport', () => {
       ],
       nextActions: [],
     }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'aamas-reviewer-response', 'aamas-reviewer-response-matrix.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      status: 'ready_for_revision',
+      summary: {
+        totalConcerns: 2,
+        answerableNow: 2,
+        needsExternalEvidence: 0,
+        needsRevision: 0,
+      },
+      responses: [
+        {
+          id: 'artifact-reproducibility',
+          status: 'answerable_now',
+          likelyConcern: 'Are artifacts reproducible?',
+          requiredAction: 'Run finalizer after every change.',
+        },
+      ],
+      nextActions: [],
+    }), 'utf8')
 
     try {
       const result = writeResearchPreflightReport({
@@ -208,8 +228,100 @@ describe('researchPreflightReport', () => {
 
       expect(result.report.status).toBe('ready_for_submission')
       expect(result.report.aamasFullPaperReadiness).toBe('ready')
+      expect(result.report.reviewerResponseStatus).toBe('ready_for_revision')
       expect(result.report.readinessBlockers).toEqual([])
+      expect(result.report.reviewerResponseBlockers).toEqual([])
       expect(result.report.nextActions).toEqual(['Run final submission formatting and venue-specific policy checks.'])
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('blocks preflight when reviewer-response matrix still needs external evidence', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-preflight-reviewer-response-blocked-'))
+    const outputDir = join(rootDir, 'submission', 'preflight')
+
+    mkdirSync(join(rootDir, 'submission', 'gate-report'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'aamas-readiness'), { recursive: true })
+    mkdirSync(join(rootDir, 'submission', 'aamas-reviewer-response'), { recursive: true })
+
+    writeFileSync(join(rootDir, 'submission', 'gate-report', 'submission-gate-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      overallStatus: 'ready',
+      markerCounts: {},
+      immediateBlockers: [],
+    }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'aamas-readiness', 'aamas-readiness-report.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      aamasFullPaperReadiness: 'ready',
+      gates: [
+        {
+          id: 'local-artifact-hygiene',
+          title: 'Local Artifact Hygiene',
+          status: 'pass',
+        },
+      ],
+      nextActions: [],
+    }), 'utf8')
+    writeFileSync(join(rootDir, 'submission', 'aamas-reviewer-response', 'aamas-reviewer-response-matrix.json'), JSON.stringify({
+      schemaVersion: '0.1.0',
+      status: 'needs_external_evidence',
+      summary: {
+        totalConcerns: 2,
+        answerableNow: 1,
+        needsExternalEvidence: 1,
+        needsRevision: 0,
+      },
+      responses: [
+        {
+          id: 'single-provider-robustness',
+          reviewerRole: 'experiment-reviewer',
+          riskLevel: 'high',
+          status: 'needs_external_evidence',
+          likelyConcern: 'Are the results specific to one provider?',
+          requiredAction: 'Run second-provider/model replication.',
+        },
+        {
+          id: 'artifact-reproducibility',
+          reviewerRole: 'reproducibility-reviewer',
+          riskLevel: 'medium',
+          status: 'answerable_now',
+          likelyConcern: 'Are artifacts reproducible?',
+          requiredAction: 'Run finalizer after every change.',
+        },
+      ],
+      nextActions: [
+        'Run second-provider/model replication.',
+      ],
+    }), 'utf8')
+
+    try {
+      const result = writeResearchPreflightReport({
+        researchRoot: rootDir,
+        outputDir,
+        rawAudits: [],
+      })
+
+      expect(result.report.status).toBe('research_not_ready')
+      expect(result.report.localReady).toBe(true)
+      expect(result.report.aamasFullPaperReadiness).toBe('ready')
+      expect(result.report.reviewerResponseStatus).toBe('needs_external_evidence')
+      expect(result.report.reviewerResponseBlockers).toEqual([
+        {
+          id: 'single-provider-robustness',
+          reviewerRole: 'experiment-reviewer',
+          riskLevel: 'high',
+          status: 'needs_external_evidence',
+          likelyConcern: 'Are the results specific to one provider?',
+          requiredAction: 'Run second-provider/model replication.',
+        },
+      ])
+      expect(result.report.nextActions).toEqual(['Run second-provider/model replication.'])
+
+      const markdown = readFileSync(result.markdownPath, 'utf8')
+      expect(markdown).toContain('Reviewer-response matrix: `needs_external_evidence`')
+      expect(markdown).toContain('## Reviewer-Response Blockers')
+      expect(markdown).toContain('| Are the results specific to one provider? | experiment-reviewer | high | `needs_external_evidence` | Run second-provider/model replication. |')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-419-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only 2 cards left while all opponents have 3, so the immediate team objective is to play out the remaining hand before opponents can seize control and stall the finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards but no public actions have occurred, so their exact holdings are unknown. They may be able to support later, but since I can finish in two tricks by retaining the lead, I should not rely on partner rescue.",
+    "confidence": 0.5,
+    "evidence": [
+      "ac44edfd-c25a-4837-800f-fa67b4fa1841"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and will try to take the lead to stop player 0 from going out. They likely can beat a low 2 and may hold trump 7s or jokers that can beat the A, but the A still maximizes my chance of winning this trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "ac44edfd-c25a-4837-800f-fa67b4fa1841"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ is the strongest available non-trump single and gives the highest probability of winning the trick and keeping the lead. With only the 2♠ remaining, retaining the lead now lets me play the 2♠ next and go out.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2♠ is the weakest non-trump rank and very likely loses the lead to any opponent card. If opponents gain control, they can force me to pass and potentially prevent me from ever playing the A♠."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump 7, red trump, or joker that beats the A♠ and regains the lead.",
+      "If the lead is lost, opponents can coordinate plays that force player 0 to pass and delay or block the finish."
+    ],
+    "mitigation": "Play the highest card available (A♠) to maximize the chance of winning this lead and continue with the 2♠ on the next trick, reducing the window for opponent interference."
+  },
+  "confidence": 0.85
+}

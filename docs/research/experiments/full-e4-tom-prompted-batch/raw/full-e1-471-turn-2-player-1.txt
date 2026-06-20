@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-471-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is one card away from finishing and led a low 3 of hearts. The immediate team goal is to seize the lead and prevent Player 0 from playing their remaining card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (Player 2) has not yet acted and holds 3 cards. They may be able to beat a low 3 of hearts, but their exact strength is unknown since they have not played.",
+    "confidence": 0.5,
+    "evidence": [
+      "a6f0cffa-c2b5-4d1e-b1e7-978be04bd94b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a very low 3 of hearts with only 2 cards remaining, signaling a weak hand and an attempt to finish quickly. Player 3 has 3 cards and may try to support Player 0 or win tricks, but no supporting public action has occurred.",
+    "confidence": 0.7,
+    "evidence": [
+      "a6f0cffa-c2b5-4d1e-b1e7-978be04bd94b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 10 of hearts to beat Player 0's 3 of hearts with the strongest available single. This gives the highest probability of winning the trick, taking the lead away from an opponent who is one card away from finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves Player 0 in the lead and likely lets them play their final card next, directly risking that they finish the hand."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "reason": "Although it beats the 3, the 4 is easily overtaken by any higher heart or trump, so it does not reliably secure the lead against opponents."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is still less likely to hold the trick than the 10; conserving the 10 is less important than stopping the near-finished opponent now."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 3 or my partner may still beat the 10 of hearts with a higher heart or a trump.",
+      "Using my highest single leaves me with weaker cards for future tricks."
+    ],
+    "mitigation": "The priority is to stop Player 0 from finishing. If the 10 is beaten, partner still has cards and may regain control, and the lead will at least not remain with the near-finished opponent."
+  },
+  "confidence": 0.75
+}

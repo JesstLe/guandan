@@ -131,8 +131,8 @@ Status: not passed.
 - [x] Full manuscript draft is assembled from paper-as-code sections.
 - [x] Related-work positioning table is included in the assembled manuscript with proper heading hierarchy.
 - [x] Method draft includes formal decision-point, trace, action, verifier-label notation.
-- [ ] Every major claim has evidence.
-- [ ] Method is reproducible from the paper text.
+- [x] Every major claim has evidence via `submission/claim-evidence/claim-evidence-report.json`.
+- [x] Method is reproducible from the paper text via `submission/method-reproducibility/method-reproducibility-report.json`.
 - [x] Figure/table source drafts exist, including a related-work positioning table and experiment-result table shapes.
 - [ ] Figures/tables are rendered and reconciled with final empirical results.
 - [ ] Limitations are explicit and do not undercut the contribution.

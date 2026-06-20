@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-030-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Opening lead with only low non-trump cards. The priority is to discard the weakest card and preserve any slightly higher cards for future tricks."
+  },
+  "partnerBelief": {
+    "summary": "No information about partner's hand at the start of the game.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "No information about opponent hands at the start of the game.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest card (3 of spades) because the hand contains only weak non-trump singles. Leading a higher card would waste relative strength and make it harder to play the 3 later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is stronger than the 3; keeping it gives more flexibility later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is stronger than the 3 and 4; better retained for later tricks."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the strongest card in hand; leading it would sacrifice the most value."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 of spades is very likely to be beaten by any higher single or trump.",
+      "Partner may be unable to take control, allowing opponents to lead the next trick."
+    ],
+    "mitigation": "This risk is unavoidable with such a weak hand; minimizing loss by expending the lowest card is the best available strategy."
+  },
+  "confidence": 0.9,
+  "notes": "No trumps, pairs, or combinations are available, so a single-card lead is mandatory."
+}

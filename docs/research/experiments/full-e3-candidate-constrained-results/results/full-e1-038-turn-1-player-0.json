@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-038-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: No partner cards have been played or exposed., Partner hand count is 3, which is larger than the near-finish opponent's 2 cards., handCounts[1]=2 and scenarioTags include opponent_near_finish., Trump rank is 7, so 7s and trumps are higher than my clubs; I have no trumps."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Objective transfer_lead_to_partner needs strategic soft evidence not available to this verifier."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 1 failure(s)."
+}

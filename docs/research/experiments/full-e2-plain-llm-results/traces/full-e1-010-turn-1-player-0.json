@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-010-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 holds only low spade singles and no trumps. The priority is to start emptying the hand, and leading the smallest card preserves higher cards for later while testing the table."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has three cards, but their ranks and suits are unknown. They may be able to cover a low spade lead or pass control back.",
+    "confidence": 0.3,
+    "evidence": [
+      "Partner hand count is 3; no cards have been played.",
+      "No public signals or prior actions from partner exist."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher cards and possibly trumps, but exact holdings are unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "Opponents have six cards total split between two players.",
+      "No cards have been played, so no trump or high-card distribution is revealed."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest legal play. It minimizes immediate risk, avoids wasting a higher card, and lets partner or opponents reveal strength before committing the 4, 5, or 6.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher and expendable, but playing the 3 first keeps more flexibility and follows the natural low-to-high progression."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a middle card; saving it for a later trick is better than leading it now with no table information."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the strongest card in hand; leading it wastes potential cover and reveals the top of this weak range too early."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may immediately beat the 3 and retain control.",
+      "Without trumps, player 0 cannot regain the lead easily if lost."
+    ],
+    "mitigation": "Play the lowest card first to force opponents to spend higher cards or trumps, reducing their control while conserving player 0's limited remaining strength."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead from a very weak hand; no trump or bomb options available, so simple lowest-card progression is chosen."
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-413-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-club-3-copy1 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "All cited evidence ids are present in public history."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Trace asserts hidden information without uncertainty markers: Partner (player 2) holds 3 unknown cards. No signals have been exchanged because the public history contains only the new_game event, so partner's strength and suit distribution must be treated as uniformly uncertain."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Opponent belief reflects the public opponent_near_finish scenario tag."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "finish_hand requires an endgame hand and a play action."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "HIDDEN_INFO_ASSERTED_AS_FACT",
+      "message": "Reasoning trace asserts hidden cards or holdings as facts.",
+      "path": "opponentBelief.summary"
+    }
+  ],
+  "softWarnings": [
+    {
+      "code": "TEAM_OBJECTIVE_ACTION_MISMATCH",
+      "message": "Team objective is not compatible with the selected action and decision context.",
+      "path": "teamObjective.type"
+    }
+  ],
+  "summary": "Hard verifier found 1 failure(s)."
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-013-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 (opponent) has only 2 cards remaining (opponent_near_finish). Leading the lowest club avoids committing strength and gives my partner a chance to win the trick or forces the near-finish opponent to spend a higher card or trump."
+  },
+  "partnerBelief": {
+    "summary": "No direct information about partner's hand; partner may hold higher clubs, other suits, or trumps to take the trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "No partner inferences are provided.",
+      "Partner hand count is 3."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The opponent to my left (player 1) is near finishing with only 2 cards left; the other opponents each have 3 cards.",
+    "confidence": 0.9,
+    "evidence": [
+      "handCounts shows player 1 with 2 cards.",
+      "scenarioTags includes opponent_near_finish."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest legal single (club 3) minimizes revealed strength, preserves the slightly higher clubs for future plays, and lets partner respond without me committing a card that could win a trick I cannot control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly higher than the 3 but otherwise equivalent; keeping the 4 is better."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Uses a more valuable low card without increasing the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Highest non-trump I hold, yet still easily beaten by any higher card or trump; better saved for later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low lead may let the near-finish opponent win cheaply and advance toward going out.",
+      "If partner cannot beat the response, the trick is lost."
+    ],
+    "mitigation": "Saving the 4-6 clubs preserves some order for later tricks, and the low lead forces opponents to reveal strength while partner gets a chance to take control."
+  },
+  "confidence": 0.7,
+  "notes": "All four legal actions are weak non-trump singles; no trump or bomb is available, so the choice prioritizes minimal commitment."
+}

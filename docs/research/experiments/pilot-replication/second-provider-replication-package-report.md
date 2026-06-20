@@ -1,0 +1,84 @@
+# Second-Provider Replication Package Report
+
+Generated at: `2026-06-19T12:36:16.369Z`
+
+Status: `package_ready`
+
+| Item | Value |
+| --- | ---: |
+| Package directory | `docs/research/experiments/pilot-replication/second-provider-replication-package` |
+| Fixed input rows | 50/50 |
+| Prompt packets | 50/50 |
+| Files | 52 |
+| Ready for external run | yes |
+| Ready for paper evidence | no |
+
+## Checks
+
+| Check | Status | Detail |
+| --- | --- | --- |
+| fixed-input-present | `pass` | fixed OpenAI-compatible JSONL is present |
+| fixed-input-row-count | `pass` | 50/50 fixed input rows |
+| prompt-packet-dir-present | `pass` | prompt packet directory is present |
+| prompt-packet-count | `pass` | 50/50 prompt packet JSON files |
+
+## Packaged Files
+
+| File | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `README.md` | 1580 | `eb14807c51bab266d5ec2e4cd8dcef1a4ab2e78d4609d3ffb31021e3ec67ad5d` |
+| `openai-batch-input.jsonl` | 297380 | `03f118b1729ec416cb92b98898f13e8f3dccd05ed8d7a7b38c2a2c97d1865f81` |
+| `prompt-packets/pilot-e1-000-turn-1-player-0.json` | 6492 | `06d1a4ee3dd9869cf4ec6b9446165ce091514e0fdf696247067659171fe11595` |
+| `prompt-packets/pilot-e1-001-turn-2-player-1.json` | 6659 | `9ef650c8384e65b9444c37ef0b053bfdc3b73ac452fc0e5454045163a323ab29` |
+| `prompt-packets/pilot-e1-002-turn-1-player-0.json` | 6562 | `6aef0f6485b8c7cfabff2af208edb2df7cb4888fabda59ec141efd3e776977f7` |
+| `prompt-packets/pilot-e1-003-turn-1-player-0.json` | 6503 | `1deca2d3dbffb6c9d1eac5a3e044c7f4b307f48bb6a237d0d30caaed13ba7367` |
+| `prompt-packets/pilot-e1-004-turn-1-player-0.json` | 4427 | `42d1c1d56f0da9804a03a8d5ff13d3b19133e3799461daa362fe5e3f4db1f8e9` |
+| `prompt-packets/pilot-e1-005-turn-1-player-0.json` | 6492 | `6659e414306d537531df70411ac95b7f35d076849df0af7cc5b09191b8a11403` |
+| `prompt-packets/pilot-e1-006-turn-2-player-1.json` | 6659 | `cf450054433929cea28e2dae2a24eabbcb0121283b45af2b97ebe9f5e426945f` |
+| `prompt-packets/pilot-e1-007-turn-1-player-0.json` | 6562 | `38c2c6723e6db529850f877e3c349dc18a6f258725c65a6ee4f6bfb92e6d9431` |
+| `prompt-packets/pilot-e1-008-turn-1-player-0.json` | 6503 | `916ed105fa73473d78319335a6a44664072f55358bb8fc252b633e376633f69a` |
+| `prompt-packets/pilot-e1-009-turn-1-player-0.json` | 4427 | `9d1da0492ddd1fe693e7eb6115f2833c8a8faa2584193d4c419caa2fcc2adc79` |
+| `prompt-packets/pilot-e1-010-turn-1-player-0.json` | 6492 | `3c4a20fadfb0962dbe004f1c5c838399dff99fe0b12bb41876693fc7509360af` |
+| `prompt-packets/pilot-e1-011-turn-2-player-1.json` | 6659 | `64c4710db02db57417f1939affc0729c87b2e3a23900ef01f8ea2700e6a15ee8` |
+| `prompt-packets/pilot-e1-012-turn-1-player-0.json` | 6562 | `4d1b848f1ef95266179a853e468f8928d2e79967e41b926068b777cc5301e01f` |
+| `prompt-packets/pilot-e1-013-turn-1-player-0.json` | 6503 | `7d93324df5e77ba0b8dba9a5de001c76cde2cfaa53ae41758285f3c1a765a895` |
+| `prompt-packets/pilot-e1-014-turn-1-player-0.json` | 4427 | `4a4d966d64989e64e23e76f959bc3553a8c37e664cda4bf551500380ca6a504c` |
+| `prompt-packets/pilot-e1-015-turn-1-player-0.json` | 6492 | `66d3c8f156cc339ed9d710df1a02df5383926fc48dafc3dd57535cee1102d08e` |
+| `prompt-packets/pilot-e1-016-turn-2-player-1.json` | 6659 | `e80705e211969f204ba7dc4fcb64a1f3745da0bf12e6c3c7bafc2b8f551d2632` |
+| `prompt-packets/pilot-e1-017-turn-1-player-0.json` | 6562 | `b4976271c5ec193dce486e4b056a3c6792ee8983fa23c8f504ddccec8c9f0c40` |
+| `prompt-packets/pilot-e1-018-turn-1-player-0.json` | 6503 | `d432b56faf55a8a199811c35e804b4983304d627ade708e77ac36fb63bbfc4ba` |
+| `prompt-packets/pilot-e1-019-turn-1-player-0.json` | 4427 | `08f01d30c3e610c66f4a59ecb068d7cd335cdab3100279d686605cce7681eee4` |
+| `prompt-packets/pilot-e1-020-turn-1-player-0.json` | 6492 | `40ab76619411df6b0f2495d528b648c2d6a287e84c1577084276aabb8fa614cb` |
+| `prompt-packets/pilot-e1-021-turn-2-player-1.json` | 6659 | `ff03fc34c1b7380816ec8f6d62405117802510cc4a8fdeeb1c2032f51a704c7c` |
+| `prompt-packets/pilot-e1-022-turn-1-player-0.json` | 6562 | `316b9ab5e106bab33cb5933e264be5d5545028468161054f6afcf81db871376e` |
+| `prompt-packets/pilot-e1-023-turn-1-player-0.json` | 6503 | `707ac45d8e58f3f814ef909c3fad6323d6905e3a1d9eb6fd061ab70f020645b1` |
+| `prompt-packets/pilot-e1-024-turn-1-player-0.json` | 4427 | `a13ec3392ee2d49b0d520fed60d5a8a8bf3e7cf5bdc5e70bacfdf52c2f5591ac` |
+| `prompt-packets/pilot-e1-025-turn-1-player-0.json` | 6492 | `d10391a548e68b832d8c260514e2c07de33ae0d0d0b1938d31c9a34c79701655` |
+| `prompt-packets/pilot-e1-026-turn-2-player-1.json` | 6659 | `00c83cee145854ece3bfb138a02a2303e2284253a5f77e2ff8cb77543998634d` |
+| `prompt-packets/pilot-e1-027-turn-1-player-0.json` | 6562 | `fdaaa215953e6abf888f02d420b0782212d2aca933c826a140a5684b6f45e5a9` |
+| `prompt-packets/pilot-e1-028-turn-1-player-0.json` | 6503 | `a581370b8223b7999988b3a60eaeed3277165d8af6eecb27395ef5c832c00138` |
+| `prompt-packets/pilot-e1-029-turn-1-player-0.json` | 4427 | `f967329aa1b337464968c5ef2dfeada3152128d6332d4113670cfaea073fe650` |
+| `prompt-packets/pilot-e1-030-turn-1-player-0.json` | 6492 | `185051038bcd939db8a61699fc15441cabb37f1c088984f7c59221f03ea5cd29` |
+| `prompt-packets/pilot-e1-031-turn-2-player-1.json` | 6659 | `8bd49031a628704c62945e97056fc835a695640a7130d16b5800e61dd9138c4d` |
+| `prompt-packets/pilot-e1-032-turn-1-player-0.json` | 6562 | `01a7a3156d241b1cdef770b8e8a03a49d6368319b4f428de2aabed4670a0d45c` |
+| `prompt-packets/pilot-e1-033-turn-1-player-0.json` | 6503 | `815cef03b74dbef151c3e5da07d232c0999170fceb75de919e83f20a60ce3943` |
+| `prompt-packets/pilot-e1-034-turn-1-player-0.json` | 4427 | `d36e0aa76e8292714e0651899fcb77c624b133dd03e54f9268f3c8aff429706a` |
+| `prompt-packets/pilot-e1-035-turn-1-player-0.json` | 6492 | `8b4013ab2da95a03bb5d6baa63ca0d6f07864338eb1b17b184bcaab1fabe664a` |
+| `prompt-packets/pilot-e1-036-turn-2-player-1.json` | 6659 | `b83018d0f75ee608b53fa5c35004501a83761a600c3c64130b36edc3d1c3aa58` |
+| `prompt-packets/pilot-e1-037-turn-1-player-0.json` | 6562 | `393b321e95397dbf80847f2bddfe832726bdbc7ef94b2d4c2ac8317d5a235e3b` |
+| `prompt-packets/pilot-e1-038-turn-1-player-0.json` | 6503 | `d088dc3ad5e2a0ab9d190d813d2bf3da71483bd266a60119791c14fe9d507362` |
+| `prompt-packets/pilot-e1-039-turn-1-player-0.json` | 4427 | `4a8cbe81de15d44bac67efe911992c1ef99616f75d64b581e49cd9f76489800d` |
+| `prompt-packets/pilot-e1-040-turn-1-player-0.json` | 6492 | `76c9db5ad54f37735322236184c78f912199c6d93373e61a086d796cad1aaa8f` |
+| `prompt-packets/pilot-e1-041-turn-2-player-1.json` | 6659 | `ce339c93f4d5d13516a16777490121e5dfc4716e0bd6970ceabec995dc2d1326` |
+| `prompt-packets/pilot-e1-042-turn-1-player-0.json` | 6562 | `630cb61794fca4ac9907f75dc8784284b59e0bc060ab7443c5d30b1a3e09afc7` |
+| `prompt-packets/pilot-e1-043-turn-1-player-0.json` | 6503 | `9ba50e02dd89dcfb38673951e5602ac80152996ecbff0e779102de9757f62ff7` |
+| `prompt-packets/pilot-e1-044-turn-1-player-0.json` | 4427 | `5e1ad55f9906f1fbd916fd06d2ae6fecd5fd02e1626bfa957821e4e427e49616` |
+| `prompt-packets/pilot-e1-045-turn-1-player-0.json` | 6492 | `69f773fe1786c2c81207ea9f6d0f3b45a3ce7f0a15d31f71c1ca365105e31406` |
+| `prompt-packets/pilot-e1-046-turn-2-player-1.json` | 6659 | `c292b8453f73e5d1ea26965030d85dabeba2ee63c27c797f2d05a3f3fe098e52` |
+| `prompt-packets/pilot-e1-047-turn-1-player-0.json` | 6562 | `ba7a32e52497b66d63c833caf976ad12f76d2f993d555c30511e640b8955e8d2` |
+| `prompt-packets/pilot-e1-048-turn-1-player-0.json` | 6503 | `baa722260da8b2f85b64a3c2fb591075f912bffac2a610c0153c5f0bf5b84946` |
+| `prompt-packets/pilot-e1-049-turn-1-player-0.json` | 4427 | `49a79baf0168ae356f01e1897fc8a5d61375c74a37b363813913222eddfea78d` |
+
+## Interpretation
+
+The package fixes the second-provider pilot replication inputs and can be used once an independent provider/model key is available. It is not paper evidence until provider outputs and metrics are returned.

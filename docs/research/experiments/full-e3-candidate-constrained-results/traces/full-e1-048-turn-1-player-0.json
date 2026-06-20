@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-048-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "An opponent is near finish with only 2 cards. By leading the lowest non-trump single, I avoid expending any useful card and force the near-finish opponent to respond, hopefully consuming a trump or high card rather than getting a cheap path to finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards left and may be able to cover a low lead, but no specific cards are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows partner (player 2) has 3 remaining cards",
+      "No public plays have revealed partner's holdings"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1 is near finish with 2 cards; player 3 has 3 cards. Their exact cards are unknown, but the near-finish player may still hold trumps or high cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows player 1 has 2 cards remaining (opponent_near_finish tag)",
+      "No played cards have been revealed yet"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the cheapest possible play. It dumps the weakest card, preserves the slightly higher 4-6 of clubs for later, and makes the near-finish opponent spend a card rather than letting me burn a potentially useful card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still easily beaten by any trump; wastes a slightly higher card without improving lead quality."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher non-trump card that could be useful later if partner gains the lead; not worth risking as an opening lead."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The highest non-trump in hand and the most valuable for later tricks; leading it now squanders the only card that might have a chance to win a non-trump trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The near-finish opponent can likely beat the 3 with a trump and win the trick",
+      "Partner may be unable to cover, giving the opponent initiative",
+      "Any non-trump lead is weak since I hold no trumps"
+    ],
+    "mitigation": "Play the absolute lowest card to minimize resource loss, then look for partner to take control or for an opportunity to play the remaining higher clubs efficiently."
+  },
+  "confidence": 0.65
+}

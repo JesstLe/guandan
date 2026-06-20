@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-410-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is all low non-trump spades (3–6) with no trumps, so I cannot expect to dominate the table. The best team-oriented goal is to lead the weakest card, making it cheap for my partner to win the trick and take control."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards. Given that I hold four low non-trump cards, the remaining deck is richer in higher cards and trumps, so partner has a non-negligible chance of holding at least one card that can beat a 3 of spades. Partner is likely to try to take the lead if able.",
+    "confidence": 0.35,
+    "evidence": [
+      "0712e8f9-05b2-4ab4-a6b9-e9e7ac0e5116"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The two opponents jointly hold 6 unknown cards. With no public cards played, it is probable that at least one opponent holds a trump (rank 7 or jokers) or a higher non-trump single that can beat my lead. Opponents will likely try to win the trick to seize the lead.",
+    "confidence": 0.55,
+    "evidence": [
+      "0712e8f9-05b2-4ab4-a6b9-e9e7ac0e5116"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the cheapest possible lead. It signals a weak hand, avoids committing my highest card, and gives my partner the best chance to overtake with a modest card while preserving the 6 for a later trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 uses my strongest card on a weak hand. It is still very vulnerable to any trump or higher non-trump, and if it loses I am left with only 3–5, reducing my future options."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and does not materially change the chance of winning the trick, while sacrificing the ability to keep the 4 as a higher exit card later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 has the same problem as the 4: it is unlikely to beat opponents or partner responses, and leading it unnecessarily weakens my remaining hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 1 may play a higher non-trump or any trump and win the lead before my partner can act.",
+      "My partner may be unable to beat the card that wins the trick, leaving the opponents in control.",
+      "Leading low reveals that I have little high-card strength."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the value I put at risk and keep the 6 as a potential later winner. The low lead also maximizes the set of cards my partner can use to take control."
+  },
+  "confidence": 0.7
+}

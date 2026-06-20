@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-405-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "As the opening leader with a weak, non-trump hand, the priority is to shed the lowest card while keeping the 6 as the only card likely to win a future trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public actions have occurred, so their hand is unknown. They are likely to contain some higher cards or trumps and may try to win tricks for our team if I leave them opportunities.",
+    "confidence": 0.4,
+    "evidence": [
+      "9e5222bb-b8b2-402e-9e72-c68740663687"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 cards and no public actions have occurred. They likely hold cards higher than 3 and possibly trump-rank 7s or jokers, so any single I lead could be beaten.",
+    "confidence": 0.4,
+    "evidence": [
+      "9e5222bb-b8b2-402e-9e72-c68740663687"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades expends the least valuable card, keeps 4-6 for future tricks, and gives partner or opponents a chance to reveal strength without committing my highest card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher than the 3 but still very weak; playing it now wastes a card that could beat a later 3 lead."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is more likely to win a future trick than the 3, so it should be saved rather than thrown away on an opening lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the strongest card in hand and my best chance to regain the lead; using it now is inefficient because opponents may still beat it with trumps or higher cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 will almost certainly be beaten, so opponents may seize the lead.",
+      "If opponents have trumps, even my 6 may not win a trick later."
+    ],
+    "mitigation": "By keeping the 6 and the intermediate cards, I maximize my chances to win a later trick or cover partner's plays. Leading the lowest card first is the standard way to preserve high-card equity in a weak hand."
+  },
+  "confidence": 0.7
+}

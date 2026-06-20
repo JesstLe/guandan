@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "full-e1-009-turn-1-player-0",
+  "chosenActionId": "play-single-spade-2-copy2",
+  "reasoning": "With only two cards remaining, I am in an endgame race. Leading the 2♠ keeps the stronger A♠ in reserve to potentially regain control later. The A♠ is vulnerable to trump cards (rank 7) and jokers if led now, which would strand the 2♠. Leading low maximizes the chance of either winning this trick cheaply or preserving a winning card for a later opportunity."
+}

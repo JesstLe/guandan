@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-024-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am leading with only two cards left. Playing the high Ace first lets me retain the lead, after which I can lead the deuce and exit my hand."
+  },
+  "partnerBelief": {
+    "summary": "No information about partner's exact cards; partner holds three cards and is likely trying to finish.",
+    "confidence": 0.3,
+    "evidence": [
+      "Only public event is new_game; no plays have been seen.",
+      "Partner hand count is 3."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold three cards each; they may have trumps or higher cards, but none have been revealed.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played.",
+      "Each opponent has 3 cards, so trumps or bombs are possible but unknown."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace is the stronger of my two singles. Leading it maximizes the chance of winning this trick and getting a second lead to play the remaining 2.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low deuce would likely let an opponent win immediately, giving them control and preventing me from dictating the endgame tempo."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump or bomb over the Ace.",
+      "Even if the Ace wins, partner may not be able to help if subsequent opponent plays stop my final deuce."
+    ],
+    "mitigation": "Taking the lead now is the only proactive way to empty my hand; without the lead I rely entirely on partner."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead in a 2-vs-3/3/3 endgame; prioritize seizing and keeping the lead."
+}

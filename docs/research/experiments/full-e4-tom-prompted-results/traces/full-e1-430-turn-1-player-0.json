@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-430-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 leads the first trick holding only low non-trump spades (3-4-5-6). Leading the lowest card conserves the slightly higher spades and makes it easiest for partner (seat 2) to cover with a higher card or a cheap trump, so that our team can win the trick and gain control rather than burning our limited strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unseen cards and has made no public plays. Under a uniform prior over the remaining deck, partner is somewhat likely to hold at least one card higher than my 3 of spades or a trump. A low spade lead is the most coverable lead, so partner is likely to welcome it if they have any covering strength.",
+    "confidence": 0.55,
+    "evidence": [
+      "843abb20-d7aa-4050-a201-a9ddeb84547b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unseen cards and have made no public plays. They may hold higher spades, trumps, bombs, or wildcards, and they want to win control or advance their own hands. Leading low forces them to spend real strength to take the trick, rather than letting them win cheaply or letting a high lead walk into a stronger response.",
+    "confidence": 0.55,
+    "evidence": [
+      "843abb20-d7aa-4050-a201-a9ddeb84547b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the lowest legal lead. It preserves the 4-5-6 for later tricks, minimizes loss if an opponent takes the trick, and gives partner the best chance to cover with a modestly higher card. It also avoids leading with our strongest remaining non-trump and leaving us with no way to regain control.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 of spades risks immediately losing our highest non-trump to a higher card or trump, leaving only the 3-4-5 and very little chance of regaining control. This sacrifices too much strength for a low-probability immediate win."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 of spades is still one of our stronger cards. Although it might win occasionally, the expected gain is small and the cost in preserved hand strength is meaningful; the 3 or 4 lead is safer."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 of spades is better than the 5 or 6, but it still keeps the 3 as a mostly wasted future card. Leading the 3 first is the strictest minimum-cost play and leaves the 4-5-6 as a more useful sequence of covering cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low spade may lose immediately to a higher spade, trump, bomb, or wildcard, ceding initiative to the opponents.",
+      "An opponent may win the trick cheaply and then lead a strong combination on the next trick.",
+      "Partner may be unable to cover, leaving our team with no immediate answer to an opponent taking control."
+    ],
+    "mitigation": "By leading the 3 rather than any higher spade, we keep 4-5-6 in reserve, giving us more options if the lead returns to us and forcing opponents to reveal strength that helps partner calibrate later plays. The low lead is the cheapest probe while preserving resources."
+  },
+  "confidence": 0.65,
+  "notes": "Partner and opponent exact cards are unknown; beliefs are grounded only in the public hand counts and the new-game event."
+}

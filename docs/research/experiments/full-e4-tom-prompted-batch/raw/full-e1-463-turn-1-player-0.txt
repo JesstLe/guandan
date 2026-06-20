@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-463-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only low off-suit clubs (3-6) and cannot realistically win this opening lead. The best chance for my team is to play the lowest card so my partner may take the trick with a higher card, while I keep my slightly stronger cards for future opportunities."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2, 3 cards) has not signaled anything yet. Because the hand is small and the game is new, I cannot assert their strength, but there is a reasonable chance they hold a card higher than 3 or a trump to win the trick.",
+    "confidence": 0.55,
+    "evidence": [
+      "24508772-0470-4b6c-90ff-ba27fe33fa1d"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing, so they will try to win or shed efficiently if possible. Player 3 has 3 cards and is also likely to contest a low lead with any higher card or trump. I assume they have higher cards than my clubs but cannot know their exact holdings.",
+    "confidence": 0.6,
+    "evidence": [
+      "24508772-0470-4b6c-90ff-ba27fe33fa1d"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the least committal play. It gives my partner the best chance to overtake with a higher card, while preserving my 4, 5, and 6 for later tricks where they might matter more.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest club but still a weak off-suit card; it will almost certainly be beaten and using it leaves me with even weaker cards (3-5) for the rest of the hand."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Playing the 4 instead of the 3 consumes a slightly higher card without meaningfully changing who can beat the trick, so it is strictly worse for preserving hand strength."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1 (2 cards, near finish) may win the trick and continue toward going out.",
+      "My partner may be unable to beat even a 3, in which case the opponents gain the lead anyway.",
+      "All my cards are low, so I have little ability to suppress opponents if they take control."
+    ],
+    "mitigation": "Play the lowest card to minimize my own commitment, let partner and opponents contest the trick, and keep my remaining cards for future tricks where a low winner might arise."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with no public history; partner and opponent inferences are highly uncertain."
+}

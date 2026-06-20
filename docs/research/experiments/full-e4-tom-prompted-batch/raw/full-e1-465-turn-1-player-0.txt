@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-465-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I am leading the opening trick, so the goal is to keep control of the trick as cheaply as possible while preserving stronger cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not had any chance to act, so I have no specific signal about partner strength or suit distribution; partner likely holds a roughly random remaining hand.",
+    "confidence": 0.3,
+    "evidence": [
+      "71bd2020-eef6-4343-b7c8-9a643646c58b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher non-trump cards and possibly trumps, since I only have low spades and no trumps, but this is probabilistic because no cards have been played.",
+    "confidence": 0.4,
+    "evidence": [
+      "71bd2020-eef6-4343-b7c8-9a643646c58b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest-cost lead; it keeps my stronger spades for later tricks and gives partner the best chance to win or cover without committing a high card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Leads a stronger card unnecessarily; it could win now but wastes a card that might be needed later if opponents pass."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Uses an even stronger card for an opening lead, increasing the chance of winning this trick but reducing my ability to control later tricks."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Wastes my highest spade on a lead when a lower card would achieve the same information-gain and partner-support effect."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher non-trump card or any trump and take the trick.",
+      "Partner may be unable to cover if the 3 of spades is beaten early."
+    ],
+    "mitigation": "By leading the lowest card, I preserve the 4, 5, and 6 of spades to compete in later tricks and rely on partner to potentially take this one."
+  },
+  "confidence": 0.65
+}

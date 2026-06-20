@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-487-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards and near finishing. Leading the cheapest possible single keeps our slightly better diamonds in reserve and gives partner the lowest bar to win or shed a card without being forced to burn a high card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely holds a small hand aimed at going out. They may have a modest winner or at least a low diamond they can shed, but their exact cards are hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "68a08f88-e8e2-4009-a09c-6a850f14716f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents together hold 6 hidden cards and have not shown strength. They probably can beat a low diamond with a higher diamond or trump, but no specific holdings are known.",
+    "confidence": 0.6,
+    "evidence": [
+      "68a08f88-e8e2-4009-a09c-6a850f14716f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "play-single-diamond-3-copy1 is the minimum commitment. It keeps 4, 5, 6 for later, makes it cheapest for partner to take the trick if possible, and avoids wasting our strongest card when the whole hand is weak.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still likely beaten; it removes a potentially useful intermediate card without changing the trick-winning odds much."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Expends a middle card from an already weak hand. If opponents take the trick, we are left with even lower remaining cards."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Uses our highest non-trump. Even if it wins, being left on lead with 3-4-5 and no trumps is worse than letting opponents spend a card to take this trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent can beat the 3 with a higher diamond or trump and seize the lead.",
+      "Partner may be forced to play a trump or high card to contest, slowing their finish.",
+      "We have no trumps or bombs, so we cannot reclaim the lead easily."
+    ],
+    "mitigation": "Leading the absolute minimum minimizes the cost of losing the trick and preserves our better low cards for future follow opportunities."
+  },
+  "confidence": 0.65,
+  "notes": "No public plays have occurred, so all beliefs are prior-based and grounded only in hand counts and the new-game event."
+}

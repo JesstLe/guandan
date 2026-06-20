@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:20.334Z",
+  "status": "pass",
+  "manuscriptPath": "submission/aamas-latex/main.tex",
+  "facts": {
+    "claimCount": 8,
+    "supportedCount": 1,
+    "scopeLimitedCount": 7,
+    "needsEvidenceCount": 0,
+    "manuscriptMentionsDecisionPointScope": true,
+    "manuscriptMentionsFullGameFollowup": true
+  },
+  "claims": [
+    {
+      "id": "problem-outcomes-and-fluent-explanations",
+      "location": "abstract",
+      "claim": "Final outcomes and fluent explanations do not guarantee valid multi-agent reasoning.",
+      "evidence": [
+        "experiments/pilot-metrics-summary/pilot-metrics-summary.json",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json",
+        "submission/aamas-latex/main.tex"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported as a decision-point diagnostic claim; the paper does not claim full-game outcome correlation.",
+      "requiredAction": "Keep the limitation that outcome correlation is future work."
+    },
+    {
+      "id": "framework-structured-decision-points",
+      "location": "abstract",
+      "claim": "The framework evaluates LLM agents through structured decision points and reasoning traces.",
+      "evidence": [
+        "schemas/decision-point.schema.json",
+        "schemas/reasoning-trace.schema.json",
+        "experiments/pilot-e1/manifest.json",
+        "experiments/full-e1/manifest.json"
+      ],
+      "status": "supported",
+      "scopeBoundary": "Supported as a framework and artifact claim.",
+      "requiredAction": "Preserve schema paths and dataset manifests in the reproducibility package."
+    },
+    {
+      "id": "verifier-rule-grounded-labels",
+      "location": "abstract",
+      "claim": "A rule-grounded verifier checks legal action constraints, public history, hidden-information discipline, and reasoning-action consistency.",
+      "evidence": [
+        "server/src/research/reasoningVerifier.ts",
+        "server/src/research/reasoningVerifier.test.ts",
+        "experiments/pilot-e2-heuristic-verifier/metrics.json",
+        "experiments/pilot-e3-strategic-heuristic/metrics.json"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported for implemented hard checks and conservative soft labels; not a proof of strategic optimality.",
+      "requiredAction": "Keep hard and soft labels separated in text and tables."
+    },
+    {
+      "id": "guandan-testbed-properties",
+      "location": "abstract",
+      "claim": "Guandan instantiates a four-player imperfect-information partnership game with dynamic legal actions and action-only implicit signaling.",
+      "evidence": [
+        "notes/knowledge_base.md",
+        "notes/literature_matrix.csv",
+        "submission/references.bib",
+        "experiments/pilot-e1/manifest.json"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported as a testbed property claim; the contribution is not claiming Guandan itself is new.",
+      "requiredAction": "Do not frame Guandan, zero communication, or ToM prompting as the novelty."
+    },
+    {
+      "id": "pilot-parse-and-revision-numbers",
+      "location": "abstract",
+      "claim": "The 50-decision pilot reports parse yields and a paired hard-failure reduction from 35 to 10 on 32 eligible revision traces.",
+      "evidence": [
+        "experiments/pilot-e4-plain-llm-results/metrics.json",
+        "experiments/pilot-e5-candidate-constrained-results/metrics.json",
+        "experiments/pilot-e7-tom-prompted-results/metrics.json",
+        "experiments/pilot-e6-verifier-revision-results/metrics.json",
+        "experiments/pilot-revision-comparison/revision-comparison.json",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported for the current pilot and paired eligible subset; not an end-to-end full-game result.",
+      "requiredAction": "Always report the 32-trace denominator alongside the 35 to 10 hard-failure reduction."
+    },
+    {
+      "id": "posthoc-label-ablation-attribution",
+      "location": "abstract",
+      "claim": "A post-hoc label ablation attributes the paired label-burden reduction to public-history consistency and hidden-information discipline.",
+      "evidence": [
+        "experiments/pilot-ablation-summary/ablation-summary.json",
+        "tables/table-3-verifier-ablation.md"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported as post-hoc accounting, not as a prompt-level rerun with removed feedback components.",
+      "requiredAction": "Keep the table caption explicit that this is not a rerun with modified feedback prompts."
+    },
+    {
+      "id": "full-split-tom-scale-evidence",
+      "location": "introduction",
+      "claim": "The evaluation substrate and ToM condition scale beyond the 50-decision pilot to a completed 500-decision ToM full split.",
+      "evidence": [
+        "experiments/full-e4-tom-prompted-results/metrics.json",
+        "experiments/full-e5-tom-schema-repair-results/metrics.json",
+        "experiments/full-llm-summary/full-llm-summary.json",
+        "tables/table-6-full-baseline.md"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported for ToM full-split evidence; full plain/candidate baselines remain partial strengthening evidence.",
+      "requiredAction": "Do not imply that full plain/candidate LLM baselines are complete."
+    },
+    {
+      "id": "diagnostic-layer-not-bot",
+      "location": "introduction",
+      "claim": "The contribution is a diagnostic layer for reasoning validity, not a stronger Guandan-playing bot.",
+      "evidence": [
+        "submission/aamas-latex/main.tex",
+        "submission/aamas-self-review/aamas-self-review-report.json",
+        "submission/visual-evidence/visual-evidence-report.json"
+      ],
+      "status": "scope_limited",
+      "scopeBoundary": "Supported by manuscript scope language and self-review; strategic optimality and win rate are outside the current claim.",
+      "requiredAction": "Preserve limitations and reviewer-boundary language when editing Abstract/Introduction."
+    }
+  ]
+}

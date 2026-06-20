@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-394-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only two non-trump cards left and the lead. The overriding team goal is to play out my hand before opponents finish theirs, so I should lead the card most likely to win the trick and preserve initiative."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unseen cards and has not acted. With no public signals, partner may be strong enough to cover a low lead or may be weak; I cannot assume any specific card. The safest lead is one that can win on its own so partner does not need to spend a high card or trump.",
+    "confidence": 0.5,
+    "evidence": [
+      "b623ab07-06ef-4e60-bf49-48f5a7e4e2a9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three unseen cards and no cards have been played. They could hold trumps, wildcards, or higher non-trumps, but this is probabilistic. Leading the ace forces them to use a genuinely high card or trump if they want the lead, rather than letting them win cheaply.",
+    "confidence": 0.5,
+    "evidence": [
+      "b623ab07-06ef-4e60-bf49-48f5a7e4e2a9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade ace is the strongest available single. It gives the highest chance to win the trick outright and keep the lead, leaving only the weak spade 2 to play afterward.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 gives up the strongest lead. If an opponent or partner takes the trick, I may later be forced to play the ace in a disadvantaged position, or the ace could be beaten by a trump while I still hold the 2."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump-rank card or wildcard that beats the ace.",
+      "An opponent may hold a bomb and use it to seize control."
+    ],
+    "mitigation": "The ace is the best non-trump single available; even if it is beaten, the loss is unavoidable, and leading it first avoids the worse scenario of being stuck with the ace when the lead is against me."
+  },
+  "confidence": 0.8,
+  "notes": "Evidence is limited to the new_game event because no other public actions have occurred."
+}

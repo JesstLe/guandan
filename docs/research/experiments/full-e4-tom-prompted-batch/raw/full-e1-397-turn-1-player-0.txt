@@ -1,0 +1,48 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-397-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoning": {
+    "situationAssessment": {
+      "summary": "Opening lead in round 1 with a very weak hand (3-4-5-6 of diamonds, no trumps, no wildcards). Partner has only 2 cards remaining, suggesting partner is close to going out. My role is to play small and not interfere with partner's potential strong finish.",
+      "evidence": [
+        "5673802c-ff5f-4644-b8fe-e0c529c65729"
+      ]
+    },
+    "partnerModel": {
+      "belief": "Partner (player 2) is near finishing with 2 cards. With so few cards, partner likely holds high-value or winning cards and wants to control the trick, or may be trying to shed the last cards. By leading low, I avoid wasting partner's high cards and avoid forcing partner into a difficult response. If partner has a trump or higher diamond, they can take the trick cheaply; if not, the loss is minimal.",
+      "evidence": [
+        "5673802c-ff5f-4644-b8fe-e0c529c65729"
+      ]
+    },
+    "opponentModel": {
+      "belief": "Opponents (players 1 and 3) hold 3 cards each, one more than partner. In the opening lead they are unlikely to have clear signals about my hand. Leading a high card like 6 would give opponents more information and could let them win with a modest trump, whereas leading the 3 minimizes the value surrendered and forces opponents to spend a real card to beat it.",
+      "evidence": [
+        "5673802c-ff5f-4644-b8fe-e0c529c65729"
+      ]
+    },
+    "candidateComparisons": [
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "analysis": "Lowest card. Surrenders the least value if opponents win, gives partner maximum room to take the trick with any higher card, and preserves 4-5-6 for potential sequential follow-ups.",
+        "score": 0.9
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "analysis": "Highest card in hand. More likely to win the trick immediately but consumes my strongest non-trump and tells opponents I lack higher non-trumps; if an opponent covers with a trump, I lose my best card for little gain. With partner near finish, taking the lead myself is less valuable than letting partner control play.",
+        "score": 0.4
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "analysis": "Intermediate low card. Better than 5 or 6 but still higher than necessary. No clear advantage over the 3.",
+        "score": 0.6
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "analysis": "Middle card. Similar downside to 6 but slightly less costly. Still inferior to the 3 because it reduces partner's margin and wastes more hand value.",
+        "score": 0.5
+      }
+    ],
+    "decisionRationale": "Partner has only 2 cards, signaling a near-finish position where preserving their flexibility is paramount. The 3 of diamonds is the cheapest lead, minimizes information leakage and value loss, and best supports the team objective of helping partner go out or control the endgame."
+  }
+}

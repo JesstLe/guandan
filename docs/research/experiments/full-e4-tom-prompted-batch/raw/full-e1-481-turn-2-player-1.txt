@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-481-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "deny_lead_to_near_finish_opponent",
+    "explanation": "Opponent player 0 has only 2 cards remaining and led a low heart 3. Winning this trick with the cheapest possible card prevents player 0 from retaining the lead and potentially going out next turn, while preserving my stronger hearts for later control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public play. Given the uniform prior over the remaining deck, partner may hold a higher heart or a trump, but their exact cards are hidden. Since I can already win the trick cheaply with the heart 4, there is no need to rely on partner covering; taking control directly is more reliable than passing and hoping partner can act.",
+    "confidence": 0.55,
+    "evidence": [
+      "3a3ff068-580a-45a8-9b70-6e4d9cac3d8b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 holds only 2 cards, publicly signaling a near-finish hand, and led the 3 of hearts—likely their lowest remaining card. They are probably trying to offload a low card or win the trick cheaply to lead again and finish. Opponent player 3 holds 3 cards and may have higher hearts or trumps, but has not yet acted. Allowing player 0 to win this trick would likely let them continue leading toward an early exit.",
+    "confidence": 0.65,
+    "evidence": [
+      "3a3ff068-580a-45a8-9b70-6e4d9cac3d8b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The heart 4 is the lowest card that beats the led heart 3. It wins the trick, denies the near-finish opponent continuation, and keeps the 9 and 10 in reserve for future tricks. This is the most resource-efficient way to take control now rather than risking opponent exploitation.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing saves cards but lets player 0 retain or regain the lead with only 2 cards left. That gives the near-finish opponent a direct path to go out soon, which is more dangerous than spending a low heart to stop them now."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts wins the trick but spends a significantly stronger card than necessary. If future tricks require higher hearts, burning the 9 now leaves only the 10 as a top cover and reduces flexibility."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts is overkill on a 3 lead. It wins the trick but wastes my highest non-trump heart for no additional benefit compared with the 4, weakening my hand for later rounds."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Winning with the 4 uses a card that could have covered a future low heart lead.",
+      "An opponent may still trump or bomb to regain control, though no trumps or bombs have been played publicly.",
+      "Partner might have been able to win the trick, but direct action is more reliable against a near-finish opponent."
+    ],
+    "mitigation": "By using the minimum winning card, I preserve the 9 and 10 for later tricks while still seizing control. Even if an opponent overrides, I have not squandered my strongest cards, and player 0 is forced to reveal more information."
+  },
+  "confidence": 0.72,
+  "notes": "Exact partner and opponent cards are unknown; beliefs are grounded only in the public play of the heart 3 and the observed hand counts. The heart 4 is selected as the cost-minimizing winning response."
+}

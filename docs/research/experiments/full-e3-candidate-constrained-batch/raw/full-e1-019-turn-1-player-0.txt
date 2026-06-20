@@ -1,0 +1,18 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "full-e1-019-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "confidence": 0.7,
+  "reasoning": {
+    "short": "Lead the higher single (A♠) first to maximize the chance of winning the trick and retaining the lead in an endgame race.",
+    "detailed": "Player 0 has only 2 cards versus 3 for every opponent, and the scenario is tagged as an endgame race. With the lead, the priority is to win the current trick so I can lead again and shed the remaining 2♠. A♠ outranks 2♠ and is more likely to survive against opponents' random non-trump cards, whereas leading 2♠ gives almost any opponent an easy beat. If A♠ wins, I clear my hand in two consecutive leads; if it loses, the outcome is comparable to leading 2♠ but with a higher chance of success. No bomb or wildcard is used, so this is the most efficient play."
+  },
+  "alternativeActionId": "play-single-spade-2-copy2",
+  "complianceCheck": {
+    "schemaVersion": "0.1.0",
+    "selectedFromLegalActions": true,
+    "actionInCandidateList": true,
+    "noHiddenCardClaims": true,
+    "jsonOnlyOutput": true
+  }
+}

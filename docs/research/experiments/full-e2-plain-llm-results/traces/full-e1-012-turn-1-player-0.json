@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-012-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is near finish with only 2 cards remaining. By leading the lowest possible single, I minimize the strength my partner needs to take control and avoid forcing them to spend high cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has a small number of cards and may be able to beat a low single, but their exact holdings are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts shows partner has 2 cards",
+      "scenarioTags includes partner_near_finish",
+      "1d1b9a68-beef-4206-8efd-17a31a325322"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards and may be able to beat a low single, but no cards have been played yet so their strength is unclear.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows opponents have 3 cards each",
+      "playedCardSummary shows 0 cards played",
+      "1d1b9a68-beef-4206-8efd-17a31a325322"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading diamond 3, the weakest card in my hand, gives my partner the best chance to take the trick cheaply while preserving my 4-5-6 for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Still low but slightly harder for partner to beat than the 3, and reveals I have higher cards remaining."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A medium card that may force partner to use a stronger card if they want control."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The highest card in my hand; it pressures everyone including partner and wastes potential end-game value."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat even a 3 and lose the trick.",
+      "An opponent may win and continue attacking my partner.",
+      "My remaining 4-5-6 may not be strong enough later."
+    ],
+    "mitigation": "Keeping 4-5-6 in reserve gives me flexible follow-ups, and leading the absolute minimum reduces the chance I burn a card my partner needed."
+  },
+  "confidence": 0.7
+}

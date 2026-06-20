@@ -36,10 +36,12 @@ describe('localResearchPipeline', () => {
         'plain-full-prompts',
         'plain-full-batch',
         'plain-full-openai-batch',
+        'plain-full-post-provider',
         'plain-full-raw-audit',
         'candidate-full-prompts',
         'candidate-full-batch',
         'candidate-full-openai-batch',
+        'candidate-full-post-provider',
         'candidate-full-raw-audit',
         'tom-full-prompts',
         'tom-full-batch',
@@ -53,8 +55,15 @@ describe('localResearchPipeline', () => {
         'human-soft-label-audit-packet-quality',
         'human-soft-label-audit-annotator-package',
         'human-soft-label-audit-annotator-package-archive',
+        'human-soft-label-audit-inter-annotator',
+        'human-soft-label-audit-adjudication-template',
+        'human-soft-label-audit-build-adjudicated',
         'human-soft-label-audit-intake',
         'human-soft-label-audit-agreement',
+        'human-soft-label-audit-evidence-gate',
+        'pilot-replication-report',
+        'second-provider-replication-package',
+        'second-provider-replication-preflight',
         'revision-comparison',
         'tom-failure-analysis',
         'tom-schema-repair',
@@ -62,11 +71,16 @@ describe('localResearchPipeline', () => {
         'ablation-summary',
         'figure-artifacts',
         'paper-tables',
+        'visual-evidence-report',
         'manuscript',
+        'claim-evidence-report',
+        'method-reproducibility-report',
         'marker-inventory',
         'experiment-resolution-ledger',
         'submission-gate',
         'aamas-readiness',
+        'aamas-self-review',
+        'aamas-reviewer-response',
         'preflight',
         'provider-handoff-audit',
         'bibliography-integrity',
@@ -88,11 +102,22 @@ describe('localResearchPipeline', () => {
       expect(calls.some(call => call.includes('writeHumanAuditAnnotatorPackageCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('writeHumanAuditAnnotatorPackageArchiveCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('writeHumanAuditIntakeCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditInterAnnotatorAgreementCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAdjudicationTemplateCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeHumanAuditAdjudicatedAnnotationsCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('writeHumanAuditAgreementCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writePilotReplicationReportCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeSecondProviderReplicationPackageCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeSecondProviderReplicationPreflightCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeVisualEvidenceReportCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeClaimEvidenceReportCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeMethodReproducibilityReportCli.ts'))).toBe(true)
       const humanAuditAgreementCall = calls.find(call => call.includes('writeHumanAuditAgreementCli.ts'))
       expect(humanAuditAgreementCall).not.toContain('human-audit-annotation-sheet.csv')
+      expect(humanAuditAgreementCall).toContain('human-audit-adjudicated-annotations.csv')
       expect(calls.some(call => call.includes('writeFigureArtifactsCli.ts'))).toBe(true)
       expect(calls.some(call => call.includes('writeAAMASReadinessReportCli.ts'))).toBe(true)
+      expect(calls.some(call => call.includes('writeAAMASReviewerResponseMatrixCli.ts'))).toBe(true)
       expect(calls.at(-1)).toContain('writeReproducibilityManifestCli.ts')
 
       const report = JSON.parse(readFileSync(result.jsonPath, 'utf8'))
@@ -105,7 +130,9 @@ describe('localResearchPipeline', () => {
       expect(markdown).toContain('| Full Split Baseline Summary | `passed` |')
       expect(markdown).toContain('| ToM Pilot Prompt Packets | `passed` |')
       expect(markdown).toContain('| Plain Full OpenAI Batch | `passed` |')
+      expect(markdown).toContain('| Plain Full Optional Post-Provider Ingest | `passed` |')
       expect(markdown).toContain('| Candidate Full OpenAI Batch | `passed` |')
+      expect(markdown).toContain('| Candidate Full Optional Post-Provider Ingest | `passed` |')
       expect(markdown).toContain('| ToM Full Optional Post-Provider Ingest | `passed` |')
       expect(markdown).toContain('| ToM Full Schema Repair | `passed` |')
       expect(markdown).toContain('| Full Split LLM Summary | `passed` |')
@@ -114,12 +141,23 @@ describe('localResearchPipeline', () => {
       expect(markdown).toContain('| Human Soft-Label Audit Packet Quality | `passed` |')
       expect(markdown).toContain('| Human Soft-Label Audit Annotator Package | `passed` |')
       expect(markdown).toContain('| Human Soft-Label Audit Annotator Package Archive | `passed` |')
-      expect(markdown).toContain('| Human Soft-Label Audit Returned-Annotation Intake | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Inter-Annotator Agreement | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Adjudication Template | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Build Adjudicated CSV | `passed` |')
+      expect(markdown).toContain('| Human Soft-Label Audit Adjudicated-Annotation Intake | `passed` |')
       expect(markdown).toContain('| Human Soft-Label Audit Agreement | `passed` |')
+      expect(markdown).toContain('| Pilot Replication Report | `passed` |')
+      expect(markdown).toContain('| Second-Provider Replication Package | `passed` |')
+      expect(markdown).toContain('| Second-Provider Replication Preflight | `passed` |')
+      expect(markdown).toContain('| AAMAS Reviewer-Response Matrix | `passed` |')
       expect(markdown).toContain('| ToM Failure Analysis | `passed` |')
       expect(markdown).toContain('| ToM Schema Repair | `passed` |')
       expect(markdown).toContain('| Figure Artifacts | `passed` |')
+      expect(markdown).toContain('| Visual Evidence Report | `passed` |')
+      expect(markdown).toContain('| Claim-Evidence Report | `passed` |')
+      expect(markdown).toContain('| Method Reproducibility Report | `passed` |')
       expect(markdown).toContain('| AAMAS Full-Paper Readiness | `passed` |')
+      expect(markdown).toContain('| AAMAS Adversarial Self-Review | `passed` |')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

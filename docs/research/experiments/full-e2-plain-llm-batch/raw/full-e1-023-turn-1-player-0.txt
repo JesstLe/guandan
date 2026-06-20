@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-023-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 (opponent) is near finishing with only 2 cards. Leading the weakest single applies pressure without committing any useful strength, making the opponent spend a card or letting partner contest the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards, but their exact ranks and suits are unknown. They may be able to beat a low single if needed.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows partner has 3 cards remaining",
+      "no cards have been played yet in publicHistory"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is close to going out with 2 cards left, but their exact hand composition is unknown.",
+    "confidence": 0.8,
+    "evidence": [
+      "scenario tag opponent_near_finish",
+      "handCounts shows player 1 has 2 cards"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the club 3, the lowest card, follows the standard opening-lead principle of leading weak. It preserves the slightly higher clubs for later tricks and avoids giving the near-finish opponent any unnecessary value.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still a weak card, but the 4 is slightly more useful later and offers no immediate advantage over the 3."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is one of our stronger cards; playing it now would waste a card that could help control a future trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is our highest card and most likely to win or compete in a low trick later; leading it now would discard our best remaining asset."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A low single will likely be beaten, so we may lose the lead immediately.",
+      "The near-finish opponent could use this trick to advance toward winning the hand."
+    ],
+    "mitigation": "Because all our cards are low, losing the lead is unavoidable if an opponent chooses to beat this. Leading the weakest card minimizes the value and information revealed, keeping our partner and remaining cards in the best relative position."
+  },
+  "confidence": 0.7
+}

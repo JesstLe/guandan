@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-497-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) is down to 2 cards and near finishing. My hand is weak and contains no trumps or bombs, so the best team play is to lead the lowest card and give partner the easiest path to win the trick and retain or gain the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds at least one card that can beat a low diamond 3, because they are near finish with only 2 cards remaining. They may be saving a trump or a high non-trump to close out the round.",
+    "confidence": 0.55,
+    "evidence": [
+      "b3a22c63-b2bc-455f-a3d8-dae6fb1da2e6"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have only seen the new game event, so their exact holdings are unknown. Each opponent has 3 cards, so collectively they could hold trumps or higher diamonds, but no public evidence proves this.",
+    "confidence": 0.3,
+    "evidence": [
+      "b3a22c63-b2bc-455f-a3d8-dae6fb1da2e6"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3 minimizes the rank threshold partner must beat, maximizing the chance they can win the trick while I keep higher cards (4-6) for later defensive plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card raises the threshold for partner and risks losing the lead to an opponent's trump or higher card; it also wastes my best remaining card."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A mid card is still harder for partner to beat than a 3 and does not clearly win the trick against opponents with trumps."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only slightly better than 5 or 6, but still less favorable than leading the 3 for transferring the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to beat even a 3, handing the lead to an opponent.",
+      "An opponent with a trump (rank 7) or higher diamond could take the trick regardless of my lead.",
+      "If partner wins, their remaining card may not let them finish immediately."
+    ],
+    "mitigation": "By leading the 3 I keep my 4-6 sequence for later tricks and avoid donating my best card to an opponent's trump; partner's near-finish position gives them the highest feasible chance to respond."
+  },
+  "confidence": 0.65,
+  "notes": "No trumps, bombs, or big cards have been played; all hidden-card beliefs remain probabilistic."
+}

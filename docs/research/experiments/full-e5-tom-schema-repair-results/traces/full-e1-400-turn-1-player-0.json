@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-400-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 holds only low non-trump spades (3-6) and no trumps, so retaining the lead is unrealistic. Leading the weakest card invites partner to contest the trick while minimizing value surrendered to opponents."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays yet, partner's hand strength is completely uncertain; they may hold trumps, high cards, or similarly weak cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "72064ef6-7eef-4d8b-aeee-15f1f4874bc2"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Given a full deck and no observed plays, it is likely that at least one opponent can beat a low spade with a higher card or trump, but this remains probabilistic rather than certain.",
+    "confidence": 0.6,
+    "evidence": [
+      "72064ef6-7eef-4d8b-aeee-15f1f4874bc2"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3♠ is the lowest non-trump card in hand and the safest opening lead. It reveals minimal strength, gives opponents the least advantage if they win, and preserves the slightly higher spades for future tricks. It also signals partner that player 0 is weak and that partner should take the lead if possible.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3♠ and still almost certain to lose; saving it provides no meaningful future value over leading the 3♠."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "A middle weak card that does not materially improve the chance of winning the trick, while reducing flexibility in later low-card exchanges."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The strongest card in hand but still a low non-trump; leading it squanders the card most likely to win a future trick and reveals slightly more about the hand's weakness."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may win the trick and control the next lead.",
+      "Leading low signals weakness, which opponents may exploit with aggressive play.",
+      "If partner is also weak, the opponents will likely dominate the early tricks."
+    ],
+    "mitigation": "The weak hand cannot avoid these risks; leading the absolute lowest card minimizes information leakage and surrendered card value, leaving the slightly higher spades available for defense on future tricks."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with a uniformly weak non-trump hand; the decision is driven by minimizing loss and setting up partner rather than by expected trick-winning value."
+}

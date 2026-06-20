@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-034-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left. Leading the ace of spades tries to win the trick immediately so I can lead again and get rid of the deuce, finishing my hand as fast as possible."
+  },
+  "partnerBelief": {
+    "summary": "No information about partner's cards; partner hand count is 3.",
+    "confidence": 0,
+    "evidence": [
+      "No public history beyond new_game.",
+      "Partner hand count is 3 with unknown composition."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No information about opponents' cards; each opponent has 3 cards.",
+    "confidence": 0,
+    "evidence": [
+      "No public history beyond new_game.",
+      "Opponent hand counts are 3 each with unknown composition."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The ace of spades is the strongest non-trump single in my hand. Leading it maximizes the chance of winning this trick and keeping the lead, which lets me play the remaining deuce next and exit quickly.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce is weak and likely loses control. Without knowing partner or opponent cards, surrendering the lead risks opponents running their hands while I still hold a stronger card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The ace of spades could be beaten by an opponent holding a trump, wild card, or higher card.",
+      "If the ace loses, opponents gain control and may finish before me."
+    ],
+    "mitigation": "The ace is the strongest card available to me, so there is no safer lead. Winning control is the best way to mitigate endgame risk."
+  },
+  "confidence": 0.85,
+  "notes": "No hidden cards are asserted as facts."
+}

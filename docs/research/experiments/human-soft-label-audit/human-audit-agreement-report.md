@@ -1,15 +1,15 @@
 # Human Soft-Label Audit Agreement Report
 
-Generated at: `2026-06-18T21:15:53.712Z`
+Generated at: `2026-06-19T12:36:15.641Z`
 
 Status: `pending`
 
 | Item | Value |
 | --- | ---: |
-| Annotation CSV | `human-audit-annotation-sheet.csv` |
+| Annotation CSV | `human-audit-adjudicated-annotations.csv` |
 | Answer key | `human-audit-answer-key.jsonl` |
 | Expected samples | 40 |
-| Annotation rows | 40 |
+| Annotation rows | 0 |
 | Completed rows | 0 |
 | Fully completed rows | 0 |
 | Completed labels | 0/200 |
@@ -17,7 +17,7 @@ Status: `pending`
 | Ready for paper evidence | no |
 | Invalid labels | 0 |
 | Missing answer keys | 0 |
-| Missing annotation samples | 0 |
+| Missing annotation samples | 40 |
 | Unexpected annotation samples | 0 |
 | Duplicate annotation samples | 0 |
 | Macro agreement | n/a |

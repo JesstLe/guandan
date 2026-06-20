@@ -20,4 +20,4 @@ Source metrics:
 
 Caption draft:
 
-> Main pilot results separate reliability into parse yield, paired revision, and semantic attribution. Parse yield improves from 26/50 for plain LLM prompting to 36/50 under ToM prompting and 49/50 after deterministic ToM schema repair. On the 32 paired candidate traces, verifier revision reduces hard verifier failures from 35 to 10; 80% of the hard-failure-count drop comes from public-history consistency and 20% from hidden-information discipline.
+> Main pilot results report three reliability layers. Parse yield rises from 26/50 for plain prompting to 36/50 under ToM prompting and 49/50 after deterministic ToM schema repair. On 32 paired candidate traces, verifier revision reduces hard failures from 35 to 10; the hard-failure-count drop is attributed to public-history consistency (80%) and hidden-information discipline (20%).

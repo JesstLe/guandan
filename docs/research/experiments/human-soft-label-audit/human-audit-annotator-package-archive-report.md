@@ -1,14 +1,14 @@
 # Human Audit Annotator Package Archive Report
 
-Generated at: `2026-06-18T21:15:52.984Z`
+Generated at: `2026-06-19T12:36:13.864Z`
 
 Status: `archive_ready`
 
 | Item | Value |
 | --- | ---: |
 | Archive | `human-audit-annotator-package.tar.gz` |
-| Bytes | 53634 |
-| SHA-256 | `e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87` |
+| Bytes | 54786 |
+| SHA-256 | `0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d` |
 | Samples | 40 |
 | Archive entries | 6 |
 
@@ -21,7 +21,7 @@ Status: `archive_ready`
 | package-excludes-reference-labels | `pass` | package manifest excludes reference labels |
 | tar-create-exit-code | `pass` | tar archive command succeeded |
 | archive-present | `pass` | archive file exists |
-| archive-nonempty | `pass` | 53634 bytes |
+| archive-nonempty | `pass` | 54786 bytes |
 | archive-entries-present | `pass` | 6 archive entries |
 | archive-no-forbidden-entry-names | `pass` | no private reference names in archive entries |
 | archive-has-readme | `pass` | archive contains README.md |

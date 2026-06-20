@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-461-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Take the trick from the opponent who is down to 2 cards, denying them a cheap lead and a path toward finishing."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards but no public information about their strength; they might be able to beat a 3♥ but cannot be relied upon to do so.",
+    "confidence": 0.5,
+    "evidence": [
+      "dd6a39fd-04e4-49be-82ed-9d05ff9c1d31"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0, an opponent with only 2 cards, led a low 3♥—likely shedding a weak card or trying to win a cheap trick to gain the lead for a final play. Player 2 may hold a higher heart or trump to contest.",
+    "confidence": 0.65,
+    "evidence": [
+      "dd6a39fd-04e4-49be-82ed-9d05ff9c1d31"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4♥ is the cheapest legal card that beats the 3♥. It prevents the near-finished opponent from winning the trick and gaining the lead, while saving the 9♥ and 10♥ for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing gives the opponent who led a chance to win the trick and take the lead with only one card remaining, which is risky near the end of the hand. There is no strong signal that partner will necessarily beat the 3♥."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10♥ also beats the 3♥ but uses a higher card unnecessarily; if an opponent has a trump or higher heart they can still overtake it, so saving the 10♥ is better."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or partner player 3 may overtake the 4♥ with a higher heart or trump, causing us to lose the trick and a card.",
+      "If we do win, our remaining 9♥ and 10♥ could still be beaten by opponents' trumps or higher cards later."
+    ],
+    "mitigation": "Use the minimum sufficient card (4♥) to keep higher cards in reserve, and be prepared to pass on future tricks if partner can take control."
+  },
+  "confidence": 0.75,
+  "notes": "Decision reflects uncertainty about hidden hands and prioritizes denying a near-finished opponent the lead."
+}

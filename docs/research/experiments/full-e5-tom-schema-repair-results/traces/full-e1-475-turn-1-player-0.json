@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-475-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "I have the opening lead in round 1. My hand contains only low non-trump spades (3-6) with trump rank 7, so my cards have little intrinsic power. The best team objective is to lead low, force opponents to spend higher cards or trumps, and either retain the lead cheaply or transfer control to my partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public actions have occurred, so I have no reliable read on their hand strength. I probabilistically believe they could hold anything from weak low cards to trumps or high cards. If I lead a low card and an opponent does not take the trick, partner may be able to win it with a modest card, but I cannot count on this.",
+    "confidence": 0.3,
+    "evidence": [
+      "498556e7-0dda-448a-b835-c4d03a11c416"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and no public actions have occurred. Given the deck composition, it is likely that at least one opponent holds cards ranked 7 or higher, or trumps, that can beat any of my spades. They will probably try to win the trick if the cost is low. I should not assume either opponent is weak.",
+    "confidence": 0.5,
+    "evidence": [
+      "498556e7-0dda-448a-b835-c4d03a11c416"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade 3 is the safest opening play. It expends my weakest card, provides minimal information about my hand, and forces opponents to use a higher card or trump if they want to take the lead. Preserving the 4, 5, and 6 gives me slightly more options on future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 risks losing the trick to a modest opponent card or trump while also leaving me with the even weaker 3, 4, and 5. If the 6 somehow wins, I would retain the lead with a worse remaining hand, which is undesirable."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a low non-trump card and likely to be beaten. Playing it saves only a marginally weaker 3 for later, which is not worth the extra information revealed about my spade sequence."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is similar to the 3 but slightly stronger; leading it provides marginally more information and keeps a 3 that is harder to play usefully later. The 3 is the cleaner discard."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher non-trump or trump, taking control of the next lead.",
+      "If the 3 wins because opponents pass, I keep the lead but still hold only weak cards.",
+      "Leading a low singleton reveals I have at least one low spade, though it hides the exact length of my spade run."
+    ],
+    "mitigation": "By choosing the very lowest card, I minimize the value surrendered and make opponents spend real strength to take the lead. I avoid overcommitting my slightly higher spades, keeping flexibility for future tricks."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with a uniformly weak hand; no strong partner or opponent reads are possible, so the play prioritizes minimal risk and information leakage."
+}

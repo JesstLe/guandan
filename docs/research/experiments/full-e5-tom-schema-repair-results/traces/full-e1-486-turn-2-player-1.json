@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-486-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent 0 has only 2 cards total and just led a low heart, so they are one card away from finishing. The priority is to take the lead away now rather than let them continue."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 hidden cards and has not yet acted. They could plausibly support a new lead, but there is no public signal about their strength.",
+    "confidence": 0.5,
+    "evidence": [
+      "245b4ead-96b8-4f48-8bc8-3935c24ce85a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent 0 led a single 3 of hearts and has only one card remaining, strongly suggesting they are trying to shed cards and exit soon. Opponent 2 has 3 cards and may try to contest if we take the lead.",
+    "confidence": 0.8,
+    "evidence": [
+      "245b4ead-96b8-4f48-8bc8-3935c24ce85a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest beating card (4 of hearts) to win the trick, stop opponent 0 from continuing with one card left, and keep the 9 and 10 of hearts for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves opponent 0 in control with just one card remaining, giving them a high chance of finishing on the next turn."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beats the table but wastes a higher card that may be needed later; the 4 of hearts already wins this trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Beats the table but overcommits high value without any extra benefit over the 4 of hearts."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 2 may be able to beat the 4 of hearts and regain the lead.",
+      "If partner cannot cover future leads, our retained high cards may not be enough to stop both opponents."
+    ],
+    "mitigation": "Use the minimum beating card so the 9 and 10 of hearts remain available to contest subsequent tricks and support partner if needed."
+  },
+  "confidence": 0.85
+}

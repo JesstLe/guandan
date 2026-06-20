@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-417-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) has only 2 cards remaining, indicating they are near finishing. My lead should set up partner to take the trick cheaply so they can play another card and get closer to going out, rather than investing my own weak cards in a fight for a trick I may not win."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 2 cards and has made no public plays, so their exact holdings are hidden. Because they are near finish, it is plausible they want to play their remaining cards quickly. Leading the lowest single gives them the best chance to beat it with a modest card and seize the lead. I do not assert any specific partner cards.",
+    "confidence": 0.45,
+    "evidence": [
+      "39ab90f6-45a8-414f-a8c2-78f343cefe7a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 cards and has played nothing. No trumps, bombs, or big cards have appeared, so their strengths are unknown. It is likely at least one opponent can beat a diamond 3 with a higher non-trump or a trump, but this remains probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "39ab90f6-45a8-414f-a8c2-78f343cefe7a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Diamond 3 is the cheapest lead. It minimizes my own investment, makes it easiest for partner to take the trick with one of their 2 cards, and preserves the 4, 5, and 6 for future tricks where absolute card rank may matter more.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest diamond. Playing it risks wasting my best card on a trick opponents can likely take with a higher card or trump, and if it wins I would be stuck leading again with even weaker cards."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is stronger than the 3 but still low. It does not meaningfully reduce opponent risk while removing a card that could be useful later if partner needs a slightly higher cover."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only one step above the 3. The 3 is cheaper and gives partner the same or better chance to win the trick, so there is no advantage to leading the 4."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher non-trump single or a trump to win the trick.",
+      "Partner may be unable to beat the 3 with either of their 2 cards, causing our team to lose the lead.",
+      "If an opponent wins, partner may be blocked from playing a card this turn."
+    ],
+    "mitigation": "By leading the minimum card, I limit value lost if the trick is lost and maximize the chance partner can take over. I keep the slightly higher diamonds in reserve to cover partner's future plays or to contest later tricks."
+  },
+  "confidence": 0.75
+}

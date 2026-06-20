@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-20T02:49:49.618Z",
+  "status": "needs_experiment",
+  "paper": "Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games",
+  "facts": {
+    "aamasReadiness": "borderline",
+    "preflightStatus": "research_not_ready",
+    "visualEvidenceStatus": "ready_with_external_evidence_pending",
+    "claimEvidenceStatus": "pass",
+    "methodReproducibilityStatus": "pass",
+    "replicationGateStatus": "needs_experiment",
+    "fullSplitGateStatus": "pass",
+    "pageBudgetGateStatus": "pass",
+    "manuscriptHasLimitations": true
+  },
+  "items": [
+    {
+      "dimension": "contribution",
+      "question": "Does the paper make a clear, non-trivial contribution beyond building a Guandan bot?",
+      "status": "pass",
+      "reviewerRisk": "Reviewers may dismiss the work as a game-specific prompt pipeline unless the diagnostic contribution and full-split evidence stay explicit.",
+      "evidence": [
+        "Pilot gate: pass",
+        "Schema-vs-reasoning attribution gate: pass",
+        "Full-split LLM evidence gate: pass"
+      ],
+      "requiredAction": "Keep the contribution framed as verifiable reasoning diagnostics under zero communication, not as a stronger card-playing agent."
+    },
+    {
+      "dimension": "writing_clarity",
+      "question": "Can a knowledgeable reader reproduce the method, figures, tables, and artifact boundaries?",
+      "status": "pass",
+      "reviewerRisk": "Unclear artifact boundaries would make the pilot/full-split/protocol distinction look like post-hoc storytelling.",
+      "evidence": [
+        "Local artifact hygiene gate: pass",
+        "Visual evidence gate: pass",
+        "Visual evidence report: ready_with_external_evidence_pending with 5 figures and 9 tables",
+        "Claim-evidence report: pass with 0 claims needing evidence",
+        "Method reproducibility report: pass with 6/6 modules passing"
+      ],
+      "requiredAction": "Preserve the current denominator, provenance, visual-evidence, and claim-evidence reports whenever the manuscript changes."
+    },
+    {
+      "dimension": "experimental_strength",
+      "question": "Are the empirical effects strong enough for AAMAS rather than only a pilot note?",
+      "status": "needs_experiment",
+      "reviewerRisk": "The 500-decision ToM evidence is useful, but single-provider/model evidence remains attackable without replication or human validation.",
+      "evidence": [
+        "Full-split LLM evidence gate: pass",
+        "Replication/human-audit gate: needs_experiment",
+        "Second-provider/model pilot replication is pending_missing_replication with 0 completed replication row(s). Second-provider replication package is package_ready with 0 failed checks, fixed input rows 50/50, prompt packets 50/50, 52 packaged file(s), and is ready for an external run; it is not paper evidence until provider outputs return. Second-provider preflight is blocked_missing_independent_provider_key with fixed inputs 50/50 rows and 50/50 prompt packets, 0 second-provider output row(s), and no independent provider/model key present. blockers: No independent second-provider/model API key is available in the environment or configured env file. Kimi credentials do not count because the primary run already uses Kimi. A human soft-label audit packet is prepared with 40 blind samples, including a local annotator HTML; the packet-quality report is packet_ready with 0 failed checks and is ready for annotation; it is not paper evidence until human labels are completed. The blind annotator package is package_ready with 0 failed checks, excludes private reference files, and excludes reference labels. The blind annotator archive is archive_ready with 0 failed checks, 54786 bytes, with SHA-256 recorded. The human-audit launch checklist is ready_to_send with 0 failed checks, ready to send to annotators, 0/200 labels completed, archive SHA-256 recorded, and is not paper evidence until returned labels are completed. The human-audit evidence gate is awaiting_returns with 0 failed checks and 5 pending checks, 0/200 labels completed, annotator returns not both present, 0/200 paired labels, human-verifier macro agreement n/a, and is not paper evidence yet. The returned-annotation intake is awaiting_return with 2 failed checks; no returned CSV is present yet, 0/200 labels are filled, and it is not ready for agreement evaluation. The inter-annotator agreement report is awaiting_returns, with 0/200 paired labels, macro agreement n/a, 0 disagreements, and not ready for adjudication. The adjudication template is awaiting_returns with 1 failed checks, 0/0 disagreement rows materialized, and is not ready for adjudication. The adjudicated-annotation builder is awaiting_returns with 3 failed checks, 0/40 output rows, 0/200 labels completed, 0 unresolved disagreement(s); the adjudicated CSV is not written, and it is not ready for agreement evaluation. The agreement evaluator is pending with 0/200 labels completed."
+      ],
+      "requiredAction": "Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior."
+    },
+    {
+      "dimension": "evaluation_completeness",
+      "question": "Are important baselines, ablations, metrics, and validation layers complete?",
+      "status": "needs_experiment",
+      "reviewerRisk": "Reviewers can still ask whether improvements are provider-specific, prompt-specific, or verifier-subjectivity artifacts.",
+      "evidence": [
+        "Replication/human-audit gate: needs_experiment",
+        "Pilot ablation and paired attribution are present, but external validation is still pending."
+      ],
+      "requiredAction": "Run the fixed second-provider pilot replication when API access is available, or complete the prepared human audit packet."
+    },
+    {
+      "dimension": "method_design_soundness",
+      "question": "Does the paper honestly separate verifier validity from strategic optimality and full-game performance?",
+      "status": "pass",
+      "reviewerRisk": "If the paper overclaims strategic optimality, the domain-specific verifier may look like an oracle or a reward model rather than a diagnostic layer.",
+      "evidence": [
+        "Page-budget gate: pass",
+        "Limitations and reviewer-boundary text present: yes"
+      ],
+      "requiredAction": "Keep the limitation language: verifier labels diagnose reasoning validity, not optimal play or cross-game transfer."
+    }
+  ],
+  "claimEvidenceMap": [
+    {
+      "claim": "Verifier-grounded reasoning reveals failures hidden by fluent LLM explanations.",
+      "evidence": [
+        "experiments/pilot-e4-plain-llm-results/metrics.json",
+        "experiments/pilot-e5-candidate-constrained-results/metrics.json",
+        "experiments/pilot-e7-tom-prompted-results/metrics.json",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json"
+      ],
+      "status": "pass"
+    },
+    {
+      "claim": "Verifier feedback improves structured reasoning on paired eligible traces.",
+      "evidence": [
+        "experiments/pilot-e6-verifier-revision-results/metrics.json",
+        "experiments/pilot-revision-comparison/revision-comparison.json",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json"
+      ],
+      "status": "pass"
+    },
+    {
+      "claim": "The evaluation substrate scales beyond the 50-decision pilot to a 500-decision ToM full split.",
+      "evidence": [
+        "experiments/full-e4-tom-prompted-results/metrics.json",
+        "experiments/full-e5-tom-schema-repair-results/metrics.json",
+        "experiments/full-llm-summary/full-llm-summary.json"
+      ],
+      "status": "pass"
+    },
+    {
+      "claim": "The paper is robust to single-provider or verifier-subjectivity attacks.",
+      "evidence": [
+        "experiments/pilot-replication/pilot-replication-report.json",
+        "experiments/human-soft-label-audit/human-audit-agreement-report.json"
+      ],
+      "status": "needs_experiment"
+    }
+  ],
+  "nextActions": [
+    "Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.",
+    "Run the fixed second-provider pilot replication when API access is available, or complete the prepared human audit packet.",
+    "Decide whether to add full-split plain/candidate LLM baselines or keep them as optional strengthening evidence.",
+    "Preserve the 8-page body budget by replacing protocol/scaffolding material if more evidence moves into the main paper."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-389-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only 2 cards left while every other player has 3, so the immediate team priority is to shed the remaining cards and secure first-out advantage."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not acted, so their exact hand is unknown. With 3 cards they may hold high cards, trumps, or jokers, and are likely trying to finish their own hand or protect our lead if possible.",
+    "confidence": 0.4,
+    "evidence": [
+      "72addf25-eb42-40cf-a0f8-0ca73710fc40"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents also hold 3 cards each and have revealed nothing. They may possess trumps, jokers, or high singles, and will likely try to beat any cheap lead to stop us from going out.",
+    "confidence": 0.4,
+    "evidence": [
+      "72addf25-eb42-40cf-a0f8-0ca73710fc40"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 2 is the strongest non-trump single in hand. It minimizes the set of cards opponents can use to win the trick (only trumps/jokers beat it), gives the highest chance of retaining the lead, and lets me play the A on the next lead to finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is lower than the 2, so more opponent cards can beat it. If the A loses, I also lose tempo and may never get to lead the 2. Even if the A wins, I still must play the 2 next and it could be beaten by a trump/joker, so ordering A first is strictly weaker."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or joker to beat the 2 and seize the lead.",
+      "After losing the lead, opponents might play combinations I cannot match, leaving me stuck on the A.",
+      "Partner may not have a high enough card to recapture the lead for me."
+    ],
+    "mitigation": "Leading the 2 maximizes my chance of winning the current trick and keeping initiative. If I lose it, I still hold an A, a relatively strong single that can beat many later leads."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-043-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The opponent to my left has only 2 cards remaining (handCounts[1]=2), so the priority is to make them spend a higher/trump card to win this trick rather than letting them coast to a cheap finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds an ordinary 3-card hand; no specific high cards or trumps are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts[2]=3 shows partner's remaining cards.",
+      "No public history beyond new_game, so partner strength is uncertain."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "The left opponent is near finishing with 2 cards and may hold a high card or trump, but exact ranks are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "scenarioTags includes opponent_near_finish.",
+      "handCounts[1]=2 indicates a small remaining hand."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I lead the lowest non-trump single (club 3). A low lead forces opponents to beat it with a higher card or give up the trick, while preserving my slightly higher clubs (4/5/6) for later in the round.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but otherwise equivalent; it spends a marginally better card without improving suppression value."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher than necessary for an opening low lead; would reduce my end-game flexibility."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The highest club in hand; playing it now wastes the only card that might beat an opponent's 4 or 5 later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The near-finish opponent may have a high card or trump and easily win the trick.",
+      "If partner cannot take over, the opponent may clear their remaining cards quickly."
+    ],
+    "mitigation": "By spending the minimum-strength card (3), I keep my stronger cards in reserve and give my team the best chance to regain control on a future trick."
+  },
+  "confidence": 0.7,
+  "notes": "All legal options are low non-trump singles; the lowest is the most resource-efficient lead."
+}

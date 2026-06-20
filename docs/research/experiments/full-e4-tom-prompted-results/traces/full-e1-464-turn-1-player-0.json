@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-464-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left (A♠ and 2♠). My best team contribution is to try to play out my hand quickly, so I should seize and keep the lead rather than surrender it."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds 3 unseen cards. With no public plays yet, I cannot assert any specific holdings; they are plausibly of mixed strength and may be able to cover if opponents take control, but I cannot rely on it.",
+    "confidence": 0.45,
+    "evidence": [
+      "8a6c83d4-cc00-4950-abb7-cc5875ea01cf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unseen cards. They likely have cards that can beat a single 2, and possibly trumps or jokers that can beat my A, but no specific hidden cards are known.",
+    "confidence": 0.45,
+    "evidence": [
+      "8a6c83d4-cc00-4950-abb7-cc5875ea01cf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the A♠ maximizes the chance of winning this trick. If it wins, I keep the lead and can play my remaining 2♠ next to attempt to finish my hand. This is the most direct path to exiting in the endgame race.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2♠ is the weakest legal single and almost certainly cedes the lead to an opponent or partner. With only the A left, I would lose control of the pacing and reduce my chance of going out first."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or joker that beats my A, leaving me with only the weak 2♠.",
+      "If my partner cannot recover the lead, the opponents may press their card advantage."
+    ],
+    "mitigation": "Leading the A is still the best available play because it gives me the highest chance of retaining initiative and finishing my hand in two tricks; no alternative offers better control given my short hand."
+  },
+  "confidence": 0.7
+}

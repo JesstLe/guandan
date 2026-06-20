@@ -119,6 +119,62 @@ describe('writeFigureArtifactsCli', () => {
             shareOfHardFailureDrop: 0.2,
           },
         ],
+        qualitativeCases: [
+          {
+            caseType: 'public_history_repaired',
+            decisionId: 'pilot-e1-002-turn-1-player-0',
+            beforeSelectedActionId: 'play-single-diamond-3-copy1',
+            afterSelectedActionId: 'play-single-diamond-3-copy1',
+            actionChanged: false,
+            primaryReasonChanged: false,
+            labelStatuses: {
+              publicHistoryConsistent: { before: 'fail', after: 'pass' },
+              partnerConsistent: { before: 'fail', after: 'pass' },
+            },
+            beforeIssues: ['UNKNOWN_PUBLIC_EVIDENCE'],
+            afterIssues: [],
+          },
+          {
+            caseType: 'hidden_info_repaired',
+            decisionId: 'pilot-e1-013-turn-1-player-0',
+            beforeSelectedActionId: 'play-single-club-3-copy1',
+            afterSelectedActionId: 'play-single-club-3-copy1',
+            actionChanged: false,
+            primaryReasonChanged: true,
+            labelStatuses: {
+              publicHistoryConsistent: { before: 'fail', after: 'pass' },
+              hiddenInfoDisciplined: { before: 'fail', after: 'pass' },
+            },
+            beforeIssues: ['UNKNOWN_PUBLIC_EVIDENCE', 'HIDDEN_INFO_ASSERTED_AS_FACT'],
+            afterIssues: [],
+          },
+          {
+            caseType: 'remaining_hard_failure',
+            decisionId: 'pilot-e1-004-turn-1-player-0',
+            beforeSelectedActionId: 'play-single-spade-A-copy2',
+            afterSelectedActionId: 'play-single-spade-A-copy2',
+            actionChanged: false,
+            primaryReasonChanged: false,
+            labelStatuses: {
+              publicHistoryConsistent: { before: 'fail', after: 'fail' },
+            },
+            beforeIssues: ['UNKNOWN_PUBLIC_EVIDENCE'],
+            afterIssues: ['UNKNOWN_PUBLIC_EVIDENCE'],
+          },
+          {
+            caseType: 'parse_failure_outside_revision',
+            decisionId: 'pilot-e1-000-turn-1-player-0',
+            beforeSelectedActionId: null,
+            afterSelectedActionId: null,
+            actionChanged: null,
+            primaryReasonChanged: null,
+            labelStatuses: {},
+            beforeIssues: [],
+            afterIssues: [],
+            parseFailureMessage: 'Parsed JSON does not match the required reasoning trace shape.',
+            rawOutputFile: 'raw/pilot-e1-000-turn-1-player-0.txt',
+          },
+        ],
       }), 'utf8')
 
       const stdout = execFileSync('npx', [
@@ -143,6 +199,7 @@ describe('writeFigureArtifactsCli', () => {
       expect(report.revisionArchitectureSvgPath).toBe(join(outDir, 'figure-2-revision-architecture.svg'))
       expect(report.tomSchemaRepairSvgPath).toBe(join(outDir, 'figure-3-tom-schema-repair-flow.svg'))
       expect(report.mainResultsSvgPath).toBe(join(outDir, 'figure-4-main-pilot-results.svg'))
+      expect(report.qualitativeCasePackSvgPath).toBe(join(outDir, 'figure-5-qualitative-case-pack.svg'))
       expect(report.pairedDecisionCount).toBe(32)
       expect(report.removedStaleFigurePaths).toEqual(staleFiles.map(file => join(outDir, file)))
 
@@ -155,6 +212,8 @@ describe('writeFigureArtifactsCli', () => {
         'figure-3-tom-schema-repair-flow.md',
         'figure-4-main-pilot-results.svg',
         'figure-4-main-pilot-results.md',
+        'figure-5-qualitative-case-pack.svg',
+        'figure-5-qualitative-case-pack.md',
       ]
       for (const file of expectedFiles) {
         expect(existsSync(join(outDir, file))).toBe(true)
@@ -165,27 +224,50 @@ describe('writeFigureArtifactsCli', () => {
       }
 
       expect(readFileSync(join(outDir, 'figure-2-revision-architecture.md'), 'utf8'))
-        .toContain('# Figure 2: Verifier-Grounded Revision Architecture')
+        .toContain('# Figure 2: Trace-Contract Verifier Architecture')
       expect(readFileSync(join(outDir, 'figure-3-tom-schema-repair-flow.md'), 'utf8'))
         .toContain('# Figure 3: ToM Schema-Repair Flow')
       expect(readFileSync(join(outDir, 'figure-4-main-pilot-results.md'), 'utf8'))
         .toContain('# Figure 4: Main Pilot Results')
+      expect(readFileSync(join(outDir, 'figure-5-qualitative-case-pack.md'), 'utf8'))
+        .toContain('# Figure 5: Qualitative Verifier-Attribution Case Pack')
       const pipelineMarkdown = readFileSync(join(outDir, 'figure-1-verifier-pipeline.md'), 'utf8')
+      expect(pipelineMarkdown).toContain('| A | Cooperation contrast |')
+      expect(pipelineMarkdown).toContain('| B | Hidden team play |')
+      expect(pipelineMarkdown).toContain('| C | Trace contract and verifier |')
       expect(pipelineMarkdown).toContain('| D | Paired evidence accounting |')
       const pipelineSvg = readFileSync(join(outDir, 'figure-1-verifier-pipeline.svg'), 'utf8')
-      expect(pipelineSvg).toContain('Verifier-Grounded Reasoning Turns Game Play into Auditable Evidence')
-      expect(pipelineSvg).toContain('D. Paired evidence')
+      expect(pipelineSvg).toContain('Verifiable Reasoning When Teammates Cannot Talk')
+      expect(pipelineSvg).toContain('A. Explicit communication')
+      expect(pipelineSvg).toContain('B. Zero-communication play')
+      expect(pipelineSvg).toContain('no chat')
+      expect(pipelineSvg).toContain('C. Decision packet')
+      expect(pipelineSvg).toContain('D. Structured trace')
+      expect(pipelineSvg).toContain('E. Rule-grounded checks')
+      expect(pipelineSvg).toContain('F. Same-id paired revision')
+      expect(pipelineSvg).toContain('V(d_t, r_t, a_t)')
+      expect(pipelineSvg).toContain('labels y_t + issues e_t')
+      expect(pipelineSvg).toContain('public history')
+      expect(pipelineSvg).toContain('hidden-info')
       expect(pipelineSvg).toContain('hard failures')
       const mainResultsSvg = readFileSync(join(outDir, 'figure-4-main-pilot-results.svg'), 'utf8')
       expect(mainResultsSvg).toContain('A. End-to-end parse yield')
       expect(mainResultsSvg).toContain('B. Paired verifier revision')
       expect(mainResultsSvg).toContain('C. What failures disappear?')
       const revisionSvg = readFileSync(join(outDir, 'figure-2-revision-architecture.svg'), 'utf8')
-      expect(revisionSvg).toContain('<title id="title">Verifier-grounded revision architecture</title>')
-      expect(revisionSvg).toContain('A. First-pass trace')
-      expect(revisionSvg).toContain('B. Verifier feedback')
-      expect(revisionSvg).toContain('C. Bounded revision')
+      expect(revisionSvg).toContain('<title id="title">Trace-contract verifier architecture</title>')
+      expect(revisionSvg).toContain('A. Decision point')
+      expect(revisionSvg).toContain('B. Trace contract')
+      expect(revisionSvg).toContain('C. Rule-grounded verifier')
+      expect(revisionSvg).toContain('D. Same-id revision')
       expect(revisionSvg).toContain('hard failures 35 to 10')
+      const qualitativeSvg = readFileSync(join(outDir, 'figure-5-qualitative-case-pack.svg'), 'utf8')
+      expect(qualitativeSvg).toContain('Qualitative Case Pack')
+      expect(qualitativeSvg).toContain('A. Public-history repair')
+      expect(qualitativeSvg).toContain('B. Hidden-information repair')
+      expect(qualitativeSvg).toContain('C. Remaining hard failure')
+      expect(qualitativeSvg).toContain('D. Parse failure outside paired subset')
+      expect(qualitativeSvg).toContain('pilot-e1-000-turn-1-player-0')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

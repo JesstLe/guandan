@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-20T02:49:48.008Z",
+  "status": "awaiting_returns",
+  "facts": {
+    "launchStatus": "ready_to_send",
+    "sampleCount": 40,
+    "totalLabels": 200,
+    "completedLabels": 0,
+    "annotatorAPresent": false,
+    "annotatorBPresent": false,
+    "pairedLabels": 0,
+    "interAnnotatorMacroAgreement": null,
+    "disagreementCount": 0,
+    "adjudicatedStatus": "awaiting_returns",
+    "adjudicatedCsvWritten": false,
+    "agreementStatus": "pending",
+    "agreementMacroAgreement": null,
+    "readyForPaperEvidence": false
+  },
+  "checks": [
+    {
+      "id": "launch-ready",
+      "status": "pass",
+      "finding": "launch status=ready_to_send"
+    },
+    {
+      "id": "two-annotator-returns-present",
+      "status": "pending",
+      "finding": "annotator A present=false, annotator B present=false"
+    },
+    {
+      "id": "inter-annotator-structural-complete",
+      "status": "pending",
+      "finding": "inter-annotator status=awaiting_returns, failed checks=2"
+    },
+    {
+      "id": "all-paired-labels-complete",
+      "status": "pending",
+      "finding": "paired labels=0/200"
+    },
+    {
+      "id": "adjudicated-csv-complete",
+      "status": "pending",
+      "finding": "adjudicated status=awaiting_returns, completed=0/200, written=false"
+    },
+    {
+      "id": "agreement-complete",
+      "status": "pending",
+      "finding": "agreement status=pending, completed=0/200, structural issues=40"
+    }
+  ],
+  "acceptanceCriteria": [
+    "The blind package launch checklist is ready_to_send or evidence_ready.",
+    "Two independent annotator CSVs are returned with the expected sample ids and accepted label values.",
+    "Inter-annotator report reaches completed with all paired labels present.",
+    "All disagreements, if any, are adjudicated without exposing the verifier answer key to annotators.",
+    "The adjudicated CSV is written with all expected labels resolved.",
+    "The human-verifier agreement evaluator reaches completed and readyForPaperEvidence=true."
+  ],
+  "nextActions": [
+    "Send the blind archive to two independent annotators, save their returned CSVs under the expected filenames, then run the inter-annotator and adjudication commands."
+  ]
+}

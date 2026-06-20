@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-047-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards and tagged as near finish; opening with the lowest non-trump single maximizes the chance partner can win the trick and finish."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has few cards and may be able to play over a low non-trump single, but exact composition is unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts shows partner (player 2) has 2 cards remaining",
+      "scenarioTags includes partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No cards have been played; opponents' holdings are completely unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "playedCardSummary shows 0 cards played",
+      "inferences list is empty"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "A low single lead expends minimal strength and gives the partner with fewest cards a chance to take control and finish the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than necessary; consumes a slightly stronger card without improving partner's ability to take the trick."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Wastes a middle card and still loses to any higher card or trump, offering no strategic advantage over leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Highest non-trump single in hand; better reserved for a later trick than spent on an opening lead where partner may finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead and seize control.",
+      "Partner may be unable to play on a diamond single, allowing opponents to win cheaply."
+    ],
+    "mitigation": "Leading the 3 keeps stronger cards (4, 5, 6) for future tricks and makes it as easy as possible for partner to win."
+  },
+  "confidence": 0.75
+}

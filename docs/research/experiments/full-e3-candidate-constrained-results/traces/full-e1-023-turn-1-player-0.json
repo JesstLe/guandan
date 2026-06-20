@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-023-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only low non-trump clubs, so the best opening lead is the smallest card. This gives my partner the widest range of cards to beat the trick and take control, while I keep slightly higher cards to cover future low leads."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has at least one card that can beat a 3 of clubs, either a higher non-trump or a trump.",
+    "confidence": 0.6,
+    "evidence": [
+      "Partner has 3 cards and no cards have been played.",
+      "I hold no trumps or high cards, so the partner is the team's main hope for winning this trick.",
+      "A low single lead is the easiest for partner to overtake."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "At least one opponent, player 1, is near finishing with only 2 cards left, and opponents collectively likely have cards that can beat a low single.",
+    "confidence": 0.7,
+    "evidence": [
+      "handCounts shows player 1 has only 2 cards remaining.",
+      "playedCardSummary shows no trumps or bombs played yet, so opponents may still hold strong cards.",
+      "My hand contains only 3-6 of clubs, all easily beaten."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of clubs is the weakest card and the standard opening lead. It minimizes the chance I waste a useful card and maximizes the chance my partner can win the trick and continue leading.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3, but still weak; playing it now wastes a card that could beat a future 3 lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher low card that is more useful for covering opponent 3-4 leads later; should be saved."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The strongest card in my hand; leading it makes it harder for my partner to win the trick and removes my best chance to cover a low single later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 and gain the lead, potentially allowing player 1 to finish.",
+      "My partner may not have a higher single or may choose not to play it."
+    ],
+    "mitigation": "Leading the absolute lowest card is the safest lead. Even if opponents win, I retain 4-6 of clubs to fight over subsequent low leads and have not committed any defensive value."
+  },
+  "confidence": 0.7
+}

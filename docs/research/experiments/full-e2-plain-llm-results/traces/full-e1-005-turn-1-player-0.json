@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-005-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "As the opening leader with a weak four-card hand and no trumps or bombs, I want to play the lowest card to shed a weak card while forcing opponents to spend higher cards or trumps if they wish to take the lead."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's holdings; partner likely has three cards including some combination of trumps, high cards, and non-trump suits.",
+    "confidence": 0.5,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unknown cards. They may have higher spades or trumps to beat a low spade lead, but early in the game they are unlikely to expend valuable trumps on a 3 unless necessary.",
+    "confidence": 0.5,
+    "evidence": []
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the weakest card in hand. Leading it starts reducing hand size, follows the principle of shedding low cards first, and minimizes the cost of losing the lead since it cannot win against any higher spade or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still a low spade but slightly stronger than the 3; playing it now would leave the 3 as a potentially harder-to-shed card later while providing no material advantage."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a middle card that might actually win if no opponent has spades 6 or above, but it uses a more valuable card when the 3 could have achieved the same shedding goal."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest spade in hand and the best chance to win a spade trick, so it should be preserved for a later lead or response rather than spent in the opening."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher spade and take the lead immediately.",
+      "An opponent may use a trump to win the trick and establish control.",
+      "Partner may be unable to assist because the lead is a single card."
+    ],
+    "mitigation": "By leading the absolute lowest card, the cost of losing this trick is minimized, and opponents are pressured to reveal or consume higher-value cards to gain the lead."
+  },
+  "confidence": 0.65,
+  "notes": "Opening lead with no trumps or bombs; straightforward low-card shedding strategy."
+}

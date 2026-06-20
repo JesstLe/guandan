@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-005-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Opening lead with only low non-trump spades. Playing the 3 costs almost nothing and preserves the slightly higher spades for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's cards beyond the public 3-card count.",
+    "confidence": 0.1,
+    "evidence": [
+      "Partner has 3 cards; no cards have been played and no bids were made."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No specific information about opponent holdings; each opponent has 3 unknown cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "No cards have been played yet.",
+      "Opponents each hold 3 cards."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (spade 3) is the least committal opening play. It disposes of a weak card, keeps 4/5/6 available, and lets me observe responses before committing better cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Higher than the 3 and slightly more useful later; prefer to lead the minimum."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "A middle low card that is better saved for a future play or to cover a slightly higher lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The highest card in hand; playing it now would waste the most strength on a weak opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a card higher than 3 or any trump can win the trick.",
+      "Partner may not be able to take the lead if their cards are also low."
+    ],
+    "mitigation": "Committing only the 3 minimizes the cost of losing the trick and keeps the remaining spades for future rounds."
+  },
+  "confidence": 0.75
+}

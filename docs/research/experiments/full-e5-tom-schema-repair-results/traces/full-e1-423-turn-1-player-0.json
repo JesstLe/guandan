@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-423-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is four low non-trump clubs with no bombs or wildcards, so I cannot dominate the trick. The best team play is to lead the lowest card, giving my partner a chance to win the trick and take control while preserving my slightly higher clubs for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has not acted, so little is known. They may have a higher single, a trump, or a bomb that can capture this low lead and then guide the rest of the round.",
+    "confidence": 0.3,
+    "evidence": [
+      "99fbb9f0-5868-4fd0-aeaa-bf02c5095f97"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, which is public evidence that they are close to finishing and may hold strong winning cards. Opponent player 3 has 3 cards. With no cards yet played, I cannot assert specific holdings; they may try to win this trick to enable a quick exit, but they also might be forced to expend a higher card.",
+    "confidence": 0.4,
+    "evidence": [
+      "99fbb9f0-5868-4fd0-aeaa-bf02c5095f97"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 is the least committal play. It keeps the 4, 5, and 6 available for future tricks and makes it cheapest for my partner to beat the lead if they have a modestly higher card or trump.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my highest club; leading it now squanders the one card most likely to win a future low trick and does not significantly reduce opponents' ability to beat the lead with a higher card or trump."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Leading the 5 is similarly wasteful compared with the 3, since any higher non-trump or any trump still wins, and I keep a weaker residual hand."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is only marginally better than the 6 or 5 but still higher than the 3; preserving the 4 as a later play is preferable when my only goal is to surrender the lead cheaply."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with a high single or trump can win the trick immediately and may use the lead to advance toward going out.",
+      "My partner may not be able to beat the lead, leaving opponents in control.",
+      "All my cards are low clubs, so I have no direct way to regain the lead if opponents control the table."
+    ],
+    "mitigation": "By leading the lowest card I minimize the value I give away and increase the chance that my partner can take over with an ordinary higher card rather than a premium one."
+  },
+  "confidence": 0.55
+}

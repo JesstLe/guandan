@@ -13,12 +13,12 @@ unrelated repository content.
 
 ## Current State
 
-- Provider execution is partially complete: the ToM-prompted pilot run is present, and the 500-decision full-split ToM run is partially complete through the local Kimi CLI runner.
+- Provider execution is complete for the ToM-prompted pilot run and the 500-decision full-split ToM run through the local Kimi CLI runner. A bounded full-split candidate-constrained partial run is also present for pipeline validation and baseline-strengthening; it is partial strengthening evidence only.
 - Plain and candidate-constrained first-pass batches are ready.
 - ToM-prompted pilot provider results are present at `docs/research/experiments/provider-results/tom-prompted-llm.jsonl`.
 - ToM-prompted pilot post-provider artifacts are present at `docs/research/experiments/pilot-e7-tom-prompted-results`; the run produced 50 / 50 raw outputs, 36 / 50 parsed traces, and 14 / 50 parse failures.
-- Full-split plain and candidate-constrained batches are prepared locally.
-- Full-split ToM-prompted was attempted through the local Kimi CLI runner. The provider-result file is present at `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl`, with 384 usable model outputs, 0 retained provider-error rows, and 116 rows still needing successful output. The latest bounded resumes on 2026-06-19 advanced the run from 328 to 384 successful outputs using `--max-steps-per-turn 8`, then `--max-steps-per-turn 12` to clear a max-step retry and continue bounded resumes; the partial artifact has been materialized for audit only: raw ToM direct parsing currently yields 306 / 500 structured traces, and deterministic schema repair yields 384 / 500 usable traces. These partial rows remain operational progress and must not be reported as final full-split LLM evidence until 500 / 500 raw provider outputs are present.
+- Full-split plain and candidate-constrained batches are prepared locally. Plain full-split has a clean 50/500 Kimi CLI prefix result at `docs/research/experiments/provider-results/full-plain-llm.jsonl`; local materialization parses 39/500 traces with 31 hard verifier failures and keeps the row marked partial. Candidate-constrained full-split has a clean 50/500 Kimi CLI prefix result at `docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl`; local materialization parses 39/500 traces with 33 hard verifier failures and keeps the row marked partial.
+- Full-split ToM-prompted is complete through the local Kimi CLI runner. The provider-result file is present at `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl`, with 500 usable model outputs, 0 retained provider-error rows, and 0 pending outputs. The completed artifact has been materialized: raw ToM direct parsing yields 404 / 500 structured traces with 48 hard verifier failures, and deterministic schema repair yields 500 / 500 usable traces with 52 hard verifier failures.
 - The existing verifier-revision batch is fixture-only and must not be used for
   final empirical claims.
 - A real verifier-revision batch must be regenerated after first-pass LLM traces
@@ -39,9 +39,9 @@ Phase A pilot authorization:
 
 | Condition | Upload file | Suggested provider-result file after download |
 |---|---|---|
-| `plain-llm` | `docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-plain-llm.jsonl` |
-| `candidate-constrained-llm` | `docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl` |
-| `tom-prompted-llm` | `docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl` (partial: 384 successful, 0 retained provider-error rows, 116 pending successful outputs) |
+| `plain-llm` | `docs/research/experiments/full-e2-plain-llm-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-plain-llm.jsonl` (partial prefix: 50 successful, 0 retained provider-error rows, 450 pending full-split outputs) |
+| `candidate-constrained-llm` | `docs/research/experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl` (partial prefix: 50 successful, 0 retained provider-error rows, 450 pending successful outputs) |
+| `tom-prompted-llm` | `docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` | `docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl` (complete: 500 successful, 0 retained provider-error rows, 0 pending successful outputs) |
 
 Prepared run parameters:
 
@@ -79,6 +79,102 @@ npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
   --out docs/research/experiments/provider-results/tom-prompted-llm.jsonl \
   --report docs/research/experiments/provider-results/tom-prompted-llm-openai-run-report.json \
   --concurrency 4
+```
+
+### Option 1b: Fixed GLM/Zhipu-Compatible Replication Runner
+
+The preferred second-model/provider pilot replication path is the fixed
+orchestrator below. It executes the ToM-prompted pilot OpenAI-compatible JSONL,
+writes to the exact `tom-prompted-llm-second-provider.*` paths expected by the
+AAMAS readiness gate, and only materializes replication metrics when the
+provider run has 50 / 50 successful outputs and zero provider errors. The
+runner also refuses same-provider/same-model reruns before sending requests, so
+a Kimi rerun cannot be mistaken for independent replication evidence. A one-row
+smoke run therefore cannot be mistaken for a completed replication artifact.
+
+Prerequisites:
+
+- Set `ZHIPU_API_KEY` in the shell or in a local env file that is not committed.
+- Use `glm-5.1` as the model override.
+- Use `--request-path /chat/completions`.
+- Use `--completion-tokens-field max_tokens` so the exported OpenAI batch token
+  limit is translated for this endpoint family.
+
+```bash
+npm run research:second-provider:preflight
+```
+
+The preflight does not send provider requests. It verifies fixed input coverage,
+checks whether an independent provider/model key is available, and writes
+`docs/research/experiments/pilot-replication/second-provider-replication-preflight.md`.
+When it reports `ready_to_run`, start with the smoke script:
+
+```bash
+npm run research:second-provider:smoke
+```
+
+If the one-row smoke test succeeds, rerun without `--limit 1` and with
+`--resume`. Existing successful rows are preserved; only missing or failed rows
+are attempted. When all 50 rows succeed, the runner automatically materializes
+the fixed replication output at
+`docs/research/experiments/pilot-replication/second-provider-tom-prompted-results`.
+The generated preflight report at
+`docs/research/experiments/pilot-replication/second-provider-replication-preflight.md`
+records the same smoke command, full resume command, current key availability,
+and success criteria without exposing API key values.
+
+The fixed-input package can be regenerated without sending any provider
+requests:
+
+```bash
+npm run research:second-provider:package
+```
+
+It writes a self-contained operator package under:
+
+```text
+docs/research/experiments/pilot-replication/second-provider-replication-package
+```
+
+The package contains the 50-row OpenAI-compatible JSONL, the corresponding
+prompt packets, a README, and a checksum manifest. It contains no API keys,
+provider outputs, manuscript drafts, or human-audit answer keys. It is run-ready
+evidence preparation, not paper evidence until independent provider outputs are
+returned and materialized.
+
+```bash
+npm run research:second-provider:run
+```
+
+After the replication run or a returned human-audit CSV changes the evidence
+state, refresh the submission-level reports with the finalizer. It regenerates
+the manifest, AAMAS readiness report, adversarial self-review, and preflight
+report, then checks that readiness is reading the current manifest and local
+pipeline report rather than stale counts.
+
+```bash
+npm run research:aamas-finalize
+```
+
+Use the lower-level runner only for endpoint debugging or provider-family
+changes. If used, keep the same fixed output paths and run the post-provider
+materializer only after the provider report shows 50 / 50 successful outputs,
+zero errors, and zero pending rows.
+
+```bash
+npx tsx server/src/research/runOpenAIChatCompletionJsonlCli.ts \
+  --input docs/research/experiments/pilot-e7-tom-prompted-batch/openai/openai-batch-input.jsonl \
+  --out docs/research/experiments/provider-results/tom-prompted-llm-second-provider.jsonl \
+  --report docs/research/experiments/provider-results/tom-prompted-llm-second-provider-run-report.json \
+  --api-key-env ZHIPU_API_KEY \
+  --base-url https://open.bigmodel.cn/api/coding/paas/v4 \
+  --request-path /chat/completions \
+  --model glm-5.1 \
+  --runner zhipu-openai-compatible \
+  --completion-tokens-field max_tokens \
+  --resume \
+  --stop-on-error \
+  --concurrency 2
 ```
 
 ### Option 2: OpenAI Batch Upload
@@ -119,7 +215,8 @@ time, retry only those failed rows with a larger `--max-steps-per-turn`, then
 merge by `custom_id` while preserving the original input order. Record the merge
 in `docs/research/experiments/provider-results/plain-llm-kimi-merge-report.json`.
 
-For the current full-split ToM run, resume after Kimi quota refresh with:
+The current full-split ToM run is complete. If it must be reproduced from the
+existing provider-result file or resumed after a future regeneration, use:
 
 ```bash
 npx tsx server/src/research/runKimiCliBatchJsonlCli.ts \
@@ -135,10 +232,9 @@ npx tsx server/src/research/runKimiCliBatchJsonlCli.ts \
   --attempt-limit 50
 ```
 
-After any successful resume, regenerate the audit-only partial/full materialization
-before refreshing downstream reports. Keep `--allow-partial-ingest` while the raw
-coverage remains below 500 / 500; remove it once all expected provider outputs
-are present.
+After any successful rerun or resume, regenerate the full materialization before
+refreshing downstream reports. Use the strict post-provider path once raw
+coverage is 500 / 500; keep partial ingest only for explicitly labeled audits.
 
 ```bash
 npx tsx server/src/research/runOptionalPostProviderConditionCli.ts \
@@ -152,8 +248,7 @@ npx tsx server/src/research/runOptionalPostProviderConditionCli.ts \
   --model-provider kimi-cli \
   --model-name kimi-code/kimi-for-coding \
   --temperature 0 \
-  --notes "500-decision full-split ToM run; partial metrics are for audit only until 500/500 raw outputs are present." \
-  --allow-partial-ingest
+  --notes "500-decision full-split ToM run; completed Kimi CLI provider outputs."
 ```
 
 ### Post-Provider Materialization

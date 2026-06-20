@@ -38,11 +38,12 @@ export interface ResearchPreflightMarkerCounts {
 }
 
 export interface ResearchPreflightReport {
-  schemaVersion: '0.2.0'
+  schemaVersion: '0.3.0'
   generatedAt: string
   status: ResearchPreflightStatus
   localReady: boolean
   aamasFullPaperReadiness: 'missing' | 'not_ready' | 'borderline' | 'ready'
+  reviewerResponseStatus: 'missing' | 'ready_for_revision' | 'needs_external_evidence' | 'needs_revision'
   submissionGateStatus: string
   manuscriptReadyForSubmission: boolean | null
   manuscriptWordCount: number | null
@@ -50,6 +51,7 @@ export interface ResearchPreflightReport {
   externalBlockers: string[]
   localBlockers: string[]
   readinessBlockers: ResearchPreflightReadinessBlocker[]
+  reviewerResponseBlockers: ResearchPreflightReviewerResponseBlocker[]
   rawOutputAudits: ResearchPreflightRawAudit[]
   nextActions: string[]
 }
@@ -96,11 +98,39 @@ interface AAMASReadinessReportFile {
   nextActions?: string[]
 }
 
+interface AAMASReviewerResponseMatrixFile {
+  status?: 'ready_for_revision' | 'needs_external_evidence' | 'needs_revision'
+  summary?: {
+    totalConcerns?: number
+    answerableNow?: number
+    needsExternalEvidence?: number
+    needsRevision?: number
+  }
+  responses?: Array<{
+    id?: string
+    reviewerRole?: string
+    riskLevel?: string
+    status?: string
+    likelyConcern?: string
+    requiredAction?: string
+  }>
+  nextActions?: string[]
+}
+
 export interface ResearchPreflightReadinessBlocker {
   id: string
   title: string
   status: string
   finding: string
+  requiredAction: string
+}
+
+export interface ResearchPreflightReviewerResponseBlocker {
+  id: string
+  reviewerRole: string
+  riskLevel: string
+  status: string
+  likelyConcern: string
   requiredAction: string
 }
 
@@ -142,25 +172,38 @@ export function buildResearchPreflightReport(options: ResearchPreflightReportOpt
   const aamasReadiness = readOptionalJson<AAMASReadinessReportFile>(
     join(options.researchRoot, 'submission/aamas-readiness/aamas-readiness-report.json'),
   )
+  const reviewerResponse = readOptionalJson<AAMASReviewerResponseMatrixFile>(
+    join(options.researchRoot, 'submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json'),
+  )
   const blockers = gate?.immediateBlockers ?? ['Missing submission/gate-report/submission-gate-report.json.']
   const externalBlockers = blockers.filter(isProviderBlocker)
   const localBlockers = blockers.filter(blocker => !isProviderBlocker(blocker))
   const readinessBlockers = inspectReadinessBlockers(aamasReadiness)
+  const reviewerResponseBlockers = inspectReviewerResponseBlockers(reviewerResponse)
   const rawOutputAudits = (options.rawAudits ?? defaultRawAudits()).map(audit => inspectRawAudit(options.researchRoot, audit))
   const localReady = localBlockers.length === 0
   const aamasFullPaperReadiness = aamasReadiness?.aamasFullPaperReadiness ?? 'missing'
-  const status = determineStatus(gate?.overallStatus, localBlockers, externalBlockers, aamasFullPaperReadiness, readinessBlockers)
+  const reviewerResponseStatus = reviewerResponse?.status ?? 'missing'
+  const status = determineStatus(
+    gate?.overallStatus,
+    localBlockers,
+    externalBlockers,
+    aamasFullPaperReadiness,
+    readinessBlockers,
+    reviewerResponseBlockers,
+  )
   const markerCounts = {
     ...defaultMarkerCounts,
     ...(gate?.markerCounts ?? {}),
   }
 
   return {
-    schemaVersion: '0.2.0',
+    schemaVersion: '0.3.0',
     generatedAt: new Date().toISOString(),
     status,
     localReady,
     aamasFullPaperReadiness,
+    reviewerResponseStatus,
     submissionGateStatus: gate?.overallStatus ?? 'missing',
     manuscriptReadyForSubmission: manuscript?.readyForSubmission ?? null,
     manuscriptWordCount: manuscript?.wordCount ?? null,
@@ -168,8 +211,9 @@ export function buildResearchPreflightReport(options: ResearchPreflightReportOpt
     externalBlockers,
     localBlockers,
     readinessBlockers,
+    reviewerResponseBlockers,
     rawOutputAudits,
-    nextActions: buildNextActions(localBlockers, externalBlockers, rawOutputAudits, aamasReadiness),
+    nextActions: buildNextActions(localBlockers, externalBlockers, rawOutputAudits, aamasReadiness, reviewerResponse, reviewerResponseBlockers),
   }
 }
 
@@ -183,6 +227,7 @@ export function renderResearchPreflightReport(report: ResearchPreflightReport): 
     `Submission gate: \`${report.submissionGateStatus}\``,
     `Local ready: \`${report.localReady}\``,
     `AAMAS full-paper readiness: \`${report.aamasFullPaperReadiness}\``,
+    `Reviewer-response matrix: \`${report.reviewerResponseStatus}\``,
     `Manuscript ready: \`${report.manuscriptReadyForSubmission}\``,
     `Manuscript words: \`${report.manuscriptWordCount ?? 'unknown'}\``,
     '',
@@ -221,6 +266,22 @@ export function renderResearchPreflightReport(report: ResearchPreflightReport): 
             blocker.title,
             `\`${blocker.status}\``,
             blocker.finding,
+            blocker.requiredAction,
+          ].map(escapeMarkdownCell).join(' | ')).map(row => `| ${row} |`),
+        ]
+      : ['None.']),
+    '',
+    '## Reviewer-Response Blockers',
+    '',
+    ...(report.reviewerResponseBlockers.length > 0
+      ? [
+          '| Concern | Role | Risk | Status | Required Action |',
+          '| --- | --- | --- | --- | --- |',
+          ...report.reviewerResponseBlockers.map(blocker => [
+            blocker.likelyConcern,
+            blocker.reviewerRole,
+            blocker.riskLevel,
+            `\`${blocker.status}\``,
             blocker.requiredAction,
           ].map(escapeMarkdownCell).join(' | ')).map(row => `| ${row} |`),
         ]
@@ -285,10 +346,11 @@ function determineStatus(
   externalBlockers: string[],
   aamasFullPaperReadiness: ResearchPreflightReport['aamasFullPaperReadiness'],
   readinessBlockers: ResearchPreflightReadinessBlocker[],
+  reviewerResponseBlockers: ResearchPreflightReviewerResponseBlocker[],
 ): ResearchPreflightStatus {
   if (externalBlockers.length > 0) return 'waiting_for_provider_results'
   if (gateStatus !== 'ready' || localBlockers.length > 0) return 'local_blockers'
-  if (aamasFullPaperReadiness !== 'ready' || readinessBlockers.length > 0) return 'research_not_ready'
+  if (aamasFullPaperReadiness !== 'ready' || readinessBlockers.length > 0 || reviewerResponseBlockers.length > 0) return 'research_not_ready'
   return 'ready_for_submission'
 }
 
@@ -297,6 +359,8 @@ function buildNextActions(
   externalBlockers: string[],
   rawOutputAudits: ResearchPreflightRawAudit[],
   aamasReadiness: AAMASReadinessReportFile | null,
+  reviewerResponse: AAMASReviewerResponseMatrixFile | null,
+  reviewerResponseBlockers: ResearchPreflightReviewerResponseBlocker[],
 ): string[] {
   const actions: string[] = []
 
@@ -316,8 +380,12 @@ function buildNextActions(
     actions.push('Resolve local blockers after provider outputs are ingested, then regenerate metrics, manuscript, gate, and preflight reports.')
   }
 
+  if (reviewerResponseBlockers.length > 0) {
+    actions.push(...(reviewerResponse?.nextActions ?? reviewerResponseBlockers.map(blocker => blocker.requiredAction)))
+  }
+
   if (actions.length === 0) actions.push('Run final submission formatting and venue-specific policy checks.')
-  return actions
+  return unique(actions)
 }
 
 function inspectReadinessBlockers(aamasReadiness: AAMASReadinessReportFile | null): ResearchPreflightReadinessBlocker[] {
@@ -342,8 +410,51 @@ function inspectReadinessBlockers(aamasReadiness: AAMASReadinessReportFile | nul
     }))
 }
 
+function inspectReviewerResponseBlockers(
+  reviewerResponse: AAMASReviewerResponseMatrixFile | null,
+): ResearchPreflightReviewerResponseBlocker[] {
+  if (!reviewerResponse) {
+    return [{
+      id: 'aamas-reviewer-response-matrix',
+      reviewerRole: 'area-chair',
+      riskLevel: 'high',
+      status: 'missing',
+      likelyConcern: 'The preflight report could not find submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json.',
+      requiredAction: 'Generate the reviewer-response matrix before treating preflight as submission-ready.',
+    }]
+  }
+
+  if (reviewerResponse.status === 'ready_for_revision') return []
+
+  const unresolvedResponses = (reviewerResponse.responses ?? [])
+    .filter(response => response.status !== 'answerable_now')
+    .map((response, index) => ({
+      id: response.id ?? `reviewer-response-${index + 1}`,
+      reviewerRole: response.reviewerRole ?? 'unknown',
+      riskLevel: response.riskLevel ?? 'unknown',
+      status: response.status ?? reviewerResponse.status ?? 'unknown',
+      likelyConcern: response.likelyConcern ?? 'No likely concern recorded.',
+      requiredAction: response.requiredAction ?? 'Resolve this reviewer-response concern before treating preflight as submission-ready.',
+    }))
+
+  if (unresolvedResponses.length > 0) return unresolvedResponses
+
+  return [{
+    id: 'aamas-reviewer-response-matrix',
+    reviewerRole: 'area-chair',
+    riskLevel: 'high',
+    status: reviewerResponse.status ?? 'unknown',
+    likelyConcern: 'The reviewer-response matrix is not ready but did not list unresolved responses.',
+    requiredAction: 'Regenerate the reviewer-response matrix and resolve any non-answerable concerns.',
+  }]
+}
+
 function isProviderBlocker(blocker: string): boolean {
   return providerBlockerPatterns.some(pattern => blocker.includes(pattern))
+}
+
+function unique(values: string[]): string[] {
+  return [...new Set(values)]
 }
 
 function readOptionalJson<T>(path: string): T | null {

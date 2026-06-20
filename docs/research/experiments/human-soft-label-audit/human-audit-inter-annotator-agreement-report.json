@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:14.227Z",
+  "status": "awaiting_returns",
+  "annotatorAPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv",
+  "annotatorBPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv",
+  "blindJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+  "annotatorAPresent": false,
+  "annotatorBPresent": false,
+  "sampleCount": 40,
+  "annotatorARowCount": 0,
+  "annotatorBRowCount": 0,
+  "completedLabelsA": 0,
+  "completedLabelsB": 0,
+  "totalLabels": 200,
+  "pairedLabels": 0,
+  "matchedLabels": 0,
+  "disagreementCount": 0,
+  "macroAgreement": null,
+  "requiresAdjudication": false,
+  "readyForAdjudication": false,
+  "readyForPaperEvidence": false,
+  "checks": [
+    {
+      "id": "annotator-a-present",
+      "status": "fail",
+      "detail": "annotator A CSV is not present yet"
+    },
+    {
+      "id": "annotator-b-present",
+      "status": "fail",
+      "detail": "annotator B CSV is not present yet"
+    },
+    {
+      "id": "annotator-a-row-count",
+      "status": "pass",
+      "detail": "not evaluated until annotator A CSV is present"
+    },
+    {
+      "id": "annotator-b-row-count",
+      "status": "pass",
+      "detail": "not evaluated until annotator B CSV is present"
+    },
+    {
+      "id": "annotator-a-sample-ids",
+      "status": "pass",
+      "detail": "not evaluated until annotator A CSV is present"
+    },
+    {
+      "id": "annotator-b-sample-ids",
+      "status": "pass",
+      "detail": "not evaluated until annotator B CSV is present"
+    },
+    {
+      "id": "annotator-a-unique-sample-ids",
+      "status": "pass",
+      "detail": "no duplicate sample ids"
+    },
+    {
+      "id": "annotator-b-unique-sample-ids",
+      "status": "pass",
+      "detail": "no duplicate sample ids"
+    },
+    {
+      "id": "annotator-a-label-values",
+      "status": "pass",
+      "detail": "all filled labels are pass/fail/uncertain/unknown"
+    },
+    {
+      "id": "annotator-b-label-values",
+      "status": "pass",
+      "detail": "all filled labels are pass/fail/uncertain/unknown"
+    }
+  ],
+  "invalidLabelsA": [],
+  "invalidLabelsB": [],
+  "missingSampleIdsA": [
+    "human-audit-001",
+    "human-audit-002",
+    "human-audit-003",
+    "human-audit-004",
+    "human-audit-005",
+    "human-audit-006",
+    "human-audit-007",
+    "human-audit-008",
+    "human-audit-009",
+    "human-audit-010",
+    "human-audit-011",
+    "human-audit-012",
+    "human-audit-013",
+    "human-audit-014",
+    "human-audit-015",
+    "human-audit-016",
+    "human-audit-017",
+    "human-audit-018",
+    "human-audit-019",
+    "human-audit-020",
+    "human-audit-021",
+    "human-audit-022",
+    "human-audit-023",
+    "human-audit-024",
+    "human-audit-025",
+    "human-audit-026",
+    "human-audit-027",
+    "human-audit-028",
+    "human-audit-029",
+    "human-audit-030",
+    "human-audit-031",
+    "human-audit-032",
+    "human-audit-033",
+    "human-audit-034",
+    "human-audit-035",
+    "human-audit-036",
+    "human-audit-037",
+    "human-audit-038",
+    "human-audit-039",
+    "human-audit-040"
+  ],
+  "missingSampleIdsB": [
+    "human-audit-001",
+    "human-audit-002",
+    "human-audit-003",
+    "human-audit-004",
+    "human-audit-005",
+    "human-audit-006",
+    "human-audit-007",
+    "human-audit-008",
+    "human-audit-009",
+    "human-audit-010",
+    "human-audit-011",
+    "human-audit-012",
+    "human-audit-013",
+    "human-audit-014",
+    "human-audit-015",
+    "human-audit-016",
+    "human-audit-017",
+    "human-audit-018",
+    "human-audit-019",
+    "human-audit-020",
+    "human-audit-021",
+    "human-audit-022",
+    "human-audit-023",
+    "human-audit-024",
+    "human-audit-025",
+    "human-audit-026",
+    "human-audit-027",
+    "human-audit-028",
+    "human-audit-029",
+    "human-audit-030",
+    "human-audit-031",
+    "human-audit-032",
+    "human-audit-033",
+    "human-audit-034",
+    "human-audit-035",
+    "human-audit-036",
+    "human-audit-037",
+    "human-audit-038",
+    "human-audit-039",
+    "human-audit-040"
+  ],
+  "unexpectedSampleIdsA": [],
+  "unexpectedSampleIdsB": [],
+  "duplicateSampleIdsA": [],
+  "duplicateSampleIdsB": [],
+  "labels": [
+    {
+      "label": "humanPartnerConsistent",
+      "paired": 0,
+      "matched": 0,
+      "agreement": null,
+      "disagreements": 0
+    },
+    {
+      "label": "humanOpponentConsistent",
+      "paired": 0,
+      "matched": 0,
+      "agreement": null,
+      "disagreements": 0
+    },
+    {
+      "label": "humanTeamObjectiveValid",
+      "paired": 0,
+      "matched": 0,
+      "agreement": null,
+      "disagreements": 0
+    },
+    {
+      "label": "humanHiddenInfoDisciplined",
+      "paired": 0,
+      "matched": 0,
+      "agreement": null,
+      "disagreements": 0
+    },
+    {
+      "label": "humanReasonActionConsistent",
+      "paired": 0,
+      "matched": 0,
+      "agreement": null,
+      "disagreements": 0
+    }
+  ],
+  "disagreements": []
+}

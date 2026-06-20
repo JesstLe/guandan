@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-437-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) holds only 2 cards, indicating they are near finishing. Leading the lowest non-trump card lets partner potentially win the trick with a higher card or trump and continue toward emptying their hand, while preserving our slightly stronger diamonds."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely close to going out given the public hand count of 2 cards; they may be able to beat a low diamond lead, but their exact ranks and suits are unknown.",
+    "confidence": 0.7,
+    "evidence": [
+      "e5b37755-ff7f-488a-b533-91de28574fb6"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards, so their exact holdings are unknown. They may have higher diamonds or trumps that can take this trick, but a low lead minimizes the information and value I expose.",
+    "confidence": 0.5,
+    "evidence": [
+      "e5b37755-ff7f-488a-b533-91de28574fb6"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Diamond 3 is the lowest legal lead, giving partner the best chance to play over it and giving away the least card value if an opponent wins the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 now burns our strongest non-trump card for little gain on the opening trick; if an opponent or partner can still beat it, we lose our best future diamond winner."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more likely to be beaten than the 6 and still sacrifices a card that could win a later trick if lower diamonds are led."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only slightly stronger than the 3; leading the 3 is strictly lower and therefore a safer probe that preserves every potentially useful higher card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher diamond or any trump and seize the lead.",
+      "Partner may be unable to beat the 3, leaving our team without immediate control.",
+      "Even if partner wins the trick, their remaining card(s) may not allow them to finish."
+    ],
+    "mitigation": "By leading the lowest possible card, I limit the value lost when opponents take the trick and maximize the chance that partner's unknown cards are strong enough to take control."
+  },
+  "confidence": 0.65
+}

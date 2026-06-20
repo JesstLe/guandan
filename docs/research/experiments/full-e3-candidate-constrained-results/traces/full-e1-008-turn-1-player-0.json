@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-008-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Opening lead with the lowest card preserves stronger clubs for later plays while attempting to establish early control."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; they have not acted yet.",
+    "confidence": 0,
+    "evidence": [
+      "New game, no prior plays.",
+      "No inferences provided."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 is near finishing with only 2 cards remaining; other opponents have 3 cards each.",
+    "confidence": 0.7,
+    "evidence": [
+      "handCounts shows player 1 has 2 cards.",
+      "scenarioTags include opponent_near_finish."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the lowest legal single, allowing me to shed a weak card and keep 4, 5, 6 for future responses.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly higher than the 3; better kept as a later response."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "A middle card that may be useful to beat lower leads later."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The highest club in hand; strongest response card and should not be wasted on opening lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent with 2 cards may be able to win the trick and finish quickly."
+    ],
+    "mitigation": "By leading low, I keep my stronger cards to potentially regain control and counter opponent attempts to finish."
+  },
+  "confidence": 0.85
+}

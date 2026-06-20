@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T21:15:59.536Z",
+  "generatedAt": "2026-06-19T12:36:24.237Z",
   "status": "completed",
   "steps": [
     {
@@ -220,6 +220,42 @@
       "stderr": ""
     },
     {
+      "id": "plain-full-post-provider",
+      "title": "Plain Full Optional Post-Provider Ingest",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runOptionalPostProviderConditionCli.ts",
+        "--decisions",
+        "docs/research/experiments/full-e1/decisions",
+        "--packets",
+        "docs/research/experiments/full-e2-plain-llm-prompts/packets",
+        "--batch-jsonl",
+        "docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl",
+        "--provider-results",
+        "docs/research/experiments/provider-results/full-plain-llm.jsonl",
+        "--raw",
+        "docs/research/experiments/full-e2-plain-llm-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e2-plain-llm-results",
+        "--condition",
+        "plain-llm",
+        "--model-provider",
+        "kimi-cli",
+        "--model-name",
+        "kimi-code/kimi-for-coding",
+        "--temperature",
+        "0",
+        "--notes",
+        "500-decision full-split plain run; optional step skips until provider JSONL exists.",
+        "--allow-partial-ingest"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"partial_ingested\",\n  \"conditionId\": \"plain-llm\",\n  \"reportPath\": \"docs/research/experiments/full-e2-plain-llm-results/post-provider-report.json\",\n  \"metricsPath\": \"docs/research/experiments/full-e2-plain-llm-results/metrics.json\",\n  \"blockerCount\": 2,\n  \"blockers\": [\n    \"Provider-result materialization is not ready for audit.\",\n    \"Raw-output audit is not ready for ingest.\"\n  ]\n}",
+      "stderr": ""
+    },
+    {
       "id": "plain-full-raw-audit",
       "title": "Plain Full Raw Output Audit",
       "command": [
@@ -235,7 +271,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 0,\n  \"missingCount\": 500,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 50,\n  \"missingCount\": 450,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
       "stderr": ""
     },
     {
@@ -298,6 +334,42 @@
       "stderr": ""
     },
     {
+      "id": "candidate-full-post-provider",
+      "title": "Candidate Full Optional Post-Provider Ingest",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/runOptionalPostProviderConditionCli.ts",
+        "--decisions",
+        "docs/research/experiments/full-e1/decisions",
+        "--packets",
+        "docs/research/experiments/full-e3-candidate-constrained-prompts/packets",
+        "--batch-jsonl",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl",
+        "--provider-results",
+        "docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl",
+        "--raw",
+        "docs/research/experiments/full-e3-candidate-constrained-batch/raw",
+        "--out",
+        "docs/research/experiments/full-e3-candidate-constrained-results",
+        "--condition",
+        "candidate-constrained-llm",
+        "--model-provider",
+        "kimi-cli",
+        "--model-name",
+        "kimi-code/kimi-for-coding",
+        "--temperature",
+        "0",
+        "--notes",
+        "500-decision full-split candidate-constrained run; optional step skips until provider JSONL exists.",
+        "--allow-partial-ingest"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"partial_ingested\",\n  \"conditionId\": \"candidate-constrained-llm\",\n  \"reportPath\": \"docs/research/experiments/full-e3-candidate-constrained-results/post-provider-report.json\",\n  \"metricsPath\": \"docs/research/experiments/full-e3-candidate-constrained-results/metrics.json\",\n  \"blockerCount\": 2,\n  \"blockers\": [\n    \"Provider-result materialization is not ready for audit.\",\n    \"Raw-output audit is not ready for ingest.\"\n  ]\n}",
+      "stderr": ""
+    },
+    {
       "id": "candidate-full-raw-audit",
       "title": "Candidate Full Raw Output Audit",
       "command": [
@@ -313,7 +385,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 0,\n  \"missingCount\": 500,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 50,\n  \"missingCount\": 450,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
       "stderr": ""
     },
     {
@@ -408,7 +480,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"status\": \"partial_ingested\",\n  \"conditionId\": \"tom-prompted-llm\",\n  \"reportPath\": \"docs/research/experiments/full-e4-tom-prompted-results/post-provider-report.json\",\n  \"metricsPath\": \"docs/research/experiments/full-e4-tom-prompted-results/metrics.json\",\n  \"blockerCount\": 2,\n  \"blockers\": [\n    \"Provider-result materialization is not ready for audit.\",\n    \"Raw-output audit is not ready for ingest.\"\n  ]\n}",
+      "stdout": "{\n  \"status\": \"ingested\",\n  \"conditionId\": \"tom-prompted-llm\",\n  \"reportPath\": \"docs/research/experiments/full-e4-tom-prompted-results/post-provider-report.json\",\n  \"metricsPath\": \"docs/research/experiments/full-e4-tom-prompted-results/metrics.json\",\n  \"blockerCount\": 0,\n  \"blockers\": []\n}",
       "stderr": ""
     },
     {
@@ -427,7 +499,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 384,\n  \"missingCount\": 116,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": false\n}",
+      "stdout": "{\n  \"outputPath\": \"docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json\",\n  \"expectedCount\": 500,\n  \"presentCount\": 500,\n  \"missingCount\": 0,\n  \"emptyCount\": 0,\n  \"unexpectedCount\": 0,\n  \"readyForIngest\": true\n}",
       "stderr": ""
     },
     {
@@ -448,7 +520,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json\",\n  \"repairReportPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.json\",\n  \"markdownPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.md\",\n  \"repaired\": 78,\n  \"passThrough\": 306,\n  \"notRepairable\": 116\n}",
+      "stdout": "{\n  \"metricsPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json\",\n  \"repairReportPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.json\",\n  \"markdownPath\": \"docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.md\",\n  \"repaired\": 96,\n  \"passThrough\": 404,\n  \"notRepairable\": 0\n}",
       "stderr": ""
     },
     {
@@ -468,13 +540,17 @@
         "--description",
         "This table is generated from 500-decision full-split LLM artifacts when provider results are present; otherwise it records raw-output readiness.",
         "--source",
+        "agentId=plain-llm-full,metricsPath=docs/research/experiments/full-e2-plain-llm-results/metrics.json,rawAuditPath=docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI plain full split",
+        "--source",
+        "agentId=candidate-constrained-llm-full,metricsPath=docs/research/experiments/full-e3-candidate-constrained-results/metrics.json,rawAuditPath=docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI candidate-constrained full split",
+        "--source",
         "agentId=tom-prompted-llm-full,metricsPath=docs/research/experiments/full-e4-tom-prompted-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI ToM-prompted full split",
         "--source",
         "agentId=tom-schema-repair-full,metricsPath=docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=deterministic schema repair over available full-split ToM raw outputs"
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.md\",\n  \"rowCount\": 2\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.json\",\n  \"markdownPath\": \"docs/research/experiments/full-llm-summary/full-llm-summary.md\",\n  \"rowCount\": 4\n}",
       "stderr": ""
     },
     {
@@ -585,18 +661,83 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md\",\n  \"status\": \"archive_ready\",\n  \"archivePath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz\",\n  \"bytes\": 53634,\n  \"sha256\": \"e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87\",\n  \"sampleCount\": 40,\n  \"failedChecks\": []\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md\",\n  \"status\": \"archive_ready\",\n  \"archivePath\": \"docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz\",\n  \"bytes\": 54786,\n  \"sha256\": \"0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d\",\n  \"sampleCount\": 40,\n  \"failedChecks\": []\n}",
+      "stderr": ""
+    },
+    {
+      "id": "human-soft-label-audit-inter-annotator",
+      "title": "Human Soft-Label Audit Inter-Annotator Agreement",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeHumanAuditInterAnnotatorAgreementCli.ts",
+        "--annotator-a",
+        "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv",
+        "--annotator-b",
+        "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv",
+        "--blind",
+        "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+        "--out",
+        "docs/research/experiments/human-soft-label-audit"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.md\",\n  \"status\": \"awaiting_returns\",\n  \"pairedLabels\": 0,\n  \"totalLabels\": 200,\n  \"disagreementCount\": 0,\n  \"macroAgreement\": null\n}",
+      "stderr": ""
+    },
+    {
+      "id": "human-soft-label-audit-adjudication-template",
+      "title": "Human Soft-Label Audit Adjudication Template",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeHumanAuditAdjudicationTemplateCli.ts",
+        "--inter-annotator",
+        "docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json",
+        "--blind",
+        "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+        "--out",
+        "docs/research/experiments/human-soft-label-audit"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template-report.md\",\n  \"templateCsvPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv\",\n  \"status\": \"awaiting_returns\",\n  \"disagreementCount\": 0,\n  \"templateRows\": 0,\n  \"readyForAdjudication\": false\n}",
+      "stderr": ""
+    },
+    {
+      "id": "human-soft-label-audit-build-adjudicated",
+      "title": "Human Soft-Label Audit Build Adjudicated CSV",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeHumanAuditAdjudicatedAnnotationsCli.ts",
+        "--annotator-a",
+        "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv",
+        "--annotator-b",
+        "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv",
+        "--adjudication-template",
+        "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv",
+        "--blind",
+        "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+        "--adjudicated",
+        "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
+        "--out",
+        "docs/research/experiments/human-soft-label-audit"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.md\",\n  \"adjudicatedCsvPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv\",\n  \"status\": \"awaiting_returns\",\n  \"outputRows\": 0,\n  \"completedLabels\": 0,\n  \"totalLabels\": 200,\n  \"readyForAgreement\": false\n}",
       "stderr": ""
     },
     {
       "id": "human-soft-label-audit-intake",
-      "title": "Human Soft-Label Audit Returned-Annotation Intake",
+      "title": "Human Soft-Label Audit Adjudicated-Annotation Intake",
       "command": [
         "npx",
         "tsx",
         "server/src/research/writeHumanAuditIntakeCli.ts",
         "--returned",
-        "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations.csv",
+        "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
         "--package-manifest",
         "docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json",
         "--blind",
@@ -616,6 +757,8 @@
         "npx",
         "tsx",
         "server/src/research/writeHumanAuditAgreementCli.ts",
+        "--annotations",
+        "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
         "--answer-key",
         "docs/research/experiments/human-soft-label-audit/human-audit-answer-key.jsonl",
         "--out",
@@ -624,6 +767,59 @@
       "status": "passed",
       "exitCode": 0,
       "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-agreement-report.json\",\n  \"markdownPath\": \"docs/research/experiments/human-soft-label-audit/human-audit-agreement-report.md\",\n  \"status\": \"pending\",\n  \"completedLabels\": 0,\n  \"totalLabels\": 200,\n  \"macroAgreement\": null\n}",
+      "stderr": ""
+    },
+    {
+      "id": "pilot-replication-report",
+      "title": "Pilot Replication Report",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writePilotReplicationReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/experiments/pilot-replication"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-replication/pilot-replication-report.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-replication/pilot-replication-report.md\",\n  \"status\": \"pending_missing_replication\",\n  \"completedReplicationCount\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "second-provider-replication-package",
+      "title": "Second-Provider Replication Package",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeSecondProviderReplicationPackageCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/experiments/pilot-replication"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-replication/second-provider-replication-package-report.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-replication/second-provider-replication-package-report.md\",\n  \"status\": \"package_ready\",\n  \"packageDir\": \"docs/research/experiments/pilot-replication/second-provider-replication-package\",\n  \"inputRows\": 50,\n  \"promptPacketCount\": 50,\n  \"files\": 52,\n  \"readyForExternalRun\": true\n}",
+      "stderr": ""
+    },
+    {
+      "id": "second-provider-replication-preflight",
+      "title": "Second-Provider Replication Preflight",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeSecondProviderReplicationPreflightCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/experiments/pilot-replication",
+        "--env-file",
+        ".env"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/experiments/pilot-replication/second-provider-replication-preflight.json\",\n  \"markdownPath\": \"docs/research/experiments/pilot-replication/second-provider-replication-preflight.md\",\n  \"status\": \"blocked_missing_independent_provider_key\",\n  \"independentKeyPresent\": false,\n  \"blockerCount\": 1\n}",
       "stderr": ""
     },
     {
@@ -713,7 +909,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"pipelineSvgPath\": \"docs/research/figures/figure-1-verifier-pipeline.svg\",\n  \"pipelineMarkdownPath\": \"docs/research/figures/figure-1-verifier-pipeline.md\",\n  \"revisionArchitectureSvgPath\": \"docs/research/figures/figure-2-revision-architecture.svg\",\n  \"revisionArchitectureMarkdownPath\": \"docs/research/figures/figure-2-revision-architecture.md\",\n  \"tomSchemaRepairSvgPath\": \"docs/research/figures/figure-3-tom-schema-repair-flow.svg\",\n  \"tomSchemaRepairMarkdownPath\": \"docs/research/figures/figure-3-tom-schema-repair-flow.md\",\n  \"mainResultsSvgPath\": \"docs/research/figures/figure-4-main-pilot-results.svg\",\n  \"mainResultsMarkdownPath\": \"docs/research/figures/figure-4-main-pilot-results.md\",\n  \"totalOutputs\": 50,\n  \"rawParsed\": 36,\n  \"repaired\": 13,\n  \"finalParsed\": 49,\n  \"hardFailures\": 1,\n  \"pairedDecisionCount\": 32,\n  \"removedStaleFigurePaths\": []\n}",
+      "stdout": "{\n  \"pipelineSvgPath\": \"docs/research/figures/figure-1-verifier-pipeline.svg\",\n  \"pipelineMarkdownPath\": \"docs/research/figures/figure-1-verifier-pipeline.md\",\n  \"revisionArchitectureSvgPath\": \"docs/research/figures/figure-2-revision-architecture.svg\",\n  \"revisionArchitectureMarkdownPath\": \"docs/research/figures/figure-2-revision-architecture.md\",\n  \"tomSchemaRepairSvgPath\": \"docs/research/figures/figure-3-tom-schema-repair-flow.svg\",\n  \"tomSchemaRepairMarkdownPath\": \"docs/research/figures/figure-3-tom-schema-repair-flow.md\",\n  \"mainResultsSvgPath\": \"docs/research/figures/figure-4-main-pilot-results.svg\",\n  \"mainResultsMarkdownPath\": \"docs/research/figures/figure-4-main-pilot-results.md\",\n  \"qualitativeCasePackSvgPath\": \"docs/research/figures/figure-5-qualitative-case-pack.svg\",\n  \"qualitativeCasePackMarkdownPath\": \"docs/research/figures/figure-5-qualitative-case-pack.md\",\n  \"totalOutputs\": 50,\n  \"rawParsed\": 36,\n  \"repaired\": 13,\n  \"finalParsed\": 49,\n  \"hardFailures\": 1,\n  \"pairedDecisionCount\": 32,\n  \"removedStaleFigurePaths\": []\n}",
       "stderr": ""
     },
     {
@@ -732,6 +928,23 @@
       "stderr": ""
     },
     {
+      "id": "visual-evidence-report",
+      "title": "Visual Evidence Report",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeVisualEvidenceReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/visual-evidence"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/visual-evidence/visual-evidence-report.json\",\n  \"markdownPath\": \"docs/research/submission/visual-evidence/visual-evidence-report.md\",\n  \"status\": \"ready_with_external_evidence_pending\",\n  \"figures\": 5,\n  \"tables\": 9,\n  \"checks\": 8,\n  \"pendingExternalEvidence\": 1\n}",
+      "stderr": ""
+    },
+    {
       "id": "manuscript",
       "title": "Manuscript Assembly",
       "command": [
@@ -742,6 +955,40 @@
       "status": "passed",
       "exitCode": 0,
       "stdout": "{\n  \"manuscriptPath\": \"docs/research/submission/manuscript/manuscript-draft.md\",\n  \"statusPath\": \"docs/research/submission/manuscript/manuscript-status.json\",\n  \"wordCount\": 3724,\n  \"readyForSubmission\": true,\n  \"markerCounts\": {\n    \"NEED_SOURCE\": 0,\n    \"UNCERTAIN\": 0,\n    \"NEED_EXPERIMENT\": 0,\n    \"DO_NOT_SUBMIT\": 0,\n    \"AUTHOR_DECISION\": 0\n  }\n}",
+      "stderr": ""
+    },
+    {
+      "id": "claim-evidence-report",
+      "title": "Claim-Evidence Report",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeClaimEvidenceReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/claim-evidence"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/claim-evidence/claim-evidence-report.json\",\n  \"markdownPath\": \"docs/research/submission/claim-evidence/claim-evidence-report.md\",\n  \"status\": \"pass\",\n  \"claims\": 8,\n  \"supported\": 1,\n  \"scopeLimited\": 7,\n  \"needsEvidence\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "method-reproducibility-report",
+      "title": "Method Reproducibility Report",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeMethodReproducibilityReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/method-reproducibility"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/method-reproducibility/method-reproducibility-report.json\",\n  \"markdownPath\": \"docs/research/submission/method-reproducibility/method-reproducibility-report.md\",\n  \"status\": \"pass\",\n  \"modulesPassing\": 6,\n  \"modulesTotal\": 6\n}",
       "stderr": ""
     },
     {
@@ -809,7 +1056,24 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.md\",\n  \"localSubmissionHygiene\": \"ready\",\n  \"aamasFullPaperReadiness\": \"not_ready\",\n  \"gates\": 7,\n  \"needsExperiment\": 2,\n  \"needsRevision\": 0\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.md\",\n  \"localSubmissionHygiene\": \"ready\",\n  \"aamasFullPaperReadiness\": \"borderline\",\n  \"gates\": 8,\n  \"needsExperiment\": 1,\n  \"needsRevision\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "id": "aamas-self-review",
+      "title": "AAMAS Adversarial Self-Review",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAAMASSelfReviewReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/aamas-self-review"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-self-review/aamas-self-review-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-self-review/aamas-self-review-report.md\",\n  \"status\": \"needs_experiment\",\n  \"items\": 5,\n  \"needsExperiment\": 2,\n  \"needsRevision\": 0\n}",
       "stderr": ""
     },
     {
@@ -826,7 +1090,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"research_not_ready\",\n  \"aamasFullPaperReadiness\": \"not_ready\",\n  \"externalBlockers\": 0,\n  \"localBlockers\": 0,\n  \"readinessBlockers\": 2\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"research_not_ready\",\n  \"aamasFullPaperReadiness\": \"borderline\",\n  \"externalBlockers\": 0,\n  \"localBlockers\": 0,\n  \"readinessBlockers\": 1\n}",
       "stderr": ""
     },
     {
@@ -841,7 +1105,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 5,\n  \"issueCount\": 2\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.json\",\n  \"markdownPath\": \"docs/research/submission/provider-handoff-audit/provider-handoff-audit.md\",\n  \"status\": \"ready\",\n  \"conditionCount\": 5,\n  \"issueCount\": 1\n}",
       "stderr": ""
     },
     {
@@ -875,7 +1139,7 @@
       ],
       "status": "passed",
       "exitCode": 0,
-      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 107,\n  \"missing\": 0\n}",
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 140,\n  \"missing\": 0\n}",
       "stderr": ""
     }
   ]

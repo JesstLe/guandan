@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-011-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "deny_opponent_finish_and_gain_control",
+    "explanation": "Player 0 (opponent) is near finishing with only 2 cards and led a low 3 of hearts. Our team must prevent them from winning this trick cheaply and going out on their next lead. Taking control with the minimum legal heart preserves higher cards for later tricks while stopping the immediate threat."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards with no public plays. They may have a higher heart, a trump, or a bomb, but their exact strength is hidden. Because I can already beat the lead cheaply, I should not rely on partner to cover; instead I take control and leave partner's potential strength to counter future opponent plays.",
+    "confidence": 0.5,
+    "evidence": [
+      "9e3b2c4d-1f5a-4b8e-9c7d-6a0e5f8b3c21"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 (opponent) has only 2 cards remaining and is therefore near finishing; their 3 of hearts lead is likely a low-card probe hoping to be overtaken lightly or to win and go out. Player 3 (opponent) holds 3 cards and may hold covering hearts, trumps, or bombs. Both opponents benefit if we over-spend or pass and let player 0 regain the lead.",
+    "confidence": 0.65,
+    "evidence": [
+      "9e3b2c4d-1f5a-4b8e-9c7d-6a0e5f8b3c21"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the cheapest card that beats the 3 of hearts lead. It wins the trick, denies player 0 a chance to finish, and keeps the 9 and 10 of hearts as stronger follow/leads for later. It avoids over-committing a high card when a low one suffices.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting player 0 win the trick and lead again with their final card, potentially finishing the game. Even if partner can cover, passing surrenders initiative unnecessarily when I have a cheap winning card."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the lead but wastes mid-strength. Saving it for a later trick or as a covering card provides more value than spending it now when the 4 already wins."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts is our strongest non-trump heart. Using it on a 3-heart lead is excessive and leaves us with weaker cards for future leads and follows."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Taking the lead leaves us exposed; our remaining cards (9 and 10 of hearts) may be beaten by opponents holding higher hearts or trumps.",
+      "Partner might have wanted the lead to play a strong sequence; by taking control we commit our team to our own weaker leads.",
+      "A hidden opponent bomb or wildcard could still overturn the trick."
+    ],
+    "mitigation": "By winning with the minimum 4 of hearts, we minimize the value lost if the lead is later taken away. We also force opponents to reveal covering strength to stop us, giving partner more information for the next trick."
+  },
+  "confidence": 0.7,
+  "notes": "Partner and opponent exact cards are unknown; beliefs are grounded only in public hand counts and the observed lead."
+}

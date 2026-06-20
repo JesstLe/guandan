@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-460-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "At the opening lead I hold four sequential spades with no trump. The best team use of this hand is to expend the weakest card first, keeping the 6 (and 4/5) available for later tricks or to regain the lead."
+  },
+  "partnerBelief": {
+    "summary": "My partner holds three unseen cards and has made no public plays, so I cannot infer a specific suit or strength signal. Probabilistically they may be able to cover a low single, but that remains uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "57154fdf-a25a-4f52-8968-2d3efd02cbdb"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three unseen cards. With the deck structure, it is plausible at least one opponent can beat a single 3 with a higher card or trump, but no specific hidden card can be treated as a fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "57154fdf-a25a-4f52-8968-2d3efd02cbdb"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 is the lowest-cost probe. It keeps the 6 as my strongest non-trump card for a later trick and lets my partner potentially win the trick without me committing a more valuable card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 first would expose my best non-trump card now. If an opponent beats it with a trump or higher rank, I am left with only 3-4-5 and no clear way to regain control."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still an intermediate card with no special trick-taking power. Playing it early wastes a resource without giving any more useful information than the 3 would provide."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Although the 4 is only slightly higher, the same logic applies: any card I lead now is likely beatable, so I should lead the absolute minimum and preserve all higher cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher card or trump and take the lead.",
+      "My partner may be unable to cover the 3, leaving our team without initiative."
+    ],
+    "mitigation": "By retaining the 6 and the intermediate 4/5, I keep a realistic path to win a future trick or block an opponent. A low opening lead minimizes immediate resource loss."
+  },
+  "confidence": 0.75,
+  "notes": "Public history contains only the new_game event, so all partner and opponent inferences are probabilistic and grounded solely in hand counts and known deck structure."
+}

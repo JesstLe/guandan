@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-446-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 is down to 2 cards and led a low 3 of hearts. I want to deny them the trick so they cannot shed a weak card and accelerate toward going out, while keeping stronger hearts for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has 3 cards and has not yet acted, so they could hold a heart or trump to contest this trick, but they could also be weak. Because opponent player 2 acts before partner, passing risks letting the opposing team win cheaply. Taking the trick now gives our team control and protects partner from being forced to respond to an opponent-led trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "4e004071-63ac-4608-9b68-0dabcffa8a6b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low 3 of hearts despite having only 2 cards, which is consistent with trying to shed a weak card while retaining a stronger final card. Player 2 has 3 cards and may be able to beat a pass, so leaving the trick uncontested would likely help the opponents. Player 0's low lead therefore signals they are trying to conserve strength and get out quickly.",
+    "confidence": 0.75,
+    "evidence": [
+      "4e004071-63ac-4608-9b68-0dabcffa8a6b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I beat the 3 of hearts with the lowest possible winning heart, the 4. This stops opponent player 0 from winning the trick cheaply, prevents player 2 from stepping in if I passed, and gives our team the lead while preserving the 9 and 10 of hearts for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the trick open for opponent player 2 to beat, or lets player 0 win with a low card and retain the lead. That directly helps an opponent who is near finishing, so it is too risky."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts wins the trick but wastes a higher card. The 4 already beats the 3, so playing a higher card weakens my remaining hand without improving my chance of winning this trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts is my strongest heart and is best saved for a later trick where the marginal strength matters. Using it now to beat a 3 is inefficient."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0 may still beat my 4 with a higher heart or a trump, regaining the lead.",
+      "If I win the trick, I will lead again and may expose my remaining hearts to opponents' trumps or higher cards.",
+      "Partner may have wanted to take the trick themselves, but they act last and cannot prevent player 2 from winning if I pass."
+    ],
+    "mitigation": "By playing the minimal winning card (4 of hearts), I minimize the cost of losing a potential subsequent battle and keep the 9 and 10 as my strongest remaining cards for future leads or follows."
+  },
+  "confidence": 0.72
+}

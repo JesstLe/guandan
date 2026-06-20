@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "0.1.0",
+  "modelProvider": "kimi-cli",
+  "modelName": "kimi-code/kimi-for-coding",
+  "temperature": 0,
+  "notes": "500-decision full-split candidate-constrained run; optional step skips until provider JSONL exists.",
+  "sourceBatchJsonl": "docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl",
+  "providerResultJsonl": "docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl",
+  "rawOutputDir": "docs/research/experiments/full-e3-candidate-constrained-batch/raw",
+  "materializationReport": "docs/research/experiments/full-e3-candidate-constrained-results/provider-materialization-report.json"
+}

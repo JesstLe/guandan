@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-003-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Opening lead with a low single card to start the trick cheaply and hope partner or this card can win, or at least force opponents to spend higher cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and no public information is available; they likely hold a mix of ranks and suits with unknown strength.",
+    "confidence": 0.5,
+    "evidence": [
+      "Hand count for partner (player 2) is 3 with no played cards observed.",
+      "No inferences or public history beyond new_game event."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 5 cards (2 and 3). At least one opponent is near finishing (2 cards), suggesting potential urgency, but their exact strength is unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "Opponent hand counts are 2 and 3.",
+      "Scenario tag indicates opponent_near_finish.",
+      "No cards have been played yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (club 3) minimizes resource expenditure in an uncertain opening position and follows the standard principle of getting rid of small cards first while saving higher clubs for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than necessary for an opening lead; better kept to beat a later low lead."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Higher value card that is more useful later for winning tricks or covering opponents' midsize cards."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The strongest club in hand; wasting it on an opening low-card lead reduces future control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and take the lead immediately.",
+      "Partner may be unable to cover if opponents respond strongly."
+    ],
+    "mitigation": "By playing the weakest legal card, the hand retains 4, 5, and 6 of clubs for future tricks, limiting overall loss if the lead is lost."
+  },
+  "confidence": 0.7
+}

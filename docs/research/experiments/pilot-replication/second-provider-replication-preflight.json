@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:16.734Z",
+  "status": "blocked_missing_independent_provider_key",
+  "facts": {
+    "primaryRunner": "kimi-cli",
+    "primaryModel": "kimi-code/kimi-for-coding",
+    "inputJsonlPresent": true,
+    "inputJsonlRows": 50,
+    "promptPacketCount": 50,
+    "secondProviderResultsPresent": false,
+    "secondProviderRows": 0,
+    "secondProviderRunReportPresent": false,
+    "secondProviderMetricsPresent": false,
+    "independentKeyPresent": false
+  },
+  "keyCandidates": [
+    {
+      "env": "ZHIPU_API_KEY",
+      "runner": "zhipu-openai-compatible",
+      "model": "glm-5.1",
+      "present": false,
+      "source": "missing",
+      "independentFromPrimary": true,
+      "recommended": false
+    },
+    {
+      "env": "OPENAI_API_KEY",
+      "runner": "openai-compatible",
+      "model": "gpt-4.1-mini",
+      "present": false,
+      "source": "missing",
+      "independentFromPrimary": true,
+      "recommended": false
+    },
+    {
+      "env": "KIMI_API_KEY",
+      "runner": "kimi-cli",
+      "model": "kimi-code/kimi-for-coding",
+      "present": true,
+      "source": "env_file",
+      "independentFromPrimary": false,
+      "recommended": false
+    }
+  ],
+  "blockers": [
+    "No independent second-provider/model API key is available in the environment or configured env file. Kimi credentials do not count because the primary run already uses Kimi."
+  ],
+  "recommendedCommand": "npm run research:second-provider:run",
+  "smokeCommand": "npm run research:second-provider:smoke",
+  "fullCommand": "npm run research:second-provider:run",
+  "successCriteria": [
+    "Provider run report has expectedCount=50, successCount=50, errorCount=0.",
+    "Provider JSONL is materialized at experiments/provider-results/tom-prompted-llm-second-provider.jsonl.",
+    "Replication metrics are materialized at experiments/pilot-replication/second-provider-tom-prompted-results/metrics.json.",
+    "Pilot replication report status becomes completed with completedReplicationCount > 0.",
+    "AAMAS readiness replication-and-human-audit gate becomes pass, or reports only human-audit as remaining desirable validation."
+  ],
+  "requiredAction": "Add an independent provider/model key such as ZHIPU_API_KEY or OPENAI_API_KEY to an uncommitted env file, then run the fixed replication command."
+}

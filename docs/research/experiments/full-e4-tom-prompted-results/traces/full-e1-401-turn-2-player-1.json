@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-401-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is an opponent with only 2 cards left and led a low heart 3, likely trying to shed a weak card to go out. By taking the trick with the cheapest legal winner, I deny Player 0 a cheap path to finish and force the other players to spend stronger cards if they want the lead."
+  },
+  "partnerBelief": {
+    "summary": "My partner (Player 3) has not acted yet and holds 3 unknown cards. They might be able to beat a single heart, but I cannot assume they have a high heart or trump. If I pass, I would be relying on them to stop the opponent near finish, which is uncertain.",
+    "confidence": 0.5,
+    "evidence": [
+      "becd04c2-f124-451a-9def-61b31da35a24"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led the 3 of hearts with only 2 cards remaining, signaling an attempt to clear a low card and exit soon. Their remaining card could be stronger or a trump, so letting them win this trick is dangerous. Player 2 may also hold a higher heart or trump and could overtake my play.",
+    "confidence": 0.7,
+    "evidence": [
+      "becd04c2-f124-451a-9def-61b31da35a24"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 4 of hearts, the minimum card that beats the led 3 of hearts, to win the trick, stop the opponent near finish from gaining tempo, and avoid wasting higher cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets Player 0 potentially win the trick with the low 3 and then go out on their next turn, which is risky when they are down to 2 cards."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts beats the 3 but spends a stronger heart unnecessarily; an opponent or partner with a trump or higher heart could still take the trick."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 of hearts wins the trick but is an even larger over-expenditure of my limited high-heart resources, with no guarantee it holds against unseen trumps."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or my partner Player 3 might still beat the 4 with a higher heart or trump, costing me a card without securing the lead.",
+      "If I take the lead, my remaining hand (9 and 10 of hearts) is not very strong and could be beaten by opponents holding trumps or higher cards.",
+      "Player 0 may still have a trump or bomb left for a later turn."
+    ],
+    "mitigation": "Using the minimum winner (4 of hearts) limits my resource loss if the trick is lost and still disrupts the opponent's attempt to finish quickly."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-469-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 has only two non-trump cards left (2 and A of spades) while the other three players each hold three cards. Leading the weakest card (2 of spades) gives partner (player 2) the best chance to cover with a higher non-trump or a cheap trump and win the trick, preserving the Ace for a future winning play or to cover a later low lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three unknown cards and has made no public plays. Given the uniform prior over the remaining deck, partner is more likely than not to hold at least one non-trump card higher than a 2 or at least one trump, so a low 2 lead is easier to cover than the Ace. The exact composition is hidden, but the low lead aligns with partner's likely covering strength.",
+    "confidence": 0.55,
+    "evidence": [
+      "68a7b9e4-aefe-4dd2-9ebe-1ecb99e7c2d8"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three unknown cards. They may hold trumps, bombs, or higher non-trumps that can capture a 2 lead, and in this endgame race they likely want to win control and finish their hands. Leading the Ace would expose our only high card to their possible trumps or bombs, while leading the 2 forces them to spend real strength to take the trick.",
+    "confidence": 0.55,
+    "evidence": [
+      "68a7b9e4-aefe-4dd2-9ebe-1ecb99e7c2d8"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 of spades is the lowest legal lead. It minimizes loss if an opponent covers, keeps the Ace as a future winner or cover card, and gives partner the easiest path to take control. If partner wins the trick, they may later lead a low single that the Ace can cover, helping player 0 go out.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace risks immediately losing our only high non-trump to an opponent's trump, bomb, or wildcard, leaving us with only the 2 and no way to regain control. Even if the Ace wins the trick, our follow-up lead of 2 is easily captured, and we would have no strong card left to support partner or win a future trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 2 of spades may lose immediately to a higher card, trump, bomb, or wildcard, ceding initiative to an opponent.",
+      "Partner may be unable to cover the 2, in which case our team loses control of the current trick.",
+      "An opponent who wins the trick may press their advantage in the endgame race and try to finish before us."
+    ],
+    "mitigation": "By leading the 2 rather than the Ace, we preserve our strongest card for a future trick and force opponents to reveal their strength. This low-cost probe keeps our options open if the lead returns to us or if partner can set up a low lead we can cover with the Ace."
+  },
+  "confidence": 0.65,
+  "notes": "Beliefs are grounded only in public hand counts and the new-game event; exact partner and opponent cards are hidden."
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-043-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "I hold only low non-trump clubs and one opponent is down to two cards. My immediate goal is to shed my weakest card while keeping the slightly higher clubs for later tricks, so I do not waste any real strength this early."
+  },
+  "partnerBelief": {
+    "summary": "No information about partner's hand; partner has three cards and may be able to cover a single if opponents take control.",
+    "confidence": 0.3,
+    "evidence": [
+      "Partner hand count is 3 from handCounts.",
+      "No public history beyond new_game."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "At least one opponent is close to finishing with two cards; they likely hold some higher cards or trumps, but no specifics are known.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts show an opponent with 2 cards remaining.",
+      "No cards have been played yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♣ is the standard opening-lead play: it is my lowest card, gives away the least value, and lets me retain the 4♣-6♣ for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly stronger than the 3 but still weak; better kept to beat a 3 later or to use after the 3 is gone."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Middle of my hand; preserving it for a later single exchange is more valuable than leading it now."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "My highest non-trump single; risking it as an opening lead wastes the only card most likely to win a future single trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3♣ and take control, accelerating their finish.",
+      "If everyone passes, I keep the lead but still only have low cards to continue with."
+    ],
+    "mitigation": "By leading the lowest card I minimize lost value; any pass gives me another lead, and if taken I still hold 4♣-6♣ to contest later singles."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with a weak, non-trump hand; choice is between shedding the 3 first or the 6 first. Standard practice favors the 3."
+}

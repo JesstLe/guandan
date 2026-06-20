@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-032-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner is near finish with only 2 cards. Leading the lowest single minimizes blockage and gives partner the best chance to take control or shed cards safely."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds very few cards and may be trying to finish, but the exact ranks are unknown.",
+    "confidence": 0.7,
+    "evidence": [
+      "handCounts shows partner (player 2) has 2 cards",
+      "scenarioTags includes partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents' exact holdings are unknown; they may have higher non-trump or trump singles that can beat a low lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "No cards have been played yet",
+      "Opponents collectively hold 9 cards"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds uses the weakest card, preserves the slightly stronger 4-6 of diamonds for later tricks, and gives partner the easiest path to win the trick or avoid being blocked.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Higher than necessary; wastes a card that might win a later low lead."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Still higher and leaves fewer mid-strength cards for future rounds."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Highest option; risks losing the strongest card in a weak hand without improving partner's chance to finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single and win the trick.",
+      "Partner may be unable to beat even a low lead if their remaining cards are very weak."
+    ],
+    "mitigation": "Leading the absolute minimum reduces the strength an opponent needs to beat it and keeps my own high cards for later rounds."
+  },
+  "confidence": 0.75
+}

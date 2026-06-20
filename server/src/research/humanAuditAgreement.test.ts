@@ -50,6 +50,38 @@ describe('humanAuditAgreement', () => {
     }
   })
 
+  it('reports pending instead of failing when the annotation CSV is missing', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-human-audit-missing-annotations-'))
+    try {
+      const answerKey = join(rootDir, 'answer-key.jsonl')
+      writeFileSync(answerKey, `${JSON.stringify({
+        sampleId: 's1',
+        verifierPartnerConsistent: 'pass',
+        verifierOpponentConsistent: 'fail',
+        verifierTeamObjectiveValid: 'unknown',
+        verifierHiddenInfoDisciplined: 'pass',
+        verifierReasonActionConsistent: 'pass',
+      })}\n`, 'utf8')
+
+      const result = writeHumanAuditAgreement({
+        annotationCsvPath: join(rootDir, 'missing-annotations.csv'),
+        answerKeyJsonlPath: answerKey,
+        outputDir: rootDir,
+      })
+
+      expect(result.report.status).toBe('pending')
+      expect(result.report.annotationRowCount).toBe(0)
+      expect(result.report.completedLabels).toBe(0)
+      expect(result.report.totalLabels).toBe(5)
+      expect(result.report.missingAnnotationSampleIds).toEqual(['s1'])
+      expect(result.report.readyForPaperEvidence).toBe(false)
+      const markdown = readFileSync(result.markdownPath, 'utf8')
+      expect(markdown).toContain('No human labels have been filled yet.')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
   it('computes label agreement and normalizes uncertain to verifier unknown', () => {
     const rootDir = mkdtempSync(join(tmpdir(), 'guandan-human-audit-agreement-'))
     try {

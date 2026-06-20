@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-014-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am leading in an endgame race with only two cards. Playing the lower card first lets me shed cards quickly while keeping the Ace as a higher card for later control or to win a trick."
+  },
+  "partnerBelief": {
+    "summary": "I have no specific knowledge of my partner's hand beyond the public card count.",
+    "confidence": 0.1,
+    "evidence": [
+      "Public hand counts show my partner has 2 cards.",
+      "No cards have been played yet, so no partner cards are revealed."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher or trump cards, but their exact hands are unknown.",
+    "confidence": 0.1,
+    "evidence": [
+      "Each opponent has 3 cards remaining.",
+      "No opponent cards have been revealed yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 of spades is the lower card. Leading it preserves the Ace as a stronger card for a future trick, which is better for an endgame race than leading the Ace and being left with the weak 2.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Playing the Ace first would leave me with only the low 2, making it easier for opponents to control the next trick and slowing my effort to finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or trump and win the lead.",
+      "If my partner cannot help, the next lead could come back to an opponent."
+    ],
+    "mitigation": "By keeping the Ace, I retain a high card to regain control or cover an opponent's single later."
+  },
+  "confidence": 0.6
+}

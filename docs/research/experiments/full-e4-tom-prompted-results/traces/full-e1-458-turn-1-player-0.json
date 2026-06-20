@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-458-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand is all low non-trump clubs (3-6) with no trumps, so I cannot realistically dominate tricks. The best team contribution is to lead the smallest card, preserving relative high cards and avoiding a costly exchange, while letting the opponents or partner reveal strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays yet, I have almost no signal about their distribution; they could have trumps, high cards, or be similarly weak. I should not assume they can rescue this trick, but leading low at least gives them a cheap opportunity to play if they wish to take the lead.",
+    "confidence": 0.25,
+    "evidence": [
+      "c1859d7a-aa43-4891-bee5-f5fceee65657"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is tagged near finish, so they likely possess high cards or trumps they are waiting to use. Opponent player 3 has 3 cards and plays last in the trick, giving them a positional advantage to beat a low lead. Both opponents will try to win or cheaply pass depending on their holdings, but I should not assume specific hidden cards.",
+    "confidence": 0.4,
+    "evidence": [
+      "c1859d7a-aa43-4891-bee5-f5fceee65657"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♣ is the weakest legal lead. It minimizes the value I expose, forces opponents to spend a higher card if they want the trick, and keeps my slightly higher clubs (4-6) for later positions. In a weak opening hand this is the standard resource-preserving lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Playing my highest club wastes the one card most likely to win a future trick among my holdings, while any opponent with a modest high card or trump still beats it easily. The upside does not justify the cost."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is still a low non-trump card. Leading it now gives away relative value without increasing the chance of winning the trick, and it leaves the 3 and 4 as even weaker exit cards."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Slightly better than the 5 or 6, but still unnecessarily spends a higher card when the 3 achieves the same informational and resource-preserving goal."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading a low non-trump may let opponent player 3 win cheaply from last position.",
+      "If partner is also weak, the opponents gain tempo and may press their advantage, especially player 1 who is near finish.",
+      "A low lead gives away no deception; opponents can infer my hand is weak."
+    ],
+    "mitigation": "Accept the risk because my hand cannot credibly contest the trick. By leading the absolute lowest card I limit how much opponents gain from winning and retain my best remaining cards for any future opportunity."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with no trumps and ranks 3-6. The dominant heuristic is low-card preservation, so 3♣ is selected over the higher club singles."
+}

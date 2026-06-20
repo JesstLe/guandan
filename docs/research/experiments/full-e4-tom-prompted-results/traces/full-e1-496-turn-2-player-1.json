@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-496-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 is near finishing with only 2 cards remaining and has led a low heart 3. The priority is to seize the lead now to deny them control of the trick and a possible clean exit on their next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) likely holds some defensive cards but has not acted yet; they cannot help on this trick. Their hand count is full (3 cards), so they are not under immediate finish pressure. They probably want me to take the lead if I can beat the low card cheaply.",
+    "confidence": 0.6,
+    "evidence": [
+      "526b9be7-27a3-4d89-83b7-48fd45016909"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Leading player 0 played the weakest possible non-trump single (heart 3), suggesting they are trying to shed a low card while preserving a stronger final card or trump for their next play. With only 2 cards left, they are at high risk of finishing soon if allowed to retain the lead.",
+    "confidence": 0.75,
+    "evidence": [
+      "526b9be7-27a3-4d89-83b7-48fd45016909"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the minimum winning card (heart 4) to take the lead from the near-finishing opponent. This denies player 0 another lead opportunity, uses only a very low card, and preserves the 9 and 10 for future plays or to cover partner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 lead again with their final card, which is likely stronger or trump; this gives them a direct path to finish and loses initiative for team 1."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but over-invests a higher heart when the 4 already wins; saving the 9 is better for later tricks."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 also wins unnecessarily high; spending the 10 now weakens my ability to beat future opponent singles and support partner."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Taking the lead commits me to lead next; my remaining cards (9, 10) are not very high and could be beaten by opponents with trumps or higher singles.",
+      "If partner cannot support, opponents may regain the lead quickly."
+    ],
+    "mitigation": "By using the 4 instead of a higher card, I keep my two best cards for the next lead and maximize the chance of retaining control for at least one more trick."
+  },
+  "confidence": 0.85,
+  "notes": "The opponent's low lead and near-finish hand count make taking control the dominant team play."
+}

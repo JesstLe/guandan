@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-459-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left. The overriding team objective is to empty player 0's hand as quickly as possible while retaining enough control to prevent opponents from finishing first."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three cards and no public actions have occurred, so partner's exact strength is unknown. Given the team is slightly ahead in total card count, partner likely holds some coverage cards, possibly including trumps or high cards, but this is probabilistic rather than certain.",
+    "confidence": 0.4,
+    "evidence": [
+      "74f38186-c166-4a04-a05d-76c769e21cec"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold six cards, more than our team's five. With trump rank 7 and red trumps still unplayed, it is plausible at least one opponent holds a trump or high card that can beat the spade A if led. Their probable objective is to seize or retain the lead and finish before our team.",
+    "confidence": 0.5,
+    "evidence": [
+      "74f38186-c166-4a04-a05d-76c769e21cec"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A now contests control of the trick. If it wins, player 0 keeps the lead and can immediately play the remaining spade 2 to finish the hand. Even if an opponent beats the A with a trump, player 0 forces a high-value or trump card out of an opponent, which can help the partner gauge and respond to opposing strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low spade 2 would likely let an opponent win the trick cheaply and take control of the lead. In an endgame race, losing the lead is dangerous because opponents could play combinations that player 0 cannot match, possibly preventing the A from ever winning a trick and allowing opponents to finish first."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump-rank 7, red trump, or joker that beats the spade A.",
+      "Partner may not be able to cover if the A is beaten, leaving opponents in control.",
+      "If the A wins but the subsequent spade 2 is beaten, opponents gain initiative after player 0 finishes."
+    ],
+    "mitigation": "Leading the strongest single available forces opponents to use real strength to take the lead. It maximizes the chance that player 0 plays both cards without being shut out by an opponent-led combination, and any revealed trump improves the partner's belief about remaining high cards."
+  },
+  "confidence": 0.68,
+  "notes": "Decision is based on the public game-start event only; all partner and opponent card beliefs are probabilistic."
+}

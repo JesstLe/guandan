@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-024-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left. The priority is to play out the remaining cards as quickly as possible and finish the hand."
+  },
+  "partnerBelief": {
+    "summary": "No direct information about partner's cards. Partner may be able to support if opponents contest, but this is unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "No public history beyond new_game event.",
+      "Partner hand count is 3, same as opponents, so strength is unknown."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely still hold 3 cards each, but ranks, suits, and trumps are unknown. They may hold higher cards, trumps, or bombs.",
+    "confidence": 0.3,
+    "evidence": [
+      "No cards have been played except the new_game event.",
+      "Hand counts show opponents each hold 3 cards."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the Ace of spades, the stronger remaining card, to maximize the chance of winning the current trick and retaining the lead to play the 2 next. In an endgame race, controlling the lead accelerates finishing the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weaker and more likely to be beaten by an opponent, potentially surrendering the lead and delaying or preventing playing the Ace."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the Ace with a trump, a higher non-trump single, or a bomb.",
+      "If the lead is lost, player 0 may not get another turn before the hand ends."
+    ],
+    "mitigation": "Playing the Ace first gives the best chance to keep the lead; if it wins, the 2 can be played immediately next turn to finish."
+  },
+  "confidence": 0.75,
+  "notes": "Decision is based solely on the visible private hand and public hand counts; no hidden partner or opponent cards are assumed."
+}

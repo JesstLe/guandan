@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-049-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am in an endgame race with only two cards left. The fastest path to going out is to seize the lead and then play my remaining card."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has several cards remaining and may be able to support later, but no specific cards are known.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts shows partner (player 2) has 3 cards",
+      "publicHistory only contains new_game, so no reliable signals yet"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents may hold trump cards, higher non-trump singles, or bombs, but exact holdings are unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "handCounts show each opponent has 3 cards",
+      "trumpRank is 7; no trump cards have been played yet"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace of spades maximizes the chance of winning this trick. If it wins, I retain the lead and can then play the 2 to go out. The Ace is the strongest non-trump single in my hand and beats any non-trump single except trumps.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 is much weaker and more likely to be beaten by an opponent, which would cost me the lead and make it harder to finish my hand."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump (rank 7 or joker) over the Ace and take the lead.",
+      "If the Ace loses, I may never regain the lead with only a 2 remaining."
+    ],
+    "mitigation": "There is no safer lead available; playing the Ace first is the highest-probability way to win the current trick and control the next one."
+  },
+  "confidence": 0.75
+}

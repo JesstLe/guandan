@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-413-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "This is the opening lead and my hand contains only low non-trump clubs. The priority is to begin shedding cards while preserving whatever modest card strength I have for later tricks."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. No signals have been exchanged because the public history contains only the new_game event, so partner's strength and suit distribution must be treated as uniformly uncertain.",
+    "confidence": 0.3,
+    "evidence": [
+      "c619b975-20ac-491b-930b-59236a9b3606"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining, which is public information from handCounts, so they are near finishing and may hold strong cards or a bomb. Opponents 1 and 3 each hold 3 cards; any of them could cover a low club single, but the exact cards are hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "c619b975-20ac-491b-930b-59236a9b3606"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the safest opening play. It is the weakest legal card, minimizing the value exposed and keeping the 4, 5, and 6 available for later tricks. A low single also maximizes the chance that partner can play over it and take control of the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading the 6 first exposes my highest non-trump card. If an opponent covers it, I lose my best remaining card and keep only weaker cards, hurting future flexibility."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a middling card. Leading it now leaves the 3 and 4 as awkward low cards to shed later and does not materially increase the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is slightly better than the 5 or 6, but the 3 is strictly lower and therefore gives up less information and less potential value, with no compensating advantage for leading the 4."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 of clubs is the lowest non-trump card and will likely be beaten by any higher single, so I will probably lose the lead.",
+      "Opponent player 1 has only 2 cards and may hold a strong combination or bomb, increasing the chance they seize control and finish soon.",
+      "Because all my cards are weak clubs, regaining control once it is lost will be difficult."
+    ],
+    "mitigation": "By leading the 3 first, I retain my slightly stronger cards (4-6) for later and avoid revealing my higher cards prematurely. If partner can cover the lead, the team can continue the attack from a stronger position."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-019-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left, the priority is to play out my hand as quickly as possible while retaining control. Leading the higher card first preserves the lead for a follow-up play of the lower card."
+  },
+  "partnerBelief": {
+    "summary": "Partner's exact cards are unknown. Partner may have cards that could assist later, but I cannot rely on specific holdings.",
+    "confidence": 0.5,
+    "evidence": [
+      "Partner hand size is 3; no public card information has been revealed.",
+      "No bids or signals have been exchanged."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher cards or trumps, but no specific cards are known.",
+    "confidence": 0.5,
+    "evidence": [
+      "Each opponent has 3 cards, larger than my hand.",
+      "No trumps, bombs, or big cards have been played yet."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the ace is stronger than leading the deuce. If it wins the trick, I keep the lead and can play the deuce next to finish my hand. Even if an opponent beats it, the stronger lead gives my team more information and control than a weak deuce lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "A deuce lead is the weakest single and is very likely to be beaten by any opponent or even the partner, ceding the lead when my hand is nearly empty and I need to finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the ace with a trump or higher card, giving them the lead.",
+      "Partner may overtake the ace, changing the lead unexpectedly."
+    ],
+    "mitigation": "Leading the strongest available single maximizes the chance that the trick comes back to me, letting me play the remaining deuce immediately."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead in an endgame race; no hidden cards are asserted as facts."
+}

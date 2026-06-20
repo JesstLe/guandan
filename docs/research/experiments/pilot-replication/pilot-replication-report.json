@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:15.996Z",
+  "status": "pending_missing_replication",
+  "completedReplicationCount": 0,
+  "primary": {
+    "id": "primary-kimi-tom-pilot",
+    "role": "primary",
+    "status": "completed",
+    "providerResultsPath": "experiments/provider-results/tom-prompted-llm.jsonl",
+    "runReportPath": "experiments/provider-results/tom-prompted-llm-kimi-merge-report.json",
+    "metricsPath": "experiments/pilot-e7-tom-prompted-results/metrics.json",
+    "provider": "kimi-cli",
+    "model": "kimi-code/kimi-for-coding",
+    "expectedCount": 50,
+    "successCount": 50,
+    "errorCount": null,
+    "parsedCount": 36,
+    "hardFailureCount": 1,
+    "parseFailureCount": 14,
+    "independentFromPrimary": true,
+    "finding": "primary-kimi-tom-pilot is complete: 50/50 provider outputs, 36/50 parsed traces, and 1 hard verifier failures."
+  },
+  "replications": [
+    {
+      "id": "second-provider-tom-pilot",
+      "role": "replication",
+      "status": "missing",
+      "providerResultsPath": "experiments/provider-results/tom-prompted-llm-second-provider.jsonl",
+      "runReportPath": "experiments/provider-results/tom-prompted-llm-second-provider-run-report.json",
+      "metricsPath": "experiments/pilot-replication/second-provider-tom-prompted-results/metrics.json",
+      "provider": "second-provider",
+      "model": "second-model",
+      "expectedCount": null,
+      "successCount": null,
+      "errorCount": null,
+      "parsedCount": null,
+      "hardFailureCount": null,
+      "parseFailureCount": null,
+      "independentFromPrimary": true,
+      "finding": "second-provider-tom-pilot is missing: expected provider results at experiments/provider-results/tom-prompted-llm-second-provider.jsonl and metrics at experiments/pilot-replication/second-provider-tom-prompted-results/metrics.json."
+    }
+  ],
+  "requiredAction": "Materialize one second-provider or second-model ToM pilot replication at the fixed replication paths, then rerun the local pipeline."
+}

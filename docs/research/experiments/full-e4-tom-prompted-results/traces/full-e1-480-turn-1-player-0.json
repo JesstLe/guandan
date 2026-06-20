@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-480-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand contains only low non-trump spades (3-6), so I cannot realistically hold the lead through multiple tricks. On the opening lead I should play the weakest card to let my partner or an opponent spend a higher card, preserving my slightly better low cards and avoiding an early block."
+  },
+  "partnerBelief": {
+    "summary": "Partner has not acted yet. With only public hand counts (3 cards each), partner likely holds some cards higher than mine; if I lead low, partner has a chance to beat the trick and take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "baa7032b-0db7-4c26-b64b-71f06c2073a5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards and no public cards have been played. They are more likely than my partner to hold cards above a 3, but because I lead very low they can beat it only by spending a higher card, which may deplete their options.",
+    "confidence": 0.6,
+    "evidence": [
+      "baa7032b-0db7-4c26-b64b-71f06c2073a5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the safest opening move: it is the lowest legal card, minimizes the value I commit, and gives my partner the best chance to overtake while keeping my 4-6 for later responses.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading the 6 spends my strongest card immediately. Even if it wins the trick, I would then lead again with even weaker cards and opponents would easily regain control, wasting my only modest asset."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a middle card; it does not guarantee winning the trick and, if it does win, my remaining 3 and 4 are unlikely to retain the lead."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is only slightly stronger than the 3 but gives the partner less room to signal support; keeping the 4 as a later response is better than leading it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 cheaply and keep control, leaving me with weak follow-ups.",
+      "My partner may not be able to overtake, in which case the lead transfers to an opponent."
+    ],
+    "mitigation": "Because my hand has no trump and only low cards, losing the lead now is acceptable. By spending the 3 first I retain the 4-6 for opportunistic responses and avoid committing my highest low card."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with a weak hand favors a low-card probe rather than attempting to seize control."
+}

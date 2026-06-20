@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-494-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and an endgame race, the priority is to play out the hand quickly while keeping a high card to contest a later trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds three cards and has not acted; no strong signal exists, but partner is likely trying to finish or set up a playable lead for our team.",
+    "confidence": 0.5,
+    "evidence": [
+      "dfe097a0-5156-4760-b595-2df49b43674f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold three unseen cards. They may have trumps (rank 7) or other high cards, but no public information supports any specific distribution.",
+    "confidence": 0.5,
+    "evidence": [
+      "dfe097a0-5156-4760-b595-2df49b43674f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the low 2 of spades first sheds the weaker card and preserves the ace as a potential future winner or cover. If the 2 loses, the ace remains for a later spade lead; if the ace were played first and beaten, the 2 would be stranded with little chance to win.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Playing the ace first risks losing our only high card to an opponent's trump, leaving the weak 2 with almost no chance of winning a trick. Even if the ace wins, leading the 2 next likely cedes the lead immediately."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading the 2 may let an opponent win the trick and take control of the lead.",
+      "Opponents may hold trumps that also beat the ace later.",
+      "Partner may not be able to win a trick and return a spade lead."
+    ],
+    "mitigation": "Keeping the ace gives a chance to regain the lead on a later spade or single-card lead, which is more valuable than leading it now into unknown opponent strength."
+  },
+  "confidence": 0.6,
+  "notes": "Hidden cards are treated as uncertain; the choice respects the public evidence only."
+}

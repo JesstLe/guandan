@@ -1,0 +1,1 @@
+{"agentId": "plain-llm", "decisionId": "full-e1-015-turn-1-player-0", "chosenActionId": "play-single-spade-3-copy1", "reasoning": "I am leading the first trick with only low spades and no trump. The safest opening is to play the lowest card, the 3 of spades, to avoid wasting a higher card and to let my partner potentially win the trick or gain information."}

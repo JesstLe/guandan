@@ -2,56 +2,56 @@
   "schemaVersion": "0.1.0",
   "conditionId": "tom-prompted-llm",
   "totalDecisionPoints": 500,
-  "totalParsedTraces": 306,
-  "parseFailureCount": 194,
-  "hardFailureCount": 38,
+  "totalParsedTraces": 404,
+  "parseFailureCount": 96,
+  "hardFailureCount": 48,
   "labelStatusCounts": {
     "legalAction": {
-      "pass": 306,
+      "pass": 404,
       "fail": 0,
       "unknown": 0,
       "not_applicable": 0
     },
     "beatsTable": {
-      "pass": 61,
+      "pass": 81,
       "fail": 0,
       "unknown": 0,
-      "not_applicable": 245
+      "not_applicable": 323
     },
     "publicHistoryConsistent": {
-      "pass": 305,
+      "pass": 403,
       "fail": 1,
       "unknown": 0,
       "not_applicable": 0
     },
     "hiddenInfoDisciplined": {
-      "pass": 269,
-      "fail": 37,
+      "pass": 357,
+      "fail": 47,
       "unknown": 0,
       "not_applicable": 0
     },
     "partnerConsistent": {
-      "pass": 50,
-      "fail": 13,
-      "unknown": 243,
+      "pass": 68,
+      "fail": 14,
+      "unknown": 322,
       "not_applicable": 0
     },
     "opponentConsistent": {
-      "pass": 94,
-      "fail": 27,
-      "unknown": 185,
+      "pass": 123,
+      "fail": 36,
+      "unknown": 245,
       "not_applicable": 0
     },
     "reasonActionConsistent": {
-      "pass": 305,
-      "fail": 1,
+      "pass": 402,
+      "fail": 2,
       "unknown": 0,
       "not_applicable": 0
     },
     "teamObjectiveValid": {
-      "pass": 158,
-      "fail": 23,
-      "unknown": 125,
+      "pass": 206,
+      "fail": 31,
+      "unknown": 167,
       "not_applicable": 0
     }
   },
@@ -361,7 +361,105 @@
     "traces/full-e1-379-turn-1-player-0.json",
     "traces/full-e1-380-turn-1-player-0.json",
     "traces/full-e1-382-turn-1-player-0.json",
-    "traces/full-e1-383-turn-1-player-0.json"
+    "traces/full-e1-383-turn-1-player-0.json",
+    "traces/full-e1-384-turn-1-player-0.json",
+    "traces/full-e1-385-turn-1-player-0.json",
+    "traces/full-e1-386-turn-2-player-1.json",
+    "traces/full-e1-387-turn-1-player-0.json",
+    "traces/full-e1-388-turn-1-player-0.json",
+    "traces/full-e1-389-turn-1-player-0.json",
+    "traces/full-e1-390-turn-1-player-0.json",
+    "traces/full-e1-392-turn-1-player-0.json",
+    "traces/full-e1-394-turn-1-player-0.json",
+    "traces/full-e1-395-turn-1-player-0.json",
+    "traces/full-e1-398-turn-1-player-0.json",
+    "traces/full-e1-400-turn-1-player-0.json",
+    "traces/full-e1-401-turn-2-player-1.json",
+    "traces/full-e1-402-turn-1-player-0.json",
+    "traces/full-e1-403-turn-1-player-0.json",
+    "traces/full-e1-404-turn-1-player-0.json",
+    "traces/full-e1-405-turn-1-player-0.json",
+    "traces/full-e1-406-turn-2-player-1.json",
+    "traces/full-e1-407-turn-1-player-0.json",
+    "traces/full-e1-408-turn-1-player-0.json",
+    "traces/full-e1-409-turn-1-player-0.json",
+    "traces/full-e1-410-turn-1-player-0.json",
+    "traces/full-e1-411-turn-2-player-1.json",
+    "traces/full-e1-412-turn-1-player-0.json",
+    "traces/full-e1-413-turn-1-player-0.json",
+    "traces/full-e1-414-turn-1-player-0.json",
+    "traces/full-e1-415-turn-1-player-0.json",
+    "traces/full-e1-416-turn-2-player-1.json",
+    "traces/full-e1-417-turn-1-player-0.json",
+    "traces/full-e1-419-turn-1-player-0.json",
+    "traces/full-e1-420-turn-1-player-0.json",
+    "traces/full-e1-421-turn-2-player-1.json",
+    "traces/full-e1-422-turn-1-player-0.json",
+    "traces/full-e1-423-turn-1-player-0.json",
+    "traces/full-e1-424-turn-1-player-0.json",
+    "traces/full-e1-425-turn-1-player-0.json",
+    "traces/full-e1-426-turn-2-player-1.json",
+    "traces/full-e1-427-turn-1-player-0.json",
+    "traces/full-e1-428-turn-1-player-0.json",
+    "traces/full-e1-429-turn-1-player-0.json",
+    "traces/full-e1-430-turn-1-player-0.json",
+    "traces/full-e1-432-turn-1-player-0.json",
+    "traces/full-e1-435-turn-1-player-0.json",
+    "traces/full-e1-436-turn-2-player-1.json",
+    "traces/full-e1-437-turn-1-player-0.json",
+    "traces/full-e1-439-turn-1-player-0.json",
+    "traces/full-e1-440-turn-1-player-0.json",
+    "traces/full-e1-441-turn-2-player-1.json",
+    "traces/full-e1-444-turn-1-player-0.json",
+    "traces/full-e1-446-turn-2-player-1.json",
+    "traces/full-e1-447-turn-1-player-0.json",
+    "traces/full-e1-448-turn-1-player-0.json",
+    "traces/full-e1-450-turn-1-player-0.json",
+    "traces/full-e1-451-turn-2-player-1.json",
+    "traces/full-e1-452-turn-1-player-0.json",
+    "traces/full-e1-453-turn-1-player-0.json",
+    "traces/full-e1-455-turn-1-player-0.json",
+    "traces/full-e1-456-turn-2-player-1.json",
+    "traces/full-e1-457-turn-1-player-0.json",
+    "traces/full-e1-458-turn-1-player-0.json",
+    "traces/full-e1-459-turn-1-player-0.json",
+    "traces/full-e1-460-turn-1-player-0.json",
+    "traces/full-e1-461-turn-2-player-1.json",
+    "traces/full-e1-462-turn-1-player-0.json",
+    "traces/full-e1-463-turn-1-player-0.json",
+    "traces/full-e1-464-turn-1-player-0.json",
+    "traces/full-e1-465-turn-1-player-0.json",
+    "traces/full-e1-466-turn-2-player-1.json",
+    "traces/full-e1-467-turn-1-player-0.json",
+    "traces/full-e1-468-turn-1-player-0.json",
+    "traces/full-e1-469-turn-1-player-0.json",
+    "traces/full-e1-470-turn-1-player-0.json",
+    "traces/full-e1-471-turn-2-player-1.json",
+    "traces/full-e1-473-turn-1-player-0.json",
+    "traces/full-e1-474-turn-1-player-0.json",
+    "traces/full-e1-475-turn-1-player-0.json",
+    "traces/full-e1-476-turn-2-player-1.json",
+    "traces/full-e1-477-turn-1-player-0.json",
+    "traces/full-e1-478-turn-1-player-0.json",
+    "traces/full-e1-479-turn-1-player-0.json",
+    "traces/full-e1-480-turn-1-player-0.json",
+    "traces/full-e1-481-turn-2-player-1.json",
+    "traces/full-e1-483-turn-1-player-0.json",
+    "traces/full-e1-485-turn-1-player-0.json",
+    "traces/full-e1-486-turn-2-player-1.json",
+    "traces/full-e1-487-turn-1-player-0.json",
+    "traces/full-e1-488-turn-1-player-0.json",
+    "traces/full-e1-489-turn-1-player-0.json",
+    "traces/full-e1-490-turn-1-player-0.json",
+    "traces/full-e1-491-turn-2-player-1.json",
+    "traces/full-e1-492-turn-1-player-0.json",
+    "traces/full-e1-493-turn-1-player-0.json",
+    "traces/full-e1-494-turn-1-player-0.json",
+    "traces/full-e1-495-turn-1-player-0.json",
+    "traces/full-e1-496-turn-2-player-1.json",
+    "traces/full-e1-497-turn-1-player-0.json",
+    "traces/full-e1-498-turn-1-player-0.json",
+    "traces/full-e1-499-turn-1-player-0.json"
   ],
   "resultFiles": [
     "results/full-e1-000-turn-1-player-0.json",
@@ -669,7 +767,105 @@
     "results/full-e1-379-turn-1-player-0.json",
     "results/full-e1-380-turn-1-player-0.json",
     "results/full-e1-382-turn-1-player-0.json",
-    "results/full-e1-383-turn-1-player-0.json"
+    "results/full-e1-383-turn-1-player-0.json",
+    "results/full-e1-384-turn-1-player-0.json",
+    "results/full-e1-385-turn-1-player-0.json",
+    "results/full-e1-386-turn-2-player-1.json",
+    "results/full-e1-387-turn-1-player-0.json",
+    "results/full-e1-388-turn-1-player-0.json",
+    "results/full-e1-389-turn-1-player-0.json",
+    "results/full-e1-390-turn-1-player-0.json",
+    "results/full-e1-392-turn-1-player-0.json",
+    "results/full-e1-394-turn-1-player-0.json",
+    "results/full-e1-395-turn-1-player-0.json",
+    "results/full-e1-398-turn-1-player-0.json",
+    "results/full-e1-400-turn-1-player-0.json",
+    "results/full-e1-401-turn-2-player-1.json",
+    "results/full-e1-402-turn-1-player-0.json",
+    "results/full-e1-403-turn-1-player-0.json",
+    "results/full-e1-404-turn-1-player-0.json",
+    "results/full-e1-405-turn-1-player-0.json",
+    "results/full-e1-406-turn-2-player-1.json",
+    "results/full-e1-407-turn-1-player-0.json",
+    "results/full-e1-408-turn-1-player-0.json",
+    "results/full-e1-409-turn-1-player-0.json",
+    "results/full-e1-410-turn-1-player-0.json",
+    "results/full-e1-411-turn-2-player-1.json",
+    "results/full-e1-412-turn-1-player-0.json",
+    "results/full-e1-413-turn-1-player-0.json",
+    "results/full-e1-414-turn-1-player-0.json",
+    "results/full-e1-415-turn-1-player-0.json",
+    "results/full-e1-416-turn-2-player-1.json",
+    "results/full-e1-417-turn-1-player-0.json",
+    "results/full-e1-419-turn-1-player-0.json",
+    "results/full-e1-420-turn-1-player-0.json",
+    "results/full-e1-421-turn-2-player-1.json",
+    "results/full-e1-422-turn-1-player-0.json",
+    "results/full-e1-423-turn-1-player-0.json",
+    "results/full-e1-424-turn-1-player-0.json",
+    "results/full-e1-425-turn-1-player-0.json",
+    "results/full-e1-426-turn-2-player-1.json",
+    "results/full-e1-427-turn-1-player-0.json",
+    "results/full-e1-428-turn-1-player-0.json",
+    "results/full-e1-429-turn-1-player-0.json",
+    "results/full-e1-430-turn-1-player-0.json",
+    "results/full-e1-432-turn-1-player-0.json",
+    "results/full-e1-435-turn-1-player-0.json",
+    "results/full-e1-436-turn-2-player-1.json",
+    "results/full-e1-437-turn-1-player-0.json",
+    "results/full-e1-439-turn-1-player-0.json",
+    "results/full-e1-440-turn-1-player-0.json",
+    "results/full-e1-441-turn-2-player-1.json",
+    "results/full-e1-444-turn-1-player-0.json",
+    "results/full-e1-446-turn-2-player-1.json",
+    "results/full-e1-447-turn-1-player-0.json",
+    "results/full-e1-448-turn-1-player-0.json",
+    "results/full-e1-450-turn-1-player-0.json",
+    "results/full-e1-451-turn-2-player-1.json",
+    "results/full-e1-452-turn-1-player-0.json",
+    "results/full-e1-453-turn-1-player-0.json",
+    "results/full-e1-455-turn-1-player-0.json",
+    "results/full-e1-456-turn-2-player-1.json",
+    "results/full-e1-457-turn-1-player-0.json",
+    "results/full-e1-458-turn-1-player-0.json",
+    "results/full-e1-459-turn-1-player-0.json",
+    "results/full-e1-460-turn-1-player-0.json",
+    "results/full-e1-461-turn-2-player-1.json",
+    "results/full-e1-462-turn-1-player-0.json",
+    "results/full-e1-463-turn-1-player-0.json",
+    "results/full-e1-464-turn-1-player-0.json",
+    "results/full-e1-465-turn-1-player-0.json",
+    "results/full-e1-466-turn-2-player-1.json",
+    "results/full-e1-467-turn-1-player-0.json",
+    "results/full-e1-468-turn-1-player-0.json",
+    "results/full-e1-469-turn-1-player-0.json",
+    "results/full-e1-470-turn-1-player-0.json",
+    "results/full-e1-471-turn-2-player-1.json",
+    "results/full-e1-473-turn-1-player-0.json",
+    "results/full-e1-474-turn-1-player-0.json",
+    "results/full-e1-475-turn-1-player-0.json",
+    "results/full-e1-476-turn-2-player-1.json",
+    "results/full-e1-477-turn-1-player-0.json",
+    "results/full-e1-478-turn-1-player-0.json",
+    "results/full-e1-479-turn-1-player-0.json",
+    "results/full-e1-480-turn-1-player-0.json",
+    "results/full-e1-481-turn-2-player-1.json",
+    "results/full-e1-483-turn-1-player-0.json",
+    "results/full-e1-485-turn-1-player-0.json",
+    "results/full-e1-486-turn-2-player-1.json",
+    "results/full-e1-487-turn-1-player-0.json",
+    "results/full-e1-488-turn-1-player-0.json",
+    "results/full-e1-489-turn-1-player-0.json",
+    "results/full-e1-490-turn-1-player-0.json",
+    "results/full-e1-491-turn-2-player-1.json",
+    "results/full-e1-492-turn-1-player-0.json",
+    "results/full-e1-493-turn-1-player-0.json",
+    "results/full-e1-494-turn-1-player-0.json",
+    "results/full-e1-495-turn-1-player-0.json",
+    "results/full-e1-496-turn-2-player-1.json",
+    "results/full-e1-497-turn-1-player-0.json",
+    "results/full-e1-498-turn-1-player-0.json",
+    "results/full-e1-499-turn-1-player-0.json"
   ],
   "failures": [
     {
@@ -1063,584 +1259,94 @@
       "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
-      "decisionId": "full-e1-384-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-384-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-385-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-385-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-386-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-386-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-387-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-387-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-388-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-388-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-389-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-389-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-390-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-390-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
       "decisionId": "full-e1-391-turn-2-player-1",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-391-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-392-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-392-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-393-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-393-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-394-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-394-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-395-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-395-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-396-turn-2-player-1",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-396-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-397-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-397-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-398-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-398-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-399-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-399-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-400-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-400-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-401-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-401-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-402-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-402-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-403-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-403-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-404-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-404-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-405-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-405-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-406-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-406-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-407-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-407-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-408-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-408-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-409-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-409-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-410-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-410-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-411-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-411-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-412-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-412-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-413-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-413-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-414-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-414-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-415-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-415-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-416-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-416-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-417-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-417-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-418-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-418-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-419-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-419-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-420-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-420-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-421-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-421-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-422-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-422-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-423-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-423-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-424-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-424-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-425-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-425-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-426-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-426-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-427-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-427-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-428-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-428-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-429-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-429-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-430-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-430-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-431-turn-2-player-1",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-431-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-432-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-432-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-433-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-433-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-434-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-434-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-435-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-435-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-436-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-436-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-437-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-437-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-438-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-438-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-439-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-439-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-440-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-440-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-441-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-441-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-442-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-442-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-443-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-443-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-444-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-444-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-445-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-445-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-446-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-446-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-447-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-447-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-448-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-448-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-449-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-449-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-450-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-450-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-451-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-451-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-452-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-452-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-453-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-453-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-454-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-454-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-455-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-455-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-456-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-456-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-457-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-457-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-458-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-458-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-459-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-459-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-460-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-460-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-461-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-461-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-462-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-462-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-463-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-463-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-464-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-464-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-465-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-465-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-466-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-466-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-467-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-467-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-468-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-468-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-469-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-469-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-470-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-470-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-471-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-471-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-472-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-472-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-473-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-473-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-474-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-474-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-475-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-475-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-476-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-476-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-477-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-477-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-478-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-478-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-479-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-479-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-480-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-480-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-481-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-481-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-482-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-482-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-483-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-483-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     },
     {
       "decisionId": "full-e1-484-turn-1-player-0",
       "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-484-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-485-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-485-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-486-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-486-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-487-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-487-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-488-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-488-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-489-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-489-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-490-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-490-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-491-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-491-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-492-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-492-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-493-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-493-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-494-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-494-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-495-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-495-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-496-turn-2-player-1",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-496-turn-2-player-1.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-497-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-497-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-498-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-498-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
-    },
-    {
-      "decisionId": "full-e1-499-turn-1-player-0",
-      "rawOutputFile": "docs/research/experiments/full-e4-tom-prompted-batch/raw/full-e1-499-turn-1-player-0.txt",
-      "message": "Raw output file is missing."
+      "message": "Parsed JSON does not match the required reasoning trace shape."
     }
   ]
 }

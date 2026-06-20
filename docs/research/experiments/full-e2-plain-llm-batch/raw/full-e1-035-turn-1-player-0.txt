@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-035-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand is all low spades with no trump or bomb. On the opening lead, I should preserve my relatively stronger cards (4, 5, 6) for later tricks and play the weakest card first."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three unknown cards and no public information is available about their strength or suits.",
+    "confidence": 0.2,
+    "evidence": [
+      "No cards have been played yet.",
+      "Partner hand count is three, but ranks and suits are hidden."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have three unknown cards; their strength relative to my low spades is unknown.",
+    "confidence": 0.2,
+    "evidence": [
+      "No cards have been played yet.",
+      "Trump rank is 7, but I do not know opponents' trump holdings."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the spade 3, my lowest card, minimizes the value I give away on the opening lead and keeps the 4-6 for future tricks where they might win or block opponents.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is stronger than the 3 but no more likely to win the trick, so playing it would waste a resource."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a middle card in my hand; I should keep it for later rather than spend it on an uncertain opening lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card and my best chance to win or block later; leading it now would be wasteful."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The low spade 3 will likely be beaten by an opponent or partner, so I will lose the lead immediately.",
+      "My remaining cards are still weak, so regaining control may be difficult."
+    ],
+    "mitigation": "By sacrificing the 3 first, I avoid depleting my stronger cards and may be able to respond more effectively on a later trick."
+  },
+  "confidence": 0.85
+}

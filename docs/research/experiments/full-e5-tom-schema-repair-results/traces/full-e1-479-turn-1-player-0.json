@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-479-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I am down to 2 cards while the other three players each have 3. Leading a strong card lets me keep the initiative and play out my remaining deuce on the next turn."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards and has not acted, so no specific hand shape is known. Publicly, partner would prefer that I finish quickly rather than leave weak cards that may cost the team tempo.",
+    "confidence": 0.5,
+    "evidence": [
+      "e555a970-7432-4ddc-9af9-ab4977bf59aa"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 cards and no cards have been played, so their holdings are unknown. They could hold trumps or jokers, but it is only probabilistic; an Ace is likely to win a non-trump single lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "e555a970-7432-4ddc-9af9-ab4977bf59aa"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace is the strongest non-trump single in my hand. Leading it maximizes the chance of winning the trick and retaining the lead, after which I can play the deuce and exit the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "A deuce is the lowest rank and is very likely to be beaten by any opponent or partner card. Losing the lead cedes tempo to the opponents and leaves my Ace without a guaranteed chance to win a trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may hold a trump or joker that beats the Ace, causing me to lose the lead.",
+      "If the Ace is beaten, my remaining deuce is unlikely to win a future trick."
+    ],
+    "mitigation": "Leading the Ace first uses my strongest card proactively. If it is beaten, the outcome is largely outside my control given my weak remaining hand, but this ordering at least gives the best chance to finish."
+  },
+  "confidence": 0.75
+}

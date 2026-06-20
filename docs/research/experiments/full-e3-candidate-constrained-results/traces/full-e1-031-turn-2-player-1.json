@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-031-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 (opponent) is near finishing with only 2 cards left and has led a low heart. Taking the lead now prevents the opponent from retaining initiative and potentially going out."
+  },
+  "partnerBelief": {
+    "summary": "No direct information about partner's hand; partner has not played or signaled.",
+    "confidence": 0.3,
+    "evidence": [
+      "Partner hand count is 3 but ranks/suits are unknown.",
+      "No public plays or passes from partner yet."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 likely holds cards stronger than the led 3-heart and is trying to advance toward finishing. They may be low on safe exit cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "Player 0 led a low non-trump single.",
+      "Player 0 has only 2 cards remaining.",
+      "Scenario tag indicates opponent_near_finish."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the cheapest legal card that beats the table's 3 of hearts. It wins the trick, gains the lead, and preserves the higher 9 and 10 for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the lead with player 0, who is near finishing and may go out on the next trick."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 wins the trick but wastes a higher card; the 4 already beats the 3 and is the lowest-cost option."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is even higher and unnecessarily strong here; conserving it is better."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent may still have a higher heart or trump to retake the lead.",
+      "Partner may have been able to beat the 3 without our intervention."
+    ],
+    "mitigation": "Use the minimum winning card (4 of hearts) to take control cheaply, keeping 9 and 10 to contest future tricks."
+  },
+  "confidence": 0.85,
+  "notes": "No hidden cards are assumed; this action is chosen strictly from the verifier-provided legal action list."
+}

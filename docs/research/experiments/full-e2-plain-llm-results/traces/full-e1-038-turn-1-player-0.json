@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-038-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 1 is down to 2 cards, so the immediate priority is to make that opponent spend cards rather than giving them a cheap path to finish. Leading a low single forces the table to respond and can burn one of their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) hand is unknown. They have 3 cards and may be able to cover a low lead or win a later trick, but no public signals have been exchanged.",
+    "confidence": 0.4,
+    "evidence": [
+      "publicHistory only contains new_game; no partner signals observed",
+      "handCounts shows player 2 holds 3 cards"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1 is an opponent near finish with only 2 cards remaining. Those cards are unknown but likely include at least one playable answer to a low single lead.",
+    "confidence": 0.7,
+    "evidence": [
+      "handCounts[1] = 2",
+      "scenario tag opponent_near_finish"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "My hand is four consecutive low clubs (3-6), all non-trump. With no trump, bomb, or straight available, the standard lead is the lowest single. Playing the 3♣ gets rid of the weakest card first, preserves the slightly higher 4♣-6♣ for later tricks, and forces opponents to commit a card to the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4♣ is not materially stronger than the 3♣ in absolute terms; leading it wastes a small amount of ordering value and still loses to almost any non-trump or trump card."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is the middle of my hand and my third-weakest card; leading it now leaves me with weaker cards for later while still being unlikely to win the trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6♣ is my highest non-trump card. Leading it squanders the only card that might occasionally win against another low club lead later, and it is still very weak against trumps or higher ranks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "A near-finish opponent may beat the low lead and then use their remaining card to go out on the next trick.",
+      "Partner may be unable to cover, ceding lead and tempo to the opponents."
+    ],
+    "mitigation": "Because all my cards are low non-trump singles, no lead can strongly control the table. By leading the 3♣ I at least minimize my own loss of value and ensure the opponent must play a real card rather than passing a weak lead uncontested."
+  },
+  "confidence": 0.7,
+  "notes": "No trump, bomb, or multi-card combination is available in this hand, so the decision reduces to which singleton to lead."
+}

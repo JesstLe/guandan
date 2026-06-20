@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-466-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Player 0 is an opponent with only 2 cards remaining and has the lead. Seizing the lead now with the cheapest winning card prevents the opponent from controlling the next trick and possibly going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds 3 unknown cards and has not acted this trick. They might be able to beat a heart 3, but I cannot assume they have a suitable heart or any trump. They may prefer to save strength for later, especially if the opponent is near finishing.",
+    "confidence": 0.5,
+    "evidence": [
+      "82694ea6-44b9-401f-97de-7af002b621c5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a low heart 3 while down to 2 cards. This suggests they are trying to shed a weak card to retain or gain initiative, and their remaining card is likely higher or a trump. Allowing them to keep the lead is dangerous because they could play their stronger remaining card next and possibly finish.",
+    "confidence": 0.7,
+    "evidence": [
+      "82694ea6-44b9-401f-97de-7af002b621c5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the minimum-cost winner over the led 3 of hearts. Taking the lead now disrupts the opponent's tempo without wasting the 9 or 10, and it directly counters the 'opponent_near_finish' threat.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the opponent in control with only 2 cards. Partner might or might not be able to win; relying on that hidden strength is too risky when the opponent could finish on the next play."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but is stronger than necessary. Expending a higher card now reduces future flexibility and does not provide extra benefit compared with the 4."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is the highest non-trump single in hand and would be an even bigger over-commitment for a trick that the 4 can already win."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may have wanted the lead instead; playing now could override a possible partner signal.",
+      "The 4 is still a non-trump card and could be beaten by a higher heart or any trump held by an opponent."
+    ],
+    "mitigation": "By playing the lowest legal winner, I minimize resource cost while still taking control. If an opponent overrides with a higher card or trump, my stronger cards remain available for future tricks."
+  },
+  "confidence": 0.75
+}

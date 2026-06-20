@@ -43,6 +43,10 @@ describe('humanAuditAnnotatorPackage', () => {
         .join('\n')
       expect(joinedPackageText).not.toMatch(/\bverifier[A-Za-z0-9_]*\b/)
       expect(joinedPackageText).not.toMatch(/answer[-_]?key/i)
+      expect(joinedPackageText).toContain('## Fields To Label')
+      expect(joinedPackageText).toContain('humanHiddenInfoDisciplined')
+      expect(joinedPackageText).toContain('## Label Rubric')
+      expect(joinedPackageText).toContain('Judge the explanation-action link')
       expect(joinedPackageText).toContain('Return only `human-audit-completed-annotations.csv`')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })

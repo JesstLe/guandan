@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-439-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "This is the opening lead of a hand with very short stacks (2 vs 3-3-3). Taking the first trick lets our team control the tempo in the endgame race and positions us to play out first."
+  },
+  "partnerBelief": {
+    "summary": "My partner holds 3 cards but has taken no public action yet. With no prior signals, they are most likely holding a mix of ordinary and possibly some high/trump cards; I cannot assume specific cards. By leading a high non-trump single, I give my partner a chance to cover with a higher card or trump if opponents challenge, without forcing them to commit a bomb.",
+    "confidence": 0.6,
+    "evidence": [
+      "9282ffbb-aa93-4686-850f-d0ab1968acd0"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 cards and has not acted. They could have trump-ranked cards (7s), other high cards, or bombs. They will try to beat my lead and seize tempo, especially because they have larger hands. A lower lead would be more vulnerable to an ordinary high card, so opponents likely prefer to win cheaply rather than expose a bomb this early.",
+    "confidence": 0.6,
+    "evidence": [
+      "9282ffbb-aa93-4686-850f-d0ab1968acd0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace of spades is the strongest legal single I can lead. It maximizes the chance that no opponent can beat it with a normal higher card, and it avoids handing over tempo on the very first trick. If an opponent beats it with a trump or bomb, that at least forces them to reveal strength.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "The 2 of spades is the weakest non-trump rank. Leading it invites any ordinary high card from opponents to take the trick and gives the opponents free tempo in an endgame race where every lead matters."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a 7/trump-rank single or a joker and beat the Ace.",
+      "An opponent may use a bomb to take control, though this is less likely on trick 1 without a stronger lead.",
+      "If I win this trick, my remaining 2 of spades may be hard to get rid of later."
+    ],
+    "mitigation": "Leading the Ace is the best risk/reward play because it wins the trick against most non-trump hands and forces opponents to use stronger resources if they want control."
+  },
+  "confidence": 0.75,
+  "notes": "Only the new_game public event is available, so all beliefs about partner/opponent hands remain probabilistic."
+}

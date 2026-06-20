@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-017-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards left and is flagged as near finish. With a weak hand, I want to lead the lowest possible card so partner can win the trick cheaply and then lead their remaining card toward going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has one or two cards that can beat a low single, but their exact ranks are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows player 2 has 2 cards remaining",
+      "scenario tag partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 3 cards each and unknown composition; any of them could easily beat our low non-trump single.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows players 1 and 3 each have 3 cards",
+      "our hand contains only low non-trump diamonds"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds uses the least valuable card, preserves the 4/5/6, and sets the lowest possible winning threshold for partner to take the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Uses a slightly higher card without meaningfully reducing the chance opponents can beat it; the 4 is better kept for later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Expends a middle card from an already weak hand and does not improve the chance of transferring lead to partner."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card in hand wastes our strongest remaining card when an opponent can still take the trick with a common higher card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with any higher non-trump card may win the lead immediately.",
+      "Partner may choose not to play a winning card, leaving the lead with an opponent."
+    ],
+    "mitigation": "Retain the slightly higher 4, 5, and 6 diamonds to have more options on future tricks if the lead returns to us."
+  },
+  "confidence": 0.6
+}

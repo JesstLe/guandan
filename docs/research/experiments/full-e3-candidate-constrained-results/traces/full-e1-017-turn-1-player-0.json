@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-017-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "My hand is all low non-trump diamonds; leading the smallest card preserves my slightly higher cards for later tricks and avoids giving opponents unnecessary information."
+  },
+  "partnerBelief": {
+    "summary": "Partner is down to 2 cards and near finishing, so they may be able to capitalize if the lead becomes cheap, but their exact strength is unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "handCounts shows teammate (player 2) has only 2 cards",
+      "scenarioTags includes partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold more cards than my team in this trick and likely have trumps or higher cards since my hand contains no trump-rank cards.",
+    "confidence": 0.7,
+    "evidence": [
+      "opponents hold 5 cards total versus my 4",
+      "my hand has no trump-rank cards",
+      "trump rank is 7, which outranks all my cards"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the cheapest non-trump lead available; it minimizes the value I surrender if opponents win and keeps my 4-6 for potential future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Slightly higher than the 3 but still a weak non-trump lead; playing it wastes a marginally stronger card for no extra benefit."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A mid-low card in this hand; better saved for a later trick where relative rank might matter."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The highest non-trump in my hand; leading it first squanders the card most likely to win among my low diamonds."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents likely win the opening trick with a trump or higher card and retain the lead.",
+      "Partner may not be able to overtake if opponents have trumps."
+    ],
+    "mitigation": "Leading the 3 limits the damage and keeps my remaining low cards intact, giving me more flexibility in subsequent tricks."
+  },
+  "confidence": 0.75
+}

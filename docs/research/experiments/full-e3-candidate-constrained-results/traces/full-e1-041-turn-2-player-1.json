@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-041-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Opponent 0 led a low heart and has only 2 cards left, so taking control now prevents them from keeping the lead and potentially going out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) likely holds some middle/high cards but no specific information is available.",
+    "confidence": 0.2,
+    "evidence": [
+      "Partner has not yet acted this round.",
+      "No trumps, bombs, or big cards have been played.",
+      "Partner hand count is 3, identical to opponents."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is near finishing with 2 cards and probably played the 3 to shed a low card; opponents 0 and 3 together still hold 5 cards with unknown strength.",
+    "confidence": 0.4,
+    "evidence": [
+      "Player 0 led a low non-trump single with only 2 cards remaining.",
+      "No trump or bomb has been played yet.",
+      "Opponents' hand counts are 2 and 3."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 4 of hearts is the lowest card that beats the led 3, so it wins the trick while preserving the stronger 9 and 10 for future plays.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets opponent 0 retain the lead with only 2 cards left, increasing the chance they finish first."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 beats the 3 but uses a higher card than necessary, weakening future control."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 also wins but is even more wasteful when the 4 already takes the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Players 2 or 3 may play a higher heart and steal the trick.",
+      "Opponent 0 may still have a trump or high card to regain control."
+    ],
+    "mitigation": "By playing the minimal winning card, we keep the 9 and 10 available to respond to higher plays or to lead in the next trick."
+  },
+  "confidence": 0.75
+}

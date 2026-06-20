@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-010-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader, I want to win this trick to take control of the table and set the tempo for my team."
+  },
+  "partnerBelief": {
+    "summary": "No public information about partner's hand; they could hold any remaining cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "Only the new_game event is in public history, so there are no partner signals or played cards to infer from."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No public information about opponents' hands; their card distributions are unknown.",
+    "confidence": 0.1,
+    "evidence": [
+      "No cards have been played yet, so opponents' holdings cannot be inferred."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest singleton (spade 3) starts the trick cheaply while preserving the stronger spade 4, 5, and 6 for future leads or responses.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Playing the 4 expends a stronger card when the 3 can serve the same leading role."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a stronger card best kept for a later trick rather than used on an opening probe."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest card in hand and should be saved for a situation where it is more likely to win."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may play a higher card and win the trick.",
+      "The opening lead reveals that I hold spades, which opponents may use to shape their play."
+    ],
+    "mitigation": "Losing a low card on the opening lead is acceptable with a weak hand; I retain higher cards and can adapt after seeing opponents' responses."
+  },
+  "confidence": 0.85
+}

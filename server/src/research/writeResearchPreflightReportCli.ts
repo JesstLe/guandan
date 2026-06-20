@@ -16,9 +16,11 @@ console.log(JSON.stringify({
   markdownPath: result.markdownPath,
   status: result.report.status,
   aamasFullPaperReadiness: result.report.aamasFullPaperReadiness,
+  reviewerResponseStatus: result.report.reviewerResponseStatus,
   externalBlockers: result.report.externalBlockers.length,
   localBlockers: result.report.localBlockers.length,
   readinessBlockers: result.report.readinessBlockers.length,
+  reviewerResponseBlockers: result.report.reviewerResponseBlockers.length,
 }, null, 2))
 
 function parseArgs(argv: string[]): Args {

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-424-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left and a low opponent hand-count advantage, the priority is to win this lead so I can shed the remaining 2 on the next turn and exit the hand."
+  },
+  "partnerBelief": {
+    "summary": "No public actions have occurred, so the partner's exact hand is unknown. Given the endgame race tag, the partner is likely trying to finish their hand quickly and may be able to support later if control passes to them.",
+    "confidence": 0.3,
+    "evidence": [
+      "5582c24a-3104-4d23-98fe-3229c3ff4af3"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold nine cards, so some of them may have trumps or jokers that can beat my Ace. However, the Ace of spades is still a very strong lead and is more likely to win than the weak 2.",
+    "confidence": 0.4,
+    "evidence": [
+      "5582c24a-3104-4d23-98fe-3229c3ff4af3"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the Ace maximizes the chance of winning the trick and retaining the lead, which lets me play the 2 next turn and finish the hand. The Ace is the strongest card in my hand and the highest non-trump rank.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is very weak and likely to be beaten by an opponent, ceding initiative and potentially allowing opponents to control the endgame. It also wastes the Ace as a follow-up when I might not regain the lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a joker, trump 7, or other high card that beats the Ace and takes control.",
+      "Even if the Ace wins, partner or opponents may still block the final 2 play in subsequent turns."
+    ],
+    "mitigation": "The Ace lead is still the highest-probability way to keep control compared with the 2, so it is the best risk-adjusted play."
+  },
+  "confidence": 0.75
+}

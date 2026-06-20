@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "full-e1-008-turn-1-player-0",
+  "chosenActionId": "play-single-club-3-copy1",
+  "reasoning": "I am leading the first trick with no trumps and only low clubs (3-6). Leading the 3 of clubs is the safest opening play: it is the lowest non-trump card, minimizes the risk of losing control immediately, and gives my partner the best chance to win the trick cheaply. The opponent to my left has only 2 cards remaining, so preserving my slightly higher club cards for later while probing with the lowest card is prudent."
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-20T02:49:47.533Z",
+  "status": "ready_to_send",
+  "facts": {
+    "packetQualityStatus": "packet_ready",
+    "annotatorPackageStatus": "package_ready",
+    "archiveStatus": "archive_ready",
+    "intakeStatus": "awaiting_return",
+    "interAnnotatorStatus": "awaiting_returns",
+    "agreementStatus": "pending",
+    "readyForAnnotation": true,
+    "readyForPaperEvidence": false,
+    "sampleCount": 40,
+    "totalLabels": 200,
+    "completedLabels": 0,
+    "archivePath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
+    "archiveSha256": "0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d",
+    "archiveBytes": 54786
+  },
+  "checks": [
+    {
+      "id": "packet-quality-ready",
+      "status": "pass",
+      "finding": "packet-quality status=packet_ready, readyForAnnotation=true"
+    },
+    {
+      "id": "blind-package-ready",
+      "status": "pass",
+      "finding": "annotator package status=package_ready"
+    },
+    {
+      "id": "package-excludes-reference",
+      "status": "pass",
+      "finding": "blind package excludes answer key and verifier labels"
+    },
+    {
+      "id": "archive-ready",
+      "status": "pass",
+      "finding": "archive status=archive_ready"
+    },
+    {
+      "id": "archive-digest-present",
+      "status": "pass",
+      "finding": "archive sha256=0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d"
+    },
+    {
+      "id": "sample-count-ready",
+      "status": "pass",
+      "finding": "sampleCount=40"
+    },
+    {
+      "id": "paper-evidence-not-claimed-before-return",
+      "status": "pass",
+      "finding": "agreement status=pending, readyForPaperEvidence=false"
+    }
+  ],
+  "sendPackage": {
+    "preferredPath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
+    "requiredReturnFiles": [
+      "human-audit-completed-annotations-annotator-a.csv",
+      "human-audit-completed-annotations-annotator-b.csv",
+      "human-audit-adjudicated-annotations.csv"
+    ],
+    "forbiddenFiles": [
+      "human-audit-answer-key.jsonl",
+      "human-audit-manifest.json",
+      "human-audit-agreement-report.json",
+      "human-audit-agreement-report.md"
+    ]
+  },
+  "nextActions": [
+    "Send the blind archive to two independent annotators.",
+    "Save returned files as human-audit-completed-annotations-annotator-a.csv and human-audit-completed-annotations-annotator-b.csv.",
+    "Run inter-annotator, adjudication-template, build-adjudicated, intake, and agreement commands after returns arrive."
+  ]
+}

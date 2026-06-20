@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-039-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two cards while every opponent holds three, so the immediate priority is to empty my hand quickly. Leading my strongest non-trump card gives the best chance to win the trick and then play the remaining Ace on the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds three unseen cards; their exact ranks, suits, and strength are unknown. They may be able to support later if opponents seize the lead, but no hidden cards can be asserted as facts.",
+    "confidence": 0.3,
+    "evidence": [
+      "5bb48d2e-4b73-4a76-a23a-b2fcf08961a9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold nine unseen cards and may contain trump 7s, red trumps, or higher non-trump cards that can beat my plays. Exact opponent holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "5bb48d2e-4b73-4a76-a23a-b2fcf08961a9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 of spades is the highest non-trump card in my hand, so leading it maximizes the chance of winning this trick outright. After winning, I can lead the Ace of spades next and potentially finish my hand in one round.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace first commits a weaker card and makes it easier for an opponent to take the lead with the other 2 of spades or a trump, leaving me with the stronger 2 but no guaranteed chance to play it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump 7 or red trump to beat the 2 of spades.",
+      "An opponent may win the trick and lead a combination that I cannot follow, forcing me to pass and delaying my finish."
+    ],
+    "mitigation": "Retain the Ace of spades to contest a future non-trump single lead if the 2 is beaten, and rely on the fact that only trumps can beat a non-trump 2."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead in an endgame race; no hidden cards are asserted as facts."
+}

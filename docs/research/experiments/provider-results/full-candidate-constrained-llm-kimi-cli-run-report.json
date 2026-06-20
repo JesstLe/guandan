@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl",
+  "expectedCount": 50,
+  "attemptedCount": 6,
+  "skippedCount": 44,
+  "writtenCount": 50,
+  "successCount": 50,
+  "errorCount": 0,
+  "pendingSuccessCount": 0,
+  "stoppedAfterError": false,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/full-candidate-constrained-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-19T07:11:09.530Z",
+  "runner": "kimi-cli"
+}

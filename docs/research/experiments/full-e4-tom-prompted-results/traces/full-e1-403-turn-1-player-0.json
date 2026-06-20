@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-403-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is entirely low non-trump clubs, so I cannot realistically retain the lead. The best team play is to lead the weakest card, maximizing the chance my partner can win the trick and take control while I unload a useless card."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. With no public plays yet, I have no direct signal of strength, but a low single lead gives them the widest range of cards that can beat it and take over the trick.",
+    "confidence": 0.4,
+    "evidence": [
+      "97489841-e835-4761-8ed9-cd0d7cca8f89"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents are player 1 with 2 cards and player 3 with 3 cards. Player 1 is close to finishing, so they are likely eager to win any trick they can. Either opponent can probably beat a low 3♣ single with a higher card or trump, but leading low does not force them to spend a premium card.",
+    "confidence": 0.5,
+    "evidence": [
+      "97489841-e835-4761-8ed9-cd0d7cca8f89"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♣ is the lowest legal single. It maximizes the chance partner can win with a modest card, starts shedding my weak cards, and preserves the slightly higher 4-6 for later when rank might matter more.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4♣ is still a weak non-trump single; it reduces the window of cards partner can use to win without making it meaningfully harder for opponents."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5♣ is higher than necessary for an opening lead and could force partner to burn a better card to take the trick."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6♣ is my strongest card, but it is still easily beaten by any 7 or trump; keeping it offers marginally more future value than leading it now."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 1, with only 2 cards, may win the trick and be in position to finish the hand quickly.",
+      "A low single may be passed around, but any opponent with a trump or higher card can take it."
+    ],
+    "mitigation": "Leading the absolute lowest card gives partner the best chance to capture the lead cheaply and avoids wasting my only slightly higher cards on a trick I am unlikely to win."
+  },
+  "confidence": 0.65,
+  "notes": "No trumps or high cards in hand; all candidate actions are weak single leads, so the tie-breaker is minimizing card value to help partner and preserve future options."
+}

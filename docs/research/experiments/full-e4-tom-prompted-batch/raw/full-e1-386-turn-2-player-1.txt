@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-386-turn-2-player-1",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 led a low heart and has only one card left, so the top priority is to seize the trick and prevent them from leading their final card and finishing the hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) holds three unknown cards and may be able to beat a low 3 of hearts, but there is no public evidence of their strength, so I cannot rely on them to stop player 0.",
+    "confidence": 0.5,
+    "evidence": [
+      "44883e26-8ebf-48ef-b477-16c139679c0c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is an opponent with only one card remaining after leading the 3 of hearts; their last card is likely strong or a trump intended to finish. Player 2 may also have a higher heart or trump to contest a weak follow.",
+    "confidence": 0.65,
+    "evidence": [
+      "44883e26-8ebf-48ef-b477-16c139679c0c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the 10 of hearts gives the highest chance of winning the trick immediately, denying player 0 the lead and the opportunity to play their final card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing lets player 0 keep the lead with only one card left, creating a high risk they will finish the hand on the next trick."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "reason": "The 4 of hearts barely beats the 3 and will likely be overtaken by either player 0's final card or player 2, so it does not reliably stop the threat."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 of hearts is a strong winner, but the 10 of hearts is even more likely to secure the trick against an opponent who may have kept a high last card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 2 or player 0 may still hold a trump or higher single that beats the 10 of hearts.",
+      "Using the 10 now may leave weaker cards for future tricks if the hand continues."
+    ],
+    "mitigation": "Given player 0 is one card away from finishing, stopping them now outweighs conserving strength. If partner overtops the 10, that is still a favorable team outcome."
+  },
+  "confidence": 0.75
+}

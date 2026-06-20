@@ -1,0 +1,31 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-399-turn-1-player-0",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "reasoning": {
+    "theoryOfMind": {
+      "partnerBeliefs": {
+        "summary": "Partner (player 2) holds 3 cards and is on the same team. With no public plays yet, partner likely has a mix of ranks and may be able to beat a low single if they have a strong card, or pass to let me keep the lead. Partner has no direct signal yet, but in an endgame race a partner with a winning high card may take control to set up a finish for the team.",
+        "evidence": ["cd653597-253d-44d2-a12c-b6422bcb6222"]
+      },
+      "opponentBeliefs": {
+        "summary": "Opponents (players 1 and 3) each hold 3 cards and have not shown any cards. They could hold jokers or trump-rank 7s that beat my A, or they may be weak and unable to beat either card. Because their hands are larger than mine, they are more likely to contain at least one high card, so leading my strongest single risks losing control.",
+        "evidence": ["cd653597-253d-44d2-a12c-b6422bcb6222"]
+      },
+      "counterfactuals": [
+        {
+          "actionId": "play-single-spade-A-copy2",
+          "analysis": "Leading the A is aggressive and likely wins the trick if opponents lack a joker or trump. However, if an opponent beats it, I am left with only the low 2 and may not be able to regain the lead, especially if opponents switch to combinations that the 2 cannot match.",
+          "evidence": ["cd653597-253d-44d2-a12c-b6422bcb6222"]
+        },
+        {
+          "actionId": "play-single-spade-2-copy2",
+          "analysis": "Leading the 2 preserves the A as a controlling single. If opponents pass or partner takes the trick, I still have the A to win a future single trick and then play the 2 last. If an opponent beats the 2, the A gives me a strong chance to reclaim the lead and finish.",
+          "evidence": ["cd653597-253d-44d2-a12c-b6422bcb6222"]
+        }
+      ]
+    },
+    "selectedActionRationale": "Leading the low 2 first keeps the high A in reserve for control. In a short-handed endgame race, preserving a likely winner is more important than immediate trick dominance, because losing the lead with the A could strand the weak 2.",
+    "confidence": 0.72
+  }
+}

@@ -1,0 +1,1 @@
+{"decisionId": "full-e1-000-turn-1-player-0", "agentId": "plain-llm", "chosenActionId": "play-single-spade-3-copy1", "reasoning": "I hold only low spades and have the opening lead. I cannot see partner or opponent hands, so I avoid assuming their cards. Playing the smallest card preserves my higher spades for later tricks and makes a minimal opening lead."}

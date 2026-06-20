@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "0.1.0",
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-449-turn-1-player-0",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "reasoningTrace": {
+    "partnerIntentInference": "Public history shows only a new-game event, so no direct partner signal exists. My hand count (2 cards) is lower than every other player's (3 cards), so I am closest to going out. A rational partner would want me to win this lead, retain the lead, and shed my last card. Therefore my partner is likely to pass or support only if I demonstrate a strong, protected lead; they cannot signal more without public actions.",
+    "opponentIntentInference": "Opponents each hold 3 cards and have not played anything, so they likely possess some trumps or high cards. Their objective is to seize the lead, force me to pass, and finish before my team. If I lead a weak card, an opponent can easily overtake and strand my final card. If I lead a strong non-trump card, they must spend a trump or bomb to stop me, which still advances my team's information and card-count pressure.",
+    "candidateComparison": "Option 1: Lead the spade A. It is the highest non-trump rank shown and only trumps/jokers can beat it, giving a high probability of winning the trick and keeping the lead for my final spade 2. Option 2: Lead the spade 2. It is lower and will almost certainly be beaten by any opponent's non-2 card or trump, ceding the lead and likely leaving me unable to play my final card at the right moment. Thus the A lead is dominant for the endgame race.",
+    "selectedActionRationale": "With only two cards left, the team objective is to let me go out quickly. Leading the spade A maximizes the chance of winning this trick and retaining the lead, after which I can lead the spade 2 and exit. Even if an opponent trumps the A, the opponents must reveal strength, and the information/cost helps my partner.",
+    "evidence": [
+      "425f36b4-148d-4837-a1ee-ea9130dfe65e"
+    ]
+  }
+}

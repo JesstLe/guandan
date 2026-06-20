@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-007-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-6-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a partner near finish (only 2 cards left), winning this trick gives our team control of the table and maximizes the chance to help partner go out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner is close to finishing with only 2 cards remaining; their exact cards are unknown, but they likely have a mix of small and possibly one higher or trump card.",
+    "confidence": 0.8,
+    "evidence": [
+      "handCounts shows player 2 has 2 cards",
+      "scenarioTags includes partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have unseen cards and, given my hand is all low non-trump diamonds, they likely possess higher diamonds, trumps, or both that can beat a single lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "my private hand contains only ranks 3-6 of diamonds with no trumps",
+      "playedCardSummary shows no cards have been played yet",
+      "opponents hold 3, 2, and 3 cards respectively"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 6 of diamonds gives the highest probability of winning the trick among the legal single-card leads. Maintaining the lead is valuable because partner has only 2 cards and may finish soon; controlling the table lets me choose favorable leads or play around partner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "reason": "The 3 is the weakest card and almost certainly loses to any higher diamond or trump, surrendering control immediately without gaining information."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still very likely to be beaten; it does not materially improve the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Better than 3 or 4, but still inferior to the 6 for winning the trick while all four cards are equally vulnerable to trumps and higher non-trump cards."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher diamond or any trump and win the trick",
+      "If partner has only low diamonds they may be forced to play a card they wanted to keep",
+      "Winning with the 6 still leaves me with three weak cards that may be hard to dispose of later"
+    ],
+    "mitigation": "Playing the strongest available single maximizes the immediate chance to retain the lead; future leads can then be tailored once opponents reveal more information."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with a weak four-card diamond run and no trumps; priority is table control to support a partner who is one trick away from finishing."
+}

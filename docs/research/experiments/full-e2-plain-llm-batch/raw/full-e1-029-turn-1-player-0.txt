@@ -1,0 +1,1 @@
+{"agentId":"plain-llm","decisionId":"full-e1-029-turn-1-player-0","chosenActionId":"play-single-spade-2-copy2","reasoningTrace":"With only two cards and opponents holding more, I want to conserve the Ace as a high stopper for later. Leading the low 2 lets me keep control of a single with the Ace, which is more valuable in an endgame race."}

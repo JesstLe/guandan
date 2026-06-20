@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-025-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a weak hand, I want to start a trick with my lowest card. If it wins, my team gains the lead; if not, I have not invested any high value."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand. Partner has 3 cards and is on my team.",
+    "confidence": 0,
+    "evidence": [
+      "No public history beyond new_game.",
+      "Partner hand is hidden."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No specific information about opponents' hands. Each opponent has 3 cards.",
+    "confidence": 0,
+    "evidence": [
+      "No cards have been played.",
+      "Opponent hands are hidden."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the lowest single card (spade 3) to start cheaply and preserve the slightly higher spades for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "4 is higher than 3 and no more likely to win the trick; saving it is better."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "5 is stronger than necessary for an opening lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "6 is the highest non-trump single in hand and should be kept for later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 of spades is very low and will likely be beaten by an opponent or partner.",
+      "I may lose the lead immediately."
+    ],
+    "mitigation": "Losing the lead is acceptable because my remaining cards are also low; I have no trump or bomb to defend a lead anyway."
+  },
+  "confidence": 0.7,
+  "notes": "Opening lead with the weakest card is a standard conservative play."
+}

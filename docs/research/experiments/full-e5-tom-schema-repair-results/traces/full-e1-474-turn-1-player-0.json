@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-474-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I have only 2 cards while every other player has 3, so the priority is to exit quickly while keeping a high enough card to win or regain control later."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public signals yet. They are likely trying to finish their hand and may hold a trump or high card that can win a low lead, giving our team control.",
+    "confidence": 0.6,
+    "evidence": [
+      "c518e882-c186-41b2-9eba-e35feae60466"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 cards and have played nothing, so they probably hold some trump or high cards. If I lead the Ace, they can beat it with a trump and take control.",
+    "confidence": 0.6,
+    "evidence": [
+      "c518e882-c186-41b2-9eba-e35feae60466"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the low 2 of spades preserves the Ace as a finisher or counter, makes it cheap for partner to take the trick, and avoids giving opponents an easy trump capture of my highest card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Leading the Ace would leave me with only the weak 2, expose the Ace to opponent trump beats, and remove my best chance to regain control or win a later trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the low lead with a high/trump card and keep control.",
+      "Partner may be unable to take the trick, forcing me to use the Ace later.",
+      "My remaining Ace could still be beaten by a trump."
+    ],
+    "mitigation": "Keeping the Ace lets me contest a later single lead and gives me the strongest possible final card for the endgame race."
+  },
+  "confidence": 0.75,
+  "notes": "No public cards have been played; all beliefs about hidden hands remain probabilistic."
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-384-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only 2 cards while each opponent has 3 cards, so the immediate team objective is to empty this hand before the opponents can consolidate control."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards and no public actions have occurred, so I cannot confidently infer specific card holdings. They are likely to try to win tricks that let our team finish, but their exact strength is unknown.",
+    "confidence": 0.3,
+    "evidence": [
+      "e4a05937-946d-480d-8670-6e47602ecb6a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and may have trumps, bombs, or higher singles. With no cards played yet, their ability to block player 0 is uncertain but non-negligible.",
+    "confidence": 0.3,
+    "evidence": [
+      "e4a05937-946d-480d-8670-6e47602ecb6a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A is the strongest legal single. In an endgame race, retaining the lead is critical: if the A wins the trick, player 0 can lead the spade 2 next and likely exit. Even if an opponent beats the A, the same opponent would probably also beat a lead of the 2, so leading high does not materially increase the risk of losing control while it increases the chance of an immediate finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low 2 invites opponents or partner to take control. If an opponent wins, player 0 may be forced to play the A under a lead they cannot match, leaving the weak 2 stranded and slowing the team's finish."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the spade A with a trump or bomb.",
+      "If the A wins, the final spade 2 could still be beaten by an opponent on the next lead.",
+      "Partner may be unable to assist because no specific partner holdings are known."
+    ],
+    "mitigation": "Leading the highest available single maximizes the chance of winning the current trick and keeping the lead. Any card that beats the A would also beat the 2, so the A lead is at least as good for maintaining tempo."
+  },
+  "confidence": 0.75
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:14.582Z",
+  "status": "awaiting_returns",
+  "interAnnotatorReportPath": "docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json",
+  "blindJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+  "templateCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv",
+  "disagreementCount": 0,
+  "templateRows": 0,
+  "readyForAdjudication": false,
+  "readyForPaperEvidence": false,
+  "checks": [
+    {
+      "id": "inter-annotator-completed",
+      "status": "fail",
+      "detail": "inter-annotator status is awaiting_returns"
+    },
+    {
+      "id": "blind-context-present",
+      "status": "pass",
+      "detail": "all disagreement rows have blind context"
+    },
+    {
+      "id": "template-row-count",
+      "status": "pass",
+      "detail": "0/0 disagreement rows materialized"
+    }
+  ]
+}

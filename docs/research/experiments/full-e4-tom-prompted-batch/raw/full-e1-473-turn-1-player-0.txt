@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-473-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "With only low non-trump clubs, the team's best chance to win this trick is for me to lead small and let partner beat the lead with a higher or trump card."
+  },
+  "partnerBelief": {
+    "summary": "Partner may hold a higher single or a trump that can cover a low club lead, but this is uncertain because the only public event so far is the start of the game and no cards have been revealed.",
+    "confidence": 0.5,
+    "evidence": [
+      "988a06b2-bb3d-48f3-8ae8-ec55573083d8"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely have cards that can beat a low club single, and player 1 is down to 2 cards, increasing the chance they are close to finishing. Their exact strength remains hidden.",
+    "confidence": 0.6,
+    "evidence": [
+      "988a06b2-bb3d-48f3-8ae8-ec55573083d8"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the least committal play. It gives partner the easiest chance to win the trick with a higher card or trump, while preserving my slightly stronger clubs for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Leading my highest club now wastes the card most likely to win a future trick and leaves me with only 3-5 if the trick is lost."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is still a weak non-trump lead and does not meaningfully improve the chance that partner can win compared with leading the 3, while sacrificing a higher card."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Leading the 4 offers almost no extra strength over the 3 and still likely loses to any higher rank or trump, so it is better saved."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a higher single or trump and win the trick immediately.",
+      "Player 1 has only 2 cards, so losing the lead could let an opponent finish quickly.",
+      "Partner may be unable to beat even a low single if their hand is also weak."
+    ],
+    "mitigation": "Leading the lowest card minimizes my own resource loss and keeps my stronger clubs for later, while giving partner the maximum opportunity to take control."
+  },
+  "confidence": 0.65
+}

@@ -55,6 +55,7 @@ export interface AAMASReadinessReport {
       tomParsed: string
       tomRepairParsed: string
       tomProviderRun: string
+      tomIntegratedInPaper: boolean
     }
   }
   gates: AAMASReadinessGate[]
@@ -132,6 +133,37 @@ interface HumanAuditAgreement {
   macroAgreement?: number | null
 }
 
+interface HumanAuditInterAnnotatorAgreement {
+  status?: 'awaiting_returns' | 'needs_attention' | 'completed'
+  sampleCount?: number
+  pairedLabels?: number
+  totalLabels?: number
+  disagreementCount?: number
+  macroAgreement?: number | null
+  requiresAdjudication?: boolean
+  readyForAdjudication?: boolean
+}
+
+interface HumanAuditAdjudicationTemplate {
+  status?: 'awaiting_returns' | 'needs_attention' | 'ready_for_adjudication' | 'no_adjudication_needed'
+  disagreementCount?: number
+  templateRows?: number
+  readyForAdjudication?: boolean
+  checks?: Array<{ status?: string }>
+}
+
+interface HumanAuditAdjudicatedAnnotations {
+  status?: 'awaiting_returns' | 'needs_adjudication' | 'ready'
+  sampleCount?: number
+  outputRows?: number
+  completedLabels?: number
+  totalLabels?: number
+  unresolvedDisagreements?: number
+  adjudicatedCsvWritten?: boolean
+  readyForAgreement?: boolean
+  checks?: Array<{ status?: string }>
+}
+
 interface HumanAuditPacketQuality {
   status?: 'packet_ready' | 'needs_attention'
   sampleCount?: number
@@ -166,6 +198,95 @@ interface HumanAuditAnnotatorPackageArchive {
   sha256?: string | null
   sampleCount?: number | null
   checks?: Array<{ status?: string }>
+}
+
+interface HumanAuditLaunchChecklist {
+  status?: 'ready_to_send' | 'needs_attention' | 'evidence_ready'
+  facts?: {
+    readyForAnnotation?: boolean
+    readyForPaperEvidence?: boolean
+    sampleCount?: number | null
+    completedLabels?: number | null
+    totalLabels?: number | null
+    archiveSha256?: string | null
+  }
+  checks?: Array<{ status?: string }>
+}
+
+interface HumanAuditEvidenceGate {
+  status?: 'needs_attention' | 'awaiting_returns' | 'ready_for_adjudication' | 'needs_adjudication' | 'ready_for_agreement' | 'paper_evidence_ready'
+  facts?: {
+    sampleCount?: number | null
+    totalLabels?: number | null
+    completedLabels?: number | null
+    annotatorAPresent?: boolean
+    annotatorBPresent?: boolean
+    pairedLabels?: number | null
+    agreementMacroAgreement?: number | null
+    readyForPaperEvidence?: boolean
+  }
+  checks?: Array<{ status?: string }>
+  nextActions?: string[]
+}
+
+interface PilotReplicationReportFile {
+  status?: 'pending_missing_replication' | 'partial' | 'completed'
+  completedReplicationCount?: number
+  replications?: Array<{
+    id?: string
+    status?: string
+    provider?: string
+    model?: string
+    successCount?: number | null
+    expectedCount?: number | null
+    parsedCount?: number | null
+    hardFailureCount?: number | null
+  }>
+  requiredAction?: string
+}
+
+interface SecondProviderReplicationPreflight {
+  status?: string
+  facts?: {
+    inputJsonlRows?: number
+    promptPacketCount?: number
+    independentKeyPresent?: boolean
+    secondProviderRows?: number
+  }
+  blockers?: string[]
+}
+
+interface SecondProviderReplicationPackage {
+  status?: 'package_ready' | 'needs_attention'
+  inputRows?: number
+  promptPacketCount?: number
+  files?: unknown[]
+  readyForExternalRun?: boolean
+  readyForPaperEvidence?: boolean
+  checks?: Array<{ status?: string }>
+}
+
+interface VisualEvidenceReportFile {
+  status?: 'ready' | 'needs_revision' | 'ready_with_external_evidence_pending'
+  facts?: {
+    figureCount?: number
+    tableCount?: number
+    requiredFigureRolesPresent?: number
+    requiredFigureRolesTotal?: number
+    requiredTableRolesPresent?: number
+    requiredTableRolesTotal?: number
+    maxFigureCaptionWords?: number
+    averageFigureCaptionWords?: number
+    longFigureCaptionCount?: number
+    renderedPageImagesPresent?: number
+    renderedPageImagesTotal?: number
+  }
+  checks?: Array<{
+    id?: string
+    title?: string
+    status?: string
+    finding?: string
+  }>
 }
 
 interface PageBudget {
@@ -204,11 +325,22 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
   const humanAuditQuality = readJsonOptional<HumanAuditPacketQuality>(researchRoot, 'experiments/human-soft-label-audit/human-audit-packet-quality-report.json')
   const humanAnnotatorPackage = readJsonOptional<HumanAuditAnnotatorPackage>(researchRoot, 'experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json')
   const humanAnnotatorPackageArchive = readJsonOptional<HumanAuditAnnotatorPackageArchive>(researchRoot, 'experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json')
+  const humanAuditLaunchChecklist = readJsonOptional<HumanAuditLaunchChecklist>(researchRoot, 'submission/human-audit-launch/human-audit-launch-checklist.json')
+  const humanAuditEvidenceGate = readJsonOptional<HumanAuditEvidenceGate>(researchRoot, 'submission/human-audit-evidence-gate/human-audit-evidence-gate.json')
   const humanAuditIntake = readJsonOptional<HumanAuditIntake>(researchRoot, 'experiments/human-soft-label-audit/human-audit-intake-report.json')
+  const humanInterAnnotatorAgreement = readJsonOptional<HumanAuditInterAnnotatorAgreement>(researchRoot, 'experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json')
+  const humanAdjudicationTemplate = readJsonOptional<HumanAuditAdjudicationTemplate>(researchRoot, 'experiments/human-soft-label-audit/human-audit-adjudication-template-report.json')
+  const humanAdjudicatedAnnotations = readJsonOptional<HumanAuditAdjudicatedAnnotations>(researchRoot, 'experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.json')
   const humanAgreement = readJsonOptional<HumanAuditAgreement>(researchRoot, 'experiments/human-soft-label-audit/human-audit-agreement-report.json')
+  const pilotReplication = readJsonOptional<PilotReplicationReportFile>(researchRoot, 'experiments/pilot-replication/pilot-replication-report.json')
+  const secondProviderPackage = readJsonOptional<SecondProviderReplicationPackage>(researchRoot, 'experiments/pilot-replication/second-provider-replication-package-report.json')
+  const secondProviderPreflight = readJsonOptional<SecondProviderReplicationPreflight>(researchRoot, 'experiments/pilot-replication/second-provider-replication-preflight.json')
+  const visualEvidence = readJsonOptional<VisualEvidenceReportFile>(researchRoot, 'submission/visual-evidence/visual-evidence-report.json')
   const humanAnnotatorPresent = existsSync(join(researchRoot, 'experiments/human-soft-label-audit/human-audit-annotator.html'))
   const completedHumanAuditFiles = countCompletedHumanAuditFiles(researchRoot)
   const completedHumanAuditEvidence = completedHumanAuditFiles > 0 && humanAgreement?.status === 'completed'
+  const completedPilotReplicationEvidence = (pilotReplication?.completedReplicationCount ?? 0) > 0 && pilotReplication?.status === 'completed'
+  const replicationOrHumanEvidence = completedHumanAuditEvidence || completedPilotReplicationEvidence
   const pageBudget = readPageBudgetFromBuildStatus(researchRoot)
   const manifestEntries = manifest?.entries?.length ?? 0
   const manifestMissing = manifest?.entries?.filter(entry => entry.status === 'missing').length ?? 0
@@ -222,6 +354,7 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
   const fullTomMetricsReady = hasCompleteFullSplitMetrics(fullTom)
   const fullTomRepairMetricsReady = hasCompleteFullSplitMetrics(fullTomRepair)
   const fullTomReady = fullTomRawAuditReady && fullTomMetricsReady && fullTomRepairMetricsReady
+  const fullTomIntegratedInPaper = hasIntegratedFullTomEvidence(researchRoot)
   const gates: AAMASReadinessGate[] = [
     {
       id: 'local-artifact-hygiene',
@@ -304,8 +437,13 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
     {
       id: 'replication-and-human-audit',
       title: 'Replication and Human Audit',
-      status: completedHumanAuditEvidence ? 'pass' : 'needs_experiment',
+      status: replicationOrHumanEvidence ? 'pass' : 'needs_experiment',
       evidence: [
+        'experiments/pilot-replication/pilot-replication-report.json',
+        'experiments/pilot-replication/pilot-replication-report.md',
+        'experiments/pilot-replication/second-provider-replication-package-report.json',
+        'experiments/pilot-replication/second-provider-replication-package/manifest.json',
+        'experiments/pilot-replication/second-provider-replication-package/openai-batch-input.jsonl',
         'experiments/human-soft-label-audit/human-audit-manifest.json',
         'experiments/human-soft-label-audit/human-audit-annotation-sheet.csv',
         'experiments/human-soft-label-audit/human-audit-annotator.html',
@@ -313,21 +451,50 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
         'experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz',
         'experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json',
         'experiments/human-soft-label-audit/human-audit-packet-quality-report.json',
+        'submission/human-audit-launch/human-audit-launch-checklist.json',
+        'submission/human-audit-evidence-gate/human-audit-evidence-gate.json',
         'experiments/human-soft-label-audit/human-audit-intake-report.json',
+        'experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json',
+        'experiments/human-soft-label-audit/human-audit-adjudication-template-report.json',
+        'experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.json',
+        'experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv',
         'experiments/human-soft-label-audit/human-audit-agreement-report.json',
         'experiments/human-soft-label-audit/human-audit-protocol.md',
+        'experiments/pilot-replication/second-provider-replication-preflight.json',
+        'experiments/pilot-replication/second-provider-replication-preflight.md',
         'submission/aamas-latex/main.tex',
       ],
       finding: completedHumanAuditEvidence
         ? `Human soft-label audit has ${completedHumanAuditFiles} completed annotation file(s), and the agreement evaluator is completed with ${humanAgreement.completedLabels ?? 'unknown'}/${humanAgreement.totalLabels ?? 'unknown'} labels.`
+        : completedPilotReplicationEvidence
+          ? `${formatPilotReplication(pilotReplication)} ${formatSecondProviderPackage(secondProviderPackage)} Human soft-label audit remains desirable but is no longer the only replication safeguard.`
         : humanAgreement
-          ? `A human soft-label audit packet is prepared with ${humanAudit?.sampleCount ?? humanAgreement.sampleCount ?? 'unknown'} blind samples${humanAnnotatorPresent ? ', including a local annotator HTML' : ''}; ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditIntake(humanAuditIntake)} The agreement evaluator is ${humanAgreement.status ?? 'unknown'} with ${humanAgreement.completedLabels ?? 0}/${humanAgreement.totalLabels ?? 'unknown'} labels completed.`
+          ? `${formatPilotReplication(pilotReplication)} ${formatSecondProviderPackage(secondProviderPackage)} ${formatSecondProviderPreflight(secondProviderPreflight)} A human soft-label audit packet is prepared with ${humanAudit?.sampleCount ?? humanAgreement.sampleCount ?? 'unknown'} blind samples${humanAnnotatorPresent ? ', including a local annotator HTML' : ''}; ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditLaunchChecklist(humanAuditLaunchChecklist)} ${formatHumanAuditEvidenceGate(humanAuditEvidenceGate)} ${formatHumanAuditIntake(humanAuditIntake)} ${formatHumanInterAnnotatorAgreement(humanInterAnnotatorAgreement)} ${formatHumanAdjudicationTemplate(humanAdjudicationTemplate)} ${formatHumanAdjudicatedAnnotations(humanAdjudicatedAnnotations)} The agreement evaluator is ${humanAgreement.status ?? 'unknown'} with ${humanAgreement.completedLabels ?? 0}/${humanAgreement.totalLabels ?? 'unknown'} labels completed.`
         : humanAudit
-          ? `A human soft-label audit packet is prepared with ${humanAudit.sampleCount ?? 'unknown'} blind samples. ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditIntake(humanAuditIntake)}`
-          : 'The current package is single-provider at pilot scale and has no human audit packet or completed human audit artifact for soft strategic labels.',
-      requiredAction: completedHumanAuditEvidence
-        ? 'Report agreement with verifier soft labels and keep the completed annotator file under the human audit directory.'
+          ? `${formatPilotReplication(pilotReplication)} ${formatSecondProviderPackage(secondProviderPackage)} ${formatSecondProviderPreflight(secondProviderPreflight)} A human soft-label audit packet is prepared with ${humanAudit.sampleCount ?? 'unknown'} blind samples. ${formatHumanAuditQuality(humanAuditQuality)} ${formatHumanAnnotatorPackage(humanAnnotatorPackage)} ${formatHumanAnnotatorPackageArchive(humanAnnotatorPackageArchive)} ${formatHumanAuditLaunchChecklist(humanAuditLaunchChecklist)} ${formatHumanAuditEvidenceGate(humanAuditEvidenceGate)} ${formatHumanAuditIntake(humanAuditIntake)} ${formatHumanInterAnnotatorAgreement(humanInterAnnotatorAgreement)} ${formatHumanAdjudicationTemplate(humanAdjudicationTemplate)} ${formatHumanAdjudicatedAnnotations(humanAdjudicatedAnnotations)}`
+          : `${formatPilotReplication(pilotReplication)} ${formatSecondProviderPackage(secondProviderPackage)} ${formatSecondProviderPreflight(secondProviderPreflight)} The current package has no human audit packet or completed human audit artifact for soft strategic labels.`,
+      requiredAction: replicationOrHumanEvidence
+        ? completedHumanAuditEvidence
+          ? 'Report agreement with verifier soft labels and keep the completed annotator file under the human audit directory.'
+          : 'Report the completed second-provider/model pilot replication as robustness evidence, and keep the prepared human audit as follow-up or additional validation.'
         : 'Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.',
+    },
+    {
+      id: 'visual-evidence-package',
+      title: 'Figure and Table Evidence Package',
+      status: visualEvidence?.status && visualEvidence.status !== 'needs_revision' ? 'pass' : 'needs_revision',
+      evidence: [
+        'submission/visual-evidence/visual-evidence-report.json',
+        'submission/visual-evidence/visual-evidence-report.md',
+        'submission/aamas-latex/main.tex',
+        'figures/README.md',
+      ],
+      finding: visualEvidence
+        ? `Visual evidence report is ${visualEvidence.status}; figures ${visualEvidence.facts?.figureCount ?? 'unknown'}, tables ${visualEvidence.facts?.tableCount ?? 'unknown'}, required figure roles ${visualEvidence.facts?.requiredFigureRolesPresent ?? 'unknown'}/${visualEvidence.facts?.requiredFigureRolesTotal ?? 'unknown'}, required table roles ${visualEvidence.facts?.requiredTableRolesPresent ?? 'unknown'}/${visualEvidence.facts?.requiredTableRolesTotal ?? 'unknown'}, figure caption load avg ${formatOptionalOneDecimal(visualEvidence.facts?.averageFigureCaptionWords)} words / max ${visualEvidence.facts?.maxFigureCaptionWords ?? 'unknown'} with ${visualEvidence.facts?.longFigureCaptionCount ?? 'unknown'} long captions, rendered pages ${visualEvidence.facts?.renderedPageImagesPresent ?? 'unknown'}/${visualEvidence.facts?.renderedPageImagesTotal ?? 'unknown'}.`
+        : 'The AAMAS package has no generated visual-evidence report for figure/table role coverage.',
+      requiredAction: visualEvidence?.status && visualEvidence.status !== 'needs_revision'
+        ? 'After second-provider or human-audit evidence completes, reflect it in the main results/provenance visual package.'
+        : 'Regenerate or repair the visual evidence package so the paper has a teaser, method architecture, results visual, case pack, and provenance/result tables.',
     },
     {
       id: 'page-budget',
@@ -388,19 +555,39 @@ export function buildAAMASReadinessReport(researchRoot: string): AAMASReadinessR
         tomParsed: formatParsed(fullTom),
         tomRepairParsed: formatParsed(fullTomRepair),
         tomProviderRun: formatProviderRun(fullTomProviderRun),
+        tomIntegratedInPaper: fullTomIntegratedInPaper,
       },
     },
     gates,
-    nextActions: [
-      fullTomReady
-        ? 'Add the 500-decision ToM full-split result to the main AAMAS table and update the claims from pilot-only to pilot-plus-full-ToM.'
-        : fullTomProviderRun?.stoppedAfterError && (fullTomProviderRun.errorCount ?? 0) > 0
+    nextActions: fullTomReady
+      ? fullTomIntegratedInPaper
+        ? [
+          completedHumanAuditEvidence
+            ? 'Report completed human-audit agreement and keep the completed annotator file under the human audit directory.'
+            : completedPilotReplicationEvidence
+              ? 'Report the completed second-provider/model pilot replication as robustness evidence, while keeping human soft-label agreement as a remaining validation opportunity.'
+              : 'Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.',
+          'Decide whether to add full-split plain/candidate LLM baselines or keep them as optional strengthening evidence.',
+          'Preserve the 8-page body budget by replacing protocol/scaffolding material if more evidence moves into the main paper.',
+        ]
+        : [
+          'Integrate the completed 500-decision ToM full-split metrics into the main AAMAS result table and update claims from pilot-only to pilot-plus-full-ToM evidence.',
+          'Report schema repair as a deterministic reliability ablation while keeping raw parse failures visible beside repaired traces.',
+          completedHumanAuditEvidence
+          ? 'Report completed human-audit agreement and keep the completed annotator file under the human audit directory.'
+          : completedPilotReplicationEvidence
+            ? 'Report the completed second-provider/model pilot replication as robustness evidence, while keeping human soft-label agreement as a remaining validation opportunity.'
+            : 'Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.',
+          'Preserve the 8-page body budget by replacing protocol/scaffolding material as full-split results move into the main paper.',
+        ]
+      : [
+        fullTomProviderRun?.stoppedAfterError && (fullTomProviderRun.errorCount ?? 0) > 0
           ? 'Resume the 500-decision ToM full-split provider batch after the Kimi quota or rate-limit window refreshes, then materialize raw ToM metrics and schema-repair metrics.'
           : 'Complete the 500-decision ToM full-split provider batch and materialize both raw ToM metrics and schema-repair metrics before upgrading claims beyond the pilot.',
-      'Run schema repair and verifier analysis on the full-split ToM outputs, preserving selectedActionId exactly as in the pilot ablation.',
-      'Add a second provider/model pilot replication or a small human audit of soft labels to reduce single-provider and verifier-subjectivity attacks.',
-      'Update the AAMAS draft only after the new evidence exists; keep current broad claims scoped to the 50-decision diagnostic pilot.',
-    ],
+        'Run schema repair and verifier analysis on the full-split ToM outputs, preserving selectedActionId exactly as in the pilot ablation.',
+        'Add a second provider/model pilot replication or a small human audit of soft labels to reduce single-provider and verifier-subjectivity attacks.',
+        'Update the AAMAS draft only after the new evidence exists; keep current broad claims scoped to the 50-decision diagnostic pilot.',
+      ],
   }
 }
 
@@ -437,6 +624,7 @@ export function renderAAMASReadinessReport(report: AAMASReadinessReport): string
     `| Full split ToM provider run | ${report.facts.fullSplit.tomProviderRun} |`,
     `| Full split ToM parse | ${report.facts.fullSplit.tomParsed} |`,
     `| Full split ToM after schema repair | ${report.facts.fullSplit.tomRepairParsed} |`,
+    `| Full split ToM integrated in paper | ${report.facts.fullSplit.tomIntegratedInPaper ? 'yes' : 'no'} |`,
     '',
     '## Gate Audit',
     '',
@@ -473,6 +661,17 @@ function hasCompleteRawAudit(audit: RawAudit | null): boolean {
     && audit.presentCount === 500
     && (audit.missingCount ?? 0) === 0,
   )
+}
+
+function hasIntegratedFullTomEvidence(researchRoot: string): boolean {
+  const path = join(researchRoot, 'submission/aamas-latex/main.tex')
+  if (!existsSync(path)) return false
+  const text = readFileSync(path, 'utf8')
+  return [
+    'ToM LLM raw',
+    'ToM schema repair',
+    'pilot-plus-full-ToM evidence',
+  ].every(marker => text.includes(marker))
 }
 
 function formatParsed(metrics: Metrics | null): string {
@@ -512,6 +711,42 @@ function formatHumanAuditQuality(report: HumanAuditPacketQuality | null): string
   return `the packet-quality report is ${status} with ${failedChecks} failed checks and is ${ready}; it is not paper evidence until human labels are completed.`
 }
 
+function formatPilotReplication(report: PilotReplicationReportFile | null): string {
+  if (!report) return 'No second-provider/model pilot replication report is present.'
+  if (report.status === 'completed' && (report.completedReplicationCount ?? 0) > 0) {
+    const completed = report.replications?.find(replication => replication.status === 'completed')
+    if (completed) {
+      return `Second-provider/model pilot replication is completed via ${completed.provider ?? 'unknown provider'} using ${completed.model ?? 'unknown model'}: ${completed.successCount ?? 'unknown'}/${completed.expectedCount ?? 'unknown'} provider outputs, ${completed.parsedCount ?? 'unknown'}/50 parsed traces, and ${completed.hardFailureCount ?? 'unknown'} hard verifier failures.`
+    }
+    return `Second-provider/model pilot replication is completed with ${report.completedReplicationCount} completed replication row(s).`
+  }
+  const partial = report.replications?.find(replication => replication.status === 'partial')
+  if (partial) {
+    return `Second-provider/model pilot replication is partial via ${partial.provider ?? 'unknown provider'} using ${partial.model ?? 'unknown model'}: ${partial.successCount ?? 'unknown'}/${partial.expectedCount ?? 'unknown'} provider outputs and ${partial.parsedCount ?? 'unknown'}/50 parsed traces.`
+  }
+  return `Second-provider/model pilot replication is ${report.status ?? 'missing'} with ${report.completedReplicationCount ?? 0} completed replication row(s).`
+}
+
+function formatSecondProviderPreflight(report: SecondProviderReplicationPreflight | null): string {
+  if (!report) return 'No second-provider replication preflight report is present.'
+  const inputRows = report.facts?.inputJsonlRows ?? 'unknown'
+  const packets = report.facts?.promptPacketCount ?? 'unknown'
+  const key = report.facts?.independentKeyPresent ? 'independent provider/model key present' : 'no independent provider/model key present'
+  const rows = report.facts?.secondProviderRows ?? 0
+  const blockerText = report.blockers && report.blockers.length > 0
+    ? ` blockers: ${report.blockers.join(' ')}`
+    : ''
+  return `Second-provider preflight is ${report.status ?? 'unknown'} with fixed inputs ${inputRows}/50 rows and ${packets}/50 prompt packets, ${rows} second-provider output row(s), and ${key}.${blockerText}`
+}
+
+function formatSecondProviderPackage(report: SecondProviderReplicationPackage | null): string {
+  if (!report) return 'No second-provider replication package report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const ready = report.readyForExternalRun ? 'ready for an external run' : 'not ready for an external run'
+  const evidence = report.readyForPaperEvidence ? 'paper evidence' : 'not paper evidence until provider outputs return'
+  return `Second-provider replication package is ${report.status ?? 'unknown'} with ${failedChecks} failed checks, fixed input rows ${report.inputRows ?? 0}/50, prompt packets ${report.promptPacketCount ?? 0}/50, ${report.files?.length ?? 0} packaged file(s), and is ${ready}; it is ${evidence}.`
+}
+
 function formatHumanAnnotatorPackage(report: HumanAuditAnnotatorPackage | null): string {
   if (!report) return 'No blind annotator package manifest is present.'
   const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
@@ -530,6 +765,34 @@ function formatHumanAuditIntake(report: HumanAuditIntake | null): string {
   return `The returned-annotation intake is ${status} with ${failedChecks} failed checks; ${returned}, ${report.completedLabels ?? 0}/${report.totalLabels ?? 'unknown'} labels are filled, and it is ${ready}.`
 }
 
+function formatHumanInterAnnotatorAgreement(report: HumanAuditInterAnnotatorAgreement | null): string {
+  if (!report) return 'No inter-annotator agreement report is present.'
+  const status = report.status ?? 'unknown'
+  const paired = `${report.pairedLabels ?? 0}/${report.totalLabels ?? 'unknown'}`
+  const agreement = typeof report.macroAgreement === 'number' ? `${Math.round(report.macroAgreement * 1000) / 10}%` : 'n/a'
+  const adjudication = report.requiresAdjudication
+    ? 'requires adjudication'
+    : report.readyForAdjudication
+      ? 'ready without disagreements'
+      : 'not ready for adjudication'
+  return `The inter-annotator agreement report is ${status}, with ${paired} paired labels, macro agreement ${agreement}, ${report.disagreementCount ?? 0} disagreements, and ${adjudication}.`
+}
+
+function formatHumanAdjudicationTemplate(report: HumanAuditAdjudicationTemplate | null): string {
+  if (!report) return 'No adjudication-template report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const ready = report.readyForAdjudication ? 'ready for adjudication' : 'not ready for adjudication'
+  return `The adjudication template is ${report.status ?? 'unknown'} with ${failedChecks} failed checks, ${report.templateRows ?? 0}/${report.disagreementCount ?? 'unknown'} disagreement rows materialized, and is ${ready}.`
+}
+
+function formatHumanAdjudicatedAnnotations(report: HumanAuditAdjudicatedAnnotations | null): string {
+  if (!report) return 'No adjudicated-annotation build report is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const ready = report.readyForAgreement ? 'ready for agreement evaluation' : 'not ready for agreement evaluation'
+  const written = report.adjudicatedCsvWritten ? 'the adjudicated CSV is written' : 'the adjudicated CSV is not written'
+  return `The adjudicated-annotation builder is ${report.status ?? 'unknown'} with ${failedChecks} failed checks, ${report.outputRows ?? 0}/${report.sampleCount ?? 'unknown'} output rows, ${report.completedLabels ?? 0}/${report.totalLabels ?? 'unknown'} labels completed, ${report.unresolvedDisagreements ?? 0} unresolved disagreement(s); ${written}, and it is ${ready}.`
+}
+
 function formatHumanAnnotatorPackageArchive(report: HumanAuditAnnotatorPackageArchive | null): string {
   if (!report) return 'No blind annotator package archive report is present.'
   const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
@@ -537,6 +800,33 @@ function formatHumanAnnotatorPackageArchive(report: HumanAuditAnnotatorPackageAr
   const bytes = typeof report.bytes === 'number' ? `${report.bytes} bytes` : 'unknown size'
   const digest = report.sha256 ? 'with SHA-256 recorded' : 'without SHA-256'
   return `The blind annotator archive is ${status} with ${failedChecks} failed checks, ${bytes}, ${digest}.`
+}
+
+function formatHumanAuditLaunchChecklist(report: HumanAuditLaunchChecklist | null): string {
+  if (!report) return 'No human-audit launch checklist is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const status = report.status ?? 'unknown'
+  const annotation = report.facts?.readyForAnnotation ? 'ready to send to annotators' : 'not ready to send to annotators'
+  const evidence = report.facts?.readyForPaperEvidence ? 'paper evidence' : 'not paper evidence until returned labels are completed'
+  const labels = `${report.facts?.completedLabels ?? 0}/${report.facts?.totalLabels ?? 'unknown'} labels completed`
+  const digest = report.facts?.archiveSha256 ? 'archive SHA-256 recorded' : 'archive SHA-256 missing'
+  return `The human-audit launch checklist is ${status} with ${failedChecks} failed checks, ${annotation}, ${labels}, ${digest}, and is ${evidence}.`
+}
+
+function formatHumanAuditEvidenceGate(report: HumanAuditEvidenceGate | null): string {
+  if (!report) return 'No human-audit evidence gate is present.'
+  const failedChecks = report.checks?.filter(check => check.status === 'fail').length ?? 0
+  const pendingChecks = report.checks?.filter(check => check.status === 'pending').length ?? 0
+  const labels = `${report.facts?.completedLabels ?? 0}/${report.facts?.totalLabels ?? 'unknown'} labels completed`
+  const returns = report.facts?.annotatorAPresent && report.facts?.annotatorBPresent
+    ? 'both annotator returns present'
+    : 'annotator returns not both present'
+  const paired = `${report.facts?.pairedLabels ?? 0}/${report.facts?.totalLabels ?? 'unknown'} paired labels`
+  const agreement = typeof report.facts?.agreementMacroAgreement === 'number'
+    ? `human-verifier macro agreement ${Math.round(report.facts.agreementMacroAgreement * 1000) / 10}%`
+    : 'human-verifier macro agreement n/a'
+  const evidence = report.facts?.readyForPaperEvidence ? 'paper evidence ready' : 'not paper evidence yet'
+  return `The human-audit evidence gate is ${report.status ?? 'unknown'} with ${failedChecks} failed checks and ${pendingChecks} pending checks, ${labels}, ${returns}, ${paired}, ${agreement}, and is ${evidence}.`
 }
 
 function sumNullable(...values: Array<number | undefined>): number | null {
@@ -561,7 +851,7 @@ function countCompletedHumanAuditFiles(researchRoot: string): number {
   const dir = join(researchRoot, 'experiments/human-soft-label-audit')
   if (!existsSync(dir)) return 0
   return readdirSync(dir)
-    .filter(filename => /^human-audit-(completed|adjudicated).*\.(csv|json)$/i.test(filename))
+    .filter(filename => /^human-audit-completed-annotations.*\.csv$/i.test(filename) || /^human-audit-adjudicated-annotations\.csv$/i.test(filename))
     .length
 }
 
@@ -573,4 +863,8 @@ function readJsonOptional<T>(researchRoot: string, relativePath: string): T | nu
 
 function escapeMarkdownCell(value: string): string {
   return value.replace(/\|/g, '\\|').replace(/\n/g, ' ')
+}
+
+function formatOptionalOneDecimal(value: number | undefined): string {
+  return typeof value === 'number' ? String(Math.round(value * 10) / 10) : 'unknown'
 }

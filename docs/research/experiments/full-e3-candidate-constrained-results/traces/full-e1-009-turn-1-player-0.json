@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-009-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "Player 0 is in the opening lead of an endgame race with only two non-trump cards. The immediate team goal is to retain control of the lead so that the weaker 2 of spades can be dumped on the next trick. Leading the higher Ace gives the best chance of winning this trick and therefore securing the next lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 hidden cards and has made no public plays. With no further information, partner likely has a mix of ordinary cards and may hold a covering card or trump, but cannot be relied upon to rescue a low lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "8c5bd466-37b6-4b42-9b98-b40477ff5358"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have revealed nothing. They may hold higher non-trump cards, trumps, or bombs. Because they have more cards than our team, ceding the lead risks letting them control the endgame and finish first.",
+    "confidence": 0.55,
+    "evidence": [
+      "8c5bd466-37b6-4b42-9b98-b40477ff5358"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace of spades is the strongest card in hand and is likely to win the opening trick. Winning keeps the lead with player 0, allowing the low 2 of spades to be led next and increasing the chance of going out before the opponents.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 of spades is weak and likely to be beaten by an opponent or partner. If an opponent wins, player 0 loses the lead and may never get another chance to play the Ace, which severely reduces the chance of finishing first."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The Ace of spades may be beaten by an opponent's trump, bomb, or wildcard, losing both the lead and the strongest card.",
+      "Even if the Ace wins, the remaining 2 of spades may be beaten on the next trick, ending our control.",
+      "A partner with a stronger hand might have preferred a low lead to win cheaply."
+    ],
+    "mitigation": "There is no better resource-preserving option with only two cards; taking the lead now is the only reliable path to dictate the endgame tempo. The Ace lead maximizes the probability of retaining control."
+  },
+  "confidence": 0.6,
+  "notes": "Beliefs are based only on public hand counts and the new-game event; no hidden cards are asserted as facts."
+}

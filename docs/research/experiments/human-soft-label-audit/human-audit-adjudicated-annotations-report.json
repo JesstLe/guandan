@@ -1,0 +1,1445 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:14.938Z",
+  "status": "awaiting_returns",
+  "annotatorAPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv",
+  "annotatorBPath": "docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv",
+  "adjudicationTemplatePath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv",
+  "blindJsonlPath": "docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl",
+  "adjudicatedCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
+  "annotatorAPresent": false,
+  "annotatorBPresent": false,
+  "adjudicationTemplatePresent": true,
+  "sampleCount": 40,
+  "outputRows": 0,
+  "adjudicatedCsvWritten": false,
+  "completedLabels": 0,
+  "totalLabels": 200,
+  "unresolvedDisagreements": 0,
+  "invalidLabels": [
+    {
+      "sampleId": "human-audit-001",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-001",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-001",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-001",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-001",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-002",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-002",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-002",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-002",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-002",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-003",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-003",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-003",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-003",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-003",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-004",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-004",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-004",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-004",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-004",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-005",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-005",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-005",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-005",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-005",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-006",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-006",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-006",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-006",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-006",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-007",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-007",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-007",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-007",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-007",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-008",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-008",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-008",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-008",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-008",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-009",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-009",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-009",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-009",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-009",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-010",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-010",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-010",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-010",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-010",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-011",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-011",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-011",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-011",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-011",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-012",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-012",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-012",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-012",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-012",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-013",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-013",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-013",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-013",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-013",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-014",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-014",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-014",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-014",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-014",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-015",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-015",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-015",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-015",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-015",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-016",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-016",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-016",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-016",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-016",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-017",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-017",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-017",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-017",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-017",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-018",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-018",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-018",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-018",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-018",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-019",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-019",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-019",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-019",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-019",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-020",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-020",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-020",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-020",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-020",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-021",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-021",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-021",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-021",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-021",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-022",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-022",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-022",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-022",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-022",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-023",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-023",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-023",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-023",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-023",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-024",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-024",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-024",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-024",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-024",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-025",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-025",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-025",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-025",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-025",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-026",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-026",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-026",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-026",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-026",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-027",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-027",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-027",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-027",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-027",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-028",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-028",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-028",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-028",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-028",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-029",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-029",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-029",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-029",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-029",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-030",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-030",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-030",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-030",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-030",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-031",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-031",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-031",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-031",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-031",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-032",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-032",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-032",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-032",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-032",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-033",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-033",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-033",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-033",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-033",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-034",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-034",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-034",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-034",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-034",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-035",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-035",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-035",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-035",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-035",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-036",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-036",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-036",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-036",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-036",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-037",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-037",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-037",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-037",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-037",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-038",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-038",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-038",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-038",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-038",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-039",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-039",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-039",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-039",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-039",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-040",
+      "label": "humanPartnerConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-040",
+      "label": "humanOpponentConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-040",
+      "label": "humanTeamObjectiveValid",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-040",
+      "label": "humanHiddenInfoDisciplined",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    },
+    {
+      "sampleId": "human-audit-040",
+      "label": "humanReasonActionConsistent",
+      "annotatorA": "",
+      "annotatorB": "",
+      "reason": "missing_or_invalid_annotator_label"
+    }
+  ],
+  "checks": [
+    {
+      "id": "annotator-a-present",
+      "status": "fail",
+      "detail": "annotator A CSV is not present yet"
+    },
+    {
+      "id": "annotator-b-present",
+      "status": "fail",
+      "detail": "annotator B CSV is not present yet"
+    },
+    {
+      "id": "adjudication-template-present",
+      "status": "pass",
+      "detail": "not evaluated until annotator CSVs are present"
+    },
+    {
+      "id": "all-labels-resolved",
+      "status": "fail",
+      "detail": "not evaluated until annotator CSVs are present"
+    }
+  ],
+  "readyForAgreement": false,
+  "readyForPaperEvidence": false
+}

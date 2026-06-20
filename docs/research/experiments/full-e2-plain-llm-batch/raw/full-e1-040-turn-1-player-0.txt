@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-040-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Opening the first trick with the lowest card sheds dead weight while preserving the slightly higher spades for later decisions."
+  },
+  "partnerBelief": {
+    "summary": "Partner's hand is unknown; no public history provides information about their strengths.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "opponentBelief": {
+    "summary": "Opponents' hands are unknown; no cards have been played yet.",
+    "confidence": 0,
+    "evidence": []
+  },
+  "actionRationale": {
+    "primaryReason": "All legal actions are single spades, so the only meaningful distinction is rank. Playing the 3 commits the least valuable card and keeps the 4, 5, and 6 available for future tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Playing the 4 would commit a slightly higher card without any strategic advantage over the 3."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is more valuable than the 3 and does not improve the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is the highest spade in hand; preserving it is better than leading it."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may easily beat the low single and seize control.",
+      "Partner may be unable to support, since their cards are unknown."
+    ],
+    "mitigation": "By leading the lowest card, I minimize the value I commit and retain marginally better cards for future plays."
+  },
+  "confidence": 0.8
+}

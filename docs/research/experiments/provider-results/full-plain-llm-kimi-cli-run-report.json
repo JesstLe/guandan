@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "0.1.0",
+  "inputJsonlPath": "docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl",
+  "outputJsonlPath": "docs/research/experiments/provider-results/full-plain-llm.jsonl",
+  "expectedCount": 50,
+  "attemptedCount": 3,
+  "skippedCount": 47,
+  "writtenCount": 50,
+  "successCount": 50,
+  "errorCount": 0,
+  "pendingSuccessCount": 0,
+  "stoppedAfterError": false,
+  "kimiBin": "kimi",
+  "model": "kimi-code/kimi-for-coding",
+  "reportPath": "docs/research/experiments/provider-results/full-plain-llm-kimi-cli-run-report.json",
+  "generatedAt": "2026-06-19T08:04:17.508Z",
+  "runner": "kimi-cli"
+}

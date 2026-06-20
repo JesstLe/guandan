@@ -1,7 +1,7 @@
 # Local Research Pipeline Report
 
 Status: `completed`
-Generated at: `2026-06-18T21:15:59.536Z`
+Generated at: `2026-06-19T12:36:24.237Z`
 
 This pipeline only regenerates local downstream artifacts. It does not call external model providers.
 
@@ -18,10 +18,12 @@ This pipeline only regenerates local downstream artifacts. It does not call exte
 | Plain Full Prompt Packets | `passed` | 0 |
 | Plain Full Batch Files | `passed` | 0 |
 | Plain Full OpenAI Batch | `passed` | 0 |
+| Plain Full Optional Post-Provider Ingest | `passed` | 0 |
 | Plain Full Raw Output Audit | `passed` | 0 |
 | Candidate Full Prompt Packets | `passed` | 0 |
 | Candidate Full Batch Files | `passed` | 0 |
 | Candidate Full OpenAI Batch | `passed` | 0 |
+| Candidate Full Optional Post-Provider Ingest | `passed` | 0 |
 | Candidate Full Raw Output Audit | `passed` | 0 |
 | ToM Full Prompt Packets | `passed` | 0 |
 | ToM Full Batch Files | `passed` | 0 |
@@ -35,8 +37,14 @@ This pipeline only regenerates local downstream artifacts. It does not call exte
 | Human Soft-Label Audit Packet Quality | `passed` | 0 |
 | Human Soft-Label Audit Annotator Package | `passed` | 0 |
 | Human Soft-Label Audit Annotator Package Archive | `passed` | 0 |
-| Human Soft-Label Audit Returned-Annotation Intake | `passed` | 0 |
+| Human Soft-Label Audit Inter-Annotator Agreement | `passed` | 0 |
+| Human Soft-Label Audit Adjudication Template | `passed` | 0 |
+| Human Soft-Label Audit Build Adjudicated CSV | `passed` | 0 |
+| Human Soft-Label Audit Adjudicated-Annotation Intake | `passed` | 0 |
 | Human Soft-Label Audit Agreement | `passed` | 0 |
+| Pilot Replication Report | `passed` | 0 |
+| Second-Provider Replication Package | `passed` | 0 |
+| Second-Provider Replication Preflight | `passed` | 0 |
 | Revision Comparison | `passed` | 0 |
 | ToM Failure Analysis | `passed` | 0 |
 | ToM Schema Repair | `passed` | 0 |
@@ -44,11 +52,15 @@ This pipeline only regenerates local downstream artifacts. It does not call exte
 | Ablation Summary | `passed` | 0 |
 | Figure Artifacts | `passed` | 0 |
 | Paper Tables | `passed` | 0 |
+| Visual Evidence Report | `passed` | 0 |
 | Manuscript Assembly | `passed` | 0 |
+| Claim-Evidence Report | `passed` | 0 |
+| Method Reproducibility Report | `passed` | 0 |
 | Submission Marker Inventory | `passed` | 0 |
 | Experiment Resolution Ledger | `passed` | 0 |
 | Submission Gate | `passed` | 0 |
 | AAMAS Full-Paper Readiness | `passed` | 0 |
+| AAMAS Adversarial Self-Review | `passed` | 0 |
 | Research Preflight | `passed` | 0 |
 | Provider Handoff Audit | `passed` | 0 |
 | Bibliography Integrity | `passed` | 0 |
@@ -282,6 +294,32 @@ Stderr:
 
 ```
 
+### Plain Full Optional Post-Provider Ingest
+
+Command: `npx tsx server/src/research/runOptionalPostProviderConditionCli.ts --decisions docs/research/experiments/full-e1/decisions --packets docs/research/experiments/full-e2-plain-llm-prompts/packets --batch-jsonl docs/research/experiments/full-e2-plain-llm-batch/batch-input.jsonl --provider-results docs/research/experiments/provider-results/full-plain-llm.jsonl --raw docs/research/experiments/full-e2-plain-llm-batch/raw --out docs/research/experiments/full-e2-plain-llm-results --condition plain-llm --model-provider kimi-cli --model-name kimi-code/kimi-for-coding --temperature 0 --notes 500-decision full-split plain run; optional step skips until provider JSONL exists. --allow-partial-ingest`
+
+Stdout:
+
+```text
+{
+  "status": "partial_ingested",
+  "conditionId": "plain-llm",
+  "reportPath": "docs/research/experiments/full-e2-plain-llm-results/post-provider-report.json",
+  "metricsPath": "docs/research/experiments/full-e2-plain-llm-results/metrics.json",
+  "blockerCount": 2,
+  "blockers": [
+    "Provider-result materialization is not ready for audit.",
+    "Raw-output audit is not ready for ingest."
+  ]
+}
+```
+
+Stderr:
+
+```text
+
+```
+
 ### Plain Full Raw Output Audit
 
 Command: `npx tsx server/src/research/auditLLMRawOutputsCli.ts --packets docs/research/experiments/full-e2-plain-llm-prompts/packets --raw docs/research/experiments/full-e2-plain-llm-batch/raw --out docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json`
@@ -292,8 +330,8 @@ Stdout:
 {
   "outputPath": "docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json",
   "expectedCount": 500,
-  "presentCount": 0,
-  "missingCount": 500,
+  "presentCount": 50,
+  "missingCount": 450,
   "emptyCount": 0,
   "unexpectedCount": 0,
   "readyForIngest": false
@@ -367,6 +405,32 @@ Stderr:
 
 ```
 
+### Candidate Full Optional Post-Provider Ingest
+
+Command: `npx tsx server/src/research/runOptionalPostProviderConditionCli.ts --decisions docs/research/experiments/full-e1/decisions --packets docs/research/experiments/full-e3-candidate-constrained-prompts/packets --batch-jsonl docs/research/experiments/full-e3-candidate-constrained-batch/batch-input.jsonl --provider-results docs/research/experiments/provider-results/full-candidate-constrained-llm.jsonl --raw docs/research/experiments/full-e3-candidate-constrained-batch/raw --out docs/research/experiments/full-e3-candidate-constrained-results --condition candidate-constrained-llm --model-provider kimi-cli --model-name kimi-code/kimi-for-coding --temperature 0 --notes 500-decision full-split candidate-constrained run; optional step skips until provider JSONL exists. --allow-partial-ingest`
+
+Stdout:
+
+```text
+{
+  "status": "partial_ingested",
+  "conditionId": "candidate-constrained-llm",
+  "reportPath": "docs/research/experiments/full-e3-candidate-constrained-results/post-provider-report.json",
+  "metricsPath": "docs/research/experiments/full-e3-candidate-constrained-results/metrics.json",
+  "blockerCount": 2,
+  "blockers": [
+    "Provider-result materialization is not ready for audit.",
+    "Raw-output audit is not ready for ingest."
+  ]
+}
+```
+
+Stderr:
+
+```text
+
+```
+
 ### Candidate Full Raw Output Audit
 
 Command: `npx tsx server/src/research/auditLLMRawOutputsCli.ts --packets docs/research/experiments/full-e3-candidate-constrained-prompts/packets --raw docs/research/experiments/full-e3-candidate-constrained-batch/raw --out docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json`
@@ -377,8 +441,8 @@ Stdout:
 {
   "outputPath": "docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json",
   "expectedCount": 500,
-  "presentCount": 0,
-  "missingCount": 500,
+  "presentCount": 50,
+  "missingCount": 450,
   "emptyCount": 0,
   "unexpectedCount": 0,
   "readyForIngest": false
@@ -460,15 +524,12 @@ Stdout:
 
 ```text
 {
-  "status": "partial_ingested",
+  "status": "ingested",
   "conditionId": "tom-prompted-llm",
   "reportPath": "docs/research/experiments/full-e4-tom-prompted-results/post-provider-report.json",
   "metricsPath": "docs/research/experiments/full-e4-tom-prompted-results/metrics.json",
-  "blockerCount": 2,
-  "blockers": [
-    "Provider-result materialization is not ready for audit.",
-    "Raw-output audit is not ready for ingest."
-  ]
+  "blockerCount": 0,
+  "blockers": []
 }
 ```
 
@@ -488,11 +549,11 @@ Stdout:
 {
   "outputPath": "docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json",
   "expectedCount": 500,
-  "presentCount": 384,
-  "missingCount": 116,
+  "presentCount": 500,
+  "missingCount": 0,
   "emptyCount": 0,
   "unexpectedCount": 0,
-  "readyForIngest": false
+  "readyForIngest": true
 }
 ```
 
@@ -513,9 +574,9 @@ Stdout:
   "metricsPath": "docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json",
   "repairReportPath": "docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.json",
   "markdownPath": "docs/research/experiments/full-e5-tom-schema-repair-results/schema-repair-report.md",
-  "repaired": 78,
-  "passThrough": 306,
-  "notRepairable": 116
+  "repaired": 96,
+  "passThrough": 404,
+  "notRepairable": 0
 }
 ```
 
@@ -527,7 +588,7 @@ Stderr:
 
 ### Full Split LLM Summary
 
-Command: `npx tsx server/src/research/writePilotMetricsSummaryCli.ts --no-defaults --out docs/research/experiments/full-llm-summary --basename full-llm-summary --title Full Split LLM Summary --description This table is generated from 500-decision full-split LLM artifacts when provider results are present; otherwise it records raw-output readiness. --source agentId=tom-prompted-llm-full,metricsPath=docs/research/experiments/full-e4-tom-prompted-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI ToM-prompted full split --source agentId=tom-schema-repair-full,metricsPath=docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=deterministic schema repair over available full-split ToM raw outputs`
+Command: `npx tsx server/src/research/writePilotMetricsSummaryCli.ts --no-defaults --out docs/research/experiments/full-llm-summary --basename full-llm-summary --title Full Split LLM Summary --description This table is generated from 500-decision full-split LLM artifacts when provider results are present; otherwise it records raw-output readiness. --source agentId=plain-llm-full,metricsPath=docs/research/experiments/full-e2-plain-llm-results/metrics.json,rawAuditPath=docs/research/experiments/full-e2-plain-llm-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI plain full split --source agentId=candidate-constrained-llm-full,metricsPath=docs/research/experiments/full-e3-candidate-constrained-results/metrics.json,rawAuditPath=docs/research/experiments/full-e3-candidate-constrained-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI candidate-constrained full split --source agentId=tom-prompted-llm-full,metricsPath=docs/research/experiments/full-e4-tom-prompted-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=500-decision Kimi Code CLI ToM-prompted full split --source agentId=tom-schema-repair-full,metricsPath=docs/research/experiments/full-e5-tom-schema-repair-results/metrics.json,rawAuditPath=docs/research/experiments/full-e4-tom-prompted-batch/raw-output-audit.json,notes=deterministic schema repair over available full-split ToM raw outputs`
 
 Stdout:
 
@@ -535,7 +596,7 @@ Stdout:
 {
   "jsonPath": "docs/research/experiments/full-llm-summary/full-llm-summary.json",
   "markdownPath": "docs/research/experiments/full-llm-summary/full-llm-summary.md",
-  "rowCount": 2
+  "rowCount": 4
 }
 ```
 
@@ -652,8 +713,8 @@ Stdout:
   "markdownPath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md",
   "status": "archive_ready",
   "archivePath": "docs/research/experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz",
-  "bytes": 53634,
-  "sha256": "e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87",
+  "bytes": 54786,
+  "sha256": "0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d",
   "sampleCount": 40,
   "failedChecks": []
 }
@@ -665,9 +726,82 @@ Stderr:
 
 ```
 
-### Human Soft-Label Audit Returned-Annotation Intake
+### Human Soft-Label Audit Inter-Annotator Agreement
 
-Command: `npx tsx server/src/research/writeHumanAuditIntakeCli.ts --returned docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations.csv --package-manifest docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json --blind docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl --out docs/research/experiments/human-soft-label-audit`
+Command: `npx tsx server/src/research/writeHumanAuditInterAnnotatorAgreementCli.ts --annotator-a docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv --annotator-b docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv --blind docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl --out docs/research/experiments/human-soft-label-audit`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json",
+  "markdownPath": "docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.md",
+  "status": "awaiting_returns",
+  "pairedLabels": 0,
+  "totalLabels": 200,
+  "disagreementCount": 0,
+  "macroAgreement": null
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Human Soft-Label Audit Adjudication Template
+
+Command: `npx tsx server/src/research/writeHumanAuditAdjudicationTemplateCli.ts --inter-annotator docs/research/experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json --blind docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl --out docs/research/experiments/human-soft-label-audit`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template-report.json",
+  "markdownPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template-report.md",
+  "templateCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv",
+  "status": "awaiting_returns",
+  "disagreementCount": 0,
+  "templateRows": 0,
+  "readyForAdjudication": false
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Human Soft-Label Audit Build Adjudicated CSV
+
+Command: `npx tsx server/src/research/writeHumanAuditAdjudicatedAnnotationsCli.ts --annotator-a docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv --annotator-b docs/research/experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv --adjudication-template docs/research/experiments/human-soft-label-audit/human-audit-adjudication-template.csv --blind docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl --adjudicated docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv --out docs/research/experiments/human-soft-label-audit`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.json",
+  "markdownPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.md",
+  "adjudicatedCsvPath": "docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv",
+  "status": "awaiting_returns",
+  "outputRows": 0,
+  "completedLabels": 0,
+  "totalLabels": 200,
+  "readyForAgreement": false
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Human Soft-Label Audit Adjudicated-Annotation Intake
+
+Command: `npx tsx server/src/research/writeHumanAuditIntakeCli.ts --returned docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv --package-manifest docs/research/experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json --blind docs/research/experiments/human-soft-label-audit/human-audit-blind-sample.jsonl --out docs/research/experiments/human-soft-label-audit`
 
 Stdout:
 
@@ -691,7 +825,7 @@ Stderr:
 
 ### Human Soft-Label Audit Agreement
 
-Command: `npx tsx server/src/research/writeHumanAuditAgreementCli.ts --answer-key docs/research/experiments/human-soft-label-audit/human-audit-answer-key.jsonl --out docs/research/experiments/human-soft-label-audit`
+Command: `npx tsx server/src/research/writeHumanAuditAgreementCli.ts --annotations docs/research/experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv --answer-key docs/research/experiments/human-soft-label-audit/human-audit-answer-key.jsonl --out docs/research/experiments/human-soft-label-audit`
 
 Stdout:
 
@@ -703,6 +837,74 @@ Stdout:
   "completedLabels": 0,
   "totalLabels": 200,
   "macroAgreement": null
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Pilot Replication Report
+
+Command: `npx tsx server/src/research/writePilotReplicationReportCli.ts --root docs/research --out docs/research/experiments/pilot-replication`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/pilot-replication/pilot-replication-report.json",
+  "markdownPath": "docs/research/experiments/pilot-replication/pilot-replication-report.md",
+  "status": "pending_missing_replication",
+  "completedReplicationCount": 0
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Second-Provider Replication Package
+
+Command: `npx tsx server/src/research/writeSecondProviderReplicationPackageCli.ts --root docs/research --out docs/research/experiments/pilot-replication`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/pilot-replication/second-provider-replication-package-report.json",
+  "markdownPath": "docs/research/experiments/pilot-replication/second-provider-replication-package-report.md",
+  "status": "package_ready",
+  "packageDir": "docs/research/experiments/pilot-replication/second-provider-replication-package",
+  "inputRows": 50,
+  "promptPacketCount": 50,
+  "files": 52,
+  "readyForExternalRun": true
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Second-Provider Replication Preflight
+
+Command: `npx tsx server/src/research/writeSecondProviderReplicationPreflightCli.ts --root docs/research --out docs/research/experiments/pilot-replication --env-file .env`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/experiments/pilot-replication/second-provider-replication-preflight.json",
+  "markdownPath": "docs/research/experiments/pilot-replication/second-provider-replication-preflight.md",
+  "status": "blocked_missing_independent_provider_key",
+  "independentKeyPresent": false,
+  "blockerCount": 1
 }
 ```
 
@@ -836,6 +1038,8 @@ Stdout:
   "tomSchemaRepairMarkdownPath": "docs/research/figures/figure-3-tom-schema-repair-flow.md",
   "mainResultsSvgPath": "docs/research/figures/figure-4-main-pilot-results.svg",
   "mainResultsMarkdownPath": "docs/research/figures/figure-4-main-pilot-results.md",
+  "qualitativeCasePackSvgPath": "docs/research/figures/figure-5-qualitative-case-pack.svg",
+  "qualitativeCasePackMarkdownPath": "docs/research/figures/figure-5-qualitative-case-pack.md",
   "totalOutputs": 50,
   "rawParsed": 36,
   "repaired": 13,
@@ -874,6 +1078,30 @@ Stderr:
 
 ```
 
+### Visual Evidence Report
+
+Command: `npx tsx server/src/research/writeVisualEvidenceReportCli.ts --root docs/research --out docs/research/submission/visual-evidence`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/submission/visual-evidence/visual-evidence-report.json",
+  "markdownPath": "docs/research/submission/visual-evidence/visual-evidence-report.md",
+  "status": "ready_with_external_evidence_pending",
+  "figures": 5,
+  "tables": 9,
+  "checks": 8,
+  "pendingExternalEvidence": 1
+}
+```
+
+Stderr:
+
+```text
+
+```
+
 ### Manuscript Assembly
 
 Command: `npx tsx server/src/research/assembleManuscriptCli.ts`
@@ -893,6 +1121,52 @@ Stdout:
     "DO_NOT_SUBMIT": 0,
     "AUTHOR_DECISION": 0
   }
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Claim-Evidence Report
+
+Command: `npx tsx server/src/research/writeClaimEvidenceReportCli.ts --root docs/research --out docs/research/submission/claim-evidence`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/submission/claim-evidence/claim-evidence-report.json",
+  "markdownPath": "docs/research/submission/claim-evidence/claim-evidence-report.md",
+  "status": "pass",
+  "claims": 8,
+  "supported": 1,
+  "scopeLimited": 7,
+  "needsEvidence": 0
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### Method Reproducibility Report
+
+Command: `npx tsx server/src/research/writeMethodReproducibilityReportCli.ts --root docs/research --out docs/research/submission/method-reproducibility`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/submission/method-reproducibility/method-reproducibility-report.json",
+  "markdownPath": "docs/research/submission/method-reproducibility/method-reproducibility-report.md",
+  "status": "pass",
+  "modulesPassing": 6,
+  "modulesTotal": 6
 }
 ```
 
@@ -994,8 +1268,31 @@ Stdout:
   "jsonPath": "docs/research/submission/aamas-readiness/aamas-readiness-report.json",
   "markdownPath": "docs/research/submission/aamas-readiness/aamas-readiness-report.md",
   "localSubmissionHygiene": "ready",
-  "aamasFullPaperReadiness": "not_ready",
-  "gates": 7,
+  "aamasFullPaperReadiness": "borderline",
+  "gates": 8,
+  "needsExperiment": 1,
+  "needsRevision": 0
+}
+```
+
+Stderr:
+
+```text
+
+```
+
+### AAMAS Adversarial Self-Review
+
+Command: `npx tsx server/src/research/writeAAMASSelfReviewReportCli.ts --root docs/research --out docs/research/submission/aamas-self-review`
+
+Stdout:
+
+```text
+{
+  "jsonPath": "docs/research/submission/aamas-self-review/aamas-self-review-report.json",
+  "markdownPath": "docs/research/submission/aamas-self-review/aamas-self-review-report.md",
+  "status": "needs_experiment",
+  "items": 5,
   "needsExperiment": 2,
   "needsRevision": 0
 }
@@ -1018,10 +1315,10 @@ Stdout:
   "jsonPath": "docs/research/submission/preflight/research-preflight-report.json",
   "markdownPath": "docs/research/submission/preflight/research-preflight-report.md",
   "status": "research_not_ready",
-  "aamasFullPaperReadiness": "not_ready",
+  "aamasFullPaperReadiness": "borderline",
   "externalBlockers": 0,
   "localBlockers": 0,
-  "readinessBlockers": 2
+  "readinessBlockers": 1
 }
 ```
 
@@ -1043,7 +1340,7 @@ Stdout:
   "markdownPath": "docs/research/submission/provider-handoff-audit/provider-handoff-audit.md",
   "status": "ready",
   "conditionCount": 5,
-  "issueCount": 2
+  "issueCount": 1
 }
 ```
 
@@ -1085,7 +1382,7 @@ Stdout:
 {
   "jsonPath": "docs/research/submission/reproducibility-manifest.json",
   "markdownPath": "docs/research/submission/reproducibility-manifest.md",
-  "entries": 107,
+  "entries": 140,
   "missing": 0
 }
 ```

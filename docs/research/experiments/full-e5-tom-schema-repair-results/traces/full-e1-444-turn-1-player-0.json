@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-444-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while every other player holds three, this is an endgame race. My best chance is to win the lead immediately and play out my remaining card before opponents can finish."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) holds three hidden cards and has not signaled anything yet. They might hold a higher card or trump that could cover a low lead, but I cannot assume any specific cards, so I should act as if I need to create my own winning path.",
+    "confidence": 0.35,
+    "evidence": [
+      "e5c8ad8b-6a18-42bf-87e4-882ca03a9adf"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three hidden cards and will try to seize or keep the lead to stop me from going out. They may have trump-rank cards, red trumps, jokers, or other high cards that can beat my spade A.",
+    "confidence": 0.45,
+    "evidence": [
+      "e5c8ad8b-6a18-42bf-87e4-882ca03a9adf"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade A maximizes my chance to win this opening trick and keep the lead. If it wins, I can lead the remaining 2 next and attempt to finish. In a short race, taking initiative is more valuable than holding a high card for a future lead that may never come.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the low 2 likely cedes the lead to opponents or forces my partner to spend a high card. If opponents take control, my remaining A may never get a chance to win a trick, and opponents could finish before I do."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the A with a trump, red trump, joker, or higher non-trump card.",
+      "If the A loses, opponents gain control and my remaining 2 is very unlikely to win back the lead.",
+      "Partner may not be able to cover if opponents respond strongly."
+    ],
+    "mitigation": "The spade A is the strongest non-trump single in my hand. Leading it now uses it offensively while I still dictate the trick, giving me the best chance to retain initiative and dispose of my final card."
+  },
+  "confidence": 0.68
+}

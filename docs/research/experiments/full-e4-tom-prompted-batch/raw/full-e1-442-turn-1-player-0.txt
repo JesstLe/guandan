@@ -1,0 +1,31 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-442-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoning": {
+    "situationAssessment": "I am leading the very first trick of the game with a 4-card non-trump diamond straight (3-6). Partner (player 2) holds only 2 cards, so they are close to going out. Opponents hold 3 cards each. No trumps, bombs, or big cards have been played, so everyone is still relatively strong.",
+    "partnerIntent": {
+      "belief": "Partner likely has only 2 cards left and is trying to exit. With so few cards, they probably retained high-value winners or a bomb rather than low cards. They want me to lead a low, beatable card so they can seize the trick and play out.",
+      "evidence": [
+        "fea7d6c1-dcab-43c5-b24f-2a565b4a2335"
+      ]
+    },
+    "opponentIntent": {
+      "belief": "Opponents want to prevent my partner from finishing. If I lead low, an opponent may use a mid/high card to take control and deny my partner. However, because no cards have been played, opponents have little information about my partner's strength and may be cautious about using high cards.",
+      "evidence": [
+        "fea7d6c1-dcab-43c5-b24f-2a565b4a2335"
+      ]
+    },
+    "counterfactuals": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "analysis": "Leading the 6 uses my highest card and makes it harder for partner to win the trick with only 2 cards. It also weakens my hand without guaranteeing control, since opponents could still beat it with a 7-rank trump or higher non-trump."
+      },
+      {
+        "actionId": "play-single-diamond-3-copy1",
+        "analysis": "Leading the 3 is the lowest card. It maximizes the chance that partner can win the trick with one of their 2 remaining cards and get closer to going out. It also preserves 4, 5, 6 for future tricks if I regain the lead."
+      }
+    ],
+    "conclusion": "Leading the 3 of diamonds best supports the team objective: it gives the card-short partner the easiest path to take the trick, while conserving my higher cards for later. Hidden information remains uncertain, but the public hand-count signal strongly favors a low lead."
+  }
+}

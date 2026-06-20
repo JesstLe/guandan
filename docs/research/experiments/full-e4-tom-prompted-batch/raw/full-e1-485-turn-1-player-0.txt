@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-485-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "save_resources",
+    "explanation": "Opening lead with a very weak hand (ranks 3-6 of spades, no trumps, all below the trump rank 7). The goal is to expend the minimum card strength now and retain the slightly higher spades for later tricks where they may have more value."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. With no public plays yet, I have no signal about their distribution or strength, but they could plausibly hold higher non-trump cards or trumps that can win a low spade lead.",
+    "confidence": 0.25,
+    "evidence": [
+      "b81d5575-3777-4fb7-b054-ff4cf2c39f7a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds 3 unknown cards. Given the deck composition, it is likely at least one opponent has cards stronger than my 3-6 of spades (e.g., higher spades or trump cards), but no specific distribution can be asserted.",
+    "confidence": 0.3,
+    "evidence": [
+      "b81d5575-3777-4fb7-b054-ff4cf2c39f7a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the lowest card (3 of spades) to minimize immediate resource commitment. Since my hand has no trumps and maxes at rank 6 below the trump rank, leading high would waste scarce strength without improving the chance of winning the trick. The 3 starts the trick cheaply and keeps 4, 5, 6 for future rounds.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Slightly stronger than the 3 but still a weak non-trump card; playing it now offers no extra trick-winning value and wastes a card I might need later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Commits more of my limited strength on an opening lead where I am unlikely to win; better saved for a later trick where it might actually be high enough to matter."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "My highest non-trump card; leading it now squanders the one card most likely to win or influence a future trick, with little chance of taking this lead."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent or partner with a higher spade or trump can win this trick, which is likely given my weak cards.",
+      "Retaining 4-6 of spades may not help much if opponents control trumps, leaving few winning paths."
+    ],
+    "mitigation": "By playing the 3, the worst-case loss is minimal. If partner can win the trick, I have preserved my better cards to support them later; if opponents win, I have not wasted meaningful strength."
+  },
+  "confidence": 0.7,
+  "notes": "No public information exists beyond the new-game event, so all partner/opponent beliefs remain probabilistic."
+}

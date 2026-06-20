@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-454-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Deterministically repaired ToM trace with objective finish_hand."
+  },
+  "partnerBelief": {
+    "summary": "My partner (player 2) has three cards and no public signals yet. They likely want me to exit quickly, so they will try to win tricks for our team if possible. Leading a low card does not force partner to waste a high card; they can play appropriately to the trick.",
+    "confidence": 0.6,
+    "evidence": [
+      "aabde845-5ada-4cd6-a6bc-cf7afd9b6aa9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) have three cards each and no public signals. They will try to take control and force me to waste my Ace. Leading low gives them less information about my remaining strength and may induce them to commit a higher card than necessary, preserving my Ace.",
+    "confidence": 0.6,
+    "evidence": [
+      "aabde845-5ada-4cd6-a6bc-cf7afd9b6aa9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-2-copy2 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

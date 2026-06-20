@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-412-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 holds only low non-trump cards (ranks 3-6). The partner has just 2 cards and is near finishing, so the best team chance is to lead a cheap single that the partner can cover and convert into the lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) is likely holding finishing-strength cards, possibly a trump or high single, because their hand count of 2 is the lowest at the table. They probably want to win a trick and then play out their remaining hand.",
+    "confidence": 0.6,
+    "evidence": [
+      "8bcf32a9-17d5-405b-b34e-ddd5b83fa7ef"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have not yet played. Given their larger hand sizes and the absence of public card information, it is probable they hold cards higher than my 3-6 and will try to win the trick to block my partner from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "8bcf32a9-17d5-405b-b34e-ddd5b83fa7ef"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♦ single is the cheapest way to open. It gives the partner the widest range of cards that can beat it, supports transferring the lead, and minimizes loss if an opponent takes the trick.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4♦ is only marginally stronger than the 3♦ but still easily beaten by any higher non-trump or trump; playing it makes it slightly harder for the partner to cover without improving control."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5♦ is higher than necessary and consumes a card that is closer to the middle of my weak range; it offers no defensive or offensive advantage over the 3♦."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6♦ is the highest card in my hand but still a low non-trump; leading it wastes the most valuable of my four cards and does not increase the chance of winning the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or bomb and take the lead.",
+      "The partner may not be able to beat the 3♦, leaving the team without initiative."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the hand-value lost when the trick is taken and keep the 4-6 for future turns. A low lead also maximizes the probability that the partner can cover with any playable higher card."
+  },
+  "confidence": 0.75
+}

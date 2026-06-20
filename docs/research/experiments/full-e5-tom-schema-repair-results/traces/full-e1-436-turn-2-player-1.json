@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-436-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Take control of the trick now so the near-finish opponent (player 0, 2 cards left) cannot let their partner feed them through an unchecked low lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 3) has three unknown cards and may or may not be able to beat a heart 3; it is safer for me to capture the lead with my known cheap winner than to rely on partner.",
+    "confidence": 0.6,
+    "evidence": [
+      "f45a3ca6-75ca-44cd-9b0b-1ed135e95981"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 led a low heart with only two cards remaining, likely shedding a weak card or setting up a quick exit; opponent player 2 may be waiting to win this trick and continue feeding player 0.",
+    "confidence": 0.7,
+    "evidence": [
+      "f45a3ca6-75ca-44cd-9b0b-1ed135e95981"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the 4 of hearts to win the trick at the lowest possible cost, seizing the lead and disrupting the opponent near finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing risks letting opponent player 2 win the trick and continue the attack, while player 0 gets closer to going out."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 also wins but spends a higher card unnecessarily when the 4 already beats the table."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 wins too, but overcommits our best single; preserving it is better for a future high-card or trump contest."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may still beat the 4 with a higher heart or a 7/trump, costing us the lead and a low-cost card.",
+      "If we win, our remaining hand (9 and 10 of hearts) is still modest against possible opponent trumps or high cards."
+    ],
+    "mitigation": "Using the minimum-cost winner preserves stronger cards for later and prevents opponents from freely coordinating to finish player 0's hand."
+  },
+  "confidence": 0.75
+}

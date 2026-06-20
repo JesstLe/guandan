@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-453-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I have only low non-trump clubs and the most cards on my team, so I should lead the cheapest card and let my partner capture the trick if possible, preserving my slightly better cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 hidden cards and no public actions have been revealed. Probabilistically, with 3 random cards partner has a moderate chance of holding a higher non-trump or a trump that can beat my low lead, but I cannot treat any specific hidden card as fact.",
+    "confidence": 0.35,
+    "evidence": [
+      "16d8cb06-1cdd-47d7-bf32-5558ac56b045"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards, suggesting they may be near going out and could hold strong cards or trumps. Opponent player 3 has 3 cards. Either opponent may try to win this trick to finish or keep the lead, but their exact holdings are unknown.",
+    "confidence": 0.4,
+    "evidence": [
+      "16d8cb06-1cdd-47d7-bf32-5558ac56b045"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the smallest, least valuable card. It minimizes what I give away, makes it easiest for partner to beat with an average card or trump, and keeps the 4, 5, and 6 for later tricks when I may need marginally higher cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Only marginally stronger than the 3; still easily beaten by any higher non-trump or trump, and it consumes a card I might need later."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Wastes a middle card without materially reducing the chance an opponent can beat the lead; better saved for a future play."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Uses my highest club for almost no gain, since any higher non-trump or trump still beats it. Retaining the 6 preserves my best exit card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1, with only 2 cards, may have a winning high card or trump and could take the lead or even finish.",
+      "Partner may be unable to beat the 3, ceding control to an opponent.",
+      "Because I have no trumps or bombs, I cannot regain control if opponents win the trick."
+    ],
+    "mitigation": "Leading the lowest possible card limits the value lost and maximizes the set of partner cards that can win the trick; it also leaves my remaining cards as high as possible for future shedding."
+  },
+  "confidence": 0.6
+}

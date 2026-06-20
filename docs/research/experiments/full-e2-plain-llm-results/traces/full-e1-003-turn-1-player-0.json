@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-003-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is all low non-trump clubs, so I cannot confidently win a trick on my own. The best use of the opening lead is to spend the cheapest card and give my partner, who holds three unseen cards, the widest range of cards that can take over the lead."
+  },
+  "partnerBelief": {
+    "summary": "My partner has three unseen cards and has made no public plays, so I cannot infer any specific ranks or suits. With three random cards they are more likely than I am to hold a card that can beat a low single, but this is only probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "5348862d-a26d-44a2-a55b-4b30a029366a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold [2, 3, 3] cards. The opponent with only two cards is near finishing and may therefore hold relatively strong cards. At least one opponent likely has a higher card or trump that can beat a low single, but no specific hidden card can be treated as a fact.",
+    "confidence": 0.5,
+    "evidence": [
+      "5348862d-a26d-44a2-a55b-4b30a029366a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of clubs is the lowest card in my hand. Leading it preserves my slightly stronger 4-6 for future tricks, maximizes the chance that my partner can win this trick with a modest card, and avoids committing any intermediate strength unnecessarily while an opponent is near finish.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still low, but it is marginally harder for my partner to beat than the 3 and slightly more useful to keep for later."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Leading the 5 commits an intermediate card and narrows the range of cards my partner can use to cover without a high card or trump."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest card; leading it now leaves me only weaker cards and requires my partner to have an even higher card or trump to take the trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher card or trump and seize the lead.",
+      "The opponent with only two cards may use this trick to advance toward finishing their hand.",
+      "My partner may be unable to cover the 3, leaving our team without initiative."
+    ],
+    "mitigation": "By spending the minimum-strength card, I preserve my remaining 4-6 for a later trick and give my partner the widest possible window to win cheaply. If the 3 loses, my stronger cards remain to contest the next trick."
+  },
+  "confidence": 0.7,
+  "notes": "The public history contains only the new_game event, so all inferences about partner and opponent hands are probabilistic and grounded solely in hand counts and the known deck structure."
+}

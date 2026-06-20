@@ -1,0 +1,5 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "full-e1-014-turn-1-player-0",
+  "selectedActionId": "play-single-spade-2-copy2"
+}

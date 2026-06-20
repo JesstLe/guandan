@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-425-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "As the opening leader with no table lead, I want to start the trick cheaply, keep the initiative if possible, and avoid revealing high cards early. A low spade lead keeps my stronger cards (4-6 of spades) for later tricks while forcing opponents to show some strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 unknown cards and no public actions have occurred, so I have almost no information about their hand. They could hold trumps, high cards, or continuations in spades. I will assume they are likely to have some playable cards but cannot rely on a specific suit or rank.",
+    "confidence": 0.1,
+    "evidence": [
+      "5c2d9f9c-303f-45ab-9c5f-749174abd40a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each have 3 unknown cards. With trump rank 7 and no cards played, they may hold trumps, high non-trump cards, or low cards similar to mine. I believe they are more likely than my partner to try to beat a low lead, but this remains highly uncertain.",
+    "confidence": 0.15,
+    "evidence": [
+      "5c2d9f9c-303f-45ab-9c5f-749174abd40a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest legal play. It minimizes card value expended, keeps 4-6 of spades for later tricks, and does not split a potential run. If opponents beat it, I learn about their strength cheaply; if they cannot, I keep the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest spade. Playing it first wastes my best non-trump card on an opening lead where opponents with trumps or higher ranks will likely win anyway, leaving me with weaker 3-5 cards afterward."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is still a relatively high card in my weak hand and is not needed to win an opening trick. Saving it for a later trick where it might actually take the lead is better than spending it now."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is a reasonable middle card, but the 3 is strictly lower and accomplishes the same goal of a cheap lead while preserving slightly more strength. There is no signaling benefit to leading the 4 over the 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent with a 7-ranked card, trump, or higher non-trump can beat the 3 and take the lead.",
+      "If partner is weak in spades or out of the lead suit, they cannot support this trick.",
+      "I reveal that I have spades, though no specific strength."
+    ],
+    "mitigation": "By leading the lowest card, I limit the information gained by opponents and preserve my 4-6 of spades for potential recaptures or endgame plays. I accept that the opening lead is unlikely to win outright."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with a very weak hand (3-6 of spades, all non-trump) favors a minimal, low-card lead to keep options open."
+}

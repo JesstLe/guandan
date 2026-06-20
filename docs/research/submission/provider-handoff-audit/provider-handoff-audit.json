@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-18T21:15:58.709Z",
+  "generatedAt": "2026-06-19T12:36:23.287Z",
   "status": "ready",
   "conditionCount": 5,
   "conditions": [
@@ -126,25 +126,23 @@
     {
       "conditionId": "full-tom-prompted-llm",
       "title": "Full-split ToM-prompted LLM run",
-      "status": "provider_results_partial",
+      "status": "provider_results_present",
       "mappingJsonlPath": "docs/research/experiments/full-e4-tom-prompted-batch/batch-input.jsonl",
       "uploadJsonlPath": "docs/research/experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl",
       "expectedProviderResultPath": "docs/research/experiments/provider-results/full-tom-prompted-llm.jsonl",
       "mappingExists": true,
       "uploadExists": true,
       "providerResultExists": true,
-      "providerResultLineCount": 384,
-      "providerSuccessCount": 384,
+      "providerResultLineCount": 500,
+      "providerSuccessCount": 500,
       "providerErrorCount": 0,
-      "providerPendingCount": 116,
+      "providerPendingCount": 0,
       "mappingRequestCount": 500,
       "uploadRequestCount": 500,
       "customIdMismatchCount": 0,
       "missingFromUpload": [],
       "missingFromMapping": [],
-      "notes": [
-        "Provider result is partial: 384/500 successful rows, 0 error rows, and 116 rows still needing successful output."
-      ]
+      "notes": []
     }
   ],
   "issues": [
@@ -152,11 +150,6 @@
       "severity": "info",
       "conditionId": "verifier-revision-llm",
       "message": "Real verifier-revision package is intentionally blocked until first-pass LLM results exist."
-    },
-    {
-      "severity": "warning",
-      "conditionId": "full-tom-prompted-llm",
-      "message": "Provider result is partial: 384/500 successful rows, 0 error rows, 116 rows still pending successful output."
     }
   ]
 }

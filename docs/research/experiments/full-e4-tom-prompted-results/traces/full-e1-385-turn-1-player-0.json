@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-385-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is four weak non-trump singles. By leading the lowest single, I give my partner the widest window to overtake with a higher single or trump and seize control, while I keep the slightly higher cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards and no public signals yet. They could hold a higher single or trump that lets them take this trick, but this is only probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "73d46f97-339a-484b-9140-77abf9848dd7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards. They are likely to play a higher single or trump if they want control, but I cannot assert specific hidden cards.",
+    "confidence": 0.5,
+    "evidence": [
+      "73d46f97-339a-484b-9140-77abf9848dd7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading 3♠ commits the least value, preserves 4♠-6♠ as follow cards, and lets partner overtake if they have a stronger single. Any of my singles is beatable by a 7/trump, so minimizing commitment is best.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing my highest card first leaves only 3♠-5♠ for later and gives opponents more incentive to take control; it wastes the only card that might win a later low trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Still commits a middle card that could be useful later; no compensating advantage over 3♠ since any opponent with 6+ or trump beats it."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Slightly better than 5♠ or 6♠ but still commits a higher card than necessary; 3♠ is strictly better for preserving resources."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent with any 7/trump or higher non-trump single can take the lead immediately.",
+      "If partner cannot overtake, I may be left with three weak singles and limited ability to regain control.",
+      "Leading a low single may let an opponent with a moderately high single win cheaply."
+    ],
+    "mitigation": "By choosing the lowest single, I keep my remaining cards as exit options for future single leads and avoid over-investing in a trick I am unlikely to win. I rely on partner to take control if possible."
+  },
+  "confidence": 0.6,
+  "notes": "Opening lead with very weak cards; no public signals exist beyond the new-game event."
+}

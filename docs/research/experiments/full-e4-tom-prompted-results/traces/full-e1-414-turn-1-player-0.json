@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-414-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 has only two cards left and is leading; the best team outcome is to win this trick so player 0 can shed the remaining 2 on the next lead and exit the hand quickly."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards and has not acted, so no strong signal is available. They likely want to preserve a high card or trump to cover a future lead from player 0 or to block opponents.",
+    "confidence": 0.5,
+    "evidence": [
+      "a26aac58-0fac-4611-9e2a-e985b991ecdd"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards and will try to beat any lead with a trump or higher non-trump to seize control and race to finish their own hands.",
+    "confidence": 0.6,
+    "evidence": [
+      "a26aac58-0fac-4611-9e2a-e985b991ecdd"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade Ace is the strongest non-trump single available. It maximizes the chance of winning the trick, which lets player 0 lead the low spade 2 next and likely exit the hand. Even if an opponent beats it with a trump, the Ace would have been beaten later anyway, and the lead would pass with the 2 still in hand as a liability.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 concedes the trick almost certainly and wastes player 0's only chance to control the lead. It invites an opponent to win cheaply and continue pressuring the team, leaving the Ace as a card that may still need to win a trick later."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump (rank 7, red trump, or joker) and beat the Ace, seizing the lead.",
+      "Partner may not have a suitable card to regain control if the Ace loses."
+    ],
+    "mitigation": "The Ace is the highest non-trump single in player 0's hand, so there is no stronger legal lead. If it is beaten, the outcome is still better than having led the 2 because the Ace retains more value in a future contested trick than the 2 does."
+  },
+  "confidence": 0.7,
+  "notes": "No public plays have occurred, so all beliefs about partner and opponent hands remain probabilistic and grounded only in the initial new-game event and current hand counts."
+}

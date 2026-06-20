@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-409-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only 2 cards while every opponent has 3 cards. The top priority is to win the current lead so player 0 can play the remaining card next and go out first."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards but has made no public plays, so no reliable signal about hand strength or shape is available. Partner is likely motivated to let player 0 finish or to cover if opponents contest, but partner cannot coordinate explicitly.",
+    "confidence": 0.3,
+    "evidence": [
+      "441b9f9f-dc86-4282-adcb-918dc2f7eba1"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) have 6 cards combined and want to stop player 0 from finishing. Each may hold trumps (7s or jokers) or another 2 that can beat a non-trump lead, but this is probabilistic because no cards have been revealed.",
+    "confidence": 0.4,
+    "evidence": [
+      "441b9f9f-dc86-4282-adcb-918dc2f7eba1"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Lead the stronger non-trump card (2 of spades) first. It is higher than the ace and therefore more likely to win the trick uncontested. If it wins, player 0 regains the lead and can play the ace to finish. This maximizes the chance of going out in two consecutive tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The ace is lower than a 2 and more easily beaten by any opponent holding a 2, trump, or joker. Leading the ace first lowers the chance of winning this trick and therefore reduces the chance of getting back the lead to play the final card."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a 2, 7/trump, or joker that beats the 2 of spades and seizes the lead.",
+      "If the 2 is beaten, player 0 is left with only the ace and must hope a future lead is beatable by an ace."
+    ],
+    "mitigation": "Leading the strongest available card now is the best mitigation: it gives the highest probability of winning the lead immediately and converting the hand into a first-place finish."
+  },
+  "confidence": 0.75,
+  "notes": "Evidence is limited to the new_game event because no cards have been played. All beliefs about partner and opponent hands remain probabilistic."
+}

@@ -1,0 +1,39 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-438-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "confidence": 0.65,
+  "reasoning": {
+    "overview": "Opening lead with four low clubs and no public card-play history. All legal actions are low single clubs; the choice is mainly about ordering weak cards to support team tempo.",
+    "partnerIntent": {
+      "belief": "Partner (player 2) holds 3 cards and has made no public plays. Their hand is unknown, but with only 3 cards they likely have limited firepower. They may be trying to either exit low cards or prepare a trump/bomb to cover an opponent's threat. By leading a low single, I avoid consuming partner's scarce high cards if they need to cover, and give them a cheap chance to either play under or pass if the suit does not suit them.",
+      "signaledBy": []
+    },
+    "opponentIntent": {
+      "belief": "Player 1 has only 2 cards (opponent_near_finish), so they are likely holding at least one high-value or trump card to try to finish. Player 3 has 3 cards. Opponents may try to let the leader win a cheap trick to preserve their own strength, or player 1 may use a high card to seize control and go out. Leading the weakest card forces opponents to either spend a real card to beat it or let me retain the lead cheaply.",
+      "signaledBy": [
+        "3a8684e6-f149-4714-a466-d0e09c512d88"
+      ]
+    },
+    "candidateComparison": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "pros": "Lowest commitment; preserves the slightly higher 4/5/6 for later; standard opening tempo.",
+        "cons": "Very weak; any opponent can beat it easily if they choose to contest."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "pros": "Best chance among these weak cards to actually win the trick outright if opponents have only low singles or want to pass.",
+        "cons": "Uses the strongest of an already weak sequence, leaving only 3/4/5 for future leads; if opponent still beats it, the loss is greater."
+      }
+    ],
+    "decisionRationale": "At turn 1 with no public plays, preserving card value and maintaining flexible tempo is more important than trying to win one cheap trick with a 6 that will almost certainly be beaten anyway. The 3 lead is the least informative and least costly, aligning with partner-supportive opening strategy while respecting uncertainty about hidden hands."
+  },
+  "evidence": [
+    {
+      "eventId": "3a8684e6-f149-4714-a466-d0e09c512d88",
+      "role": "public",
+      "description": "New game event; establishes that no cards have been played and all inferences must be probabilistic."
+    }
+  ]
+}

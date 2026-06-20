@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-448-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "At the opening lead with no table pressure, the team wants to keep the lead cheaply or let partner (player 2) take control. Playing the lowest non-trump single minimizes the chance an opponent can beat it and gives partner a wide range of cards to win the trick."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 cards, so they likely possess at least one card higher than 3♣ or a trump. Without any prior play, I cannot assert their exact holdings, but they are well-positioned to cover a low lead if they want control.",
+    "confidence": 0.5,
+    "evidence": [
+      "6a326091-c14c-4f77-b97a-1c76f41f08b9"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is tagged near finish, so they may be holding a high card or trump to try to go out. Opponent player 3 has 3 cards. Both opponents would prefer to win this trick to let player 1 escape, but a low lead forces them to reveal a higher card or trump to do so.",
+    "confidence": 0.5,
+    "evidence": [
+      "6a326091-c14c-4f77-b97a-1c76f41f08b9"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "3♣ is the lowest legal single in my hand. Leading it minimizes the risk that an opponent can beat the lead with a modest non-trump, preserves my higher clubs (4-6) for future plays, and maximizes the chance partner can take the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "4♣ is still a low card but strictly weaker than keeping it while playing 3♣. It does not reduce opponents' ability to beat the lead; any card that beats 3♣ also beats 4♣ from the perspective of lower cards, and it removes a slightly stronger card from my hand."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "5♣ expends an even higher non-trump without gaining any additional control over the trick. The same opponent threats can beat it, and it leaves me with fewer mid-ranked options."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "6♣ is my highest club and most valuable for later winning or responding to opponent plays. Leading it now would waste that value on a lead that opponents may still beat with a trump or higher non-trump."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent player 1 (2 cards, near finish) may hold a trump or high non-trump and win the trick, getting a chance to finish.",
+      "Partner may not want or be able to cover the 3♣, so the lead may still pass to an opponent."
+    ],
+    "mitigation": "Playing the absolute lowest card keeps the lead cost minimal and retains my 4-6 clubs for later control. It also forces opponents to spend a real card to take control rather than giving them a cheap pass."
+  },
+  "confidence": 0.7
+}

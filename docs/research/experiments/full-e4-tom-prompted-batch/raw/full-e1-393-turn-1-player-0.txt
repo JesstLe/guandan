@@ -1,0 +1,54 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-393-turn-1-player-0",
+  "selectedActionId": "play-single-club-3-copy1",
+  "reasoning": {
+    "publicStateBeliefs": {
+      "partner": {
+        "playerIndex": 2,
+        "handCount": 3,
+        "belief": "Partner likely holds a mix of unseen cards; no public signals yet, so their ability to cover a low lead is uncertain but possible.",
+        "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+      },
+      "opponents": {
+        "player1": {
+          "handCount": 2,
+          "belief": "Opponent player 1 is close to finishing; they are likely to try to win this trick or play efficiently to exit soon.",
+          "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+        },
+        "player3": {
+          "handCount": 3,
+          "belief": "Opponent player 3 has a normal-sized hand; they may cover a low lead with a higher card or trump.",
+          "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+        }
+      }
+    },
+    "partnerIntentInference": {
+      "belief": "Partner wants our team to gain or maintain control, but with no prior plays they cannot signal strength. A low lead is safest for cooperation because it does not waste high cards and may let partner take the trick if they have a higher card.",
+      "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+    },
+    "opponentIntentInference": {
+      "belief": "Opponents, especially player 1 with only 2 cards, want to end the round quickly. They will probably cover any single we lead if they can, so leading our strongest single is likely wasted.",
+      "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+    },
+    "candidateComparisons": [
+      {
+        "actionId": "play-single-club-3-copy1",
+        "pros": ["Uses our weakest card", "Preserves 4, 5, 6 for later tricks", "Low cost if opponents cover it"],
+        "cons": ["Almost certainly loses the lead"],
+        "teamObjectiveFit": "high"
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "pros": ["Our highest single", "May win if opponents cannot cover"],
+        "cons": ["Expends our best card on an opening lead", "Likely still beaten by opponent trumps or higher ranks", "Leaves us with only 3, 4, 5"],
+        "teamObjectiveFit": "low"
+      }
+    ],
+    "conclusion": {
+      "belief": "With all clubs and no trumps, our hand is weak. The opening lead should be the lowest card to minimize loss of strength and to give partner a chance to take control. Player 1's small hand increases urgency, but does not justify throwing our best card.",
+      "selectedActionJustification": "play-single-club-3-copy1 best supports the team by conserving value and avoiding premature use of our highest card.",
+      "evidence": ["29d6175f-0332-46b2-90ef-f372abc70c7f"]
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "0.2.0",
+  "generatedAt": "2026-06-20T02:49:50.951Z",
+  "status": "needs_revision",
+  "submissionReadiness": {
+    "status": "not_ready",
+    "preflightStatus": "research_not_ready",
+    "aamasFullPaperReadiness": "borderline",
+    "reviewerResponseStatus": "needs_external_evidence",
+    "readinessBlockerCount": 1,
+    "reviewerResponseBlockerCount": 2,
+    "nextActions": [
+      "Complete the prepared human soft-label audit, or add a second model/provider pilot replication; ideally do both before claiming robust multi-agent reasoning behavior.",
+      "Decide whether to add full-split plain/candidate LLM baselines or keep them as optional strengthening evidence.",
+      "Preserve the 8-page body budget by replacing protocol/scaffolding material if more evidence moves into the main paper.",
+      "Run the fixed second-provider pilot replication when API access is available, or complete the prepared human audit packet."
+    ]
+  },
+  "steps": [
+    {
+      "id": "human-audit-launch-checklist",
+      "title": "Refresh Human Audit Launch Checklist",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeHumanAuditLaunchChecklistCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/human-audit-launch"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/human-audit-launch/human-audit-launch-checklist.json\",\n  \"markdownPath\": \"docs/research/submission/human-audit-launch/human-audit-launch-checklist.md\",\n  \"status\": \"ready_to_send\",\n  \"readyForAnnotation\": true,\n  \"readyForPaperEvidence\": false,\n  \"sampleCount\": 40,\n  \"failedChecks\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "human-audit-evidence-gate",
+      "title": "Refresh Human Audit Evidence Gate",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeHumanAuditEvidenceGateCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/human-audit-evidence-gate"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/human-audit-evidence-gate/human-audit-evidence-gate.json\",\n  \"markdownPath\": \"docs/research/submission/human-audit-evidence-gate/human-audit-evidence-gate.md\",\n  \"status\": \"awaiting_returns\",\n  \"readyForPaperEvidence\": false,\n  \"completedLabels\": 0,\n  \"totalLabels\": 200,\n  \"failedChecks\": 0,\n  \"pendingChecks\": 5\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "manifest-before-readiness",
+      "title": "Refresh Manifest Before Readiness",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeReproducibilityManifestCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 146,\n  \"missing\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "aamas-readiness",
+      "title": "Refresh AAMAS Readiness",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAAMASReadinessReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/aamas-readiness"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-readiness/aamas-readiness-report.md\",\n  \"localSubmissionHygiene\": \"ready\",\n  \"aamasFullPaperReadiness\": \"borderline\",\n  \"gates\": 8,\n  \"needsExperiment\": 1,\n  \"needsRevision\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "aamas-self-review",
+      "title": "Refresh AAMAS Self-Review",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAAMASSelfReviewReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/aamas-self-review"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-self-review/aamas-self-review-report.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-self-review/aamas-self-review-report.md\",\n  \"status\": \"needs_experiment\",\n  \"items\": 5,\n  \"needsExperiment\": 2,\n  \"needsRevision\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "aamas-reviewer-response",
+      "title": "Refresh AAMAS Reviewer-Response Matrix",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeAAMASReviewerResponseMatrixCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/aamas-reviewer-response"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json\",\n  \"markdownPath\": \"docs/research/submission/aamas-reviewer-response/aamas-reviewer-response-matrix.md\",\n  \"status\": \"needs_external_evidence\",\n  \"totalConcerns\": 9,\n  \"answerableNow\": 7,\n  \"needsExternalEvidence\": 2,\n  \"needsRevision\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "preflight",
+      "title": "Refresh Research Preflight",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeResearchPreflightReportCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission/preflight"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/preflight/research-preflight-report.json\",\n  \"markdownPath\": \"docs/research/submission/preflight/research-preflight-report.md\",\n  \"status\": \"research_not_ready\",\n  \"aamasFullPaperReadiness\": \"borderline\",\n  \"reviewerResponseStatus\": \"needs_external_evidence\",\n  \"externalBlockers\": 0,\n  \"localBlockers\": 0,\n  \"readinessBlockers\": 1,\n  \"reviewerResponseBlockers\": 2\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "manifest-final",
+      "title": "Refresh Final Manifest",
+      "command": [
+        "npx",
+        "tsx",
+        "server/src/research/writeReproducibilityManifestCli.ts",
+        "--root",
+        "docs/research",
+        "--out",
+        "docs/research/submission"
+      ],
+      "status": "passed",
+      "exitCode": 0,
+      "stdout": "{\n  \"jsonPath\": \"docs/research/submission/reproducibility-manifest.json\",\n  \"markdownPath\": \"docs/research/submission/reproducibility-manifest.md\",\n  \"entries\": 146,\n  \"missing\": 0\n}\n",
+      "stderr": ""
+    }
+  ],
+  "checks": [
+    {
+      "id": "readiness-manifest-count-current",
+      "status": "pass",
+      "finding": "Readiness reports manifestEntries=146; current manifest has 146 entries."
+    },
+    {
+      "id": "readiness-pipeline-step-count-current",
+      "status": "pass",
+      "finding": "Readiness reports localPipelineSteps=58; current local pipeline report has 58 steps."
+    },
+    {
+      "id": "preflight-submission-ready-current",
+      "status": "fail",
+      "finding": "Preflight status=research_not_ready. AAMAS readiness=borderline. Reviewer-response status=needs_external_evidence. Readiness blockers=1. Reviewer-response blockers=2."
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-06-19T12:36:20.696Z",
+  "status": "pass",
+  "manuscriptPath": "submission/aamas-latex/main.tex",
+  "checkedTextScope": "Method through Full-Evaluation Protocol, plus Reproducibility and Provenance when present",
+  "facts": {
+    "methodSectionPresent": true,
+    "reproducibilitySectionPresent": true,
+    "modulesPassing": 6,
+    "modulesTotal": 6,
+    "termsPresent": 28,
+    "termsTotal": 28,
+    "artifactsPresent": 15,
+    "artifactsTotal": 15,
+    "commandsPresent": 7,
+    "commandsTotal": 7
+  },
+  "modules": [
+    {
+      "id": "decision-point-exporter",
+      "title": "Decision-Point Exporter",
+      "status": "pass",
+      "termsPresent": 4,
+      "termsTotal": 4,
+      "artifactsPresent": 3,
+      "artifactsTotal": 3,
+      "commandsPresent": 1,
+      "commandsTotal": 1,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "schemas/decision-point.schema.json",
+        "experiments/pilot-e1/manifest.json",
+        "experiments/full-e1/manifest.json"
+      ],
+      "commands": [
+        "npx tsx server/src/research/exportPilotDatasetCli.ts --out docs/research/experiments/pilot-e1 --count 50 --prefix pilot-e1"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    },
+    {
+      "id": "structured-reasoning-trace",
+      "title": "Structured Reasoning Trace",
+      "status": "pass",
+      "termsPresent": 6,
+      "termsTotal": 6,
+      "artifactsPresent": 2,
+      "artifactsTotal": 2,
+      "commandsPresent": 1,
+      "commandsTotal": 1,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "schemas/reasoning-trace.schema.json",
+        "experiments/pilot-e7-tom-prompted-prompts/packets"
+      ],
+      "commands": [
+        "npx tsx server/src/research/exportLLMPromptPacketsCli.ts --out docs/research/experiments/pilot-e7-tom-prompted-prompts --condition tom-prompted-llm"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    },
+    {
+      "id": "rule-grounded-verifier",
+      "title": "Rule-Grounded Verifier",
+      "status": "pass",
+      "termsPresent": 5,
+      "termsTotal": 5,
+      "artifactsPresent": 3,
+      "artifactsTotal": 3,
+      "commandsPresent": 1,
+      "commandsTotal": 1,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "server/src/research/reasoningVerifier.ts",
+        "server/src/research/reasoningVerifier.test.ts",
+        "experiments/pilot-verifier-attribution/verifier-attribution.json"
+      ],
+      "commands": [
+        "npx tsx server/src/research/runPilotVerifierCli.ts --decisions docs/research/experiments/pilot-e1/decisions --out docs/research/experiments/pilot-e2-heuristic-verifier"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    },
+    {
+      "id": "verifier-grounded-revision",
+      "title": "Verifier-Grounded Revision",
+      "status": "pass",
+      "termsPresent": 5,
+      "termsTotal": 5,
+      "artifactsPresent": 2,
+      "artifactsTotal": 2,
+      "commandsPresent": 2,
+      "commandsTotal": 2,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "experiments/pilot-revision-comparison/revision-comparison.json",
+        "experiments/pilot-e6-verifier-revision-results/metrics.json"
+      ],
+      "commands": [
+        "npx tsx server/src/research/exportVerifierRevisionPacketsCli.ts --out docs/research/experiments/pilot-e6-verifier-revision-prompts",
+        "npx tsx server/src/research/writeRevisionComparisonCli.ts --out docs/research/experiments/pilot-revision-comparison"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    },
+    {
+      "id": "schema-repair-ablation",
+      "title": "ToM Schema-Repair Ablation",
+      "status": "pass",
+      "termsPresent": 4,
+      "termsTotal": 4,
+      "artifactsPresent": 2,
+      "artifactsTotal": 2,
+      "commandsPresent": 1,
+      "commandsTotal": 1,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "experiments/pilot-e8-tom-schema-repair-results/schema-repair-report.json",
+        "experiments/full-e5-tom-schema-repair-results/schema-repair-report.json"
+      ],
+      "commands": [
+        "npx tsx server/src/research/runLLMSchemaRepairCli.ts --out docs/research/experiments/pilot-e8-tom-schema-repair-results"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    },
+    {
+      "id": "source-backed-artifacts",
+      "title": "Source-Backed Artifacts",
+      "status": "pass",
+      "termsPresent": 4,
+      "termsTotal": 4,
+      "artifactsPresent": 3,
+      "artifactsTotal": 3,
+      "commandsPresent": 1,
+      "commandsTotal": 1,
+      "missingTerms": [],
+      "missingArtifacts": [],
+      "missingCommands": [],
+      "artifactPaths": [
+        "submission/reproducibility-manifest.json",
+        "submission/local-pipeline/local-research-pipeline-report.json",
+        "submission/claim-evidence/claim-evidence-report.json"
+      ],
+      "commands": [
+        "npm run research:local-pipeline -- --report-dir docs/research/submission/local-pipeline"
+      ],
+      "requiredAction": "No action required; paper text, artifacts, and command path are aligned."
+    }
+  ]
+}

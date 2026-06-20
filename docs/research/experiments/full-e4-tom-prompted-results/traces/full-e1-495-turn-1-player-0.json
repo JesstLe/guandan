@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-495-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "keep_lead",
+    "explanation": "As the opening leader with a very weak hand (3-6 of spades, no trumps), the immediate objective is to lead a low-card trick cheaply and retain whatever small card advantage remains for later tricks, while observing how opponents and partner respond."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unknown cards. At game start there are no public signals about suit distribution or strength; partner could be strong or weak. I cannot infer any specific holdings.",
+    "confidence": 0.1,
+    "evidence": [
+      "4c026263-c92c-4603-9c05-a2674f74e79f"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 unknown cards. With no cards played, their hands are uniformly uncertain; either may have trumps, higher spades, or other suits. I must assume they can likely beat any low spade lead.",
+    "confidence": 0.1,
+    "evidence": [
+      "4c026263-c92c-4603-9c05-a2674f74e79f"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades expends the weakest card first. All legal options are low non-trump singles, so the opening lead should minimize future liability by keeping the slightly higher 4-6 for later tricks where they might win or force opponents to use trumps.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Playing the highest spade now wastes the only card that might win a later low-rank trick, with no compensating benefit on an opening lead."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is still marginally stronger than the 3; leading it leaves the 3 as a later liability without increasing the chance of winning this trick."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is the second-strongest card in hand; preserving it for a later trick is better than using it on an opening lead that opponents can easily overtake."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent may have a higher spade or trump and take the lead immediately.",
+      "Partner may be unable to support this trick, but that is unknown at game start.",
+      "The hand is weak overall, so losing this trick is likely."
+    ],
+    "mitigation": "By leading the lowest card, I minimize information given away and keep slightly better cards for future tricks; I can observe the response and adjust subsequent play."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead with four consecutive low spades and no trumps; no partner or opponent signals exist yet."
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-035-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "As the opening leader with a very weak hand, I want to start with the lowest card to unload a weak single and let the trick develop cheaply, preserving the slightly higher spades for later."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; partner is equally likely to hold any remaining cards.",
+    "confidence": 0.1,
+    "evidence": [
+      "No public history beyond new_game",
+      "No inferences provided",
+      "Partner hand count is 3, same as opponents"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No specific information about opponents' hands; they likely have stronger holdings than my very low hand.",
+    "confidence": 0.1,
+    "evidence": [
+      "No cards have been played",
+      "Opponents each hold 3 unknown cards",
+      "My hand is extremely weak (3-6 of spades)"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3♠ is the standard opening play: it is the weakest card, costs nothing if it loses, and keeps the 4-6 for potential later use.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is slightly stronger and offers no advantage over leading the 3."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is a higher single that is better kept for later rather than spent on an opening lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card; leading it now wastes the most strength when a low lead is available."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Any opponent can beat the 3 with almost any card, so I may lose the lead immediately.",
+      "If partner cannot win, opponents gain initiative."
+    ],
+    "mitigation": "Losing the lead with the 3 is acceptable because it removes my weakest card cheaply and avoids committing stronger cards."
+  },
+  "confidence": 0.85,
+  "notes": "All legal actions are weak single spades; the only meaningful distinction is rank, so the lowest card is optimal."
+}

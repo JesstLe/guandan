@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-445-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards. With only the new_game event visible, partner's exact cards are unknown and treated as a uniform distribution over the remaining deck. They likely prefer a low lead so they can either pass cheaply, win the trick with a modest card, or at least avoid forcing them to burn a high card early.",
+    "confidence": 0.6,
+    "evidence": [
+      "9e0ed442-0d8c-4810-99b6-c224553f13db"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards. Because the trump rank is 7, they may hold 7s or higher cards that can beat any of my spades. Their incentive is to beat the lead with the cheapest possible card to preserve trumps and high cards for later control.",
+    "confidence": 0.6,
+    "evidence": [
+      "9e0ed442-0d8c-4810-99b6-c224553f13db"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-spade-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

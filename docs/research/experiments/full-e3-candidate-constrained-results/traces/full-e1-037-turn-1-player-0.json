@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-037-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards left, so the priority is to play a low non-trump single that partner can realistically beat, giving them the lead and a chance to finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner is close to finishing with a small hand, but their exact cards are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows partner (seat 2) has 2 cards remaining",
+      "scenarioTags includes partner_near_finish",
+      "No publicHistory card plays yet"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents likely hold higher cards and trumps, but exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "No cards have been played",
+      "Opponents have 3, 2, 3 cards respectively",
+      "Trump rank is 7; my hand contains no trumps"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the smallest card (diamond 3) keeps the trick as low as possible, maximizing the chance that a partner with a modest high card or small trump can take the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Still low, but slightly raises the bar for partner to win without adding value."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Middle card; opponents are more likely to have cards between 5 and 7, and partner may need a stronger card to take it."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Highest of my low cards; harder for partner to beat and more likely to be captured by opponents."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to beat the 3, losing the lead to opponents",
+      "An opponent with any higher card or trump can immediately take control"
+    ],
+    "mitigation": "By choosing the lowest legal single, I minimize the strength opponents need to capture the trick and give partner the best relative chance to win it."
+  },
+  "confidence": 0.6,
+  "notes": "No trumps in hand; all four legal actions are non-trump singles, so card rank is the only differentiator."
+}

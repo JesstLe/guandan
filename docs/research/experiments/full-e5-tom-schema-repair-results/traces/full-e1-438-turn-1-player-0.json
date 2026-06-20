@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-438-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 cards and has made no public plays. Their hand is unknown, but with only 3 cards they likely have limited firepower. They may be trying to either exit low cards or prepare a trump/bomb to cover an opponent's threat. By leading a low single, I avoid consuming partner's scarce high cards if they need to cover, and give them a cheap chance to either play under or pass if the suit does not suit them.",
+    "confidence": 0.65,
+    "evidence": [
+      "3a8684e6-f149-4714-a466-d0e09c512d88"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 1 has only 2 cards (opponent_near_finish), so they are likely holding at least one high-value or trump card to try to finish. Player 3 has 3 cards. Opponents may try to let the leader win a cheap trick to preserve their own strength, or player 1 may use a high card to seize control and go out. Leading the weakest card forces opponents to either spend a real card to beat it or let me retain the lead cheaply.",
+    "confidence": 0.65,
+    "evidence": [
+      "3a8684e6-f149-4714-a466-d0e09c512d88"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-club-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.65,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

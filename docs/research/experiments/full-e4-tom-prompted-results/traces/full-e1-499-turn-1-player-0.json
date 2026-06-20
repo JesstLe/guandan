@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-499-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "I hold only two cards and have the smallest hand count, so the overriding team objective is to exit the hand. Retaining the lead through the first trick lets me play the second card immediately, securing a first-place finish for our team."
+  },
+  "partnerBelief": {
+    "summary": "Partner has three cards and has made no public play. Because the deal is hidden, I cannot assert any specific holdings; it is merely plausible that partner holds cards that could cover a lower single if I lose the lead, but no reliable signal exists yet.",
+    "confidence": 0.4,
+    "evidence": [
+      "d5a0a591-d358-49d1-a6a2-392c748f761b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent holds three cards and nothing has been played. Given the larger hand sizes, it is plausible that at least one opponent has a trump, a joker, or another high card that can beat my lead, but this remains uncertain and is not treated as fact.",
+    "confidence": 0.55,
+    "evidence": [
+      "d5a0a591-d358-49d1-a6a2-392c748f761b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The spade 2 is the strongest natural rank in the deck, so leading it maximizes the chance of winning the first trick and keeping the lead. With the lead preserved, I can immediately lead the spade A next and play out my hand. In an endgame race, controlling the tempo is more valuable than saving a single card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is weaker than a 2 in this game's rank order. Leading it is more likely to be beaten by an opponent's 2, trump, or joker, which would cede the lead and force me to hope someone later leads a beatable single so I can play my remaining 2."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a trump 7 or a joker and win the trick, preventing me from leading again immediately.",
+      "If the 2 is beaten and I am left with the A, opponents may lead combinations rather than singles, stranding my last card.",
+      "Partner may be unable to regain the lead if opponents take control."
+    ],
+    "mitigation": "Leading the 2 reduces the set of cards that can beat it to trumps and jokers, giving the highest probability of winning the first trick. Even if an opponent takes the trick, the A can still be played on any subsequent lower single lead."
+  },
+  "confidence": 0.75
+}

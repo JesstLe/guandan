@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-429-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "Player 0 is in an endgame race with only two cards left, while every other player still holds three cards. The immediate goal is to play out the remaining cards safely and go out as quickly as possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has three cards and no public actions have occurred, so partner intent is unclear. Partner likely wants to help the team finish, but I cannot assume any specific holding; partner may have high cards or trumps that could cover a later lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "33b7b346-2591-49d0-aad1-23f8027111f7"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold three cards and have taken no public actions. They probably intend to seize the lead and block player 0 from going out, possibly using trumps (rank 7 or red jokers) or higher cards, but their exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "33b7b346-2591-49d0-aad1-23f8027111f7"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the spade Ace is the strongest available non-trump card and maximizes the chance of winning this first trick. Winning retains the lead, allowing player 0 to lead the remaining spade 2 next and exit the hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the 2 is weaker and likely loses to any higher non-trump or trump card, giving opponents initiative and potentially stranding the Ace in hand without a chance to control the exit."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The spade Ace can be beaten by any trump (rank 7 or red joker), after which opponents control the lead.",
+      "If opponents hold a higher non-trump Ace in another suit, they can also take the trick."
+    ],
+    "mitigation": "Even if the Ace loses, player 0 still holds the 2 to follow or lead next turn, and partner may be able to cover the table lead. Leading the Ace first is the highest-probability way to retain control."
+  },
+  "confidence": 0.75
+}

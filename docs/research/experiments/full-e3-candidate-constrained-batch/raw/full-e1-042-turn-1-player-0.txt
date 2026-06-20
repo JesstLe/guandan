@@ -1,0 +1,7 @@
+{
+  "agentId": "candidate-constrained-llm",
+  "decisionId": "full-e1-042-turn-1-player-0",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "reasoningTrace": "Partner (player 2) is near finish with only 2 cards remaining. My hand consists solely of low diamond singles (3-6). Leading the lowest card, the 3 of diamonds, minimizes the burden on my partner and gives them the best chance to win the trick or shed a low card, supporting the team's objective of helping the partner finish first.",
+  "confidence": 0.75
+}

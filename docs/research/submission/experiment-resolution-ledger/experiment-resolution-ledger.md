@@ -1,6 +1,6 @@
 # Experiment Resolution Ledger
 
-Generated at: `2026-06-18T21:15:57.283Z`
+Generated at: `2026-06-19T12:36:21.427Z`
 
 Scope: blocking `[NEED_EXPERIMENT]` markers in submission-relevant files.
 

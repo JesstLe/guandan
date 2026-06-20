@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-422-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 1) has only 3 cards remaining and is near finishing the hand. As the opening leader with no high cards, the best team play is to lead the weakest single and let partner take the trick if possible, transferring control to the player most likely to go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely holding one or more cards strong enough to beat a low non-trump single, since they are down to 3 cards near the end of the round. Their small hand count suggests they may have been shedding weaker cards and could be ready to finish.",
+    "confidence": 0.6,
+    "evidence": [
+      "7135152e-9b0b-408b-9cc0-e1ddf759f957"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold 2 and 3 cards respectively, but no cards have been played yet so their strength is unknown. With so few cards in the deal, at least one opponent may hold a trump or high non-trump card that can overtake a low diamond lead.",
+    "confidence": 0.5,
+    "evidence": [
+      "7135152e-9b0b-408b-9cc0-e1ddf759f957"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds is the weakest possible lead. It maximizes the chance that partner can win the trick cheaply with a modest card, gives them control, and preserves my slightly higher diamonds (4-6) for any future play where suit continuity might matter.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the highest card in the suit expends the only slightly stronger card without increasing the chance of winning the trick; any opponent or partner with a 7+ or trump still beats it, and it leaves me with even weaker follow-ups."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is only marginally stronger than the 3 and still loses to almost any non-trump or trump card an opponent or partner might play; preserving the 4 offers no meaningful advantage over preserving the 6."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is in the middle of the sequence and does not improve the lead's strength in any decisive way; leading from the bottom of the sequence is the conventional signal for a weak hand seeking partner help."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a high card or trump and win the trick, then lead a combination my partner cannot answer.",
+      "Partner may be unable to beat even the 3, leaving the trick to an opponent.",
+      "My remaining cards are all weak, so if I regain the lead I may not be able to protect partner."
+    ],
+    "mitigation": "By leading the absolute lowest card I minimize the resources committed and give partner the widest possible range of winning replies. If opponents win, my preserved 4-6 diamonds may still allow me to follow suit in a future diamond lead rather than being forced to burn a trump or pass."
+  },
+  "confidence": 0.75
+}

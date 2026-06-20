@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-390-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is weak (only low spade singles, no trumps), so I want to lead the cheapest card and let my partner win the trick if possible."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has at least one card higher than a spade 3 or a trump that can win the trick, given they hold 3 unknown cards and the lead is very low.",
+    "confidence": 0.6,
+    "evidence": [
+      "daf1a198-17ff-4046-b33e-a20569d4f89c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 unknown cards and are likely to beat a low single if they can, but I cannot reliably prevent that without better cards.",
+    "confidence": 0.65,
+    "evidence": [
+      "daf1a198-17ff-4046-b33e-a20569d4f89c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 is the lowest-cost lead. It gives partner the best chance to win with a higher single or trump, while preserving the slightly stronger 4, 5, and 6 for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Wastes my highest non-trump card on a lead that opponents can likely beat anyway, leaving me with even weaker follow-up cards."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Still a weak lead and does not meaningfully increase the chance of winning the trick compared with the 3."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Slightly higher than the 3 but offers no strategic advantage; saving the 4 for later is better."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher single or trump and win the lead.",
+      "Partner may not be able to beat the 3, leaving the team without control."
+    ],
+    "mitigation": "By expending only the lowest card, I limit resource loss and keep the 4, 5, and 6 available for future tricks."
+  },
+  "confidence": 0.55
+}

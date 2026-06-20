@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-020-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "Opening lead with no table constraint; I want to start the trick cheaply and force opponents to reveal their strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner's hand is unknown at game start.",
+    "confidence": 0.0,
+    "evidence": [
+      "Only public event is new_game; no inferences available."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents' hands are unknown at game start.",
+    "confidence": 0.0,
+    "evidence": [
+      "Only public event is new_game; no inferences available."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (spade 3) minimizes exposure. My hand is weak and non-trump, so starting small preserves the 4, 5, and 6 for later tricks while making opponents spend higher cards if they want to win this one.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "The 4 is higher than necessary for an opening lead and slightly weaker for future tricks."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "The 5 is even more valuable to keep for later; playing it now wastes mid-tier strength."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The 6 is my highest card and should be retained as long as possible."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Leading low may let an opponent win the trick immediately.",
+      "Without trumps or high cards, I have limited ability to regain lead later."
+    ],
+    "mitigation": "By keeping the 4-6 sequence, I can follow suit with slightly higher cards if the opportunity arises, and I avoid committing my best card first."
+  },
+  "confidence": 0.75,
+  "notes": "Opening lead from a weak hand: play the minimum legal single to reduce information and conserve strength."
+}

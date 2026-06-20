@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-490-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "I hold only low non-trump spades and cannot realistically dominate the opening trick. The best team use of the lead is to play the lowest possible single, maximizing the chance that partner (player 2) can overtake and assume control, while keeping my higher low cards for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner is hidden but holds 3 cards. With no prior play, partner's hand is uniformly unknown, yet it is probable they hold at least one non-trump spade or trump higher than the 3 of spades and would welcome a low lead they can win cheaply.",
+    "confidence": 0.5,
+    "evidence": [
+      "848e9689-0501-4bb6-9ccf-10622839dfa4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) each hold 3 cards and have revealed nothing. They likely possess higher non-trump cards or trumps and will try to seize the lead if partner cannot, but I cannot pinpoint which opponent is strong.",
+    "confidence": 0.5,
+    "evidence": [
+      "848e9689-0501-4bb6-9ccf-10622839dfa4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the lowest legal single. It sets the weakest possible threshold, giving partner the broadest range of replies that can win the trick and preserving my 4, 5, and 6 for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leading my highest card raises the bar partner must clear; a partner holding only a 4 or 5 as their playable spade could not win, and opponents with trumps or higher spades would still take the trick, wasting my best card."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Still unnecessarily high. It denies partner any winning card between a 3 and a 5, and opponents can beat it just as easily as a 3."
+      },
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Better than 5 or 6, but still harder for partner to beat than the 3 and offers no compensating advantage."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 of spades and take control of the lead.",
+      "Partner may be unable to beat even a low 3, causing the lead to pass to an opponent anyway.",
+      "A low single lead may break up a potential higher-ranking combination I could have formed later, though no such combination is currently legal."
+    ],
+    "mitigation": "The low lead is the resource-minimizing play that maximizes partner's winning chances; if an opponent wins, I have conserved my modest remaining strength for a future trick."
+  },
+  "confidence": 0.65
+}

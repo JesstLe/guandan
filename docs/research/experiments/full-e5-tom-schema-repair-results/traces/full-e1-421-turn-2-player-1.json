@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-421-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "The opponent leader (player 0) has only 2 cards and is near finishing. By taking the trick with the minimum beat, I disrupt their tempo and prevent them from freely disposing of their remaining cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) has 3 cards but has not acted publicly, so no specific holding can be inferred. They might be able to beat a low heart 3, but I should not assume they will; it is plausible they prefer I spend a low card to seize the lead rather than expose their own strength.",
+    "confidence": 0.4,
+    "evidence": [
+      "5e75f140-57d1-4bf9-834e-be799989c8b8"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 led a minimum heart 3 while holding only 2 cards, which is consistent with offloading a weak card while retaining a stronger one (possibly a higher heart or a trump). They are therefore a near-finish threat that should be challenged rather than given a free pass.",
+    "confidence": 0.6,
+    "evidence": [
+      "5e75f140-57d1-4bf9-834e-be799989c8b8"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Playing the minimum legal heart 4 beats the table, seizes the lead, and slows a near-finish opponent while conserving the higher hearts (9 and 10) for later tricks.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves player 0 in control with only one card left, giving them a high chance to finish soon; it conflicts with the need to suppress a near-finish opponent."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 already beats the 3, but using a middle card now is wasteful if the opponent can overtake it with a higher heart or trump, and it reduces my remaining high-card cover."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "The 10 is my strongest single; playing it wins the trick but spends a valuable high card unnecessarily when the 4 already satisfies the immediate goal of taking control."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Player 0's remaining card may be a higher heart or a trump and beat my 4, allowing them to keep the lead.",
+      "If I win, my future leads will come from only 9 and 10, which may be vulnerable to opponents' trumps or high cards.",
+      "Partner may have been willing to take the lead, so my play could slightly reduce partnership flexibility."
+    ],
+    "mitigation": "Using the minimum beat limits resource exposure; I still keep 9 and 10 as cover, and partner remains available to support on subsequent tricks."
+  },
+  "confidence": 0.7
+}

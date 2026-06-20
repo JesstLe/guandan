@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-408-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 holds only low non-trump clubs and cannot plausibly run out the hand. The best team objective is to lead a low card so partner (player 2) has a chance to win the trick and take control, especially while opponent player 1 is down to two cards."
+  },
+  "partnerBelief": {
+    "summary": "Partner player 2 has 3 cards and no public plays are known. Their hand may contain trumps or high non-trump cards that can beat a low club lead, but this is only probabilistic because the cards are hidden.",
+    "confidence": 0.35,
+    "evidence": [
+      "cdbf64fa-2667-4da0-9c0a-78ea042b3bf4"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards remaining and is tagged as near finish, so they likely hold at least one high card or trump to try to win control and exit. Opponent player 3 has 3 cards and may support. These beliefs are probabilistic because the cards are hidden.",
+    "confidence": 0.5,
+    "evidence": [
+      "cdbf64fa-2667-4da0-9c0a-78ea042b3bf4"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of clubs is the smallest investment. It keeps the slightly higher clubs (4-6) for future tricks and gives partner the widest, cheapest window to take the lead with a higher card or trump without forcing player 0 to spend their best non-trump card now.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is player 0's highest non-trump card. Leading it now would waste the best chance to win or compete on a later trick, and it is still easily beaten by any opponent trump or higher non-trump."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "The 5 is the second-best non-trump card. Playing it now does not materially improve the chance of winning the trick but removes a card that could be useful later if the lead returns to player 0."
+      },
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "The 4 is still higher than the 3 and is not needed now. Keeping it preserves sequential options for future leads or covers if the trick returns."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "All opponents may pass on the low 3, leaving player 0 with the lead and a weak remaining hand.",
+      "Opponent player 1 may use a trump or high card to win immediately and then finish their last card.",
+      "Partner may be unable to beat the trick, giving opponents control."
+    ],
+    "mitigation": "By leading the lowest card, player 0 minimizes the value surrendered and retains the 4-6 for any future chance to compete or regain the lead. The low lead also avoids telegraphing strength or burning a cover card."
+  },
+  "confidence": 0.6,
+  "notes": "All hidden-card beliefs are probabilistic because only the new_game public event has occurred; no partner or opponent cards are treated as known facts."
+}

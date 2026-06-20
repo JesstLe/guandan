@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "full-e1-041-turn-2-player-1",
+  "actionId": "play-single-heart-10-copy1",
+  "reasoningTrace": "The opponent at player 0 led a low single 3♥ and has only 2 cards remaining, so they are close to finishing. My hand contains 4♥, 9♥, and 10♥, all of which beat the 3♥, but I have no trump. To take control of the trick and prevent the near-finish opponent from retaining the lead, I should play my highest available single, the 10♥. This maximizes the chance of winning the trick and gaining the next lead, which is especially important given the opponent's low hand count."
+}

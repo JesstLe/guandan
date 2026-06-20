@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-427-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Player 0 is leading the first trick with four low non-trump diamonds. Partner (player 2) has only 2 cards and is near finishing, so the best team goal is to lead the lowest card to make it easy for partner to cover with a modestly higher card or cheap trump, win the trick, and gain control or finish, while preserving our remaining strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 2 cards, publicly signaling a near-finish hand. With no plays observed, partner is unknown but, under a uniform prior over the remaining deck, has a reasonable chance to hold a higher non-trump diamond, another suit card, or a trump/wildcard that can beat a low diamond lead. A 3 lead is easier to overtake than a higher diamond lead, so partner is more likely to be able to cover it.",
+    "confidence": 0.6,
+    "evidence": [
+      "e918c1c6-5b15-47ba-a275-f3f235849d27"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents player 1 and player 3 each hold 3 cards and have made no public plays. They are likely to try to prevent the near-finish partner from winning cheaply or going out, but they also want to avoid spending high cards unnecessarily. Leading the 3 forces them to reveal real strength if they want to take the trick, whereas leading higher would let them capture more value with a similar cost.",
+    "confidence": 0.55,
+    "evidence": [
+      "e918c1c6-5b15-47ba-a275-f3f235849d27"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of diamonds is the lowest legal lead. It preserves the 4-5-6 for later tricks, minimizes value lost if an opponent takes the trick, and maximizes the chance that partner can cover with only modest strength. It also avoids handing opponents a cheap trick with a higher card.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Leading the 4 keeps the 3 as a mostly wasted future card and makes it slightly harder for partner to cover; the 3 lead is strictly cheaper and leaves a stronger remaining hand."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is the middle of our weak hand and risks losing a relatively valuable non-trump while keeping two lower cards that do not form a clear winning sequence. The 3 lead preserves more overall strength."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 sacrifices our highest non-trump to a likely higher card or trump, leaving us with only 3-4-5 and little ability to regain control. This overpays for a lead that opponents can take cheaply."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "The 3 of diamonds may lose immediately to a higher diamond, trump, wildcard, or bomb from an opponent, ceding initiative.",
+      "The near-finish partner may be unable to cover, leaving our team with no immediate answer if an opponent wins control.",
+      "An opponent with a high diamond may take the trick and then lead into partner's short hand, possibly accelerating partner's finish but also giving opponents information."
+    ],
+    "mitigation": "By leading the minimum 3, we keep 4-5-6 in reserve for future tricks and force opponents to spend real cards to win. The low lead is the cheapest probe of table strength and best preserves options if the lead returns to us."
+  },
+  "confidence": 0.65,
+  "notes": "Partner and opponent exact cards are unknown; beliefs are grounded only in the public hand counts and the new-game event."
+}

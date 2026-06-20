@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-018-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "My hand is very weak (only low non-trump clubs), so I should lead the cheapest card and let my partner try to win the trick rather than pretend strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds 3 unseen cards and has not acted. They may be able to cover a low single lead, but I cannot assume any specific ranks or suits.",
+    "confidence": 0.55,
+    "evidence": [
+      "b786ab51-2b02-4ed7-9cee-23023c2a72e5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 1 has only 2 cards and is near finishing; player 3 has 3 cards. Their exact ranks and suits are hidden and are not assumed.",
+    "confidence": 0.6,
+    "evidence": [
+      "b786ab51-2b02-4ed7-9cee-23023c2a72e5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the club 3 spends the weakest card, keeps the slightly stronger 4-6 for later, and gives partner the easiest possible chance to take control while forcing opponents to use a higher card if they want the lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Still a weak non-trump; leading it wastes a card that may be useful later without improving the chance of winning this trick."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Consumes a higher low card unnecessarily when the 3 is sufficient to probe the table."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "The 6 is my strongest card, but it remains a low non-trump unlikely to win outright; committing it now strips my hand of its best future option."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 with a higher single or trump and gain control.",
+      "The opponent with only 2 cards could use the resulting lead to finish.",
+      "I have no trumps, so I cannot recover the lead once it is lost."
+    ],
+    "mitigation": "By leading the absolute lowest card, I minimize the value surrendered and preserve the 4-6 for possible future leads or to cover a lower single."
+  },
+  "confidence": 0.7,
+  "notes": "Reasoning is based only on public information; no hidden partner or opponent cards are asserted as facts."
+}

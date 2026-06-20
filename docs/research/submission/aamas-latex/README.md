@@ -14,6 +14,7 @@ Notes:
 - The source uses ACM `acmart` in anonymous review mode as the closest local
   proxy for recent AAMAS LaTeX templates.
 - `main.tex` cites the shared bibliography at `../references.bib`.
-- Figure 1 is drawn in native TikZ so the draft can compile without an external
-  SVG conversion tool.
+- Figure 1 is generated as a source-backed SVG by
+  `server/src/research/writeFigureArtifactsCli.ts` and rendered to PNG under
+  `../../figures/` for inclusion in the draft.
 - The authoritative page-limit snapshot is `../page-budget.md`.

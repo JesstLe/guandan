@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-442-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Leading the 3 of diamonds best supports the team objective: it gives the card-short partner the easiest path to take the trick, while conserving my higher cards for later. Hidden information remains uncertain, but the public hand-count signal strongly favors a low lead."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has only 2 cards left and is trying to exit. With so few cards, they probably retained high-value winners or a bomb rather than low cards. They want me to lead a low, beatable card so they can seize the trick and play out.",
+    "confidence": 0.6,
+    "evidence": [
+      "fea7d6c1-dcab-43c5-b24f-2a565b4a2335"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents want to prevent my partner from finishing. If I lead low, an opponent may use a mid/high card to take control and deny my partner. However, because no cards have been played, opponents have little information about my partner's strength and may be cautious about using high cards.",
+    "confidence": 0.6,
+    "evidence": [
+      "fea7d6c1-dcab-43c5-b24f-2a565b4a2335"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of diamonds best supports the team objective: it gives the card-short partner the easiest path to take the trick, while conserving my higher cards for later. Hidden information remains uncertain, but the public hand-count signal strongly favors a low lead.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Alternative mentioned in raw ToM output."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

@@ -1,0 +1,39 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-396-turn-2-player-1",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "partnerIntent": {
+    "belief": "Partner (player 3, team 1) has not yet acted and holds 3 cards. Facing a very low opponent lead, partner likely expects me to beat it if I can, preserving partner's cards for later tricks or to cover a possible partner finish. No public signal suggests partner has a specific high or low holding.",
+    "evidence": ["7c5b0ce2-0c57-4b74-8ad7-f87e5a2e63d4"],
+    "confidence": "medium"
+  },
+  "opponentIntent": {
+    "belief": "Opponent player 0 has only 2 cards left and led the lowest possible single 3♥. This suggests player 0 is trying to shed a weak card and retain one stronger card, hoping to lead again and possibly finish. Allowing the lead to pass back to a 2-card opponent is dangerous.",
+    "evidence": ["7c5b0ce2-0c57-4b74-8ad7-f87e5a2e63d4"],
+    "confidence": "medium"
+  },
+  "counterfactualAlternatives": [
+    {
+      "actionId": "pass",
+      "analysis": "Passing conserves all three cards but lets player 0 (2 cards, near finish) likely lead again. Given the opponent's low lead and small hand, this risks giving them initiative at a critical moment and does not support the team objective of blocking the opponent's finish.",
+      "valueEstimate": "low"
+    },
+    {
+      "actionId": "play-single-heart-4-copy1",
+      "analysis": "Playing the 4♥ beats the 3♥, takes control of the trick, and preserves the higher 9♥ and 10♥ for future tricks. It uses the minimum card needed to win, which is efficient against a very low lead.",
+      "valueEstimate": "high"
+    },
+    {
+      "actionId": "play-single-heart-9-copy1",
+      "analysis": "Beats the lead but expends a middle card unnecessarily when 4♥ already wins. Could weaken my ability to contest a later trick where a 9-level single matters.",
+      "valueEstimate": "medium"
+    },
+    {
+      "actionId": "play-single-heart-10-copy1",
+      "analysis": "Beats the lead but overuses the highest card. No evidence suggests I need to play this high to win the trick, so this would waste a valuable resource.",
+      "valueEstimate": "low"
+    }
+  ],
+  "hiddenInformationUncertainty": "I do not know the exact holdings of partner or opponents; beliefs are grounded only in public events (player 0 led 3♥, hand counts show player 0 at 2 cards). Player 0 could have any 2-card combination, so I treat their near-finish threat probabilistically rather than as a certainty.",
+  "finalReasoning": "The 3♥ lead is weak and player 0 is down to 2 cards, creating a plausible near-finish threat. Taking the trick now with the lowest winning card (4♥) regains initiative for team 1 while conserving 9♥ and 10♥. This balances immediate blocking with long-term card economy."
+}

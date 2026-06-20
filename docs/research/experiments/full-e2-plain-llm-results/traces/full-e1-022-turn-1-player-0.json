@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-022-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards (near finish). Leading the lowest card keeps my stronger cards and gives partner a chance to win the trick and finish their hand."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has 1-2 cards that could win a trick or finish the hand, but their exact holdings are unknown.",
+    "confidence": 0.45,
+    "evidence": [
+      "handCounts[2] = 2",
+      "scenario tag: partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have 3 cards each and probably hold some higher non-trump or trump cards, but no specific distribution is known.",
+    "confidence": 0.35,
+    "evidence": [
+      "handCounts[1] = 3, handCounts[3] = 3",
+      "no cards have been played yet"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "I lead the 3 of diamonds because it is the weakest card in my hand. Since all my cards are low non-trumps, losing the lowest card minimizes resource cost while still allowing the trick to develop.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "The 4 is slightly higher than the 3 but provides no strategic advantage; keeping it for a later exchange is better."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "The 5 is more valuable than the 3 and should be preserved for a later opportunity."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The 6 is my highest card; throwing it away on an opening lead wastes the only card that might beat a later low non-trump play."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may win the trick with a higher card or trump.",
+      "If partner cannot win, the lead passes to an opponent."
+    ],
+    "mitigation": "Because the 3 is the cheapest card, any loss is minimal, and I retain 4, 5, 6 for future tricks."
+  },
+  "confidence": 0.65,
+  "notes": "No trumps are held, and all legal actions are weak non-trump singles, so the primary goal is to support the partner who is near finish."
+}

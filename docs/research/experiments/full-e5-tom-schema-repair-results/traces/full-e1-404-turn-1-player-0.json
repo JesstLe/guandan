@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-404-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two non-trump cards in an endgame race, the priority is to play both cards and go out; leading the stronger natural card first maximizes the chance to retain control."
+  },
+  "partnerBelief": {
+    "summary": "Partner holds 3 unknown cards and has no public signals so far. They are likely to play to advance their own hand, which may mean covering a low lead if they have a strong card, but they cannot be assumed to hold specific trumps or high cards.",
+    "confidence": 0.4,
+    "evidence": [
+      "a7b381d1-13a3-49ed-aa7f-52245c828ee8"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents collectively hold 9 cards and are likely to contain trump-rank cards, red jokers, or high natural cards. They will try to win tricks and prevent our team from finishing.",
+    "confidence": 0.6,
+    "evidence": [
+      "a7b381d1-13a3-49ed-aa7f-52245c828ee8"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 2 is the highest natural non-trump rank, so leading it gives the best chance to win this trick, keep the lead, and then play the A on the next turn to go out. If the 2 is beaten by a trump, we still retain the A as a possible future winner.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-A-copy2",
+        "reason": "The A is weaker than the 2. An opponent or partner with a 2 or trump can take it, leaving us with the 2 but without initiative, which reduces our chance to finish smoothly."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may have a trump or red joker that beats the 2.",
+      "Partner may cover the 2 and take the lead, delaying our finish.",
+      "If the 2 wins, the follow-up A may be beaten."
+    ],
+    "mitigation": "Leading the strongest available card now maximizes the probability of winning the current trick and immediately reduces hand size, preserving the A for a later opportunity if control is lost."
+  },
+  "confidence": 0.75,
+  "notes": "Endgame race with only two non-trump singles favors aggressive use of the higher natural rank to force or maintain control."
+}

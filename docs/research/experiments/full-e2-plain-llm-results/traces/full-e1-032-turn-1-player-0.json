@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-032-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner is down to 2 cards (near finish), so I want to lead a very low single that partner can potentially beat to gain the lead and go out, rather than play a stronger card myself."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely has at least one card stronger than a 3 of diamonds, but their exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts shows partner (player 2) has only 2 cards",
+      "scenario tag 'partner_near_finish' suggests partner is close to finishing"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents hold unseen cards and may have higher ranks or trumps to take this trick; their exact compositions are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts show opponents (players 1 and 3) have 3 cards each",
+      "playedCardSummary indicates no trumps, bombs, or big cards have been played yet"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (3 of diamonds) minimizes my own commitment and maximizes the chance that my partner, who is near finishing, can win the lead with one of their remaining cards.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only slightly stronger than the 3; still very weak and does not improve the chance of transferring the lead meaningfully."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A middling low card that is still likely beaten by opponents or partner, and saving it offers little value since partner is near finish."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "The strongest of my low cards, but leading it now is unnecessary when partner might be able to finish; keeping it is less important than giving partner a cheap lead opportunity."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may play a higher card or trump and win the lead.",
+      "Partner may be unable to beat the 3, delaying their finish."
+    ],
+    "mitigation": "By leading the weakest card, I reduce the chance that I block partner's winning card and preserve my slightly higher cards for future low-lead opportunities."
+  },
+  "confidence": 0.65,
+  "notes": "All legal actions are low non-trump singles; the primary differentiator is giving the partner near finish the best chance to take control."
+}

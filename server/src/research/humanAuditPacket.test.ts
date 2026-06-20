@@ -72,6 +72,11 @@ describe('humanAuditPacket', () => {
       expect(protocol).toContain('Use `fail` when the statement contradicts visible public facts')
       expect(protocol).toContain('Use `uncertain` when the visible row does not contain enough evidence')
       expect(protocol).toContain('Do not guess from Guandan expertise beyond the public fields shown in the row.')
+      expect(protocol).toContain('## Recommended External-Validation Design')
+      expect(protocol).toContain('two independent annotators')
+      expect(protocol).toContain('human-audit-adjudicated-annotations.csv')
+      expect(protocol).toContain('research:human-audit:inter-annotator')
+      expect(protocol).toContain('single-annotator soft-label audit')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

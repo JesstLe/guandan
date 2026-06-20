@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-489-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "teamObjective": {
+    "type": "finish_hand",
+    "explanation": "With only two cards left while every opponent still holds three, the team objective is to play out this hand as fast as possible. Leading the strongest card now maximizes the chance of winning consecutive tricks and exiting before opponents can organize a defense."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2) holds three cards and has revealed nothing beyond the new-game deal. They likely contain a normal spread of ranks and suits and partner will try to support the team, but no specific holding can be asserted from public events alone.",
+    "confidence": 0.3,
+    "evidence": [
+      "3a142391-75b3-4ac6-8d02-f4d5a175b62c"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents (players 1 and 3) together hold nine unseen cards. In a fresh deal they are likely to hold trumps and higher non-trump singles, and because this is an endgame race they are strongly motivated to win this trick to stop a quick finish.",
+    "confidence": 0.45,
+    "evidence": [
+      "3a142391-75b3-4ac6-8d02-f4d5a175b62c"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The Ace of spades is the higher single. Leading it gives the best chance to win this trick and retain the lead, after which the deuce can be played to finish the hand. Even if an opponent beats the Ace with a trump or higher card, the play forces out a stronger opposing card and leaves the weaker deuce for a later opportunity.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-2-copy2",
+        "reason": "Leading the deuce first risks losing the trick cheaply to a low opposing card and surrendering the initiative. A subsequent Ace lead could then be trumped. With only two cards, leading high-first is the standard winning race strategy."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may hold a trump or higher non-trump single and take the lead.",
+      "If the Ace wins, the final deuce lead may still be stopped by any higher single or trump.",
+      "Partner has not signaled any specific support, so help on a later trick cannot be relied upon."
+    ],
+    "mitigation": "There is no better holding to mitigate these risks: with only two non-trump cards, leading the strongest card first is the maximally aggressive play that best supports the finish-hand objective."
+  },
+  "confidence": 0.75
+}

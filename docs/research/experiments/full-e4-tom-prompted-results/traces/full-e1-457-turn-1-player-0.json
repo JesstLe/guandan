@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-457-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner (player 2) has only 2 cards left and is near finishing. On the opening lead, the best team play is to give partner a low single that they have the best chance to beat, letting them gain the lead and potentially go out."
+  },
+  "partnerBelief": {
+    "summary": "Partner is likely holding a small set of cards that could include a high non-trump or trump to win a low single lead, given their 2-card hand count.",
+    "confidence": 0.6,
+    "evidence": [
+      "49c22eeb-cb18-4d36-afb0-cbf401da9d3a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents have not played any cards and likely hold higher non-trumps or trumps; they may try to overtake a low single lead to keep control away from the finishing partner.",
+    "confidence": 0.7,
+    "evidence": [
+      "49c22eeb-cb18-4d36-afb0-cbf401da9d3a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the diamond 3, the lowest available card, maximizes the chance that partner can play over it and seize the lead while conserving the slightly higher 4-6 diamonds for later.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Leading the 6 makes it harder for partner to win the trick and wastes the strongest non-trump exit card in this weak hand."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "Leading the 5 still leaves the weaker 3 and 4, but it reduces partner's margin to take the trick compared with leading the 3."
+      },
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Leading the 4 is better than 5 or 6, but the 3 is the lowest lead and gives opponents the least pressure to commit a high card, improving partner's chance to win."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponents may play a higher non-trump or any trump and win the lead.",
+      "Partner may not be able to beat the opponents' responses despite the low lead.",
+      "The hand has no trumps or bombs, so recovery after losing the lead is weak."
+    ],
+    "mitigation": "By leading the lowest card, I preserve the 4-6 diamonds for later turns and avoid forcing partner into a high-card contest they might lose."
+  },
+  "confidence": 0.7
+}

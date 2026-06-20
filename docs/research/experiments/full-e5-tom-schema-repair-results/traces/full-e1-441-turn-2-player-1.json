@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-441-turn-2-player-1",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-heart-10-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Opponent player 0 is down to two cards and led a low heart 3, suggesting an attempt to shed a weak card and keep the lead. The immediate team objective is to seize control of the trick and block that opponent from advancing toward going out."
+  },
+  "partnerBelief": {
+    "summary": "Partner player 2 still holds three cards and may be keeping a high card to cover later, but their exact strength is unknown. They might pass here to let us act or to preserve resources for a later lead.",
+    "confidence": 0.6,
+    "evidence": [
+      "dd95c431-e969-4f04-949f-c7e6e8c922f5"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponent player 0 likely has a stronger hidden card than the 3 they led, since a near-finish player often leads low to preserve a winning card. Opponent player 3 has a full three-card hand and may try to support player 0 or exploit any weak beat.",
+    "confidence": 0.75,
+    "evidence": [
+      "dd95c431-e969-4f04-949f-c7e6e8c922f5"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the heart 10, the strongest legal single, to maximize the chance of winning the trick and taking the lead away from the opponent who is near finishing.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing leaves the lead with a nearly finished opponent and gives them a direct chance to play their hidden card next, which is too risky when we can legally beat the table."
+      },
+      {
+        "actionId": "play-single-heart-4-copy1",
+        "reason": "The 4 is cheap, but opponent 0's remaining card or opponent 3 could easily overtake it, doing little to suppress the near-finish threat."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "The 9 is a reasonable middle option, but the 10 is more likely to actually win against the likely stronger hidden card from opponent 0 and any interference from opponent 3."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Opponent 0's hidden card could still be higher than the 10, such as a face card or trump, causing us to lose both the trick and our strongest single.",
+      "If we win, we become the leader with only lower cards remaining, making us a target for opponents.",
+      "Partner may have held an even higher card, so playing the 10 could use a resource that might have been saved."
+    ],
+    "mitigation": "Even if the 10 is beaten, we force a strong opponent card into play and gain information; if it wins, we take control and can rely on partner support for subsequent leads."
+  },
+  "confidence": 0.72
+}

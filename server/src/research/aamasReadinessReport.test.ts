@@ -65,6 +65,49 @@ describe('aamasReadinessReport', () => {
     }
   })
 
+  it('does not count adjudicated build reports as completed human annotation files', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-human-audit-report-only-'))
+
+    try {
+      mkdirSync(join(rootDir, 'experiments', 'human-soft-label-audit'), { recursive: true })
+      writeFileSync(join(rootDir, 'experiments', 'human-soft-label-audit', 'human-audit-manifest.json'), JSON.stringify({
+        status: 'annotation_packet_prepared_not_human_completed',
+        sampleCount: 40,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'human-soft-label-audit', 'human-audit-adjudicated-annotations-report.json'), JSON.stringify({
+        status: 'ready',
+        sampleCount: 40,
+        outputRows: 40,
+        completedLabels: 200,
+        totalLabels: 200,
+        unresolvedDisagreements: 0,
+        adjudicatedCsvWritten: false,
+        readyForAgreement: false,
+        checks: [
+          { id: 'all-labels-resolved', status: 'pass' },
+        ],
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'human-soft-label-audit', 'human-audit-agreement-report.json'), JSON.stringify({
+        status: 'completed',
+        sampleCount: 40,
+        completedLabels: 200,
+        totalLabels: 200,
+      }), 'utf8')
+
+      const result = writeAAMASReadinessReport({
+        researchRoot: rootDir,
+        outputDir: join(rootDir, 'submission', 'aamas-readiness'),
+      })
+      const auditGate = result.report.gates.find(gate => gate.id === 'replication-and-human-audit')
+
+      expect(auditGate?.status).toBe('needs_experiment')
+      expect(auditGate?.finding).toContain('adjudicated-annotation builder is ready')
+      expect(auditGate?.finding).toContain('adjudicated CSV is not written')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
   it('surfaces packet-quality readiness without passing the human-audit gate', () => {
     const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-human-audit-quality-'))
 
@@ -199,6 +242,99 @@ describe('aamasReadinessReport', () => {
     }
   })
 
+  it('updates next actions after full-split LLM metrics and schema repair are complete', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-full-complete-'))
+
+    try {
+      mkdirSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-batch'), { recursive: true })
+      mkdirSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-results'), { recursive: true })
+      mkdirSync(join(rootDir, 'experiments', 'full-e5-tom-schema-repair-results'), { recursive: true })
+      mkdirSync(join(rootDir, 'submission', 'aamas-latex'), { recursive: true })
+      writeFileSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-batch', 'raw-output-audit.json'), JSON.stringify({
+        expectedCount: 500,
+        presentCount: 500,
+        missingCount: 0,
+        readyForIngest: true,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-results', 'metrics.json'), JSON.stringify({
+        totalDecisionPoints: 500,
+        totalParsedTraces: 404,
+        parseFailureCount: 96,
+        hardFailureCount: 48,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'full-e5-tom-schema-repair-results', 'metrics.json'), JSON.stringify({
+        totalDecisionPoints: 500,
+        totalParsedTraces: 500,
+        parseFailureCount: 0,
+        hardFailureCount: 52,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'submission', 'aamas-latex', 'build-status.md'), [
+        '# AAMAS LaTeX Build Status',
+        '',
+        '- Page count: 9 pages total in `sigconf,anonymous,review` ACM/AAMAS-style layout',
+        '- Body/reference boundary: the main body and conclusion end on page 8; references begin on page 9.',
+        '',
+      ].join('\n'), 'utf8')
+
+      const result = writeAAMASReadinessReport({
+        researchRoot: rootDir,
+        outputDir: join(rootDir, 'submission', 'aamas-readiness'),
+      })
+      const fullGate = result.report.gates.find(gate => gate.id === 'full-split-llm-evidence')
+
+      expect(fullGate?.status).toBe('pass')
+      expect(result.report.nextActions[0]).toContain('Integrate the completed 500-decision ToM full-split metrics')
+      expect(result.report.nextActions.join('\n')).not.toContain('Run schema repair and verifier analysis')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('does not ask to integrate full-split ToM metrics after the paper already contains them', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-full-integrated-'))
+
+    try {
+      mkdirSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-batch'), { recursive: true })
+      mkdirSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-results'), { recursive: true })
+      mkdirSync(join(rootDir, 'experiments', 'full-e5-tom-schema-repair-results'), { recursive: true })
+      mkdirSync(join(rootDir, 'submission', 'aamas-latex'), { recursive: true })
+      writeFileSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-batch', 'raw-output-audit.json'), JSON.stringify({
+        expectedCount: 500,
+        presentCount: 500,
+        missingCount: 0,
+        readyForIngest: true,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'full-e4-tom-prompted-results', 'metrics.json'), JSON.stringify({
+        totalDecisionPoints: 500,
+        totalParsedTraces: 404,
+        parseFailureCount: 96,
+        hardFailureCount: 48,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'experiments', 'full-e5-tom-schema-repair-results', 'metrics.json'), JSON.stringify({
+        totalDecisionPoints: 500,
+        totalParsedTraces: 500,
+        parseFailureCount: 0,
+        hardFailureCount: 52,
+      }), 'utf8')
+      writeFileSync(join(rootDir, 'submission', 'aamas-latex', 'main.tex'), [
+        'ToM LLM raw & 404/500 & 48 & 357/47/0 \\\\',
+        'ToM schema repair & 500/500 & 52 & 449/51/0 \\\\',
+        'This upgrades the draft from pilot-only evidence to pilot-plus-full-ToM evidence.',
+      ].join('\n'), 'utf8')
+
+      const result = writeAAMASReadinessReport({
+        researchRoot: rootDir,
+        outputDir: join(rootDir, 'submission', 'aamas-readiness'),
+      })
+
+      expect(result.report.facts.fullSplit.tomIntegratedInPaper).toBe(true)
+      expect(result.report.nextActions[0]).toContain('Complete the prepared human soft-label audit')
+      expect(result.report.nextActions.join('\n')).not.toContain('Integrate the completed 500-decision ToM full-split metrics')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
   it('surfaces provider quota or rate-limit stop state in the full-split LLM gate', () => {
     const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-full-provider-stop-'))
 
@@ -262,6 +398,50 @@ describe('aamasReadinessReport', () => {
       expect(auditGate?.status).toBe('pass')
       expect(auditGate?.finding).toContain('agreement evaluator is completed')
       expect(auditGate?.finding).toContain('5/5')
+    } finally {
+      rmSync(rootDir, { recursive: true, force: true })
+    }
+  })
+
+  it('passes the replication-and-human-audit gate when a second-provider pilot replication is complete', () => {
+    const rootDir = mkdtempSync(join(tmpdir(), 'guandan-aamas-replication-completed-'))
+
+    try {
+      mkdirSync(join(rootDir, 'experiments', 'pilot-replication'), { recursive: true })
+      writeFileSync(join(rootDir, 'experiments', 'pilot-replication', 'pilot-replication-report.json'), JSON.stringify({
+        status: 'completed',
+        completedReplicationCount: 1,
+        replications: [
+          {
+            id: 'second-provider-tom-pilot',
+            status: 'completed',
+            provider: 'openai-compatible',
+            model: 'replication-model',
+            expectedCount: 50,
+            successCount: 50,
+            parsedCount: 37,
+            hardFailureCount: 4,
+          },
+        ],
+      }), 'utf8')
+      mkdirSync(join(rootDir, 'experiments', 'human-soft-label-audit'), { recursive: true })
+      writeFileSync(join(rootDir, 'experiments', 'human-soft-label-audit', 'human-audit-agreement-report.json'), JSON.stringify({
+        status: 'pending',
+        sampleCount: 40,
+        completedLabels: 0,
+        totalLabels: 200,
+      }), 'utf8')
+
+      const result = writeAAMASReadinessReport({
+        researchRoot: rootDir,
+        outputDir: join(rootDir, 'submission', 'aamas-readiness'),
+      })
+      const auditGate = result.report.gates.find(gate => gate.id === 'replication-and-human-audit')
+
+      expect(auditGate?.status).toBe('pass')
+      expect(auditGate?.finding).toContain('Second-provider/model pilot replication is completed')
+      expect(auditGate?.finding).toContain('37/50 parsed traces')
+      expect(auditGate?.requiredAction).toContain('second-provider/model pilot replication')
     } finally {
       rmSync(rootDir, { recursive: true, force: true })
     }

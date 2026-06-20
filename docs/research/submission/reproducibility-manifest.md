@@ -1,6 +1,6 @@
 # Reproducibility Manifest
 
-Generated at: `2026-06-18T21:15:59.414Z`
+Generated at: `2026-06-20T02:49:50.818Z`
 
 Missing entries are audit findings, not experimental results. Pending entries are expected external-evidence gaps tracked by readiness gates.
 
@@ -34,21 +34,26 @@ Missing entries are audit findings, not experimental results. Pending entries ar
 | Full Split Candidate-Constrained OpenAI Batch Input | `present` | file | `experiments/full-e3-candidate-constrained-batch/openai/openai-batch-input.jsonl` |  | 2660800 | `9a68761d4793d0385cba824e874e49f1bc7b4b0dc94a98fe37762ac6d3a1f3ac` |
 | ToM-Prompted Full OpenAI Batch Input | `present` | file | `experiments/full-e4-tom-prompted-batch/openai/openai-batch-input.jsonl` |  | 2971800 | `529fc2182ea5cced73251620f195cedff8e6a084c2a47dd0a577bea819a36659` |
 | Fixture Revision OpenAI Batch Input | `present` | file | `experiments/pilot-e6-verifier-revision-fixture-batch/openai/openai-batch-input.jsonl` |  | 399850 | `ba76709a0f51220f6b5b86c3806f62f0b321c8caad98e800b29ce8a4b012236a` |
-| Provider Run Handoff | `present` | file | `submission/provider-run-handoff.md` |  | 14171 | `684480bef0ef282fa37bf123d6697dc97cf5e70bdd0645c318a54123d2e4679a` |
-| Provider Handoff Audit | `present` | file | `submission/provider-handoff-audit/provider-handoff-audit.json` |  | 6557 | `8f2b48835415c39e00f838b5c34361304a6d23decd002b42bd11cf0c68c004fd` |
+| Provider Run Handoff | `present` | file | `submission/provider-run-handoff.md` |  | 18616 | `87e299bc54e4d0b5d6e9bc83891bc11bbcf4ebbf8560942096f41335bfb72db6` |
+| Human Soft-Label Audit Handoff | `present` | file | `submission/human-audit-handoff.md` |  | 6611 | `b4aa25a6f097e5153979960dfdb95029412ec8df80cb5531fa38ae915a368023` |
+| Human Soft-Label Audit Launch Checklist | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.json` |  | 2611 | `ca424e9e86e35c41e33654bfc39beaa4dd10d47df170c9a687e6b59d5be7bad8` |
+| Human Soft-Label Audit Launch Checklist Markdown | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.md` |  | 1726 | `5cb4f09db61282e492d55edffb9eb6bbc534c5cac4c23821ecd447464bb9bdd3` |
+| Human Soft-Label Audit Evidence Gate | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.json` |  | 2244 | `e778b5079de7f7f415bf55387494d76c6c56b993011e2c227f29f040ac045533` |
+| Human Soft-Label Audit Evidence Gate Markdown | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.md` |  | 1904 | `a679d2274c79dad211683dc7d97bdfb514f2b953c8fc043ddcbc15ddb4ce83d7` |
+| Provider Handoff Audit | `present` | file | `submission/provider-handoff-audit/provider-handoff-audit.json` |  | 6209 | `a0174cad289960b36f1967890fecbc81c58bce4b8e93a978e433e003373b274a` |
 | Plain Raw Output Audit | `present` | file | `experiments/pilot-e4-plain-llm-batch/raw-output-audit.json` |  | 2397 | `9fe4a04e32c41fa67bb54adb02b23e1ffc46f9a603aeaafada79191c2a2d9cde` |
 | Candidate Raw Output Audit | `present` | file | `experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json` |  | 2421 | `c52951771531742a1641e97fc391c81c69b30ca605c6094a3d12619c7b41c5f9` |
 | ToM-Prompted Pilot Raw Output Audit | `present` | file | `experiments/pilot-e7-tom-prompted-batch/raw-output-audit.json` |  | 400 | `7abcfcfb8db067b978752ef9b0f0abb6bbc722a9f455a68e9406394dc2229734` |
-| Full Split Plain Raw Output Audit | `present` | file | `experiments/full-e2-plain-llm-batch/raw-output-audit.json` |  | 19897 | `44875b2792012bf54f52a9a4d8345f6a99e44b4f909d5e8f84b3cc5698f9810c` |
-| Full Split Candidate-Constrained Raw Output Audit | `present` | file | `experiments/full-e3-candidate-constrained-batch/raw-output-audit.json` |  | 19921 | `6717378d882ee3a382ab2f6547d77169ae7163cdf2e4ad9a1d038686e8d59eef` |
-| ToM-Prompted Full Raw Output Audit | `present` | file | `experiments/full-e4-tom-prompted-batch/raw-output-audit.json` |  | 4929 | `967056332185f1388b89d39e5e08a9c970350b8bfc31ce82a9acc305d1d590f3` |
+| Full Split Plain Raw Output Audit | `present` | file | `experiments/full-e2-plain-llm-batch/raw-output-audit.json` |  | 17948 | `fe4878ce57a7cb0b3e58a1b27ff5c3a18cd2a04cf6fdfbfcece010f1d7c51358` |
+| Full Split Candidate-Constrained Raw Output Audit | `present` | file | `experiments/full-e3-candidate-constrained-batch/raw-output-audit.json` |  | 17972 | `fe3240b8101cd97a6b438add98622894afceddeb2ace196075bce4d25fa662b5` |
+| ToM-Prompted Full Raw Output Audit | `present` | file | `experiments/full-e4-tom-prompted-batch/raw-output-audit.json` |  | 400 | `04c950606782e22eeae5551c340ec762e95669de3c31edd10ac4a90bfa2ac9b3` |
 | Revision Raw Output Audit | `present` | file | `experiments/pilot-e6-verifier-revision-fixture-batch/raw-output-audit.json` |  | 2879 | `44e92c125a1d974ec8bc2aab3a136d98635bab128d65f0746b39b9ad8c75d40c` |
 | Plain Provider Results | `present` | file | `experiments/provider-results/plain-llm.jsonl` |  | 79327 | `872234cb1d070856f51f8212fc10693b26960647adeea0d258e9d7dfd9558c12` |
 | Candidate Provider Results | `present` | file | `experiments/provider-results/candidate-constrained-llm.jsonl` |  | 88650 | `327f8e01edb869abb5bef46064169fb4c4ccb9b500e4461e3b95be821d7ff454` |
 | ToM-Prompted Provider Results | `present` | file | `experiments/provider-results/tom-prompted-llm.jsonl` |  | 131673 | `8a892129f10ac91169b7905f63862576e926c4903751497e12c236b7b1dc410f` |
 | ToM-Prompted Provider Merge Report | `present` | file | `experiments/provider-results/tom-prompted-llm-kimi-merge-report.json` |  | 1362 | `ab01a3566a8d9bc760fa918e147efdbbcd40d1422217890ee8d4cec7dc63c8c5` |
-| Full Split ToM-Prompted Provider Results | `present` | file | `experiments/provider-results/full-tom-prompted-llm.jsonl` |  | 1070418 | `2bd7fd52552011a0261d6e1abc3652497b66d491df4e3f8456b9a2dc2bc54948` |
-| Full Split ToM-Prompted Provider Run Report | `present` | file | `experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json` |  | 654 | `f20101cd1e3c7812fb916b7aa43daf0bfe20da70509a9e47f5d617809e65d984` |
+| Full Split ToM-Prompted Provider Results | `present` | file | `experiments/provider-results/full-tom-prompted-llm.jsonl` |  | 1404336 | `182a4367b4a7c739dd6f402b73fe5fef33e375fe726a2b7645181d25121913b8` |
+| Full Split ToM-Prompted Provider Run Report | `present` | file | `experiments/provider-results/full-tom-prompted-llm-kimi-cli-run-report.json` |  | 652 | `394eb99ce1123d3b1fcf2e30b1f90efbea1707a82104143b9ac25772f40ef406` |
 | Verifier Revision Provider Results | `present` | file | `experiments/provider-results/verifier-revision-llm.jsonl` |  | 79343 | `653dcae7dc2ae944094913a59aa80d7837bd4440527845d3f759473261cac44b` |
 | ToM-Prompted Pilot Metrics | `present` | file | `experiments/pilot-e7-tom-prompted-results/metrics.json` |  | 8383 | `546a546532de387a434919123ae2e2201007db22f1b982c351465ac74d23b24a` |
 | ToM-Prompted Run Provenance | `present` | file | `experiments/pilot-e7-tom-prompted-results/provenance.json` |  | 675 | `d560a3a9681ee609728e11d484d7651222c3871651c5df89d69d084b2de8263a` |
@@ -56,59 +61,93 @@ Missing entries are audit findings, not experimental results. Pending entries ar
 | ToM-Prompted Failure Analysis | `present` | file | `experiments/pilot-e7-tom-failure-analysis/tom-failure-analysis.json` |  | 14219 | `8b865c97e95367d9c009f59e87c9f18ec712b76fcb9afd1b6ae9a14664edf010` |
 | ToM Schema Repair Metrics | `present` | file | `experiments/pilot-e8-tom-schema-repair-results/metrics.json` |  | 6325 | `326f14ee3784c7e51de5ecd55ecb1064182dd0fbcc1bd96973834319995ec3a9` |
 | ToM Schema Repair Report | `present` | file | `experiments/pilot-e8-tom-schema-repair-results/schema-repair-report.json` |  | 31272 | `cff0cf3e02019a38130b1e82df86c79f13e060c079f536558f76d346db4907b2` |
-| Full Split ToM-Prompted Metrics | `present` | file | `experiments/full-e4-tom-prompted-results/metrics.json` |  | 76859 | `79e6c5afa5ac60c5bafd20bfe7ac6f35b3cb32b63400110a61243a364ec5f914` |
-| Full Split ToM-Prompted Post-Provider Report | `present` | file | `experiments/full-e4-tom-prompted-results/post-provider-report.json` |  | 123209 | `08e7b54df5a7228266f8f9b80ba73db1e1d80a9a9575355cc8cb7bac5276f66b` |
-| Full Split ToM Schema Repair Metrics | `present` | file | `experiments/full-e5-tom-schema-repair-results/metrics.json` |  | 64018 | `ff66830d1bd6f5015ca317889de86f00a732ffc7370df5cd7478ba394e5de25a` |
-| Full Split ToM Schema Repair Report | `present` | file | `experiments/full-e5-tom-schema-repair-results/schema-repair-report.json` |  | 268351 | `d91e919d4862e25316aed98d33cfaadf1da338f308416320c8fd5ab489ed3355` |
-| Full Split LLM Summary | `present` | file | `experiments/full-llm-summary/full-llm-summary.json` |  | 1764 | `20de5ad7c121831f4240a552a15f7b580f58eacfa662d7559d0821f9d4ffa3af` |
-| Human Soft-Label Audit Manifest | `present` | file | `experiments/human-soft-label-audit/human-audit-manifest.json` |  | 1168 | `4203d71b73e681f29719432f274279b0c734d58a52fa88d02bbcb0bcf41c50f8` |
-| Human Soft-Label Audit Blind Sample | `present` | file | `experiments/human-soft-label-audit/human-audit-blind-sample.jsonl` |  | 71724 | `f3c41e0d160d1de238f90098e953d976a44fd707f033107f21f0b3f2ba02e040` |
-| Human Soft-Label Audit Annotation Sheet | `present` | file | `experiments/human-soft-label-audit/human-audit-annotation-sheet.csv` |  | 64755 | `c23cd6669d65e14de5e1f547ff3c3d5e7e3842ca2956816dafe1bcdde46b0272` |
-| Human Soft-Label Audit Annotator HTML | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator.html` |  | 91529 | `adf32e168e92438f8bba1ea9854af602f3d7d05914e85788fa0dd8c504594880` |
-| Human Soft-Label Audit Answer Key | `present` | file | `experiments/human-soft-label-audit/human-audit-answer-key.jsonl` |  | 81697 | `1b19e864534448ddfbc3a0e8e010722712de0a844b8a3b2ab18d6a86c0c2d1fa` |
-| Human Soft-Label Audit Protocol | `present` | file | `experiments/human-soft-label-audit/human-audit-protocol.md` |  | 3622 | `58cda4cdcf7890ae1a3ef65e092da326c1c5a47b7c4c1b201cb623ead7b2090d` |
-| Human Soft-Label Audit Packet Quality Report | `present` | file | `experiments/human-soft-label-audit/human-audit-packet-quality-report.json` |  | 3294 | `288fe9bc464499329bbe1058c1a3a55a97bb4caa9795e139c6bbf3ac030e07ef` |
-| Human Soft-Label Audit Packet Quality Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-packet-quality-report.md` |  | 2349 | `de09c4618e0f5fc6a6dabf896d6b98b36aee2c41b0df5037f62138d435e1cc4c` |
-| Human Soft-Label Audit Blind Annotator Package Manifest | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json` |  | 1923 | `7f6a3a8983e637460bf9af1959b0632ae2b0f38208a8b38f522488b951b194c3` |
-| Human Soft-Label Audit Blind Annotator Package README | `present` | file | `experiments/human-soft-label-audit/annotator-package/README.md` |  | 891 | `c8b3d1d9114142388403d7abf2e09a7c0e14aaf0e00a9b98046d458ac34f97a3` |
-| Human Soft-Label Audit Blind Annotator Package HTML | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotator.html` |  | 91529 | `adf32e168e92438f8bba1ea9854af602f3d7d05914e85788fa0dd8c504594880` |
-| Human Soft-Label Audit Blind Annotator Package Sheet | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotation-sheet.csv` |  | 64755 | `c23cd6669d65e14de5e1f547ff3c3d5e7e3842ca2956816dafe1bcdde46b0272` |
-| Human Soft-Label Audit Blind Annotator Package Samples | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-blind-sample.jsonl` |  | 71724 | `f3c41e0d160d1de238f90098e953d976a44fd707f033107f21f0b3f2ba02e040` |
-| Human Soft-Label Audit Blind Annotator Package Archive | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz` |  | 53634 | `e2df773cf84874ab9f7a86cbd65bcbc23bc8e1417015763586fe679fc7383f87` |
-| Human Soft-Label Audit Blind Annotator Package Archive Report | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json` |  | 2429 | `fed6bca17088419dd0746df888bb6effd8c41fd248b76053d60a9d8ab58d0e21` |
-| Human Soft-Label Audit Blind Annotator Package Archive Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md` |  | 1352 | `28f366d3f01b55302d84c51d8e82a994e985f837e5910a5c300313bba73500ee` |
+| Full Split ToM-Prompted Metrics | `present` | file | `experiments/full-e4-tom-prompted-results/metrics.json` |  | 64651 | `5d959dd8e322875f57498975a3fa4783c1ec9b8c8436371ca440c74a57bf2c79` |
+| Full Split ToM-Prompted Post-Provider Report | `present` | file | `experiments/full-e4-tom-prompted-results/post-provider-report.json` |  | 112009 | `0b437092aba3c43e072136076b87fc45ecad44ab7dc9c0cbc5b71fde358689c1` |
+| Full Split ToM Schema Repair Metrics | `present` | file | `experiments/full-e5-tom-schema-repair-results/metrics.json` |  | 48817 | `a3e45e3a3460988fb48aaa1861fc6b94713865337a5b32d167e550fbe30a0c93` |
+| Full Split ToM Schema Repair Report | `present` | file | `experiments/full-e5-tom-schema-repair-results/schema-repair-report.json` |  | 305197 | `ae7a6bd1bfe341498bf32f373b7b63b9a9cc334566bf9ee5896b93f697a0e71c` |
+| Full Split LLM Summary | `present` | file | `experiments/full-llm-summary/full-llm-summary.json` |  | 3242 | `df444e0625289ae83d3599cd4c1e1c9674e94346a6fb8174b54e2be3c646facb` |
+| Human Soft-Label Audit Manifest | `present` | file | `experiments/human-soft-label-audit/human-audit-manifest.json` |  | 1168 | `fbfb9a95c5cc16ffcf6d890cf0e8806f551be84cb8d5c87583b92dbd03178fc2` |
+| Human Soft-Label Audit Blind Sample | `present` | file | `experiments/human-soft-label-audit/human-audit-blind-sample.jsonl` |  | 73629 | `4f4d91d092c3209b360f8de3b0e64d6ca11d823858a2eb585dfc1d456002a1cf` |
+| Human Soft-Label Audit Annotation Sheet | `present` | file | `experiments/human-soft-label-audit/human-audit-annotation-sheet.csv` |  | 66660 | `6310faff48ad48d70f94908e79560b7b74ceb0b98921bb5a0fddb3285bd2bfd2` |
+| Human Soft-Label Audit Annotator HTML | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator.html` |  | 93434 | `bb580b28f1b1e46c60faa6037dc0a8b27c83ac225b7ab068ae01a9ffc828ecc2` |
+| Human Soft-Label Audit Answer Key | `present` | file | `experiments/human-soft-label-audit/human-audit-answer-key.jsonl` |  | 83599 | `4c105377dba6e596ae53e231fc21f864f01255afe41863c9b65b86c3aa955183` |
+| Human Soft-Label Audit Protocol | `present` | file | `experiments/human-soft-label-audit/human-audit-protocol.md` |  | 4963 | `268e4219e183e0aea71376956458a799704af44694443fc38a20e3d8ae4bc2ab` |
+| Human Soft-Label Audit Packet Quality Report | `present` | file | `experiments/human-soft-label-audit/human-audit-packet-quality-report.json` |  | 3294 | `2ffcd7c6d5cd44c2c1be50ac14d31728d4306a05dfa2a790c42293e534764a8a` |
+| Human Soft-Label Audit Packet Quality Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-packet-quality-report.md` |  | 2349 | `0c8f22bd4edadc53befa53a9f231c070232afd51b3dbcaf50248138551edfa3f` |
+| Human Soft-Label Audit Blind Annotator Package Manifest | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotator-package-manifest.json` |  | 1923 | `1dcf4677a9e4647364742b710874eaf4a2759f57a29cb96bfa21a862ac59510b` |
+| Human Soft-Label Audit Blind Annotator Package README | `present` | file | `experiments/human-soft-label-audit/annotator-package/README.md` |  | 2339 | `db962a0430845f20527d29dc84a96afce93295fcddbbd425ec928fad512900c4` |
+| Human Soft-Label Audit Blind Annotator Package HTML | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotator.html` |  | 93434 | `bb580b28f1b1e46c60faa6037dc0a8b27c83ac225b7ab068ae01a9ffc828ecc2` |
+| Human Soft-Label Audit Blind Annotator Package Sheet | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-annotation-sheet.csv` |  | 66660 | `6310faff48ad48d70f94908e79560b7b74ceb0b98921bb5a0fddb3285bd2bfd2` |
+| Human Soft-Label Audit Blind Annotator Package Samples | `present` | file | `experiments/human-soft-label-audit/annotator-package/human-audit-blind-sample.jsonl` |  | 73629 | `4f4d91d092c3209b360f8de3b0e64d6ca11d823858a2eb585dfc1d456002a1cf` |
+| Human Soft-Label Audit Blind Annotator Package Archive | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package.tar.gz` |  | 54786 | `0b9f0f700db5184dad18a7bd68701b4a9e6742ee54a77af66bcd3d3d66f58a4d` |
+| Human Soft-Label Audit Blind Annotator Package Archive Report | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.json` |  | 2429 | `e44759e1f48d66cc8beedf28e49bfe3895992c4351b21de044fa4a230d0b188f` |
+| Human Soft-Label Audit Blind Annotator Package Archive Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-annotator-package-archive-report.md` |  | 1352 | `b7a0e528bd4e588a1a0cdfd800c73ba5cd82dae4fcef2a2a9760902a742b9db8` |
 | Human Soft-Label Audit Returned Completed Annotations | `pending` | pending | `experiments/human-soft-label-audit/human-audit-completed-annotations.csv` |  | 0 | Pending until external annotators return the completed blind annotation CSV. |
-| Human Soft-Label Audit Returned-Annotation Intake Report | `present` | file | `experiments/human-soft-label-audit/human-audit-intake-report.json` |  | 2238 | `55426edff6e23b7ac4e64981885a9b88050077338431ef2686620313821bb0b3` |
-| Human Soft-Label Audit Returned-Annotation Intake Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-intake-report.md` |  | 1492 | `aa4b13f40177cc71241d310632473cbbf95ec6d0d0dc6c3d831d01afe030f2af` |
-| Human Soft-Label Audit Agreement Report | `present` | file | `experiments/human-soft-label-audit/human-audit-agreement-report.json` |  | 4092 | `3a7ea14aaf6358fb393817785d31b6d2d947dafaa18d3cd05234a4cf8b626e43` |
-| Human Soft-Label Audit Agreement Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-agreement-report.md` |  | 1347 | `073c5964e4498548014ef2869d33675824f4cda2f1c7f8081a1ffe2c4197b4b4` |
+| Human Soft-Label Audit Annotator A Completed Annotations | `pending` | pending | `experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-a.csv` |  | 0 | Pending until annotator A returns the completed blind annotation CSV. |
+| Human Soft-Label Audit Annotator B Completed Annotations | `pending` | pending | `experiments/human-soft-label-audit/human-audit-completed-annotations-annotator-b.csv` |  | 0 | Pending until annotator B returns the completed blind annotation CSV. |
+| Human Soft-Label Audit Adjudicated Annotations | `pending` | pending | `experiments/human-soft-label-audit/human-audit-adjudicated-annotations.csv` |  | 0 | Pending until two returned annotator CSVs are reconciled without the verifier answer key. |
+| Human Soft-Label Audit Returned-Annotation Intake Report | `present` | file | `experiments/human-soft-label-audit/human-audit-intake-report.json` |  | 2242 | `4ab34d08069c22d687069547c980b0461a0bc267be3277f897a5552614a0d78d` |
+| Human Soft-Label Audit Returned-Annotation Intake Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-intake-report.md` |  | 1496 | `9485e11393117d596a20ae5b7412cde41ea76727750eb78937ebf8100b667649` |
+| Human Soft-Label Audit Inter-Annotator Agreement Report | `present` | file | `experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.json` |  | 5052 | `748ea076b190973ae52ff7b3913c89d964dc8a6f16a0e9b0fda9f4bed4bc2b30` |
+| Human Soft-Label Audit Inter-Annotator Agreement Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-inter-annotator-agreement-report.md` |  | 2216 | `616c2f96cf2b4e616fbd0dd6793faeafc02c2780caf74c53e3fd351040dacaab` |
+| Human Soft-Label Audit Adjudication Template | `present` | file | `experiments/human-soft-label-audit/human-audit-adjudication-template.csv` |  | 237 | `569feb0637a79cb416e70649c8bc4d937ecd6a768aa45f87e6449af8dbeaef9a` |
+| Human Soft-Label Audit Adjudication Template Report | `present` | file | `experiments/human-soft-label-audit/human-audit-adjudication-template-report.json` |  | 982 | `f09ac6b855b6f52654f06cd0e8afe5b9102d00bb70bfbe4719a0c538a1d0df19` |
+| Human Soft-Label Audit Adjudication Template Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-adjudication-template-report.md` |  | 845 | `9533340c531f46db03f1273884e98a6ae801e3aa20562f2035647a26c8f02082` |
+| Human Soft-Label Audit Adjudicated Annotation Build Report | `present` | file | `experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.json` |  | 40423 | `a84f3deed6eaa3ec951ab466c01aefd35b530466917d6dba3fedd043d325e34c` |
+| Human Soft-Label Audit Adjudicated Annotation Build Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-adjudicated-annotations-report.md` |  | 1101 | `c43b1ac06f3b53924fe35dbf1fdf19430b4fa541972a49fefe30adc2d6539fcf` |
+| Human Soft-Label Audit Agreement Report | `present` | file | `experiments/human-soft-label-audit/human-audit-agreement-report.json` |  | 5020 | `e44c802395f09e3a591ccd3c9346d0c68190275a8ed7c0f417e10f0365de1662` |
+| Human Soft-Label Audit Agreement Report Markdown | `present` | file | `experiments/human-soft-label-audit/human-audit-agreement-report.md` |  | 1354 | `5fc70f0658040caf40abc61ea424f2fa82cd98839d438f3e6fceca1ff5e480d4` |
+| Pilot Second-Provider Replication Report | `present` | file | `experiments/pilot-replication/pilot-replication-report.json` |  | 2026 | `0ecebb5c5197fcbe1eac884607d307a93d05551aa65270d74338062da8a0e6ec` |
+| Pilot Second-Provider Replication Report Markdown | `present` | file | `experiments/pilot-replication/pilot-replication-report.md` |  | 1088 | `4687c233e88c6a7245fd17dc1bf0fb59d2d521935bda0ad6b2121717e141aa56` |
+| Second-Provider Replication Package Report | `present` | file | `experiments/pilot-replication/second-provider-replication-package-report.json` |  | 10996 | `74bcf076c7d6cb5e61283d423a2bd8d8aed4d558eb4b6a5a3286d7ad24f3c507` |
+| Second-Provider Replication Package Report Markdown | `present` | file | `experiments/pilot-replication/second-provider-replication-package-report.md` |  | 7772 | `b11ef982b6fc21337b8ec455b61b01f45f22d414a18a9085a3fd46d2de213097` |
+| Second-Provider Replication Package Manifest | `present` | file | `experiments/pilot-replication/second-provider-replication-package/manifest.json` |  | 10996 | `74bcf076c7d6cb5e61283d423a2bd8d8aed4d558eb4b6a5a3286d7ad24f3c507` |
+| Second-Provider Replication Package README | `present` | file | `experiments/pilot-replication/second-provider-replication-package/README.md` |  | 1580 | `eb14807c51bab266d5ec2e4cd8dcef1a4ab2e78d4609d3ffb31021e3ec67ad5d` |
+| Second-Provider Replication Package Fixed Input JSONL | `present` | file | `experiments/pilot-replication/second-provider-replication-package/openai-batch-input.jsonl` |  | 297380 | `03f118b1729ec416cb92b98898f13e8f3dccd05ed8d7a7b38c2a2c97d1865f81` |
+| Second-Provider Replication Package Prompt Packets | `present` | directory | `experiments/pilot-replication/second-provider-replication-package/prompt-packets` | 50 | 306430 | tree:`f43d3671aafca6bcce0e4361d678ffcdccb78d0c830ac627221541d6a6f401dc` |
+| Second-Provider Replication Preflight | `present` | file | `experiments/pilot-replication/second-provider-replication-preflight.json` |  | 2347 | `18cc0c7ce6a9597606f3b5f1437a01ff7436c71fed47f23dd744252c4fdb8c2b` |
+| Second-Provider Replication Preflight Markdown | `present` | file | `experiments/pilot-replication/second-provider-replication-preflight.md` |  | 1842 | `d91b8e98f2c63e9a88b13dcb9165271ece5629c2317473641080b83f3157779f` |
+| Second-Provider ToM Pilot Provider Results | `pending` | pending | `experiments/provider-results/tom-prompted-llm-second-provider.jsonl` |  | 0 | Pending until a second provider or second model pilot replication is run. |
+| Second-Provider ToM Pilot Metrics | `pending` | pending | `experiments/pilot-replication/second-provider-tom-prompted-results/metrics.json` |  | 0 | Pending until second-provider/model provider results are materialized and ingested. |
 | Pilot Metrics Summary | `present` | file | `experiments/pilot-metrics-summary/pilot-metrics-summary.json` |  | 4421 | `592b8c5f0854e728d2bf602f8a50581037e38fd88149ad66c0366b1f6a26b09b` |
 | Revision Comparison | `present` | file | `experiments/pilot-revision-comparison/revision-comparison.json` |  | 1928 | `1adb7936f98bde01953c960d547e5b66cd1a5450e64cb3a7f26c3d303650f835` |
 | Paired Verifier Attribution | `present` | file | `experiments/pilot-verifier-attribution/verifier-attribution.json` |  | 15039 | `ad53299ddd6491b8d6573b7f5524eedbbbdd0c7594e5ea55272cb9bacf797017` |
 | Verifier Ablation Summary | `present` | file | `experiments/pilot-ablation-summary/ablation-summary.json` |  | 5296 | `aa96ab43078bf960fea216ef3e2e809ff72d0df14ef3094edc1793c092a314f1` |
 | Paper Table Sources | `present` | directory | `tables` | 6 | 5922 | tree:`4c3ed29bf72f6ef02d37b73195bfaffeb247c68efbff3c3cb3b6ce12fd7fd1dc` |
-| Figure Sources | `present` | directory | `figures` | 11 | 358247 | tree:`50e1edbfc5940d1e15947786edcd66a4912e9b20fafc88f80d497fd85413894c` |
-| Verifier Pipeline Figure | `present` | file | `figures/figure-1-verifier-pipeline.svg` |  | 8811 | `cddb82111d925aaf76cd1200de539bc73d593d0e58792d232cb482dda3c17037` |
-| Verifier Pipeline Figure Notes | `present` | file | `figures/figure-1-verifier-pipeline.md` |  | 1227 | `ef9e8873d5c1f47f216df9fad4108500dbd540385e0f93d142e1ddf54db761e9` |
-| Verifier-Grounded Revision Architecture Figure | `present` | file | `figures/figure-2-revision-architecture.svg` |  | 7761 | `7bb2fce4f50cc8b67547f3c11cb9135e312ae604d403f1c9d977ff04954ee5aa` |
-| Verifier-Grounded Revision Architecture Figure Notes | `present` | file | `figures/figure-2-revision-architecture.md` |  | 1222 | `3e43f1397ea10b61c2c88e34f7cfe169f524c3ef647e38e6d23556d3058665d7` |
+| Figure Sources | `present` | directory | `figures` | 13 | 217315 | tree:`d6763b3e536529dcebe5804fe48db426166c51b4ebdcb87c0fc3b7f8213db5d2` |
+| Verifier Pipeline Figure | `present` | file | `figures/figure-1-verifier-pipeline.svg` |  | 10464 | `500e98873a7b499291fea9849d9cef12bccbf36733feab18da60bc5870aee7ae` |
+| Verifier Pipeline Figure Notes | `present` | file | `figures/figure-1-verifier-pipeline.md` |  | 1370 | `37c9f06616a22663901220a4c2ae7721526d52f37b6b1612caec8a2282da73d5` |
+| Trace-Contract Verifier Architecture Figure | `present` | file | `figures/figure-2-revision-architecture.svg` |  | 7767 | `8e893d990f44edf8e7cae3311b6954ee9455177ff64955956484193867792772` |
+| Trace-Contract Verifier Architecture Figure Notes | `present` | file | `figures/figure-2-revision-architecture.md` |  | 1516 | `4c7d38884f73ba6d277817b3865c479d4965eaee8f8b8384c87e1ee32184b235` |
 | ToM Schema Repair Flow Figure | `present` | file | `figures/figure-3-tom-schema-repair-flow.svg` |  | 4584 | `c1cc05648e25d8eb16db51e32319c7f4e9d88211fb48e4665beef8c9f6288522` |
 | ToM Schema Repair Flow Figure Notes | `present` | file | `figures/figure-3-tom-schema-repair-flow.md` |  | 838 | `77c1b530dde6e2b7efea32b0f8821ed4509cab11bd08e4f06cbb131eaaf63448` |
-| Main Pilot Results Figure | `present` | file | `figures/figure-4-main-pilot-results.svg` |  | 8758 | `e8ad2998231c8804117a89e744810e4be2dc1af82aa9e5294c46794a5f340fbc` |
-| Main Pilot Results Figure Notes | `present` | file | `figures/figure-4-main-pilot-results.md` |  | 1248 | `f10e18801290643c6991a73d3e41f3011410bc90882469016df21cd5c09a919b` |
+| Main Pilot Results Figure | `present` | file | `figures/figure-4-main-pilot-results.svg` |  | 10038 | `85147f8b77f819184b1386f8c7dd4fa7ef64938a41d4b6f95a62a4f362d17942` |
+| Main Pilot Results Figure Notes | `present` | file | `figures/figure-4-main-pilot-results.md` |  | 1181 | `78564e8b7619332bc7c283f2ee1671198411e0f0d1f6007f81a2dfda0dd53fe4` |
+| Qualitative Verifier-Attribution Case Pack Figure | `present` | file | `figures/figure-5-qualitative-case-pack.svg` |  | 9095 | `02b68c793985847d7e8188ae4bab18835ea53b815a0155f26bf280cdcbdb510c` |
+| Qualitative Verifier-Attribution Case Pack Figure Notes | `present` | file | `figures/figure-5-qualitative-case-pack.md` |  | 1302 | `2b5b43b073875609edbc77d59f49173a7b8402edea0624fae8f1f6543a652b92` |
+| Visual Evidence Report | `present` | file | `submission/visual-evidence/visual-evidence-report.json` |  | 9684 | `2c3fa85dad65582631f8a9b963e3aabebd4b4371886eb10788678fa3918f2851` |
+| Visual Evidence Report Markdown | `present` | file | `submission/visual-evidence/visual-evidence-report.md` |  | 7059 | `391e2b9e007b84692a525821c85ee6945483abc553516c979781b07d1ef62209` |
 | Normalized Bibliography | `present` | file | `submission/references.bib` |  | 5918 | `86f88c35847b07cb41386b5d5b19e63535f2dbb5a8f5b1d11f9a3ded174badf1` |
-| Bibliography Integrity Report | `present` | file | `submission/citation-integrity/bibliography-integrity-report.json` |  | 255 | `77afdc8ab4dd3ed8f9bc348ed3a74bd9825b0922daf94c9aa891a09904df57c2` |
+| Bibliography Integrity Report | `present` | file | `submission/citation-integrity/bibliography-integrity-report.json` |  | 255 | `161ef8c4b0d534c41b40ea7cc113d1d6e966abe8ee5c1899cca9b167a39408c3` |
 | Assembled Manuscript | `present` | file | `submission/manuscript/manuscript-draft.md` |  | 29553 | `6f96355c979fba0f5b091a50bea9726b84cc63f28c13c46b3d4ffa18e275447e` |
 | Manuscript Status | `present` | file | `submission/manuscript/manuscript-status.json` |  | 830 | `e3b7f01b79e91661635690cafd957641d02264fc950eb8d6e5fbbd5426d4c85d` |
-| AAMAS LaTeX Draft | `present` | directory | `submission/aamas-latex` | 22 | 6699222 | tree:`fe136843a707246f3745ad00b40335d4b0c8a4c0b83845d9fd85c63388ac5f06` |
+| Claim-Evidence Report | `present` | file | `submission/claim-evidence/claim-evidence-report.json` |  | 6194 | `328264a081640c33ba5a4bd384bb709486f097ae7d1f99765e19e6cd21345182` |
+| Claim-Evidence Report Markdown | `present` | file | `submission/claim-evidence/claim-evidence-report.md` |  | 4851 | `e21295428e313665dca6c322838f3de4a40416d42cfeb6ad86be6558361df504` |
+| Method Reproducibility Report | `present` | file | `submission/method-reproducibility/method-reproducibility-report.json` |  | 5617 | `1153b832e762990cfb341f2b3d1e9aa4f7744383715a22708b561f556db823ee` |
+| Method Reproducibility Report Markdown | `present` | file | `submission/method-reproducibility/method-reproducibility-report.md` |  | 2537 | `afe53113761a80d4494a6adc118a6b5e1aebc8ed6e4edb4a4820e3ce6bd638f0` |
+| AAMAS LaTeX Draft | `present` | directory | `submission/aamas-latex` | 22 | 6667023 | tree:`7b7df89f243c81d396fb60fecc185c143073dbdfd8ae1ac27fe687a7d67d5090` |
 | Submission Gate Report | `present` | file | `submission/gate-report/submission-gate-report.json` |  | 1856 | `3f088cbe513b443424db3273b23b3f6d4f556fd41f1726b44cf6bb29667cbce5` |
-| Submission Marker Inventory | `present` | file | `submission/marker-inventory/submission-marker-inventory.json` |  | 562 | `840a067577fbd51ca313a6fbeeec86bf801d926dc673f60af1c429526bab9b92` |
-| Experiment Resolution Ledger | `present` | file | `submission/experiment-resolution-ledger/experiment-resolution-ledger.json` |  | 522 | `a2bea975dd9cc5d827746b91c812ff7390217d57e15722a4909c242afec9507c` |
-| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 3759 | `066eac0ca56cff14cbb58066027ed415c50d97e9eb1bb2b49f507a9bd4e6869d` |
-| AAMAS Full-Paper Readiness Report | `present` | file | `submission/aamas-readiness/aamas-readiness-report.json` |  | 8076 | `65de4041fc9dc343be98de8a781def685cf88a76b8d6e4f38f7f9bc0c0539f90` |
-| AAMAS Full-Paper Readiness Report Markdown | `present` | file | `submission/aamas-readiness/aamas-readiness-report.md` |  | 4690 | `b827ee09d0a409d1dbd01dd541fce253a25e486986012c08c3f767316467c6c6` |
-| Local Research Pipeline Report | `present` | file | `submission/local-pipeline/local-research-pipeline-report.json` |  | 40225 | `05850af3a58f36e1ef28302a20398f628d37ebe41da7eb60c2cabc614a9da276` |
-| Submission Checklist | `present` | file | `submission/submission_checklist.md` |  | 8025 | `d7ee66a3a522a6bfc4e25c827ef644faea1d873f35898d63575a180200bc2aa1` |
+| Submission Marker Inventory | `present` | file | `submission/marker-inventory/submission-marker-inventory.json` |  | 562 | `e524d0dc4b30278acf4c7e4b25d97df89937d248ac5c836e0a26c5ec4b716a44` |
+| Experiment Resolution Ledger | `present` | file | `submission/experiment-resolution-ledger/experiment-resolution-ledger.json` |  | 522 | `bec9c60d0d5ed3d88f2a462016f25077e4ab3f30dc95bebb1d8526a5b85c8f37` |
+| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 5786 | `6ecc87030e3ba4d67903f7d7ba1529cfaf1f1c350f4f1c00517e609e8d0f510f` |
+| AAMAS Full-Paper Readiness Report | `present` | file | `submission/aamas-readiness/aamas-readiness-report.json` |  | 11446 | `1bd057fa236b375f236ce9f252989f3d3bd8e13c79fe7aac8a49754e11202150` |
+| AAMAS Full-Paper Readiness Report Markdown | `present` | file | `submission/aamas-readiness/aamas-readiness-report.md` |  | 6610 | `ac64a52a4751782db1175b8c9a7d2d10cbeb0ce0c94a3606414e2dc1ac115a2f` |
+| AAMAS Adversarial Self-Review Report | `present` | file | `submission/aamas-self-review/aamas-self-review-report.json` |  | 8677 | `aa3f2f3a12f66c598a7bed029c58646f0ea127883a9eb5bb8e8da19b8ddb270f` |
+| AAMAS Adversarial Self-Review Report Markdown | `present` | file | `submission/aamas-self-review/aamas-self-review-report.md` |  | 7632 | `aaedd220a3bcbc35763a014554124d10e79a6e1a043a4b0ba6242d0cb673fccd` |
+| AAMAS Reviewer-Response Matrix | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json` |  | 12616 | `829b19f9245624e5780992ab6cd6d0620fccdff9a1aa0f92dd3cfd43fdf492fa` |
+| AAMAS Reviewer-Response Matrix Markdown | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.md` |  | 10378 | `848a5829c65f1b10af1a3f481f29eb0c75b52539b0d2705b16c78cbc8d038361` |
+| Local Research Pipeline Report | `present` | file | `submission/local-pipeline/local-research-pipeline-report.json` |  | 53721 | `1cd541ff42d8e2edf6973e6fed2597282d88680b727d849f9c52bc9a572559d3` |
+| Submission Checklist | `present` | file | `submission/submission_checklist.md` |  | 8159 | `08550a21e494c9358a206afb9a05e2788f6328a6e6d42c53c81781253dcfa64c` |
 | Working Submission Profile | `present` | file | `submission/submission-profile.md` |  | 4191 | `4830c603c5293d3c08afa112d014aa0779c4ff21d483ee221ba4c055b8f66a27` |
 | Page Budget Snapshot | `present` | file | `submission/page-budget.md` |  | 6035 | `109451411191d2b5f0213f7fbf726f5837594a9a3b4bb2d4cc9f3bb48d34a15f` |
 | Author Decision Brief | `present` | file | `submission/author-decision-brief.md` |  | 5696 | `7ec62cfb0801c72324e449605ac89fe389641456bed6d65719eab6be59939184` |

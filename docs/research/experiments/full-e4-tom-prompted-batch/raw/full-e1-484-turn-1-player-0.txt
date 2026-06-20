@@ -1,0 +1,39 @@
+{
+  "agentId": "tom-prompted-llm",
+  "decisionId": "full-e1-484-turn-1-player-0",
+  "selectedActionId": "play-single-spade-2-copy2",
+  "partnerIntentInference": {
+    "summary": "Partner (player 2, team 0) holds 3 cards and has not yet acted. In an endgame race, they likely want to cover a low lead with a high card/trump or return the lead so I can shed my remaining card. No public signal has been sent.",
+    "beliefs": [
+      "Partner may possess trumps, jokers, or high naturals to cover a lead.",
+      "Partner has no revealed suit preference because no cards have been played."
+    ],
+    "evidence": ["49e7328b-c9fe-4d4e-ad97-d3d26519c40b"]
+  },
+  "opponentIntentInference": {
+    "summary": "Opponents (players 1 and 3, 3 cards each) want to stop player 0 from going out. They will beat a lead if they have a higher natural card or any trump/joker, and they will try to seize the lead to control the endgame.",
+    "beliefs": [
+      "Opponents are likely to play a higher single or trump on a weak lead if they can.",
+      "Opponents know player 0 has only 2 cards, so they expect a short race and may be aggressive."
+    ],
+    "evidence": ["49e7328b-c9fe-4d4e-ad97-d3d26519c40b"]
+  },
+  "candidateComparison": [
+    {
+      "actionId": "play-single-spade-A-copy2",
+      "counterfactualScenario": "If I lead the A, an opponent with a natural 2 or any trump/joker can win the trick, leaving me with the 2. The 2 is the strongest natural card, so keeping it is useful, but leading the A first exposes it to being beaten by a 2.",
+      "partnerCompatibility": "Partner could cover with a trump/joker, but a natural 2 from an opponent would still win.",
+      "opponentRisk": "Moderate-high: the A can be beaten by the natural 2, which opponents may hold in a double-deck endgame.",
+      "expectedValue": "Moderate; preserves the top natural card but risks losing the lead immediately."
+    },
+    {
+      "actionId": "play-single-spade-2-copy2",
+      "counterfactualScenario": "If I lead the 2, only a wildcard or trump can beat it. If it wins, I keep the lead and play the A next. If it loses, I still hold the A to play on a future lead from partner or an opponent.",
+      "partnerCompatibility": "Partner can pass the lead back or cover; the 2 maximizes the chance my lead survives.",
+      "opponentRisk": "Lower: opponents need a trump/joker to beat the highest natural single.",
+      "expectedValue": "Higher; controls the lead more often and leaves a playable second card."
+    }
+  ],
+  "selectedActionRationale": "Leading the 2 minimizes the chance that an opponent wins the trick with a natural card and maximizes the chance of retaining the lead. It leaves the A as a fallback and best supports the endgame race.",
+  "evidence": ["49e7328b-c9fe-4d4e-ad97-d3d26519c40b"]
+}

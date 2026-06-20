@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-016-turn-2-player-1",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-heart-4-copy1",
+  "teamObjective": {
+    "type": "suppress_opponent",
+    "explanation": "Player 0 is an opponent with only 2 cards remaining (opponent_near_finish), so preventing them from retaining or regaining the lead is the highest priority. Taking control of this trick denies them a chance to play a finishing card on their next turn."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; partner has 3 cards remaining and no public plays yet.",
+    "confidence": 0.5,
+    "evidence": [
+      "Partner (player 3) has 3 cards and has not played any cards in this round.",
+      "No inferences are provided about partner holdings."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Player 0 is an opponent near finishing the hand with only 2 cards left and just led a low single 3 of hearts.",
+    "confidence": 0.9,
+    "evidence": [
+      "handCounts shows player 0 has 2 cards remaining.",
+      "scenarioTags includes opponent_near_finish.",
+      "Player 0 led a low single card, suggesting they may be trying to shed a weak card or set up a quick exit."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Play the lowest card that beats the table (4 of hearts) to seize the lead at minimal cost. Controlling the lead prevents the near-finished opponent from dictating the next trick and keeps pressure on them.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "pass",
+        "reason": "Passing allows the opponent in player 0 to remain leading when they have only 2 cards, giving them a direct path to potentially finish the hand."
+      },
+      {
+        "actionId": "play-single-heart-9-copy1",
+        "reason": "Beats the 3 but expends a significantly higher card unnecessarily; the 4 is sufficient and preserves stronger cards for later leads."
+      },
+      {
+        "actionId": "play-single-heart-10-copy1",
+        "reason": "Beats the 3 but wastes the highest card in hand; no strategic benefit over the 4 in this single-card follow situation."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Playing the 4 could still lose the trick if another player has a higher single or trump, returning control to an opponent.",
+      "If the 4 wins, my remaining cards (9, 10) may not be strong enough to control the endgame if opponents have trumps or higher singles."
+    ],
+    "mitigation": "Using the minimal 4 keeps the 9 and 10 in reserve, maximizing future flexibility if I retain the lead or need to beat another single."
+  },
+  "confidence": 0.85
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-019-turn-1-player-0",
+  "agentId": "plain-llm",
+  "selectedActionId": "play-single-spade-A-copy2",
+  "labels": {
+    "legalAction": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Selected action play-single-spade-A-copy2 is in legalActions."
+      ]
+    },
+    "beatsTable": {
+      "status": "not_applicable",
+      "score": 1,
+      "evidence": [
+        "Lead actions do not need to beat an existing table lead."
+      ]
+    },
+    "publicHistoryConsistent": {
+      "status": "fail",
+      "score": 0,
+      "evidence": [
+        "Unknown public evidence ids: Partner hand size is 3; no public card information has been revealed., No bids or signals have been exchanged., Each opponent has 3 cards, larger than my hand., No trumps, bombs, or big cards have been played yet."
+      ]
+    },
+    "hiddenInfoDisciplined": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Hidden information is hedged or not asserted."
+      ]
+    },
+    "partnerConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Partner consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "opponentConsistent": {
+      "status": "unknown",
+      "score": 0.5,
+      "evidence": [
+        "Opponent consistency needs a public scenario tag before this conservative check applies."
+      ]
+    },
+    "reasonActionConsistent": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "Trace rationale is compatible with the selected action type."
+      ]
+    },
+    "teamObjectiveValid": {
+      "status": "pass",
+      "score": 1,
+      "evidence": [
+        "finish_hand is compatible with playing from an endgame hand."
+      ]
+    }
+  },
+  "hardFailures": [
+    {
+      "code": "UNKNOWN_PUBLIC_EVIDENCE",
+      "message": "Reasoning trace cites evidence not present in public history.",
+      "path": "partnerBelief.evidence"
+    }
+  ],
+  "softWarnings": [],
+  "summary": "Hard verifier found 1 failure(s)."
+}

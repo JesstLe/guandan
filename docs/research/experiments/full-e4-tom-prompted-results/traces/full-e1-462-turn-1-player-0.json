@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-462-turn-1-player-0",
+  "agentId": "tom-prompted-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "Partner has only 2 cards remaining, so they are near finishing. Leading the lowest possible single lets partner cover with a moderate card and potentially go out, while keeping my slightly higher diamonds for later."
+  },
+  "partnerBelief": {
+    "summary": "Partner likely holds one or two cards that can beat a low diamond, given they are down to 2 cards and near finish. They may be waiting for a cheap lead to win the trick.",
+    "confidence": 0.5,
+    "evidence": [
+      "823c9650-2868-4509-9634-6cd59d788816"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each hold 3 cards. They probably can beat a diamond 3 with higher non-trump or trump cards, but they would prefer to save strength unless necessary. Their exact holdings are unknown.",
+    "confidence": 0.6,
+    "evidence": [
+      "823c9650-2868-4509-9634-6cd59d788816"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "play-single-diamond-3-copy1 is the weakest lead, giving partner the best chance to win the trick cheaply and continue toward finishing, while expending the least valuable card from my hand.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "A 4 is still low but uses a card slightly better than my minimum; it gives partner marginally less room to win cheaply and weakens my hand if I need to contest later."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A 5 is more likely to be beaten by opponents and consumes a mid-low card that I might need if the trick comes back around."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "A 6 is my highest card and most likely to draw a trump or higher non-trump from opponents; it also gives partner the least room to cover and leaves me with very little recourse."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may not be able to cover the 3, letting an opponent win the trick.",
+      "An opponent may use a trump to take control if they judge it worthwhile.",
+      "My remaining cards are all low, so I may not regain the lead if partner does not finish."
+    ],
+    "mitigation": "By keeping the 4, 5, and 6, I retain slightly higher cards to contest future low-card leads or support partner if they win and play back a low card."
+  },
+  "confidence": 0.55,
+  "notes": "The partner's very small hand count is the main public signal that they might finish soon, so a minimal lead is preferred."
+}

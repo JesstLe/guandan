@@ -122,7 +122,7 @@ The pilot compares plain prompting, candidate-constrained prompting, ToM-prompte
 \end{tikzpicture}
 }
 \fi
-\caption{Verifier-grounded multi-agent reasoning in a zero-communication mixed-motive decision point. Guandan supplies hidden partner and opponent state, while the framework converts LLM rationales into auditable commitments, checks them with rule-grounded hard labels and conservative soft labels, and reports same-id revision evidence on 32 eligible traces.}
+\caption{Verifiable multi-agent reasoning under zero communication. Unlike explicit team messages, Guandan exposes partner intent only through public actions. The framework converts an LLM action and rationale into auditable commitments, checks them with rule/evidence labels, and reports same-id revision evidence on 32 eligible paired traces while keeping schema failures visible.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -163,7 +163,7 @@ This project & Guandan decisions & none & structured trace labels & rule-grounde
 
 Our method evaluates LLM agents at decision points rather than only at the end of a game. A decision point contains the acting player, public history, private hand, hand counts, current table lead, legal candidate actions, and strategic scenario tags. This representation makes the evaluation local enough to label precisely while preserving the partner and opponent context needed for mixed-motive reasoning.
 
-Formally, let a decision point be \(d_t = (p_t, h_t, o_t, c_t, A_t, z_t)\), where \(p_t\) is the acting player, \(h_t\) is the public action history, \(o_t\) is the acting player's private observation, \(c_t\) is the current table context, \(A_t\) is the finite set of legal candidate actions, and \(z_t\) contains scenario tags derived only from public state. An agent returns a structured trace \(r_t\) and selected action \(a_t \in A_t\). The verifier maps \((d_t, r_t, a_t)\) to labels \(y_t\) and issues \(e_t\). Labels are decomposed into hard checks, which can be determined from rules and public/private-state boundaries, and soft checks, which conservatively score whether the stated objective and beliefs are consistent with available public evidence.
+Formally, let a decision point be \(d_t = (p_t, h_t, o_t, c_t, A_t, z_t)\), where \(p_t\) is the acting player, \(h_t\) is the public action history, \(o_t\) is the acting player's private observation, \(c_t\) is the current table context, \(A_t\) is the finite set of legal candidate actions, and \(z_t\) contains scenario tags derived only from public state. An agent returns a structured trace \(r_t\) and selected action \(a_t \in A_t\). The verifier contract maps \((d_t, r_t, a_t)\) to hard/soft labels and issue codes, and the same map checks revised traces. Hard checks use rules and public/private-state boundaries; soft checks conservatively score whether the stated objective and beliefs fit available public evidence.
 
 \subsection{Decision-Point Exporter}
 
@@ -230,67 +230,79 @@ reasonActionConsistent & soft & selected action and rationale & explanation does
 
 The verifier-in-the-loop scaffold uses verification as feedback before finalizing an action. The agent first produces a structured reasoning trace. The verifier returns hard failures and soft warnings. The agent then revises its trace and selected action under the constraint that hard failures should be resolved. The final trace is evaluated against the same verifier labels, allowing a controlled comparison between initial and revised reasoning.
 
-Figure~\ref{fig:revision-architecture} summarizes the revision architecture. The key design choice is that the verifier does not choose an action for the LLM. It exposes a compact set of labels and issue codes, then asks the model to repair its own trace under the same decision state. This keeps the evaluation focused on whether verifier feedback improves the model's reasoning commitments rather than replacing the model with a rule-based actor.
+Figure~\ref{fig:revision-architecture} summarizes the trace-contract verifier architecture. The key design choice is that the verifier does not choose an action for the LLM. It maps the same decision state, selected action, and structured trace to hard labels, soft labels, and issue codes, then asks the model to repair its own commitments under the same state. This keeps the evaluation focused on whether verifier feedback improves the model's reasoning commitments rather than replacing the model with a rule-based actor.
 
 \begin{figure*}[t]
 \centering
-\resizebox{0.98\textwidth}{!}{%
+\vspace{-0.5em}
+\resizebox{0.94\textwidth}{!}{%
 \begin{tikzpicture}[
-  font=\small,
-  panel/.style={draw=gray!35, rounded corners=7pt, fill=gray!3, minimum width=5.0cm, minimum height=4.55cm},
-  box/.style={draw=gray!55, rounded corners=4pt, fill=white, align=center, inner sep=3pt},
-  state/.style={box, minimum width=1.55cm, minimum height=0.72cm},
-  model/.style={box, draw=blue!55!black, fill=blue!5, minimum width=1.62cm, minimum height=0.86cm},
-  verifier/.style={box, draw=green!50!black, fill=green!6, minimum width=1.62cm, minimum height=0.86cm},
+  font=\scriptsize,
+  panel/.style={draw=gray!35, rounded corners=6pt, fill=gray!3, minimum width=3.42cm, minimum height=4.42cm},
+  box/.style={draw=gray!55, rounded corners=4pt, fill=white, align=center, inner sep=2.6pt},
+  state/.style={box, draw=slateblue!65!black, fill=blue!4},
+  model/.style={box, draw=blue!55!black, fill=blue!5},
+  verifier/.style={box, draw=green!50!black, fill=green!6},
   fail/.style={box, draw=red!60!black, fill=red!6},
   artifact/.style={box, draw=orange!70!black, fill=orange!7},
   metric/.style={box, draw=cyan!65!black, fill=cyan!7},
   arrow/.style={-Latex, thick},
   thinarr/.style={-Latex, semithick},
   dashedarr/.style={-Latex, thick, dashed, draw=orange!80!black},
-  ptitle/.style={font=\bfseries, anchor=west},
+  ptitle/.style={font=\bfseries\scriptsize, anchor=west},
   note/.style={font=\scriptsize, align=center, text=gray!70!black}
 ]
+\definecolor{slateblue}{RGB}{59, 130, 246}
 \node[panel] (pa) at (0,0) {};
-\node[panel, right=0.28cm of pa] (pb) {};
-\node[panel, right=0.28cm of pb] (pc) {};
+\node[panel, right=0.16cm of pa] (pb) {};
+\node[panel, right=0.16cm of pb] (pc) {};
+\node[panel, right=0.16cm of pc] (pd) {};
 
-\node[ptitle] at ([xshift=-2.28cm,yshift=1.98cm]pa.center) {A. First-pass trace};
-\node[ptitle] at ([xshift=-2.28cm,yshift=1.98cm]pb.center) {B. Verifier feedback};
-\node[ptitle] at ([xshift=-2.28cm,yshift=1.98cm]pc.center) {C. Bounded revision};
+\node[ptitle] at ([xshift=-1.55cm,yshift=1.95cm]pa.center) {A. Decision point};
+\node[ptitle] at ([xshift=-1.55cm,yshift=1.95cm]pb.center) {B. Trace contract};
+\node[ptitle] at ([xshift=-1.55cm,yshift=1.95cm]pc.center) {C. Verifier map};
+\node[ptitle] at ([xshift=-1.55cm,yshift=1.95cm]pd.center) {D. Same-id revision};
 
-\node[state, text width=1.35cm] (dp) at ([xshift=-1.35cm,yshift=0.82cm]pa.center) {\textbf{Decision}\\\(d_t,A_t,h_t,o_t\)};
-\node[model, text width=1.38cm] (llm0) at ([xshift=1.18cm,yshift=0.82cm]pa.center) {\textbf{LLM}\\trace \(r_t^0\)\\action \(a_t^0\)};
-\node[artifact, text width=1.65cm] (parse0) at ([yshift=-0.56cm]pa.center) {schema\\parse gate};
-\node[fail, text width=1.85cm] (stop0) at ([xshift=-1.14cm,yshift=-1.62cm]pa.center) {unparseable traces\\remain failures};
-\node[metric, text width=1.75cm] (ok0) at ([xshift=1.25cm,yshift=-1.62cm]pa.center) {parseable traces\\enter audit};
-\draw[arrow] (dp) -- (llm0);
-\draw[thinarr] (llm0) -- (parse0);
-\draw[arrow, draw=red!65!black] (parse0) -- (stop0);
-\draw[arrow] (parse0) -- (ok0);
+\node[state, text width=2.75cm] (dt) at ([yshift=1.10cm]pa.center) {\textbf{State packet}\\\(d_t=(p_t,h_t,o_t,A_t,z_t)\)};
+\node[artifact, text width=2.82cm] (obs) at ([yshift=0.13cm]pa.center) {\textbf{Observable evidence}\\public history \(h_t\)\\hand counts, table context};
+\node[fail, text width=2.82cm] (hid) at ([yshift=-0.90cm]pa.center) {\textbf{Boundary}\\private hand \(o_t\) is allowed input,\\not citable public evidence};
+\node[metric, text width=2.82cm] (cand) at ([yshift=-1.75cm]pa.center) {\textbf{Dynamic candidates}\\finite legal set \(A_t\)};
 
-\node[verifier, text width=1.65cm] (vf0) at ([xshift=-1.05cm,yshift=0.82cm]pb.center) {\textbf{Verifier}\\hard labels\\soft warnings};
-\node[artifact, text width=1.45cm] (codes) at ([xshift=1.25cm,yshift=0.82cm]pb.center) {\textbf{Issue codes}\\public history\\hidden info};
-\node[state, text width=3.35cm] (boundary) at ([yshift=-0.83cm]pb.center) {\textbf{Boundary}\\labels commitments;\\never chooses the move};
-\draw[arrow] (vf0) -- (codes);
-\draw[dashedarr] (codes) -- (boundary);
-\draw[thinarr] (vf0) -- (boundary);
+\node[model, text width=2.80cm] (llm) at ([yshift=1.10cm]pb.center) {\textbf{LLM actor}\\selects \(a_t\in A_t\)\\emits trace \(r_t^0\)};
+\node[artifact, text width=2.82cm] (trace) at ([yshift=-0.02cm]pb.center) {\textbf{Structured trace fields}\\action, team objective\\partner/opponent belief + ids\\rationale, risk, confidence};
+\node[metric, text width=2.82cm] (parse) at ([yshift=-1.48cm]pb.center) {\textbf{Schema gate}\\parseable trace enters audit};
 
-\node[model, text width=1.65cm] (rev) at ([xshift=-1.16cm,yshift=0.82cm]pc.center) {\textbf{LLM revision}\\same state\\repair \(r_t^1\)};
-\node[verifier, text width=1.55cm] (vf1) at ([xshift=1.17cm,yshift=0.82cm]pc.center) {\textbf{Recheck}\\same labels\\same id};
-\node[metric, text width=3.15cm] (paired) at ([yshift=-0.78cm]pc.center) {\textbf{Paired evidence}\\32 traces\\hard failures \(35 \rightarrow 10\)};
-\node[state, text width=3.25cm, font=\scriptsize] (denom) at ([yshift=-1.72cm]pc.center) {paired denominator excludes first-pass schema failures};
-\draw[arrow] (rev) -- (vf1);
-\draw[arrow] (vf1) -- (paired);
-\draw[thinarr] (rev) -- (paired);
+\node[verifier, text width=2.82cm] (vf) at ([yshift=1.13cm]pc.center) {\textbf{Verifier map}\\\(V(d_t,r_t,a_t)\rightarrow(y_t,e_t)\)};
+\node[artifact, text width=2.82cm] (hard) at ([yshift=0.08cm]pc.center) {\textbf{Hard labels}\\legal action, beats table\\public history, hidden-info};
+\node[metric, text width=2.82cm] (soft) at ([yshift=-0.95cm]pc.center) {\textbf{Soft labels}\\partner/opponent consistency\\objective, reason-action};
+\node[state, text width=2.82cm] (oracle) at ([yshift=-1.78cm]pc.center) {diagnoses commitments;\\does not choose the move};
 
-\draw[dashedarr] ([xshift=2.50cm,yshift=-0.83cm]pa.center) -- ([xshift=-2.50cm,yshift=-0.83cm]pb.center);
-\draw[dashedarr] ([xshift=2.50cm,yshift=-0.83cm]pb.center) -- ([xshift=-2.50cm,yshift=-0.83cm]pc.center);
+\node[artifact, text width=2.78cm] (fb) at ([yshift=1.12cm]pd.center) {\textbf{Feedback vector}\\labels \(y_t\), issue codes \(e_t\)};
+\node[model, text width=2.78cm] (rev) at ([yshift=0.18cm]pd.center) {\textbf{Bounded revision}\\same \(d_t\), repair \(r_t^1\)};
+\node[verifier, text width=2.78cm] (recheck) at ([yshift=-0.76cm]pd.center) {\textbf{Recheck}\\same labels, same decision id};
+\node[metric, text width=2.78cm] (paired) at ([yshift=-1.70cm]pd.center) {\textbf{Paired evidence}\\32 paired traces\\hard failures \(35\rightarrow10\)};
 
-\node[note, text width=13.6cm] at ([yshift=-2.75cm]pb.center) {The figure separates reliability accounting from revision evaluation: parse failures stay visible, while only parseable traces enter the paired before/after test.};
+\draw[arrow] (dt) -- (llm);
+\draw[arrow] (llm) -- (trace);
+\draw[arrow] (trace) -- (parse);
+\draw[arrow] (parse) -- (vf);
+\draw[arrow] (vf) -- (hard);
+\draw[thinarr] (vf) -- (soft);
+\draw[dashedarr] (hard) -- (fb);
+\draw[dashedarr] (soft) -- (fb);
+\draw[arrow] (fb) -- (rev);
+\draw[arrow] (rev) -- (recheck);
+\draw[arrow] (recheck) -- (paired);
+\draw[dashedarr] (oracle) -- (rev);
+
+\node[fail, text width=3.10cm, font=\scriptsize] (e2e) at ([xshift=0.08cm,yshift=-2.55cm]pb.center) {schema failures remain end-to-end failures};
+\node[note, text width=7.15cm] (denom) at ([xshift=0.10cm,yshift=-2.55cm]pc.east) {Only first-pass parseable traces enter the same-id before/after test; schema failures remain visible.};
+\draw[arrow, draw=red!65!black] (parse.south) -- (e2e.north);
 \end{tikzpicture}
 }
-\caption{Verifier-grounded revision architecture. The first-pass trace must clear a schema gate before it can receive diagnostic feedback. The verifier supplies labels and issue codes, but it does not choose the action; paired revision is evaluated only for traces that are parseable before revision, while parse failures remain explicit reliability failures.}
+\vspace{-0.4em}
+\caption{Trace-contract verifier architecture. A decision point is converted into a structured trace with explicit evidence boundaries; the verifier maps the same state, trace, and selected action to labels and issue codes, then supports bounded same-state revision without choosing the action. Paired evidence uses only first-pass parseable traces, while parse failures remain explicit end-to-end reliability failures.}
+\vspace{-0.8em}
 \label{fig:revision-architecture}
 \end{figure*}
 
@@ -302,7 +314,7 @@ The experiments test whether verifier-grounded reasoning provides information be
 
 \subsection{Benchmark Construction}
 
-The benchmark consists of Guandan decision points generated from controlled game states. Each decision point includes public history, acting player, team identity, hand counts, current table lead, legal candidate actions, inference summaries, and strategic scenario tags. The repository currently contains a 50-decision pilot split and a 500-decision full-evaluation split. The pilot covers five scenario tags: lead opening, follow beat-or-pass, partner near finish, opponent near finish, and endgame race. The full split is retained as a local follow-up target; the current paper reports the cost-controlled pilot.
+The benchmark consists of Guandan decision points generated from controlled game states. Each decision point includes public history, acting player, team identity, hand counts, current table lead, legal candidate actions, inference summaries, and strategic scenario tags. The repository currently contains a 50-decision pilot split and a 500-decision full-evaluation split. The pilot covers five scenario tags: lead opening, follow beat-or-pass, partner near finish, opponent near finish, and endgame race. The current paper reports the cost-controlled pilot plus the completed full-split ToM condition; the full split remains the target for broader plain/candidate and component-removal comparisons.
 
 The pilot is designed as a diagnostic sample rather than a claim of environment-wide performance. Its purpose is to test whether the pipeline can expose concrete reasoning failures under controlled states, produce paired before/after labels, and generate publication-grade evidence tables. The 500-decision split is reserved for the next empirical stage because it requires a larger provider budget and stronger baseline coverage before the paper can make broader robustness claims.
 
@@ -384,7 +396,7 @@ This table prevents a misleading reading of the revision result. The paired veri
   panel/.style={draw=gray!45, rounded corners=5pt, fill=gray!2},
   axis/.style={draw=gray!65, thick},
   parsebar/.style={fill=blue!62, draw=blue!70!black, rounded corners=1.2pt},
-  ghostbar/.style={fill=blue!10, draw=blue!25, rounded corners=1.2pt},
+  schemabar/.style={fill=yellow!35, draw=orange!65!black, rounded corners=1.2pt},
   hardchip/.style={draw=red!62!black, fill=red!7, rounded corners=3pt, font=\scriptsize, align=center, inner sep=3pt},
   good/.style={fill=green!8, draw=green!55!black, rounded corners=4pt},
   bad/.style={fill=red!7, draw=red!60!black, rounded corners=4pt},
@@ -392,10 +404,10 @@ This table prevents a misleading reading of the revision result. The paired veri
   arrow/.style={-Latex, thick},
   lab/.style={font=\scriptsize, align=center}
 ]
-\node[draw=gray!35, fill=gray!5, rounded corners=4pt, inner sep=5pt, text width=15.7cm, align=center] at (6.03,3.03) {\bfseries Reliability is reported in three layers: parse yield, paired verifier revision, and semantic attribution};
+\node[draw=gray!35, fill=gray!5, rounded corners=4pt, inner sep=5pt, text width=15.7cm, align=center] at (6.03,3.03) {\bfseries Three reliability layers: parse yield, paired revision, and semantic attribution};
 \node[panel, minimum width=5.45cm, minimum height=5.1cm] (a) at (0,0) {};
 \node[anchor=west, font=\bfseries] at (-2.48,2.24) {A. End-to-end parse yield};
-\node[note, anchor=west, text width=4.75cm] at (-2.48,1.90) {Blue bars are parseable traces; red chips show hard failures.};
+\node[note, anchor=west, text width=4.75cm] at (-2.48,1.90) {Bars separate parseable traces from schema failures.};
 \draw[axis] (-2.15,-1.18) -- (2.15,-1.18);
 \draw[axis] (-2.15,-1.18) -- (-2.15,1.35);
 \node[anchor=east, lab] at (-2.24,1.35) {100\%};
@@ -409,13 +421,17 @@ This table prevents a misleading reading of the revision result. The paired veri
    0.98/2.48/Repair/49--50/1,
    1.88/2.53/Revision/32--32/10
 }{
-  \draw[ghostbar] (\x,-1.18) rectangle ++(0.38,2.53);
+  \draw[schemabar] (\x,-1.18) rectangle ++(0.38,2.53);
   \draw[parsebar] (\x,-1.18) rectangle ++(0.38,\h);
+  \draw[gray!55, rounded corners=1.2pt] (\x,-1.18) rectangle ++(0.38,2.53);
   \node[lab, font=\scriptsize\bfseries] at (\x+0.19,\h-0.96) {\count};
   \node[hardchip] at (\x+0.19,-1.53) {H=\hard};
   \node[lab] at (\x+0.19,-1.95) {\name};
 }
-\node[note, text width=4.75cm] at (0,-2.48) {ToM+repair reaches 49/50; revision uses only 32 parseable candidate traces.};
+\draw[parsebar] (-2.06,-2.22) rectangle ++(0.18,0.14);
+\node[anchor=west, lab] at (-1.82,-2.15) {parsed};
+\draw[schemabar] (-0.82,-2.22) rectangle ++(0.18,0.14);
+\node[anchor=west, lab] at (-0.58,-2.15) {schema fail};
 
 \node[panel, minimum width=5.25cm, minimum height=5.1cm] (b) at (6.00,0) {};
 \node[anchor=west, font=\bfseries] at (3.62,2.24) {B. Paired verifier revision};
@@ -429,26 +445,32 @@ This table prevents a misleading reading of the revision result. The paired veri
 \draw[arrow] (before) -- node[above, lab] {\(\Delta=-25\)} (after);
 \node[lab, text width=4.55cm] at (6.00,-0.32) {McNemar before-only \(20\), after-only \(0\), \(p<0.001\)};
 \node[note, text width=4.65cm] at (6.00,-1.44) {Bootstrap 95\% CI for hard-failure delta: \([-32,-18]\).};
-\node[note, text width=4.65cm] at (6.00,-2.48) {This denominator is narrower than provider completion.};
 
 \node[panel, minimum width=5.45cm, minimum height=5.1cm] (c) at (12.08,0) {};
 \node[anchor=west, font=\bfseries] at (9.60,2.24) {C. What failures disappear?};
-\node[note, anchor=west, text width=4.75cm] at (9.60,1.90) {Hard-failure-count drop is concentrated in semantic checks.};
+\node[note, anchor=west, text width=4.75cm] at (9.60,1.90) {Waterfall attribution decomposes the drop.};
 \node[anchor=west] at (9.72,0.98) {\LARGE\textbf{25}};
 \node[anchor=west, lab] at (10.68,1.06) {removed hard failures\\from \(35\) to \(10\)};
-\draw[fill=green!52, draw=green!62!black, rounded corners=1.5pt] (9.72,-0.10) rectangle ++(2.72,0.42);
-\draw[fill=cyan!52, draw=cyan!70!black, rounded corners=1.5pt] (12.44,-0.10) rectangle ++(0.68,0.42);
-\draw[gray!60, rounded corners=1.5pt] (9.72,-0.10) rectangle ++(3.40,0.42);
-\node[lab, font=\scriptsize\bfseries] at (11.08,0.11) {80\%};
-\node[lab, font=\scriptsize\bfseries] at (12.78,0.11) {20\%};
-\draw[fill=green!52, draw=green!62!black] (9.72,-0.88) rectangle ++(0.18,0.18);
-\node[anchor=west, lab] at (10.02,-0.79) {public history: \(29 \rightarrow 9\)};
-\draw[fill=cyan!52, draw=cyan!70!black] (9.72,-1.34) rectangle ++(0.18,0.18);
-\node[anchor=west, lab] at (10.02,-1.25) {hidden information: \(6 \rightarrow 1\)};
-\node[note, text width=4.75cm] at (12.08,-2.48) {The gain is not only output formatting: verifier-visible semantic failures disappear.};
+\draw[gray!35] (9.72,-1.30) -- (13.18,-1.30);
+\draw[bad] (9.78,-1.30) rectangle ++(0.46,1.75);
+\node[lab, font=\scriptsize\bfseries] at (10.01,0.25) {35};
+\node[lab] at (10.01,-1.62) {before};
+\draw[fill=green!52, draw=green!62!black, rounded corners=1.5pt] (10.78,-0.55) rectangle ++(0.58,1.00);
+\node[lab, font=\scriptsize\bfseries] at (11.07,-0.04) {-20};
+\node[lab] at (11.07,-1.62) {public};
+\draw[fill=cyan!52, draw=cyan!70!black, rounded corners=1.5pt] (11.82,-0.80) rectangle ++(0.50,0.25);
+\node[lab, font=\scriptsize\bfseries] at (12.07,-0.66) {-5};
+\node[lab] at (12.07,-1.62) {hidden};
+\draw[fill=gray!10, draw=gray!70, rounded corners=1.5pt] (12.78,-1.30) rectangle ++(0.46,0.50);
+\node[lab, font=\scriptsize\bfseries] at (13.01,-0.94) {10};
+\node[lab] at (13.01,-1.62) {after};
+\draw[fill=green!52, draw=green!62!black] (9.72,-2.02) rectangle ++(0.18,0.18);
+\node[anchor=west, lab] at (10.02,-1.93) {public history: \(29 \rightarrow 9\)};
+\draw[fill=cyan!52, draw=cyan!70!black] (11.92,-2.02) rectangle ++(0.18,0.18);
+\node[anchor=west, lab] at (12.22,-1.93) {hidden: \(6 \rightarrow 1\)};
 \end{tikzpicture}
 }
-\caption{Main pilot results separate reliability into parse yield, paired revision, and semantic attribution. Parse yield improves from 26/50 for plain LLM prompting to 36/50 under ToM prompting and 49/50 after deterministic ToM schema repair. On the 32 paired candidate traces, verifier revision reduces hard verifier failures from 35 to 10; 80\% of the hard-failure-count drop comes from public-history consistency and 20\% from hidden-information discipline.}
+\caption{Main pilot results report three reliability layers. Parse yield rises from 26/50 for plain prompting to 36/50 under ToM prompting and 49/50 after deterministic ToM schema repair. On 32 paired candidate traces, verifier revision reduces hard failures from 35 to 10; the hard-failure-count drop is attributed to public-history consistency (80\%) and hidden-information discipline (20\%).}
 \label{fig:main-pilot-results}
 \end{figure*}
 
@@ -581,7 +603,7 @@ The reported pilot is tied to local artifacts rather than hand-copied spreadshee
 
 \begin{table}[t]
 \centering
-\caption{Current provenance boundary for the AAMAS draft. The paper reports pilot values only where artifacts are complete; partial full-split LLM artifacts are tracked as operational progress, not as main results.}
+\caption{Current provenance boundary for the AAMAS draft. The paper reports pilot values and the completed 500-decision ToM full-split condition where artifacts are complete; full-split plain/candidate prefixes are partial baseline-strengthening evidence, and human-audit evidence remains pending.}
 \label{tab:provenance}
 \scriptsize
 \begin{tabularx}{\columnwidth}{lX}
@@ -591,7 +613,8 @@ Artifact & Role \\
 pilot experiment outputs & provider responses, parse status, verifier labels \\
 reasoning reliability table & main 50-decision pilot summary \\
 verifier attribution report & paired 32-trace before/after analysis \\
-partial full-split LLM summary & operational progress only: raw ToM direct parse 306/500 and schema repair 384/500; not reported as final evidence \\
+full-split ToM LLM summary & 500/500 provider outputs; raw ToM direct parse 404/500 with 48 hard failures; schema repair yields 500/500 traces with 52 hard failures \\
+full-split plain/candidate prefixes & 50/500 provider outputs for each baseline; both parse 39/500 traces, with 31 and 33 hard failures respectively; not final full-split evidence \\
 local pipeline report & end-to-end regeneration status for research artifacts \\
 reproducibility manifest & file inventory and checksums for durable outputs \\
 AAMAS LaTeX draft & compiled paper source and rendered PDF \\
@@ -599,26 +622,28 @@ AAMAS LaTeX draft & compiled paper source and rendered PDF \\
 \end{tabularx}
 \end{table}
 
-\subsection{Full-Split Sanity Check}
+\subsection{Full-Split Sanity and ToM Evidence}
 
-To verify that the evaluation substrate scales beyond the 50-decision pilot, we run the two deterministic baselines on the 500-decision full split. This experiment does not use an LLM and does not test the paper's main revision claim. Its purpose is narrower: it checks whether the full decision-point split, trace schema, baseline trace generator, and verifier can produce complete artifacts without hard verifier failures under controlled non-LLM traces.
+To verify that the evaluation substrate scales beyond the 50-decision pilot, we first run the two deterministic baselines on the 500-decision full split. These rows do not use an LLM and do not test the paper's main revision claim. Their purpose is narrower: they check whether the full decision-point split, trace schema, baseline trace generator, and verifier can produce complete artifacts without hard verifier failures under controlled non-LLM traces. We then materialize the completed ToM-prompted LLM full split to test whether the same verifier exposes larger-scale model-reasoning failures.
 
 \begin{table}[t]
 \centering
-\caption{Full-split deterministic baseline sanity check. These rows validate the 500-decision substrate and verifier plumbing; they are not LLM results.}
+\caption{Full-split substrate and ToM LLM evidence. Deterministic rows validate the 500-decision substrate; ToM rows report the completed Kimi Code CLI full split and deterministic schema-repair ablation.}
 \label{tab:full-baseline}
 \scriptsize
 \begin{tabular}{lrrr}
 \toprule
-Baseline & Parsed & Hard Fail. & Hidden P/F/U \\
+Condition & Parsed & Hard Fail. & Hidden P/F/U \\
 \midrule
 legal-first & 500/500 & 0 & 500/0/0 \\
 strategic heuristic & 500/500 & 0 & 500/0/0 \\
+ToM LLM raw & 404/500 & 48 & 357/47/0 \\
+ToM schema repair & 500/500 & 52 & 449/51/0 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The full-split sanity check matters for the AAMAS submission path because it separates two risks. The first risk is infrastructure risk: the full split, schemas, and verifier may fail once scaled from 50 to 500 decisions. Table~\ref{tab:full-baseline} reduces this risk for deterministic traces. The second risk is model-reasoning risk: LLM traces may still fail to parse, cite unsupported public evidence, or assert hidden information. The current partial ToM full-split provider artifact has been materialized for audit: 384 of 500 raw outputs are present, 306 parse directly as structured traces, and deterministic schema repair raises the usable count to 384. These values remain operational progress only and are excluded from the main empirical claims until the provider run reaches 500/500 outputs.
+The full-split evidence matters for the AAMAS submission path because it separates two risks. The first risk is infrastructure risk: the full split, schemas, and verifier may fail once scaled from 50 to 500 decisions. Table~\ref{tab:full-baseline} reduces this risk for deterministic traces. The second risk is model-reasoning risk: LLM traces may still fail to parse, cite unsupported public evidence, or assert hidden information. The completed ToM full-split provider artifact contains 500 of 500 raw outputs with zero retained provider-error rows. Direct materialization parses 404 of 500 traces and records 48 hard verifier failures; deterministic schema repair preserves selected actions, raises usable traces to 500 of 500, and leaves 52 hard verifier failures visible. This upgrades the draft from pilot-only evidence to pilot-plus-full-ToM evidence. Plain and candidate-constrained full-split prefixes have also been materialized for 50 of 500 prompts each, parsing 39 traces in both rows with 31 and 33 hard verifier failures respectively; these rows are partial baseline-strengthening evidence only. Full 500-decision plain/candidate coverage, prompt-level component reruns, and human soft-label audit evidence remain for the final AAMAS package.
 
 \subsection{Full-Evaluation Protocol}
 
@@ -633,8 +658,8 @@ The current pilot establishes that the verifier pipeline is operational and that
 \toprule
 Evaluation Layer & Required Evidence \\
 \midrule
-500-decision split & parse yield, hard failures, and soft burden beyond the 50-decision pilot \\
-ToM-prompted LLM baseline & same verifier labels under a stronger reasoning-prompt baseline \\
+500-decision split & completed for ToM; plain/candidate 50-prefix baselines exist, while full plain/candidate comparisons remain optional strengthening evidence \\
+ToM-prompted LLM baseline & completed larger-scale verifier labels under the stronger reasoning-prompt baseline \\
 Verifier-label ablation & pilot post-hoc accounting plus full-split reruns after removing feedback components \\
 Full-game rollout link & win rate and catastrophic-decision rate for verifier-valid traces \\
 Human soft-label audit & packet-quality pass plus completed agreement on sampled soft labels \\

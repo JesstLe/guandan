@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-000-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "gain_lead",
+    "explanation": "This is the opening lead of the first round. Leading a low single card lets the table develop and gives partner a chance to win the trick cheaply if possible, while preserving my stronger cards."
+  },
+  "partnerBelief": {
+    "summary": "No specific information about partner's hand; they hold 3 unknown cards.",
+    "confidence": 0.0,
+    "evidence": [
+      "New game with no prior plays.",
+      "Partner hand count is 3 but contents are hidden."
+    ]
+  },
+  "opponentBelief": {
+    "summary": "No specific information about opponents' hands; each holds 3 unknown cards.",
+    "confidence": 0.0,
+    "evidence": [
+      "New game with no prior plays.",
+      "Opponent hand counts are 3 each but contents are hidden."
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "The 3 of spades is the lowest card in hand. Leading low in the opening round is standard: it avoids committing stronger cards, minimizes risk, and allows partner an opportunity to take control without needing a bomb.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Higher than necessary; keeping the 4 provides more flexibility later."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Still a low card, but wasting a mid-low card in the opening is inefficient."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "The strongest non-trump single in hand; leading it now would leave only very weak cards and reduce endgame options."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent or partner may need to play a trump or bomb to win the trick.",
+      "Leading a single gives the next player a chance to set the tempo."
+    ],
+    "mitigation": "Leading the absolute lowest card limits my own exposure; any escalation by opponents costs them resources they might regret later."
+  },
+  "confidence": 0.9,
+  "notes": "Hand is purely non-trump spades ranked 3-6 with no wildcards or bombs, so the only reasonable opening play is a low single."
+}

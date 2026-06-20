@@ -1,0 +1,6 @@
+{
+  "agentId": "plain-llm",
+  "decisionId": "full-e1-046-turn-2-player-1",
+  "chosenActionId": "play-single-heart-4-copy1",
+  "reasoningTrace": "Player 0 (opponent) led a low 3 of hearts and has only 2 cards left, so letting them win this trick would give them a dangerous last-card lead. I can beat the 3 of hearts with any of my heart singles. To take control while preserving my stronger 9 and 10 for future tricks, I should play the lowest winning card, the 4 of hearts."
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-418-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-club-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Deterministically repaired ToM trace with objective protect_partner."
+  },
+  "partnerBelief": {
+    "summary": "Partner (player 2, team 0) holds 3 cards and has acted only in the new_game event, so their hand distribution is highly uncertain. As the opening leader with no table lead, my goal is to play a card that is easy for partner to assist over if possible, or at least does not force partner to spend high value. Leading the lowest club signals weakness and invites partner to take control with any moderate card.",
+    "confidence": 0.6,
+    "evidence": [
+      "4836b5f3-38ed-4113-b3ca-cc3b7163d30b"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents player 1 and player 3 hold 2 and 3 cards respectively. Player 1 is an opponent near finish. With only two cards, player 1 likely retains either a high single, a pair, or a bomb/trump to close the round. Opponents want to win this trick cheaply or force my team to expend trumps. Because my hand is all low non-trump clubs, I cannot realistically prevent an opponent from taking the trick if they choose to; the priority is therefore to minimize information and resource loss.",
+    "confidence": 0.6,
+    "evidence": [
+      "4836b5f3-38ed-4113-b3ca-cc3b7163d30b"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Selected play-single-club-3-copy1 after deterministic schema repair of ToM reasoning.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-club-4-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-5-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      },
+      {
+        "actionId": "play-single-club-6-copy1",
+        "reason": "Legal alternative retained for verifier comparison after schema repair."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Schema repair may preserve imperfect reasoning from the raw model output."
+    ],
+    "mitigation": "Treat the repaired trace as schema-normalized reasoning; do not add hidden-card facts beyond the raw output."
+  },
+  "confidence": 0.6,
+  "notes": "Deterministically schema-repaired from a ToM-prompted raw output; selectedActionId is unchanged."
+}

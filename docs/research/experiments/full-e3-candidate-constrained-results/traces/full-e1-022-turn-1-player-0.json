@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-022-turn-1-player-0",
+  "agentId": "candidate-constrained-llm",
+  "selectedActionId": "play-single-diamond-3-copy1",
+  "teamObjective": {
+    "type": "protect_partner",
+    "explanation": "Partner (player 2) has only 2 cards left, so the priority is to create a cheap opportunity for them to win the trick and move closer to finishing, rather than spending our limited strength."
+  },
+  "partnerBelief": {
+    "summary": "Partner is very close to going out and may hold a card strong enough to beat a low diamond 3 lead.",
+    "confidence": 0.7,
+    "evidence": [
+      "handCounts[2] == 2",
+      "scenario tag partner_near_finish"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Opponents each have 3 cards and no cards have been played, so they likely have cards that can beat a diamond 3, but their exact holdings are unknown.",
+    "confidence": 0.5,
+    "evidence": [
+      "handCounts[1] == 3",
+      "handCounts[3] == 3",
+      "playedCardSummary.playedCount == 0"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the lowest card (diamond 3) minimizes resource use while giving partner the best chance to win the trick with a higher card or trump. It keeps the slightly stronger 4-6 diamonds for later tricks if needed.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-diamond-4-copy1",
+        "reason": "Only marginally stronger than the 3 and still likely to be beaten by opponents; wasting a slightly higher card does not help partner more."
+      },
+      {
+        "actionId": "play-single-diamond-5-copy1",
+        "reason": "A middle card that consumes more of our scarce strength without a meaningful increase in the chance of winning the trick."
+      },
+      {
+        "actionId": "play-single-diamond-6-copy1",
+        "reason": "Our strongest card, but still weak overall and likely beaten by any trump or higher non-trump; leading it now squanders a card that might win a future low trick."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "An opponent may beat the 3 and take control of the lead.",
+      "Partner may not be able to win the trick, delaying their finish."
+    ],
+    "mitigation": "By leading the weakest card, we limit our own commitment and preserve 4-6 diamonds for future tricks, maximizing flexibility while supporting partner."
+  },
+  "confidence": 0.75
+}

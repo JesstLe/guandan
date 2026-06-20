@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1.0",
+  "decisionId": "full-e1-455-turn-1-player-0",
+  "agentId": "tom-schema-repair-full",
+  "selectedActionId": "play-single-spade-3-copy1",
+  "teamObjective": {
+    "type": "transfer_lead_to_partner",
+    "explanation": "With only low non-trump spades (3-6) and no trump cards, I cannot realistically keep the lead. The best team play is to lead the weakest card so my partner has the widest chance to win the trick or so an opponent is forced to spend a higher card."
+  },
+  "partnerBelief": {
+    "summary": "Partner has 3 unknown cards. No public actions have occurred, so partner could hold anything from low cards to trump/high cards. Given I hold none of the trump rank 7, some of the team's trump strength is more likely to be with my partner than with opponents, but this remains probabilistic.",
+    "confidence": 0.5,
+    "evidence": [
+      "4db21429-17ef-4752-b95d-f3f674a70b6a"
+    ]
+  },
+  "opponentBelief": {
+    "summary": "Each opponent has 3 unknown cards. They are likely to hold cards that can beat a low spade lead, but without any public play I cannot know their exact holdings. Opponents will generally try to win the opening trick to gain tempo.",
+    "confidence": 0.5,
+    "evidence": [
+      "4db21429-17ef-4752-b95d-f3f674a70b6a"
+    ]
+  },
+  "actionRationale": {
+    "primaryReason": "Leading the 3 of spades is the least committal play. It sheds my lowest card, keeps the slightly higher 4-5-6 for future tricks, and gives my partner the maximum chance to cover with a low card. If opponents win, they have used a card higher than necessary.",
+    "whyNotAlternatives": [
+      {
+        "actionId": "play-single-spade-4-copy1",
+        "reason": "Only marginally stronger than the 3; it removes a card that could beat an opponent's 3 later and narrows the range of cards partner can usefully play."
+      },
+      {
+        "actionId": "play-single-spade-5-copy1",
+        "reason": "Wastes a middle card that has more future value; an opponent with a 6 or above can still win easily, so the extra rank does not meaningfully improve the lead."
+      },
+      {
+        "actionId": "play-single-spade-6-copy1",
+        "reason": "Leads from the top of a weak hand and is still easily beaten by any 7, trump, or higher card. It leaves only 3-4-5, reducing flexibility in later tricks."
+      }
+    ]
+  },
+  "riskAssessment": {
+    "risks": [
+      "Partner may be unable to cover the low lead, allowing an opponent to win the trick cheaply.",
+      "Because I have no trumps, any opponent with a single trump or higher spade/non-trump can take the lead.",
+      "If the trick order leaves my partner last, opponents may force partner to use a high card."
+    ],
+    "mitigation": "Leading the absolute lowest card minimizes the value lost on this trick and preserves the rest of the hand for situations where rank order matters more."
+  },
+  "confidence": 0.7,
+  "notes": "No hidden-information beliefs are asserted as facts; all inferences are grounded only in the new_game public event and the known distribution of hand counts."
+}
