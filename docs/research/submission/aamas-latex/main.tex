@@ -435,12 +435,14 @@ This table prevents a misleading reading of the revision result. The paired veri
 \node[panel, minimum width=5.25cm, minimum height=5.1cm] (b) at (6.00,0) {};
 \node[anchor=west, font=\bfseries] at (3.62,2.24) {B. Paired verifier revision};
 \node[note, anchor=west, text width=4.55cm] at (3.62,1.90) {Same 32 candidate traces before and after feedback.};
-\node[bad, minimum width=1.20cm, minimum height=1.00cm] (before) at (4.42,0.80) {};
-\node at (4.42,0.98) {\Large\textbf{35}};
-\node[lab] at (4.42,0.48) {hard failures\\before};
-\node[good, minimum width=1.20cm, minimum height=1.00cm] (after) at (7.55,0.80) {};
-\node at (7.55,0.98) {\Large\textbf{10}};
-\node[lab] at (7.55,0.48) {hard failures\\after};
+\node[bad, minimum width=1.25cm, minimum height=1.22cm] (before) at (4.42,0.80) {};
+\node at (4.42,1.08) {\Large\textbf{35}};
+\node[lab, font=\tiny] at (4.42,0.68) {hard fail.};
+\node[lab, font=\tiny] at (4.42,0.46) {before};
+\node[good, minimum width=1.25cm, minimum height=1.22cm] (after) at (7.55,0.80) {};
+\node at (7.55,1.08) {\Large\textbf{10}};
+\node[lab, font=\tiny] at (7.55,0.68) {hard fail.};
+\node[lab, font=\tiny] at (7.55,0.46) {after};
 \draw[arrow] (before) -- node[above, lab] {\(\Delta=-25\)} (after);
 \node[lab, text width=4.55cm] at (6.00,-0.32) {McNemar before-only \(20\), after-only \(0\), \(p<0.001\)};
 \node[note, text width=4.65cm] at (6.00,-1.44) {Bootstrap 95\% CI for hard-failure delta: \([-32,-18]\).};
@@ -463,10 +465,10 @@ This table prevents a misleading reading of the revision result. The paired veri
 \draw[fill=gray!10, draw=gray!70, rounded corners=1.5pt] (12.78,-1.30) rectangle ++(0.46,0.50);
 \node[lab, font=\scriptsize\bfseries] at (13.01,-0.94) {10};
 \node[lab] at (13.01,-1.62) {after};
-\draw[fill=green!52, draw=green!62!black] (9.72,-2.02) rectangle ++(0.18,0.18);
-\node[anchor=west, lab] at (10.02,-1.93) {public history: \(29 \rightarrow 9\)};
-\draw[fill=cyan!52, draw=cyan!70!black] (11.92,-2.02) rectangle ++(0.18,0.18);
-\node[anchor=west, lab] at (12.22,-1.93) {hidden: \(6 \rightarrow 1\)};
+\draw[fill=green!52, draw=green!62!black] (9.72,-1.95) rectangle ++(0.18,0.18);
+\node[anchor=west, lab] at (10.02,-1.86) {public hist.: \(29 \rightarrow 9\)};
+\draw[fill=cyan!52, draw=cyan!70!black] (9.72,-2.24) rectangle ++(0.18,0.18);
+\node[anchor=west, lab] at (10.02,-2.15) {hidden info: \(6 \rightarrow 1\)};
 \end{tikzpicture}
 }
 \caption{Main pilot results report three reliability layers. Parse yield rises from 26/50 for plain prompting to 36/50 under ToM prompting and 49/50 after deterministic ToM schema repair. On 32 paired candidate traces, verifier revision reduces hard failures from 35 to 10; the hard-failure-count drop is attributed to public-history consistency (80\%) and hidden-information discipline (20\%).}
