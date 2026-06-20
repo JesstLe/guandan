@@ -1,6 +1,6 @@
 # AAMAS Full-Paper Readiness Report
 
-Generated at: `2026-06-20T02:49:49.217Z`
+Generated at: `2026-06-20T18:46:46.069Z`
 
 Paper: **Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games**
 

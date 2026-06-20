@@ -17,7 +17,7 @@
       .panel-title { font: 700 21px Arial, Helvetica, sans-serif; fill: #111827; }
       .box-title { font: 700 18px Arial, Helvetica, sans-serif; fill: #111827; }
       .text { font: 400 15px Arial, Helvetica, sans-serif; fill: #334155; }
-      .small { font: 400 14px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .small { font: 400 13px Arial, Helvetica, sans-serif; fill: #64748b; }
       .tiny { font: 400 12px Arial, Helvetica, sans-serif; fill: #64748b; }
       .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
       .decision { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
@@ -52,10 +52,12 @@
     <text x="135" y="48" text-anchor="middle" class="text">d_t=(p_t,h_t,o_t,A_t,z_t)</text>
     <rect y="80" width="270" height="76" rx="12" class="decision" />
     <text x="135" y="106" text-anchor="middle" class="box-title">Observable evidence</text>
-    <text x="135" y="130" text-anchor="middle" class="small">public history h_t, hand counts, table context</text>
+    <text x="135" y="128" text-anchor="middle" class="small">public history h_t</text>
+    <text x="135" y="146" text-anchor="middle" class="small">hand counts, table context</text>
     <rect y="174" width="270" height="64" rx="12" class="fail" />
     <text x="135" y="199" text-anchor="middle" class="box-title">Evidence boundary</text>
-    <text x="135" y="222" text-anchor="middle" class="small">hidden cards cannot be cited as public facts</text>
+    <text x="135" y="220" text-anchor="middle" class="small">hidden cards cannot be cited</text>
+    <text x="135" y="238" text-anchor="middle" class="small">as public facts</text>
     <rect y="256" width="270" height="52" rx="12" class="metric" />
     <text x="135" y="288" text-anchor="middle" class="text">dynamic legal candidates A_t</text>
   </g>
@@ -70,7 +72,8 @@
     <text x="135" y="174" text-anchor="middle" class="small">opponent belief + evidence ids</text>
     <text x="135" y="198" text-anchor="middle" class="small">rationale, risk, confidence</text>
     <rect y="254" width="270" height="54" rx="12" class="metric" />
-    <text x="135" y="287" text-anchor="middle" class="text">schema gate: parseable traces enter audit</text>
+    <text x="135" y="279" text-anchor="middle" class="small">schema gate:</text>
+    <text x="135" y="297" text-anchor="middle" class="small">parseable traces enter audit</text>
   </g>
 
   <g transform="translate(806,182)">
@@ -79,12 +82,15 @@
     <text x="135" y="50" text-anchor="middle" class="text">V(d_t,r_t,a_t) -> (y_t,e_t)</text>
     <rect y="86" width="270" height="74" rx="12" class="artifact" />
     <text x="135" y="112" text-anchor="middle" class="box-title">Hard labels</text>
-    <text x="135" y="136" text-anchor="middle" class="small">legal action, beats table, public history, hidden-info</text>
+    <text x="135" y="132" text-anchor="middle" class="small">legal action, beats table</text>
+    <text x="135" y="150" text-anchor="middle" class="small">public history, hidden-info</text>
     <rect y="178" width="270" height="74" rx="12" class="metric" />
     <text x="135" y="204" text-anchor="middle" class="box-title">Soft labels</text>
-    <text x="135" y="228" text-anchor="middle" class="small">partner/opponent consistency, objective, reason-action</text>
-    <rect y="270" width="270" height="38" rx="11" class="decision" />
-    <text x="135" y="294" text-anchor="middle" class="small">diagnoses commitments; never chooses the move</text>
+    <text x="135" y="224" text-anchor="middle" class="small">partner/opponent consistency</text>
+    <text x="135" y="242" text-anchor="middle" class="small">objective, reason-action</text>
+    <rect y="270" width="270" height="50" rx="11" class="decision" />
+    <text x="135" y="292" text-anchor="middle" class="small">diagnoses commitments;</text>
+    <text x="135" y="310" text-anchor="middle" class="small">never chooses the move</text>
   </g>
 
   <g transform="translate(1174,182)">
@@ -93,7 +99,7 @@
     <text x="128" y="45" text-anchor="middle" class="small">labels y_t + issue codes e_t</text>
     <rect y="76" width="256" height="58" rx="12" class="model" />
     <text x="128" y="100" text-anchor="middle" class="box-title">Bounded revision</text>
-    <text x="128" y="121" text-anchor="middle" class="small">same state d_t, repaired trace r1</text>
+    <text x="128" y="121" text-anchor="middle" class="small">same state; repaired trace</text>
     <rect y="152" width="256" height="58" rx="12" class="verifier" />
     <text x="128" y="176" text-anchor="middle" class="box-title">Recheck</text>
     <text x="128" y="197" text-anchor="middle" class="small">same labels, same decision id</text>

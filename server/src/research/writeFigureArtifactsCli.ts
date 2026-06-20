@@ -322,7 +322,7 @@ function renderQualitativeCasePackSvg(attribution: VerifierAttribution): string 
     return renderCaseCard(entry.case, entry.title, x, y)
   }).join('\n')
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="740" viewBox="0 0 1500 740" role="img" aria-labelledby="title desc">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760" viewBox="0 0 1500 760" role="img" aria-labelledby="title desc">
   <title id="title">Qualitative verifier-attribution case pack</title>
   <desc id="desc">A four-case visual summary showing two repaired verifier failures, one remaining hard failure, and one parse failure outside the paired revision subset.</desc>
   <defs>
@@ -347,11 +347,11 @@ function renderQualitativeCasePackSvg(attribution: VerifierAttribution): string 
       .source { font: 400 12px Arial, Helvetica, sans-serif; fill: #64748b; }
     </style>
   </defs>
-  <rect width="1500" height="740" fill="#ffffff" />
+  <rect width="1500" height="760" fill="#ffffff" />
   <text x="750" y="46" text-anchor="middle" class="title">Qualitative Case Pack: What the Verifier Repairs and What It Does Not</text>
   <text x="750" y="78" text-anchor="middle" class="subtitle">Selected cases come from the paired attribution artifact; action changes are separated from reasoning-trace repairs</text>
   ${cards}
-  <text x="750" y="712" text-anchor="middle" class="source">Source: ${escapeXml(args.attribution)}</text>
+  <text x="750" y="732" text-anchor="middle" class="source">Source: ${escapeXml(args.attribution)}</text>
 </svg>
 `
 }
@@ -376,7 +376,7 @@ function renderRevisionArchitectureSvg(attribution: VerifierAttribution): string
       .panel-title { font: 700 21px Arial, Helvetica, sans-serif; fill: #111827; }
       .box-title { font: 700 18px Arial, Helvetica, sans-serif; fill: #111827; }
       .text { font: 400 15px Arial, Helvetica, sans-serif; fill: #334155; }
-      .small { font: 400 14px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .small { font: 400 13px Arial, Helvetica, sans-serif; fill: #64748b; }
       .tiny { font: 400 12px Arial, Helvetica, sans-serif; fill: #64748b; }
       .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
       .decision { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
@@ -411,10 +411,12 @@ function renderRevisionArchitectureSvg(attribution: VerifierAttribution): string
     <text x="135" y="48" text-anchor="middle" class="text">d_t=(p_t,h_t,o_t,A_t,z_t)</text>
     <rect y="80" width="270" height="76" rx="12" class="decision" />
     <text x="135" y="106" text-anchor="middle" class="box-title">Observable evidence</text>
-    <text x="135" y="130" text-anchor="middle" class="small">public history h_t, hand counts, table context</text>
+    <text x="135" y="128" text-anchor="middle" class="small">public history h_t</text>
+    <text x="135" y="146" text-anchor="middle" class="small">hand counts, table context</text>
     <rect y="174" width="270" height="64" rx="12" class="fail" />
     <text x="135" y="199" text-anchor="middle" class="box-title">Evidence boundary</text>
-    <text x="135" y="222" text-anchor="middle" class="small">hidden cards cannot be cited as public facts</text>
+    <text x="135" y="220" text-anchor="middle" class="small">hidden cards cannot be cited</text>
+    <text x="135" y="238" text-anchor="middle" class="small">as public facts</text>
     <rect y="256" width="270" height="52" rx="12" class="metric" />
     <text x="135" y="288" text-anchor="middle" class="text">dynamic legal candidates A_t</text>
   </g>
@@ -429,7 +431,8 @@ function renderRevisionArchitectureSvg(attribution: VerifierAttribution): string
     <text x="135" y="174" text-anchor="middle" class="small">opponent belief + evidence ids</text>
     <text x="135" y="198" text-anchor="middle" class="small">rationale, risk, confidence</text>
     <rect y="254" width="270" height="54" rx="12" class="metric" />
-    <text x="135" y="287" text-anchor="middle" class="text">schema gate: parseable traces enter audit</text>
+    <text x="135" y="279" text-anchor="middle" class="small">schema gate:</text>
+    <text x="135" y="297" text-anchor="middle" class="small">parseable traces enter audit</text>
   </g>
 
   <g transform="translate(806,182)">
@@ -438,12 +441,15 @@ function renderRevisionArchitectureSvg(attribution: VerifierAttribution): string
     <text x="135" y="50" text-anchor="middle" class="text">V(d_t,r_t,a_t) -> (y_t,e_t)</text>
     <rect y="86" width="270" height="74" rx="12" class="artifact" />
     <text x="135" y="112" text-anchor="middle" class="box-title">Hard labels</text>
-    <text x="135" y="136" text-anchor="middle" class="small">legal action, beats table, public history, hidden-info</text>
+    <text x="135" y="132" text-anchor="middle" class="small">legal action, beats table</text>
+    <text x="135" y="150" text-anchor="middle" class="small">public history, hidden-info</text>
     <rect y="178" width="270" height="74" rx="12" class="metric" />
     <text x="135" y="204" text-anchor="middle" class="box-title">Soft labels</text>
-    <text x="135" y="228" text-anchor="middle" class="small">partner/opponent consistency, objective, reason-action</text>
-    <rect y="270" width="270" height="38" rx="11" class="decision" />
-    <text x="135" y="294" text-anchor="middle" class="small">diagnoses commitments; never chooses the move</text>
+    <text x="135" y="224" text-anchor="middle" class="small">partner/opponent consistency</text>
+    <text x="135" y="242" text-anchor="middle" class="small">objective, reason-action</text>
+    <rect y="270" width="270" height="50" rx="11" class="decision" />
+    <text x="135" y="292" text-anchor="middle" class="small">diagnoses commitments;</text>
+    <text x="135" y="310" text-anchor="middle" class="small">never chooses the move</text>
   </g>
 
   <g transform="translate(1174,182)">
@@ -452,7 +458,7 @@ function renderRevisionArchitectureSvg(attribution: VerifierAttribution): string
     <text x="128" y="45" text-anchor="middle" class="small">labels y_t + issue codes e_t</text>
     <rect y="76" width="256" height="58" rx="12" class="model" />
     <text x="128" y="100" text-anchor="middle" class="box-title">Bounded revision</text>
-    <text x="128" y="121" text-anchor="middle" class="small">same state d_t, repaired trace r1</text>
+    <text x="128" y="121" text-anchor="middle" class="small">same state; repaired trace</text>
     <rect y="152" width="256" height="58" rx="12" class="verifier" />
     <text x="128" y="176" text-anchor="middle" class="box-title">Recheck</text>
     <text x="128" y="197" text-anchor="middle" class="small">same labels, same decision id</text>
@@ -537,9 +543,9 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
   <text x="270" y="250" text-anchor="middle" class="label">ally</text>
   <circle cx="390" cy="245" r="25" class="blue" />
   <text x="390" y="250" text-anchor="middle" class="label">LLM</text>
-  <rect x="444" y="194" width="190" height="74" rx="14" class="green" />
+  <rect x="432" y="194" width="214" height="74" rx="14" class="green" />
   <text x="539" y="221" text-anchor="middle" class="box-title">Intent is stated</text>
-  <text x="539" y="244" text-anchor="middle" class="small">reasoning can cite messages</text>
+  <text x="539" y="244" text-anchor="middle" class="small">can cite messages</text>
   <path d="M295,245 H358" class="line" />
   <path d="M415,245 H435" class="line" />
 
@@ -563,9 +569,9 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
   <rect x="1166" y="170" width="73" height="30" rx="9" class="red" />
   <text x="1202" y="190" text-anchor="middle" class="tiny">no chat</text>
   <path d="M1172,174 L1235,197" stroke="#dc2626" stroke-width="2.3" />
-  <rect x="1244" y="209" width="154" height="74" rx="14" class="orange" />
+  <rect x="1232" y="209" width="178" height="74" rx="14" class="orange" />
   <text x="1321" y="235" text-anchor="middle" class="box-title">Intent is latent</text>
-  <text x="1321" y="259" text-anchor="middle" class="small">actions are evidence</text>
+  <text x="1321" y="259" text-anchor="middle" class="small">actions signal intent</text>
   <path d="M1153,250 H1234" class="line" />
 
   <text x="750" y="352" text-anchor="middle" class="stageLabel">Evaluation pipeline: from one decision packet to same-id verifier evidence</text>
@@ -579,19 +585,19 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
   <text x="112" y="515" class="text">history, roles, counts</text>
   <text x="112" y="534" class="text">legal candidates A_t</text>
   <rect x="90" y="554" width="225" height="34" rx="10" class="red" />
-  <text x="202" y="576" text-anchor="middle" class="small">private cards not public evidence</text>
+  <text x="202" y="576" text-anchor="middle" class="small">private cards stay private</text>
 
   <rect x="392" y="382" width="285" height="220" rx="18" class="panel" />
   <text x="416" y="414" class="kicker">CONTRACT</text>
   <text x="416" y="442" class="panel-title">D. Structured trace</text>
-  <rect x="426" y="466" width="216" height="106" rx="14" class="orange" />
+  <rect x="420" y="466" width="228" height="106" rx="14" class="orange" />
   <text x="534" y="491" text-anchor="middle" class="box-title">LLM trace r_t</text>
   <text x="454" y="516" class="label">action</text>
-  <text x="548" y="516" class="text">selected a_t</text>
+  <text x="548" y="516" class="text">a_t</text>
   <text x="454" y="541" class="label">beliefs</text>
-  <text x="548" y="541" class="text">partner / opp.</text>
+  <text x="548" y="541" class="text">agents</text>
   <text x="454" y="566" class="label">evidence</text>
-  <text x="548" y="566" class="text">public ids only</text>
+  <text x="548" y="566" class="text">public ids</text>
   <text x="534" y="594" text-anchor="middle" class="small">rationale becomes commitments</text>
 
   <rect x="724" y="382" width="285" height="220" rx="18" class="panel" />
@@ -600,9 +606,9 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
   <rect x="756" y="466" width="220" height="62" rx="14" fill="#ffffff" stroke="#334155" stroke-width="2" />
   <text x="866" y="492" text-anchor="middle" class="formula">V(d_t, r_t, a_t)</text>
   <text x="866" y="514" text-anchor="middle" class="text">-> labels y_t + issues e_t</text>
-  <rect x="756" y="548" width="98" height="42" rx="12" class="green" />
+  <rect x="746" y="548" width="118" height="42" rx="12" class="green" />
   <text x="805" y="566" text-anchor="middle" class="box-title">Hard</text>
-  <text x="805" y="584" text-anchor="middle" class="tiny">rules + evidence</text>
+  <text x="805" y="584" text-anchor="middle" class="tiny">rule checks</text>
   <rect x="878" y="548" width="98" height="42" rx="12" class="cyan" />
   <text x="927" y="566" text-anchor="middle" class="box-title">Soft</text>
   <text x="927" y="584" text-anchor="middle" class="tiny">strategic fit</text>
@@ -610,30 +616,29 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
   <rect x="1056" y="382" width="384" height="220" rx="18" class="panel" />
   <text x="1080" y="414" class="kicker">EVIDENCE</text>
   <text x="1080" y="442" class="panel-title">F. Same-id paired revision</text>
-  <rect x="1088" y="466" width="86" height="70" rx="14" class="red" />
+  <rect x="1088" y="466" width="90" height="70" rx="14" class="red" />
   <text x="1131" y="488" text-anchor="middle" class="small">before</text>
   <text x="1131" y="520" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.beforeHardFailureCount}</text>
-  <text x="1131" y="533" text-anchor="middle" class="tiny">hard failures</text>
+  <text x="1133" y="533" text-anchor="middle" class="tiny">hard fail.</text>
   <path d="M1190,505 H1260" class="line" />
   <text x="1225" y="488" text-anchor="middle" class="label">-${removedHardFailures}</text>
-  <rect x="1276" y="466" width="86" height="70" rx="14" class="green" />
+  <rect x="1272" y="466" width="94" height="70" rx="14" class="green" />
   <text x="1319" y="488" text-anchor="middle" class="small">after</text>
   <text x="1319" y="520" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.afterHardFailureCount}</text>
-  <text x="1319" y="533" text-anchor="middle" class="tiny">hard failures</text>
+  <text x="1319" y="533" text-anchor="middle" class="tiny">hard fail.</text>
   <rect x="1088" y="550" width="274" height="34" rx="10" class="cyan" />
   <text x="1225" y="572" text-anchor="middle" class="box-title">${attribution.pairedDecisionCount} same-id paired traces</text>
   <text x="1088" y="622" class="box-title">Repaired hard-failure sources</text>
-  <rect x="1088" y="636" width="${publicWidth}" height="18" rx="6" fill="#86efac" stroke="#16a34a" />
-  <rect x="${1088 + publicWidth}" y="636" width="${hiddenWidth}" height="18" rx="6" fill="#67e8f9" stroke="#0891b2" />
-  <text x="1088" y="674" class="tiny">${publicShare}% public history consistency</text>
-  <text x="1262" y="674" class="tiny">${hiddenShare}% hidden-info discipline</text>
-  <text x="1088" y="691" class="tiny">${attribution.excludedParseFailureCount} schema failures remain end-to-end failures</text>
+  <rect x="1088" y="638" width="${publicWidth}" height="18" rx="6" fill="#86efac" stroke="#16a34a" />
+  <rect x="${1088 + publicWidth}" y="638" width="${hiddenWidth}" height="18" rx="6" fill="#67e8f9" stroke="#0891b2" />
+  <text x="1088" y="672" class="tiny">${publicShare}% public-history consistency</text>
+  <text x="1262" y="672" class="tiny">${hiddenShare}% hidden-info discipline</text>
+  <text x="1088" y="688" class="tiny">${attribution.excludedParseFailureCount} schema failures remain end-to-end failures</text>
 
   <path d="M345,498 H380" class="line" />
   <path d="M677,498 H712" class="line" />
   <path d="M1009,498 H1044" class="line" />
-  <path d="M1318,636 C1040,664 744,662 536,613" class="feedback" />
-  <text x="820" y="674" text-anchor="middle" class="label">feedback revises commitments under the same state; the verifier stays an evaluator</text>
+  <path d="M1318,638 C1040,668 744,670 536,613" class="feedback" />
 </svg>
 `
 }
@@ -660,7 +665,7 @@ function renderMainPilotResultsSvg(summary: PilotSummary, repair: RepairMetrics,
     const y = chartY + chartHeight - parsedHeight
     const percent = formatPercent(row.parseYield)
     const schemaFailures = row.total - row.parsed
-    const schemaFailureLabel = schemaFailures > 0 ? `${schemaFailures} schema fail` : '0 schema fail'
+    const schemaFailureLabel = schemaFailures > 0 ? `fail ${schemaFailures}` : 'fail 0'
     return `<g>
       <rect x="${x}" y="${chartY}" width="${barWidth}" height="${Math.max(failureHeight, 0)}" rx="8" fill="#fde68a" stroke="#f59e0b" opacity="0.80" />
       <rect x="${x}" y="${y}" width="${barWidth}" height="${parsedHeight}" rx="8" fill="#2563eb" opacity="0.88" />
@@ -799,7 +804,7 @@ function getMainResultRows(summary: PilotSummary, repair: RepairMetrics): Array<
   const repairRow = {
     agentId: 'tom-schema-repair',
     label: 'ToM + schema repair',
-    shortLabel: 'ToM+repair',
+    shortLabel: 'Repair',
     parsed: repair.totalParsedTraces,
     total: repair.totalDecisionPoints,
     parseYield: repair.totalDecisionPoints === 0 ? 0 : repair.totalParsedTraces / repair.totalDecisionPoints,
@@ -859,7 +864,7 @@ function renderCaseCard(qualitativeCase: QualitativeCase, title: string, x: numb
     ? 'not revision-eligible'
     : qualitativeCase.actionChanged
       ? 'action changed'
-      : 'action unchanged'
+      : 'action same'
   const beforeTitle = qualitativeCase.caseType === 'parse_failure_outside_revision'
     ? 'raw output'
     : 'before'
@@ -885,7 +890,7 @@ function renderCaseCard(qualitativeCase: QualitativeCase, title: string, x: numb
     : qualitativeCase.caseType === 'public_history_repaired'
       ? ['no issues', 'partner repaired', actionLine]
       : qualitativeCase.caseType === 'hidden_info_repaired'
-        ? ['no issues', 'hidden-info repaired', actionLine]
+        ? ['no issues', 'hidden info fixed', actionLine]
         : qualitativeCase.caseType === 'remaining_hard_failure'
           ? ['unknown public id', 'public history fails', actionLine]
     : [
