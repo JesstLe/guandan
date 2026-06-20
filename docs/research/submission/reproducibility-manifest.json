@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1.0",
-  "generatedAt": "2026-06-20T19:08:13.614Z",
+  "generatedAt": "2026-06-20T19:11:07.268Z",
   "rootDir": "docs/research",
   "entries": [
     {
@@ -291,7 +291,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 2611,
-      "sha256": "44b97bb984db3dc888d30469a2784d0c41033c52538bd15493e0aa2afe276b90"
+      "sha256": "38ee76dc76d40b194e644c61fa5cdddb5c442e8b6603c5d31194af16b5a580ad"
     },
     {
       "id": "human-audit-launch-checklist-md",
@@ -300,7 +300,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 1726,
-      "sha256": "b554e826ed1f2cd22aa829423ae2271ce6cc84f8ded4a0e080ad60b96ca4ffbb"
+      "sha256": "6f0344850bb109c21b9a2e05bdb0bc5fc5d52a9e5ef7341a67b9ba7a433b38e4"
     },
     {
       "id": "human-audit-evidence-gate",
@@ -309,7 +309,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 2244,
-      "sha256": "2f3e7eb6e51b91be0f92c39ca4fda20a87a312d012e8e41587480c7f0dd5005e"
+      "sha256": "20c45dd910058aacc9e5f941942075abd61ee3d57bfcd51d67ff318c42e241f3"
     },
     {
       "id": "human-audit-evidence-gate-md",
@@ -318,7 +318,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 1904,
-      "sha256": "c9822c24ece3a627f11e87cb83e8d82ec18dbf44fb976230046d0299c315305e"
+      "sha256": "ef0528b6aa4de68e0ee4a6b73d2e792176a31670cbd077cfb04cc3954fe3ba82"
     },
     {
       "id": "provider-handoff-audit",
@@ -1192,9 +1192,9 @@
       "path": "submission/aamas-latex",
       "kind": "directory",
       "status": "present",
-      "bytes": 6642542,
+      "bytes": 6643142,
       "fileCount": 22,
-      "treeSha256": "5e2636a1aad40e7ddfca09778f8a721b87247818399c45d83536ccfc1696e76e"
+      "treeSha256": "9bd75d8db110f449e73b0a0c47896de6c23cc45428c2a6efe437e1630ea8020b"
     },
     {
       "id": "submission-gate",
@@ -1230,7 +1230,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 5786,
-      "sha256": "5b17f87c58c54b0f59649c0492adaac5f0e4bf98d29eb18ff5174c7a5f1fcf7d"
+      "sha256": "29ef143718920aae9fb2d8a49dad4b4c497b4ae28f61d3b5fa7e4e6d94e3fd83"
     },
     {
       "id": "aamas-readiness-report",
@@ -1239,7 +1239,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 11446,
-      "sha256": "25ff622075cedffcde5b628a6c2dd3395de317baf7c0d3f4612966aace48ff81"
+      "sha256": "cf375f0cabdb91447f4505b944406ed7e114a7b86b1e5baa0bdf8bb968e71673"
     },
     {
       "id": "aamas-readiness-report-md",
@@ -1248,7 +1248,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 6610,
-      "sha256": "2a0808011e81de68c5fefd965aa9df979ba6e88d568150c342b7f11dadcb24fe"
+      "sha256": "8b8e08b79d971dcd4b062abbdf3f1d1a5aa40b4de7400f1bd157ef6eb62556bf"
     },
     {
       "id": "aamas-self-review-report",
@@ -1257,7 +1257,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 8677,
-      "sha256": "5766f5bd7b415aea710bc97712af29a67a424bc308c48f972079bc405b69980a"
+      "sha256": "66ca7639bc84828a94bb60fcd06aeb24f45fcf379bae4ebb935f4b007a7bedf0"
     },
     {
       "id": "aamas-self-review-report-md",
@@ -1266,7 +1266,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 7632,
-      "sha256": "fc18b16caaeaef3c008e94aa3a3b28ae23de522faf3a0f2a8696649c352aa4ae"
+      "sha256": "8cffda5ba5cd09276cfeeae697f78ac2fde2b5a868a4721ec18cfb0fa8e0150b"
     },
     {
       "id": "aamas-reviewer-response-matrix",
@@ -1275,7 +1275,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 12616,
-      "sha256": "5c19d44b4a973f63e9eddcec9a7964fe711e4ad0c0135be5e72301bf7eae5d95"
+      "sha256": "dc57485ae79d193857ab22b372b141753beb69c11589e185e47b841d10cf2bbf"
     },
     {
       "id": "aamas-reviewer-response-matrix-md",
@@ -1284,7 +1284,7 @@
       "kind": "file",
       "status": "present",
       "bytes": 10378,
-      "sha256": "a5b8c67de6b1291f0935c610955a141c86bab96141c9f8ff82a6da15c5006a50"
+      "sha256": "aa30da324142275a88361efa3eb8856bed6e6daeb7b0d932caf6128d3594c5b6"
     },
     {
       "id": "local-pipeline-report",
