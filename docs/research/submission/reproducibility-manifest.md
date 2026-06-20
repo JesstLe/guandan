@@ -1,6 +1,6 @@
 # Reproducibility Manifest
 
-Generated at: `2026-06-20T19:24:59.988Z`
+Generated at: `2026-06-20T19:32:22.050Z`
 
 Missing entries are audit findings, not experimental results. Pending entries are expected external-evidence gaps tracked by readiness gates.
 
@@ -36,10 +36,10 @@ Missing entries are audit findings, not experimental results. Pending entries ar
 | Fixture Revision OpenAI Batch Input | `present` | file | `experiments/pilot-e6-verifier-revision-fixture-batch/openai/openai-batch-input.jsonl` |  | 399850 | `ba76709a0f51220f6b5b86c3806f62f0b321c8caad98e800b29ce8a4b012236a` |
 | Provider Run Handoff | `present` | file | `submission/provider-run-handoff.md` |  | 18616 | `87e299bc54e4d0b5d6e9bc83891bc11bbcf4ebbf8560942096f41335bfb72db6` |
 | Human Soft-Label Audit Handoff | `present` | file | `submission/human-audit-handoff.md` |  | 6611 | `b4aa25a6f097e5153979960dfdb95029412ec8df80cb5531fa38ae915a368023` |
-| Human Soft-Label Audit Launch Checklist | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.json` |  | 2611 | `ddc28ff2b31ed89cbff0d2b7bdc4c4056fefc6943893d8204922851e9615ae61` |
-| Human Soft-Label Audit Launch Checklist Markdown | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.md` |  | 1726 | `5d9f172cfc956a6843f2abda4656a5a87681a7fd5c1acb47f028dd029ac04bbb` |
-| Human Soft-Label Audit Evidence Gate | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.json` |  | 2244 | `38dbe3c6eb5b65c7829626e3904efda15f2e18e9f668788c1009d500ee3dd56f` |
-| Human Soft-Label Audit Evidence Gate Markdown | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.md` |  | 1904 | `6e72d043b32e06d9734da1a27ee912ce7dab77d6376342a3b9dd1dace565fdc5` |
+| Human Soft-Label Audit Launch Checklist | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.json` |  | 2611 | `d61a3bcb9deffaebed569ddc33b9a680facb6df10fcab5643123b99637ae53fc` |
+| Human Soft-Label Audit Launch Checklist Markdown | `present` | file | `submission/human-audit-launch/human-audit-launch-checklist.md` |  | 1726 | `4cf6f1fbeb4a086f0e07bda13589ba79636b736752e8270bc20faf4693d3418d` |
+| Human Soft-Label Audit Evidence Gate | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.json` |  | 2244 | `9c4ff0018e82066d47de787c1130dec3bcd75c0c560e83eb3cacdc004cede6c7` |
+| Human Soft-Label Audit Evidence Gate Markdown | `present` | file | `submission/human-audit-evidence-gate/human-audit-evidence-gate.md` |  | 1904 | `289fef4f768eaeb8773d465c17cf5f6843c102eced6be9731b4de79ced3cfa25` |
 | Provider Handoff Audit | `present` | file | `submission/provider-handoff-audit/provider-handoff-audit.json` |  | 6209 | `a0174cad289960b36f1967890fecbc81c58bce4b8e93a978e433e003373b274a` |
 | Plain Raw Output Audit | `present` | file | `experiments/pilot-e4-plain-llm-batch/raw-output-audit.json` |  | 2397 | `9fe4a04e32c41fa67bb54adb02b23e1ffc46f9a603aeaafada79191c2a2d9cde` |
 | Candidate Raw Output Audit | `present` | file | `experiments/pilot-e5-candidate-constrained-batch/raw-output-audit.json` |  | 2421 | `c52951771531742a1641e97fc391c81c69b30ca605c6094a3d12619c7b41c5f9` |
@@ -114,8 +114,8 @@ Missing entries are audit findings, not experimental results. Pending entries ar
 | Paired Verifier Attribution | `present` | file | `experiments/pilot-verifier-attribution/verifier-attribution.json` |  | 15039 | `ad53299ddd6491b8d6573b7f5524eedbbbdd0c7594e5ea55272cb9bacf797017` |
 | Verifier Ablation Summary | `present` | file | `experiments/pilot-ablation-summary/ablation-summary.json` |  | 5296 | `aa96ab43078bf960fea216ef3e2e809ff72d0df14ef3094edc1793c092a314f1` |
 | Paper Table Sources | `present` | directory | `tables` | 6 | 5922 | tree:`4c3ed29bf72f6ef02d37b73195bfaffeb247c68efbff3c3cb3b6ce12fd7fd1dc` |
-| Figure Sources | `present` | directory | `figures` | 13 | 208168 | tree:`646c42304a77476123478e25e725333999afd23d172483ec6107955282509424` |
-| Verifier Pipeline Figure | `present` | file | `figures/figure-1-verifier-pipeline.svg` |  | 10413 | `e53939531aa14bcfab3bcc86ad8c60790201e61135ec5bee9457f92c6d0e657c` |
+| Figure Sources | `present` | directory | `figures` | 13 | 208351 | tree:`2b15607c2abf41d1f372dd1515e22d954cc7f2646e26fe086b9d8b7b1de49fbe` |
+| Verifier Pipeline Figure | `present` | file | `figures/figure-1-verifier-pipeline.svg` |  | 10596 | `436a6b2f1809f3e3bf85fc4d260b37b530b9676804bb62582f5cfe916e2ec06c` |
 | Verifier Pipeline Figure Notes | `present` | file | `figures/figure-1-verifier-pipeline.md` |  | 1370 | `37c9f06616a22663901220a4c2ae7721526d52f37b6b1612caec8a2282da73d5` |
 | Trace-Contract Verifier Architecture Figure | `present` | file | `figures/figure-2-revision-architecture.svg` |  | 8166 | `320b59f4a649171b6014e6fe11436a76831f1e0ae8da71ea3ab29cf7bf68dd02` |
 | Trace-Contract Verifier Architecture Figure Notes | `present` | file | `figures/figure-2-revision-architecture.md` |  | 1516 | `4c7d38884f73ba6d277817b3865c479d4965eaee8f8b8384c87e1ee32184b235` |
@@ -135,17 +135,17 @@ Missing entries are audit findings, not experimental results. Pending entries ar
 | Claim-Evidence Report Markdown | `present` | file | `submission/claim-evidence/claim-evidence-report.md` |  | 4851 | `e21295428e313665dca6c322838f3de4a40416d42cfeb6ad86be6558361df504` |
 | Method Reproducibility Report | `present` | file | `submission/method-reproducibility/method-reproducibility-report.json` |  | 5617 | `1153b832e762990cfb341f2b3d1e9aa4f7744383715a22708b561f556db823ee` |
 | Method Reproducibility Report Markdown | `present` | file | `submission/method-reproducibility/method-reproducibility-report.md` |  | 2537 | `afe53113761a80d4494a6adc118a6b5e1aebc8ed6e4edb4a4820e3ce6bd638f0` |
-| AAMAS LaTeX Draft | `present` | directory | `submission/aamas-latex` | 22 | 6638421 | tree:`8ac4db1016c8e2116f05a5ef9bdb71da2dfe3b69d7abcd4872d4953b335f4867` |
+| AAMAS LaTeX Draft | `present` | directory | `submission/aamas-latex` | 23 | 6664961 | tree:`da68975244b6a1a4906070e412699541ef62de94dcb602695692ad7b9e5a0c58` |
 | Submission Gate Report | `present` | file | `submission/gate-report/submission-gate-report.json` |  | 1856 | `3f088cbe513b443424db3273b23b3f6d4f556fd41f1726b44cf6bb29667cbce5` |
 | Submission Marker Inventory | `present` | file | `submission/marker-inventory/submission-marker-inventory.json` |  | 562 | `e524d0dc4b30278acf4c7e4b25d97df89937d248ac5c836e0a26c5ec4b716a44` |
 | Experiment Resolution Ledger | `present` | file | `submission/experiment-resolution-ledger/experiment-resolution-ledger.json` |  | 522 | `bec9c60d0d5ed3d88f2a462016f25077e4ab3f30dc95bebb1d8526a5b85c8f37` |
-| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 5786 | `affa757fc69915cd7da8a79d2a0a909004af404092973c1eb899c62ced56f929` |
-| AAMAS Full-Paper Readiness Report | `present` | file | `submission/aamas-readiness/aamas-readiness-report.json` |  | 11446 | `ec3714d8591c1cea3c8efc166c99083dd8f101dd195c4b3657dcc4c04ab019ab` |
-| AAMAS Full-Paper Readiness Report Markdown | `present` | file | `submission/aamas-readiness/aamas-readiness-report.md` |  | 6610 | `aed6b23e5fc1b6d427a26ffd10ed436a665e40545fdccf71a87918c33d7da128` |
-| AAMAS Adversarial Self-Review Report | `present` | file | `submission/aamas-self-review/aamas-self-review-report.json` |  | 8677 | `ad31656b15f0411c71765ae556074083630a60cfceea31231a95f38039d7777e` |
-| AAMAS Adversarial Self-Review Report Markdown | `present` | file | `submission/aamas-self-review/aamas-self-review-report.md` |  | 7632 | `594f78d176efc2ab7296e104c6a8c5b7d3e2b2c751cd3800d38e7f308d0caab8` |
-| AAMAS Reviewer-Response Matrix | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json` |  | 12616 | `6252ac4158f11c8c9550a3c229d0c227e4e714185b938d12cbf261f3d2111ef3` |
-| AAMAS Reviewer-Response Matrix Markdown | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.md` |  | 10378 | `cf3d638cc059b220530a773979749f23c570ae9355025ab7600b3cfd7d0605fb` |
+| Research Preflight Report | `present` | file | `submission/preflight/research-preflight-report.json` |  | 5786 | `75e28fa174daad5c7f4aace54680c66222fdf7fb70d6902a23bcdfdfc868d7d5` |
+| AAMAS Full-Paper Readiness Report | `present` | file | `submission/aamas-readiness/aamas-readiness-report.json` |  | 11446 | `f7a870b464c421bc9bc3481d4e8ae157568c64e452dbab0eb984279eb3da41aa` |
+| AAMAS Full-Paper Readiness Report Markdown | `present` | file | `submission/aamas-readiness/aamas-readiness-report.md` |  | 6610 | `e2e9a3c23596ef0449175b2c2936ecefaf9eae2c08a843983f2da817e5479c1d` |
+| AAMAS Adversarial Self-Review Report | `present` | file | `submission/aamas-self-review/aamas-self-review-report.json` |  | 8677 | `249a6fadcc23bb900f43065eb0ce0f3537bbe83bdf41f4160a3cbc3c31caa60a` |
+| AAMAS Adversarial Self-Review Report Markdown | `present` | file | `submission/aamas-self-review/aamas-self-review-report.md` |  | 7632 | `00510dc56945b5b82b2752dea24c072439a11e0ac71e8ac24103b4b74cf99921` |
+| AAMAS Reviewer-Response Matrix | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.json` |  | 12616 | `001fd44845ffdbba6c6c0f8de0a89d79413c1536a9c9171f109dd2090b328809` |
+| AAMAS Reviewer-Response Matrix Markdown | `present` | file | `submission/aamas-reviewer-response/aamas-reviewer-response-matrix.md` |  | 10378 | `fa81245cffa555a852f43b17397c909e2cc2a70fbdc7fa6df4cde6fc77d4d09c` |
 | Local Research Pipeline Report | `present` | file | `submission/local-pipeline/local-research-pipeline-report.json` |  | 53721 | `1cd541ff42d8e2edf6973e6fed2597282d88680b727d849f9c52bc9a572559d3` |
 | Submission Checklist | `present` | file | `submission/submission_checklist.md` |  | 8159 | `08550a21e494c9358a206afb9a05e2788f6328a6e6d42c53c81781253dcfa64c` |
 | Working Submission Profile | `present` | file | `submission/submission-profile.md` |  | 4191 | `4830c603c5293d3c08afa112d014aa0779c4ff21d483ee221ba4c055b8f66a27` |

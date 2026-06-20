@@ -19,7 +19,9 @@
       .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #64748b; }
       .tiny { font: 400 10px Arial, Helvetica, sans-serif; fill: #64748b; }
       .formula { font: 700 20px Arial, Helvetica, sans-serif; fill: #111827; }
-      .bigMetric { font: 700 42px Arial, Helvetica, sans-serif; fill: #111827; }
+      .bigMetric { font: 700 38px Arial, Helvetica, sans-serif; fill: #111827; }
+      .metricTag { font: 700 11px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .metricUnit { font: 400 10px Arial, Helvetica, sans-serif; fill: #64748b; }
       .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
       .subpanel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
       .blue { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
@@ -127,18 +129,19 @@
   <rect x="1056" y="382" width="384" height="220" rx="18" class="panel" />
   <text x="1080" y="414" class="kicker">EVIDENCE</text>
   <text x="1080" y="442" class="panel-title">F. Same-id paired revision</text>
-  <rect x="1086" y="460" width="102" height="84" rx="14" class="red" />
-  <text x="1137" y="482" text-anchor="middle" class="small">before</text>
-  <text x="1137" y="522" text-anchor="middle" class="bigMetric">35</text>
-  <text x="1137" y="541" text-anchor="middle" class="tiny">hard fail.</text>
-  <path d="M1201,503 H1248" class="line" />
+  <rect x="1082" y="456" width="114" height="92" rx="14" class="red" />
+  <text x="1139" y="476" text-anchor="middle" class="metricTag">before</text>
+  <text x="1139" y="522" text-anchor="middle" class="bigMetric">35</text>
+  <text x="1139" y="542" text-anchor="middle" class="metricUnit">hard fail.</text>
+  <path d="M1208,503 H1238" class="line" />
   <text x="1225" y="484" text-anchor="middle" class="label">-25</text>
-  <rect x="1260" y="460" width="106" height="84" rx="14" class="green" />
-  <text x="1313" y="482" text-anchor="middle" class="small">after</text>
-  <text x="1313" y="522" text-anchor="middle" class="bigMetric">10</text>
-  <text x="1313" y="541" text-anchor="middle" class="tiny">hard fail.</text>
+  <rect x="1254" y="456" width="114" height="92" rx="14" class="green" />
+  <text x="1311" y="476" text-anchor="middle" class="metricTag">after</text>
+  <text x="1311" y="522" text-anchor="middle" class="bigMetric">10</text>
+  <text x="1311" y="542" text-anchor="middle" class="metricUnit">hard fail.</text>
   <rect x="1088" y="558" width="274" height="34" rx="10" class="cyan" />
   <text x="1225" y="580" text-anchor="middle" class="box-title">32 same-id paired traces</text>
+  <path d="M1225,604 C1015,628 760,630 536,613" class="feedback" />
   <text x="1088" y="622" class="box-title">Repaired hard-failure sources</text>
   <rect x="1088" y="638" width="200" height="18" rx="6" fill="#86efac" stroke="#16a34a" />
   <rect x="1288" y="638" width="50" height="18" rx="6" fill="#67e8f9" stroke="#0891b2" />
@@ -149,5 +152,4 @@
   <path d="M345,498 H380" class="line" />
   <path d="M677,498 H712" class="line" />
   <path d="M1009,498 H1044" class="line" />
-  <path d="M1318,638 C1040,668 744,670 536,613" class="feedback" />
 </svg>
