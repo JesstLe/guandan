@@ -268,8 +268,8 @@ Figure~\ref{fig:revision-architecture} summarizes the trace-contract verifier ar
 \node[fail, text width=2.82cm] (hid) at ([yshift=-0.90cm]pa.center) {\textbf{Boundary}\\private hand \(o_t\) is allowed input,\\not citable public evidence};
 \node[metric, text width=2.82cm] (cand) at ([yshift=-1.75cm]pa.center) {\textbf{Dynamic candidates}\\finite legal set \(A_t\)};
 
-\node[model, text width=2.80cm] (llm) at ([yshift=1.16cm]pb.center) {\textbf{LLM actor}\\selects \(a_t\in A_t\)\\emits trace \(r_t^0\)};
-\node[artifact, text width=2.82cm] (trace) at ([yshift=0.08cm]pb.center) {\textbf{Structured trace fields}\\action, objective\\beliefs + evidence ids\\risk, confidence};
+\node[model, text width=2.80cm] (llm) at ([yshift=1.16cm]pb.center) {\textbf{LLM actor}\\legal action \(a_t\)\\outputs trace \(r_t^0\)};
+\node[artifact, text width=2.82cm] (trace) at ([yshift=0.08cm]pb.center) {\textbf{Structured trace}\\objective + beliefs\\evidence ids\\risk + confidence};
 \node[metric, text width=2.82cm] (parse) at ([yshift=-1.05cm]pb.center) {\textbf{Schema gate}\\parseable trace\\audit-ready};
 \node[fail, text width=2.82cm, font=\scriptsize] (e2e) at ([yshift=-1.82cm]pb.center) {schema failures stay\\end-to-end failures};
 
