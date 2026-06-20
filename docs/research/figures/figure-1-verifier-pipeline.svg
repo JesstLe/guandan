@@ -19,7 +19,7 @@
       .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #64748b; }
       .tiny { font: 400 10px Arial, Helvetica, sans-serif; fill: #64748b; }
       .formula { font: 700 20px Arial, Helvetica, sans-serif; fill: #111827; }
-      .bigMetric { font: 700 44px Arial, Helvetica, sans-serif; fill: #111827; }
+      .bigMetric { font: 700 42px Arial, Helvetica, sans-serif; fill: #111827; }
       .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
       .subpanel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
       .blue { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
@@ -76,9 +76,10 @@
   <path d="M1025,219 V281" class="thin" />
   <path d="M941,250 H979" class="thin" />
   <path d="M1071,250 H1109" class="thin" />
-  <rect x="1166" y="170" width="73" height="30" rx="9" class="red" />
-  <text x="1202" y="190" text-anchor="middle" class="tiny">no chat</text>
-  <path d="M1172,174 L1235,197" stroke="#dc2626" stroke-width="2.3" />
+  <rect x="1152" y="158" width="112" height="38" rx="12" class="red" />
+  <circle cx="1172" cy="177" r="10" fill="none" stroke="#dc2626" stroke-width="2.3" />
+  <path d="M1165,170 L1179,184" stroke="#dc2626" stroke-width="2.3" />
+  <text x="1223" y="182" text-anchor="middle" style="font: 700 14px Arial, Helvetica, sans-serif; fill: #991b1b;">no chat</text>
   <rect x="1232" y="209" width="178" height="74" rx="14" class="orange" />
   <text x="1321" y="235" text-anchor="middle" class="box-title">Intent is latent</text>
   <text x="1321" y="259" text-anchor="middle" class="small">actions signal intent</text>
@@ -126,18 +127,18 @@
   <rect x="1056" y="382" width="384" height="220" rx="18" class="panel" />
   <text x="1080" y="414" class="kicker">EVIDENCE</text>
   <text x="1080" y="442" class="panel-title">F. Same-id paired revision</text>
-  <rect x="1088" y="466" width="90" height="70" rx="14" class="red" />
-  <text x="1131" y="488" text-anchor="middle" class="small">before</text>
-  <text x="1131" y="520" text-anchor="middle" class="bigMetric">35</text>
-  <text x="1133" y="533" text-anchor="middle" class="tiny">hard fail.</text>
-  <path d="M1190,505 H1260" class="line" />
-  <text x="1225" y="488" text-anchor="middle" class="label">-25</text>
-  <rect x="1272" y="466" width="94" height="70" rx="14" class="green" />
-  <text x="1319" y="488" text-anchor="middle" class="small">after</text>
-  <text x="1319" y="520" text-anchor="middle" class="bigMetric">10</text>
-  <text x="1319" y="533" text-anchor="middle" class="tiny">hard fail.</text>
-  <rect x="1088" y="550" width="274" height="34" rx="10" class="cyan" />
-  <text x="1225" y="572" text-anchor="middle" class="box-title">32 same-id paired traces</text>
+  <rect x="1086" y="460" width="102" height="84" rx="14" class="red" />
+  <text x="1137" y="482" text-anchor="middle" class="small">before</text>
+  <text x="1137" y="522" text-anchor="middle" class="bigMetric">35</text>
+  <text x="1137" y="541" text-anchor="middle" class="tiny">hard fail.</text>
+  <path d="M1201,503 H1248" class="line" />
+  <text x="1225" y="484" text-anchor="middle" class="label">-25</text>
+  <rect x="1260" y="460" width="106" height="84" rx="14" class="green" />
+  <text x="1313" y="482" text-anchor="middle" class="small">after</text>
+  <text x="1313" y="522" text-anchor="middle" class="bigMetric">10</text>
+  <text x="1313" y="541" text-anchor="middle" class="tiny">hard fail.</text>
+  <rect x="1088" y="558" width="274" height="34" rx="10" class="cyan" />
+  <text x="1225" y="580" text-anchor="middle" class="box-title">32 same-id paired traces</text>
   <text x="1088" y="622" class="box-title">Repaired hard-failure sources</text>
   <rect x="1088" y="638" width="200" height="18" rx="6" fill="#86efac" stroke="#16a34a" />
   <rect x="1288" y="638" width="50" height="18" rx="6" fill="#67e8f9" stroke="#0891b2" />
