@@ -1,6 +1,6 @@
 # AAMAS Adversarial Self-Review Report
 
-Generated at: `2026-06-20T19:44:39.888Z`
+Generated at: `2026-06-20T21:13:53.798Z`
 
 Paper: **Verifiable Multi-Agent Reasoning for LLM Agents in Zero-Communication Mixed-Motive Games**
 
