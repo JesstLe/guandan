@@ -268,9 +268,10 @@ Figure~\ref{fig:revision-architecture} summarizes the trace-contract verifier ar
 \node[fail, text width=2.82cm] (hid) at ([yshift=-0.90cm]pa.center) {\textbf{Boundary}\\private hand \(o_t\) is allowed input,\\not citable public evidence};
 \node[metric, text width=2.82cm] (cand) at ([yshift=-1.75cm]pa.center) {\textbf{Dynamic candidates}\\finite legal set \(A_t\)};
 
-\node[model, text width=2.80cm] (llm) at ([yshift=1.10cm]pb.center) {\textbf{LLM actor}\\selects \(a_t\in A_t\)\\emits trace \(r_t^0\)};
-\node[artifact, text width=2.82cm] (trace) at ([yshift=-0.02cm]pb.center) {\textbf{Structured trace fields}\\action, team objective\\partner/opponent belief + ids\\rationale, risk, confidence};
-\node[metric, text width=2.82cm] (parse) at ([yshift=-1.48cm]pb.center) {\textbf{Schema gate}\\parseable trace enters audit};
+\node[model, text width=2.80cm] (llm) at ([yshift=1.16cm]pb.center) {\textbf{LLM actor}\\selects \(a_t\in A_t\)\\emits trace \(r_t^0\)};
+\node[artifact, text width=2.82cm] (trace) at ([yshift=0.08cm]pb.center) {\textbf{Structured trace fields}\\action, objective\\beliefs + evidence ids\\risk, confidence};
+\node[metric, text width=2.82cm] (parse) at ([yshift=-1.05cm]pb.center) {\textbf{Schema gate}\\parseable trace\\enters audit};
+\node[fail, text width=2.82cm, font=\scriptsize] (e2e) at ([yshift=-1.82cm]pb.center) {schema failures stay\\end-to-end failures};
 
 \node[verifier, text width=2.82cm] (vf) at ([yshift=1.13cm]pc.center) {\textbf{Verifier map}\\\(V(d_t,r_t,a_t)\rightarrow(y_t,e_t)\)};
 \node[artifact, text width=2.82cm] (hard) at ([yshift=0.08cm]pc.center) {\textbf{Hard labels}\\legal action, beats table\\public history, hidden-info};
@@ -285,7 +286,7 @@ Figure~\ref{fig:revision-architecture} summarizes the trace-contract verifier ar
 \draw[arrow] (dt) -- (llm);
 \draw[arrow] (llm) -- (trace);
 \draw[arrow] (trace) -- (parse);
-\draw[arrow] (parse) -- (vf);
+\draw[arrow] (parse.east) -- ++(0.26cm,0) |- (vf.west);
 \draw[arrow] (vf) -- (hard);
 \draw[thinarr] (vf) -- (soft);
 \draw[dashedarr] (hard) -- (fb);
@@ -295,8 +296,6 @@ Figure~\ref{fig:revision-architecture} summarizes the trace-contract verifier ar
 \draw[arrow] (recheck) -- (paired);
 \draw[dashedarr] (oracle) -- (rev);
 
-\node[fail, text width=3.10cm, font=\scriptsize] (e2e) at ([xshift=0.08cm,yshift=-2.55cm]pb.center) {schema failures remain end-to-end failures};
-\node[note, text width=7.15cm] (denom) at ([xshift=0.10cm,yshift=-2.55cm]pc.east) {Only first-pass parseable traces enter the same-id before/after test; schema failures remain visible.};
 \draw[arrow, draw=red!65!black] (parse.south) -- (e2e.north);
 \end{tikzpicture}
 }
