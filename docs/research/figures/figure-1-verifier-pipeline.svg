@@ -55,9 +55,9 @@
   <text x="270" y="250" text-anchor="middle" class="label">ally</text>
   <circle cx="390" cy="245" r="25" class="blue" />
   <text x="390" y="250" text-anchor="middle" class="label">LLM</text>
-  <rect x="432" y="194" width="214" height="74" rx="14" class="green" />
-  <text x="539" y="221" text-anchor="middle" class="box-title">Intent is stated</text>
-  <text x="539" y="244" text-anchor="middle" class="small">can cite messages</text>
+  <rect x="432" y="209" width="214" height="74" rx="14" class="green" />
+  <text x="539" y="236" text-anchor="middle" class="box-title">Intent is stated</text>
+  <text x="539" y="259" text-anchor="middle" class="small">can cite messages</text>
   <path d="M295,245 H358" class="line" />
   <path d="M415,245 H435" class="line" />
 
@@ -78,10 +78,10 @@
   <path d="M1025,219 V281" class="thin" />
   <path d="M941,250 H979" class="thin" />
   <path d="M1071,250 H1109" class="thin" />
-  <rect x="1152" y="158" width="112" height="38" rx="12" class="red" />
-  <circle cx="1172" cy="177" r="10" fill="none" stroke="#dc2626" stroke-width="2.3" />
-  <path d="M1165,170 L1179,184" stroke="#dc2626" stroke-width="2.3" />
-  <text x="1223" y="182" text-anchor="middle" style="font: 700 14px Arial, Helvetica, sans-serif; fill: #991b1b;">no chat</text>
+  <rect x="1160" y="174" width="104" height="34" rx="11" class="red" />
+  <circle cx="1178" cy="191" r="9" fill="none" stroke="#dc2626" stroke-width="2.1" />
+  <path d="M1172,185 L1184,197" stroke="#dc2626" stroke-width="2.1" />
+  <text x="1225" y="196" text-anchor="middle" style="font: 700 13px Arial, Helvetica, sans-serif; fill: #991b1b;">no chat</text>
   <rect x="1232" y="209" width="178" height="74" rx="14" class="orange" />
   <text x="1321" y="235" text-anchor="middle" class="box-title">Intent is latent</text>
   <text x="1321" y="259" text-anchor="middle" class="small">actions signal intent</text>
