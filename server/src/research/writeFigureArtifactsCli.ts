@@ -512,6 +512,8 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
       .bigMetric { font: 700 38px Arial, Helvetica, sans-serif; fill: #111827; }
       .metricTag { font: 700 11px Arial, Helvetica, sans-serif; fill: #64748b; }
       .metricUnit { font: 400 10px Arial, Helvetica, sans-serif; fill: #64748b; }
+      .badgeText { font: 700 23px Arial, Helvetica, sans-serif; fill: #ffffff; }
+      .footerText { font: 700 16px Arial, Helvetica, sans-serif; fill: #0f172a; }
       .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
       .subpanel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
       .blue { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
@@ -531,116 +533,120 @@ function renderVerifierPipelineSvg(attribution: VerifierAttribution): string {
     </style>
   </defs>
   <rect width="1500" height="700" fill="#ffffff" />
-  <text x="750" y="42" text-anchor="middle" class="title">Verifiable Reasoning When Teammates Cannot Talk</text>
-  <text x="750" y="72" text-anchor="middle" class="subtitle">Action-only cooperation exposes latent intent; trace contracts make it auditable.</text>
+  <text x="750" y="34" text-anchor="middle" class="title">Verifiable Multi-Agent Reasoning for LLM Agents</text>
+  <text x="750" y="67" text-anchor="middle" class="subtitle">in Zero-Communication Cooperative-Competitive Games</text>
 
-  <rect x="70" y="106" width="615" height="215" rx="18" class="panel" />
-  <text x="96" y="136" class="kicker">REFERENCE SETTING</text>
-  <text x="96" y="163" class="panel-title">A. Explicit communication</text>
-  <rect x="107" y="191" width="115" height="50" rx="16" class="bubble" />
-  <text x="164" y="221" text-anchor="middle" class="label">support</text>
-  <path d="M196,244 L226,263" stroke="#64748b" stroke-width="1.7" fill="none" />
-  <circle cx="270" cy="245" r="25" class="blue" />
-  <text x="270" y="250" text-anchor="middle" class="label">ally</text>
-  <circle cx="390" cy="245" r="25" class="blue" />
-  <text x="390" y="250" text-anchor="middle" class="label">LLM</text>
-  <rect x="432" y="209" width="214" height="74" rx="14" class="green" />
-  <text x="539" y="236" text-anchor="middle" class="box-title">Stated intent</text>
-  <text x="539" y="259" text-anchor="middle" class="small">message evidence</text>
-  <path d="M295,245 H358" class="line" />
-  <path d="M415,245 H435" class="line" />
+  <rect x="70" y="92" width="615" height="218" rx="18" class="panel" />
+  <text x="96" y="122" class="kicker">REFERENCE SETTING</text>
+  <text x="96" y="150" class="panel-title">A. Explicit Communication</text>
+  <rect x="107" y="181" width="115" height="50" rx="16" class="bubble" />
+  <text x="164" y="211" text-anchor="middle" class="label">support</text>
+  <path d="M196,234 L226,252" stroke="#64748b" stroke-width="1.7" fill="none" />
+  <circle cx="270" cy="235" r="25" class="blue" />
+  <text x="270" y="240" text-anchor="middle" class="label">ally</text>
+  <circle cx="390" cy="235" r="25" class="blue" />
+  <text x="390" y="240" text-anchor="middle" class="label">LLM</text>
+  <rect x="432" y="199" width="214" height="74" rx="14" class="green" />
+  <text x="539" y="226" text-anchor="middle" class="box-title">Stated intent</text>
+  <text x="539" y="249" text-anchor="middle" class="small">message evidence</text>
+  <path d="M295,235 H358" class="line" />
+  <path d="M415,235 H435" class="line" />
 
-  <rect x="815" y="106" width="615" height="215" rx="18" class="panel" />
-  <text x="841" y="136" class="kicker">OUR SETTING</text>
-  <text x="841" y="163" class="panel-title">B. Zero-communication play</text>
-  <ellipse cx="1025" cy="250" rx="76" ry="32" class="mutedBand" />
-  <text x="1025" y="246" text-anchor="middle" class="label">public table</text>
-  <text x="1025" y="264" text-anchor="middle" class="tiny">lead / pass / beat</text>
-  <circle cx="1025" cy="195" r="24" class="blue" />
-  <text x="1025" y="200" text-anchor="middle" class="label">ally</text>
-  <circle cx="1025" cy="305" r="24" class="blue" />
-  <text x="1025" y="310" text-anchor="middle" class="label">LLM</text>
-  <circle cx="919" cy="250" r="22" class="red" />
-  <text x="919" y="255" text-anchor="middle" class="small">opp.</text>
-  <circle cx="1131" cy="250" r="22" class="red" />
-  <text x="1131" y="255" text-anchor="middle" class="small">opp.</text>
-  <path d="M1025,219 V281" class="thin" />
-  <path d="M941,250 H979" class="thin" />
-  <path d="M1071,250 H1109" class="thin" />
-  <rect x="1160" y="174" width="104" height="34" rx="11" class="red" />
-  <circle cx="1178" cy="191" r="9" fill="none" stroke="#dc2626" stroke-width="2.1" />
-  <path d="M1172,185 L1184,197" stroke="#dc2626" stroke-width="2.1" />
-  <text x="1225" y="196" text-anchor="middle" style="font: 700 13px Arial, Helvetica, sans-serif; fill: #991b1b;">no chat</text>
-  <rect x="1232" y="209" width="178" height="74" rx="14" class="orange" />
-  <text x="1321" y="235" text-anchor="middle" class="box-title">Latent intent</text>
-  <text x="1321" y="259" text-anchor="middle" class="small">action evidence</text>
-  <path d="M1153,250 H1234" class="line" />
+  <rect x="815" y="92" width="615" height="218" rx="18" class="panel" />
+  <text x="841" y="122" class="kicker">OUR SETTING</text>
+  <text x="841" y="150" class="panel-title">B. Zero-Communication Play</text>
+  <ellipse cx="1025" cy="235" rx="78" ry="34" class="mutedBand" />
+  <text x="1025" y="231" text-anchor="middle" class="label">public table</text>
+  <text x="1025" y="250" text-anchor="middle" class="tiny">lead / pass / beat</text>
+  <circle cx="1025" cy="180" r="24" class="blue" />
+  <text x="1025" y="185" text-anchor="middle" class="label">ally</text>
+  <circle cx="1025" cy="290" r="24" class="blue" />
+  <text x="1025" y="295" text-anchor="middle" class="label">LLM</text>
+  <circle cx="919" cy="235" r="22" class="red" />
+  <text x="919" y="240" text-anchor="middle" class="small">opp.</text>
+  <circle cx="1131" cy="235" r="22" class="red" />
+  <text x="1131" y="240" text-anchor="middle" class="small">opp.</text>
+  <path d="M1025,204 V266" class="thin" />
+  <path d="M941,235 H979" class="thin" />
+  <path d="M1071,235 H1109" class="thin" />
+  <rect x="1160" y="152" width="104" height="34" rx="11" class="red" />
+  <circle cx="1178" cy="169" r="9" fill="none" stroke="#dc2626" stroke-width="2.1" />
+  <path d="M1172,163 L1184,175" stroke="#dc2626" stroke-width="2.1" />
+  <text x="1225" y="174" text-anchor="middle" style="font: 700 13px Arial, Helvetica, sans-serif; fill: #991b1b;">no chat</text>
+  <rect x="1232" y="199" width="178" height="74" rx="14" class="orange" />
+  <text x="1321" y="226" text-anchor="middle" class="box-title">Latent intent</text>
+  <text x="1321" y="249" text-anchor="middle" class="small">action evidence</text>
+  <path d="M1153,235 H1234" class="line" />
 
-  <text x="750" y="352" text-anchor="middle" class="stageLabel">Decision packet -> trace contract -> verifier labels -> paired evidence</text>
-  <path d="M750,322 V364" class="line" />
+  <path d="M80,340 H420" class="thin" />
+  <text x="750" y="346" text-anchor="middle" class="stageLabel">Evaluation Pipeline: From Decision to Verifiable Evidence</text>
+  <path d="M1080,340 H1420" class="thin" />
+  <path d="M750,314 V370" class="line" />
 
-  <rect x="60" y="382" width="285" height="220" rx="18" class="panel" />
-  <text x="84" y="414" class="kicker">STATE</text>
-  <text x="84" y="442" class="panel-title">C. Decision state</text>
-  <rect x="90" y="466" width="225" height="72" rx="14" class="subpanel" />
-  <text x="112" y="492" class="box-title">Public evidence</text>
-  <text x="112" y="515" class="text">history, roles, counts</text>
-  <text x="112" y="534" class="text">legal set A_t</text>
-  <rect x="90" y="554" width="225" height="34" rx="10" class="red" />
-  <text x="202" y="576" text-anchor="middle" class="small">private hand hidden</text>
+  <rect x="60" y="390" width="285" height="196" rx="18" class="panel" />
+  <circle cx="88" cy="420" r="20" fill="#2563eb" />
+  <text x="88" y="428" text-anchor="middle" class="badgeText">1</text>
+  <text x="126" y="427" class="panel-title">Decision State</text>
+  <rect x="90" y="452" width="225" height="33" rx="10" class="subpanel" />
+  <text x="138" y="474" class="label">Public evidence</text>
+  <rect x="90" y="494" width="225" height="33" rx="10" class="cyan" />
+  <text x="138" y="516" class="label">Roles + counts</text>
+  <rect x="90" y="536" width="225" height="33" rx="10" class="red" />
+  <text x="138" y="558" class="label">Private hand hidden</text>
 
-  <rect x="392" y="382" width="285" height="220" rx="18" class="panel" />
-  <text x="416" y="414" class="kicker">CONTRACT</text>
-  <text x="416" y="442" class="panel-title">D. Trace contract</text>
-  <rect x="420" y="466" width="228" height="106" rx="14" class="orange" />
-  <text x="534" y="491" text-anchor="middle" class="box-title">LLM trace r_t</text>
-  <text x="454" y="516" class="label">action</text>
-  <text x="548" y="516" class="text">a_t</text>
-  <text x="454" y="541" class="label">beliefs</text>
-  <text x="548" y="541" class="text">agents</text>
-  <text x="454" y="566" class="label">evidence</text>
-  <text x="548" y="566" class="text">public ids</text>
-  <text x="534" y="594" text-anchor="middle" class="small">rationale -> commitments</text>
+  <rect x="392" y="390" width="285" height="196" rx="18" class="panel" />
+  <circle cx="420" cy="420" r="20" fill="#2563eb" />
+  <text x="420" y="428" text-anchor="middle" class="badgeText">2</text>
+  <text x="458" y="427" class="panel-title">Trace Contract</text>
+  <rect x="420" y="454" width="88" height="104" rx="14" class="orange" />
+  <path d="M444,476 H486 M444,499 H486 M444,522 H486" stroke="#ea580c" stroke-width="4" />
+  <text x="552" y="474" class="label">Action</text>
+  <text x="552" y="505" class="label">Beliefs</text>
+  <text x="552" y="536" class="label">Evidence</text>
+  <text x="534" y="575" text-anchor="middle" style="font: 700 16px Arial, Helvetica, sans-serif; fill: #c2410c;">LLM trace r_t</text>
 
-  <rect x="724" y="382" width="285" height="220" rx="18" class="panel" />
-  <text x="748" y="414" class="kicker">VERIFIER</text>
-  <text x="748" y="442" class="panel-title">E. Verifier labels</text>
-  <rect x="756" y="466" width="220" height="62" rx="14" fill="#ffffff" stroke="#334155" stroke-width="2" />
-  <text x="866" y="492" text-anchor="middle" class="formula">V(d_t, r_t, a_t)</text>
-  <text x="866" y="514" text-anchor="middle" class="text">-> labels + issues</text>
-  <rect x="746" y="548" width="118" height="42" rx="12" class="green" />
-  <text x="805" y="566" text-anchor="middle" class="box-title">Hard</text>
-  <text x="805" y="584" text-anchor="middle" class="tiny">rules</text>
-  <rect x="878" y="548" width="98" height="42" rx="12" class="cyan" />
-  <text x="927" y="566" text-anchor="middle" class="box-title">Soft</text>
-  <text x="927" y="584" text-anchor="middle" class="tiny">strategy</text>
+  <rect x="724" y="390" width="285" height="196" rx="18" class="panel" />
+  <circle cx="752" cy="420" r="20" fill="#2563eb" />
+  <text x="752" y="428" text-anchor="middle" class="badgeText">3</text>
+  <text x="790" y="427" class="panel-title">Verifier Labels</text>
+  <text x="866" y="486" text-anchor="middle" class="formula">V(d_t, r_t, a_t)</text>
+  <text x="866" y="512" text-anchor="middle" class="text">rule/evidence checks</text>
+  <rect x="748" y="534" width="112" height="42" rx="12" class="green" />
+  <text x="804" y="552" text-anchor="middle" class="box-title">Hard</text>
+  <text x="804" y="570" text-anchor="middle" class="tiny">rules</text>
+  <rect x="876" y="534" width="112" height="42" rx="12" class="cyan" />
+  <text x="932" y="552" text-anchor="middle" class="box-title">Soft</text>
+  <text x="932" y="570" text-anchor="middle" class="tiny">strategy</text>
 
-  <rect x="1056" y="382" width="384" height="220" rx="18" class="panel" />
-  <text x="1080" y="414" class="kicker">EVIDENCE</text>
-  <text x="1080" y="442" class="panel-title">F. Paired revision</text>
-  <rect x="1082" y="456" width="114" height="92" rx="14" class="red" />
-  <text x="1139" y="476" text-anchor="middle" class="metricTag">before</text>
-  <text x="1139" y="522" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.beforeHardFailureCount}</text>
-  <text x="1139" y="542" text-anchor="middle" class="metricUnit">hard fail.</text>
-  <path d="M1208,503 H1238" class="line" />
-  <text x="1225" y="484" text-anchor="middle" class="label">-${removedHardFailures}</text>
-  <rect x="1254" y="456" width="114" height="92" rx="14" class="green" />
-  <text x="1311" y="476" text-anchor="middle" class="metricTag">after</text>
-  <text x="1311" y="522" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.afterHardFailureCount}</text>
-  <text x="1311" y="542" text-anchor="middle" class="metricUnit">hard fail.</text>
-  <rect x="1088" y="558" width="274" height="34" rx="10" class="cyan" />
-  <text x="1225" y="580" text-anchor="middle" class="box-title">${attribution.pairedDecisionCount} same-id paired traces</text>
-  <path d="M1088,604 C900,614 710,616 536,613" class="feedback" />
-  <text x="1088" y="622" class="box-title">Repaired hard-failure sources</text>
-  <rect x="1088" y="638" width="${publicWidth}" height="18" rx="6" fill="#86efac" stroke="#16a34a" />
-  <rect x="${1088 + publicWidth}" y="638" width="${hiddenWidth}" height="18" rx="6" fill="#67e8f9" stroke="#0891b2" />
-  <text x="1088" y="672" class="tiny">${publicShare}% public-history consistency</text>
-  <text x="1262" y="672" class="tiny">${hiddenShare}% hidden-info discipline</text>
-  <text x="1088" y="688" class="tiny">${attribution.excludedParseFailureCount} schema failures remain end-to-end failures</text>
+  <rect x="1056" y="390" width="384" height="196" rx="18" class="panel" />
+  <circle cx="1084" cy="420" r="20" fill="#2563eb" />
+  <text x="1084" y="428" text-anchor="middle" class="badgeText">4</text>
+  <text x="1122" y="427" class="panel-title">Paired Evidence</text>
+  <rect x="1090" y="454" width="112" height="78" rx="14" class="red" />
+  <text x="1146" y="475" text-anchor="middle" class="metricTag">before</text>
+  <text x="1146" y="512" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.beforeHardFailureCount}</text>
+  <text x="1146" y="529" text-anchor="middle" class="metricUnit">hard failures</text>
+  <path d="M1216,494 H1270" class="line" />
+  <text x="1243" y="475" text-anchor="middle" class="label">-${removedHardFailures}</text>
+  <rect x="1286" y="454" width="112" height="78" rx="14" class="green" />
+  <text x="1342" y="475" text-anchor="middle" class="metricTag">after</text>
+  <text x="1342" y="512" text-anchor="middle" class="bigMetric">${attribution.hardFailureAttribution.afterHardFailureCount}</text>
+  <text x="1342" y="529" text-anchor="middle" class="metricUnit">hard failures</text>
+  <rect x="1090" y="544" width="308" height="34" rx="10" class="cyan" />
+  <text x="1244" y="566" text-anchor="middle" class="box-title">${attribution.pairedDecisionCount} same-id paired traces</text>
 
-  <path d="M345,498 H380" class="line" />
-  <path d="M677,498 H712" class="line" />
-  <path d="M1009,498 H1044" class="line" />
+  <rect x="90" y="612" width="1320" height="64" rx="18" fill="#ffffff" stroke="#2563eb" stroke-width="1.7" />
+  <text x="170" y="650" text-anchor="middle" class="footerText">Verifier-grounded</text>
+  <line x1="300" y1="624" x2="300" y2="664" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="475" y="642" text-anchor="middle" class="footerText">Action-only play exposes latent intent</text>
+  <line x1="650" y1="624" x2="650" y2="664" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="828" y="642" text-anchor="middle" class="footerText">Trace contracts make intent auditable</text>
+  <line x1="1010" y1="624" x2="1010" y2="664" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="1195" y="642" text-anchor="middle" class="footerText">Hard failures: 35 -> 10 (-25)</text>
+
+  <path d="M345,488 H380" class="line" />
+  <path d="M677,488 H712" class="line" />
+  <path d="M1009,488 H1044" class="line" />
 </svg>
 `
 }
